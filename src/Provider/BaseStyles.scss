@@ -1,0 +1,12 @@
+/* Css defaults */
+@import '~sanitize.css';
+@import '~sanitize.css/forms.css';
+@import '~sanitize.css/typography.css';
+@import '~sanitize.css/reduce-motion.css';
+
+@import '../scss/typography';
+@import '../scss/elements';
+
+/* Style dictionary for global styles */
+/* Loaded depending on the theme prop? */
+/* @import '~@grantcodes/style-dictionary/build/css/default/style-dictionary.css'; */

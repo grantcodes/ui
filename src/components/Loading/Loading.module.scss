@@ -1,0 +1,35 @@
+@use 'sass:math';
+
+$height: 0.5rem;
+$innerWidth: 40%;
+$startingPosition: 0 - $innerWidth * 2;
+$endingPosition: 100% + $innerWidth * 2;
+
+.loading {
+  display: block;
+  height: $height;
+  border-radius: math.div($height, 2);
+  overflow: hidden;
+  padding-top: $height;
+  background-repeat: no-repeat;
+  background-color: var(--color-base-primary-500);
+  background-image: linear-gradient(
+    to right,
+    transparent 0%,
+    var(--color-base-secondary-500) 10%,
+    var(--color-base-secondary-500) 90%,
+    transparent 100%
+  );
+  background-size: $innerWidth 100%;
+  background-position-x: $startingPosition;
+  animation: loading 2s linear infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position-x: $startingPosition;
+  }
+  100% {
+    background-position-x: $endingPosition;
+  }
+}

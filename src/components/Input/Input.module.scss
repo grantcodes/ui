@@ -1,0 +1,43 @@
+.Input {
+  display: block;
+  border-radius: var(--component-input-base-border-radius);
+  border-width: var(--component-input-base-border-width);
+  border-style: solid;
+  border-color: var(--component-input-base-color);
+  background: var(--component-input-base-background);
+  color: var(--component-input-base-color);
+  padding: 0.5em 1em;
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+
+  &:not(textarea) {
+    line-height: 1;
+  }
+
+  &:hover {
+    border-color: var(--component-input-hover-border-color);
+    color: var(--component-input-hover-color);
+    background: var(--component-input-hover-background);
+  }
+
+  &:focus {
+    border-color: var(--component-input-active-border-color);
+    color: var(--component-input-active-color);
+    background: var(--component-input-active-background);
+  }
+
+  &:invalid:not(:focus) {
+    border-color: var(--color-base-error-500);
+  }
+
+  &[readonly] {
+    cursor: not-allowed;
+    border-style: dashed;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    filter: grayscale(100%) brightness(80%);
+  }
+}

@@ -1,0 +1,16 @@
+@use './util/' as u;
+
+body {
+  font-family: var(--font-family-body);
+  line-height: var(--font-line-height-body);
+}
+
+pre {
+  font-family: var(--font-family-monospace);
+  line-height: 1.2;
+  width: 100%;
+  overflow: auto;
+  border-radius: var(--component-card-border-radius);
+  box-shadow: u.shadow(0);
+  padding: var(--size-space-unit, 1rem);
+}
