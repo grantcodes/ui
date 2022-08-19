@@ -1,3 +1,6 @@
+@use '~@grantcodes/style-dictionary/build/scss/default/style-dictionary.scss' as theme-default;
+@use '~@grantcodes/style-dictionary/build/scss/todomap/style-dictionary.scss' as theme-todomap;
+
 /* Css defaults */
 @import '~sanitize.css';
 @import '~sanitize.css/forms.css';
@@ -7,6 +10,17 @@
 @import '../scss/typography';
 @import '../scss/elements';
 
-/* Style dictionary for global styles */
-/* Loaded depending on the theme prop? */
-/* @import '~@grantcodes/style-dictionary/build/css/default/style-dictionary.css'; */
+[class*='grantcodes-ui-theme'] {
+  --grantcodes-ui-theme: 'none';
+}
+
+// TODO: Would like to remove the theme if not needed and only import the used theme.
+[class*='grantcodes-ui-theme--default'] {
+  --grantcodes-ui-theme: 'default';
+  @include theme-default.css-variables();
+}
+
+[class*='grantcodes-ui-theme--todomap'] {
+  --grantcodes-ui-theme: 'todomap';
+  @include theme-todomap.css-variables();
+}

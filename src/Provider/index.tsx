@@ -1,9 +1,7 @@
-import React, { createContext, useMemo, useEffect } from 'react'
+import React, { createContext, useMemo, useEffect, useState } from 'react'
+import cx from 'classnames'
 import './BaseStyles.scss'
-// import * as defaultThemeCss from '@grantcodes/style-dictionary/build/css/default/style-dictionary.css?raw'
-import defaultThemeCss from '../../../grantcodes-style-dictionary/build/css/default/style-dictionary.css?raw'
-// import todomapThemeCss from '@grantcodes/style-dictionary/build/css/todomap/style-dictionary.css?raw'
-import todomapThemeCss from '../../../grantcodes-style-dictionary/build/css/todomap/style-dictionary.css?raw'
+// TODO: Would like to be able to dynamically import only the required theme data.
 import * as defaultThemeJs from '@grantcodes/style-dictionary/build/js/default/style-dictionary'
 import * as todomapThemeJs from '@grantcodes/style-dictionary/build/js/todomap/style-dictionary'
 
@@ -19,7 +17,7 @@ export const Context = createContext({
   },
 })
 
-console.log(defaultThemeCss, todomapThemeCss)
+// console.log(defaultThemeCss)
 
 function Provider({ children, theme = 'default' }: ProviderProps) {
   const themeData = useMemo(
@@ -27,20 +25,12 @@ function Provider({ children, theme = 'default' }: ProviderProps) {
     [theme]
   )
 
-  const themeCssString = useMemo(() => {
-    if (theme === 'todomap') {
-      return todomapThemeCss
-    }
-    return defaultThemeCss
-  }, [theme])
-
   return (
-    <>
-      <style>{themeCssString}</style>
+    <div className={cx('grantcodes-ui-theme', `grantcodes-ui-theme--${theme}`)}>
       <Context.Provider value={{ theme: { name: theme, ...themeData } }}>
         {children}
       </Context.Provider>
-    </>
+    </div>
   )
 }
 
