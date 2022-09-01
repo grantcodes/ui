@@ -1,9 +1,7 @@
 import React from 'react'
-export { Pagination } from './'
+import { Pagination } from './Pagination'
 
-const DefaultPagination = ({}) => (
-  <Pagination nextHref="#next" previousHref="#previous" />
+export const DefaultPagination = ({}) => (
+  <Pagination nextHref='#next' previousHref='#previous' />
 )
 DefaultPagination.args = {}
-
-export { DefaultPagination }

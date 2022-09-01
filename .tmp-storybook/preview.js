@@ -11,7 +11,7 @@
  * - globalTypes - definition of globalTypes
  */
 
-import { Provider } from '../src/Provider'
+import { Provider } from '../src/Provider/Provider'
 
 /**
  * Decorators
@@ -28,7 +28,9 @@ import { Provider } from '../src/Provider'
 
 const withThemeProvider = (Story, context) => (
   <Provider theme={context.globals.theme}>
-    <Story {...context} />
+    <div style={{ padding: 'var(--size-space-unit)' }}>
+      <Story {...context} />
+    </div>
   </Provider>
 )
 
@@ -52,6 +54,9 @@ export const decorators = [withThemeProvider]
  * With backgrounds, you configure the list of backgrounds that every story can render in.
  */
 
+export const parameters = {
+  layout: 'fullscreen',
+}
 /**
  * Global Types
  *

@@ -14,11 +14,16 @@
   font-weight: bold;
   letter-spacing: 0.05em;
   text-decoration: none;
+  outline: none;
   transition: color 0.2s, border-color 0.2s, background-color 0.2s;
 
   &:hover,
   &:focus-visible {
     cursor: pointer;
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 0.2rem var(--component-button-base-background);
   }
 
   &[disabled] {

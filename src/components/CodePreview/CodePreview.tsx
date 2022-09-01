@@ -2,7 +2,10 @@ import React from 'react'
 import styles from './CodePreview.module.scss'
 import cx from 'classnames'
 import { CodePreviewProps } from './CodePreview.types'
-import SyntaxHighlighter from 'react-syntax-highlighter'
+// @ts-ignore
+// import SyntaxHighlighter from 'react-syntax-highlighter'
+import { LightAsync as SyntaxHighlighter } from 'react-syntax-highlighter'
+// @ts-ignore
 import style from 'react-syntax-highlighter/dist/esm/styles/hljs/night-owl'
 
 const CodePreview: React.FC<any> = ({

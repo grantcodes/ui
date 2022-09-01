@@ -4,7 +4,7 @@ import {
   RiInformationLine,
   RiErrorWarningLine,
   RiCheckboxCircleLine,
-  RiCloseLine,
+  RiCloseLine
 } from 'react-icons/ri'
 import { Icon } from '../Icon'
 import { Button } from '../Button'
@@ -20,11 +20,11 @@ export interface NoticeProps
   title?: string
   variant: NoticeVariant
   icon?: React.ReactElement
-  onDismiss?: (Event) => void
+  onDismiss?: (Event: React.SyntheticEvent) => void
   children: React.ReactNode
 }
 
-const getVariantIcon = (variant: NoticeVariant): IconType => {
+const getVariantIcon = (variant: NoticeVariant): IconType | null => {
   switch (variant) {
     case 'info':
       return RiInformationLine
@@ -60,7 +60,7 @@ const Notice: React.FC<any> = ({
 
       {onDismiss && (
         <Button className={styles.notice__close}>
-          <Icon icon={RiCloseLine} title="Close Notice" />
+          <Icon icon={RiCloseLine} title='Close Notice' />
         </Button>
       )}
     </aside>

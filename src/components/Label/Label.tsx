@@ -1,5 +1,8 @@
 import React from 'react'
-import * as LabelPrimitive from '@radix-ui/react-label'
+// NOTE: Radix label primitive uses a span with role=label so that it can work better with custom controls.
+// @see https://github.com/radix-ui/primitives/issues/638
+// @see https://github.com/radix-ui/primitives/issues/1233
+// import * as LabelPrimitive from '@radix-ui/react-label'
 import styles from './Label.module.scss'
 
 export interface LabelProps
@@ -8,9 +11,9 @@ export interface LabelProps
 }
 
 const Label: React.FC<any> = ({ children, ...props }: LabelProps) => (
-  <LabelPrimitive.Root className={styles.label} {...props}>
+  <label className={styles.label} {...props}>
     {children}
-  </LabelPrimitive.Root>
+  </label>
 )
 
 export { Label }

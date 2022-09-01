@@ -1,10 +1,10 @@
 import React from 'react'
 import { Dialog, DialogContent, DialogTrigger } from './Dialog'
 import { DialogActions } from './DialogActions'
-import { Button } from 'components/Button'
+import { Button } from '../Button'
 
 export default {
-  title: 'Dialog',
+  title: 'Dialog'
 }
 
 export const StandardDialog = ({ content }) => (
@@ -36,5 +36,5 @@ export const WithActions = ({ content }) => (
 )
 
 WithActions.args = {
-  content: <p>This is a basic text Dialog</p>,
+  content: <p>This is a basic text Dialog</p>
 }

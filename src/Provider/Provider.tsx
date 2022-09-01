@@ -2,8 +2,11 @@ import React, { createContext, useMemo, useEffect, useState } from 'react'
 import cx from 'classnames'
 import './BaseStyles.scss'
 // TODO: Would like to be able to dynamically import only the required theme data.
+// @ts-ignore
 import * as defaultThemeJs from '@grantcodes/style-dictionary/build/js/default/style-dictionary'
+// @ts-ignore
 import * as todomapThemeJs from '@grantcodes/style-dictionary/build/js/todomap/style-dictionary'
+// import '@grantcodes/style-dictionary/assets/fonts/greycliff.css'
 
 export interface ProviderProps {
   theme: 'default' | 'todomap'
@@ -13,13 +16,16 @@ export interface ProviderProps {
 export const Context = createContext({
   theme: {
     name: 'default',
-    ...defaultThemeJs,
-  },
+    ...defaultThemeJs
+  }
 })
 
 // console.log(defaultThemeCss)
 
-function Provider({ children, theme = 'default' }: ProviderProps) {
+const Provider: React.FC<any> = ({
+  children,
+  theme = 'default'
+}: ProviderProps) => {
   const themeData = useMemo(
     () => (theme === 'todomap' ? todomapThemeJs : defaultThemeJs),
     [theme]

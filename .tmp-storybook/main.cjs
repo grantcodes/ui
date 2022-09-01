@@ -12,7 +12,7 @@ module.exports = {
     '@storybook/addon-docs',
     '@storybook/addon-controls',
     '@storybook/addon-toolbars',
-    'storybook-design-token',
+    // 'storybook-design-token',
   ],
 
   webpackFinal: async (config, { configType }) => {
@@ -40,6 +40,10 @@ module.exports = {
       {
         resourceQuery: /raw/,
         type: 'asset/source',
+      },
+      {
+        test: /.storybook\/preview.js/,
+        resolve: { fullySpecified: false },
       }
     )
 

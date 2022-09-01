@@ -1,6 +1,8 @@
 import React from 'react'
-export { Loading } from './Loading'
+import { Loading } from './Loading'
 
 export default {
-  title: 'Loading',
+  title: 'Loading'
 }
+
+export const DefaultLoading = () => <Loading />

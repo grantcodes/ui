@@ -20,7 +20,7 @@ const DialogBackdrop = addClassNameToPrimitiveHOC(
 const Content: React.FC<any> = ({ children, ...props }: DialogProps) => (
   <DialogPrimitive.Portal>
     <DialogBackdrop />
-    <DialogContentInner {...props}>{children}</DialogContentInner>
+    {/* <DialogContentInner {...props}>{children}</DialogContentInner> */}
   </DialogPrimitive.Portal>
 )
 

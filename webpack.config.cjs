@@ -1,8 +1,9 @@
 const path = require('path')
 
 module.exports = {
-  entry: './src/index.ts',
+  entry: ['./src/main.ts', './src/scss/all.scss'],
   mode: 'production',
+  target: ['web', 'es6'],
   module: {
     rules: [
       {
@@ -43,8 +44,30 @@ module.exports = {
       path.resolve(__dirname, 'src'),
     ],
   },
-  output: {
-    filename: 'index.js',
-    path: path.resolve(__dirname, 'build'),
+  experiments: {
+    outputModule: true,
   },
+  output: {
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'dist'),
+    clean: true,
+    // enabledLibraryTypes: ['module'],
+    library: {
+      type: 'module',
+    },
+  },
+  // externals: {
+  //   react: {
+  //     root: 'React',
+  //     commonjs2: 'react',
+  //     commonjs: 'react',
+  //     amd: 'react',
+  //   },
+  //   'react-dom': {
+  //     root: 'ReactDOM',
+  //     commonjs2: 'react-dom',
+  //     commonjs: 'react-dom',
+  //     amd: 'react-dom',
+  //   },
+  // },
 }

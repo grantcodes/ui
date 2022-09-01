@@ -7,7 +7,7 @@ export interface LinkProps
 }
 
 const Link: React.FC<any> = ({ children, ...props }: LinkProps) => (
-  <a className={styles.link} {...props}>
+  <a className={styles.Link} {...props}>
     {children}
   </a>
 )

@@ -2,25 +2,33 @@
 @use '~@grantcodes/style-dictionary/build/scss/todomap/style-dictionary.scss' as theme-todomap;
 
 /* Css defaults */
-@import '~sanitize.css';
-@import '~sanitize.css/forms.css';
-@import '~sanitize.css/typography.css';
-@import '~sanitize.css/reduce-motion.css';
+@import '~sanitize.css/sanitize';
+@import '~sanitize.css/forms';
+@import '~sanitize.css/typography';
+@import '~sanitize.css/reduce-motion';
 
 @import '../scss/typography';
 @import '../scss/elements';
 
-[class*='grantcodes-ui-theme'] {
+// TODO: Base variables should be applied to the :root element. At the very least to get font sizing to work better.
+
+:global .grantcodes-ui-theme {
   --grantcodes-ui-theme: 'none';
+  background-color: var(--color-base-background-main);
+  fill: currentColor;
 }
 
 // TODO: Would like to remove the theme if not needed and only import the used theme.
-[class*='grantcodes-ui-theme--default'] {
+:global .grantcodes-ui-theme--default {
   --grantcodes-ui-theme: 'default';
   @include theme-default.css-variables();
 }
 
-[class*='grantcodes-ui-theme--todomap'] {
+:global .grantcodes-ui-theme--todomap {
   --grantcodes-ui-theme: 'todomap';
   @include theme-todomap.css-variables();
+}
+
+::selection {
+  background-color: var(--color-base-primary-200);
 }

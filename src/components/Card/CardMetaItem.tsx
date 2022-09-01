@@ -7,7 +7,7 @@ export interface CardMetaItemProps
     HTMLDivElement
   > {
   title: string
-  children: React.ReactElement
+  children: React.ReactNode
 }
 
 const CardMetaItem: React.FC<any> = ({

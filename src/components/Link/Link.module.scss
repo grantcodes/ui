@@ -1,4 +1,4 @@
-.link {
+.Link {
   color: var(--color-base-primary-500);
   text-decoration: underline;
   transition: color 0.2s, opacity 0.2s;
@@ -14,8 +14,9 @@
     text-decoration: underline wavy;
   }
 
+  // TODO: Maybe do special style for external links.
   // External links
-  &[href^='http']::before {
-    content: '🔗 ';
+  &[href^='http']::after {
+    // content: ' 🔗';
   }
 }

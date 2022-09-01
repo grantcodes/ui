@@ -2,7 +2,7 @@ import React from 'react'
 import { CodePreview } from './CodePreview'
 
 export default {
-  title: 'Code Preview',
+  title: 'Code Preview'
 }
 
 const htmlCode = `<html>
@@ -26,12 +26,10 @@ const JSXCodePreview = ({}) => (
 
 export { JSXCodePreview }`
 
-const HTMLCodePreview = ({}) => (
-  <CodePreview language="html">{htmlCode}</CodePreview>
+export const HTMLCodePreview = ({}) => (
+  <CodePreview language='html'>{htmlCode}</CodePreview>
 )
 
-const JSXCodePreview = ({}) => (
-  <CodePreview language="jsx">{jsxCode}</CodePreview>
+export const JSXCodePreview = ({}) => (
+  <CodePreview language='jsx'>{jsxCode}</CodePreview>
 )
-
-export { HTMLCodePreview, JSXCodePreview }
