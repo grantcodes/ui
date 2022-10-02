@@ -1,25 +1,25 @@
 import React from 'react'
 import * as DialogPrimitive from '@radix-ui/react-dialog'
-import { addClassNameToPrimitiveHOC } from 'lib/addClassNameToPrimitiveHOC'
+// import { addClassNameToPrimitiveHOC } from 'lib/addClassNameToPrimitiveHOC'
 import styles from './Dialog.module.scss'
 
 export interface DialogProps {
   children: React.ReactNode
 }
 
-const DialogContentInner = addClassNameToPrimitiveHOC(
-  DialogPrimitive.Content,
-  styles.dialog
-)
+// const DialogContentInner = addClassNameToPrimitiveHOC(
+//   DialogPrimitive.Content,
+//   styles.dialog
+// )
 
-const DialogBackdrop = addClassNameToPrimitiveHOC(
-  DialogPrimitive.Overlay,
-  styles.dialog__backdrop
-)
+// const DialogBackdrop = addClassNameToPrimitiveHOC(
+//   DialogPrimitive.Overlay,
+//   styles.dialog__backdrop
+// )
 
 const Content: React.FC<any> = ({ children, ...props }: DialogProps) => (
   <DialogPrimitive.Portal>
-    <DialogBackdrop />
+    {/* <DialogBackdrop /> */}
     {/* <DialogContentInner {...props}>{children}</DialogContentInner> */}
   </DialogPrimitive.Portal>
 )

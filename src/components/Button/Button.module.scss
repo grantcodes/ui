@@ -15,15 +15,23 @@
   letter-spacing: 0.05em;
   text-decoration: none;
   outline: none;
-  transition: color 0.2s, border-color 0.2s, background-color 0.2s;
+  transition: color 0.2s, border-color 0.2s, background-color 0.2s,
+    box-shadow 0.2s;
 
   &:hover,
   &:focus-visible {
+    color: var(--component-button-base-color);
     cursor: pointer;
+    text-decoration: none;
   }
 
   &:focus-visible {
-    box-shadow: 0 0 0 0.2rem var(--component-button-base-background);
+    box-shadow: 0 0 0 var(--component-focus-ring-width)
+      var(--component-focus-ring-color);
+  }
+
+  &:active {
+    transform: translateY(1px);
   }
 
   &[disabled] {
@@ -70,7 +78,8 @@
   border-color: initial;
   &:hover,
   &:focus-visible {
-    background-color: var(--color-base-primary-500);
+    color: inherit;
+    background-color: var(--color-base-primary-200);
   }
 }
 

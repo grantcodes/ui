@@ -70,7 +70,7 @@ export const globalTypes = {
     description: 'Global theme for conponents',
     defaultValue: 'default',
     toolbar: {
-      icon: 'circlehollow',
+      icon: 'facehappy',
       items: ['default', 'todomap'],
     },
   },

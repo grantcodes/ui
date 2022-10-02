@@ -1,5 +1,8 @@
+@use 'sass:math';
+
 .Input {
   display: block;
+  accent-color: var(--color-base-primary-500);
   border-radius: var(--component-input-base-border-radius);
   border-width: var(--component-input-base-border-width);
   border-style: solid;
@@ -28,6 +31,11 @@
     outline: none;
   }
 
+  &:focus-visible {
+    box-shadow: 0 0 0 var(--component-focus-ring-width)
+      var(--component-focus-ring-color);
+  }
+
   &:invalid:not(:active) {
     border-color: var(--color-base-error-500);
   }
@@ -51,7 +59,98 @@
   }
 
   &:where(textarea) {
-    // TODO: Improve textarea styles
-    min-height: 4rem;
+    line-height: 1.5;
+    min-height: 4.3em; // Allows 2 rows with no scrollbar
+    resize: vertical;
+  }
+
+  &:where(select) {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 140 14' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><g><path d='m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z' fill='currentColor'/></g></svg>");
+    background-position: right 1em top 0%;
+    background-size: 1em;
+    padding-inline-end: 2em;
+    background-repeat: no-repeat;
+  }
+
+  option {
+    padding-block: 0.2em;
+    font-size: 0.8em;
+
+    &:nth-of-type(2n) {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    &:checked {
+      background-color: var(--component-input-active-border-color);
+      color: var(--component-input-base-border-color);
+    }
+
+    // Doesn't seem to work in chrome.
+    // &:hover,
+    // &:focus-visible {
+    //   background-color: var(--component-focus-ring-color) !important;
+    // }
+  }
+
+  &:where([type='checkbox']),
+  &:where([type='radio']) {
+    display: block;
+    position: relative;
+    appearance: none;
+    width: 1.2rem;
+    height: 1.2rem;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  &:where([type='checkbox']) {
+    border-radius: calc(var(--component-input-base-border-radius) / 2);
+
+    &::after {
+      content: '✓';
+      content: '✓'/'';
+      speak: none;
+      display: block;
+      position: absolute;
+      font-size: 0.8rem;
+      font-weight: bold;
+      line-height: 0;
+      left: 0;
+      width: 100%;
+      top: 50%;
+      color: transparent;
+      text-align: center;
+      transition: color 0.2s;
+    }
+
+    &:checked {
+      border-color: var(--component-input-active-border-color);
+      background-color: var(--component-input-active-border-color);
+
+      &::after {
+        color: var(--component-input-base-border-color);
+      }
+    }
+  }
+
+  &:where([type='radio']) {
+    border-radius: 50%;
+
+    $radio-inner-size: 70%;
+    &::after {
+      content: '';
+      display: block;
+      border-radius: 50%;
+      width: $radio-inner-size;
+      height: $radio-inner-size;
+      margin: math.div(100% - $radio-inner-size, 2);
+      inset: 0;
+      transition: background-color 0.2s;
+    }
+
+    &:checked::after {
+      background-color: var(--component-input-active-border-color);
+    }
   }
 }

@@ -1,7 +1,6 @@
 /**
  * @type {import('rollup').RollupOptions}
  */
-// import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import typescript from '@rollup/plugin-typescript'
@@ -37,7 +36,7 @@ const config = {
   external: Object.keys(pkg.peerDependencies || {}),
   plugins: [
     // peerDepsExternal(),
-    resolve({ browser: true }),
+    resolve(),
     commonjs(),
     json(),
     typescript(),

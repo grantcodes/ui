@@ -1,9 +1,6 @@
 @use './util/' as u;
 
-@import '~@grantcodes/style-dictionary/assets/fonts/greycliff';
-@import '~@grantcodes/style-dictionary/assets/fonts/quicksand';
-
-:global .grantcodes-ui-theme {
+:root {
   font-family: var(--font-family-body);
   line-height: var(--font-line-height-body);
   // TODO: NEED TO SET THIS SIZE ON THE HTML FOR IT TO WORK PROPERLY

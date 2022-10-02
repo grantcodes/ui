@@ -47,10 +47,6 @@
   flex-direction: row;
   flex-wrap: wrap;
   background: var(--component-button-base-background);
-
-  & > * {
-    border-radius: 0;
-  }
 }
 
 .card__meta {
