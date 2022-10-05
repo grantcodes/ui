@@ -1,4 +1,4 @@
-module.exports = (plop) => {
+export default (plop) => {
   plop.setGenerator('component', {
     description: 'Create a component',
     // User input prompts provided as arguments to the template
