@@ -1,14 +1,8 @@
 .Dialog {
   position: relative;
-  display: flex;
   width: 100%;
-  flex-direction: column;
-  justify-content: flex-start;
-  // gap: 1rem;
-  background-color: var(--component-card-background);
-  border: 0.05rem solid;
-  border-radius: 0.25rem;
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  max-width: 40rem;
+  margin: auto;
 }
 
 .Dialog__backdrop {
@@ -22,8 +16,22 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 1rem;
-  padding: 1rem;
+  gap: var(--size-space-unit, 1rem);
+  padding: var(--size-space-unit, 1rem);
+}
+
+.Dialog__close {
+  position: absolute;
+  inset-block-start: var(--size-space-unit, 1rem);
+  inset-inline-end: var(--size-space-unit, 1rem);
+  margin-block-start: -0.25rem;
+  margin-inline-end: -0.25rem;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  padding: 0.25rem;
+  justify-content: center;
+  align-items: center;
 }
 
 .Dialog__actions {

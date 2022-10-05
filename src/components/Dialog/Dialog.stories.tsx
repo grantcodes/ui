@@ -1,10 +1,16 @@
 import React from 'react'
-import { Dialog, DialogContent, DialogTrigger } from './Dialog'
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+  DialogTitle,
+  DialogDescription,
+} from './Dialog'
 import { DialogActions } from './DialogActions'
 import { Button } from '../Button'
 
 export default {
-  title: 'Dialog'
+  title: 'Dialog',
 }
 
 export const StandardDialog = ({ content }) => (
@@ -12,11 +18,13 @@ export const StandardDialog = ({ content }) => (
     <DialogTrigger asChild>
       <Button>Show Dialog</Button>
     </DialogTrigger>
-    <DialogContent>{content}</DialogContent>
+    <DialogContent>
+      <DialogDescription>{content}</DialogDescription>
+    </DialogContent>
   </Dialog>
 )
 
-StandardDialog.args = { content: <p>This is a basic text Dialog</p> }
+StandardDialog.args = { content: 'This is a basic text Dialog' }
 
 export const WithActions = ({ content }) => (
   <Dialog>
@@ -25,8 +33,9 @@ export const WithActions = ({ content }) => (
     </DialogTrigger>
 
     <DialogContent>
+      <DialogTitle>Dialog Title</DialogTitle>
+      <DialogDescription>Hello there, this is a dialog</DialogDescription>
       {content}
-
       <DialogActions>
         <Button>Action 1</Button>
         <Button>Action 2</Button>
@@ -36,5 +45,10 @@ export const WithActions = ({ content }) => (
 )
 
 WithActions.args = {
-  content: <p>This is a basic text Dialog</p>
+  content: (
+    <p>
+      This is a fully setup dialog with a title, description, content and
+      actions
+    </p>
+  ),
 }
