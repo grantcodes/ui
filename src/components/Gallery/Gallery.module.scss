@@ -1,3 +1,40 @@
 .Gallery {
-  display: block;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--gallery-gap, 0);
 }
+
+.Gallery > * {
+  display: block;
+  width: 100%;
+}
+
+.Gallery--square {
+  display: grid;
+  grid-template-columns: repeat(var(--gallery-columns, 3), 1fr);
+}
+
+.Gallery--square > * {
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center;
+}
+
+.Gallery--rows > * {
+  height: var(--gallery-row-height, 8rem);
+  width: auto;
+}
+
+// .Gallery--justified {
+//   justify-content: space-between;
+//   align-items: stretch;
+// }
+
+// .Gallery--justified > * {
+//   // max-height: var(--gallery-row-height, 8rem);
+//   // width: auto;
+//   width: 20%;
+//   flex-grow: 1;
+// }
