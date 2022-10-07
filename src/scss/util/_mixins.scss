@@ -1,0 +1,19 @@
+@use 'sass:math';
+
+@mixin custom-scrollbar($size: 0.5rem) {
+  &::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: math.div($size, 2);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: math.div($size, 2);
+    min-height: 2rem;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+}
