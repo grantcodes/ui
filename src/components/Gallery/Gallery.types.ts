@@ -1,12 +1,14 @@
-type GalleryVariation = 'square' | 'rows' | 'custom'
+import React from 'react'
 
-interface GalleryThumbnail {
+export type GalleryVariation = 'square' | 'custom'
+
+export interface GalleryThumbnail {
   width: number
   height: number
   src: string
 }
 
-interface GalleryImage {
+export interface GalleryImage {
   width: number
   height: number
   src: string
@@ -15,13 +17,18 @@ interface GalleryImage {
   thumbnail?: GalleryThumbnail
 }
 
-interface GalleryProps {
+export interface GalleryProps {
   className: string
   images: GalleryImage[]
   variation: GalleryVariation
   columns?: number
   gap?: string
   rowHeight?: string
+  lightbox: boolean
 }
 
-export type { GalleryVariation, GalleryImage, GalleryProps }
+export interface GalleryThumbnailProps extends GalleryThumbnail {
+  alt: string
+  caption?: string
+  onClick?: React.MouseEventHandler
+}

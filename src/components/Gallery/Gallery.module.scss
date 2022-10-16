@@ -16,25 +16,36 @@
   grid-template-columns: repeat(var(--gallery-columns, 3), 1fr);
 }
 
-.Gallery--square > * {
-  aspect-ratio: 1;
-  object-fit: cover;
-  object-position: center;
+.Gallery--has-lightbox > * {
+  cursor: pointer;
 }
 
-.Gallery--rows > * {
-  height: var(--gallery-row-height, 8rem);
-  width: auto;
+.GalleryThumbnail {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  margin: 0;
 }
 
-// .Gallery--justified {
-//   justify-content: space-between;
-//   align-items: stretch;
-// }
+.GalleryThumbnail__image {
+  display: block;
+  width: 100%;
+  height: auto;
 
-// .Gallery--justified > * {
-//   // max-height: var(--gallery-row-height, 8rem);
-//   // width: auto;
-//   width: 20%;
-//   flex-grow: 1;
-// }
+  .Gallery--square & {
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.GalleryThumbnail__caption {
+  position: absolute;
+  inset: 0;
+  inset-block-start: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-inline: 0.5em;
+  padding-block: 0.3em;
+  line-height: 1.2;
+  color: white;
+}

@@ -3,10 +3,10 @@ import { Gallery } from './Gallery'
 import { GalleryImage } from './Gallery.types'
 
 export default {
-  title: 'Gallery',
+  title: 'Gallery'
 }
 
-function getRandomSize() {
+function getRandomSize () {
   return Math.floor(Math.random() * (800 - 100 + 1) + 100)
 }
 
@@ -15,7 +15,7 @@ const getTestImage = (width = getRandomSize(), height = getRandomSize()) => {
     src: `https://placeimg.com/${width}/${height}`,
     alt: 'Image',
     width,
-    height,
+    height
   }
 }
 
@@ -24,7 +24,11 @@ for (let i = 0; i < 12; i++) {
   testImages.push(getTestImage())
 }
 
-const Template = (args) => <Gallery images={testImages} {...args}></Gallery>
+const Template = ({ caption, ...props }) => {
+  const images = testImages.map(image => ({ ...image, caption }))
+  console.log({ images, props })
+  return <Gallery images={images} {...props}></Gallery>
+}
 
 export const SquareGallery = Template.bind({})
 
@@ -32,19 +36,6 @@ SquareGallery.args = {
   variation: 'square',
   columns: 3,
   gap: '.2rem',
+  lightbox: true,
+  caption: 'I am a caption'
 }
-
-export const RowGallery = Template.bind({})
-
-RowGallery.args = {
-  variation: 'rows',
-  gap: '0rem',
-  rowHeight: '9rem',
-}
-
-// export const JustifiedGallery = Template.bind({})
-
-// JustifiedGallery.args = {
-//   variation: 'justified',
-//   gap: '.2rem',
-// }
