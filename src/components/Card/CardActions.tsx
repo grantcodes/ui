@@ -1,7 +1,7 @@
 import React from 'react'
 import cx from 'classnames'
 import styles from './Card.module.scss'
-import { ButtonGroup, ButtonGroupProps } from '../ButtonGroup'
+import { ButtonGroup } from '../ButtonGroup'
 import { CardActionsProps } from './Card.types'
 
 const CardActions: React.FC<any> = ({
@@ -9,7 +9,7 @@ const CardActions: React.FC<any> = ({
   className,
   ...props
 }: CardActionsProps) => (
-  <ButtonGroup className={cx(styles.card__actions, className)} {...props}>
+  <ButtonGroup className={cx(className, styles.card__actions)} {...props}>
     {children}
   </ButtonGroup>
 )

@@ -9,13 +9,14 @@
   "author": "grantcodes",
   "exports": {
     ".": {
-      "require": "./dist/main.umd.js",
-      "import": "./dist/main.es.js",
+      "require": "./dist/main.cjs",
+      "import": "./dist/main.js",
       "types": "./dist/main.d.ts"
     }
   },
   "scripts": {
-    "build": "tsc && vite build",
+    "build": "rollup -c",
+    "watch": "rollup -c -w",
     "generate": "plop",
     "fix": "run-s fix:lint",
     "fix:lint": "ts-standard --fix src",
@@ -32,10 +33,10 @@
   },
   "dependencies": {
     "@grantcodes/style-dictionary": "^1.1.0",
-    "@radix-ui/react-dialog": "^1.0.0",
-    "@radix-ui/react-label": "^1.0.0",
-    "@radix-ui/react-slot": "^1.0.0",
-    "@radix-ui/react-tabs": "^1.0.0",
+    "@radix-ui/react-dialog": "^1.0.2",
+    "@radix-ui/react-label": "^2.0.0",
+    "@radix-ui/react-slot": "^1.0.1",
+    "@radix-ui/react-tabs": "^1.0.1",
     "@react-aria/button": "^3.6.2",
     "classnames": "^2.3.2",
     "react-icons": "^4.6.0",
@@ -47,6 +48,10 @@
     "@ava/typescript": "^3.0.1",
     "@babel/core": "^7.19.3",
     "@grantcodes/commit": "^1.0.7",
+    "@rollup/plugin-commonjs": "^23.0.0",
+    "@rollup/plugin-json": "^5.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.0",
+    "@rollup/plugin-typescript": "^9.0.1",
     "@storybook/addon-essentials": "^7.0.0-alpha.38",
     "@storybook/builder-vite": "^7.0.0-alpha.38",
     "@storybook/react": "^7.0.0-alpha.38",
@@ -59,12 +64,13 @@
     "plop": "^3.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "rollup": "^3.2.3",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-styles": "^4.0.0",
     "sass": "^1.55.0",
     "storybook": "^7.0.0-alpha.38",
     "ts-standard": "^12.0.1",
-    "typescript": "^4.8.4",
-    "vite": "^3.1.8",
-    "vite-plugin-dts": "^1.6.6"
+    "typescript": "^4.8.4"
   },
   "ava": {
     "typescript": {

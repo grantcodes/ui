@@ -17,7 +17,7 @@ const ButtonGroup: React.FC<any> = ({
   children,
   ...props
 }: ButtonGroupProps) => (
-  <div className={cx(styles['button-group'], className)} {...props}>
+  <div className={cx(className, styles['button-group'])} {...props}>
     {children}
   </div>
 )

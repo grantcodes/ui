@@ -10,8 +10,4 @@ export default {
   features: {
     storyStoreV7: true,
   },
-
-  async viteFinal(config) {
-    return mergeConfig(config, {})
-  },
 }
