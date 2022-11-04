@@ -10,7 +10,7 @@ const Card: React.FC<any> = ({
   asChild = false,
   ...props
 }: CardProps) => {
-  const Component = asChild ? Slot : 'div'
+  const Component: any = asChild ? Slot : 'div'
 
   return (
     <Component className={cx(styles.card, className)} {...props}>

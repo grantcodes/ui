@@ -5,10 +5,7 @@ import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import typescript from '@rollup/plugin-typescript'
 import json from '@rollup/plugin-json'
-import styles from 'rollup-plugin-styles'
-// import postcss from 'rollup-plugin-postcss'
-// import copy from 'rollup-plugin-copy'
-import pkg from './package.json'
+import postcss from 'rollup-plugin-postcss'
 
 const config = {
   input: 'src/main.ts',
@@ -18,7 +15,7 @@ const config = {
       format: 'cjs',
       exports: 'named',
       sourcemap: true,
-      file: pkg.main,
+      file: 'dist/main.cjs',
       // TODO: Don't think I want this
       inlineDynamicImports: true,
     },
@@ -28,23 +25,29 @@ const config = {
       format: 'es',
       exports: 'named',
       sourcemap: true,
-      file: pkg.module,
+      file: 'dist/main.js',
       // TODO: Don't think I want this
       inlineDynamicImports: true,
     },
   ],
-  external: Object.keys(pkg.peerDependencies || {}),
+  external: ['react', 'react-dom'],
   plugins: [
     // peerDepsExternal(),
     resolve(),
     commonjs(),
     json(),
     typescript(),
-    styles({
-      // mode: 'extract',
+    postcss({
       modules: true,
-      autoModules: true,
+      // extract: true,
+      use: ['sass'],
+      writeDefinitions: true,
     }),
+    // styles({
+    //   // mode: 'extract',
+    //   modules: true,
+    //   autoModules: true,
+    // }),
     // postcss(),
     // copy({
     //   targets: [

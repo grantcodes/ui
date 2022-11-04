@@ -1,11 +1,12 @@
 /* Css defaults */
-@import '~sanitize.css/sanitize';
-@import '~sanitize.css/forms';
-@import '~sanitize.css/typography';
-@import '~sanitize.css/reduce-motion';
+// NOTE: There's some sort of vite(storybook) / rollup conflict
+@use '../../node_modules/sanitize.css/sanitize' as sanitize-code;
+@use '../../node_modules/sanitize.css/forms' as sanitize-base;
+@use '../../node_modules/sanitize.css/typography' as sanitize-typography;
+@use '../../node_modules/sanitize.css/reduce-motion' as sanitize-reduce-motion;
 
-@import '../scss/typography';
-@import '../scss/elements';
+@use '../scss/typography';
+@use '../scss/elements';
 
 // TODO: Base variables should be applied to the :root element. At the very least to get font sizing to work better.
 
