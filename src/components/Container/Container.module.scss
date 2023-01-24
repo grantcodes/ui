@@ -19,6 +19,10 @@
 }
 
 .Container--full {
+  width: 100%;
+}
+
+.Container--viewport {
   left: 50%;
   position: relative;
   right: 50%;

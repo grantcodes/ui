@@ -4,7 +4,7 @@ import { Container } from './Container'
 console.log('container stories')
 
 export default {
-  title: 'Container'
+  title: 'Container',
   // component: Container,
   // argTypes: {
   //   noPad: {
@@ -35,6 +35,9 @@ WideContainer.args = { align: 'wide', noPad: false }
 
 export const FullContainer = Template.bind({})
 FullContainer.args = { align: 'full', noPad: false }
+
+export const ViewportContainer = Template.bind({})
+ViewportContainer.args = { align: 'viewport', noPad: false }
 
 export const NoPadContainer = Template.bind({})
 NoPadContainer.args = { align: 'normal', noPad: true }
