@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.1.0](https://github.com/grantcodes/ui/compare/v1.0.0...v1.1.0) (2023-01-24)
+
+
+### Features
+
+* **avatar:** add initial Avatar component ([0f0f6eb](https://github.com/grantcodes/ui/commit/0f0f6eb7d956aa3fa479baeb641bbd60e98904f2))
+* **container:** update Container full variation and add viewport variation ([74a02e1](https://github.com/grantcodes/ui/commit/74a02e1f67b95a02dbe3efba9d97282749009f6f))
+
+
+### Bug Fixes
+
+* **avatar:** export the Avatar component from the main exports ([2f4119b](https://github.com/grantcodes/ui/commit/2f4119b9216fe344712f3a9bf4abda9eb1245fb4))
+
 ## 1.0.0 (2022-10-22)
 
 
