@@ -1,0 +1,18 @@
+@use '../../scss/util' as u;
+
+.Tooltip {
+  border-radius: var(--size-border-radius);
+  padding: 0.6em 1em;
+  font-size: var(--font-size-small);
+  line-height: 1;
+  color: var(--color-base-primary-900);
+  background-color: var(--color-base-primary-100);
+  box-shadow: u.shadow(1);
+  user-select: none;
+}
+
+.TooltipArrow {
+  width: 1em;
+  height: 0.6em;
+  fill: var(--color-base-primary-100);
+}
