@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/grantcodes/ui/compare/v1.1.0...v1.2.0) (2023-06-29)
+
+
+### Features
+
+* **tooltip:** add initial Tooltip component ([4991c56](https://github.com/grantcodes/ui/commit/4991c5631da7fd993c33f767252836730d5aae01))
+
 ## [1.1.0](https://github.com/grantcodes/ui/compare/v1.0.0...v1.1.0) (2023-01-24)
 
 
