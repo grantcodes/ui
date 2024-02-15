@@ -1,13 +1,18 @@
-import { mergeConfig } from 'vite'
-
 export default {
-  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
+
   addons: ['@storybook/addon-essentials'],
-  framework: '@storybook/react-vite',
-  core: {
-    builder: '@storybook/builder-vite',
-  },
+
   features: {
     storyStoreV7: true,
+  },
+
+  framework: {
+    name: '@storybook/web-components-vite',
+    options: {},
+  },
+
+  docs: {
+    autodocs: true,
   },
 }

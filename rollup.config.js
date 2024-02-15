@@ -6,6 +6,7 @@ import commonjs from '@rollup/plugin-commonjs'
 import typescript from '@rollup/plugin-typescript'
 import json from '@rollup/plugin-json'
 import postcss from 'rollup-plugin-postcss'
+import postcssLit from 'rollup-plugin-postcss-lit'
 
 const config = {
   input: 'src/main.ts',
@@ -30,39 +31,16 @@ const config = {
       inlineDynamicImports: true,
     },
   ],
-  external: ['react', 'react-dom'],
   plugins: [
-    // peerDepsExternal(),
     resolve(),
     commonjs(),
     json(),
     typescript(),
     postcss({
-      modules: true,
-      // extract: true,
       use: ['sass'],
       writeDefinitions: true,
     }),
-    // styles({
-    //   // mode: 'extract',
-    //   modules: true,
-    //   autoModules: true,
-    // }),
-    // postcss(),
-    // copy({
-    //   targets: [
-    //     {
-    //       src: "src/variables.scss",
-    //       dest: "build",
-    //       rename: "variables.scss"
-    //     },
-    //     {
-    //       src: "src/typography.scss",
-    //       dest: "build",
-    //       rename: "typography.scss"
-    //     }
-    //   ]
-    // })
+    postcssLit(),
   ],
 }
 

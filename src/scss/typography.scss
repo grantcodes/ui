@@ -16,6 +16,7 @@ h5,
 h6 {
   line-height: var(--font-line-height-heading);
   font-weight: var(--font-weight-heading);
+  text-wrap: balance;
 }
 
 h1 {
@@ -40,6 +41,10 @@ h5 {
 
 h6 {
   font-size: var(--font-size-tiny);
+}
+
+p {
+  text-wrap: pretty;
 }
 
 pre {

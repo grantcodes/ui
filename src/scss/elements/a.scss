@@ -1,0 +1,22 @@
+a {
+  color: var(--color-base-primary-500);
+  text-decoration: underline;
+  transition: color 0.2s, opacity 0.2s;
+
+  &:visited {
+    opacity: 0.6;
+  }
+
+  &:hover,
+  &:focus-visible {
+    opacity: 1;
+    color: var(--color-base-primary-600);
+    text-decoration: underline wavy;
+  }
+
+  // TODO: Maybe do special style for external links.
+  // External links
+  &[href^='http']::after {
+    // content: ' 🔗';
+  }
+}

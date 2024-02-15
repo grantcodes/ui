@@ -1,0 +1,6 @@
+@use '../../../components/button/button.scss';
+
+button,
+input[type='submit'] {
+  @extend .button;
+}

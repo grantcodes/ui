@@ -1,0 +1,163 @@
+@use 'sass:math';
+
+:where(input, textarea, select) {
+  display: block;
+  accent-color: var(--color-base-primary-500);
+  border-radius: var(--component-input-base-border-radius);
+  border-width: var(--component-input-base-border-width);
+  border-style: solid;
+  border-color: var(--component-input-base-border-color);
+  background: var(--component-input-base-background);
+  color: var(--component-input-base-color);
+  padding: 0.5em 1em;
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+  font-size: 1rem;
+
+  &:not(textarea) {
+    line-height: 1.1;
+  }
+
+  &:hover {
+    border-color: var(--component-input-hover-border-color);
+    color: var(--component-input-hover-color);
+    background: var(--component-input-hover-background);
+  }
+
+  &:focus {
+    border-color: var(--component-input-active-border-color);
+    color: var(--component-input-active-color);
+    background: var(--component-input-active-background);
+    outline: none;
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 var(--component-focus-ring-width)
+      var(--component-focus-ring-color);
+  }
+
+  &:invalid:not(:active) {
+    border-color: var(--color-base-error-500);
+  }
+
+  &[readonly] {
+    cursor: not-allowed;
+    border-style: dashed;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    filter: grayscale(100%) brightness(80%);
+
+    &:hover,
+    &:focus-visible {
+      border-color: var(--component-input-base-border-color);
+      background: var(--component-input-base-background);
+      color: var(--component-input-base-color);
+    }
+  }
+
+  &:where(textarea) {
+    line-height: 1.5;
+    min-height: 4.3em; // Allows 2 rows with no scrollbar
+    resize: vertical;
+  }
+
+  &:where(select) {
+    position: relative;
+    cursor: pointer;
+    padding-inline-end: 2.5em;
+
+    &,
+    &:hover,
+    &:focus,
+    &:focus-visible {
+      background-position: right 1em top 50%;
+      background-size: 1em;
+      background-image: url('data:image/svg+xml;utf8,<svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="tIfrV5XfYIEuoFNktgCj " aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+      background-repeat: no-repeat;
+    }
+  }
+
+  option {
+    padding-block: 0.2em;
+    font-size: 0.8em;
+
+    &:nth-of-type(2n) {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    &:checked {
+      background-color: var(--component-input-active-border-color);
+      color: var(--component-input-base-border-color);
+    }
+
+    // Doesn't seem to work in chrome.
+    // &:hover,
+    // &:focus-visible {
+    //   background-color: var(--component-focus-ring-color) !important;
+    // }
+  }
+
+  &:where([type='checkbox']),
+  &:where([type='radio']) {
+    display: block;
+    position: relative;
+    appearance: none;
+    width: 1.2rem;
+    height: 1.2rem;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  &:where([type='checkbox']) {
+    border-radius: calc(var(--component-input-base-border-radius) / 2);
+
+    &::after {
+      content: '✓';
+      content: '✓'/'';
+      speak: none;
+      display: block;
+      position: absolute;
+      font-size: 0.8rem;
+      font-weight: bold;
+      line-height: 0;
+      left: 0;
+      width: 100%;
+      top: 50%;
+      color: transparent;
+      text-align: center;
+      transition: color 0.2s;
+    }
+
+    &:checked {
+      border-color: var(--component-input-active-border-color);
+      background-color: var(--component-input-active-border-color);
+
+      &::after {
+        color: var(--component-input-base-border-color);
+      }
+    }
+  }
+
+  &:where([type='radio']) {
+    border-radius: 50%;
+
+    $radio-inner-size: 70%;
+    &::after {
+      content: '';
+      display: block;
+      border-radius: 50%;
+      width: $radio-inner-size;
+      height: $radio-inner-size;
+      margin: math.div(100% - $radio-inner-size, 2);
+      inset: 0;
+      transition: background-color 0.2s;
+    }
+
+    &:checked::after {
+      background-color: var(--component-input-active-border-color);
+    }
+  }
+}

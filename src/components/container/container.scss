@@ -1,0 +1,38 @@
+.container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  width: var(--size-block-width-normal);
+  max-width: 100%;
+  padding-inline: var(--size-space-unit);
+  margin-inline: auto;
+  background-color: inherit;
+}
+
+.container--wide {
+  width: var(--size-block-width-wide);
+}
+
+.container--full {
+  width: 100%;
+}
+
+.container--viewport {
+  left: 50%;
+  position: relative;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  max-width: 100vw;
+  width: 100vw;
+  margin-left: -50dvw;
+  margin-right: -50dvw;
+  max-width: 100dvw;
+  width: 100dvw;
+}
+
+.container--nopad {
+  padding-inline: 0;
+}

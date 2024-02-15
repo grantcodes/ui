@@ -1,0 +1,43 @@
+.button {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--component-button-base-background);
+  color: var(--component-button-base-color);
+  border-width: var(--component-button-base-border-width);
+  border-style: solid;
+  border-color: var(--component-button-base-border-color);
+  padding: 0.5em 1em;
+  border-radius: var(--component-button-base-border-radius);
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  outline: none;
+  transition: color 0.2s, border-color 0.2s, background-color 0.2s,
+    box-shadow 0.2s;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--component-button-hover-color);
+    background: var(--component-button-hover-background);
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 var(--component-focus-ring-width)
+      var(--component-focus-ring-color);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    filter: grayscale(70%);
+    opacity: 0.8;
+  }
+}

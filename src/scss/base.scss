@@ -1,0 +1,30 @@
+/* Css defaults */
+// NOTE: There's some sort of vite(storybook) / rollup conflict
+@use 'sanitize.css/sanitize' as sanitize-code;
+@use 'sanitize.css/forms' as sanitize-base;
+@use 'sanitize.css/typography' as sanitize-typography;
+@use 'sanitize.css/reduce-motion' as sanitize-reduce-motion;
+
+@use './typography';
+@use './elements';
+
+// TODO: Base variables should be applied to the :root element. At the very least to get font sizing to work better.
+
+:root {
+  --grantcodes-ui-theme: 'none';
+  background-color: var(--color-base-background-main);
+  fill: currentColor;
+  // TODO: Move this to style dictionary
+  --component-focus-ring-color: rgba(106, 91, 197, 0.4);
+  --component-focus-ring-width: 0.2rem;
+}
+
+::selection {
+  background-color: var(--color-base-primary-200);
+}
+
+* {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
