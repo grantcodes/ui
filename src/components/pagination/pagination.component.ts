@@ -18,19 +18,34 @@ export class GrantCodesPagination extends LitElement {
   @property({ attribute: 'next-href' })
   nextHref?: string
 
-  render() {
-    const nextButton = this.nextHref
-      ? html`<grantcodes-button href=${this.nextHref}>Next</grantcodes-button>`
-      : ''
-    const previousButton = this.previousHref
-      ? html`<grantcodes-button href=${this.previousHref}
-          >Previous</grantcodes-button
-        >`
-      : ''
+  nextTemplate() {
+    if (!this.nextHref) {
+      return ''
+    }
 
     return html`
+      <grantcodes-button class="pagination__next" href=${this.nextHref}
+        >Next</grantcodes-button
+      >
+    `
+  }
+
+  previousTemplate() {
+    if (!this.previousHref) {
+      return ''
+    }
+
+    return html`
+      <grantcodes-button class="pagination__previous" href=${this.previousHref}
+        >Previous</grantcodes-button
+      >
+    `
+  }
+
+  render() {
+    return html`
       <nav class="pagination" aria-label="Pagination navigation">
-        ${previousButton} ${nextButton}
+        ${this.previousTemplate()} ${this.nextTemplate()}
       </nav>
     `
   }

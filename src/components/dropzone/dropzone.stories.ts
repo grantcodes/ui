@@ -5,21 +5,23 @@ import './dropzone.js'
 // This default export determines where your story goes in the story list
 const meta: Meta = {
   component: 'grantcodes-dropzone',
-  render: ({ slot, multiple, accept, onChange }) =>
-    html`<grantcodes-dropzone
-      accept=${accept}
-      @change=${onChange}
-      ?multiple=${multiple}
-      >${slot}</grantcodes-dropzone
-    >`,
+  render: ({ placeholder, onChange, fullscreenOnDrag }) =>
+    html`<grantcodes-dropzone ?fullscreenOnDrag=${fullscreenOnDrag}>
+      <input
+        type="file"
+        placeholder="${placeholder}"
+        accept="*"
+        multiple
+        @change=${onChange}
+      />
+    </grantcodes-dropzone>`,
   args: {
-    multiple: false,
-    accept: '*',
+    fullscreenOnDrag: true,
+    placeholder: 'Placeholder in the dropzone slot',
     onChange: (e: InputEvent) => {
       const target = e.target as HTMLInputElement
-      console.log(target?.files)
+      console.log('Received files:', target?.files)
     },
-    slot: 'Placeholder in the dropzone slot',
   },
 }
 

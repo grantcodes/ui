@@ -1,4 +1,50 @@
 .gallery {
-  background-color: pink;
+  display: block;
 }
 
+.gallery__slot {
+  display: grid;
+  grid-template-columns: repeat(var(--gallery-columns, 3), 1fr);
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--gallery-gap, 0);
+}
+
+.gallery__slot > * {
+  display: block;
+  width: 100%;
+}
+
+.gallery--has-lightbox > * {
+  cursor: pointer;
+}
+
+.gallery__image {
+  position: relative;
+  width: 100%;
+  display: block;
+  flex-direction: column;
+  margin: 0;
+}
+
+.gallery__image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  // Make the image square
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center;
+}
+
+.gallery__image__caption {
+  position: absolute;
+  inset: 0;
+  inset-block-start: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-inline: 0.5em;
+  padding-block: 0.3em;
+  line-height: 1.2;
+  color: white;
+}

@@ -3,3 +3,11 @@
   flex-direction: row;
   align-items: center;
 }
+
+.pagination__next {
+  margin-inline-start: auto;
+}
+
+.pagination__previous {
+  margin-inline-end: auto;
+}
