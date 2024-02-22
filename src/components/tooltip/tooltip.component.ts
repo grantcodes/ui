@@ -1,5 +1,10 @@
 import { LitElement, html, unsafeCSS } from 'lit'
-import { customElement, property } from 'lit/decorators.js'
+import {
+  customElement,
+  property,
+  state,
+  queryAssignedElements,
+} from 'lit/decorators.js'
 import tooltipStyles from './tooltip.scss?inline'
 
 @customElement('grantcodes-tooltip')
@@ -9,14 +14,49 @@ export class GrantCodesTooltip extends LitElement {
   // via CSS custom properties.
   static styles = [unsafeCSS(tooltipStyles)]
 
-  // Define reactive properties--updating a reactive property causes
-  // the component to update.
-  // @property() label = 'Button Label'
+  /**
+   * Label for the tooltip, used when the tooltip is the main label for the item.
+   */
+  @property({ type: String })
+  label = ''
+
+  /**
+   * Description for the tooltip, used when the tooltip is additional descriptive text for the item.
+   */
+  @property({ type: String })
+  description = ''
+
+  get id(): string {
+    return 'tooltip'
+  }
+
+  @queryAssignedElements({ selector: '*' })
+  slotted!: HTMLElement[]
+
+  firstUpdated(): void {
+    const labeledElement = this.slotted?.[0]
+    if (labeledElement) {
+      if (this.label) {
+        labeledElement.setAttribute('aria-labelledby', this.id)
+      } else if (this.description) {
+        labeledElement.setAttribute('aria-describedby', this.id)
+      }
+    }
+  }
 
   render() {
+    if (this.label && this.description) {
+      throw new Error('You cannot provide both a label and a description')
+    }
+
     return html`
-      <div>
-        <slot></slot>
+      <div class="tooltip">
+        <div class="tooltip__slot">
+          <slot></slot>
+        </div>
+        <p id="${this.id}" class="tooltip__content" role="tooltip">
+          ${this.label || this.description}
+        </p>
       </div>
     `
   }

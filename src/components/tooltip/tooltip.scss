@@ -1,4 +1,49 @@
-.tooltip {
-  background-color: pink;
+@use '../../scss/util' as u;
+
+:host,
+.tooltip,
+.tooltip__slot {
+  width: fit-content;
 }
 
+.tooltip {
+  position: relative;
+}
+
+.tooltip__slot {
+  padding: 0.5rem;
+  margin: -0.5rem;
+}
+
+.tooltip__content {
+  display: none;
+  position: absolute;
+  width: fit-content;
+  margin: 0;
+  max-width: 100%;
+  min-width: 6rem;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px;
+  z-index: 100;
+  border-radius: var(--size-border-radius);
+  padding: 0.6em 1em;
+  font-size: var(--font-size-small);
+  line-height: 1;
+  color: var(--color-base-primary-900);
+  background-color: var(--color-base-primary-100);
+  box-shadow: u.shadow(1);
+  user-select: none;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+  transition-behavior: allow-discrete;
+}
+
+.tooltip__slot:hover + .tooltip__content,
+.tooltip__slot:focus + .tooltip__content,
+.tooltip__slot:focus-within + .tooltip__content {
+  display: block;
+  opacity: 1;
+}
