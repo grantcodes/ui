@@ -6,6 +6,7 @@ import {
   queryAssignedElements,
 } from 'lit/decorators.js'
 import tooltipStyles from './tooltip.scss?inline'
+import { generateId } from '../../lib/generate-id'
 
 @customElement('grantcodes-tooltip')
 export class GrantCodesTooltip extends LitElement {
@@ -13,6 +14,11 @@ export class GrantCodesTooltip extends LitElement {
   // on the main page or in other components. Styling API can be exposed
   // via CSS custom properties.
   static styles = [unsafeCSS(tooltipStyles)]
+
+  constructor() {
+    super()
+    this.id = generateId('tooltip')
+  }
 
   /**
    * Label for the tooltip, used when the tooltip is the main label for the item.
@@ -25,10 +31,6 @@ export class GrantCodesTooltip extends LitElement {
    */
   @property({ type: String })
   description = ''
-
-  get id(): string {
-    return 'tooltip'
-  }
 
   @queryAssignedElements({ selector: '*' })
   slotted!: HTMLElement[]
