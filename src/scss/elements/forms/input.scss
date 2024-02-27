@@ -10,9 +10,9 @@
   background: var(--component-input-base-background);
   color: var(--component-input-base-color);
   padding: 0.5em 1em;
-  transition: color 0.2s, background-color 0.2s, border-color 0.2s,
-    box-shadow 0.2s;
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s, outline 0.2s;
   font-size: 1rem;
+  outline: 1px solid transparent;
 
   &:not(textarea) {
     line-height: 1.1;
@@ -28,11 +28,10 @@
     border-color: var(--component-input-active-border-color);
     color: var(--component-input-active-color);
     background: var(--component-input-active-background);
-    outline: none;
   }
 
   &:focus-visible {
-    box-shadow: 0 0 0 var(--component-focus-ring-width)
+    outline: var(--component-focus-ring-width) solid
       var(--component-focus-ring-color);
   }
 
@@ -80,24 +79,18 @@
     }
   }
 
-  option {
+  :where(option) {
     padding-block: 0.2em;
-    font-size: 0.8em;
+    font-size: 1em;
 
     &:nth-of-type(2n) {
       background-color: rgba(0, 0, 0, 0.05);
     }
 
     &:checked {
-      background-color: var(--component-input-active-border-color);
-      color: var(--component-input-base-border-color);
+      background: var(--component-button-active-background);
+      color: var(--component-button-active-color);
     }
-
-    // Doesn't seem to work in chrome.
-    // &:hover,
-    // &:focus-visible {
-    //   background-color: var(--component-focus-ring-color) !important;
-    // }
   }
 
   &:where([type='checkbox']),

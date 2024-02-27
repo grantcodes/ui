@@ -14,20 +14,19 @@
   font-weight: bold;
   letter-spacing: 0.05em;
   text-decoration: none;
-  outline: none;
-  transition: color 0.2s, border-color 0.2s, background-color 0.2s,
-    box-shadow 0.2s;
+  outline: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s, background-color 0.2s, outline 0.2s;
 
   &:hover,
   &:focus-visible {
-    color: var(--component-button-hover-color);
-    background: var(--component-button-hover-background);
+    color: var(--component-button-active-color);
+    background: var(--component-button-active-background);
     cursor: pointer;
     text-decoration: none;
   }
 
   &:focus-visible {
-    box-shadow: 0 0 0 var(--component-focus-ring-width)
+    outline: var(--component-focus-ring-width) solid
       var(--component-focus-ring-color);
   }
 
