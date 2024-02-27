@@ -1,5 +1,5 @@
 import { LitElement, html, unsafeCSS } from 'lit'
-import { customElement, property } from 'lit/decorators.js'
+import { customElement, property, query } from 'lit/decorators.js'
 import dialogStyles from './dialog.scss?inline'
 
 @customElement('grantcodes-dialog')
@@ -9,14 +9,43 @@ export class GrantCodesDialog extends LitElement {
   // via CSS custom properties.
   static styles = [unsafeCSS(dialogStyles)]
 
-  // Define reactive properties--updating a reactive property causes
-  // the component to update.
-  // @property() label = 'Button Label'
+  @query('dialog')
+  private dialog!: HTMLDialogElement
+
+  @property({ type: Boolean, reflect: true })
+  open = false
+
+  updated(changedProperties: Map<string | number | symbol, unknown>) {
+    if (changedProperties.has('open')) {
+      this._handleOpenChange()
+    }
+  }
+
+  private _handleOpenChange() {
+    if (this.open) {
+      this.dialog.showModal()
+    } else {
+      this.dialog.close()
+    }
+  }
+
+  dismissTemplate() {
+    return html`
+      <button
+        class="dialog__dismiss"
+        @click=${() => (this.open = false)}
+        aria-label="Dismiss dialog"
+      >
+        &times;
+      </button>
+    `
+  }
 
   render() {
     return html`
-      <dialog ?open=${this.open}>
-        <slot></slot>
+      <dialog class="dialog" ?open=${this.open}>
+        ${this.dismissTemplate()}
+        <slot class="dialog__content"></slot>
       </dialog>
     `
   }

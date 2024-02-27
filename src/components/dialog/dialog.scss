@@ -1,4 +1,35 @@
 .dialog {
-  background-color: pink;
+  width: 100%;
+  padding: 0;
+  max-width: var(--size-block-width-normal);
+  background: var(--component-card-background);
+  border-style: solid;
+  border-width: var(--component-card-border-width);
+  border-color: var(--component-card-border-color);
+  border-radius: var(--component-card-border-radius);
 }
 
+.dialog::backdrop {
+  background-color: var(--component-focus-ring-color);
+}
+
+.dialog__dismiss {
+  position: absolute;
+  display: block;
+  inset-block-start: 0;
+  inset-inline-end: 0;
+  border: none;
+  line-height: 1;
+  font-size: 1em;
+  padding: calc(var(--size-space-unit, 1rem) / 2);
+  cursor: pointer;
+  background: transparent;
+}
+
+.dialog__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--size-space-unit, 1rem);
+  padding: var(--size-space-unit, 1rem);
+}
