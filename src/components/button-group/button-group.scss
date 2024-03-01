@@ -1,10 +1,17 @@
+:host {
+  display: block;
+}
+
 .button-group {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   background: var(--component-button-base-background);
   border-radius: var(--component-button-base-border-radius);
-  /* // overflow: hidden; */
-  width: fit-content;
+  min-width: fit-content;
   max-width: 100%;
+
+  ::slotted(grantcodes-button) {
+    // --component-button-base-border-radius: 0;
+  }
 }

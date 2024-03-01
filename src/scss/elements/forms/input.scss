@@ -1,4 +1,5 @@
 @use 'sass:math';
+@use '../../util' as u;
 
 :where(input, textarea, select) {
   display: block;
@@ -12,7 +13,7 @@
   padding: 0.5em 1em;
   transition: color 0.2s, background-color 0.2s, border-color 0.2s, outline 0.2s;
   font-size: 1rem;
-  outline: 1px solid transparent;
+  @include u.focus-ring();
 
   &:not(textarea) {
     line-height: 1.1;
@@ -28,11 +29,6 @@
     border-color: var(--component-input-active-border-color);
     color: var(--component-input-active-color);
     background: var(--component-input-active-background);
-  }
-
-  &:focus-visible {
-    outline: var(--component-focus-ring-width) solid
-      var(--component-focus-ring-color);
   }
 
   &:invalid:not(:active) {

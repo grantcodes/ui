@@ -1,3 +1,5 @@
+@use '../../scss/util' as u;
+
 .button {
   display: inline-flex;
   flex-direction: row;
@@ -16,6 +18,7 @@
   text-decoration: none;
   outline: 1px solid transparent;
   transition: color 0.2s, border-color 0.2s, background-color 0.2s, outline 0.2s;
+  @include u.focus-ring();
 
   &:hover,
   &:focus-visible {
@@ -23,11 +26,6 @@
     background: var(--component-button-active-background);
     cursor: pointer;
     text-decoration: none;
-  }
-
-  &:focus-visible {
-    outline: var(--component-focus-ring-width) solid
-      var(--component-focus-ring-color);
   }
 
   &:active {

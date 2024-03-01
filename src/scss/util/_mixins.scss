@@ -17,3 +17,24 @@
     background-color: rgba(0, 0, 0, 0.3);
   }
 }
+
+@mixin focus-ring() {
+  outline-color: transparent;
+  outline-offset: var(--component-focus-ring-offset, 0px);
+  outline-style: solid;
+  outline-width: var(--component-focus-ring-width, 2px);
+  &:focus-visible {
+    outline-color: var(--component-focus-ring-color);
+    @media (prefers-contrast: more) {
+      --component-focus-ring-color: var(--color-base-primary-200);
+      box-shadow: 0 0 0
+        calc(
+          (
+              var(--component-focus-ring-width) +
+                var(--component-focus-ring-offset, 0px)
+            ) * 1.5
+        )
+        var(--color-base-primary-800);
+    }
+  }
+}
