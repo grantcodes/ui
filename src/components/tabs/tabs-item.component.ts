@@ -14,18 +14,14 @@ export class GrantCodesTabsItem extends LitElement {
   @property({ type: String })
   containerId: String = ''
 
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   get tabId() {
-    return (
-      `${this.containerId}-tab-` + this.label.toLowerCase().replace(' ', '-')
-    )
+    return `${this.containerId}-tab-` + this.index.toString()
   }
 
   @property({ type: String })
   get panelId() {
-    return (
-      `${this.containerId}-panel-` + this.label.toLowerCase().replace(' ', '-')
-    )
+    return `${this.containerId}-panel-` + this.index.toString()
   }
 
   @property({ type: String })

@@ -1,12 +1,14 @@
-import { LitElement, PropertyValueMap, html, unsafeCSS } from 'lit'
+import { LitElement, html, unsafeCSS } from 'lit'
 import {
   customElement,
   property,
-  query,
+  state,
+  queryAll,
   queryAssignedElements,
 } from 'lit/decorators.js'
 import tabsStyles from './tabs.scss?inline'
 import { GrantCodesTab } from './tab.component'
+import { GrantCodesTabsTab } from './tabs-tab.component'
 import './tabs-tab'
 import './tabs-panel'
 import { generateId } from '../../lib/generate-id'
@@ -41,16 +43,26 @@ export class GrantCodesTabs extends LitElement {
   @queryAssignedElements({ selector: 'grantcodes-tab' })
   tabs!: GrantCodesTab[]
 
+  @queryAll('grantcodes-tabs-tab')
+  tabsListTabs!: GrantCodesTabsTab[]
+
+  @state()
+  focusedTabIndex: number = -1
+
   get activeTab() {
     return this.tabs.find((tab) => tab.active) ?? null
   }
   set activeTab(tab: GrantCodesTab | null) {
     // Ignore setting activeTab to null. As long as there are children, one tab
     // must be selected.
-    this.tabs.map((t) => (t.active = t === tab))
-    if (tab) {
-      // this.activateTab(tab);
-    }
+    this.tabs.map((t, i) => {
+      if (t === tab) {
+        t.active = true
+        this.focusedTabIndex = i
+      } else {
+        t.active = false
+      }
+    })
     this.requestUpdate()
   }
 
@@ -58,6 +70,24 @@ export class GrantCodesTabs extends LitElement {
     this.requestUpdate()
     if (!this.activeTab) {
       this.activeTab = this.tabs[0]
+    }
+  }
+
+  handleTabKeyDown(e: KeyboardEvent) {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+      e.preventDefault()
+      const tabs = this.tabs
+      const nextIndex =
+        e.key === 'ArrowRight'
+          ? (this.focusedTabIndex + 1) % tabs.length
+          : this.focusedTabIndex - 1
+
+      // Focus the next tab.
+      const tabsListTab = this.tabsListTabs[nextIndex]
+      if (tabsListTab) {
+        tabsListTab.focus()
+        this.focusedTabIndex = nextIndex
+      }
     }
   }
 
@@ -71,11 +101,12 @@ export class GrantCodesTabs extends LitElement {
             ${this.tabs.map(
               (tab, i) =>
                 html`<grantcodes-tabs-tab
-                  containerId="${this.id}"
+                  index=${i + 1}
                   label="${tab.label}"
-                  index="${i}"
+                  containerId="${this.id}"
                   ?active=${tab.active}
                   @click=${() => (this.activeTab = tab)}
+                  @keydown=${this.handleTabKeyDown}
                 ></grantcodes-tabs-tab>`
             )}
           </div>
@@ -85,9 +116,9 @@ export class GrantCodesTabs extends LitElement {
           ${this.tabs.map(
             (tab, i) =>
               html`<grantcodes-tabs-panel
-                containerId="${this.id}"
+                index=${i}
                 label="${tab.label}"
-                index="${i}"
+                containerId="${this.id}"
                 ?active=${tab.active}
                 >${tab.content}</grantcodes-tabs-panel
               >`
