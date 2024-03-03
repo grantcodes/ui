@@ -1,5 +1,7 @@
 @use '../../scss/util' as u;
 
+@include u.component-base();
+
 $border-width: 3px;
 
 .tabs {
@@ -8,6 +10,7 @@ $border-width: 3px;
 
 .tabs__tablist {
   overflow: auto;
+  contain: none;
 
   @include u.custom-scrollbar(0.5rem);
 }

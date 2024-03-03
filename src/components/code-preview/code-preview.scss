@@ -1,7 +1,6 @@
 @use '../../scss/util' as u;
 
-.code-preview {
-}
+@include u.component-base();
 
 .code-preview > pre {
   display: block;

@@ -1,3 +1,7 @@
+@use '../../scss/util' as u;
+
+@include u.component-base();
+
 .dialog {
   width: 100%;
   padding: 0;
@@ -7,23 +11,34 @@
   border-width: var(--component-card-border-width);
   border-color: var(--component-card-border-color);
   border-radius: var(--component-card-border-radius);
+  overflow: hidden;
 }
 
 .dialog::backdrop {
-  background-color: var(--component-focus-ring-color);
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
 }
 
 .dialog__dismiss {
-  position: absolute;
   display: block;
-  inset-block-start: 0;
-  inset-inline-end: 0;
+  position: absolute;
   border: none;
   line-height: 1;
-  font-size: 1em;
-  padding: calc(var(--size-space-unit, 1rem) / 2);
+  font-size: 1.4rem;
   cursor: pointer;
   background: transparent;
+  inset-block-start: var(--size-space-unit, 1rem);
+  inset-inline-end: var(--size-space-unit, 1rem);
+  margin-block-start: -0.25rem;
+  margin-inline-end: -0.25rem;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  padding: 0.25rem;
+  justify-content: center;
+  align-items: center;
 }
 
 .dialog__content {
@@ -32,4 +47,26 @@
   justify-content: flex-start;
   gap: var(--size-space-unit, 1rem);
   padding: var(--size-space-unit, 1rem);
+}
+
+.dialog__header,
+.dialog__footer {
+  &:empty,
+  &:has(slot:empty) {
+    display: none;
+  }
+}
+
+.dialog__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--size-space-unit, 1rem);
+  border-bottom: var(--component-card-border-width) solid
+    var(--component-card-border-color);
+}
+
+.dialog__footer ::slotted(grantcodes-button-group) {
+  --component-button-base-border-radius: 0;
 }

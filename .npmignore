@@ -7,6 +7,6 @@ plop-templates
 .storybook
 commitlink.config.cjs
 plopfile.js
-rollup.config.js
+vite.config.js
 tsconfig.json
 webpack.config.cjs

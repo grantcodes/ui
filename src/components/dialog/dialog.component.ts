@@ -15,6 +15,9 @@ export class GrantCodesDialog extends LitElement {
   @property({ type: Boolean, reflect: true })
   open = false
 
+  @property({ type: Boolean })
+  dismissible = true
+
   updated(changedProperties: Map<string | number | symbol, unknown>) {
     if (changedProperties.has('open')) {
       this._handleOpenChange()
@@ -30,6 +33,10 @@ export class GrantCodesDialog extends LitElement {
   }
 
   dismissTemplate() {
+    if (!this.dismissible) {
+      return html``
+    }
+
     return html`
       <button
         class="dialog__dismiss"
@@ -45,7 +52,16 @@ export class GrantCodesDialog extends LitElement {
     return html`
       <dialog class="dialog" ?open=${this.open}>
         ${this.dismissTemplate()}
+
+        <header class="dialog__header">
+          <slot name="header"></slot>
+        </header>
+
         <slot class="dialog__content"></slot>
+
+        <footer class="dialog__footer">
+          <slot name="footer"> </slot>
+        </footer>
       </dialog>
     `
   }

@@ -52,6 +52,12 @@ export default (plop) => {
         path: 'src/components/{{kebabCase name}}/{{kebabCase name}}.stories.ts',
         templateFile: 'plop-templates/web-component/component.stories.ts.hbs',
       },
+      // React component
+      {
+        type: 'add',
+        path: 'src/components/{{kebabCase name}}/{{kebabCase name}}.react.ts',
+        templateFile: 'plop-templates/web-component/component.react.ts.hbs',
+      },
     ],
   })
 }

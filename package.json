@@ -1,6 +1,6 @@
 {
   "name": "@grantcodes/ui",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "",
   "type": "module",
   "main": "dist/main.cjs",
@@ -12,10 +12,23 @@
       "require": "./dist/main.cjs",
       "import": "./dist/main.js",
       "types": "./dist/main.d.ts"
+    },
+    "./react": {
+      "require": "./dist/react.cjs",
+      "import": "./dist/react.js",
+      "types": "./dist/react.d.ts"
+    },
+    "./styles/base.css": {
+      "require": "./dist/base.css",
+      "import": "./dist/base.css"
+    },
+    "./styles/themes/grantcodes.css": {
+      "require": "./dist/grantcodes.css",
+      "import": "./dist/grantcodes.css"
     }
   },
   "scripts": {
-    "build": "rollup -c",
+    "build": "vite build",
     "watch": "rollup -c -w",
     "generate": "plop",
     "fix": "run-s fix:lint",
@@ -29,37 +42,30 @@
   "license": "MIT",
   "dependencies": {
     "@grantcodes/style-dictionary": "^1.1.0",
+    "@lit/react": "^1.0.3",
     "classnames": "^2.5.1",
-    "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sanitize.css": "^13.0.0",
-    "shiki": "^1.1.3"
+    "shiki": "^1.1.7"
   },
   "devDependencies": {
     "@ava/typescript": "^4.1.0",
-    "@babel/core": "^7.23.9",
+    "@babel/core": "^7.24.0",
     "@grantcodes/commit": "^1.0.7",
-    "@rollup/plugin-commonjs": "^25.0.7",
-    "@rollup/plugin-json": "^6.1.0",
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-typescript": "^11.1.6",
-    "@storybook/addon-essentials": "^7.6.16",
-    "@storybook/web-components": "^7.6.16",
-    "@storybook/web-components-vite": "^7.6.16",
-    "ava": "^6.1.1",
+    "@storybook/addon-essentials": "^7.6.17",
+    "@storybook/web-components": "^7.6.17",
+    "@storybook/web-components-vite": "^7.6.17",
+    "ava": "^6.1.2",
     "lit": "^3.1.2",
-    "lucide-static": "^0.331.0",
+    "lucide-static": "^0.344.0",
     "npm-run-all": "^4.1.5",
     "plop": "^4.0.1",
     "rollup": "^4.12.0",
-    "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-postcss-lit": "^2.1.0",
-    "rollup-plugin-styles": "^4.0.0",
-    "sass": "^1.71.0",
-    "storybook": "^7.6.16",
+    "sass": "^1.71.1",
+    "storybook": "^7.6.17",
     "ts-standard": "^12.0.2",
     "typescript": "^5.3.3",
-    "vite": "^5.1.3"
+    "vite": "^5.1.4"
   },
   "files": [
     "dist/**/*",

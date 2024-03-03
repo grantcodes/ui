@@ -1,6 +1,6 @@
-:host {
-  display: block;
-}
+@use '../../scss/util' as u;
+
+@include u.component-base();
 
 .button-group {
   display: flex;

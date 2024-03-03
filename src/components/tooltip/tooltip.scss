@@ -1,5 +1,7 @@
 @use '../../scss/util' as u;
 
+@include u.component-base();
+
 :host,
 .tooltip,
 .tooltip__slot {

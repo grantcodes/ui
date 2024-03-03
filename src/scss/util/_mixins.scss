@@ -1,5 +1,17 @@
 @use 'sass:math';
 
+@mixin component-base() {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  :host {
+    display: block;
+  }
+}
+
 @mixin custom-scrollbar($size: 0.5rem) {
   &::-webkit-scrollbar {
     width: $size;

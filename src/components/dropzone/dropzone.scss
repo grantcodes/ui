@@ -1,3 +1,7 @@
+@use '../../scss/util' as u;
+
+@include u.component-base();
+
 .dropzone {
   position: relative;
   display: flex;

@@ -58,3 +58,7 @@ pre {
   font-weight: 400;
   padding: var(--size-space-unit, 1rem);
 }
+
+mark {
+  background-color: var(--color-base-secondary-300);
+}

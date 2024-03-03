@@ -22,3 +22,9 @@
 ::selection {
   background-color: var(--color-base-primary-200);
 }
+
+// Default backdrop styles
+::backdrop {
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+}

@@ -1,5 +1,8 @@
+@use '../../scss/util' as u;
+
+@include u.component-base();
+
 .container {
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

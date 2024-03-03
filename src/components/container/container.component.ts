@@ -26,8 +26,6 @@ export class GrantCodesContainer extends LitElement {
       'container--nopad': this.nopad === true,
     })
 
-    console.log(this.nopad)
-
     return html`
       <div class="${containerClass}">
         <slot></slot>
