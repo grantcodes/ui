@@ -1,6 +1,6 @@
 {
 	"name": "@grantcodes/ui",
-	"version": "2.0.0-beta.2",
+	"version": "2.0.0-beta4",
 	"description": "",
 	"type": "module",
 	"main": "dist/main.cjs",
@@ -73,7 +73,12 @@
 		"vite": "^5.4.9"
 	},
 	"peerDependencies": {},
-	"files": ["dist/**/*", "CHANGELOG.md", "README.md", "LICENCE"],
+	"files": [
+		"dist/**/*",
+		"CHANGELOG.md",
+		"README.md",
+		"LICENCE"
+	],
 	"ava": {
 		"typescript": {
 			"compile": false,
