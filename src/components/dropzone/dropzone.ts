@@ -1,10 +1,10 @@
-import { GrantCodesDropzone } from './dropzone.component.js'
+import { GrantCodesDropzone } from "./dropzone.component.js";
 
-export * from './dropzone.component.js'
-export default GrantCodesDropzone
+export * from "./dropzone.component.js";
+export default GrantCodesDropzone;
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'grantcodes-dropzone': GrantCodesDropzone
-  }
+	interface HTMLElementTagNameMap {
+		"grantcodes-dropzone": GrantCodesDropzone;
+	}
 }

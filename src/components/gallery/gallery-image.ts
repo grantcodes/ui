@@ -1,10 +1,10 @@
-import { GrantCodesGalleryImage } from './gallery-image.component.js'
+import { GrantCodesGalleryImage } from "./gallery-image.component.js";
 
-export * from './gallery-image.component.js'
-export default GrantCodesGalleryImage
+export * from "./gallery-image.component.js";
+export default GrantCodesGalleryImage;
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'grantcodes-gallery-image': GrantCodesGalleryImage
-  }
+	interface HTMLElementTagNameMap {
+		"grantcodes-gallery-image": GrantCodesGalleryImage;
+	}
 }

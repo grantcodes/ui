@@ -1,10 +1,10 @@
-import { GrantCodesFormField } from './form-field.component.js'
+import { GrantCodesFormField } from "./form-field.component.js";
 
-export * from './form-field.component.js'
-export default GrantCodesFormField
+export * from "./form-field.component.js";
+export default GrantCodesFormField;
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'grantcodes-form-field': GrantCodesFormField
-  }
+	interface HTMLElementTagNameMap {
+		"grantcodes-form-field": GrantCodesFormField;
+	}
 }

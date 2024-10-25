@@ -1,65 +1,65 @@
-import { LitElement, html, unsafeCSS } from 'lit'
+import { LitElement, html, unsafeCSS } from "lit";
 import {
-  customElement,
-  property,
-  state,
-  queryAssignedElements,
-} from 'lit/decorators.js'
-import cx from 'classnames'
-import dropzoneStyles from './dropzone.scss?inline'
+	customElement,
+	property,
+	state,
+	queryAssignedElements,
+} from "lit/decorators.js";
+import cx from "classnames";
+import dropzoneStyles from "./dropzone.scss?inline";
 
-@customElement('grantcodes-dropzone')
+@customElement("grantcodes-dropzone")
 export class GrantCodesDropzone extends LitElement {
-  static styles = [unsafeCSS(dropzoneStyles)]
+	static styles = [unsafeCSS(dropzoneStyles)];
 
-  @property({ type: Boolean, reflect: true })
-  fullscreenOnDrag: boolean = false
+	@property({ type: Boolean, reflect: true })
+	fullscreenOnDrag = false;
 
-  @queryAssignedElements({ selector: 'input[type=file]' })
-  _input!: HTMLInputElement[]
+	@queryAssignedElements({ selector: "input[type=file]" })
+	_input!: HTMLInputElement[];
 
-  @state()
-  private _fullscreen: boolean = false
+	@state()
+	private _fullscreen = false;
 
-  @state()
-  private _placeholder: string | undefined
+	@state()
+	private _placeholder: string | undefined;
 
-  private _enableFullscreen = () => {
-    if (this.fullscreenOnDrag) {
-      this._fullscreen = true
-    }
-  }
+	private readonly _enableFullscreen = () => {
+		if (this.fullscreenOnDrag) {
+			this._fullscreen = true;
+		}
+	};
 
-  // TODO: Can freeze in fullscreen if starting dragging then cancel.
-  private _disableFullscreen = () => {
-    this._fullscreen = false
-  }
+	// TODO: Can freeze in fullscreen if starting dragging then cancel.
+	private readonly _disableFullscreen = () => {
+		this._fullscreen = false;
+	};
 
-  connectedCallback(): void {
-    super.connectedCallback()
-    document.addEventListener('dragenter', this._enableFullscreen)
-    document.addEventListener('dragend', this._disableFullscreen)
-  }
+	connectedCallback(): void {
+		super.connectedCallback();
+		document.addEventListener("dragenter", this._enableFullscreen);
+		document.addEventListener("dragend", this._disableFullscreen);
+	}
 
-  disconnectedCallback(): void {
-    document.removeEventListener('dragenter', this._enableFullscreen)
-    document.removeEventListener('dragend', this._disableFullscreen)
-    super.disconnectedCallback()
-  }
+	disconnectedCallback(): void {
+		document.removeEventListener("dragenter", this._enableFullscreen);
+		document.removeEventListener("dragend", this._disableFullscreen);
+		super.disconnectedCallback();
+	}
 
-  firstUpdated(): void {
-    if (this._input.length === 0) {
-      throw new Error('No file input found')
-    }
-    this._placeholder = this._input[0].placeholder
-  }
+	firstUpdated(): void {
+		if (this._input.length === 0) {
+			throw new Error("No file input found");
+		}
+		this._placeholder = this._input[0].placeholder;
+	}
 
-  render() {
-    const dropzoneClass = cx('dropzone', {
-      'dropzone--fullscreen': this._fullscreen,
-    })
+	render() {
+		const dropzoneClass = cx("dropzone", {
+			"dropzone--fullscreen": this._fullscreen,
+		});
 
-    return html`
+		return html`
       <div
         class=${dropzoneClass}
         @mouseLeave=${this._disableFullscreen}
@@ -69,6 +69,6 @@ export class GrantCodesDropzone extends LitElement {
         <slot></slot>
         <span class="dropzone__placeholder">${this._placeholder}</span>
       </div>
-    `
-  }
+    `;
+	}
 }

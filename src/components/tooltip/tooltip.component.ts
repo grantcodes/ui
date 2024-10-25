@@ -1,57 +1,57 @@
-import { LitElement, html, unsafeCSS } from 'lit'
+import { LitElement, html, unsafeCSS } from "lit";
 import {
-  customElement,
-  property,
-  state,
-  queryAssignedElements,
-} from 'lit/decorators.js'
-import tooltipStyles from './tooltip.scss?inline'
-import { generateId } from '../../lib/generate-id'
+	customElement,
+	property,
+	state,
+	queryAssignedElements,
+} from "lit/decorators.js";
+import tooltipStyles from "./tooltip.scss?inline";
+import { generateId } from "../../lib/generate-id";
 
-@customElement('grantcodes-tooltip')
+@customElement("grantcodes-tooltip")
 export class GrantCodesTooltip extends LitElement {
-  // Styles are scoped to this element: they won't conflict with styles
-  // on the main page or in other components. Styling API can be exposed
-  // via CSS custom properties.
-  static styles = [unsafeCSS(tooltipStyles)]
+	// Styles are scoped to this element: they won't conflict with styles
+	// on the main page or in other components. Styling API can be exposed
+	// via CSS custom properties.
+	static styles = [unsafeCSS(tooltipStyles)];
 
-  constructor() {
-    super()
-    this.id = generateId('tooltip')
-  }
+	constructor() {
+		super();
+		this.id = generateId("tooltip");
+	}
 
-  /**
-   * Label for the tooltip, used when the tooltip is the main label for the item.
-   */
-  @property({ type: String })
-  label = ''
+	/**
+	 * Label for the tooltip, used when the tooltip is the main label for the item.
+	 */
+	@property({ type: String })
+	label = "";
 
-  /**
-   * Description for the tooltip, used when the tooltip is additional descriptive text for the item.
-   */
-  @property({ type: String })
-  description = ''
+	/**
+	 * Description for the tooltip, used when the tooltip is additional descriptive text for the item.
+	 */
+	@property({ type: String })
+	description = "";
 
-  @queryAssignedElements({ selector: '*' })
-  slotted!: HTMLElement[]
+	@queryAssignedElements({ selector: "*" })
+	slotted!: HTMLElement[];
 
-  firstUpdated(): void {
-    const labeledElement = this.slotted?.[0]
-    if (labeledElement) {
-      if (this.label) {
-        labeledElement.setAttribute('aria-labelledby', this.id)
-      } else if (this.description) {
-        labeledElement.setAttribute('aria-describedby', this.id)
-      }
-    }
-  }
+	firstUpdated(): void {
+		const labeledElement = this.slotted?.[0];
+		if (labeledElement) {
+			if (this.label) {
+				labeledElement.setAttribute("aria-labelledby", this.id);
+			} else if (this.description) {
+				labeledElement.setAttribute("aria-describedby", this.id);
+			}
+		}
+	}
 
-  render() {
-    if (this.label && this.description) {
-      throw new Error('You cannot provide both a label and a description')
-    }
+	render() {
+		if (this.label && this.description) {
+			throw new Error("You cannot provide both a label and a description");
+		}
 
-    return html`
+		return html`
       <div class="tooltip">
         <div class="tooltip__slot">
           <slot></slot>
@@ -60,6 +60,6 @@ export class GrantCodesTooltip extends LitElement {
           ${this.label || this.description}
         </p>
       </div>
-    `
-  }
+    `;
+	}
 }

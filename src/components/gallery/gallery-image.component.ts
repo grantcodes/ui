@@ -1,41 +1,41 @@
-import { LitElement, html, unsafeCSS } from 'lit'
-import { customElement, property } from 'lit/decorators.js'
-import galleryStyles from './gallery.scss?inline'
+import { LitElement, html, unsafeCSS } from "lit";
+import { customElement, property } from "lit/decorators.js";
+import galleryStyles from "./gallery.scss?inline";
 
-@customElement('grantcodes-gallery-image')
+@customElement("grantcodes-gallery-image")
 export class GrantCodesGalleryImage extends LitElement {
-  static styles = [unsafeCSS(galleryStyles)]
+	static styles = [unsafeCSS(galleryStyles)];
 
-  @property({ type: Number })
-  width: number = 0
+	@property({ type: Number })
+	width = 0;
 
-  @property({ type: Number })
-  height: number = 0
+	@property({ type: Number })
+	height = 0;
 
-  @property({ type: String })
-  src: string = ''
+	@property({ type: String })
+	src = "";
 
-  @property({ type: String })
-  alt: string = ''
+	@property({ type: String })
+	alt = "";
 
-  @property({ type: String })
-  caption: string = ''
+	@property({ type: String })
+	caption = "";
 
-  @property({ type: String })
-  thumbnail: string = ''
+	@property({ type: String })
+	thumbnail = "";
 
-  captionTemplate() {
-    if (!this.caption) {
-      return
-    }
+	captionTemplate() {
+		if (!this.caption) {
+			return;
+		}
 
-    return html`
+		return html`
       <figcaption class="gallery__image__caption">${this.caption}</figcaption>
-    `
-  }
+    `;
+	}
 
-  render() {
-    return html`
+	render() {
+		return html`
       <figure class="gallery__image">
         <img
           width=${this.width}
@@ -46,6 +46,6 @@ export class GrantCodesGalleryImage extends LitElement {
         />
         ${this.captionTemplate()}
       </figure>
-    `
-  }
+    `;
+	}
 }

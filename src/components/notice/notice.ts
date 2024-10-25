@@ -1,10 +1,10 @@
-import { GrantCodesNotice } from './notice.component.js'
+import { GrantCodesNotice } from "./notice.component.js";
 
-export * from './notice.component.js'
-export default GrantCodesNotice
+export * from "./notice.component.js";
+export default GrantCodesNotice;
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'grantcodes-notice': GrantCodesNotice
-  }
+	interface HTMLElementTagNameMap {
+		"grantcodes-notice": GrantCodesNotice;
+	}
 }

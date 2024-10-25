@@ -1,3 +1,3 @@
-declare module '*.scss'
+declare module "*.scss";
 
-declare module '*.scss?inline'
+declare module "*.scss?inline";

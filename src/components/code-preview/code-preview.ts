@@ -1,10 +1,10 @@
-import { GrantCodesCodePreview } from './code-preview.component.js'
+import { GrantCodesCodePreview } from "./code-preview.component.js";
 
-export * from './code-preview.component.js'
-export default GrantCodesCodePreview
+export * from "./code-preview.component.js";
+export default GrantCodesCodePreview;
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'grantcodes-code-preview': GrantCodesCodePreview
-  }
+	interface HTMLElementTagNameMap {
+		"grantcodes-code-preview": GrantCodesCodePreview;
+	}
 }

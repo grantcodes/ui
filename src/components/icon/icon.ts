@@ -1,10 +1,10 @@
-import { GrantCodesIcon } from './icon.component.js'
+import { GrantCodesIcon } from "./icon.component.js";
 
-export * from './icon.component.js'
-export default GrantCodesIcon
+export * from "./icon.component.js";
+export default GrantCodesIcon;
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'grantcodes-icon': GrantCodesIcon
-  }
+	interface HTMLElementTagNameMap {
+		"grantcodes-icon": GrantCodesIcon;
+	}
 }

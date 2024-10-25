@@ -1,10 +1,10 @@
-import { GrantCodesLoading } from './loading.component.js'
+import { GrantCodesLoading } from "./loading.component.js";
 
-export * from './loading.component.js'
-export default GrantCodesLoading
+export * from "./loading.component.js";
+export default GrantCodesLoading;
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'grantcodes-loading': GrantCodesLoading
-  }
+	interface HTMLElementTagNameMap {
+		"grantcodes-loading": GrantCodesLoading;
+	}
 }

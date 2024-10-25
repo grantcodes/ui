@@ -1,10 +1,10 @@
-import { GrantCodesDialog } from './dialog.component.js'
+import { GrantCodesDialog } from "./dialog.component.js";
 
-export * from './dialog.component.js'
-export default GrantCodesDialog
+export * from "./dialog.component.js";
+export default GrantCodesDialog;
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'grantcodes-dialog': GrantCodesDialog
-  }
+	interface HTMLElementTagNameMap {
+		"grantcodes-dialog": GrantCodesDialog;
+	}
 }

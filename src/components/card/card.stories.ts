@@ -1,17 +1,17 @@
-import type { Meta, StoryObj } from '@storybook/web-components'
-import { html } from 'lit'
-import './card.js'
-import '../button-group/button-group.js'
-import '../button/button.js'
+import type { Meta, StoryObj } from "@storybook/web-components";
+import { html } from "lit";
+import "./card.js";
+import "../button-group/button-group.js";
+import "../button/button.js";
 
 // This default export determines where your story goes in the story list
 const meta: Meta = {
-  component: 'grantcodes-card',
-  args: {
-    content: 'Here is the card content',
-  },
-  render: ({ content }) =>
-    html`<grantcodes-card>
+	component: "grantcodes-card",
+	args: {
+		content: "Here is the card content",
+	},
+	render: ({ content }) =>
+		html`<grantcodes-card>
       <h3 slot="card-header">Card Header</h3>
       <p slot="card-content">${content}</p>
       <grantcodes-button-group slot="card-actions">
@@ -19,9 +19,9 @@ const meta: Meta = {
         <grantcodes-button>Action 2</grantcodes-button>
       </grantcodes-button-group>
     </grantcodes-card>`,
-}
+};
 
-export default meta
-type Story = StoryObj
+export default meta;
+type Story = StoryObj;
 
-export const Card: Story = {}
+export const Card: Story = {};

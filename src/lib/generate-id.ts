@@ -1,5 +1,5 @@
 function generateId(prefix: string | undefined): string {
-  return `${prefix || 'id'}-${Math.random().toString(36).substr(2, 9)}`
+	return `${prefix || "id"}-${Math.random().toString(36).substr(2, 9)}`;
 }
 
-export { generateId }
+export { generateId };

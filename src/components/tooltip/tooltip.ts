@@ -1,10 +1,10 @@
-import { GrantCodesTooltip } from './tooltip.component.js'
+import { GrantCodesTooltip } from "./tooltip.component.js";
 
-export * from './tooltip.component.js'
-export default GrantCodesTooltip
+export * from "./tooltip.component.js";
+export default GrantCodesTooltip;
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'grantcodes-tooltip': GrantCodesTooltip
-  }
+	interface HTMLElementTagNameMap {
+		"grantcodes-tooltip": GrantCodesTooltip;
+	}
 }

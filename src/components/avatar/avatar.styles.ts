@@ -1,4 +1,4 @@
-import { css } from 'lit'
+import { css } from "lit";
 
 export const avatarStyles = css`
   .avatar {
@@ -26,4 +26,4 @@ export const avatarStyles = css`
   .avatar__fallback {
     line-height: 1;
   }
-`
+`;

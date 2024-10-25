@@ -1,3 +1,3 @@
 // Map icons to Lucide icons
 
-export * from 'lucide-static'
+export * from "lucide-static";

@@ -1,10 +1,10 @@
-import { GrantCodesPagination } from './pagination.component.js'
+import { GrantCodesPagination } from "./pagination.component.js";
 
-export * from './pagination.component.js'
-export default GrantCodesPagination
+export * from "./pagination.component.js";
+export default GrantCodesPagination;
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'grantcodes-pagination': GrantCodesPagination
-  }
+	interface HTMLElementTagNameMap {
+		"grantcodes-pagination": GrantCodesPagination;
+	}
 }

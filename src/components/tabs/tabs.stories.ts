@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/web-components'
-import { html } from 'lit'
-import './tabs.js'
-import './tab.js'
+import type { Meta, StoryObj } from "@storybook/web-components";
+import { html } from "lit";
+import "./tabs.js";
+import "./tab.js";
 
 // This default export determines where your story goes in the story list
 const meta: Meta = {
-  component: 'grantcodes-tabs',
-  render: ({}) => html`
+	component: "grantcodes-tabs",
+	render: () => html`
     <grantcodes-tabs>
       <grantcodes-tab label="Tab 1">
         <p>This is the content of the first tab.</p>
@@ -19,10 +19,10 @@ const meta: Meta = {
       </grantcodes-tab>
     </grantcodes-tabs>
   `,
-  args: {},
-}
+	args: {},
+};
 
-export default meta
-type Story = StoryObj
+export default meta;
+type Story = StoryObj;
 
-export const Tabs: Story = {}
+export const Tabs: Story = {};
