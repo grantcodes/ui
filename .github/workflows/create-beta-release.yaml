@@ -14,7 +14,6 @@ jobs:
         name: Create release PR
         with:
           release-type: node
-          prerelease: true
           target-branch: ${{ github.ref_name }}
 
       - uses: actions/checkout@v4
