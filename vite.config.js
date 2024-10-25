@@ -2,6 +2,24 @@
 import { resolve } from "node:path";
 import { defineConfig } from "vite";
 
+const fixFontUrls = () => ({
+	name: "fix-font-urls",
+	generateBundle(options, bundle) {
+		for (const [fileName, file] of Object.entries(bundle)) {
+			if (fileName.endsWith(".css")) {
+				const cssDepth = fileName.split("/").length - 1;
+				const pathPrefix = "../".repeat(cssDepth);
+
+				// Replace url(/fonts/ with url(../fonts/
+				file.source = file.source.replace(
+					/url\(\/fonts\//g,
+					`url(${pathPrefix}fonts/`,
+				);
+			}
+		}
+	},
+});
+
 export default defineConfig({
 	build: {
 		rollupOptions: {
@@ -41,6 +59,7 @@ export default defineConfig({
 			},
 			treeshake: false,
 			preserveEntrySignatures: "allow-extension",
+			plugins: [fixFontUrls()],
 		},
 		cssCodeSplit: true,
 	},
