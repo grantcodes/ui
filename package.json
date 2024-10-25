@@ -1,84 +1,84 @@
 {
-  "name": "@grantcodes/ui",
-  "version": "2.0.0",
-  "description": "",
-  "type": "module",
-  "main": "dist/main.cjs",
-  "module": "dist/main.js",
-  "types": "dist/main.d.ts",
-  "author": "grantcodes",
-  "exports": {
-    ".": {
-      "require": "./dist/main.cjs",
-      "import": "./dist/main.js",
-      "types": "./dist/main.d.ts"
-    },
-    "./react": {
-      "require": "./dist/react.cjs",
-      "import": "./dist/react.js",
-      "types": "./dist/react.d.ts"
-    },
-    "./styles/base.css": {
-      "require": "./dist/base.css",
-      "import": "./dist/base.css"
-    },
-    "./styles/themes/grantcodes.css": {
-      "require": "./dist/grantcodes.css",
-      "import": "./dist/grantcodes.css"
-    }
-  },
-  "scripts": {
-    "build": "vite build",
-    "watch": "rollup -c -w",
-    "generate": "plop",
-    "fix": "run-s fix:lint",
-    "fix:lint": "ts-standard --fix src",
-    "test": "run-s test:lint test:unit",
-    "test:lint": "ts-standard src",
-    "test:unit": "ava",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
-  },
-  "license": "MIT",
-  "dependencies": {
-    "@grantcodes/style-dictionary": "^1.1.0",
-    "@lit/react": "^1.0.3",
-    "classnames": "^2.5.1",
-    "react-dom": "^18.2.0",
-    "sanitize.css": "^13.0.0",
-    "shiki": "^1.1.7"
-  },
-  "devDependencies": {
-    "@ava/typescript": "^4.1.0",
-    "@babel/core": "^7.24.0",
-    "@grantcodes/commit": "^1.0.7",
-    "@storybook/addon-essentials": "^7.6.17",
-    "@storybook/web-components": "^7.6.17",
-    "@storybook/web-components-vite": "^7.6.17",
-    "ava": "^6.1.2",
-    "lit": "^3.1.2",
-    "lucide-static": "^0.344.0",
-    "npm-run-all": "^4.1.5",
-    "plop": "^4.0.1",
-    "rollup": "^4.12.0",
-    "sass": "^1.71.1",
-    "storybook": "^7.6.17",
-    "ts-standard": "^12.0.2",
-    "typescript": "^5.3.3",
-    "vite": "^5.1.4"
-  },
-  "files": [
-    "dist/**/*",
-    "CHANGELOG.md",
-    "README.md",
-    "LICENCE"
-  ],
-  "ava": {
-    "typescript": {
-      "compile": false,
-      "rewritePaths": {
-        "src/": "tmp/tests/"
-      }
-    }
-  }
+	"name": "@grantcodes/ui",
+	"version": "2.0.0-beta.1",
+	"description": "",
+	"type": "module",
+	"main": "dist/main.cjs",
+	"module": "dist/main.js",
+	"types": "dist/main.d.ts",
+	"author": "grantcodes",
+	"exports": {
+		".": {
+			"types": "./dist/main.d.ts",
+			"import": "./dist/main.js",
+			"require": "./dist/main.cjs"
+		},
+		"./react": {
+			"types": "./dist/react.d.ts",
+			"import": "./dist/react.js",
+			"require": "./dist/react.cjs"
+		},
+		"./styles/base.css": {
+			"import": "./dist/css/base.css",
+			"require": "./dist/css/base.css"
+		},
+		"./styles/themes/grantcodes.css": {
+			"import": "./dist/css/themes/grantcodes.css",
+			"require": "./dist/css/themes/grantcodes.css"
+		},
+		"./components/*": {
+			"import": "./dist/components/*",
+			"require": "./dist/components/*"
+		}
+	},
+	"scripts": {
+		"build": "vite build",
+		"watch": "rollup -c -w",
+		"generate": "plop",
+		"fix": "run-s fix:lint",
+		"fix:lint": "npx @biomejs/biome format --write src",
+		"test": "run-s test:lint test:unit",
+		"test:lint": "npx @biomejs/biome lint src",
+		"test:unit": "ava",
+		"storybook": "storybook dev -p 6006",
+		"build-storybook": "storybook build"
+	},
+	"license": "MIT",
+	"dependencies": {
+		"@grantcodes/style-dictionary": "^1.1.0",
+		"@lit/react": "^1.0.6",
+		"classnames": "^2.5.1",
+		"lit": "^3.2.1",
+		"react-dom": "^18.3.1",
+		"sanitize.css": "^13.0.0",
+		"shiki": "^1.22.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.2",
+		"@ava/typescript": "^5.0.0",
+		"@babel/core": "^7.25.8",
+		"@grantcodes/commit": "^1.0.7",
+		"@storybook/addon-essentials": "^8.3.6",
+		"@storybook/web-components": "^8.3.6",
+		"@storybook/web-components-vite": "^8.3.6",
+		"ava": "^6.1.3",
+		"lucide-static": "^0.453.0",
+		"npm-run-all": "^4.1.5",
+		"plop": "^4.0.1",
+		"rollup": "^4.24.0",
+		"sass": "^1.80.3",
+		"storybook": "^8.3.6",
+		"typescript": "^5.6.3",
+		"vite": "^5.4.9"
+	},
+	"peerDependencies": {},
+	"files": ["dist/**/*", "CHANGELOG.md", "README.md", "LICENCE"],
+	"ava": {
+		"typescript": {
+			"compile": false,
+			"rewritePaths": {
+				"src/": "tmp/tests/"
+			}
+		}
+	}
 }
