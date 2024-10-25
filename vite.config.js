@@ -22,7 +22,12 @@ export default defineConfig({
 				"lit/static-html.js",
 			],
 			output: {
-				assetFileNames: "[name].[ext]",
+				assetFileNames: (assetInfo) => {
+					if (/\.(woff2?|eot|ttf|otf)$/.test(assetInfo.name)) {
+						return "fonts/[name].[ext]";
+					}
+					return "[name].[ext]";
+				},
 				entryFileNames: "[name].js",
 				inlineDynamicImports: false,
 				preserveModules: true,

@@ -29,7 +29,8 @@
 		"./components/*": {
 			"import": "./dist/components/*",
 			"require": "./dist/components/*"
-		}
+		},
+		"./fonts/*": "./dist/fonts/*"
 	},
 	"scripts": {
 		"build": "vite build",
