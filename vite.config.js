@@ -15,11 +15,12 @@ export default defineConfig({
 				),
 			},
 			external: [
-				"react",
-				"lit",
-				"@lit/react",
-				"lit/decorators.js",
-				"lit/static-html.js",
+				/node_modules\/lit/,
+				/node_modules\/@lit/,
+				/node_modules\/react/,
+				/node_modules\/classnames/,
+				/node_modules\/shiki/,
+				/node_modules\/lucide/,
 			],
 			output: {
 				assetFileNames: (assetInfo) => {
