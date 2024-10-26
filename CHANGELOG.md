@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1-beta4](https://github.com/grantcodes/ui/compare/v2.0.0-beta4...v2.0.1-beta4) (2024-10-26)
+
+
+### Bug Fixes
+
+* **notice:** fix notice dismiss button ([254e20a](https://github.com/grantcodes/ui/commit/254e20ae232f33ebefbe2b69aaf6e16554fa1d91))
+
 ## [2.0.0-beta4](https://github.com/grantcodes/ui/compare/v1.3.0...v2.0.0-beta4) (2024-10-25)
 
 
