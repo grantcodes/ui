@@ -9,6 +9,8 @@
   gap: 1rem;
   padding: 1rem;
   border-radius: 0.25rem;
+  view-transition-name: notice;
+  transition: opacity 0.5s;
 }
 
 .notice--info {

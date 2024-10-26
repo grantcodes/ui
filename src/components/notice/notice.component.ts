@@ -38,35 +38,46 @@ export class GrantCodesNotice extends LitElement {
 	title = "";
 
 	/**
-	 * What to do when the notice is dismissed.
 	 *
-	 * @returns
 	 */
-	@property()
-	onDismiss?: () => void;
+	@property({ type: Boolean })
+	dismissable = false;
+
+	onDismiss(e: MouseEvent) {
+		if (document.startViewTransition) {
+			document.startViewTransition(() => {
+				this.remove();
+			});
+		} else {
+			this.remove();
+		}
+	}
+
+	renderDismiss() {
+		if (this.dismissable) {
+			return html`
+				<button class="notice__close" @click=${this.onDismiss}>
+					<grantcodes-icon icon="${X}" title="Close Notice"></grantcodes-icon>
+				</button>
+			`;
+		}
+		return html``;
+	}
 
 	render() {
 		const icon = ICONS[this.variant];
 
 		return html`
-      <aside class="${cx("notice", `notice--${this.variant}`)}">
-        <!-- <Icon icon="{iconEl}" class="notice__icon" /> -->
-        <grantcodes-icon icon="${icon}" class="notice__icon"></grantcodes-icon>
+			<aside class="${cx("notice", `notice--${this.variant}`)}">
+				<grantcodes-icon icon="${icon}" class="notice__icon"></grantcodes-icon>
 
-        <div class="notice__content">
-          ${this.title && html` <h2 class="notice__title">${this.title}</h2> `}
-          <p><slot></slot></p>
-        </div>
+				<div class="notice__content">
+					${this.title && html`<h2 class="notice__title">${this.title}</h2>`}
+					<p><slot></slot></p>
+				</div>
 
-        ${
-					this.onDismiss != null &&
-					html`
-          <button class="notice__close">
-            <grantcodes-icon icon="${X}" title="Close Notice"></grantcodes-icon>
-          </button>
-        `
-				}
-      </aside>
-    `;
+				${this.renderDismiss()}
+			</aside>
+		`;
 	}
 }

@@ -9,18 +9,19 @@ const meta: Meta = {
 		text: "This is the notice content",
 		title: "Notice title",
 		variant: "info",
+		dismissable: false,
 	},
 	argTypes: {
 		variant: {
 			type: "string",
 		},
 	},
-	render: ({ text, title, variant, onDismiss }) =>
+	render: ({ text, title, variant, dismissable }) =>
 		// TODO: I think on-dismiss is bad practice, because it's using on- prefix
 		html`<grantcodes-notice
       variant="${variant}"
       title="${title}"
-      on-dismiss="${onDismiss}"
+      ?dismissable="${dismissable}"
       >${text}</grantcodes-notice
     >`,
 };
