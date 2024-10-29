@@ -6,11 +6,11 @@ import {
 	queryAll,
 	queryAssignedElements,
 } from "lit/decorators.js";
+import { ifDefined } from "lit/directives/if-defined.js";
 import tabsStyles from "./tabs.scss?inline";
 import type { GrantCodesTab } from "./tab.component";
-import type { GrantCodesTabsTab } from "./tabs-tab.component";
-import "./tabs-tab";
-import "./tabs-panel";
+import type { GrantCodesTabsButton } from "./internal/tabs-button.component";
+import "./internal/tabs-button";
 import { generateId } from "../../lib/generate-id";
 
 @customElement("grantcodes-tabs")
@@ -20,31 +20,22 @@ export class GrantCodesTabs extends LitElement {
 	// via CSS custom properties.
 	static styles = [unsafeCSS(tabsStyles)];
 
-	// Define reactive properties--updating a reactive property causes
-	// the component to update.
-	// @property() label = 'Button Label'
-
 	constructor() {
 		super();
 
-		this.id = generateId("tabs");
+		if (!this.id) {
+			this.id = generateId("tabs");
+		}
 	}
 
 	@property({ type: String })
-	label = "";
-
-	// get labeledBy(): string | null {
-	//   if (this.label.startsWith('#')) {
-	//     return this.label
-	//   }
-	//   return null
-	// }
+	label?: string;
 
 	@queryAssignedElements({ selector: "grantcodes-tab" })
 	tabs!: GrantCodesTab[];
 
-	@queryAll("grantcodes-tabs-tab")
-	tabsListTabs!: GrantCodesTabsTab[];
+	@queryAll("grantcodes-tabs-button")
+	tabButtons!: GrantCodesTabsButton[];
 
 	@state()
 	focusedTabIndex = -1;
@@ -56,7 +47,7 @@ export class GrantCodesTabs extends LitElement {
 	set activeTab(tab: GrantCodesTab | null) {
 		// Ignore setting activeTab to null. As long as there are children, one tab
 		// must be selected.
-		this.tabs.map((t, i) => {
+		this.tabs.forEach((t, i) => {
 			if (t === tab) {
 				t.active = true;
 				this.focusedTabIndex = i;
@@ -67,11 +58,21 @@ export class GrantCodesTabs extends LitElement {
 		this.requestUpdate();
 	}
 
-	firstUpdated(): void {
-		this.requestUpdate();
+	private initializeTabs() {
+		this.tabs.forEach((tab, i) => {
+			tab.index = i;
+			tab.containerId = this.id;
+		});
+
+		// If no tab is active, default to the first tab.
 		if (this.activeTab == null) {
+			this.focusedTabIndex = 0;
 			this.activeTab = this.tabs[0];
 		}
+	}
+
+	firstUpdated(): void {
+		this.initializeTabs();
 	}
 
 	handleTabKeyDown(e: KeyboardEvent) {
@@ -83,53 +84,45 @@ export class GrantCodesTabs extends LitElement {
 					? (this.focusedTabIndex + 1) % tabs.length
 					: this.focusedTabIndex - 1;
 
-			// Focus the next tab.
-			const tabsListTab = this.tabsListTabs[nextIndex];
-			if (tabsListTab) {
-				tabsListTab.focus();
+			// Focus the next tab button.
+			const tabButton = this.tabButtons[nextIndex];
+			if (tabButton) {
+				tabButton.focus();
 				this.focusedTabIndex = nextIndex;
 			}
 		}
 	}
 
-	// TODO: Should be able to use arrow keys to browse tabs.
+	renderTabButtons() {
+		return this.tabs.map(
+			(tab, i) => html`
+				<grantcodes-tabs-button
+					index=${i + 1}
+					label="${tab.label}"
+					containerId="${this.id}"
+					?active=${tab.active}
+					@click=${() => {
+						this.activeTab = tab;
+					}}
+					@keydown=${this.handleTabKeyDown}
+				></grantcodes-tabs-button>
+			`,
+		);
+	}
 
 	render() {
 		return html`
-      <div class="tabs" id="${this.id}">
-        <div role="tablist" class="tabs__tablist" aria-label=${this.label}>
-          <div class="tabs__tablist__inner">
-            ${this.tabs.map(
-							(tab, i) =>
-								html`<grantcodes-tabs-tab
-                  index=${i + 1}
-                  label="${tab.label}"
-                  containerId="${this.id}"
-                  ?active=${tab.active}
-                  @click=${() => {
-										this.activeTab = tab;
-									}}
-                  @keydown=${this.handleTabKeyDown}
-                ></grantcodes-tabs-tab>`,
-						)}
-          </div>
-        </div>
+			<div class="tabs" id="${this.id}">
+				<div role="tablist" class="tabs__tablist" aria-label=${ifDefined(this.label)}>
+					<div class="tabs__tablist__inner">
+						${this.renderTabButtons()}
+					</div>
+				</div>
 
-        <div class="tabs__panels">
-          ${this.tabs.map(
-						(tab, i) =>
-							html`<grantcodes-tabs-panel
-                index=${i}
-                label="${tab.label}"
-                containerId="${this.id}"
-                ?active=${tab.active}
-                >${tab.content}</grantcodes-tabs-panel
-              >`,
-					)}
-        </div>
-
-        <slot></slot>
-      </div>
-    `;
+				<div class="tabs__panels">
+					<slot></slot>
+				</div>
+			</div>
+		`;
 	}
 }
