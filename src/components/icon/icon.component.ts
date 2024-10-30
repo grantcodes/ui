@@ -1,5 +1,6 @@
 import { LitElement, html, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
+import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import iconStyles from "./icon.scss?inline";
 
 @customElement("grantcodes-icon")
@@ -18,10 +19,6 @@ export class GrantCodesIcon extends LitElement {
 	// https://lucide.dev/guide/packages/lucide#custom-element-binding is probably what I want?
 
 	render() {
-		const iconWrapper = document.createElement("div");
-		iconWrapper.innerHTML = this.icon;
-		const iconSvg = iconWrapper.children[0];
-
-		return html`<span class="icon">${iconSvg}</span>`;
+		return html`<span class="icon">${unsafeHTML(this.icon)}</span>`;
 	}
 }
