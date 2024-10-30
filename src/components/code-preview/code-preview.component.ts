@@ -36,6 +36,8 @@ export class GrantCodesCodePreview extends LitElement {
 	}
 
 	render() {
-		return html` <div class="code-preview"></div> `;
+		return html`<div class="code-preview">
+			<pre><slot></slot></pre>
+		</div> `;
 	}
 }
