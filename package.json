@@ -10,13 +10,15 @@
 	"exports": {
 		".": {
 			"types": "./dist/main.d.ts",
-			"import": "./dist/main.js",
-			"require": "./dist/main.cjs"
+			"import": "./dist/main.js"
+		},
+		"./icons": {
+			"types": "./dist/icons.d.ts",
+			"import": "./dist/icons.js"
 		},
 		"./react": {
 			"types": "./dist/react.d.ts",
-			"import": "./dist/react.js",
-			"require": "./dist/react.cjs"
+			"import": "./dist/react.js"
 		},
 		"./styles/base.css": {
 			"import": "./dist/css/base.css",
@@ -73,12 +75,7 @@
 		"vite": "^5.4.9"
 	},
 	"peerDependencies": {},
-	"files": [
-		"dist/**/*",
-		"CHANGELOG.md",
-		"README.md",
-		"LICENCE"
-	],
+	"files": ["dist/**/*", "CHANGELOG.md", "README.md", "LICENCE"],
 	"ava": {
 		"typescript": {
 			"compile": false,
