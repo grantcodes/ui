@@ -33,12 +33,14 @@ export default defineConfig({
 				),
 			},
 			external: [
-				/node_modules\/lit/,
-				/node_modules\/@lit/,
-				/node_modules\/react/,
-				/node_modules\/classnames/,
-				/node_modules\/shiki/,
-				/node_modules\/lucide/,
+				"lit",
+				/lit\/.*.js/,
+				"lit/decorators.js",
+				/lit\/directives\/.*/,
+				"@lit/react",
+				"classnames",
+				"shiki/bundle/web",
+				"lucide-static",
 			],
 			output: {
 				assetFileNames: (assetInfo) => {

@@ -57,9 +57,9 @@
 		"shiki": "^1.22.0"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "1.9.2",
 		"@ava/typescript": "^5.0.0",
 		"@babel/core": "^7.25.8",
+		"@biomejs/biome": "1.9.2",
 		"@grantcodes/commit": "^1.0.7",
 		"@storybook/addon-essentials": "^8.3.6",
 		"@storybook/web-components": "^8.3.6",
@@ -74,7 +74,6 @@
 		"typescript": "^5.6.3",
 		"vite": "^5.4.9"
 	},
-	"peerDependencies": {},
 	"files": [
 		"dist/**/*",
 		"CHANGELOG.md",
