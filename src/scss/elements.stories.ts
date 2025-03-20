@@ -91,3 +91,20 @@ export const Radio: Story = {
 	},
 	render: ({ text }) => html`<input type="radio" />`,
 };
+
+export const DetailsSummary: Story = {
+	args: {
+		exclusive: false,
+	},
+	argTypes: {},
+	render: ({ exclusive }) => html`
+		<details name=${exclusive ? "accordion" : ""}>
+			<summary>Summary</summary>
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, ratione ad? Suscipit, impedit ipsa sed soluta sapiente totam? Voluptatibus, corporis.
+		</details>
+		<details name=${exclusive ? "accordion" : ""}>
+			<summary>Summary</summary>
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, ratione ad? Suscipit, impedit ipsa sed soluta sapiente totam? Voluptatibus, corporis.
+		</details>
+	`,
+};
