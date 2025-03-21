@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.0-beta.8](https://github.com/grantcodes/ui/compare/v2.0.0-beta.7...v2.0.0-beta.8) (2025-03-21)
+
+
+### Miscellaneous Chores
+
+* release 2.0.0-beta.8 ([72ab7b1](https://github.com/grantcodes/ui/commit/72ab7b1aa01b60f62e6516d2a5bc682cb969f11b))
+
 ## [2.0.0-beta.8](https://github.com/grantcodes/ui/compare/v2.0.0-beta.7...v2.0.0-beta.8) (2024-11-05)
 
 
