@@ -1,6 +1,6 @@
 import { LitElement, unsafeCSS } from "lit";
-import { html, literal } from "lit/static-html.js";
 import { customElement, property } from "lit/decorators.js";
+import { html, literal } from "lit/static-html.js";
 import buttonStyles from "./button.scss?inline";
 
 @customElement("grantcodes-button")
@@ -10,12 +10,20 @@ export class GrantCodesButton extends LitElement {
 	// via CSS custom properties.
 	static styles = [unsafeCSS(buttonStyles)];
 
-	// Define reactive properties--updating a reactive property causes
-	// the component to update.
-	// @property() label = 'Button Label'
-
 	@property()
 	href?: string;
+
+	@property({ type: String })
+	type: "button" | "submit" | "reset" = "button";
+
+	@property({ type: String })
+	name?: string;
+
+	@property({ type: String })
+	value?: string;
+
+	@property({ type: Boolean, reflect: true })
+	disabled = false;
 
 	// The render() method is called any time reactive properties change.
 	// Return HTML in a string template literal tagged with the `html`
@@ -23,12 +31,20 @@ export class GrantCodesButton extends LitElement {
 	// Expressions can set attribute values, property values, event handlers,
 	// and child nodes/text.
 	render() {
-		const tag = this.href ? literal`a` : literal`button`;
+		const isLink = !!this.href;
+		const tag = isLink ? literal`a` : literal`button`;
 
 		return html`
-      <${tag} href="${this.href}" class="button">
-        <span><slot></slot></span>
-      </${tag}>
-    `;
+			<${tag}
+				class="button"
+				href=${isLink ? this.href : undefined}
+				?disabled=${!isLink && this.disabled}
+				type=${!isLink ? this.type : undefined}
+				name=${!isLink ? this.name : undefined}
+				value=${!isLink ? this.value : undefined}
+			>
+				<span><slot></slot></span>
+			</${tag}>
+		`;
 	}
 }
