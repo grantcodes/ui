@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.0.0-beta.10](https://github.com/grantcodes/ui/compare/v2.0.0-beta.9...v2.0.0-beta.10) (2025-06-29)
+
+
+### Features
+
+* **button:** pass more button attributes to button component ([52f5828](https://github.com/grantcodes/ui/commit/52f5828ce5d5382318b0945fad84ad3b1b299374))
+
+
+### Miscellaneous Chores
+
+* release 2.0.0-beta.10 ([2eea9d0](https://github.com/grantcodes/ui/commit/2eea9d0e8a133508c66ee65fd57117d031434f05))
+
 ## [2.0.0-beta.9](https://github.com/grantcodes/ui/compare/v2.0.0-beta.8...v2.0.0-beta.9) (2025-03-21)
 
 
