@@ -1,7 +1,6 @@
 export default {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
-
-  addons: ['@storybook/addon-essentials'],
+  addons: ['@storybook/addon-docs'],
 
   features: {
     storyStoreV7: true,
@@ -10,9 +9,5 @@ export default {
   framework: {
     name: '@storybook/web-components-vite',
     options: {},
-  },
-
-  docs: {
-    autodocs: true,
-  },
-}
+  }
+};
