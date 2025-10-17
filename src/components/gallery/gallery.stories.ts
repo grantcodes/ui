@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/web-components-vite";
 import { html } from "lit";
+import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
+const { events, args, argTypes, template } =
+	getStorybookHelpers("grantcodes-gallery");
 import "./gallery.js";
 import "./gallery-image.js";
 
@@ -24,24 +27,31 @@ for (let i = 0; i < 12; i++) {
 	testImages.push(getTestImage());
 }
 
-// This default export determines where your story goes in the story list
 const meta: Meta = {
 	component: "grantcodes-gallery",
-	render: ({ caption }) =>
-		html`<grantcodes-gallery
-      >${testImages.map(
+	args: {
+		...args,
+		caption: "This is a test caption",
+	},
+	argTypes,
+	render: (args) =>
+		template(
+			args,
+			html`${testImages.map(
 				({ src, alt, width, height }) =>
 					html`<grantcodes-gallery-image
 						src=${src}
 						alt=${alt}
 						width=${width}
 						height=${height}
-						caption=${caption}
+						caption=${args.caption}
 					></grantcodes-gallery-image>`,
-			)}</grantcodes-gallery
-    >`,
-	args: {
-		caption: "This is a test caption",
+			)}`,
+		),
+	parameters: {
+		actions: {
+			handles: events,
+		},
 	},
 };
 

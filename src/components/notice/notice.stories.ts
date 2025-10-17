@@ -1,29 +1,31 @@
 import type { Meta, StoryObj } from "@storybook/web-components-vite";
 import { html } from "lit";
+import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
+const { events, args, argTypes, template } =
+	getStorybookHelpers("grantcodes-notice");
 import "./notice.js";
 
-// This default export determines where your story goes in the story list
 const meta: Meta = {
 	component: "grantcodes-notice",
 	args: {
+		...args,
 		text: "This is the notice content",
 		title: "Notice title",
 		variant: "info",
 		dismissable: false,
 	},
 	argTypes: {
+		...argTypes,
 		variant: {
 			type: "string",
 		},
 	},
-	render: ({ text, title, variant, dismissable }) =>
-		// TODO: I think on-dismiss is bad practice, because it's using on- prefix
-		html`<grantcodes-notice
-      variant="${variant}"
-      title="${title}"
-      ?dismissable="${dismissable}"
-      >${text}</grantcodes-notice
-    >`,
+	render: (args) => template(args, html`${args.text}`),
+	parameters: {
+		actions: {
+			handles: events,
+		},
+	},
 };
 
 export default meta;

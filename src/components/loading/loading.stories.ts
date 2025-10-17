@@ -1,14 +1,23 @@
 import type { Meta, StoryObj } from "@storybook/web-components-vite";
 import { html } from "lit";
+import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
+const { events, args, argTypes, template } =
+	getStorybookHelpers("grantcodes-loading");
 import "./loading.js";
 
-// This default export determines where your story goes in the story list
 const meta: Meta = {
 	component: "grantcodes-loading",
 	args: {
+		...args,
 		text: "Loading...",
 	},
-	render: ({ text }) => html`<grantcodes-loading>${text}</grantcodes-loading>`,
+	argTypes,
+	render: (args) => template(args, html`${args.text}`),
+	parameters: {
+		actions: {
+			handles: events,
+		},
+	},
 };
 
 export default meta;

@@ -1,26 +1,37 @@
 import type { Meta, StoryObj } from "@storybook/web-components-vite";
 import { html } from "lit";
+import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
+const { events, args, argTypes, template } = getStorybookHelpers(
+	"grantcodes-dropzone",
+);
 import "./dropzone.js";
 
-// This default export determines where your story goes in the story list
 const meta: Meta = {
 	component: "grantcodes-dropzone",
-	render: ({ placeholder, onChange, fullscreenOnDrag }) =>
-		html`<grantcodes-dropzone ?fullscreenOnDrag=${fullscreenOnDrag}>
-      <input
-        type="file"
-        placeholder="${placeholder}"
-        accept="*"
-        multiple
-        @change=${onChange}
-      />
-    </grantcodes-dropzone>`,
 	args: {
+		...args,
 		fullscreenOnDrag: true,
 		placeholder: "Placeholder in the dropzone slot",
 		onChange: (e: InputEvent) => {
 			const target = e.target as HTMLInputElement;
 			console.log("Received files:", target?.files);
+		},
+	},
+	argTypes,
+	render: (args) =>
+		template(
+			args,
+			html`<input
+				type="file"
+				placeholder="${args.placeholder}"
+				accept="*"
+				multiple
+				@change=${args.onChange}
+			/>`,
+		),
+	parameters: {
+		actions: {
+			handles: events,
 		},
 	},
 };

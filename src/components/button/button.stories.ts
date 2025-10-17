@@ -1,31 +1,20 @@
 import type { Meta, StoryObj } from "@storybook/web-components-vite";
+import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
+const { events, args, argTypes, template } =
+	getStorybookHelpers("grantcodes-button");
 import { html } from "lit";
 import "./button.js";
 
 const meta: Meta = {
 	component: "grantcodes-button",
-	args: {
-		label: "Button Label",
-		href: "https://www.google.com",
-		type: "button",
-		name: "button",
-		value: "button",
-		disabled: false,
+	args,
+	argTypes,
+	render: (args) => template(args, html`Button label`),
+	parameters: {
+		actions: {
+			handles: events,
+		},
 	},
-	render: ({
-		label,
-		href,
-		type,
-		name,
-		value,
-		disabled,
-	}) => html`<grantcodes-button
-		href=${href}
-		type=${type}
-		name=${name}
-		value=${value}
-		?disabled=${disabled}
-	>${label}</grantcodes-button>`,
 };
 
 export default meta;

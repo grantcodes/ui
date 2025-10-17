@@ -1,22 +1,27 @@
 import type { Meta, StoryObj } from "@storybook/web-components-vite";
 import { html } from "lit";
+import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
+const { events, args, argTypes, template } = getStorybookHelpers(
+	"grantcodes-form-field",
+);
 import "./form-field.js";
 
-// This default export determines where your story goes in the story list
 const meta: Meta = {
 	component: "grantcodes-form-field",
-	render: ({ label, error, help, slot }) =>
-		html`
-      <grantcodes-form-field label="${label}" help="${help}" error="${error}">
-        ${slot}
-      </grantcodes-form-field>
-    `,
-	decorators: [(story) => html`<form>${story()}</form>`],
 	args: {
+		...args,
 		label: "Label",
 		error: "",
 		help: "",
 		slot: html`<input type="text" placeholder="This is a placeholder" />`,
+	},
+	argTypes,
+	decorators: [(story) => html`<form>${story()}</form>`],
+	render: (args) => template(args, args.slot),
+	parameters: {
+		actions: {
+			handles: events,
+		},
 	},
 };
 

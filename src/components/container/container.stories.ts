@@ -1,27 +1,37 @@
 import type { Meta, StoryObj } from "@storybook/web-components-vite";
 import { html } from "lit";
+import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
+const { events, args, argTypes, template } = getStorybookHelpers(
+	"grantcodes-container",
+);
 import "./container.js";
 
-// This default export determines where your story goes in the story list
 const meta: Meta = {
 	component: "grantcodes-container",
-	render: ({ content, align, nopad }) =>
-		html`<grantcodes-container
-      style="background-color: var(--color-base-background-shade)"
-      align="${align}"
-      ?nopad=${nopad}
-      >${content}</grantcodes-container
-    >`,
 	args: {
+		...args,
 		content: "This content is inside the container.",
 		align: undefined,
 		nopad: false,
 	},
 	argTypes: {
+		...argTypes,
 		align: {
 			type: "string",
 			options: ["default", "wide", "full", "viewport"],
 			control: { type: "radio" },
+		},
+	},
+	render: (args) =>
+		template(
+			args,
+			html`<div style="background-color: var(--color-base-background-shade)">
+					${args.content}
+				</div>`,
+		),
+	parameters: {
+		actions: {
+			handles: events,
 		},
 	},
 };

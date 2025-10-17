@@ -1,5 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/web-components-vite";
 import { html } from "lit";
+import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
+const { events, args, argTypes, template } = getStorybookHelpers(
+	"grantcodes-code-preview",
+);
 import "./code-preview.js";
 
 const jsCode = `
@@ -27,19 +31,20 @@ body {
 }
 `;
 
-// This default export determines where your story goes in the story list
 const meta: Meta = {
 	component: "grantcodes-code-preview",
-	render: ({ code, language, theme }) =>
-		html`
-      <grantcodes-code-preview language="${language}" theme="${theme}">
-        ${code}
-      </grantcodes-code-preview>
-    `,
 	args: {
+		...args,
 		language: "javascript",
 		theme: "aurora-x",
 		code: jsCode,
+	},
+	argTypes,
+	render: (args) => template(args, html`${args.code}`),
+	parameters: {
+		actions: {
+			handles: events,
+		},
 	},
 };
 

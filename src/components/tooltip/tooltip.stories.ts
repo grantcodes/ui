@@ -1,21 +1,23 @@
 import type { Meta, StoryObj } from "@storybook/web-components-vite";
 import { html } from "lit";
+import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
+const { events, args, argTypes, template } =
+	getStorybookHelpers("grantcodes-tooltip");
 import "./tooltip.js";
 
-// This default export determines where your story goes in the story list
 const meta: Meta = {
 	component: "grantcodes-tooltip",
-	render: ({ label, description }) =>
-		html`
-      <div style="padding-block: 6rem">
-        <grantcodes-tooltip label=${label} description=${description}>
-          <span>This has a tooltip</span>
-        </grantcodes-tooltip>
-      </div>
-    `,
 	args: {
+		...args,
 		label: "This is a tooltip label",
 		description: "",
+	},
+	argTypes,
+	render: (args) => template(args, html`<span>This has a tooltip</span>`),
+	parameters: {
+		actions: {
+			handles: events,
+		},
 	},
 };
 
