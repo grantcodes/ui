@@ -1,0 +1,18 @@
+import { css } from "lit";
+
+export const codePreviewStyles = css`
+
+.code-preview > pre {
+  display: block;
+  font-family: var(--font-family-mono);
+  line-height: 1.2;
+  width: 100%;
+  overflow: auto;
+  border-radius: var(--component-card-border-radius);
+  box-shadow: u.shadow(0);
+  font-size: var(--font-size-small);
+  font-weight: 400;
+  padding: var(--size-space-unit, 1rem);
+}
+
+`;

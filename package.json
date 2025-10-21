@@ -3,97 +3,90 @@
 	"version": "2.0.0-beta.10",
 	"description": "",
 	"type": "module",
-	"main": "dist/main.js",
-	"module": "dist/main.js",
-	"types": "dist/main.d.ts",
+	"main": "src/main.js",
+	"module": "src/main.js",
+	"types": "src/main.d.ts",
 	"author": "grantcodes",
 	"exports": {
 		".": {
-			"types": "./dist/main.d.ts",
-			"import": "./dist/main.js"
+			"types": "./src/main.d.ts",
+			"import": "./src/main.js"
 		},
 		"./icons": {
-			"types": "./dist/icons.d.ts",
-			"import": "./dist/icons.js"
+			"types": "./src/icons.d.ts",
+			"import": "./src/icons.js"
 		},
 		"./react": {
-			"types": "./dist/react.d.ts",
-			"import": "./dist/react.js"
+			"types": "./src/react.d.ts",
+			"import": "./src/react.js"
 		},
 		"./styles/base.css": {
-			"import": "./dist/css/base.css",
-			"require": "./dist/css/base.css"
+			"import": "./src/scss/base.css",
+			"require": "./src/scss/base.css"
 		},
 		"./styles/themes/grantcodes.css": {
-			"import": "./dist/css/themes/grantcodes.css",
-			"require": "./dist/css/themes/grantcodes.css"
+			"import": "./src/scss/themes/grantcodes.css",
+			"require": "./src/scss/themes/grantcodes.css"
 		},
 		"./components/*": {
-			"import": "./dist/components/*",
-			"require": "./dist/components/*"
+			"import": "./src/components/*",
+			"require": "./src/components/*"
 		},
-		"./fonts/*": "./dist/fonts/*"
+		"./fonts/*": "./src/fonts/*"
 	},
 	"scripts": {
-		"build:vite": "vite build",
-		"build": "run-s build:vite cem",
-		"watch": "rollup -c -w",
+		"dev": "wds --config web-dev-server.config.mjs",
+		"storybook": "wds --config web-dev-server.config.mjs",
 		"generate": "plop",
 		"cem": "cem analyze --config custom-elements-manifest.config.js --litelement",
 		"fix": "run-s fix:lint",
 		"fix:lint": "npx @biomejs/biome format --write src",
 		"test": "run-s test:lint test:unit",
 		"test:lint": "npx @biomejs/biome lint src",
-		"test:unit": "ava",
-		"storybook": "storybook dev -p 6006",
-		"build-storybook": "storybook build"
+		"test:unit": "ava"
 	},
 	"license": "MIT",
 	"dependencies": {
 		"@grantcodes/style-dictionary": "^1.1.0",
 		"@lit/react": "^1.0.8",
-		"classnames": "^2.5.1",
 		"lit": "^3.3.1",
 		"react-dom": "^19.2.0",
 		"sanitize.css": "^13.0.0",
 		"shiki": "^3.13.0"
 	},
 	"devDependencies": {
-		"@ava/typescript": "^6.0.0",
 		"@babel/core": "^7.28.4",
 		"@biomejs/biome": "2.2.6",
 		"@custom-elements-manifest/analyzer": "^0.10.10",
 		"@grantcodes/commit": "^2.0.0",
 		"@storybook/addon-docs": "^9.1.12",
-		"@storybook/web-components-vite": "^9.1.12",
+		"@storybook/web-components": "^9.1.12",
 		"@wc-toolkit/cem-inheritance": "^1.2.2",
 		"@wc-toolkit/cem-sorter": "^1.0.1",
 		"@wc-toolkit/cem-validator": "^1.0.3",
 		"@wc-toolkit/module-path-resolver": "^1.0.0",
 		"@wc-toolkit/storybook-helpers": "^9.0.1",
-		"ava": "^6.4.1",
+		"@web/dev-server": "^0.4.6",
+		"@web/dev-server-storybook": "^2.0.3",
 		"lucide-static": "^0.546.0",
 		"npm-run-all": "^4.1.5",
 		"plop": "^4.0.4",
-		"rollup": "^4.52.4",
-		"sass": "^1.93.2",
-		"storybook": "^9.1.12",
-		"typescript": "^5.9.3",
-		"vite": "^7.1.10"
+		"storybook": "^9.1.12"
 	},
 	"files": [
-		"dist/**/*",
+		"src/**/*",
+		"custom-elements.json",
 		"CHANGELOG.md",
 		"README.md",
 		"LICENCE"
 	],
-	"customElements": "dist/custom-elements.json",
+	"customElements": "custom-elements.json",
 	"ava": {
-		"typescript": {
-			"compile": false,
-			"rewritePaths": {
-				"src/": "tmp/tests/"
-			}
-		}
+		"extensions": {
+			"js": true
+		},
+		"files": [
+			"src/**/*.test.js"
+		]
 	}
 }
