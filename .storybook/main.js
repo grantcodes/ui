@@ -1,5 +1,6 @@
 export default {
 	stories: ["../src/**/*.stories.@(js|jsx|ts|tsx|mdx)"],
+
 	// stories: [
 	// 	{
 	// 	  directory: '../src/components',
@@ -7,10 +8,10 @@ export default {
 	// 	  titlePrefix: 'Components',
 	// 	},
 	//   ],
+	addons: ["@storybook/addon-docs"],
+
 	framework: {
-		name: "@web/storybook-framework-web-components",
-	},
-	docs: {
-		autodocs: "tag",
+		name: "@storybook/web-components-vite",
+		options: {},
 	},
 };

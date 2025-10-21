@@ -16,10 +16,6 @@
 			"types": "./src/icons.d.ts",
 			"import": "./src/icons.js"
 		},
-		"./react": {
-			"types": "./src/react.d.ts",
-			"import": "./src/react.js"
-		},
 		"./styles/base.css": {
 			"import": "./src/scss/base.css",
 			"require": "./src/scss/base.css"
@@ -35,8 +31,9 @@
 		"./fonts/*": "./src/fonts/*"
 	},
 	"scripts": {
-		"dev": "wds --config web-dev-server.config.mjs",
-		"storybook": "wds --config web-dev-server.config.mjs",
+		"dev": "storybook dev -p 6006",
+		"storybook": "storybook dev -p 6006",
+		"build-storybook": "storybook build",
 		"generate": "plop",
 		"cem": "cem analyze --config custom-elements-manifest.config.js --litelement",
 		"fix": "run-s fix:lint",
@@ -48,30 +45,27 @@
 	"license": "MIT",
 	"dependencies": {
 		"@grantcodes/style-dictionary": "^1.1.0",
-		"@lit/react": "^1.0.8",
 		"lit": "^3.3.1",
-		"react-dom": "^19.2.0",
 		"sanitize.css": "^13.0.0",
 		"shiki": "^3.13.0"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.28.4",
 		"@biomejs/biome": "2.2.6",
 		"@custom-elements-manifest/analyzer": "^0.10.10",
 		"@grantcodes/commit": "^2.0.0",
-		"@storybook/addon-docs": "^9.1.12",
-		"@storybook/web-components": "^9.1.12",
+		"@storybook/addon-docs": "^9.1.13",
+		"@storybook/web-components": "^9.1.13",
+		"@storybook/web-components-vite": "^9.1.13",
 		"@wc-toolkit/cem-inheritance": "^1.2.2",
 		"@wc-toolkit/cem-sorter": "^1.0.1",
 		"@wc-toolkit/cem-validator": "^1.0.3",
 		"@wc-toolkit/module-path-resolver": "^1.0.0",
 		"@wc-toolkit/storybook-helpers": "^9.0.1",
-		"@web/dev-server": "^0.4.6",
-		"@web/dev-server-storybook": "^2.0.3",
 		"lucide-static": "^0.546.0",
 		"npm-run-all": "^4.1.5",
 		"plop": "^4.0.4",
-		"storybook": "^9.1.12"
+		"storybook": "^9.1.13",
+		"vite": "^7.0.0"
 	},
 	"files": [
 		"src/**/*",

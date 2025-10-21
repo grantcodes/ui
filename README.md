@@ -2,7 +2,7 @@
 
 A personal component system.
 
-Components are built with react using css modules for styles with theming provided by my custom style dictionary.
+Components are built with Lit web components using CSS modules for styles with theming provided by my custom style dictionary.
 
 ## Installing
 
@@ -12,16 +12,14 @@ In the future it should be something like `npm install @grantcodes/ui`.
 
 Everything should mostly just work out of the box, without much setup 🤞.
 
-There is a theme provider which can be used to wrap the entire application and change the theme.
+Components can be used directly in HTML or imported as ES modules.
 
+```html
+<grantcodes-button>Click me</grantcodes-button>
 ```
-import { Provider } from '@grantcodes/ui'
 
-const Component = () => (
-    <Provider theme="default">
-        <AppOrWhatever />
-    </Provider>
-)
+```javascript
+import { GrantCodesButton } from '@grantcodes/ui/components/button';
 ```
 
 ## Creating a new component
