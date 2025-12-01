@@ -37,14 +37,25 @@ export class GrantCodesButton extends LitElement {
 		const isLink = !!this.href;
 		const tag = isLink ? literal`a` : literal`button`;
 
+		if (isLink) {
+			return html`
+				<${tag}
+					class="button"
+					href=${this.href}
+					?disabled=${this.disabled}
+				>
+					<span><slot></slot></span>
+				</${tag}>
+			`;
+		}
+
 		return html`
 			<${tag}
 				class="button"
-				${isLink ? html`href=${this.href}` : html``}
+				type=${this.type}
+				name=${this.name ?? ""}
+				value=${this.value ?? ""}
 				?disabled=${this.disabled}
-				${!isLink ? html`type=${this.type}` : html``}
-				${!isLink ? html`name=${this.name ?? ""}` : html``}
-				${!isLink ? html`value=${this.value ?? ""}` : html``}
 			>
 				<span><slot></slot></span>
 			</${tag}>

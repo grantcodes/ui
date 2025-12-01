@@ -1,7 +1,7 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
 import { tooltipStyles } from "./tooltip.styles.js";
-import { generateId } from "../../lib/generate-id";
+import { generateId } from "../../lib/generate-id.js";
 
 export class GrantCodesTooltip extends LitElement {
 	// Styles are scoped to this element: they won't conflict with styles
@@ -37,6 +37,12 @@ export class GrantCodesTooltip extends LitElement {
 		this.slotted = slot ? slot.assignedElements() : [];
 		const labeledElement = this.slotted[0];
 		if (labeledElement) {
+			// Set up anchor name for CSS anchor positioning
+			const tooltipSlot = this.renderRoot.querySelector(".tooltip__slot");
+			if (tooltipSlot) {
+				tooltipSlot.style.anchorName = `--tooltip-${this.id}`;
+			}
+
 			if (this.label) {
 				labeledElement.setAttribute("aria-labelledby", this.id);
 			} else if (this.description) {
@@ -62,5 +68,3 @@ export class GrantCodesTooltip extends LitElement {
     `;
 	}
 }
-
-customElements.define("grantcodes-tooltip", GrantCodesTooltip);

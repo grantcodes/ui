@@ -17,9 +17,9 @@ const meta = {
 	render: (args) =>
 		template(
 			args,
-			html`<h3 slot="card-header">Card Header</h3>
-				<p slot="card-content">${args.content}</p>
-				<grantcodes-button-group slot="card-actions">
+			html`<h3 slot="header">Card Header</h3>
+				<p>${args.content}</p>
+				<grantcodes-button-group slot="footer">
 					<grantcodes-button>Action 1</grantcodes-button>
 					<grantcodes-button>Action 2</grantcodes-button>
 				</grantcodes-button-group>`,

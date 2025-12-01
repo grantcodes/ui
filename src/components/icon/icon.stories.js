@@ -1,25 +1,26 @@
-import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
-const { events, args, argTypes, template } =
-	getStorybookHelpers("grantcodes-icon");
+import { html } from "lit/static-html.js";
+import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import "./icon.js";
-import { ArrowRight } from "../../icons.js";
+import { ArrowRight, Heart, Star, CheckCircle2 } from "../../icons.js";
 
 const meta = {
 	title: "Components/Icon",
 	component: "grantcodes-icon",
-	args: {
-		...args,
-		icon: ArrowRight,
-	},
-	argTypes,
-	render: (args) => template(args),
-	parameters: {
-		actions: {
-			handles: events,
-		},
-	},
 };
 
 export default meta;
 
-export const Icon = {};
+export const Icon = {
+	render: () => html`<grantcodes-icon>${unsafeHTML(ArrowRight)}</grantcodes-icon>`,
+};
+
+export const MultipleIcons = {
+	render: () => html`
+		<div style="display: flex; gap: 1rem;">
+			<grantcodes-icon>${unsafeHTML(Heart)}</grantcodes-icon>
+			<grantcodes-icon>${unsafeHTML(Star)}</grantcodes-icon>
+			<grantcodes-icon>${unsafeHTML(CheckCircle2)}</grantcodes-icon>
+			<grantcodes-icon>${unsafeHTML(ArrowRight)}</grantcodes-icon>
+		</div>
+	`,
+};

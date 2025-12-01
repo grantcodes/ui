@@ -8,6 +8,7 @@ export class GrantCodesAvatar extends LitElement {
 		name: { type: String },
 		alt: { type: String },
 		initials: { type: String },
+		size: { type: String },
 	};
 
 	static styles = [avatarStyles];
@@ -31,6 +32,10 @@ export class GrantCodesAvatar extends LitElement {
 		 * Optional initials, used when there is no src set
 		 */
 		this.initials = "";
+		/**
+		 * Size variant: 'small', 'medium', or 'large'
+		 */
+		this.size = "medium";
 	}
 
 	/**
@@ -67,6 +72,7 @@ export class GrantCodesAvatar extends LitElement {
 		const content = this.src
 			? this.getImg()
 			: html`<span class="avatar__initials">${this.getInitials()}</span>`;
-		return html` <div class="avatar">${content}</div> `;
+		const sizeClass = this.size ? `avatar--${this.size}` : "";
+		return html` <div class="avatar ${sizeClass}">${content}</div> `;
 	}
 }

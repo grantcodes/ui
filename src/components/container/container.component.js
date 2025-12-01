@@ -36,5 +36,3 @@ export class GrantCodesContainer extends LitElement {
     `;
 	}
 }
-
-customElements.define("grantcodes-container", GrantCodesContainer);

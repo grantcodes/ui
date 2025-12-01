@@ -17,8 +17,29 @@ a:focus-visible {
 	text-decoration: underline wavy;
 }
 
-/* TODO: Maybe do special style for external links. */
-/* External links */
-a[href^="http"]::after {
-	/* content: ' 🔗'; */
+/* External links - special styling for links opening in new windows */
+a[target="_blank"]::after,
+a[rel~="external"]::after {
+	content: "↗";
+	display: inline-block;
+	margin-inline-start: 0.25em;
+	font-size: 0.85em;
+	opacity: 0.7;
+	vertical-align: super;
+	line-height: 1;
+}
+
+/* Alternative: Use :external pseudo-class when supported */
+/* biome-ignore lint/correctness/noUnknownPseudoClass: :external is a future CSS feature */
+@supports selector(:external) {
+	/* biome-ignore lint/correctness/noUnknownPseudoClass: :external is a future CSS feature */
+	a:external::after {
+		content: "↗";
+		display: inline-block;
+		margin-inline-start: 0.25em;
+		font-size: 0.85em;
+		opacity: 0.7;
+		vertical-align: super;
+		line-height: 1;
+	}
 }

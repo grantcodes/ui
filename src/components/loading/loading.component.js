@@ -19,5 +19,3 @@ export class GrantCodesLoading extends LitElement {
     `;
 	}
 }
-
-customElements.define("grantcodes-loading", GrantCodesLoading);

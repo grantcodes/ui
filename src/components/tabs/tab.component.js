@@ -1,4 +1,4 @@
-import { GrantCodesTabsItem } from "./internal/tabs-item.component";
+import { GrantCodesTabsItem } from "./internal/tabs-item.component.js";
 import { html } from "lit/static-html.js";
 import { tabsStyles } from "./tabs.styles.js";
 
@@ -18,5 +18,3 @@ export class GrantCodesTab extends GrantCodesTabsItem {
 		`;
 	}
 }
-
-customElements.define("grantcodes-tab", GrantCodesTab);

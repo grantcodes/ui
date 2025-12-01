@@ -4,9 +4,11 @@ var hasOwn = {}.hasOwnProperty;
 
 export function cx() {
 	var classes = "";
+	var i;
+	var arg;
 
-	for (var i = 0; i < arguments.length; i++) {
-		var arg = arguments[i];
+	for (i = 0; i < arguments.length; i++) {
+		arg = arguments[i];
 		if (arg) {
 			classes = appendClass(classes, parseValue(arg));
 		}
@@ -52,7 +54,7 @@ function appendClass(value, newClass) {
 	}
 
 	if (value) {
-		return value + " " + newClass;
+		return `${value} ${newClass}`;
 	}
 
 	return value + newClass;

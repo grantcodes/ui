@@ -3,7 +3,6 @@
 html {
 	font-family: var(--font-family-body);
 	line-height: var(--font-line-height-body);
-	/* TODO: NEED TO SET THIS SIZE ON THE HTML FOR IT TO WORK PROPERLY */
 	font-size: var(--font-size-base);
 	font-weight: var(--font-weight-body);
 }

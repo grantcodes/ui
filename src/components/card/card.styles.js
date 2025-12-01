@@ -11,11 +11,14 @@ export const cardStyles = css`
 
 :host {
 	display: block;
+	/* Enable container queries for responsive card layouts */
+	container-type: inline-size;
+	container-name: card;
 }
 
 .card {
 	display: flex;
-	width: 100%;
+	inline-size: 100%;
 	flex-direction: column;
 	justify-content: flex-start;
 	overflow: hidden;
@@ -24,13 +27,32 @@ export const cardStyles = css`
 	border-width: var(--component-card-border-width);
 	border-color: var(--component-card-border-color);
 	border-radius: var(--component-card-border-radius);
-	/* PLACEHOLDER: u.shadow(0) - manual conversion needed */
-	/* box-shadow: var(--shadow-0); */
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease,
+		background-color 0.2s ease;
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08), 0 6px 12px rgba(0, 0, 0, 0.04);
 }
 
-.card > img {
+
+/* Image support - images in header or content will be styled appropriately */
+.card__header img,
+.card__content img {
 	display: block;
 	width: 100%;
+	height: auto;
+	border-radius: inherit;
+}
+
+.card__header {
+	padding-inline: var(--size-space-unit, 1rem);
+	padding-block: calc(var(--size-space-unit, 1rem) * 0.75);
+	border-block-end: 1px solid var(--component-card-border-color);
+}
+
+.card__header ::slotted(*) {
+	margin: 0;
+	font-weight: 600;
+	font-size: var(--font-size-large, 1.125rem);
 }
 
 .card__content {
@@ -38,29 +60,21 @@ export const cardStyles = css`
 	flex-direction: column;
 	justify-content: flex-start;
 	gap: var(--size-space-unit, 1rem);
-	padding: var(--size-space-unit, 1rem);
+	padding-block: var(--size-space-unit, 1rem);
+	padding-inline: var(--size-space-unit, 1rem);
 }
 
 .card__content > * {
 	margin: 0;
 }
 
-.card__content > *:first-child {
-	margin-block-start: 0;
-}
-
-.card__content > *:last-child {
-	margin-block-end: 0;
-}
-
-/* Needs the extra specificity. */
-.card .card__actions {
+.card__footer {
 	display: flex;
-	width: 100%;
-	margin-block-start: auto;
-	border-radius: 0;
 	flex-direction: row;
 	flex-wrap: wrap;
+	justify-content: flex-end;
+	gap: calc(var(--size-space-unit, 1rem) * 0.5);
+	border-block-start: 1px solid var(--component-card-border-color);
 	background: var(--component-button-base-background);
 }
 
@@ -74,7 +88,8 @@ export const cardStyles = css`
 	padding-inline: var(--size-space-unit, 1rem);
 	padding-block: 1em;
 	font-size: var(--font-size-small);
-	background-color: var(--color-base-light-shade);
+	/* Use color-mix() for modern color manipulation */
+	background-color: color-mix(in srgb, var(--color-base-background-main) 90%, var(--color-base-primary-500) 10%);
 	color: var(--color-base-dark-shade);
 }
 
@@ -98,4 +113,3 @@ export const cardStyles = css`
 }
 
 `;
-

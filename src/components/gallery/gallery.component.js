@@ -23,5 +23,3 @@ export class GrantCodesGallery extends LitElement {
     `;
 	}
 }
-
-customElements.define("grantcodes-gallery", GrantCodesGallery);

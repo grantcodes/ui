@@ -8,4 +8,3 @@ function generateId(prefix) {
 }
 
 export { generateId };
-

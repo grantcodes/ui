@@ -36,7 +36,7 @@ export const galleryStyles = css`
   display: block;
   width: 100%;
   height: auto;
-  // Make the image square
+  /* Make the image square */
   aspect-ratio: 1;
   object-fit: cover;
   object-position: center;

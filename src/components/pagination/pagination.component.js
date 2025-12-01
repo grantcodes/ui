@@ -2,6 +2,7 @@ import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
 import { paginationStyles } from "./pagination.styles.js";
 import { GrantCodesButton } from "../button/button.component.js";
+import "../button/button.js";
 
 export class GrantCodesPagination extends LitElement {
 	// Styles are scoped to this element: they won't conflict with styles
@@ -14,6 +15,8 @@ export class GrantCodesPagination extends LitElement {
 	static properties = {
 		previousHref: { attribute: "previous-href" },
 		nextHref: { attribute: "next-href" },
+		page: { type: Number },
+		pages: { type: Number },
 	};
 
 	constructor() {
@@ -21,6 +24,8 @@ export class GrantCodesPagination extends LitElement {
 
 		this.previousHref = "";
 		this.nextHref = "";
+		this.page = 1;
+		this.pages = 1;
 	}
 
 	nextTemplate() {

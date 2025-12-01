@@ -7,33 +7,33 @@ export const containerStyles = css`
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  width: var(--size-block-width-normal);
-  max-width: 100%;
+  inline-size: var(--size-block-width-normal);
+  max-inline-size: 100%;
   padding-inline: var(--size-space-unit);
   margin-inline: auto;
   background-color: inherit;
 }
 
 .container--wide {
-  width: var(--size-block-width-wide);
+  inline-size: var(--size-block-width-wide);
 }
 
 .container--full {
-  width: 100%;
+  inline-size: 100%;
 }
 
 .container--viewport {
-  left: 50%;
+  inset-inline-start: 50%;
   position: relative;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  max-width: 100vw;
-  width: 100vw;
-  margin-left: -50dvw;
-  margin-right: -50dvw;
-  max-width: 100dvw;
-  width: 100dvw;
+  inset-inline-end: 50%;
+  margin-inline-start: -50vw;
+  margin-inline-end: -50vw;
+  max-inline-size: 100vw;
+  inline-size: 100vw;
+  margin-inline-start: -50dvw;
+  margin-inline-end: -50dvw;
+  max-inline-size: 100dvw;
+  inline-size: 100dvw;
 }
 
 .container--nopad {

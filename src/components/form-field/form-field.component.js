@@ -2,7 +2,7 @@ import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
 import { formFieldStyles } from "./form-field.styles.js";
 import { cx } from "../../lib/classnames.js";
-import { generateId } from "../../lib/generate-id";
+import { generateId } from "../../lib/generate-id.js";
 
 export class GrantCodesFormField extends LitElement {
 	static formAssociated = true;
@@ -55,6 +55,16 @@ export class GrantCodesFormField extends LitElement {
 	}
 
 	firstUpdated() {
+		// Initialize inputs and nested fields if not already set
+		if (!this.inputElements) {
+			this.inputElements = this.querySelectorAll(
+				"input, select, textarea",
+			);
+		}
+		if (!this.nestedFields) {
+			this.nestedFields = this.querySelectorAll("grantcodes-form-field");
+		}
+
 		const input = this.inputElements[0];
 
 		if (this.nestedFields.length > 0) {
@@ -112,7 +122,7 @@ export class GrantCodesFormField extends LitElement {
 	}
 
 	helpTemplate() {
-		if (this.help) {
+		if (!this.help) {
 			return html``;
 		}
 
@@ -161,5 +171,3 @@ export class GrantCodesFormField extends LitElement {
     `;
 	}
 }
-
-customElements.define("grantcodes-form-field", GrantCodesFormField);

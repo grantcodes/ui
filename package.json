@@ -40,32 +40,34 @@
 		"fix:lint": "npx @biomejs/biome format --write src",
 		"test": "run-s test:lint test:unit",
 		"test:lint": "npx @biomejs/biome lint src",
-		"test:unit": "ava"
+		"test:unit": "NODE_ENV=test node --test --test-concurrency=1 src/**/*.test.js"
 	},
 	"license": "MIT",
 	"dependencies": {
 		"@grantcodes/style-dictionary": "^1.1.0",
 		"lit": "^3.3.1",
 		"sanitize.css": "^13.0.0",
-		"shiki": "^3.13.0"
+		"shiki": "^3.17.1"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.2.6",
-		"@custom-elements-manifest/analyzer": "^0.10.10",
+		"@biomejs/biome": "2.3.8",
+		"@custom-elements-manifest/analyzer": "^0.11.0",
 		"@grantcodes/commit": "^2.0.0",
-		"@storybook/addon-docs": "^9.1.13",
-		"@storybook/web-components": "^9.1.13",
-		"@storybook/web-components-vite": "^9.1.13",
+		"@playwright/test": "^1.57.0",
+		"@storybook/addon-docs": "^10.1.2",
+		"@storybook/web-components": "^10.1.2",
+		"@storybook/web-components-vite": "^10.1.2",
 		"@wc-toolkit/cem-inheritance": "^1.2.2",
 		"@wc-toolkit/cem-sorter": "^1.0.1",
 		"@wc-toolkit/cem-validator": "^1.0.3",
 		"@wc-toolkit/module-path-resolver": "^1.0.0",
-		"@wc-toolkit/storybook-helpers": "^9.0.1",
-		"lucide-static": "^0.546.0",
+		"@wc-toolkit/storybook-helpers": "^10.0.0",
+		"happy-dom": "^20.0.11",
+		"lucide-static": "^0.555.0",
 		"npm-run-all": "^4.1.5",
 		"plop": "^4.0.4",
-		"storybook": "^9.1.13",
-		"vite": "^7.0.0"
+		"storybook": "^10.1.2",
+		"vite": "^7.2.6"
 	},
 	"files": [
 		"src/**/*",
@@ -74,13 +76,5 @@
 		"README.md",
 		"LICENCE"
 	],
-	"customElements": "custom-elements.json",
-	"ava": {
-		"extensions": {
-			"js": true
-		},
-		"files": [
-			"src/**/*.test.js"
-		]
-	}
+	"customElements": "custom-elements.json"
 }

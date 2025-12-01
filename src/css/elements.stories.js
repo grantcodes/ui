@@ -23,7 +23,7 @@ export const Image = {
 
 export const Figure = {
 	args: {},
-	render: ({ width, height }) =>
+	render: () =>
 		html`<figure>
       <img width="800" height="600" src="https://placehold.co/800x600" />
       <figcaption>This is a caption</figcaption>
@@ -42,7 +42,7 @@ export const Button = {
 		text: "This is a button",
 		disabled: false,
 	},
-	render: ({ text, disabled }) => html`<button>${text}</button>`,
+	render: ({ text }) => html`<button>${text}</button>`,
 };
 
 export const Input = {
@@ -61,7 +61,7 @@ export const Label = {
 
 export const Select = {
 	args: {},
-	render: ({ text }) => html`<select>
+	render: () => html`<select>
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
     <option value="3">Option 3</option>
@@ -80,14 +80,14 @@ export const Textarea = {
 
 export const Checkbox = {
 	args: {},
-	render: ({ text }) => html`<input type="checkbox" />`,
+	render: () => html`<input type="checkbox" />`,
 };
 
 export const Radio = {
 	args: {
 		text: "This is a radio",
 	},
-	render: ({ text }) => html`<input type="radio" />`,
+	render: () => html`<input type="radio" />`,
 };
 
 export const DetailsSummary = {

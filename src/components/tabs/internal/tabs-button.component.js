@@ -37,5 +37,3 @@ export class GrantCodesTabsButton extends GrantCodesTabsItem {
 		`;
 	}
 }
-
-customElements.define("grantcodes-tabs-button", GrantCodesTabsButton);

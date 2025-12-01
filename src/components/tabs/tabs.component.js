@@ -2,10 +2,10 @@ import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { tabsStyles } from "./tabs.styles.js";
-import { GrantCodesTab } from "./tab.component";
-import { GrantCodesTabsButton } from "./internal/tabs-button.component";
-import "./internal/tabs-button";
-import { generateId } from "../../lib/generate-id";
+import { GrantCodesTab } from "./tab.component.js";
+import { GrantCodesTabsButton } from "./internal/tabs-button.component.js";
+import "./internal/tabs-button.js";
+import { generateId } from "../../lib/generate-id.js";
 
 export class GrantCodesTabs extends LitElement {
 	// Styles are scoped to this element: they won't conflict with styles
@@ -128,5 +128,3 @@ export class GrantCodesTabs extends LitElement {
 		`;
 	}
 }
-
-customElements.define("grantcodes-tabs", GrantCodesTabs);

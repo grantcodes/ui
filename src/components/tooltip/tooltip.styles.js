@@ -15,19 +15,15 @@ export const tooltipStyles = css`
 .tooltip__slot {
   padding: 0.5rem;
   margin: -0.5rem;
+  /* Anchor name will be set via JavaScript to include unique ID */
 }
 
 .tooltip__content {
   display: none;
-  position: absolute;
   width: fit-content;
   margin: 0;
   max-width: 100%;
   min-width: 6rem;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 10px;
   z-index: 100;
   border-radius: var(--size-border-radius);
   padding: 0.6em 1em;
@@ -35,12 +31,32 @@ export const tooltipStyles = css`
   line-height: 1;
   color: var(--color-base-primary-900);
   background-color: var(--color-base-primary-100);
-  box-shadow: u.shadow(1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   user-select: none;
   text-align: center;
   opacity: 0;
   transition: opacity 0.2s;
   transition-behavior: allow-discrete;
+  
+  /* Modern CSS Anchor Positioning API */
+  /* This positions the tooltip relative to its anchor (the slot) */
+  position: absolute;
+  
+  /* Try anchor positioning first (modern browsers) */
+  position-anchor: var(--tooltip-anchor, none);
+  inset-area: block-end;
+  position-area: block-end;
+  margin-block-start: 0.5rem;
+  
+  /* Fallback for browsers without anchor positioning support */
+  @supports not (inset-area: block-end) {
+    /* Traditional positioning as fallback */
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0.5rem;
+  }
 }
 
 .tooltip__slot:hover + .tooltip__content,
@@ -48,6 +64,15 @@ export const tooltipStyles = css`
 .tooltip__slot:focus-within + .tooltip__content {
   display: block;
   opacity: 1;
+}
+
+/* Optional: Position tooltip above when near bottom of viewport */
+@media (prefers-reduced-motion: no-preference) {
+  .tooltip__content {
+    @starting-style {
+      opacity: 0;
+    }
+  }
 }
 
 `;

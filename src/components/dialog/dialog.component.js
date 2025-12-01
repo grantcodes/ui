@@ -76,5 +76,3 @@ export class GrantCodesDialog extends LitElement {
     `;
 	}
 }
-
-customElements.define("grantcodes-dialog", GrantCodesDialog);
