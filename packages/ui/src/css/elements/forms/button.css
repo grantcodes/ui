@@ -1,0 +1,15 @@
+/* PLACEHOLDER: @extend conversion needed */
+/* Original SCSS:
+@use '../../../components/button/button.css';
+
+button,
+input[type='submit'] {
+  @extend .button;
+}
+*/
+
+/* Manual conversion needed - inline button styles or use CSS custom properties */
+button,
+input[type="submit"] {
+	/* PLACEHOLDER: Add button styles here */
+}

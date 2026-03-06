@@ -1,0 +1,59 @@
+{
+	"name": "@grantcodes/style-dictionary",
+	"version": "1.1.0",
+	"type": "module",
+	"description": "My personal style dictionary",
+	"main": "./dist/js/default/style-dictionary.js",
+	"exports": {
+		"./wireframe/css": "./dist/css/wireframe/tokens.css",
+		"./wireframe/js": "./dist/js/wireframe/style-dictionary.js",
+		"./wireframe/json": "./dist/json/wireframe/tokens.json",
+		"./grantcodes/css": "./dist/css/grantcodes/tokens.css",
+		"./grantcodes/js": "./dist/js/grantcodes/style-dictionary.js",
+		"./grantcodes/json": "./dist/json/grantcodes/tokens.json",
+		"./todomap/css": "./dist/css/todomap/tokens.css",
+		"./todomap/js": "./dist/js/todomap/style-dictionary.js",
+		"./todomap/json": "./dist/json/todomap/tokens.json",
+		"./assets/fonts/greycliff": "./assets/fonts/greycliff.css",
+		"./assets/fonts/quicksand": "./assets/fonts/quicksand.css"
+	},
+	"types": {
+		"./wireframe/js": "./dist/js/wireframe/style-dictionary.d.ts",
+		"./grantcodes/js": "./dist/js/grantcodes/style-dictionary.d.ts",
+		"./todomap/js": "./dist/js/todomap/style-dictionary.d.ts"
+	},
+	"scripts": {
+		"build": "node ./build.js",
+		"clean": "rm -rf dist",
+		"prepublishOnly": "npm run clean && npm run build",
+		"fix": "run-s fix:lint",
+		"fix:lint": "npx @biomejs/biome format --write tokens build.js",
+		"test": "run-s lint",
+		"lint": "npx @biomejs/biome lint tokens build.js lib",
+		"test:unit": "node --test"
+	},
+	"author": {
+		"email": "mail@grant.codes",
+		"name": "Grant Richmond",
+		"url": "https://grant.codes"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/grantcodes/style-dictionary.git"
+	},
+	"bugs": {
+		"url": "https://github.com/grantcodes/style-dictionary/issues"
+	},
+	"homepage": "https://github.com/grantcodes/style-dictionary#readme",
+	"license": "MIT",
+	"devDependencies": {
+		"@biomejs/biome": "2.1.1",
+		"@grantcodes/commit": "^2.0.0",
+		"minimist": "^1.2.8",
+		"npm-run-all": "^4.1.5",
+		"style-dictionary": "^5.0.1"
+	},
+	"dependencies": {
+		"colorjs.io": "^0.5.2"
+	}
+}

@@ -1,0 +1,26 @@
+{
+  "focus-ring": {
+    "color": {
+      "default": {
+        "value": "rgba(106, 91, 197, 0.4)"
+      },
+      "contrast": {
+        "value": "{color.brand.200}"
+      },
+      "contrast-shadow": {
+        "value": "{color.brand.800}"
+      }
+    },
+    "width": {
+      "default": {
+        "value": "0.2rem"
+      }
+    },
+    "offset": {
+      "default": {
+        "value": "0px"
+      }
+    }
+  }
+}
+

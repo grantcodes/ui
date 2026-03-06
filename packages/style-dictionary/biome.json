@@ -1,0 +1,9 @@
+{
+	"root": false,
+	"$schema": "https://biomejs.dev/schemas/2.3.13/schema.json",
+	"extends": ["../biome.json"],
+	"files": {
+		"ignoreUnknown": false,
+		"includes": ["tokens/**", "lib/**", "build.js", "config.js"]
+	}
+}

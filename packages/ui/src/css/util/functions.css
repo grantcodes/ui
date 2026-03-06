@@ -1,0 +1,16 @@
+/* PLACEHOLDER: shadow() function conversion needed */
+/* Original SCSS:
+@function shadow($level: 0) {
+  $multiplier: $level + 1;
+  @return 0.1rem * $multiplier 0.2rem * $multiplier 0.4rem * $multiplier
+    rgba(0, 0, 0, 0.1 * $multiplier);
+}
+*/
+
+/* Manual conversion needed - consider using CSS custom properties for different shadow levels */
+:root {
+	--shadow-0: 0.1rem 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
+	--shadow-1: 0.2rem 0.4rem 0.8rem rgba(0, 0, 0, 0.2);
+	--shadow-2: 0.3rem 0.6rem 1.2rem rgba(0, 0, 0, 0.3);
+	--shadow-3: 0.4rem 0.8rem 1.6rem rgba(0, 0, 0, 0.4);
+}

@@ -1,92 +1,40 @@
 {
-  "name": "@grantcodes/ui",
-  "version": "1.2.0",
-  "description": "",
+  "name": "@grantcodes/ui-monorepo",
+  "version": "0.0.0",
+  "description": "Monorepo for grantcodes UI packages",
+  "private": true,
   "type": "module",
-  "main": "dist/main.cjs",
-  "module": "dist/main.js",
-  "types": "dist/main.d.ts",
-  "author": "grantcodes",
-  "exports": {
-    ".": {
-      "require": "./dist/main.cjs",
-      "import": "./dist/main.js",
-      "types": "./dist/main.d.ts"
-    }
-  },
   "scripts": {
-    "build": "rollup -c",
-    "watch": "rollup -c -w",
-    "generate": "plop",
-    "fix": "run-s fix:lint",
-    "fix:lint": "ts-standard --fix src",
-    "test": "run-s test:lint test:unit",
-    "test:lint": "ts-standard src",
-    "test:unit": "ava",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "dev": "turbo run dev",
+    "dev:ui": "pnpm --filter @grantcodes/ui dev",
+    "dev:website": "pnpm --filter @grantcodes/website dev",
+    "dev:style-dictionary": "pnpm --filter @grantcodes/style-dictionary build --watch",
+    "build": "turbo run build",
+    "build:ui": "pnpm --filter @grantcodes/ui build",
+    "build:style-dictionary": "pnpm --filter @grantcodes/style-dictionary build",
+    "build:website": "pnpm --filter @grantcodes/website build",
+    "test": "turbo run test",
+    "test:ui": "pnpm --filter @grantcodes/ui test",
+    "test:style-dictionary": "pnpm --filter @grantcodes/style-dictionary test",
+    "lint": "turbo run lint",
+    "lint:ui": "pnpm --filter @grantcodes/ui test:lint",
+    "lint:style-dictionary": "pnpm --filter @grantcodes/style-dictionary test:lint",
+    "fix": "turbo run fix",
+    "fix:ui": "pnpm --filter @grantcodes/ui fix",
+    "fix:style-dictionary": "pnpm --filter @grantcodes/style-dictionary fix",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "clean:all": "turbo run clean && rm -rf node_modules packages/*/node_modules apps/*/node_modules",
+    "storybook": "pnpm --filter @grantcodes/ui storybook",
+    "generate": "pnpm --filter @grantcodes/ui generate"
   },
   "license": "MIT",
-  "peerDependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
-  },
-  "dependencies": {
-    "@grantcodes/style-dictionary": "^1.1.0",
-    "@radix-ui/react-avatar": "^1.0.3",
-    "@radix-ui/react-dialog": "^1.0.4",
-    "@radix-ui/react-label": "^2.0.2",
-    "@radix-ui/react-slot": "^1.0.2",
-    "@radix-ui/react-tabs": "^1.0.4",
-    "@radix-ui/react-tooltip": "^1.0.6",
-    "@react-aria/button": "^3.8.0",
-    "classnames": "^2.3.2",
-    "react-icons": "^4.10.1",
-    "react-photo-view": "^1.2.3",
-    "react-syntax-highlighter": "^15.5.0",
-    "sanitize.css": "^13.0.0"
-  },
   "devDependencies": {
-    "@ava/typescript": "^4.0.0",
-    "@babel/core": "^7.22.5",
-    "@grantcodes/commit": "^1.0.7",
-    "@rollup/plugin-commonjs": "^25.0.2",
-    "@rollup/plugin-json": "^6.0.0",
-    "@rollup/plugin-node-resolve": "^15.1.0",
-    "@rollup/plugin-typescript": "^11.1.2",
-    "@storybook/addon-essentials": "^7.0.24",
-    "@storybook/builder-vite": "^7.0.24",
-    "@storybook/react": "^7.0.24",
-    "@storybook/react-vite": "^7.0.24",
-    "@types/react": "^18.2.14",
-    "@types/react-dom": "^18.2.6",
-    "@vitejs/plugin-react": "^4.0.1",
-    "ava": "^5.3.1",
-    "npm-run-all": "^4.1.5",
-    "plop": "^3.1.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "rollup": "^3.25.3",
-    "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-styles": "^4.0.0",
-    "sass": "^1.63.6",
-    "storybook": "^7.0.24",
-    "ts-standard": "^12.0.2",
-    "typescript": "^5.1.6",
-    "vite": "^4.3.9"
+    "@grantcodes/commit": "^2.0.0",
+    "turbo": "^2.3.3"
   },
-  "files": [
-    "dist/**/*",
-    "CHANGELOG.md",
-    "README.md",
-    "LICENCE"
-  ],
-  "ava": {
-    "typescript": {
-      "compile": false,
-      "rewritePaths": {
-        "src/": "tmp/tests/"
-      }
-    }
-  }
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.15.0"
 }

@@ -1,0 +1,17 @@
+import type { Meta, StoryObj } from '@storybook/web-components'
+import { html } from 'lit'
+import './{{kebabCase name}}.js'
+
+// This default export determines where your story goes in the story list
+const meta: Meta = {
+  component: 'grantcodes-{{kebabCase name}}',
+  render: ({ text }) => html`<grantcodes-{{kebabCase name}}>${text}</grantcodes-{{kebabCase name}}>`,
+  args: {
+    text: 'Text',
+  },
+}
+
+export default meta
+type Story = StoryObj
+
+export const {{pascalCase name}}: Story = {}

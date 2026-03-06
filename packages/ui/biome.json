@@ -1,0 +1,14 @@
+{
+	"root": false,
+	"$schema": "https://biomejs.dev/schemas/2.3.13/schema.json",
+	"extends": ["../biome.json"],
+	"files": {
+		"includes": [
+			"**",
+			"!**/dist/**",
+			"!**/storybook-static/**",
+			"!**/custom-elements.json",
+			"!**/node_modules/**"
+		]
+	}
+}

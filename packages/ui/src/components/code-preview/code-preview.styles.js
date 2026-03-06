@@ -1,0 +1,18 @@
+import { css } from "lit";
+
+export const codePreviewStyles = css`
+
+.code-preview > pre {
+  display: block;
+  font-family: var(--g-typography-font-family-system);
+  line-height: 1.2;
+  width: 100%;
+  overflow: auto;
+  border-radius: var(--g-theme-border-radius-md);
+  box-shadow: var(--g-theme-box-shadow-sm);
+  font-size: var(--g-typography-font-size-14);
+  font-weight: 400;
+  padding: 1rem;
+}
+
+`;

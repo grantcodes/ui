@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Style Dictionary Demo</title>
+    <link rel="stylesheet" href="./dist/css/grantcodes/tokens.css" />
+    <style>
+      .color {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        min-height: 12rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Style Dictionary Demo</h1>
+    <p>This is a demo of the Style Dictionary design tokens.</p>
+
+    <h2>Colors</h2>
+    <span
+      class="color"
+      style="
+        background-color: var(--g-theme-color-background-default);
+        color: var(--g-theme-color-content-default);
+      "
+      >Default</span
+    >
+    <span
+      class="color"
+      style="
+        background-color: var(--g-theme-color-background-default-hover);
+        color: var(--g-theme-color-content-default-hover);
+      "
+      >Default Hover</span
+    >
+    <span
+      class="color"
+      style="
+        background-color: var(--g-theme-color-background-subtle);
+        color: var(--g-theme-color-content-subtle);
+      "
+      >Subtle</span
+    >
+    <span
+      class="color"
+      style="
+        background-color: var(--g-theme-color-background-subtle-hover);
+        color: var(--g-theme-color-content-subtle-hover);
+      "
+      >Subtle Hover</span
+    >
+    <span
+      class="color"
+      style="
+        background-color: var(--g-theme-color-background-knockout);
+        color: var(--g-theme-color-content-knockout);
+      "
+      >Knockout</span
+    >
+    <span
+      class="color"
+      style="
+        background-color: var(--g-theme-color-background-brand);
+        color: var(--g-theme-color-content-brand);
+      "
+      >Brand</span
+    >
+    <span
+      class="color"
+      style="
+        background-color: var(--g-theme-color-background-brand-hover);
+        color: var(--g-theme-color-content-brand-hover);
+      "
+      >Brand Hover</span
+    >
+    <span
+      class="color"
+      style="
+        background-color: var(--g-theme-color-background-brand-knockout);
+        color: var(--g-theme-color-content-brand-knockout);
+      "
+      >Brand Knockout</span
+    >
+    <span
+      class="color"
+      style="
+        background-color: var(--g-theme-color-background-brand-knockout-hover);
+        color: var(--g-theme-color-content-brand-knockout-hover);
+      "
+      >Brand Knockout Hover</span
+    >
+    <span
+      class="color"
+      style="
+        background-color: var(--g-theme-color-background-utility-error);
+        color: var(--g-theme-color-content-utility-error);
+      "
+      >Utility Error</span
+    >
+    <span
+      class="color"
+      style="
+        background-color: var(--g-theme-color-background-utility-warning);
+        color: var(--g-theme-color-content-utility-warning);
+      "
+      >Utility Warning</span
+    >
+    <span
+      class="color"
+      style="
+        background-color: var(--g-theme-color-background-utility-success);
+        color: var(--g-theme-color-content-utility-success);
+      "
+      >Utility Success</span
+    >
+    <span
+      class="color"
+      style="
+        background-color: var(--g-theme-color-background-utility-info);
+        color: var(--g-theme-color-content-utility-info);
+      "
+      >Utility Info</span
+    >
+    <span
+      class="color"
+      style="
+        background-color: var(--g-theme-color-background-disabled);
+        color: var(--g-theme-color-content-disabled);
+      "
+      >Disabled</span
+    >
+    <span
+      class="color"
+      style="
+        background-color: var(--g-theme-color-background-transparent);
+        color: var(--g-theme-color-content-transparent);
+      "
+      >Transparent</span
+    >
+    <span
+      class="color"
+      style="
+        background-color: var(--g-theme-color-background-transparent-strong);
+        color: var(--g-theme-color-content-transparent-strong);
+      "
+      >Transparent Strong</span
+    >
+
+    <h2>Typography</h2>
+    <p style="font: var(--g-theme-typography-display-default)">
+      Display Default
+    </p>
+    <p style="font: var(--g-theme-typography-display-sm)">Display Small</p>
+    <p style="font: var(--g-theme-typography-headline-lg)">Headline Large</p>
+    <p style="font: var(--g-theme-typography-headline-default)">
+      Headline Default
+    </p>
+    <p style="font: var(--g-theme-typography-headline-sm)">Headline Small</p>
+    <p style="font: var(--g-theme-typography-title-lg)">Title Large</p>
+    <p style="font: var(--g-theme-typography-title-default)">Title Default</p>
+    <p style="font: var(--g-theme-typography-title-sm)">Title Small</p>
+    <p style="font: var(--g-theme-typography-label-lg)">Label Large</p>
+    <p style="font: var(--g-theme-typography-label-default)">Label Default</p>
+    <p style="font: var(--g-theme-typography-label-sm)">Label Small</p>
+    <p style="font: var(--g-theme-typography-body-lg)">Body Large</p>
+    <p style="font: var(--g-theme-typography-body-default)">Body Default</p>
+  </body>
+</html>

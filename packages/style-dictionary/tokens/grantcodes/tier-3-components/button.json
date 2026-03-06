@@ -1,0 +1,94 @@
+{
+  "button": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.background.brand}"
+        },
+        "hover": {
+          "value": "{color.background.brand-hover}"
+        },
+        "active": {
+          "value": "{color.background.brand-hover}"
+        },
+        "disabled": {
+          "value": "{color.background.default}"
+        }
+      },
+      "content": {
+        "default": {
+          "value": "{color.content.brand-knockout}"
+        },
+        "hover": {
+          "value": "{color.content.brand-knockout}"
+        },
+        "active": {
+          "value": "{color.content.brand-knockout}"
+        },
+        "disabled": {
+          "value": "{color.content.disabled}"
+        }
+      },
+      "border": {
+        "default": {
+          "value": "{color.border.default}"
+        },
+        "hover": {
+          "value": "{color.border.brand}"
+        },
+        "active": {
+          "value": "{color.border.brand}"
+        },
+        "disabled": {
+          "value": "{color.border.default}"
+        }
+      }
+    },
+    "primary": {
+      "color": {
+        "background": {
+          "default": {
+            "value": "{color.brand.purple.500}"
+          },
+          "hover": {
+            "value": "{color.brand.purple.600}"
+          },
+          "active": {
+            "value": "{color.brand.purple.700}"
+          },
+          "disabled": {
+            "value": "{color.background.brand-disabled}"
+          }
+        },
+        "content": {
+          "default": {
+            "value": "{color.neutral.white}"
+          },
+          "hover": {
+            "value": "{color.neutral.white}"
+          },
+          "active": {
+            "value": "{color.neutral.white}"
+          },
+          "disabled": {
+            "value": "{color.content.default}"
+          }
+        },
+        "border": {
+          "default": {
+            "value": "{color.brand.purple.500}"
+          },
+          "hover": {
+            "value": "{color.brand.purple.700}"
+          },
+          "active": {
+            "value": "{color.brand.purple.700}"
+          },
+          "disabled": {
+            "value": "{color.border.default}"
+          }
+        }
+      }
+    }
+  }
+}

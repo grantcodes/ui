@@ -1,0 +1,36 @@
+{
+  "color": {
+    "brand": {
+      "gray": {
+        "100": {
+          "value": "{color.neutral.100}"
+        },
+        "200": {
+          "value": "{color.neutral.200}"
+        },
+        "300": {
+          "value": "{color.neutral.300}"
+        },
+        "400": {
+          "value": "{color.neutral.400}"
+        },
+        "500": {
+          "value": "{color.neutral.500}"
+        },
+        "600": {
+          "value": "{color.neutral.600}"
+        },
+        "700": {
+          "value": "{color.neutral.700}"
+        },
+        "800": {
+          "value": "{color.neutral.800}"
+        },
+        "900": {
+          "value": "{color.neutral.900}"
+        }
+      }
+    }
+  }
+}
+

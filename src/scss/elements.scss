@@ -1,9 +1,0 @@
-@use '../components/Link/Link.module.scss' as link;
-
-img {
-  height: auto;
-}
-
-a {
-  @extend .Link;
-}
