@@ -1,0 +1,50 @@
+a {
+	color: var(--g-theme-link-color-content-default);
+	text-decoration: underline;
+	transition:
+		color 0.2s,
+		opacity 0.2s;
+}
+
+a:visited {
+	color: var(--g-theme-link-color-content-visited);
+	opacity: 0.6;
+}
+
+a:hover,
+a:focus-visible {
+	opacity: 1;
+	color: var(--g-theme-link-color-content-hover);
+	text-decoration: underline wavy;
+}
+
+a:active {
+	color: var(--g-theme-link-color-content-active);
+}
+
+/* External links - special styling for links opening in new windows */
+a[target="_blank"]::after,
+a[rel~="external"]::after {
+	content: "↗";
+	display: inline-block;
+	margin-inline-start: 0.25em;
+	font-size: 0.85em;
+	opacity: 0.7;
+	vertical-align: super;
+	line-height: 1;
+}
+
+/* Alternative: Use :external pseudo-class when supported */
+/* biome-ignore lint/correctness/noUnknownPseudoClass: :external is a future CSS feature */
+@supports selector(:external) {
+	/* biome-ignore lint/correctness/noUnknownPseudoClass: :external is a future CSS feature */
+	a:external::after {
+		content: "↗";
+		display: inline-block;
+		margin-inline-start: 0.25em;
+		font-size: 0.85em;
+		opacity: 0.7;
+		vertical-align: super;
+		line-height: 1;
+	}
+}

@@ -1,27 +1,76 @@
-# grant.codes UI
+# @grantcodes/ui Monorepo
 
-A personal component system.
+Monorepo for grantcodes UI packages and tools.
 
-Components are built with Lit web components using CSS modules for styles with theming provided by my custom style dictionary.
+## Packages
 
-## Installing
+- [`packages/ui`](./packages/ui) - Web components library built with Lit
+- [`packages/style-dictionary`](./packages/style-dictionary) - Design tokens and style dictionary
 
-In the future it should be something like `npm install @grantcodes/ui`.
+## Getting Started
 
-## Usage
+This monorepo uses [pnpm workspaces](https://pnpm.io/workspaces) and [Turborepo](https://turbo.build/) for package management and build orchestration.
 
-Everything should mostly just work out of the box, without much setup 🤞.
+### Prerequisites
 
-Components can be used directly in HTML or imported as ES modules.
+- Node.js >= 18.0.0
+- pnpm >= 8.0.0
 
-```html
-<grantcodes-button>Click me</grantcodes-button>
+### Installation
+
+```bash
+pnpm install
 ```
 
-```javascript
-import { GrantCodesButton } from '@grantcodes/ui/components/button';
+### Development
+
+Run development servers for all packages:
+
+```bash
+pnpm dev
 ```
 
-## Creating a new component
+Run a specific package:
 
-To create a new component run `npm run generate`. Uses plop.js for scaffolding.
+```bash
+pnpm --filter @grantcodes/ui dev
+pnpm --filter @grantcodes/style-dictionary build
+```
+
+### Building
+
+Build all packages:
+
+```bash
+pnpm build
+```
+
+### Testing
+
+Run tests for all packages:
+
+```bash
+pnpm test
+```
+
+### Linting
+
+Lint all packages:
+
+```bash
+pnpm lint
+```
+
+## Package Structure
+
+```
+packages/
+  ├── ui/              # Web components
+  └── style-dictionary/ # Design tokens
+```
+
+## License
+
+MIT
+
+

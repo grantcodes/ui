@@ -3,8 +3,11 @@
 	"prerelease": true,
 	"prerelease-type": "beta",
 	"packages": {
-		".": {
+		"packages/ui": {
 			"package-name": "@grantcodes/ui"
+		},
+		"packages/style-dictionary": {
+			"package-name": "@grantcodes/style-dictionary"
 		}
 	}
 }

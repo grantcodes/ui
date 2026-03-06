@@ -1,0 +1,31 @@
+/* CSS defaults */
+/* NOTE: Converted from SCSS - using standard CSS imports */
+@import "../../node_modules/sanitize.css/sanitize.css";
+@import "../../node_modules/sanitize.css/forms.css";
+@import "../../node_modules/sanitize.css/typography.css";
+@import "../../node_modules/sanitize.css/reduce-motion.css";
+
+@import "./typography.css";
+@import "./elements.css";
+
+/* Design tokens are provided by @grantcodes/style-dictionary and applied to :root */
+:root {
+	--grantcodes-ui-theme: "none";
+	background-color: var(--g-theme-color-background-default);
+	fill: currentColor;
+	
+	/* Focus ring styles - using tier-3 component tokens */
+	--component-focus-ring-color: var(--g-theme-focus-ring-color-default);
+	--component-focus-ring-width: var(--g-theme-focus-ring-width-default);
+	--component-focus-ring-offset: var(--g-theme-focus-ring-offset-default);
+}
+
+::selection {
+	background-color: var(--g-color-brand-purple-200);
+}
+
+/* Default backdrop styles */
+::backdrop {
+	background-color: rgba(0, 0, 0, 0.4);
+	backdrop-filter: blur(6px);
+}

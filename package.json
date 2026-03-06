@@ -1,80 +1,40 @@
 {
-	"name": "@grantcodes/ui",
-	"version": "2.0.0-beta.10",
-	"description": "",
-	"type": "module",
-	"main": "src/main.js",
-	"module": "src/main.js",
-	"types": "src/main.d.ts",
-	"author": "grantcodes",
-	"exports": {
-		".": {
-			"types": "./src/main.d.ts",
-			"import": "./src/main.js"
-		},
-		"./icons": {
-			"types": "./src/icons.d.ts",
-			"import": "./src/icons.js"
-		},
-		"./styles/base.css": {
-			"import": "./src/scss/base.css",
-			"require": "./src/scss/base.css"
-		},
-		"./styles/themes/grantcodes.css": {
-			"import": "./src/scss/themes/grantcodes.css",
-			"require": "./src/scss/themes/grantcodes.css"
-		},
-		"./components/*": {
-			"import": "./src/components/*",
-			"require": "./src/components/*"
-		},
-		"./fonts/*": "./src/fonts/*"
-	},
-	"scripts": {
-		"dev": "storybook dev -p 6006",
-		"storybook": "storybook dev -p 6006",
-		"build-storybook": "storybook build",
-		"generate": "plop",
-		"cem": "cem analyze --config custom-elements-manifest.config.js --litelement",
-		"fix": "run-s fix:lint",
-		"fix:lint": "npx @biomejs/biome format --write src",
-		"test": "run-s test:lint test:unit",
-		"test:lint": "npx @biomejs/biome lint src",
-		"test:unit": "NODE_ENV=test node --test --test-concurrency=1 src/**/*.test.js"
-	},
-	"license": "MIT",
-	"dependencies": {
-		"@grantcodes/style-dictionary": "^1.1.0",
-		"lit": "^3.3.1",
-		"sanitize.css": "^13.0.0",
-		"shiki": "^3.17.1"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "2.3.8",
-		"@custom-elements-manifest/analyzer": "^0.11.0",
-		"@grantcodes/commit": "^2.0.0",
-		"@playwright/test": "^1.57.0",
-		"@storybook/addon-docs": "^10.1.2",
-		"@storybook/web-components": "^10.1.2",
-		"@storybook/web-components-vite": "^10.1.2",
-		"@wc-toolkit/cem-inheritance": "^1.2.2",
-		"@wc-toolkit/cem-sorter": "^1.0.1",
-		"@wc-toolkit/cem-validator": "^1.0.3",
-		"@wc-toolkit/module-path-resolver": "^1.0.0",
-		"@wc-toolkit/storybook-helpers": "^10.0.0",
-		"happy-dom": "^20.0.11",
-		"lucide-static": "^0.555.0",
-		"npm-run-all": "^4.1.5",
-		"plop": "^4.0.4",
-		"storybook": "^10.1.2",
-		"vite": "^7.2.6"
-	},
-	"files": [
-		"src/**/*",
-		"custom-elements.json",
-		"CHANGELOG.md",
-		"README.md",
-		"LICENCE"
-	],
-	"customElements": "custom-elements.json"
+  "name": "@grantcodes/ui-monorepo",
+  "version": "0.0.0",
+  "description": "Monorepo for grantcodes UI packages",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "turbo run dev",
+    "dev:ui": "pnpm --filter @grantcodes/ui dev",
+    "dev:website": "pnpm --filter @grantcodes/website dev",
+    "dev:style-dictionary": "pnpm --filter @grantcodes/style-dictionary build --watch",
+    "build": "turbo run build",
+    "build:ui": "pnpm --filter @grantcodes/ui build",
+    "build:style-dictionary": "pnpm --filter @grantcodes/style-dictionary build",
+    "build:website": "pnpm --filter @grantcodes/website build",
+    "test": "turbo run test",
+    "test:ui": "pnpm --filter @grantcodes/ui test",
+    "test:style-dictionary": "pnpm --filter @grantcodes/style-dictionary test",
+    "lint": "turbo run lint",
+    "lint:ui": "pnpm --filter @grantcodes/ui test:lint",
+    "lint:style-dictionary": "pnpm --filter @grantcodes/style-dictionary test:lint",
+    "fix": "turbo run fix",
+    "fix:ui": "pnpm --filter @grantcodes/ui fix",
+    "fix:style-dictionary": "pnpm --filter @grantcodes/style-dictionary fix",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "clean:all": "turbo run clean && rm -rf node_modules packages/*/node_modules apps/*/node_modules",
+    "storybook": "pnpm --filter @grantcodes/ui storybook",
+    "generate": "pnpm --filter @grantcodes/ui generate"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@grantcodes/commit": "^2.0.0",
+    "turbo": "^2.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.15.0"
 }

@@ -1,0 +1,183 @@
+@import "../../util/index.css";
+
+:where(input, textarea, select) {
+	display: block;
+	accent-color: var(--g-theme-form-input-accent-color-default);
+	border-radius: var(--g-theme-border-radius-md);
+	border-width: var(--g-theme-border-width-md);
+	border-style: solid;
+	border-color: var(--g-theme-form-color-border-default);
+	background: var(--g-theme-form-color-background-default);
+	color: var(--g-theme-form-color-content-default);
+	padding: 0.5em 1em;
+	transition:
+		color 0.2s,
+		background-color 0.2s,
+		border-color 0.2s,
+		outline 0.2s;
+	font-size: 1rem;
+
+	/* Inlined focus-ring styles from mixin */
+	outline-color: transparent;
+	outline-offset: var(--g-theme-focus-ring-offset-default);
+	outline-style: solid;
+	outline-width: var(--g-theme-focus-ring-width-default);
+}
+
+:where(input, textarea, select):focus-visible {
+	outline-color: var(--g-theme-focus-ring-color-default);
+}
+
+@media (prefers-contrast: more) {
+	:where(input, textarea, select):focus-visible {
+		outline-color: var(--g-theme-focus-ring-color-contrast);
+		box-shadow: 0 0 0
+			calc(
+				(
+					var(--g-theme-focus-ring-width-default) +
+					var(--g-theme-focus-ring-offset-default)
+				) *
+				1.5
+			)
+			var(--g-theme-focus-ring-color-contrast-shadow);
+	}
+}
+
+:where(input, textarea, select):not(textarea) {
+	line-height: 1.1;
+}
+
+:where(input, textarea, select):hover {
+	border-color: var(--g-theme-form-color-border-hover);
+	color: var(--g-theme-form-color-content-hover);
+	background: var(--g-theme-form-color-background-hover);
+}
+
+:where(input, textarea, select):focus {
+	border-color: var(--g-theme-form-color-border-focus);
+	color: var(--g-theme-form-color-content-focus);
+	background: var(--g-theme-form-color-background-focus);
+}
+
+:where(input, textarea, select):invalid:not(:active) {
+	border-color: var(--g-theme-form-color-border-error);
+}
+
+:where(input, textarea, select)[readonly] {
+	cursor: not-allowed;
+	border-style: dashed;
+}
+
+
+:where(input, textarea, select):disabled {
+	border-color: var(--g-theme-form-color-border-disabled);
+	background: var(--g-theme-form-color-background-disabled);
+	color: var(--g-theme-form-color-content-disabled);
+	cursor: not-allowed;
+	opacity: 0.6;
+	filter: grayscale(100%) brightness(80%);
+}
+
+:where(input, textarea, select):disabled:hover,
+:where(input, textarea, select):disabled:focus-visible {
+	border-color: var(--g-theme-form-color-border-disabled);
+	background: var(--g-theme-form-color-background-disabled);
+	color: var(--g-theme-form-color-content-disabled);
+}
+
+:where(input, textarea, select):where(textarea) {
+	line-height: 1.5;
+	min-height: 4.3em; /* Allows 2 rows with no scrollbar */
+	resize: vertical;
+}
+
+:where(input, textarea, select):where(select) {
+	position: relative;
+	cursor: pointer;
+	padding-inline-end: 2.5em;
+}
+
+:where(input, textarea, select):where(select),
+:where(input, textarea, select):where(select):hover,
+:where(input, textarea, select):where(select):focus,
+:where(input, textarea, select):where(select):focus-visible {
+	background-position: right 1em top 50%;
+	background-size: 1em;
+	background-image: url('data:image/svg+xml;utf8,<svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="tIfrV5XfYIEuoFNktgCj " aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+	background-repeat: no-repeat;
+}
+
+:where(input, textarea, select):where(option) {
+	padding-block: 0.2em;
+	font-size: 1em;
+}
+
+:where(input, textarea, select):where(option):nth-of-type(2n) {
+	background-color: rgba(0, 0, 0, 0.05);
+}
+
+:where(input, textarea, select):where(option):checked {
+	background: var(--g-theme-color-background-brand);
+	color: var(--g-theme-color-content-brand-knockout);
+}
+
+:where(input, textarea, select):where([type="checkbox"]),
+:where(input, textarea, select):where([type="radio"]) {
+	display: block;
+	position: relative;
+	appearance: none;
+	width: 1.2rem;
+	height: 1.2rem;
+	padding: 0;
+	cursor: pointer;
+}
+
+:where(input, textarea, select):where([type="checkbox"]) {
+	border-radius: calc(var(--g-theme-border-radius-md) / 2);
+}
+
+:where(input, textarea, select):where([type="checkbox"])::after {
+	content: "✓";
+	speak: none;
+	display: block;
+	position: absolute;
+	font-size: 0.8rem;
+	font-weight: bold;
+	line-height: 0;
+	left: 0;
+	width: 100%;
+	top: 50%;
+	color: transparent;
+	text-align: center;
+	transition: color 0.2s;
+}
+
+:where(input, textarea, select):where([type="checkbox"]):checked {
+	border-color: var(--g-theme-color-border-brand);
+	background-color: var(--g-theme-color-border-brand);
+}
+
+:where(input, textarea, select):where([type="checkbox"]):checked::after {
+	color: var(--g-theme-color-border-default);
+}
+
+:where(input, textarea, select):where([type="radio"]) {
+	border-radius: 50%;
+}
+
+/* PLACEHOLDER: math.div() conversion needed */
+:where(input, textarea, select):where([type="radio"])::after {
+	content: "";
+	display: block;
+	border-radius: 50%;
+	/* PLACEHOLDER: $radio-inner-size: 70% - convert math.div(100% - $radio-inner-size, 2) */
+	width: 70%;
+	height: 70%;
+	margin: calc((100% - 70%) / 2);
+	inset: 0;
+	transition: background-color 0.2s;
+}
+
+:where(input, textarea, select):where([type="radio"]):checked::after {
+	background-color: var(--g-theme-color-border-brand);
+}

@@ -1,0 +1,63 @@
+/* Component base styles - inlined from mixin */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+:host {
+	display: block;
+}
+
+/* PLACEHOLDER: custom-scrollbar mixin conversion needed */
+/* Original SCSS:
+@mixin custom-scrollbar($size: 0.5rem) {
+  &::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: math.div($size, 2);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: math.div($size, 2);
+    min-height: 2rem;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+}
+*/
+
+/* Manual conversion needed - convert math.div($size, 2) to calc($size / 2) */
+.custom-scrollbar {
+	/* PLACEHOLDER: Add manual conversion here */
+}
+
+/* Focus ring styles - using tier-3 component tokens */
+:host {
+	outline-color: transparent;
+	outline-offset: var(--g-theme-focus-ring-offset-default);
+	outline-style: solid;
+	outline-width: var(--g-theme-focus-ring-width-default);
+}
+
+:host:focus-visible {
+	outline-color: var(--g-theme-focus-ring-color-default);
+}
+
+@media (prefers-contrast: more) {
+	:host:focus-visible {
+		outline-color: var(--g-theme-focus-ring-color-contrast);
+		box-shadow: 0 0 0
+			calc(
+				(
+					var(--g-theme-focus-ring-width-default) +
+					var(--g-theme-focus-ring-offset-default)
+				) *
+				1.5
+			)
+			var(--g-theme-focus-ring-color-contrast-shadow);
+	}
+}

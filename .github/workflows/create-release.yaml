@@ -9,13 +9,19 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     steps:
-      - uses: googleapis/release-please-action@v4
-        name: Create release PR
-        with:
-          release-type: node
-
       - uses: actions/checkout@v4
         name: Checkout code
+
+      - uses: googleapis/release-please-action@v4
+        name: Create release PR
+        id: release
+        with:
+          config-file: release-please-config.json
+
+      - uses: pnpm/action-setup@v4
+        name: Setup pnpm
+        with:
+          version: 8.15.0
         if: ${{ steps.release.outputs.release_created }}
 
       - uses: actions/setup-node@v4
@@ -25,20 +31,44 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
         if: ${{ steps.release.outputs.release_created }}
 
-      - run: npm ci
+      - run: pnpm install --frozen-lockfile
         name: Install dependencies
         if: ${{ steps.release.outputs.release_created }}
 
-      - run: npm test
+      - run: pnpm test
         name: Run tests
         if: ${{ steps.release.outputs.release_created }}
 
-      - run: npm run build
+      - run: pnpm build
         name: Run build
         if: ${{ steps.release.outputs.release_created }}
 
-      - run: npm publish
-        name: Publish to NPM
+      - name: Check which packages have releases
+        if: ${{ steps.release.outputs.release_created }}
+        id: changed-packages
+        run: |
+          CHANGED_PACKAGES=""
+          # Check if UI package has version/CHANGELOG changes (release-please updates these)
+          if git diff --name-only HEAD~1 HEAD | grep -qE "^packages/ui/(package\.json|CHANGELOG\.md)"; then
+            CHANGED_PACKAGES="${CHANGED_PACKAGES}ui "
+          fi
+          # Check if style-dictionary package has version/CHANGELOG changes
+          if git diff --name-only HEAD~1 HEAD | grep -qE "^packages/style-dictionary/(package\.json|CHANGELOG\.md)"; then
+            CHANGED_PACKAGES="${CHANGED_PACKAGES}style-dictionary "
+          fi
+          echo "packages=$CHANGED_PACKAGES" >> $GITHUB_OUTPUT
+          echo "Packages with releases: $CHANGED_PACKAGES"
+
+      - name: Publish @grantcodes/ui
+        if: ${{ steps.release.outputs.release_created && contains(steps.changed-packages.outputs.packages, 'ui') }}
+        working-directory: packages/ui
+        run: pnpm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        if: ${{ steps.release.outputs.release_created }}
+
+      - name: Publish @grantcodes/style-dictionary
+        if: ${{ steps.release.outputs.release_created && contains(steps.changed-packages.outputs.packages, 'style-dictionary') }}
+        working-directory: packages/style-dictionary
+        run: pnpm publish --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

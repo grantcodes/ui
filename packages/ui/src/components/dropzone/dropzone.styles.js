@@ -1,0 +1,64 @@
+import { css } from "lit";
+
+export const dropzoneStyles = css`
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+:host {
+	display: block;
+}
+
+.dropzone {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 2rem;
+	border: max(var(--g-theme-border-width-md), 0.2rem) dashed var(--g-theme-color-border-default);
+	border-radius: var(--g-theme-border-radius-md);
+	background-color: var(--g-theme-color-background-subtle);
+}
+
+.dropzone--fullscreen {
+	position: fixed;
+	inset: 0;
+	z-index: 10;
+	background-color: var(--g-theme-color-background-default);
+}
+
+.dropzone--fullscreen::after {
+	content: '';
+	display: flex;
+	position: fixed;
+	inset: 2rem;
+	justify-content: center;
+	align-items: center;
+	padding: 2rem;
+	border: max(calc(var(--g-theme-border-width-md) * 2), 0.4rem) dashed var(--g-theme-color-border-default);
+	border-radius: calc(var(--g-theme-border-radius-md) * 2);
+	z-index: 11;
+	font-weight: bold;
+	color: inherit;
+}
+
+::slotted(input),
+.dropzone__input {
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 100%;
+	inset: 0;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.dropzone--fullscreen ::slotted(input),
+.dropzone--fullscreen .dropzone__input {
+	position: fixed;
+	z-index: 12;
+}
+`;
