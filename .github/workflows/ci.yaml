@@ -71,7 +71,10 @@ jobs:
       - run: pnpm install --frozen-lockfile
         name: Install dependencies
 
-      - run: pnpm build
+      - name: Clear turbo cache
+        run: rm -rf .turbo
+
+      - run: pnpm build --force
         name: Build
 
 
