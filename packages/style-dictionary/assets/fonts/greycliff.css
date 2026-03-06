@@ -1,0 +1,161 @@
+@font-face {
+  font-family: Greycliff;
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url('./greycliff-extra-light.woff2') format('woff2'),
+    url('./greycliff-extra-light.woff') format('woff');
+}
+
+@font-face {
+  font-family: Greycliff;
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url('./greycliff-light.woff2') format('woff2'),
+    url('./greycliff-light.woff') format('woff');
+}
+
+@font-face {
+  font-family: Greycliff;
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('./greycliff-thin.woff2') format('woff2'),
+    url('./greycliff-thin.woff') format('woff');
+}
+
+@font-face {
+  font-family: Greycliff;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./greycliff-regular.woff2') format('woff2'),
+    url('./greycliff-regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: Greycliff;
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./greycliff-medium.woff2') format('woff2'),
+    url('./greycliff-medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: Greycliff;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./greycliff-demi-bold.woff2') format('woff2'),
+    url('./greycliff-demi-bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: Greycliff;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('./greycliff-bold.woff2') format('woff2'),
+    url('./greycliff-bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: Greycliff;
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('./greycliff-extra-bold.woff2') format('woff2'),
+    url('./greycliff-extra-bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: Greycliff;
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('./greycliff-heavy.woff2') format('woff2'),
+    url('./greycliff-heavy.woff') format('woff');
+}
+
+@font-face {
+  font-family: Greycliff;
+  font-style: italic;
+  font-weight: 100;
+  font-display: swap;
+  src: url('./greycliff-extra-light-oblique.woff2') format('woff2'),
+    url('./greycliff-extra-light-oblique.woff') format('woff');
+}
+
+@font-face {
+  font-family: Greycliff;
+  font-style: italic;
+  font-weight: 200;
+  font-display: swap;
+  src: url('./greycliff-light-oblique.woff2') format('woff2'),
+    url('./greycliff-light-oblique.woff') format('woff');
+}
+
+@font-face {
+  font-family: Greycliff;
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url('./greycliff-thin-oblique.woff2') format('woff2'),
+    url('./greycliff-thin-oblique.woff') format('woff');
+}
+
+@font-face {
+  font-family: Greycliff;
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./greycliff-regular-oblique.woff2') format('woff2'),
+    url('./greycliff-regular-oblique.woff') format('woff');
+}
+
+@font-face {
+  font-family: Greycliff;
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./greycliff-medium-oblique.woff2') format('woff2'),
+    url('./greycliff-medium-oblique.woff') format('woff');
+}
+
+@font-face {
+  font-family: Greycliff;
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./greycliff-demi-bold-oblique.woff2') format('woff2'),
+    url('./greycliff-demi-bold-oblique.woff') format('woff');
+}
+
+@font-face {
+  font-family: Greycliff;
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url('./greycliff-bold-oblique.woff2') format('woff2'),
+    url('./greycliff-bold-oblique.woff') format('woff');
+}
+
+@font-face {
+  font-family: Greycliff;
+  font-style: italic;
+  font-weight: 800;
+  font-display: swap;
+  src: url('./greycliff-extra-bold-oblique.woff2') format('woff2'),
+    url('./greycliff-extra-bold-oblique.woff') format('woff');
+}
+
+@font-face {
+  font-family: Greycliff;
+  font-style: italic;
+  font-weight: 900;
+  font-display: swap;
+  src: url('./greycliff-heavy-oblique.woff2') format('woff2'),
+    url('./greycliff-heavy-oblique.woff') format('woff');
+}

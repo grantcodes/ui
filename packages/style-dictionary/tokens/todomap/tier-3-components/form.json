@@ -1,0 +1,69 @@
+{
+  "form": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.background.default}"
+        },
+        "focus": {
+          "value": "{color.background.default}"
+        },
+        "hover": {
+          "value": "{color.background.subtle}"
+        },
+        "active": {
+          "value": "{color.background.default}"
+        },
+        "disabled": {
+          "value": "{color.background.default}"
+        }
+      },
+      "content": {
+        "default": {
+          "value": "{color.content.default}"
+        },
+        "focus": {
+          "value": "{color.content.default}"
+        },
+        "hover": {
+          "value": "{color.content.default}"
+        },
+        "active": {
+          "value": "{color.content.default}"
+        },
+        "disabled": {
+          "value": "{color.content.subtle}"
+        }
+      },
+      "border": {
+        "default": {
+          "value": "{color.neutral.500}"
+        },
+        "focus": {
+          "value": "{color.brand.600}"
+        },
+        "hover": {
+          "value": "{color.neutral.700}"
+        },
+        "active": {
+          "value": "{color.brand.600}"
+        },
+        "disabled": {
+          "value": "{color.neutral.300}"
+        },
+        "error": {
+          "value": "{color.utility.red.600}"
+        }
+      }
+    },
+    "input": {
+      "accent": {
+        "color": {
+          "default": {
+            "value": "{color.brand.500}"
+          }
+        }
+      }
+    }
+  }
+}

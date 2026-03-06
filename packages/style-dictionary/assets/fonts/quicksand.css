@@ -1,0 +1,35 @@
+@font-face {
+  font-family: Quicksand;
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url('./quicksand-light.woff2') format('woff2'),
+    url('./quicksand-light.woff') format('woff');
+}
+
+@font-face {
+  font-family: Quicksand;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./quicksand-regular.woff2') format('woff2'),
+    url('./quicksand-regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: Quicksand;
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./quicksand-medium.woff2') format('woff2'),
+    url('./quicksand-medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: Quicksand;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('./quicksand-bold.woff2') format('woff2'),
+    url('./quicksand-bold.woff') format('woff');
+}

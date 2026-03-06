@@ -1,0 +1,20 @@
+{
+  "typography": {
+    "font-family": {
+      "heading": {
+        "value": "Quicksand, {typography.font-family.system}"
+      },
+      "body": {
+        "value": "Quicksand, {typography.font-family.system}"
+      }
+    },
+    "font-weight": {
+      "heading": {
+        "value": "700"
+      },
+      "body": {
+        "value": "400"
+      }
+    }
+  }
+}

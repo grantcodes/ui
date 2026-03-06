@@ -1,0 +1,33 @@
+{
+  "color": {
+    "content": {
+      "default": {
+        "value": "{color.neutral.900}"
+      },
+      "subtle": {
+        "value": "{color.neutral.500}"
+      },
+      "knockout": {
+        "value": "{color.neutral.white}"
+      },
+      "brand": {
+        "value": "{color.brand.600}"
+      },
+      "utility": {
+        "error": {
+          "value": "{color.utility.red.600}"
+        },
+        "warning": {
+          "value": "{color.utility.yellow.600}"
+        },
+        "success": {
+          "value": "{color.utility.green.600}"
+        },
+        "info": {
+          "value": "{color.utility.blue.600}"
+        }
+      }
+    }
+  }
+}
+
