@@ -1,11 +1,10 @@
 {
+	"release-type": "node",
 	"packages": {
 		"packages/ui": {
-			"release-type": "node",
 			"package-name": "@grantcodes/ui"
 		},
 		"packages/style-dictionary": {
-			"release-type": "node",
 			"package-name": "@grantcodes/style-dictionary"
 		}
 	}
