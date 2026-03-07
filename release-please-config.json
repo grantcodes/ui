@@ -1,7 +1,5 @@
 {
 	"release-type": "node",
-	"prerelease": true,
-	"prerelease-type": "beta",
 	"packages": {
 		"packages/ui": {
 			"package-name": "@grantcodes/ui"
