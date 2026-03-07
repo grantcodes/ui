@@ -22,29 +22,29 @@ jobs:
         name: Setup pnpm
         with:
           version: 8.15.0
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs.release_created || steps.release.outputs.pull_request_merged }}
 
       - uses: actions/setup-node@v4
         name: Setup node
         with:
           node-version: 22
           registry-url: 'https://registry.npmjs.org'
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs.release_created || steps.release.outputs.pull_request_merged }}
 
       - run: pnpm install --frozen-lockfile
         name: Install dependencies
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs.release_created || steps.release.outputs.pull_request_merged }}
 
       - run: pnpm test
         name: Run tests
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs.release_created || steps.release.outputs.pull_request_merged }}
 
       - run: pnpm build
         name: Run build
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs.release_created || steps.release.outputs.pull_request_merged }}
 
       - name: Check which packages have releases
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs.release_created || steps.release.outputs.pull_request_merged }}
         id: changed-packages
         run: |
           CHANGED_PACKAGES=""
@@ -60,14 +60,14 @@ jobs:
           echo "Packages with releases: $CHANGED_PACKAGES"
 
       - name: Publish @grantcodes/ui
-        if: ${{ steps.release.outputs.release_created && contains(steps.changed-packages.outputs.packages, 'ui') }}
+        if: ${{ (steps.release.outputs.release_created || steps.release.outputs.pull_request_merged) && contains(steps.changed-packages.outputs.packages, 'ui') }}
         working-directory: packages/ui
         run: pnpm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish @grantcodes/style-dictionary
-        if: ${{ steps.release.outputs.release_created && contains(steps.changed-packages.outputs.packages, 'style-dictionary') }}
+        if: ${{ (steps.release.outputs.release_created || steps.release.outputs.pull_request_merged) && contains(steps.changed-packages.outputs.packages, 'style-dictionary') }}
         working-directory: packages/style-dictionary
         run: pnpm publish --access public --no-git-checks
         env:
