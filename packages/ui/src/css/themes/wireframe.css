@@ -1,2 +1,2 @@
-@import "../../../../style-dictionary/dist/css/wireframe/tokens.css";
-@import "../../../../style-dictionary/dist/css/wireframe/wireframe.css";
+@import "@grantcodes/style-dictionary/wireframe/css";
+@import "@grantcodes/style-dictionary/wireframe/css/theme";

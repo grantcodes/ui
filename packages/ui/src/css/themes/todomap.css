@@ -1,2 +1,2 @@
-@import "../../../../style-dictionary/dist/css/todomap/tokens.css";
-@import "../../../../style-dictionary/dist/css/todomap/todomap.css";
+@import "@grantcodes/style-dictionary/todomap/css";
+@import "@grantcodes/style-dictionary/todomap/css/theme";
