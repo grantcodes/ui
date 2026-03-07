@@ -4,11 +4,6 @@ on:
   pull_request:
     branches:
       - main
-      - beta
-  push:
-    branches:
-      - main
-      - beta
 
 jobs:
   lint-and-test:
@@ -76,5 +71,3 @@ jobs:
 
       - run: pnpm build --force
         name: Build
-
-
