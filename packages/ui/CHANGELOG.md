@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.2](https://github.com/grantcodes/ui/compare/ui-v2.0.1...ui-v2.0.2) (2026-03-07)
+
+
+### Bug Fixes
+
+* update imports & exports ([db68e69](https://github.com/grantcodes/ui/commit/db68e69f5307fd62f26a6e65c9904e86ab156af6))
+
 ## [2.0.1](https://github.com/grantcodes/ui/compare/ui-v2.0.0...ui-v2.0.1) (2026-03-07)
 
 
