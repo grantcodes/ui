@@ -1,6 +1,5 @@
 {
 	"packages": {
-		".": "2.0.0",
 		"packages/ui": "2.0.0",
 		"packages/style-dictionary": "1.2.0"
 	}
