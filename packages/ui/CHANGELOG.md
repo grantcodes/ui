@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/grantcodes/ui/compare/ui-v2.0.0...ui-v2.0.1) (2026-03-07)
+
+
+### Bug Fixes
+
+* update ui style dictionary version ([08a8836](https://github.com/grantcodes/ui/commit/08a8836f296d29d066be73ae98d3feea911922f7))
+
 ## [2.0.0-beta.10](https://github.com/grantcodes/ui/compare/v2.0.0-beta.9...v2.0.0-beta.10) (2025-06-29)
 
 
