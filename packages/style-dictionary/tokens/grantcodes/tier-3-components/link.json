@@ -1,39 +1,38 @@
 {
-  "link": {
-    "color": {
-      "content": {
-        "default": {
-          "value": "{color.brand.purple.500}"
-        },
-        "hover": {
-          "value": "{color.brand.purple.600}"
-        },
-        "active": {
-          "value": "{color.brand.purple.600}"
-        },
-        "visited": {
-          "value": "{color.brand.purple.500}"
-        }
-      }
-    },
-    "knockout": {
-      "color": {
-        "content": {
-          "default": {
-            "value": "{color.content.knockout}"
-          },
-          "hover": {
-            "value": "{color.content.knockout}"
-          },
-          "active": {
-            "value": "{color.content.knockout}"
-          },
-          "visited": {
-            "value": "{color.content.knockout}"
-          }
-        }
-      }
-    }
-  }
+	"link": {
+		"color": {
+			"content": {
+				"default": {
+					"value": "{color.brand.purple.500}"
+				},
+				"hover": {
+					"value": "{color.brand.purple.600}"
+				},
+				"active": {
+					"value": "{color.brand.purple.600}"
+				},
+				"visited": {
+					"value": "{color.brand.purple.500}"
+				}
+			}
+		},
+		"knockout": {
+			"color": {
+				"content": {
+					"default": {
+						"value": "{color.content.knockout}"
+					},
+					"hover": {
+						"value": "{color.content.knockout}"
+					},
+					"active": {
+						"value": "{color.content.knockout}"
+					},
+					"visited": {
+						"value": "{color.content.knockout}"
+					}
+				}
+			}
+		}
+	}
 }
-
