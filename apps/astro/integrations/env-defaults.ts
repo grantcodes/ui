@@ -9,9 +9,9 @@ const envDefaults = {
   META_TWITTER: '@grantcodes',
   OG_IMAGE_COLOR: '#f0f1f3',
   OG_IMAGE_BACKGROUND_COLOR: '#13171f',
-  OG_IMAGE_FONT_NAME: 'Lexend',
+  OG_IMAGE_FONT_NAME: 'Greycliff',
   OG_IMAGE_FONT_FILE:
-    './node_modules/@fontsource/lexend/files/lexend-latin-400-normal.woff',
+    './node_modules/@grantcodes/style-dictionary/assets/fonts/greycliff-regular.woff',
 }
 
 export { envDefaults }
