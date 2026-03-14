@@ -20,8 +20,6 @@ jobs:
 
       - uses: pnpm/action-setup@v4
         name: Setup pnpm
-        with:
-          version: 8.15.0
         if: ${{ steps.release.outputs.release_created || steps.release.outputs.pull_request_merged }}
 
       - uses: actions/setup-node@v4
