@@ -1,26 +1,26 @@
 {
-  "border": {
-    "radius": {
-      "sm": {
-        "value": "{border.radius.125}"
-      },
-      "md": {
-        "value": "{border.radius.500}"
-      },
-      "lg": {
-        "value": "{border.radius.1000}"
-      }
-    },
-    "width": {
-      "sm": {
-        "value": "{border.width.1}"
-      },
-      "md": {
-        "value": "{border.width.2}"
-      },
-      "lg": {
-        "value": "{border.width.4}"
-      }
-    }
-  }
+	"border": {
+		"radius": {
+			"sm": {
+				"value": "{border.radius.125}"
+			},
+			"md": {
+				"value": "{border.radius.500}"
+			},
+			"lg": {
+				"value": "{border.radius.1000}"
+			}
+		},
+		"width": {
+			"sm": {
+				"value": "{border.width.1}"
+			},
+			"md": {
+				"value": "{border.width.2}"
+			},
+			"lg": {
+				"value": "{border.width.4}"
+			}
+		}
+	}
 }

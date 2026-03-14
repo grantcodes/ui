@@ -1,26 +1,25 @@
 {
-  "focus-ring": {
-    "color": {
-      "default": {
-        "value": "rgba(0, 0, 0, 0.4)"
-      },
-      "contrast": {
-        "value": "{color.neutral.200}"
-      },
-      "contrast-shadow": {
-        "value": "{color.neutral.800}"
-      }
-    },
-    "width": {
-      "default": {
-        "value": "0.2rem"
-      }
-    },
-    "offset": {
-      "default": {
-        "value": "0px"
-      }
-    }
-  }
+	"focus-ring": {
+		"color": {
+			"default": {
+				"value": "rgba(0, 0, 0, 0.4)"
+			},
+			"contrast": {
+				"value": "{color.neutral.200}"
+			},
+			"contrast-shadow": {
+				"value": "{color.neutral.800}"
+			}
+		},
+		"width": {
+			"default": {
+				"value": "0.2rem"
+			}
+		},
+		"offset": {
+			"default": {
+				"value": "0px"
+			}
+		}
+	}
 }
-

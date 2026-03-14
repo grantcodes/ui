@@ -1,69 +1,69 @@
 {
-  "form": {
-    "color": {
-      "background": {
-        "default": {
-          "value": "{color.background.default}"
-        },
-        "focus": {
-          "value": "{color.background.default}"
-        },
-        "hover": {
-          "value": "{color.background.subtle}"
-        },
-        "active": {
-          "value": "{color.background.default}"
-        },
-        "disabled": {
-          "value": "{color.background.default}"
-        }
-      },
-      "content": {
-        "default": {
-          "value": "{color.content.default}"
-        },
-        "focus": {
-          "value": "{color.content.default}"
-        },
-        "hover": {
-          "value": "{color.content.default}"
-        },
-        "active": {
-          "value": "{color.content.default}"
-        },
-        "disabled": {
-          "value": "{color.content.disabled}"
-        }
-      },
-      "border": {
-        "default": {
-          "value": "{color.border.default}"
-        },
-        "focus": {
-          "value": "{color.border.brand}"
-        },
-        "hover": {
-          "value": "{color.border.default-hover}"
-        },
-        "active": {
-          "value": "{color.border.brand}"
-        },
-        "disabled": {
-          "value": "{color.border.default}"
-        },
-        "error": {
-          "value": "{color.border.utility.error}"
-        }
-      }
-    },
-    "input": {
-      "accent": {
-        "color": {
-          "default": {
-            "value": "{color.brand.purple.500}"
-          }
-        }
-      }
-    }
-  }
+	"form": {
+		"color": {
+			"background": {
+				"default": {
+					"value": "{color.background.default}"
+				},
+				"focus": {
+					"value": "{color.background.default}"
+				},
+				"hover": {
+					"value": "{color.background.subtle}"
+				},
+				"active": {
+					"value": "{color.background.default}"
+				},
+				"disabled": {
+					"value": "{color.background.default}"
+				}
+			},
+			"content": {
+				"default": {
+					"value": "{color.content.default}"
+				},
+				"focus": {
+					"value": "{color.content.default}"
+				},
+				"hover": {
+					"value": "{color.content.default}"
+				},
+				"active": {
+					"value": "{color.content.default}"
+				},
+				"disabled": {
+					"value": "{color.content.disabled}"
+				}
+			},
+			"border": {
+				"default": {
+					"value": "{color.border.default}"
+				},
+				"focus": {
+					"value": "{color.border.brand}"
+				},
+				"hover": {
+					"value": "{color.border.default-hover}"
+				},
+				"active": {
+					"value": "{color.border.brand}"
+				},
+				"disabled": {
+					"value": "{color.border.default}"
+				},
+				"error": {
+					"value": "{color.border.utility.error}"
+				}
+			}
+		},
+		"input": {
+			"accent": {
+				"color": {
+					"default": {
+						"value": "{color.brand.purple.500}"
+					}
+				}
+			}
+		}
+	}
 }

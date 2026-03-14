@@ -30,6 +30,27 @@ const isHigherTierToken = (filePath) => {
  * Transform shadow tokens
  * 1) Used to transform the individual shadow tokens into a single box-shadow-sm, box-shadow-md, etc. with x, y, blur, spread, and color concatenated
  */
+const transformTypographyTokens = (dictionary, themeTokens) => {
+  const typographyGroups = dictionary.allTokens.filter(
+    (p) =>
+      isHigherTierToken(p.filePath) &&
+      p.path[0] === 'typography'
+  ).reduce((groups, token) => {
+    const style = token.path[1]; // extract typography.{style}
+    if (!groups[style]) groups[style] = {};
+    groups[style][token.path[2]] = token.value;
+    return groups;
+  }, {});
+
+  Object.keys(typographyGroups).forEach((style) => {
+    const group = typographyGroups[style];
+    if (group['font-family'] && group['font-weight'] && group['font-size'] && group['line-height']) {
+      const shorthand = `${group['font-weight']} ${group['font-size']}/${group['line-height']} ${group['font-family']}`;
+      themeTokens.push(`  --g-theme-typography-${style}: ${shorthand};`);
+    }
+  });
+};
+
 const transformShadowTokens = (dictionary, size, themeTokens) => {
 	const shadowProps = dictionary.allTokens.filter(
 		(p) =>
@@ -165,7 +186,10 @@ const formatVariables = (dictionary) => {
 	 * Iterate over all tokens and format them
 	 *
 	 */
-	dictionary.allTokens.forEach((prop) => {
+
+    transformTypographyTokens(dictionary, themeTokens);
+
+    dictionary.allTokens.forEach((prop) => {
 		/**
 		 * 1) Always include z-index and size tokens from core
 		 */

@@ -5,7 +5,7 @@
         "value": "{typography.font-family.greycliff}"
       },
       "font-weight": {
-        "value": "{typography.font-weight.600}"
+        "value": "{typography.font-weight.900}"
       },
       "font-size": {
         "value": "{typography.font-size.100}"
@@ -22,7 +22,7 @@
         "value": "{typography.font-family.greycliff}"
       },
       "font-weight": {
-        "value": "{typography.font-weight.600}"
+        "value": "{typography.font-weight.900}"
       },
       "font-size": {
         "value": "{typography.font-size.100}"
@@ -39,7 +39,7 @@
         "value": "{typography.font-family.greycliff}"
       },
       "font-weight": {
-        "value": "{typography.font-weight.600}"
+        "value": "{typography.font-weight.900}"
       },
       "font-size": {
         "value": "{typography.font-size.48}"
@@ -56,7 +56,7 @@
         "value": "{typography.font-family.greycliff}"
       },
       "font-weight": {
-        "value": "{typography.font-weight.600}"
+        "value": "{typography.font-weight.900}"
       },
       "font-size": {
         "value": "{typography.font-size.40}"
@@ -73,7 +73,7 @@
         "value": "{typography.font-family.greycliff}"
       },
       "font-weight": {
-        "value": "{typography.font-weight.600}"
+        "value": "{typography.font-weight.900}"
       },
       "font-size": {
         "value": "{typography.font-size.32}"
@@ -87,10 +87,10 @@
     },
     "title-lg": {
       "font-family": {
-        "value": "{typography.font-family.system}"
+        "value": "{typography.font-family.greycliff}"
       },
       "font-weight": {
-        "value": "{typography.font-weight.600}"
+        "value": "{typography.font-weight.900}"
       },
       "font-size": {
         "value": "{typography.font-size.32}"
@@ -104,10 +104,10 @@
     },
     "title-default": {
       "font-family": {
-        "value": "{typography.font-family.system}"
+        "value": "{typography.font-family.greycliff}"
       },
       "font-weight": {
-        "value": "{typography.font-weight.600}"
+        "value": "{typography.font-weight.900}"
       },
       "font-size": {
         "value": "{typography.font-size.28}"
@@ -121,10 +121,10 @@
     },
     "title-sm": {
       "font-family": {
-        "value": "{typography.font-family.system}"
+        "value": "{typography.font-family.greycliff}"
       },
       "font-weight": {
-        "value": "{typography.font-weight.600}"
+        "value": "{typography.font-weight.900}"
       },
       "font-size": {
         "value": "{typography.font-size.24}"
@@ -138,7 +138,7 @@
     },
     "label-lg": {
       "font-family": {
-        "value": "{typography.font-family.system}"
+        "value": "{typography.font-family.greycliff}"
       },
       "font-weight": {
         "value": "{typography.font-weight.600}"
@@ -155,7 +155,7 @@
     },
     "label-default": {
       "font-family": {
-        "value": "{typography.font-family.system}"
+        "value": "{typography.font-family.greycliff}"
       },
       "font-weight": {
         "value": "{typography.font-weight.600}"
@@ -172,7 +172,7 @@
     },
     "label-sm": {
       "font-family": {
-        "value": "{typography.font-family.system}"
+        "value": "{typography.font-family.greycliff}"
       },
       "font-weight": {
         "value": "{typography.font-weight.600}"
@@ -189,7 +189,7 @@
     },
     "body-lg": {
       "font-family": {
-        "value": "{typography.font-family.system}"
+        "value": "{typography.font-family.greycliff}"
       },
       "font-weight": {
         "value": "{typography.font-weight.400}"
@@ -206,10 +206,10 @@
     },
     "body-default": {
       "font-family": {
-        "value": "{typography.font-family.system}"
+        "value": "{typography.font-family.greycliff}"
       },
       "font-weight": {
-        "value": "{typography.font-weight.400}"
+        "value": "{typography.font-weight.500}"
       },
       "font-size": {
         "value": "{typography.font-size.16}"
@@ -223,10 +223,10 @@
     },
     "body-sm": {
       "font-family": {
-        "value": "{typography.font-family.system}"
+        "value": "{typography.font-family.greycliff}"
       },
       "font-weight": {
-        "value": "{typography.font-weight.400}"
+        "value": "{typography.font-weight.500}"
       },
       "font-size": {
         "value": "{typography.font-size.14}"
@@ -240,7 +240,7 @@
     },
     "meta-default": {
       "font-family": {
-        "value": "{typography.font-family.system}"
+        "value": "{typography.font-family.greycliff}"
       },
       "font-weight": {
         "value": "{typography.font-weight.600}"
@@ -257,7 +257,7 @@
     },
     "meta-sm": {
       "font-family": {
-        "value": "{typography.font-family.system}"
+        "value": "{typography.font-family.greycliff}"
       },
       "font-weight": {
         "value": "{typography.font-weight.600}"
@@ -274,4 +274,3 @@
     }
   }
 }
-
