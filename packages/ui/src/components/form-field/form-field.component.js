@@ -57,9 +57,7 @@ export class GrantCodesFormField extends LitElement {
 	firstUpdated() {
 		// Initialize inputs and nested fields if not already set
 		if (!this.inputElements) {
-			this.inputElements = this.querySelectorAll(
-				"input, select, textarea",
-			);
+			this.inputElements = this.querySelectorAll("input, select, textarea");
 		}
 		if (!this.nestedFields) {
 			this.nestedFields = this.querySelectorAll("grantcodes-form-field");

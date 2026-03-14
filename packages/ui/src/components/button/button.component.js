@@ -40,7 +40,7 @@ export class GrantCodesButton extends LitElement {
 		if (isLink) {
 			return html`
 				<${tag}
-					class="button"
+					class="button focus-ring"
 					href=${this.href}
 					?disabled=${this.disabled}
 				>
@@ -51,7 +51,7 @@ export class GrantCodesButton extends LitElement {
 
 		return html`
 			<${tag}
-				class="button"
+				class="button focus-ring"
 				type=${this.type}
 				name=${this.name ?? ""}
 				value=${this.value ?? ""}

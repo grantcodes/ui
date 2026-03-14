@@ -21,7 +21,8 @@ describe("Avatar Component", () => {
 			name: "John Doe",
 		});
 
-		const initialsElement = element.shadowRoot.querySelector(".avatar__initials");
+		const initialsElement =
+			element.shadowRoot.querySelector(".avatar__initials");
 		assert.ok(initialsElement, "Initials element should exist");
 		assert.strictEqual(
 			initialsElement.textContent,
@@ -35,7 +36,8 @@ describe("Avatar Component", () => {
 			name: "John",
 		});
 
-		const initialsElement = element.shadowRoot.querySelector(".avatar__initials");
+		const initialsElement =
+			element.shadowRoot.querySelector(".avatar__initials");
 		assert.strictEqual(
 			initialsElement.textContent,
 			"J",
@@ -81,5 +83,3 @@ describe("Avatar Component", () => {
 		}
 	});
 });
-
-

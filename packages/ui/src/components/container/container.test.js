@@ -80,5 +80,3 @@ describe("Container Component", () => {
 		assert.ok(slot, "Slot should exist");
 	});
 });
-
-

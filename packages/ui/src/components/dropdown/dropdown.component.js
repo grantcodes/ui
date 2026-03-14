@@ -121,7 +121,7 @@ export class GrantCodesDropdown extends LitElement {
 				detail: { open: this.open },
 				bubbles: true,
 				composed: true,
-			})
+			}),
 		);
 	}
 
@@ -155,7 +155,9 @@ export class GrantCodesDropdown extends LitElement {
 	}
 
 	render() {
-		const placementClass = this.placement ? `dropdown__menu--${this.placement}` : "";
+		const placementClass = this.placement
+			? `dropdown__menu--${this.placement}`
+			: "";
 		const openClass = this.open ? "dropdown__menu--open" : "";
 		return html`
       <div class="dropdown">
@@ -202,7 +204,7 @@ export class GrantCodesDropdownItem extends LitElement {
 			new CustomEvent("select", {
 				bubbles: true,
 				composed: true,
-			})
+			}),
 		);
 
 		// Close the dropdown

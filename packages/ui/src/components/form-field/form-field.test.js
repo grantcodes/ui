@@ -23,7 +23,11 @@ describe("Form Field Component", () => {
 
 		const labelElement = element.shadowRoot.querySelector(".form-field__label");
 		assert.ok(labelElement, "Label element should exist");
-		assert.strictEqual(labelElement.textContent, "Username", "Label text should match");
+		assert.strictEqual(
+			labelElement.textContent,
+			"Username",
+			"Label text should match",
+		);
 	});
 
 	it("should display error message when error is set", async () => {
@@ -70,7 +74,10 @@ describe("Form Field Component", () => {
 		});
 
 		const helpElement = element.shadowRoot.querySelector(".form-field__help");
-		assert.ok(!helpElement, "Help element should not exist when help is not provided");
+		assert.ok(
+			!helpElement,
+			"Help element should not exist when help is not provided",
+		);
 	});
 
 	it("should generate unique IDs", async () => {
@@ -114,5 +121,3 @@ describe("Form Field Component", () => {
 		assert.ok(slot, "Slot should exist for input elements");
 	});
 });
-
-

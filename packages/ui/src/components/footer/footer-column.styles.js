@@ -1,51 +1,50 @@
 import { css } from "lit";
 
 export const footerColumnStyles = css`
-	:host {
-		display: block;
-	}
+  :host {
+    display: block;
+  }
 
-	.footer-column {
-		display: flex;
-		flex-direction: column;
-		gap: 0.75rem;
-	}
+  .footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--g-spacing-12);
+  }
 
-	::slotted(h3) {
-		font-size: var(--g-typography-font-size-16);
-		color: var(--g-theme-color-content-default);
-		margin: 0 0 0.5rem 0;
-		font-weight: 600;
-	}
+  ::slotted(h3) {
+    font-size: var(--g-typography-font-size-16);
+    color: var(--g-theme-color-content-default);
+    margin: 0 0 var(--g-theme-spacing-sm) 0;
+    font-weight: var(--g-typography-font-weight-600);
+  }
 
-	::slotted(ul) {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-	}
+  ::slotted(ul) {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--g-theme-spacing-sm);
+  }
 
-	::slotted(li) {
-		margin: 0;
-	}
+  ::slotted(li) {
+    margin: 0;
+  }
 
-	::slotted(a) {
-		color: var(--g-theme-color-content-secondary);
-		text-decoration: none;
-		transition: color 0.2s ease;
-	}
+  ::slotted(a) {
+    color: var(--g-theme-color-content-secondary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
 
-	::slotted(a:hover) {
-		color: var(--g-theme-color-content-default);
-		text-decoration: underline;
-	}
+  ::slotted(a:hover) {
+    color: var(--g-theme-color-content-default);
+    text-decoration: underline;
+  }
 
-	::slotted(p) {
-		margin: 0;
-		color: var(--g-theme-color-content-secondary);
-		font-size: var(--g-typography-font-size-14);
-		line-height: 1.5;
-	}
+  ::slotted(p) {
+    margin: 0;
+    color: var(--g-theme-color-content-secondary);
+    font: var(--g-typography-body-sm);
+  }
 `;

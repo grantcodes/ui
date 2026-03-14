@@ -18,7 +18,11 @@ describe("Notice Component", () => {
 
 	it("should have info variant by default", async () => {
 		element = await fixture("grantcodes-notice");
-		assert.strictEqual(element.variant, "info", "Default variant should be info");
+		assert.strictEqual(
+			element.variant,
+			"info",
+			"Default variant should be info",
+		);
 	});
 
 	it("should render with info variant class", async () => {
@@ -64,7 +68,11 @@ describe("Notice Component", () => {
 
 		const title = element.shadowRoot.querySelector(".notice__title");
 		assert.ok(title, "Title element should exist");
-		assert.strictEqual(title.textContent, "Important Notice", "Title text should match");
+		assert.strictEqual(
+			title.textContent,
+			"Important Notice",
+			"Title text should match",
+		);
 	});
 
 	it("should not display title when not provided", async () => {
@@ -76,7 +84,11 @@ describe("Notice Component", () => {
 
 	it("should not be dismissable by default", async () => {
 		element = await fixture("grantcodes-notice");
-		assert.strictEqual(element.dismissable, false, "Should not be dismissable by default");
+		assert.strictEqual(
+			element.dismissable,
+			false,
+			"Should not be dismissable by default",
+		);
 	});
 
 	it("should render dismiss button when dismissable", async () => {
@@ -142,5 +154,3 @@ describe("Notice Component", () => {
 		await new Promise((resolve) => setTimeout(resolve, 10));
 	});
 });
-
-

@@ -1,8 +1,6 @@
 import { html } from "lit/static-html.js";
 import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
-const { events, args, argTypes } = getStorybookHelpers(
-	"grantcodes-pagination",
-);
+const { events, args, argTypes } = getStorybookHelpers("grantcodes-pagination");
 import "./pagination.js";
 
 const meta = {

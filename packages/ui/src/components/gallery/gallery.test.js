@@ -51,8 +51,10 @@ describe("Gallery Component", () => {
 	it("should initialize images array", async () => {
 		element = await fixture("grantcodes-gallery");
 		assert.ok(Array.isArray(element.images), "Images should be an array");
-		assert.strictEqual(element.images.length, 0, "Images array should be empty initially");
+		assert.strictEqual(
+			element.images.length,
+			0,
+			"Images array should be empty initially",
+		);
 	});
 });
-
-

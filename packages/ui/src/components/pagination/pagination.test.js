@@ -51,7 +51,11 @@ describe("Pagination Component", () => {
 			href: "/page/{page}",
 		});
 
-		assert.strictEqual(element.href, "/page/{page}", "Href property should be set");
+		assert.strictEqual(
+			element.href,
+			"/page/{page}",
+			"Href property should be set",
+		);
 	});
 
 	it("should indicate current page", async () => {
@@ -91,8 +95,9 @@ describe("Pagination Component", () => {
 
 		// The component should allow navigating to previous and next pages
 		assert.ok(element.page > 1, "Should be able to go to previous page");
-		assert.ok(element.page < element.pages, "Should be able to go to next page");
+		assert.ok(
+			element.page < element.pages,
+			"Should be able to go to next page",
+		);
 	});
 });
-
-

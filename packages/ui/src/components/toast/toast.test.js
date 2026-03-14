@@ -18,22 +18,38 @@ describe("Toast Component", () => {
 
 	it("should have info variant by default", async () => {
 		element = await fixture("grantcodes-toast");
-		assert.strictEqual(element.variant, "info", "Default variant should be info");
+		assert.strictEqual(
+			element.variant,
+			"info",
+			"Default variant should be info",
+		);
 	});
 
 	it("should have 5000ms duration by default", async () => {
 		element = await fixture("grantcodes-toast");
-		assert.strictEqual(element.duration, 5000, "Default duration should be 5000ms");
+		assert.strictEqual(
+			element.duration,
+			5000,
+			"Default duration should be 5000ms",
+		);
 	});
 
 	it("should have top-right position by default", async () => {
 		element = await fixture("grantcodes-toast");
-		assert.strictEqual(element.position, "top-right", "Default position should be top-right");
+		assert.strictEqual(
+			element.position,
+			"top-right",
+			"Default position should be top-right",
+		);
 	});
 
 	it("should be dismissible by default", async () => {
 		element = await fixture("grantcodes-toast");
-		assert.strictEqual(element.dismissible, true, "Should be dismissible by default");
+		assert.strictEqual(
+			element.dismissible,
+			true,
+			"Should be dismissible by default",
+		);
 	});
 
 	it("should render toast with correct variant class", async () => {
@@ -52,7 +68,11 @@ describe("Toast Component", () => {
 
 		const title = element.shadowRoot.querySelector(".toast__title");
 		assert.ok(title, "Title element should exist");
-		assert.strictEqual(title.textContent, "Test Title", "Title text should match");
+		assert.strictEqual(
+			title.textContent,
+			"Test Title",
+			"Title text should match",
+		);
 	});
 
 	it("should not render title when not provided", async () => {
@@ -84,7 +104,11 @@ describe("Toast Component", () => {
 		element = await fixture("grantcodes-toast");
 
 		const toast = element.shadowRoot.querySelector(".toast");
-		assert.strictEqual(toast.getAttribute("role"), "status", "Should have status role");
+		assert.strictEqual(
+			toast.getAttribute("role"),
+			"status",
+			"Should have status role",
+		);
 	});
 
 	it("should have aria-live=polite", async () => {
@@ -154,7 +178,11 @@ describe("Toast Container Component", () => {
 
 	it("should have top-right position by default", async () => {
 		element = await fixture("grantcodes-toast-container");
-		assert.strictEqual(element.position, "top-right", "Default position should be top-right");
+		assert.strictEqual(
+			element.position,
+			"top-right",
+			"Default position should be top-right",
+		);
 	});
 
 	it("should render container with correct position class", async () => {
@@ -162,7 +190,9 @@ describe("Toast Container Component", () => {
 			position: "bottom-left",
 		});
 
-		const container = element.shadowRoot.querySelector(".toast-container--bottom-left");
+		const container = element.shadowRoot.querySelector(
+			".toast-container--bottom-left",
+		);
 		assert.ok(container, "Container should have bottom-left position class");
 	});
 
@@ -192,5 +222,3 @@ describe("Toast Container Component", () => {
 		}
 	});
 });
-
-

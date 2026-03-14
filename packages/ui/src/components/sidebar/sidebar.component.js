@@ -114,7 +114,7 @@ export class GrantCodesSidebar extends LitElement {
 			<!-- Mobile Toggle Button -->
 			<button
 				type="button"
-				class="sidebar__mobile-toggle"
+				class="sidebar__mobile-toggle focus-ring"
 				@click=${this._toggleDrawer}
 				aria-label="${this._drawerOpen ? "Close sidebar" : "Open sidebar"}"
 			>
@@ -122,8 +122,9 @@ export class GrantCodesSidebar extends LitElement {
 			</button>
 
 			<!-- Overlay for mobile -->
-			${this._drawerOpen
-				? html`
+			${
+				this._drawerOpen
+					? html`
 					<div
 						class="sidebar__overlay"
 						@click=${() => {
@@ -131,7 +132,8 @@ export class GrantCodesSidebar extends LitElement {
 						}}
 					></div>
 				`
-				: ""}
+					: ""
+			}
 
 			<!-- Sidebar -->
 			<aside
@@ -139,11 +141,12 @@ export class GrantCodesSidebar extends LitElement {
 				style="--sidebar-width: ${this.width}"
 			>
 				<!-- Collapse Toggle (Desktop) -->
-				${this.collapsible
-					? html`
+				${
+					this.collapsible
+						? html`
 						<button
 							type="button"
-							class="sidebar__toggle"
+							class="sidebar__toggle focus-ring"
 							@click=${this._toggleCollapsed}
 							aria-label="${this.collapsed ? "Expand sidebar" : "Collapse sidebar"}"
 							aria-expanded="${!this.collapsed}"
@@ -151,7 +154,8 @@ export class GrantCodesSidebar extends LitElement {
 							${this.position === "left" ? (this.collapsed ? "→" : "←") : this.collapsed ? "←" : "→"}
 						</button>
 					`
-					: ""}
+						: ""
+				}
 
 				<!-- Content -->
 				<div class="sidebar__content">
@@ -161,5 +165,3 @@ export class GrantCodesSidebar extends LitElement {
 		`;
 	}
 }
-
-

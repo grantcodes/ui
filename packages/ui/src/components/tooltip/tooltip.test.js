@@ -21,7 +21,11 @@ describe("Tooltip Component", () => {
 			label: "Tooltip label",
 		});
 
-		assert.strictEqual(element.label, "Tooltip label", "Label property should be set");
+		assert.strictEqual(
+			element.label,
+			"Tooltip label",
+			"Label property should be set",
+		);
 	});
 
 	it("should have description property", async () => {
@@ -52,7 +56,11 @@ describe("Tooltip Component", () => {
 
 		const content = element.shadowRoot.querySelector(".tooltip__content");
 		assert.ok(content, "Tooltip content should exist");
-		assert.strictEqual(content.textContent.trim(), "Test label", "Content should match label");
+		assert.strictEqual(
+			content.textContent.trim(),
+			"Test label",
+			"Content should match label",
+		);
 	});
 
 	it("should have role=tooltip on content", async () => {
@@ -146,5 +154,3 @@ describe("Tooltip Component", () => {
 		// In a test environment, this might need special handling
 	});
 });
-
-

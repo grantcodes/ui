@@ -18,17 +18,29 @@ describe("Sidebar Component", () => {
 
 	it("should have left position by default", async () => {
 		element = await fixture("grantcodes-sidebar");
-		assert.strictEqual(element.position, "left", "Should have left position by default");
+		assert.strictEqual(
+			element.position,
+			"left",
+			"Should have left position by default",
+		);
 	});
 
 	it("should not be collapsed by default", async () => {
 		element = await fixture("grantcodes-sidebar");
-		assert.strictEqual(element.collapsed, false, "Should not be collapsed by default");
+		assert.strictEqual(
+			element.collapsed,
+			false,
+			"Should not be collapsed by default",
+		);
 	});
 
 	it("should be collapsible by default", async () => {
 		element = await fixture("grantcodes-sidebar");
-		assert.strictEqual(element.collapsible, true, "Should be collapsible by default");
+		assert.strictEqual(
+			element.collapsible,
+			true,
+			"Should be collapsible by default",
+		);
 	});
 
 	it("should have default width", async () => {
@@ -99,7 +111,11 @@ describe("Sidebar Component", () => {
 		click(toggle);
 		await element.updateComplete;
 
-		assert.strictEqual(element.collapsed, true, "Should be collapsed after click");
+		assert.strictEqual(
+			element.collapsed,
+			true,
+			"Should be collapsed after click",
+		);
 	});
 
 	it("should emit toggle event when collapsed state changes", async () => {
@@ -117,7 +133,11 @@ describe("Sidebar Component", () => {
 
 		await element.updateComplete;
 
-		assert.strictEqual(toggledState, true, "Toggle event should fire with collapsed state");
+		assert.strictEqual(
+			toggledState,
+			true,
+			"Toggle event should fire with collapsed state",
+		);
 	});
 
 	it("should apply custom width", async () => {
@@ -127,12 +147,17 @@ describe("Sidebar Component", () => {
 
 		const aside = element.shadowRoot.querySelector("aside");
 		const style = aside.getAttribute("style");
-		assert.ok(style.includes("--sidebar-width: 350px"), "Should set custom width");
+		assert.ok(
+			style.includes("--sidebar-width: 350px"),
+			"Should set custom width",
+		);
 	});
 
 	it("should have mobile toggle button", async () => {
 		element = await fixture("grantcodes-sidebar");
-		const mobileToggle = element.shadowRoot.querySelector(".sidebar__mobile-toggle");
+		const mobileToggle = element.shadowRoot.querySelector(
+			".sidebar__mobile-toggle",
+		);
 		assert.ok(mobileToggle, "Mobile toggle button should exist");
 	});
 
@@ -150,14 +175,24 @@ describe("Sidebar Component", () => {
 
 	it("should toggle mobile drawer when mobile toggle is clicked", async () => {
 		element = await fixture("grantcodes-sidebar");
-		const mobileToggle = element.shadowRoot.querySelector(".sidebar__mobile-toggle");
+		const mobileToggle = element.shadowRoot.querySelector(
+			".sidebar__mobile-toggle",
+		);
 
-		assert.strictEqual(element._drawerOpen, false, "Drawer should start closed");
+		assert.strictEqual(
+			element._drawerOpen,
+			false,
+			"Drawer should start closed",
+		);
 
 		click(mobileToggle);
 		await element.updateComplete;
 
-		assert.strictEqual(element._drawerOpen, true, "Drawer should be open after click");
+		assert.strictEqual(
+			element._drawerOpen,
+			true,
+			"Drawer should be open after click",
+		);
 	});
 
 	it("should emit drawer-toggle event", async () => {
@@ -168,7 +203,9 @@ describe("Sidebar Component", () => {
 			drawerState = e.detail.open;
 		});
 
-		const mobileToggle = element.shadowRoot.querySelector(".sidebar__mobile-toggle");
+		const mobileToggle = element.shadowRoot.querySelector(
+			".sidebar__mobile-toggle",
+		);
 		click(mobileToggle);
 
 		await element.updateComplete;
@@ -192,5 +229,3 @@ describe("Sidebar Component", () => {
 		assert.ok(!overlay, "Overlay should not exist when drawer is closed");
 	});
 });
-
-

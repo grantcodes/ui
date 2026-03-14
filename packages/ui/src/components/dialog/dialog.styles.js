@@ -26,17 +26,17 @@ export const dialogStyles = css`
   position: absolute;
   border: none;
   line-height: 1;
-  font-size: 1.4rem;
+  font-size: var(--g-theme-typography-title-lg-font-size);
   cursor: pointer;
   background: transparent;
-  inset-block-start: 1rem;
-  inset-inline-end: 1rem;
+  inset-block-start: var(--g-theme-spacing-md);
+  inset-inline-end: var(--g-theme-spacing-md);
   margin-block-start: -0.25rem;
   margin-inline-end: -0.25rem;
   border-radius: 50%;
   width: 2rem;
   height: 2rem;
-  padding: 0.25rem;
+  padding: var(--g-theme-spacing-xs);
   justify-content: center;
   align-items: center;
 }
@@ -45,8 +45,8 @@ export const dialogStyles = css`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 1rem;
-  padding: 1rem;
+  gap: var(--g-theme-spacing-md);
+  padding: var(--g-theme-spacing-md);
 }
 
 .dialog__header,
@@ -62,7 +62,7 @@ export const dialogStyles = css`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: var(--g-theme-spacing-md);
   border-bottom: var(--g-theme-border-width-sm) solid
     var(--g-theme-color-border-default);
 }

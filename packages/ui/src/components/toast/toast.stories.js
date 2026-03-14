@@ -141,9 +141,13 @@ export const Interactive = {
 		<div>
 			<button
 				@click=${() => {
-					const container = document.querySelector("grantcodes-toast-container");
+					const container = document.querySelector(
+						"grantcodes-toast-container",
+					);
 					if (!container) {
-						const newContainer = document.createElement("grantcodes-toast-container");
+						const newContainer = document.createElement(
+							"grantcodes-toast-container",
+						);
 						newContainer.position = "top-right";
 						document.body.appendChild(newContainer);
 					}
@@ -156,7 +160,9 @@ export const Interactive = {
 
 					const finalContainer =
 						document.querySelector("grantcodes-toast-container") ||
-						document.body.appendChild(document.createElement("grantcodes-toast-container"));
+						document.body.appendChild(
+							document.createElement("grantcodes-toast-container"),
+						);
 					finalContainer.appendChild(toast);
 				}}
 			>
@@ -165,5 +171,3 @@ export const Interactive = {
 		</div>
 	`,
 };
-
-

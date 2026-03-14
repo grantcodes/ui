@@ -31,15 +31,3 @@ export const Initials = {
 		src: undefined,
 	},
 };
-
-
-
-
-
-
-
-
-
-
-
-

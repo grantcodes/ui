@@ -18,7 +18,11 @@ describe("Dialog Component", () => {
 
 	it("should be closed by default", async () => {
 		element = await fixture("grantcodes-dialog");
-		assert.strictEqual(element.open, false, "Dialog should be closed by default");
+		assert.strictEqual(
+			element.open,
+			false,
+			"Dialog should be closed by default",
+		);
 	});
 
 	it("should render dialog element", async () => {
@@ -40,7 +44,11 @@ describe("Dialog Component", () => {
 
 	it("should be dismissible by default", async () => {
 		element = await fixture("grantcodes-dialog");
-		assert.strictEqual(element.dismissible, true, "Should be dismissible by default");
+		assert.strictEqual(
+			element.dismissible,
+			true,
+			"Should be dismissible by default",
+		);
 	});
 
 	it("should render dismiss button when dismissible", async () => {
@@ -75,7 +83,7 @@ describe("Dialog Component", () => {
 
 	it("should have default content slot", async () => {
 		element = await fixture("grantcodes-dialog");
-		const slot = element.shadowRoot.querySelector('slot.dialog__content');
+		const slot = element.shadowRoot.querySelector("slot.dialog__content");
 		assert.ok(slot, "Content slot should exist");
 	});
 
@@ -93,5 +101,3 @@ describe("Dialog Component", () => {
 		assert.strictEqual(element.open, false, "Dialog should be closed");
 	});
 });
-
-

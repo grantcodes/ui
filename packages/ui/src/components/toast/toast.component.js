@@ -117,7 +117,7 @@ export class GrantCodesToast extends LitElement {
 		return html`
 			<button
 				type="button"
-				class="toast__close"
+				class="toast__close focus-ring"
 				@click=${this._handleDismiss}
 				aria-label="Dismiss notification"
 			>
@@ -183,5 +183,3 @@ export class GrantCodesToastContainer extends LitElement {
 		`;
 	}
 }
-
-

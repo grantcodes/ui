@@ -11,7 +11,8 @@ const meta = {
 export default meta;
 
 export const Icon = {
-	render: () => html`<grantcodes-icon>${unsafeHTML(ArrowRight)}</grantcodes-icon>`,
+	render: () =>
+		html`<grantcodes-icon>${unsafeHTML(ArrowRight)}</grantcodes-icon>`,
 };
 
 export const MultipleIcons = {

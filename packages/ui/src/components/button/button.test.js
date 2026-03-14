@@ -32,7 +32,10 @@ describe("Button Component", () => {
 		assert.ok(link, "Link element should exist");
 		const href = link.getAttribute("href");
 		assert.ok(href, "Link should have href attribute");
-		assert.ok(href.includes("example.com") || href === "https://example.com", "Link href should contain example.com");
+		assert.ok(
+			href.includes("example.com") || href === "https://example.com",
+			"Link href should contain example.com",
+		);
 	});
 
 	it("should be disabled when disabled property is set", async () => {
@@ -42,7 +45,10 @@ describe("Button Component", () => {
 
 		const button = element.shadowRoot.querySelector("button");
 		assert.ok(button.disabled, "Button should be disabled");
-		assert.ok(button.hasAttribute("disabled"), "Button should have disabled attribute");
+		assert.ok(
+			button.hasAttribute("disabled"),
+			"Button should have disabled attribute",
+		);
 	});
 
 	it("should emit click event when clicked", async () => {
@@ -94,5 +100,3 @@ describe("Button Component", () => {
 		assert.ok(slot, "Slot should exist");
 	});
 });
-
-

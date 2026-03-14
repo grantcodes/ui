@@ -6,9 +6,9 @@ export const noticeStyles = css`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 1rem;
-  padding: 1rem;
-  border-radius: 0.25rem;
+  gap: var(--g-theme-spacing-md);
+  padding: var(--g-theme-spacing-md);
+  border-radius: var(--g-theme-border-radius-sm, 0.25rem);
   view-transition-name: notice;
   transition: opacity 0.5s;
 }
@@ -34,7 +34,7 @@ export const noticeStyles = css`
 }
 
 .notice__title {
-  font-size: 1rem;
+  font-size: var(--g-theme-typography-body-default-font-size);
   margin: 0;
 }
 
@@ -53,8 +53,8 @@ export const noticeStyles = css`
   transition: 0.2s;
   font-size: calc(var(--g-theme-typography-body-default-line-height) * 1em);
   line-height: 1;
-  padding: 0.5rem;
-  margin: -0.5rem -0.5rem 0 0;
+  padding: var(--g-theme-spacing-sm);
+  margin: calc(-1 * var(--g-theme-spacing-sm)) calc(-1 * var(--g-theme-spacing-sm)) 0 0;
   border: 0;
 
   &:hover,

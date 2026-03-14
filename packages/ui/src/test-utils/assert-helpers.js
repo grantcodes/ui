@@ -31,10 +31,7 @@ export function assertAttribute(element, attribute, expectedValue) {
  */
 export function assertNoAttribute(element, attribute) {
 	const hasAttribute = element.hasAttribute(attribute);
-	assert.ok(
-		!hasAttribute,
-		`Element should not have attribute "${attribute}"`,
-	);
+	assert.ok(!hasAttribute, `Element should not have attribute "${attribute}"`);
 }
 
 /**
@@ -67,7 +64,10 @@ export function assertNoClass(element, className) {
  * @param {string} selector - The CSS selector
  */
 export function assertSelector(element, selector) {
-	assert.ok(element.matches(selector), `Element should match selector "${selector}"`);
+	assert.ok(
+		element.matches(selector),
+		`Element should match selector "${selector}"`,
+	);
 }
 
 /**
@@ -126,7 +126,11 @@ export function assertAria(element, ariaAttribute, expectedValue) {
  */
 export function assertVisible(element) {
 	const style = window.getComputedStyle(element);
-	assert.notStrictEqual(style.display, "none", "Element should not have display:none");
+	assert.notStrictEqual(
+		style.display,
+		"none",
+		"Element should not have display:none",
+	);
 	assert.notStrictEqual(
 		style.visibility,
 		"hidden",
@@ -146,5 +150,3 @@ export function assertHidden(element) {
 		element.hidden === true;
 	assert.ok(isHidden, "Element should be hidden");
 }
-
-

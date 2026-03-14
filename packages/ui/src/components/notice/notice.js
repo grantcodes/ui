@@ -4,4 +4,3 @@ export * from "./notice.component.js";
 export default GrantCodesNotice;
 
 customElements.define("grantcodes-notice", GrantCodesNotice);
-

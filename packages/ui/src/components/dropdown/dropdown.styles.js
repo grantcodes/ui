@@ -23,8 +23,8 @@ export const dropdownStyles = css`
 		anchor-name: --dropdown-trigger;
 		z-index: 1000;
 		min-inline-size: 12rem;
-		margin-block: 0.25rem;
-		padding-block: 0.5rem;
+		margin-block: var(--g-theme-spacing-xs);
+		padding-block: var(--g-theme-spacing-sm);
 		background-color: var(--g-theme-color-background-default);
 		border: 1px solid var(--g-theme-color-border-default);
 		border-radius: var(--g-theme-border-radius-md);
@@ -53,9 +53,9 @@ export const dropdownStyles = css`
 		display: flex;
 		width: 100%;
 		align-items: center;
-		gap: 0.5rem;
-		padding-block: 0.5rem;
-		padding-inline: 1rem;
+		gap: var(--g-theme-spacing-sm);
+		padding-block: var(--g-theme-spacing-sm);
+		padding-inline: var(--g-theme-spacing-md);
 		font-size: var(--g-typography-font-size-16);
 		color: var(--g-theme-color-content-default);
 		cursor: pointer;

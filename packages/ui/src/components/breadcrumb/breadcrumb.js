@@ -6,7 +6,9 @@ import {
 export * from "./breadcrumb.component.js";
 export default GrantCodesBreadcrumb;
 
-customElements.define("grantcodes-breadcrumb", GrantCodesBreadcrumb);
-customElements.define("grantcodes-breadcrumb-item", GrantCodesBreadcrumbItem);
-
-
+if (!customElements.get("grantcodes-breadcrumb")) {
+  customElements.define("grantcodes-breadcrumb", GrantCodesBreadcrumb);
+}
+if (!customElements.get("grantcodes-breadcrumb-item")) {
+  customElements.define("grantcodes-breadcrumb-item", GrantCodesBreadcrumbItem);
+}

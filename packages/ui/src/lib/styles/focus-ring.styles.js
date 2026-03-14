@@ -1,0 +1,34 @@
+import { css } from "lit";
+
+export const focusRingStyles = css`
+  .focus-ring,
+  :host(.focus-ring) {
+    outline: 0px solid transparent;
+    outline-offset: var(--g-theme-focus-ring-offset-default);
+    transition-duration: var(--g-animation-duration-20);
+    transition-properties: outline-color, width;
+  }
+
+  .focus-ring:focus-visible,
+  :host(.focus-ring):focus-visible {
+    outline: var(--g-theme-focus-ring-width-default) solid
+      var(--g-theme-focus-ring-color-default);
+  }
+
+  @media (prefers-contrast: more) {
+    .focus-ring:focus-visible,
+    :host(.focus-ring):focus-visible {
+      outline: var(--g-theme-focus-ring-width-default) solid
+        var(--g-theme-focus-ring-color-contrast);
+      box-shadow: 0 0 0
+        calc(
+          (
+              var(--g-theme-focus-ring-width-default) +
+                var(--g-theme-focus-ring-offset-default)
+            ) *
+            1.5
+        )
+        var(--g-theme-focus-ring-color-contrast-shadow);
+    }
+  }
+`;

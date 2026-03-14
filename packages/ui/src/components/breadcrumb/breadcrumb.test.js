@@ -69,7 +69,11 @@ describe("Breadcrumb Item Component", () => {
 
 		const link = element.shadowRoot.querySelector(".breadcrumb__link");
 		assert.ok(link, "Link should exist");
-		assert.strictEqual(link.getAttribute("href"), "/test", "Href should be set");
+		assert.strictEqual(
+			link.getAttribute("href"),
+			"/test",
+			"Href should be set",
+		);
 	});
 
 	it("should render as span when no href", async () => {
@@ -127,12 +131,20 @@ describe("Breadcrumb Item Component", () => {
 
 		await element.updateComplete;
 
-		assert.strictEqual(element.textContent, "Home", "Slotted content should be rendered");
+		assert.strictEqual(
+			element.textContent,
+			"Home",
+			"Slotted content should be rendered",
+		);
 	});
 
 	it("should not be current by default", async () => {
 		element = await fixture("grantcodes-breadcrumb-item");
-		assert.strictEqual(element.current, false, "Should not be current by default");
+		assert.strictEqual(
+			element.current,
+			false,
+			"Should not be current by default",
+		);
 	});
 
 	it("should have empty href by default", async () => {
@@ -140,5 +152,3 @@ describe("Breadcrumb Item Component", () => {
 		assert.strictEqual(element.href, "", "Href should be empty by default");
 	});
 });
-
-

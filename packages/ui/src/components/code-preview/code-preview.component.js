@@ -18,10 +18,10 @@ export class GrantCodesCodePreview extends LitElement {
 		this.codePreview = null;
 	}
 
-    async doHighlight() {
+	async doHighlight() {
 		const rawCode = this.textContent ?? "";
-        const { codeToHtml } = await import("shiki/bundle/web");
-        const highlightedCode = await codeToHtml(rawCode.trim(), {
+		const { codeToHtml } = await import("shiki/bundle/web");
+		const highlightedCode = await codeToHtml(rawCode.trim(), {
 			lang: this.language,
 			theme: this.theme,
 		});
@@ -29,13 +29,13 @@ export class GrantCodesCodePreview extends LitElement {
 		this.codePreview.innerHTML = highlightedCode;
 	}
 
-    async firstUpdated() {
+	async firstUpdated() {
 		this.codePreview = this.renderRoot.querySelector(".code-preview");
-        // Only highlight if we have content and we're in a browser environment,
-        // and not in a unit test environment
-        const isTestEnv =
-            typeof process !== "undefined" && process?.env?.NODE_ENV === "test";
-        if (this.textContent && typeof window !== "undefined" && !isTestEnv) {
+		// Only highlight if we have content and we're in a browser environment,
+		// and not in a unit test environment
+		const isTestEnv =
+			typeof process !== "undefined" && process?.env?.NODE_ENV === "test";
+		if (this.textContent && typeof window !== "undefined" && !isTestEnv) {
 			try {
 				await this.doHighlight();
 			} catch (error) {

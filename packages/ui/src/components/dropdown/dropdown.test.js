@@ -23,7 +23,11 @@ describe("Dropdown Component", () => {
 
 	it("should have bottom-start placement by default", async () => {
 		element = await fixture("grantcodes-dropdown");
-		assert.strictEqual(element.placement, "bottom-start", "Default placement should be bottom-start");
+		assert.strictEqual(
+			element.placement,
+			"bottom-start",
+			"Default placement should be bottom-start",
+		);
 	});
 
 	it("should have trigger slot", async () => {
@@ -47,7 +51,11 @@ describe("Dropdown Component", () => {
 	it("should have role=menu on menu", async () => {
 		element = await fixture("grantcodes-dropdown");
 		const menu = element.shadowRoot.querySelector(".dropdown__menu");
-		assert.strictEqual(menu.getAttribute("role"), "menu", "Menu should have role");
+		assert.strictEqual(
+			menu.getAttribute("role"),
+			"menu",
+			"Menu should have role",
+		);
 	});
 
 	it("should apply placement class to menu", async () => {
@@ -85,7 +93,11 @@ describe("Dropdown Item Component", () => {
 
 	it("should not be disabled by default", async () => {
 		element = await fixture("grantcodes-dropdown-item");
-		assert.strictEqual(element.disabled, false, "Should not be disabled by default");
+		assert.strictEqual(
+			element.disabled,
+			false,
+			"Should not be disabled by default",
+		);
 	});
 
 	it("should render with disabled class when disabled", async () => {
@@ -133,7 +145,11 @@ describe("Dropdown Item Component", () => {
 
 		await element.updateComplete;
 
-		assert.strictEqual(element.textContent, "Menu Item", "Slotted content should be rendered");
+		assert.strictEqual(
+			element.textContent,
+			"Menu Item",
+			"Slotted content should be rendered",
+		);
 	});
 
 	it("should have dropdown-item wrapper", async () => {

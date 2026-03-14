@@ -11,8 +11,8 @@ export const codePreviewStyles = css`
   border-radius: var(--g-theme-border-radius-md);
   box-shadow: var(--g-theme-box-shadow-sm);
   font-size: var(--g-typography-font-size-14);
-  font-weight: 400;
-  padding: 1rem;
+  font-weight: var(--g-typography-font-weight-400);
+  padding: var(--g-theme-spacing-md);
 }
 
 `;

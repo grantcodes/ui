@@ -53,5 +53,3 @@ describe("Loading Component", () => {
 		assert.ok(customSpinner, "Custom spinner should be slotted");
 	});
 });
-
-
