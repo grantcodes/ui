@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/grantcodes/ui/compare/ui-v2.0.2...ui-v2.1.0) (2026-03-14)
+
+
+### Features
+
+* **ui:** add marketing components and expand public UI exports ([7d3f6e2](https://github.com/grantcodes/ui/commit/7d3f6e2ba2eff1334411f2615ab8015832d8acc9))
+
 ## [2.0.2](https://github.com/grantcodes/ui/compare/ui-v2.0.1...ui-v2.0.2) (2026-03-07)
 
 
