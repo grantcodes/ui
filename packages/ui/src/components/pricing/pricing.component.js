@@ -44,43 +44,53 @@ export class GrantCodesPricing extends LitElement {
 		return html`
 			<section class="pricing">
 				<div class="pricing__container">
-					${this.title
-						? html`<h2 class="pricing__title">${this.title}</h2>`
-						: null}
-					${this.subtitle
-						? html`<p class="pricing__subtitle">${this.subtitle}</p>`
-						: null}
+					${
+						this.title
+							? html`<h2 class="pricing__title">${this.title}</h2>`
+							: null
+					}
+					${
+						this.subtitle
+							? html`<p class="pricing__subtitle">${this.subtitle}</p>`
+							: null
+					}
 					<ul class="pricing__grid" role="list">
 						${tiers.map(
 							(tier) => html`
 								<li
-									class="pricing__tier${tier.highlighted
-										? " pricing__tier--highlighted"
-										: ""}"
+									class="pricing__tier${
+										tier.highlighted ? " pricing__tier--highlighted" : ""
+									}"
 								>
 									<div class="pricing__tier-header">
 										<h3 class="pricing__tier-name">${tier.name}</h3>
 										<div class="pricing__price-wrap">
 											<span class="pricing__price">${tier.price}</span>
-											${tier.period
-												? html`<span class="pricing__period"
+											${
+												tier.period
+													? html`<span class="pricing__period"
 														>/${tier.period}</span
 													>`
-												: null}
+													: null
+											}
 										</div>
-										${tier.description
-											? html`<p class="pricing__tier-desc">
+										${
+											tier.description
+												? html`<p class="pricing__tier-desc">
 													${tier.description}
 												</p>`
-											: null}
+												: null
+										}
 									</div>
 									<ul class="pricing__features" role="list">
 										${(tier.features ?? []).map(
 											(feature) => html`
 												<li
-													class="pricing__feature${feature.included
-														? ""
-														: " pricing__feature--excluded"}"
+													class="pricing__feature${
+														feature.included
+															? ""
+															: " pricing__feature--excluded"
+													}"
 												>
 													<span
 														class="pricing__feature-icon"

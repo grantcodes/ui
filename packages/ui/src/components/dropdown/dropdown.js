@@ -7,8 +7,8 @@ export * from "./dropdown.component.js";
 export default GrantCodesDropdown;
 
 if (!customElements.get("grantcodes-dropdown")) {
-  customElements.define("grantcodes-dropdown", GrantCodesDropdown);
+	customElements.define("grantcodes-dropdown", GrantCodesDropdown);
 }
 if (!customElements.get("grantcodes-dropdown-item")) {
-  customElements.define("grantcodes-dropdown-item", GrantCodesDropdownItem);
+	customElements.define("grantcodes-dropdown-item", GrantCodesDropdownItem);
 }

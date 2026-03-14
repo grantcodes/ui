@@ -6,8 +6,8 @@ export * from "./footer-column.component.js";
 export default GrantCodesFooter;
 
 if (!customElements.get("grantcodes-footer")) {
-  customElements.define("grantcodes-footer", GrantCodesFooter);
+	customElements.define("grantcodes-footer", GrantCodesFooter);
 }
 if (!customElements.get("grantcodes-footer-column")) {
-  customElements.define("grantcodes-footer-column", GrantCodesFooterColumn);
+	customElements.define("grantcodes-footer-column", GrantCodesFooterColumn);
 }

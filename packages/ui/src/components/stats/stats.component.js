@@ -42,9 +42,11 @@ export class GrantCodesStats extends LitElement {
 		return html`
 			<section class="stats">
 				<div class="stats__container">
-					${this.title
-						? html`<h2 class="stats__title">${this.title}</h2>`
-						: null}
+					${
+						this.title
+							? html`<h2 class="stats__title">${this.title}</h2>`
+							: null
+					}
 					<ul
 						class="stats__grid"
 						style="--columns: ${this.columns}"
@@ -55,9 +57,11 @@ export class GrantCodesStats extends LitElement {
 								<li class="stats__item">
 									<span class="stats__value">${item.value}</span>
 									<span class="stats__label">${item.label}</span>
-									${item.context
-										? html`<span class="stats__context">${item.context}</span>`
-										: null}
+									${
+										item.context
+											? html`<span class="stats__context">${item.context}</span>`
+											: null
+									}
 								</li>
 							`,
 						)}

@@ -70,29 +70,37 @@ export class GrantCodesCta extends LitElement {
 		return html`
 			<section class="cta">
 				<div class="cta__container">
-					${this.eyebrow
-						? html`<p class="cta__eyebrow">${this.eyebrow}</p>`
-						: null}
+					${
+						this.eyebrow
+							? html`<p class="cta__eyebrow">${this.eyebrow}</p>`
+							: null
+					}
 					<h2 class="cta__title">${this.title}</h2>
 					${this.text ? html`<p class="cta__text">${this.text}</p>` : null}
-					${primary || secondary
-						? html`
+					${
+						primary || secondary
+							? html`
 								<div class="cta__actions">
-									${primary
-										? html`<grantcodes-button href=${primary.href}
+									${
+										primary
+											? html`<grantcodes-button href=${primary.href}
 												>${primary.label}</grantcodes-button
 											>`
-										: null}
-									${secondary
-										? html`<a
+											: null
+									}
+									${
+										secondary
+											? html`<a
 												href=${secondary.href}
 												class="cta__secondary-link"
 												>${secondary.label}</a
 											>`
-										: null}
+											: null
+									}
 								</div>
 							`
-						: null}
+							: null
+					}
 				</div>
 			</section>
 		`;

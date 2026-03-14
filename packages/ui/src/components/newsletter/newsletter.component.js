@@ -59,9 +59,11 @@ export class GrantCodesNewsletter extends LitElement {
 			<section class="newsletter">
 				<div class="newsletter__container">
 					<h2 class="newsletter__title">${this.title}</h2>
-					${this.text
-						? html`<p class="newsletter__text">${this.text}</p>`
-						: null}
+					${
+						this.text
+							? html`<p class="newsletter__text">${this.text}</p>`
+							: null
+					}
 					<form
 						class="newsletter__form"
 						action=${this.action}
@@ -87,9 +89,11 @@ export class GrantCodesNewsletter extends LitElement {
 							</div>
 						</div>
 					</form>
-					${this.disclaimer
-						? html`<p class="newsletter__disclaimer">${this.disclaimer}</p>`
-						: null}
+					${
+						this.disclaimer
+							? html`<p class="newsletter__disclaimer">${this.disclaimer}</p>`
+							: null
+					}
 				</div>
 			</section>
 		`;

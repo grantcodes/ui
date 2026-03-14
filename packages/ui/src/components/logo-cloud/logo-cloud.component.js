@@ -36,15 +36,18 @@ export class GrantCodesLogoCloud extends LitElement {
 		return html`
 			<section class="logo-cloud">
 				<div class="logo-cloud__container">
-					${this.title
-						? html`<p class="logo-cloud__title">${this.title}</p>`
-						: null}
+					${
+						this.title
+							? html`<p class="logo-cloud__title">${this.title}</p>`
+							: null
+					}
 					<ul class="logo-cloud__grid" role="list">
 						${logos.map(
 							(logo) => html`
 								<li class="logo-cloud__item">
-									${logo.href
-										? html`
+									${
+										logo.href
+											? html`
 												<a
 													href=${logo.href}
 													class="logo-cloud__link"
@@ -58,14 +61,15 @@ export class GrantCodesLogoCloud extends LitElement {
 													/>
 												</a>
 											`
-										: html`
+											: html`
 												<img
 													src=${logo.src}
 													alt=${logo.alt ?? logo.name}
 													class="logo-cloud__logo"
 													loading="lazy"
 												/>
-											`}
+											`
+									}
 								</li>
 							`,
 						)}

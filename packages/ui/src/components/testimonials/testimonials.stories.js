@@ -1,7 +1,9 @@
 import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
 import "./testimonials.js";
 
-const { events, args, argTypes } = getStorybookHelpers("grantcodes-testimonials");
+const { events, args, argTypes } = getStorybookHelpers(
+	"grantcodes-testimonials",
+);
 
 const meta = {
 	title: "Blocks/Testimonials",
@@ -20,7 +22,8 @@ export default meta;
 
 const sampleItems = JSON.stringify([
 	{
-		quote: "This component library saved us weeks of design work. The theming system is incredibly flexible.",
+		quote:
+			"This component library saved us weeks of design work. The theming system is incredibly flexible.",
 		name: "Sarah Chen",
 		role: "Lead Engineer",
 		company: "Acme Corp",

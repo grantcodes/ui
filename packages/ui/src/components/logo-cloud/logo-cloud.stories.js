@@ -19,11 +19,31 @@ const meta = {
 export default meta;
 
 const sampleLogos = JSON.stringify([
-	{ name: "Acme Corp", src: "https://placehold.co/120x40?text=Acme", alt: "Acme Corp logo" },
-	{ name: "Globex", src: "https://placehold.co/120x40?text=Globex", alt: "Globex logo" },
-	{ name: "Initech", src: "https://placehold.co/120x40?text=Initech", alt: "Initech logo" },
-	{ name: "Umbrella", src: "https://placehold.co/120x40?text=Umbrella", alt: "Umbrella Corp logo" },
-	{ name: "Hooli", src: "https://placehold.co/120x40?text=Hooli", alt: "Hooli logo" },
+	{
+		name: "Acme Corp",
+		src: "https://placehold.co/120x40?text=Acme",
+		alt: "Acme Corp logo",
+	},
+	{
+		name: "Globex",
+		src: "https://placehold.co/120x40?text=Globex",
+		alt: "Globex logo",
+	},
+	{
+		name: "Initech",
+		src: "https://placehold.co/120x40?text=Initech",
+		alt: "Initech logo",
+	},
+	{
+		name: "Umbrella",
+		src: "https://placehold.co/120x40?text=Umbrella",
+		alt: "Umbrella Corp logo",
+	},
+	{
+		name: "Hooli",
+		src: "https://placehold.co/120x40?text=Hooli",
+		alt: "Hooli logo",
+	},
 ]);
 
 /**
@@ -33,11 +53,36 @@ export const Default = {
 	args: {
 		title: "Trusted by teams at",
 		logos: JSON.stringify([
-			{ name: "Acme Corp", src: "https://placehold.co/120x40?text=Acme", alt: "Acme Corp logo", href: "https://example.com" },
-			{ name: "Globex", src: "https://placehold.co/120x40?text=Globex", alt: "Globex logo", href: "https://example.com" },
-			{ name: "Initech", src: "https://placehold.co/120x40?text=Initech", alt: "Initech logo", href: "https://example.com" },
-			{ name: "Umbrella", src: "https://placehold.co/120x40?text=Umbrella", alt: "Umbrella Corp logo", href: "https://example.com" },
-			{ name: "Hooli", src: "https://placehold.co/120x40?text=Hooli", alt: "Hooli logo", href: "https://example.com" },
+			{
+				name: "Acme Corp",
+				src: "https://placehold.co/120x40?text=Acme",
+				alt: "Acme Corp logo",
+				href: "https://example.com",
+			},
+			{
+				name: "Globex",
+				src: "https://placehold.co/120x40?text=Globex",
+				alt: "Globex logo",
+				href: "https://example.com",
+			},
+			{
+				name: "Initech",
+				src: "https://placehold.co/120x40?text=Initech",
+				alt: "Initech logo",
+				href: "https://example.com",
+			},
+			{
+				name: "Umbrella",
+				src: "https://placehold.co/120x40?text=Umbrella",
+				alt: "Umbrella Corp logo",
+				href: "https://example.com",
+			},
+			{
+				name: "Hooli",
+				src: "https://placehold.co/120x40?text=Hooli",
+				alt: "Hooli logo",
+				href: "https://example.com",
+			},
 		]),
 	},
 };

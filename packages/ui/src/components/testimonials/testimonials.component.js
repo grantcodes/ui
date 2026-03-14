@@ -44,9 +44,11 @@ export class GrantCodesTestimonials extends LitElement {
 		return html`
 			<section class="testimonials">
 				<div class="testimonials__container">
-					${this.title
-						? html`<h2 class="testimonials__title">${this.title}</h2>`
-						: null}
+					${
+						this.title
+							? html`<h2 class="testimonials__title">${this.title}</h2>`
+							: null
+					}
 					<ul
 						class="testimonials__grid testimonials__grid--${this.layout}"
 						role="list"
@@ -61,22 +63,26 @@ export class GrantCodesTestimonials extends LitElement {
 											</p>
 										</blockquote>
 										<footer class="testimonials__attribution" slot="footer">
-											${item.avatar
-												? html`<grantcodes-avatar
+											${
+												item.avatar
+													? html`<grantcodes-avatar
 														src=${item.avatar}
 														name=${item.name}
 														size="small"
 													></grantcodes-avatar>`
-												: null}
+													: null
+											}
 											<div class="testimonials__meta">
 												<cite class="testimonials__name">${item.name}</cite>
-												${item.role || item.company
-													? html`<span class="testimonials__role">
+												${
+													item.role || item.company
+														? html`<span class="testimonials__role">
 															${[item.role, item.company]
 																.filter(Boolean)
 																.join(", ")}
 														</span>`
-													: null}
+														: null
+												}
 											</div>
 										</footer>
 									</grantcodes-card>

@@ -4,5 +4,5 @@ export * from "./icon.component.js";
 export default GrantCodesIcon;
 
 if (!customElements.get("grantcodes-icon")) {
-  customElements.define("grantcodes-icon", GrantCodesIcon);
+	customElements.define("grantcodes-icon", GrantCodesIcon);
 }
