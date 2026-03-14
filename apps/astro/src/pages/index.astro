@@ -1,0 +1,39 @@
+---
+import { TITLE } from 'astro:env/server'
+import Layout from '@layouts/Page.astro'
+import { Hero, Cards } from '@grantcodes/astro-blocks'
+
+const metadata = {
+  titleTemplate: '%s',
+}
+
+const cards = [
+  {
+    title: 'Detailed carbon estimations',
+    description: 'Automatically get detailed estimations of the carbon contributions of all the code on each page your site',
+  },
+  {
+    title: 'Static by default',
+    description: 'Generate truly static websites with no JavaScript by default, for the most lightweight, fast & efficient products. But with the option to go dynamic if needed.',
+  },
+  {
+    title: 'i18n',
+    description: 'Internationalization out of the box to help make your website accessible to as many people as possible.',
+  },
+  {
+    title: 'Built in docs',
+    description: 'Feature rich and easy to use documentation system included at no extra cost',
+  },
+]
+---
+
+<Layout metadata={metadata}>
+  <Hero
+    title={TITLE}
+    subtitle="A starter template for building sustainable websites."
+    button="Get started"
+    href="/docs/getting-started"
+    center
+  />
+  <Cards cards={cards} />
+</Layout>

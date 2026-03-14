@@ -1,0 +1,50 @@
+---
+import Layout from '@layouts/Page.astro'
+import { Hero } from '@grantcodes/astro-blocks'
+import { getRelativeLocaleUrl } from 'astro:i18n'
+import { defaultLang } from '@i18n/ui'
+import { GrantCodesContainer } from '@grantcodes/ui/components/container/index.js'
+import { GrantCodesCard } from '@grantcodes/ui/components/card/index.js'
+
+interface Props {
+  title: string
+  entries: any[]
+  urlPrependWith: string
+  lang?: string
+}
+
+const { title, entries, lang = defaultLang, urlPrependWith } = Astro.props
+
+const metadata = { title }
+---
+
+<Layout metadata={metadata}>
+    <Hero title={title} size="sm" />
+
+    <GrantCodesContainer>
+        <ol>
+            {entries.map((entry) => (
+                <li>
+                    <a href={getRelativeLocaleUrl(lang, entry.slug, {
+                        prependWith: urlPrependWith,
+                    })}>
+                        <GrantCodesCard class="is-clickable">
+                            <h2>{entry.data.title}</h2>
+                            <p>{entry.body.substring(0, 100)}</p>
+                        </GrantCodesCard>
+                    </a>
+                </li>
+            ))}
+        </ol>
+    </GrantCodesContainer>
+</Layout>
+
+<style>
+  grantcodes-container {
+    padding-block: calc(var(--size-space-unit) * 4);
+  }
+  ol {
+    list-style-type: none;
+    padding: 0;
+  }
+</style>

@@ -2,16 +2,20 @@
 
 Monorepo for UI packages using pnpm workspaces and Turbo.
 
-## Packages
+## Packages & Apps
 
-- `@grantcodes/ui` - Web components library built with Lit
-- `@grantcodes/style-dictionary` - Design tokens and theming
+- `@grantcodes/ui` - Web components library built with Lit - [See AGENTS.md](packages/ui/AGENTS.md)
+- `@grantcodes/style-dictionary` - Design tokens and theming - [See AGENTS.md](packages/style-dictionary/AGENTS.md)
+- `@grantcodes/astro-blocks` - Reusable Astro content blocks - [See AGENTS.md](packages/astro-blocks/AGENTS.md)
+- `@grantcodes/astro-starter` - Personal website - [See AGENTS.md](apps/astro/AGENTS.md)
 
 ## Commands
 
 ```bash
 # Development
 pnpm dev:ui              # Start Storybook for UI
+pnpm dev:astro           # Start Astro dev server
+pnpm dev:astro:ui       # Start Astro with UI watch for hot reload
 pnpm dev:style-dictionary  # Watch style-dictionary builds
 
 # Build

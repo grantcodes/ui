@@ -1,0 +1,23 @@
+---
+import '@grantcodes/ui/components/stats/stats.js'
+
+interface StatItem {
+  label: string
+  value: string
+  context?: string
+}
+
+interface Props {
+  title?: string
+  items: StatItem[]
+  columns?: number
+}
+
+const { title, items, columns = 4 } = Astro.props
+---
+
+<grantcodes-stats
+  title={title}
+  items={JSON.stringify(items)}
+  columns={columns}
+></grantcodes-stats>

@@ -1,0 +1,82 @@
+---
+import { GrantCodesCard } from '@grantcodes/ui/components/card/index.js'
+
+interface CardItem {
+  title: string
+  description?: string
+  image?: string
+  href?: string
+}
+
+interface Props {
+  cards: CardItem[]
+}
+
+const { cards } = Astro.props
+---
+
+<div class="cards">
+  <div class="container">
+    <div class="cards__grid">
+      {cards.map((card) => (
+        <a href={card.href || '#'} class="card-link">
+          <GrantCodesCard>
+            {card.image && <img slot="header" src={card.image} alt="" class="card__image" />}
+            <h3 class="card__title">{card.title}</h3>
+            {card.description && <p class="card__description">{card.description}</p>}
+          </GrantCodesCard>
+        </a>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .cards {
+    padding: 3rem 0;
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .cards__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .card-link {
+    display: flex;
+    flex-grow: 1;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .card-link:hover {
+    transform: translateY(-2px);
+  }
+
+  .card__image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .card__title {
+    margin: 0 0 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--g-theme-color-content-default, #111827);
+  }
+
+  .card__description {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--g-theme-color-content-default, #6b7280);
+    line-height: 1.5;
+  }
+</style>

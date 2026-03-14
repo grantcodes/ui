@@ -1,0 +1,137 @@
+---
+import { GrantCodesFormField } from '@grantcodes/ui/components/form-field/index.js'
+import { GrantCodesButton } from '@grantcodes/ui/components/button/index.js'
+
+interface Props {
+  title?: string
+  submitText?: string
+  successMessage?: string
+  notifyEmail: string
+  buttonText?: string
+}
+
+const { title, successMessage, notifyEmail, buttonText } = Astro.props
+
+const formId = `form-${Math.random().toString(36).slice(2, 9)}`
+---
+
+<div class="form-block">
+  <div class="form-block__container">
+    {title && <h2>{title}</h2>}
+    
+    <form 
+      id={formId} 
+      data-notify-email={notifyEmail} 
+      data-success-message={successMessage || 'Thank you for your message!'}
+    >
+      <div class="form__fields">
+        <GrantCodesFormField label="Name">
+          <input type="text" name="name" required />
+        </GrantCodesFormField>
+        <GrantCodesFormField label="Email">
+          <input type="email" name="email" required />
+        </GrantCodesFormField>
+        <GrantCodesFormField label="Message">
+          <textarea name="message" required></textarea>
+        </GrantCodesFormField>
+      </div>
+      
+      <div class="form__actions">
+        <GrantCodesButton type="submit">{buttonText || 'Send Message'}</GrantCodesButton>
+      </div>
+      
+      <div class="form__status" hidden></div>
+    </form>
+  </div>
+</div>
+
+<script>
+  const forms = document.querySelectorAll('.form-block form');
+  
+  forms.forEach(form => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formEl = e.target as HTMLFormElement;
+      const statusEl = formEl.querySelector('.form__status') as HTMLElement;
+      const notifyEmail = formEl.dataset.notifyEmail || '';
+      const successMessage = formEl.dataset.successMessage || 'Thank you for your message!';
+      
+      statusEl.hidden = false;
+      statusEl.textContent = 'Sending...';
+      statusEl.className = 'form__status form__status--loading';
+      
+      try {
+        const formData = new FormData(formEl);
+        const data = Object.fromEntries(formData.entries());
+        data.notifyEmail = notifyEmail;
+        
+        const response = await fetch('/api/form', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        
+        if (!response.ok) {
+          throw new Error('Failed to send form');
+        }
+        
+        statusEl.textContent = successMessage;
+        statusEl.className = 'form__status form__status--success';
+        formEl.reset();
+      } catch (error) {
+        statusEl.textContent = 'Failed to send message. Please try again.';
+        statusEl.className = 'form__status form__status--error';
+      }
+    });
+  });
+</script>
+
+<style>
+  .form-block {
+    padding: 3rem 0;
+  }
+
+  .form-block__container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  .form-block h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .form__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .form__actions {
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+  
+  .form__status {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border-radius: var(--g-theme-border-radius-md, 0.5rem);
+    text-align: center;
+  }
+  
+  .form__status--loading {
+    background: var(--g-theme-color-background-default, #f3f4f6);
+  }
+  
+  .form__status--success {
+    background: var(--g-color-utility-green-100, #dcfce7);
+    color: var(--g-color-utility-green-700, #15803d);
+  }
+  
+  .form__status--error {
+    background: var(--g-color-utility-red-100, #fee2e2);
+    color: var(--g-color-utility-red-700, #b91c1c);
+  }
+</style>

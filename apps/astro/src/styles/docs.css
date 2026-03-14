@@ -1,0 +1,30 @@
+/* Dark mode colors. */
+:root {
+  /* Custom font */
+  --sl-font: var(--font-family-body);
+  /* General colors */
+  --sl-color-accent-low: var(--g-theme-color-primary-100);
+  --sl-color-accent: var(--g-theme-color-primary-500);
+  --sl-color-accent-high: var(--g-theme-color-primary-400);
+  --sl-color-black: var(--g-theme-color-content-inverse);
+
+  /* Specific element colors */
+  --sl-color-bg-nav: var(--g-theme-color-background-inverse);
+  --sl-color-bg-sidebar: var(--g-theme-color-background-inverse);
+
+  font-size: 100%;
+}
+
+/* Light mode colors */
+:root[data-theme='light'] {
+  --sl-color-black: var(--g-theme-color-background-default);
+  --sl-color-accent-low: var(--g-theme-color-primary-400);
+  --sl-color-accent: var(--g-theme-color-primary-500);
+  --sl-color-accent-high: var(--g-theme-color-primary-600);
+
+  --sl-color-gray-6: var(--g-theme-color-background-subtle);
+
+    /* Specific element colors */
+    --sl-color-bg-nav: var(--g-theme-color-background-default);
+    --sl-color-bg-sidebar: var(--g-theme-color-background-default);
+}

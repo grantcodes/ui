@@ -1,0 +1,32 @@
+---
+import '@grantcodes/ui/components/pricing/pricing.js'
+
+interface PricingFeature {
+  text: string
+  included: boolean
+}
+
+interface PricingTier {
+  name: string
+  price: string
+  period?: string
+  description?: string
+  features: PricingFeature[]
+  cta: { label: string; href: string }
+  highlighted?: boolean
+}
+
+interface Props {
+  title?: string
+  subtitle?: string
+  tiers: PricingTier[]
+}
+
+const { title, subtitle, tiers } = Astro.props
+---
+
+<grantcodes-pricing
+  title={title}
+  subtitle={subtitle}
+  tiers={JSON.stringify(tiers)}
+></grantcodes-pricing>

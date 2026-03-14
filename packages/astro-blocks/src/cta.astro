@@ -1,0 +1,28 @@
+---
+import '@grantcodes/ui/components/cta/cta.js'
+
+interface Action {
+  label: string
+  href: string
+}
+
+interface Props {
+  eyebrow?: string
+  title: string
+  text?: string
+  primaryAction?: Action
+  secondaryAction?: Action
+  align?: 'left' | 'center'
+}
+
+const { eyebrow, title, text, primaryAction, secondaryAction, align = 'center' } = Astro.props
+---
+
+<grantcodes-cta
+  eyebrow={eyebrow}
+  title={title}
+  text={text}
+  primary-action={primaryAction ? JSON.stringify(primaryAction) : undefined}
+  secondary-action={secondaryAction ? JSON.stringify(secondaryAction) : undefined}
+  align={align}
+></grantcodes-cta>

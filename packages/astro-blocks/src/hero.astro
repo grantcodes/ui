@@ -1,0 +1,21 @@
+---
+import '@grantcodes/ui/components/hero/hero.js'
+
+interface Props {
+  title: string
+  subtitle?: string
+  button?: string
+  href?: string
+  size?: 'sm' | 'md' | 'lg'
+}
+
+const { title, subtitle, button, href, size } = Astro.props
+---
+
+<grantcodes-hero
+  title={title}
+  subtitle={subtitle}
+  button={button}
+  href={href}
+  size={size}
+></grantcodes-hero>

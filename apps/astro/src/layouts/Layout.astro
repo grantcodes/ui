@@ -1,0 +1,32 @@
+---
+import { getLangFromUrl } from '@i18n/utils'
+import Meta from '@components/common/Meta.astro'
+import type { Props as MetaProps } from '@components/common/Meta.astro'
+import '@grantcodes/ui/styles/themes/grantcodes.css'
+import '@grantcodes/ui/styles/base.css'
+import '@styles/style.css'
+
+export interface Props {
+  metadata: MetaProps
+}
+
+const lang = getLangFromUrl(Astro.url)
+const { metadata } = Astro.props
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <Meta {...metadata} />
+  </head>
+  <body>
+    <slot />
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100dvh;
+      }
+    </style>
+  </body>
+</html>

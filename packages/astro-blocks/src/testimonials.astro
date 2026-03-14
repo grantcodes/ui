@@ -1,0 +1,25 @@
+---
+import '@grantcodes/ui/components/testimonials/testimonials.js'
+
+interface TestimonialItem {
+  quote: string
+  name: string
+  role?: string
+  company?: string
+  avatar?: string
+}
+
+interface Props {
+  title?: string
+  items: TestimonialItem[]
+  layout?: 'cards' | 'list'
+}
+
+const { title, items, layout = 'cards' } = Astro.props
+---
+
+<grantcodes-testimonials
+  title={title}
+  items={JSON.stringify(items)}
+  layout={layout}
+></grantcodes-testimonials>

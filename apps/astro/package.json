@@ -1,0 +1,31 @@
+{
+  "name": "@grantcodes/astro-starter",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.11",
+    "@astrojs/sitemap": "^3.2.1",
+    "@astrojs/starlight": "^0.32.2",
+    "@fontsource-variable/lexend": "^5.2.5",
+    "@fontsource/lexend": "^5.2.5",
+    "@grantcodes/ui": "workspace:*",
+    "@grantcodes/astro-blocks": "workspace:*",
+    "@grantcodes/astro-og-images": "workspace:*",
+    "@semantic-ui/astro-lit": "^5.1.0",
+    "@webcomponents/template-shadowroot": "^0.2.1",
+    "astro": "^5.5.2",
+    "astro-seo": "^0.8.4",
+    "lit": "^3.2.1",
+    "marked": "^17.0.4"
+  },
+  "devDependencies": {
+    "@grantcodes/commit": "^2.0.0"
+  }
+}

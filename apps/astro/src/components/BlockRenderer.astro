@@ -1,0 +1,50 @@
+---
+import { Hero, Text, Gallery, Accordion, Cards } from '@grantcodes/astro-blocks'
+import FormBlock from './blocks/FormBlock.astro'
+import type { blockSchema } from '../content/schemas/schema'
+
+interface Props {
+  block: typeof blockSchema._output
+}
+
+const { block } = Astro.props
+---
+
+{(() => {
+  switch (block.type) {
+    case 'hero':
+      return (
+        <Hero
+          title={block.title}
+          subtitle={block.subtitle}
+          button={block.button}
+          href={block.href}
+          size={block.size}
+          center={block.center}
+          image={block.image}
+        />
+      )
+    case 'text':
+      return <Text content={block.content} />
+    case 'gallery':
+      return <Gallery images={block.images} />
+    case 'accordion':
+      return <Accordion items={block.items} />
+    case 'cards':
+      return <Cards cards={block.cards} />
+    case 'form':
+      return (
+        <FormBlock
+          title={block.title}
+          submitText={block.submitText}
+          successMessage={block.successMessage}
+          notifyEmail={block.notifyEmail}
+          buttonText={block.buttonText}
+        >
+          <slot />
+        </FormBlock>
+      )
+    default:
+      return null
+  }
+})()}

@@ -1,0 +1,39 @@
+---
+import { TITLE } from 'astro:env/server'
+import Layout from '@layouts/Page.astro'
+import { Hero, Cards } from '@grantcodes/astro-blocks'
+
+const metadata = {
+  title: TITLE,
+  titleTemplate: '%s',
+}
+
+const cards = [
+  {
+    title: 'Estimaciones detalladas de carbono',
+    description:
+      'Obtén estimaciones detalladas de la huella de carbono de cada página de tu sitio.',
+  },
+  {
+    title: 'Estático por defecto',
+    description:
+      'Genera sitios realmente estáticos y ligeros, con opción de contenido dinámico cuando lo necesites.',
+  },
+  {
+    title: 'i18n integrado',
+    description:
+      'Soporte de internacionalización para hacer tu sitio accesible a más personas.',
+  },
+]
+---
+
+<Layout metadata={metadata}>
+  <Hero
+    title="Hola"
+    subtitle="Una plantilla para crear sitios web sostenibles."
+    button="Empezar"
+    href="/docs/getting-started"
+    center
+  />
+  <Cards cards={cards} />
+</Layout>

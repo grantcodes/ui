@@ -1,0 +1,25 @@
+---
+import '@grantcodes/ui/components/media-text/media-text.js'
+
+interface Props {
+  title: string
+  text: string
+  media: {
+    src: string
+    alt?: string
+    kind?: 'image' | 'video'
+  }
+  reverse?: boolean
+  cta?: { label: string; href: string }
+}
+
+const { title, text, media, reverse = false, cta } = Astro.props
+---
+
+<grantcodes-media-text
+  title={title}
+  text={text}
+  media={JSON.stringify(media)}
+  reverse={reverse || undefined}
+  cta={cta ? JSON.stringify(cta) : undefined}
+></grantcodes-media-text>

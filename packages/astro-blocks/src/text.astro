@@ -1,0 +1,23 @@
+---
+import { marked } from 'marked'
+
+interface Props {
+  content: string
+}
+
+const { content } = Astro.props
+
+const htmlContent = marked.parse(content)
+---
+
+<div class="text-block">
+  <Fragment set:html={htmlContent} />
+</div>
+
+<style>
+  .text-block {
+    max-width: 65ch;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+</style>
