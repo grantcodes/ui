@@ -4,11 +4,24 @@ import sitemap from '@astrojs/sitemap';
 import { envDefaults } from './integrations/env-defaults.ts';
 import lit from '@semantic-ui/astro-lit';
 import astroOgImages from '@grantcodes/astro-og-images';
+import { fileURLToPath } from 'node:url';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://grant.codes',
   output: 'static',
+  vite: {
+    resolve: {
+      alias: {
+        '@layouts': fileURLToPath(new URL('./src/layouts', import.meta.url)),
+        '@components': fileURLToPath(new URL('./src/components', import.meta.url)),
+        '@assets': fileURLToPath(new URL('./src/assets', import.meta.url)),
+        '@i18n': fileURLToPath(new URL('./src/i18n', import.meta.url)),
+        '@styles': fileURLToPath(new URL('./src/styles', import.meta.url)),
+        '@pages': fileURLToPath(new URL('./src/pages', import.meta.url)),
+      },
+    },
+  },
   image: {
     service: {
       entrypoint: 'astro/assets/services/noop',
