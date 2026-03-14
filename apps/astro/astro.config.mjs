@@ -52,7 +52,10 @@ export default defineConfig({
       backgroundColor: envDefaults.OG_IMAGE_BACKGROUND_COLOR,
       foregroundColor: envDefaults.OG_IMAGE_COLOR,
       fontName: envDefaults.OG_IMAGE_FONT_NAME,
-      fontFile: envDefaults.OG_IMAGE_FONT_FILE,
+      titleFontFile: envDefaults.OG_IMAGE_TITLE_FONT_FILE,
+      bodyFontFile: envDefaults.OG_IMAGE_BODY_FONT_FILE,
+      titleFontWeight: envDefaults.OG_IMAGE_TITLE_FONT_WEIGHT,
+      bodyFontWeight: envDefaults.OG_IMAGE_BODY_FONT_WEIGHT,
     }),
     starlight({
       logo: {

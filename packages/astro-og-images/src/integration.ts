@@ -1,12 +1,17 @@
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { Resvg } from '@resvg/resvg-js';
 import type { AstroIntegration, IntegrationResolvedRoute } from 'astro';
+import Color from 'colorjs.io';
 import satori from 'satori';
 
 export interface AstroOgImagesOptions {
   favicon?: string;
   fontFile?: string;
+  titleFontFile?: string;
+  bodyFontFile?: string;
   fontName?: string;
+  titleFontWeight?: number;
+  bodyFontWeight?: number;
   foregroundColor?: string;
   backgroundColor?: string;
   titleTemplate?: string;
@@ -17,7 +22,11 @@ export interface AstroOgImagesOptions {
 const defaultOptions: Required<AstroOgImagesOptions> = {
   favicon: './public/favicon.svg',
   fontFile: './node_modules/@grantcodes/style-dictionary/assets/fonts/greycliff-regular.woff',
+  titleFontFile: './node_modules/@grantcodes/style-dictionary/assets/fonts/greycliff-heavy.woff',
+  bodyFontFile: './node_modules/@grantcodes/style-dictionary/assets/fonts/greycliff-regular.woff',
   fontName: 'Greycliff',
+  titleFontWeight: 900,
+  bodyFontWeight: 500,
   foregroundColor: '#f0f1f3',
   backgroundColor: '#13171f',
   titleTemplate: '%s',
@@ -25,11 +34,25 @@ const defaultOptions: Required<AstroOgImagesOptions> = {
   height: 630,
 };
 
+function normalizeColor(color: string): string {
+  try {
+    return new Color(color).to('srgb').toString({ format: 'hex' });
+  } catch {
+    return color;
+  }
+}
+
 export default function astroOgImages(userOptions: AstroOgImagesOptions = {}): AstroIntegration {
-  const options = { ...defaultOptions, ...userOptions };
+  const rawOptions = { ...defaultOptions, ...userOptions };
+  const options = {
+    ...rawOptions,
+    foregroundColor: normalizeColor(rawOptions.foregroundColor),
+    backgroundColor: normalizeColor(rawOptions.backgroundColor),
+  };
 
   let favicon: Buffer;
-  let font: Buffer;
+  let titleFont: Buffer;
+  let bodyFont: Buffer;
   let routes: IntegrationResolvedRoute[];
 
   return {
@@ -37,7 +60,8 @@ export default function astroOgImages(userOptions: AstroOgImagesOptions = {}): A
     hooks: {
       'astro:build:start': async () => {
         favicon = readFileSync(options.favicon);
-        font = readFileSync(options.fontFile);
+        titleFont = readFileSync(options.titleFontFile || options.fontFile);
+        bodyFont = readFileSync(options.bodyFontFile || options.fontFile);
       },
       'astro:routes:resolved': (params) => {
         routes = params.routes;
@@ -104,12 +128,22 @@ export default function astroOgImages(userOptions: AstroOgImagesOptions = {}): A
                           },
                           {
                             type: 'div',
-                            props: { style: { marginTop: 96 }, children: title },
+                            props: {
+                              style: {
+                                marginTop: 96,
+                                fontWeight: options.titleFontWeight,
+                              },
+                              children: title,
+                            },
                           },
                           {
                             type: 'div',
                             props: {
-                              style: { marginTop: 30, fontSize: 36 },
+                              style: {
+                                marginTop: 30,
+                                fontSize: 36,
+                                fontWeight: options.bodyFontWeight,
+                              },
                               children: description,
                             },
                           },
@@ -122,8 +156,14 @@ export default function astroOgImages(userOptions: AstroOgImagesOptions = {}): A
                       fonts: [
                         {
                           name: options.fontName,
-                          data: font,
-                          weight: 400,
+                          data: titleFont,
+                          weight: options.titleFontWeight,
+                          style: 'normal',
+                        },
+                        {
+                          name: options.fontName,
+                          data: bodyFont,
+                          weight: options.bodyFontWeight,
                           style: 'normal',
                         },
                       ],
@@ -137,7 +177,7 @@ export default function astroOgImages(userOptions: AstroOgImagesOptions = {}): A
                   imageCount++;
                   writeFileSync(
                     distURL.pathname.replace('index.html', 'og.png'),
-                    resvg.render().asPng().toString(),
+                    resvg.render().asPng(),
                   );
                 }
               }
