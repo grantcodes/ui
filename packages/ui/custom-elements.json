@@ -4,6 +4,119 @@
   "modules": [
     {
       "kind": "javascript-module",
+      "path": "src/components/accordion/accordion.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "GrantCodesAccordion",
+          "members": [
+            {
+              "kind": "field",
+              "name": "items",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "items"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "items",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "items"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "grantcodes-accordion",
+          "customElement": true,
+          "modulePath": "src/components/accordion/accordion.component.js",
+          "definitionPath": "src/components/accordion/index.js"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GrantCodesAccordion",
+          "declaration": {
+            "name": "GrantCodesAccordion",
+            "module": "src/components/accordion/accordion.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/accordion/accordion.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/accordion/accordion.component.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "GrantCodesAccordion",
+            "module": "src/components/accordion/accordion.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-accordion",
+          "declaration": {
+            "name": "GrantCodesAccordion",
+            "module": "/src/components/accordion/accordion.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/accordion/index.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/accordion/accordion.component.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "GrantCodesAccordion",
+            "module": "src/components/accordion/index.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-accordion",
+          "declaration": {
+            "name": "GrantCodesAccordion",
+            "module": "/src/components/accordion/accordion.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/app-bar/app-bar.component.js",
       "declarations": [
         {
@@ -350,7 +463,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/avatar/avatar"
+            "module": "src/components/avatar/avatar.js"
           }
         }
       ]
@@ -366,17 +479,6 @@
           "members": [
             {
               "kind": "field",
-              "name": "style",
-              "privacy": "public",
-              "type": {
-                "text": "'outline' | 'soft'"
-              },
-              "description": "Style of the badge",
-              "default": "\"outline\"",
-              "attribute": "style"
-            },
-            {
-              "kind": "field",
               "name": "variant",
               "privacy": "public",
               "type": {
@@ -388,15 +490,6 @@
             }
           ],
           "attributes": [
-            {
-              "name": "style",
-              "type": {
-                "text": "'outline' | 'soft'"
-              },
-              "description": "Style of the badge",
-              "default": "\"outline\"",
-              "fieldName": "style"
-            },
             {
               "name": "variant",
               "type": {
@@ -721,7 +814,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/button-group/button-group"
+            "module": "src/components/button-group/button-group.js"
           }
         }
       ]
@@ -891,7 +984,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/button/button"
+            "module": "src/components/button/button.js"
           }
         }
       ]
@@ -904,7 +997,52 @@
           "kind": "class",
           "description": "",
           "name": "GrantCodesCard",
-          "members": [],
+          "members": [
+            {
+              "kind": "method",
+              "name": "_checkSlots"
+            },
+            {
+              "kind": "field",
+              "name": "hasFooter",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "hasFooter",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "hasHeader",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "hasHeader",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "hasFooter",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "hasFooter"
+            },
+            {
+              "name": "hasHeader",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "hasHeader"
+            }
+          ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
@@ -967,7 +1105,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/card/card"
+            "module": "src/components/card/card.js"
           }
         }
       ]
@@ -1094,7 +1232,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/code-preview/code-preview"
+            "module": "src/components/code-preview/code-preview.js"
           }
         }
       ]
@@ -1209,7 +1347,217 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/container/container"
+            "module": "src/components/container/container.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/cta/cta.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "GrantCodesCta",
+          "members": [
+            {
+              "kind": "field",
+              "name": "_primaryAction",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_secondaryAction",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "align",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Text alignment of the block.",
+              "default": "\"center\"",
+              "attribute": "align",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "eyebrow",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Small label shown above the title.",
+              "default": "\"\"",
+              "attribute": "eyebrow"
+            },
+            {
+              "kind": "field",
+              "name": "primaryAction",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Primary CTA as a JSON string: `{\"label\":\"...\",\"href\":\"...\"}`.",
+              "default": "\"\"",
+              "attribute": "primary-action"
+            },
+            {
+              "kind": "field",
+              "name": "secondaryAction",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Secondary CTA as a JSON string: `{\"label\":\"...\",\"href\":\"...\"}`.",
+              "default": "\"\"",
+              "attribute": "secondary-action"
+            },
+            {
+              "kind": "field",
+              "name": "text",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Supporting paragraph text.",
+              "default": "\"\"",
+              "attribute": "text"
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Main heading text.",
+              "default": "\"\"",
+              "attribute": "title"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "align",
+              "type": {
+                "text": "string"
+              },
+              "description": "Text alignment of the block.",
+              "default": "\"center\"",
+              "fieldName": "align"
+            },
+            {
+              "name": "eyebrow",
+              "type": {
+                "text": "string"
+              },
+              "description": "Small label shown above the title.",
+              "default": "\"\"",
+              "fieldName": "eyebrow"
+            },
+            {
+              "name": "primary-action",
+              "type": {
+                "text": "string"
+              },
+              "description": "Primary CTA as a JSON string: `{\"label\":\"...\",\"href\":\"...\"}`.",
+              "default": "\"\"",
+              "fieldName": "primaryAction"
+            },
+            {
+              "name": "secondary-action",
+              "type": {
+                "text": "string"
+              },
+              "description": "Secondary CTA as a JSON string: `{\"label\":\"...\",\"href\":\"...\"}`.",
+              "default": "\"\"",
+              "fieldName": "secondaryAction"
+            },
+            {
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "description": "Supporting paragraph text.",
+              "default": "\"\"",
+              "fieldName": "text"
+            },
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "description": "Main heading text.",
+              "default": "\"\"",
+              "fieldName": "title"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "grantcodes-cta",
+          "customElement": true,
+          "modulePath": "src/components/cta/cta.component.js",
+          "definitionPath": "src/components/cta/cta.js"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GrantCodesCta",
+          "declaration": {
+            "name": "GrantCodesCta",
+            "module": "src/components/cta/cta.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/cta/cta.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/cta/cta.component.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "GrantCodesCta",
+            "module": "src/components/cta/cta.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-cta",
+          "declaration": {
+            "name": "GrantCodesCta",
+            "module": "/src/components/cta/cta.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/cta/index.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/cta/cta.js"
           }
         }
       ]
@@ -1333,7 +1681,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/dialog/dialog"
+            "module": "src/components/dialog/dialog.js"
           }
         }
       ]
@@ -1376,7 +1724,12 @@
             },
             {
               "kind": "method",
-              "name": "_handleTriggerClick"
+              "name": "_handleTriggerClick",
+              "parameters": [
+                {
+                  "name": "_e"
+                }
+              ]
             },
             {
               "kind": "field",
@@ -1411,7 +1764,7 @@
               "name": "placement",
               "privacy": "public",
               "type": {
-                "text": "'bottom-start' | 'bottom-end' | 'top-start' | 'top-end'"
+                "text": "string"
               },
               "description": "Placement of the dropdown menu",
               "default": "\"bottom-start\"",
@@ -1448,7 +1801,7 @@
             {
               "name": "placement",
               "type": {
-                "text": "'bottom-start' | 'bottom-end' | 'top-start' | 'top-end'"
+                "text": "string"
               },
               "description": "Placement of the dropdown menu",
               "default": "\"bottom-start\"",
@@ -1749,7 +2102,219 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/dropzone/dropzone"
+            "module": "src/components/dropzone/dropzone.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/feature-list/feature-list.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "GrantCodesFeatureList",
+          "members": [
+            {
+              "kind": "method",
+              "name": "_iconSvg",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "_items",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_renderIcon",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "columns",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "Number of columns in the grid (1–4).",
+              "default": "3",
+              "attribute": "columns"
+            },
+            {
+              "kind": "field",
+              "name": "items",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Feature items as a JSON string array: `[{\"title\":\"...\",\"description\":\"...\",\"icon\":\"...\",\"href\":\"...\"}]`.",
+              "default": "\"[]\"",
+              "attribute": "items"
+            },
+            {
+              "kind": "field",
+              "name": "subtitle",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional supporting text below the heading.",
+              "default": "\"\"",
+              "attribute": "subtitle"
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional section heading.",
+              "default": "\"\"",
+              "attribute": "title"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "columns",
+              "type": {
+                "text": "number"
+              },
+              "description": "Number of columns in the grid (1–4).",
+              "default": "3",
+              "fieldName": "columns"
+            },
+            {
+              "name": "items",
+              "type": {
+                "text": "string"
+              },
+              "description": "Feature items as a JSON string array: `[{\"title\":\"...\",\"description\":\"...\",\"icon\":\"...\",\"href\":\"...\"}]`.",
+              "default": "\"[]\"",
+              "fieldName": "items"
+            },
+            {
+              "name": "subtitle",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional supporting text below the heading.",
+              "default": "\"\"",
+              "fieldName": "subtitle"
+            },
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional section heading.",
+              "default": "\"\"",
+              "fieldName": "title"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "grantcodes-feature-list",
+          "customElement": true,
+          "modulePath": "src/components/feature-list/feature-list.component.js",
+          "definitionPath": "src/components/feature-list/feature-list.js"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GrantCodesFeatureList",
+          "declaration": {
+            "name": "GrantCodesFeatureList",
+            "module": "src/components/feature-list/feature-list.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/feature-list/feature-list.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/feature-list/feature-list.component.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "GrantCodesFeatureList",
+            "module": "src/components/feature-list/feature-list.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-feature-list",
+          "declaration": {
+            "name": "GrantCodesFeatureList",
+            "module": "/src/components/feature-list/feature-list.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/feature-list/index.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/feature-list/feature-list.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/footer/footer-column.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "GrantCodesFooterColumn",
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "grantcodes-footer-column",
+          "customElement": true,
+          "modulePath": "src/components/footer/footer-column.component.js",
+          "definitionPath": "src/components/footer/footer.js"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GrantCodesFooterColumn",
+          "declaration": {
+            "name": "GrantCodesFooterColumn",
+            "module": "src/components/footer/footer-column.component.js"
           }
         }
       ]
@@ -1822,6 +2387,14 @@
         },
         {
           "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/footer/footer-column.component.js"
+          }
+        },
+        {
+          "kind": "js",
           "name": "default",
           "declaration": {
             "name": "GrantCodesFooter",
@@ -1834,6 +2407,14 @@
           "declaration": {
             "name": "GrantCodesFooter",
             "module": "/src/components/footer/footer.component.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-footer-column",
+          "declaration": {
+            "name": "GrantCodesFooterColumn",
+            "module": "/src/components/footer/footer-column.component.js"
           }
         }
       ]
@@ -1849,6 +2430,14 @@
           "declaration": {
             "name": "*",
             "module": "src/components/footer/footer.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "GrantCodesFooterColumn",
+          "declaration": {
+            "name": "GrantCodesFooterColumn",
+            "module": "./footer-column.component.js"
           }
         }
       ]
@@ -2052,7 +2641,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/form-field/form-field"
+            "module": "src/components/form-field/form-field.js"
           }
         }
       ]
@@ -2313,7 +2902,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/gallery/gallery"
+            "module": "src/components/gallery/gallery.js"
           }
         },
         {
@@ -2321,7 +2910,187 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/gallery/gallery-image"
+            "module": "src/components/gallery/gallery-image.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/hero/hero.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "GrantCodesHero",
+          "members": [
+            {
+              "kind": "field",
+              "name": "button",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Label for the CTA button. Only rendered when `href` is also set.",
+              "default": "\"\"",
+              "attribute": "button"
+            },
+            {
+              "kind": "field",
+              "name": "href",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "URL the CTA button links to.",
+              "default": "\"\"",
+              "attribute": "href"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Controls the vertical height of the hero section.",
+              "default": "\"md\"",
+              "attribute": "size",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "subtitle",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Supporting paragraph text shown below the title.",
+              "default": "\"\"",
+              "attribute": "subtitle"
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Main heading text.",
+              "default": "\"\"",
+              "attribute": "title"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "button",
+              "type": {
+                "text": "string"
+              },
+              "description": "Label for the CTA button. Only rendered when `href` is also set.",
+              "default": "\"\"",
+              "fieldName": "button"
+            },
+            {
+              "name": "href",
+              "type": {
+                "text": "string"
+              },
+              "description": "URL the CTA button links to.",
+              "default": "\"\"",
+              "fieldName": "href"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "string"
+              },
+              "description": "Controls the vertical height of the hero section.",
+              "default": "\"md\"",
+              "fieldName": "size"
+            },
+            {
+              "name": "subtitle",
+              "type": {
+                "text": "string"
+              },
+              "description": "Supporting paragraph text shown below the title.",
+              "default": "\"\"",
+              "fieldName": "subtitle"
+            },
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "description": "Main heading text.",
+              "default": "\"\"",
+              "fieldName": "title"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "grantcodes-hero",
+          "customElement": true,
+          "modulePath": "src/components/hero/hero.component.js",
+          "definitionPath": "src/components/hero/hero.js"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GrantCodesHero",
+          "declaration": {
+            "name": "GrantCodesHero",
+            "module": "src/components/hero/hero.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/hero/hero.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/hero/hero.component.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "GrantCodesHero",
+            "module": "src/components/hero/hero.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-hero",
+          "declaration": {
+            "name": "GrantCodesHero",
+            "module": "/src/components/hero/hero.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/hero/index.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/hero/hero.js"
           }
         }
       ]
@@ -2397,7 +3166,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/icon/icon"
+            "module": "src/components/icon/icon.js"
           }
         }
       ]
@@ -2412,7 +3181,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/loading/loading"
+            "module": "src/components/loading/loading.js"
           }
         }
       ]
@@ -2480,6 +3249,539 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/logo-cloud/index.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/logo-cloud/logo-cloud.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/logo-cloud/logo-cloud.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "GrantCodesLogoCloud",
+          "members": [
+            {
+              "kind": "field",
+              "name": "_logos",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "logos",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Logo items as a JSON string array: `[{\"name\":\"...\",\"src\":\"...\",\"alt\":\"...\",\"href\":\"...\"}]`.",
+              "default": "\"[]\"",
+              "attribute": "logos"
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional label shown above the logos.",
+              "default": "\"\"",
+              "attribute": "title"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "logos",
+              "type": {
+                "text": "string"
+              },
+              "description": "Logo items as a JSON string array: `[{\"name\":\"...\",\"src\":\"...\",\"alt\":\"...\",\"href\":\"...\"}]`.",
+              "default": "\"[]\"",
+              "fieldName": "logos"
+            },
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional label shown above the logos.",
+              "default": "\"\"",
+              "fieldName": "title"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "grantcodes-logo-cloud",
+          "customElement": true,
+          "modulePath": "src/components/logo-cloud/logo-cloud.component.js",
+          "definitionPath": "src/components/logo-cloud/logo-cloud.js"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GrantCodesLogoCloud",
+          "declaration": {
+            "name": "GrantCodesLogoCloud",
+            "module": "src/components/logo-cloud/logo-cloud.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/logo-cloud/logo-cloud.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/logo-cloud/logo-cloud.component.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "GrantCodesLogoCloud",
+            "module": "src/components/logo-cloud/logo-cloud.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-logo-cloud",
+          "declaration": {
+            "name": "GrantCodesLogoCloud",
+            "module": "/src/components/logo-cloud/logo-cloud.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/media-text/index.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/media-text/media-text.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/media-text/media-text.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "GrantCodesMediaText",
+          "members": [
+            {
+              "kind": "field",
+              "name": "_cta",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_media",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "cta",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional CTA as a JSON string: `{\"label\":\"...\",\"href\":\"...\"}`.",
+              "default": "\"\"",
+              "attribute": "cta"
+            },
+            {
+              "kind": "field",
+              "name": "media",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Media object as a JSON string: `{\"src\":\"...\",\"alt\":\"...\",\"kind\":\"image|video\"}`.",
+              "default": "\"\"",
+              "attribute": "media"
+            },
+            {
+              "kind": "field",
+              "name": "reverse",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "When true, the media appears on the right and text on the left.",
+              "default": "false",
+              "attribute": "reverse",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "text",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Body text paragraph.",
+              "default": "\"\"",
+              "attribute": "text"
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Section heading.",
+              "default": "\"\"",
+              "attribute": "title"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "cta",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional CTA as a JSON string: `{\"label\":\"...\",\"href\":\"...\"}`.",
+              "default": "\"\"",
+              "fieldName": "cta"
+            },
+            {
+              "name": "media",
+              "type": {
+                "text": "string"
+              },
+              "description": "Media object as a JSON string: `{\"src\":\"...\",\"alt\":\"...\",\"kind\":\"image|video\"}`.",
+              "default": "\"\"",
+              "fieldName": "media"
+            },
+            {
+              "name": "reverse",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "When true, the media appears on the right and text on the left.",
+              "default": "false",
+              "fieldName": "reverse"
+            },
+            {
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "description": "Body text paragraph.",
+              "default": "\"\"",
+              "fieldName": "text"
+            },
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "description": "Section heading.",
+              "default": "\"\"",
+              "fieldName": "title"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "grantcodes-media-text",
+          "customElement": true,
+          "modulePath": "src/components/media-text/media-text.component.js",
+          "definitionPath": "src/components/media-text/media-text.js"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GrantCodesMediaText",
+          "declaration": {
+            "name": "GrantCodesMediaText",
+            "module": "src/components/media-text/media-text.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/media-text/media-text.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/media-text/media-text.component.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "GrantCodesMediaText",
+            "module": "src/components/media-text/media-text.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-media-text",
+          "declaration": {
+            "name": "GrantCodesMediaText",
+            "module": "/src/components/media-text/media-text.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/newsletter/index.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/newsletter/newsletter.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/newsletter/newsletter.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "GrantCodesNewsletter",
+          "members": [
+            {
+              "kind": "field",
+              "name": "action",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Form action URL.",
+              "default": "\"\"",
+              "attribute": "action"
+            },
+            {
+              "kind": "field",
+              "name": "buttonLabel",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Submit button label.",
+              "default": "\"Subscribe\"",
+              "attribute": "button-label"
+            },
+            {
+              "kind": "field",
+              "name": "disclaimer",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional small disclaimer text below the form.",
+              "default": "\"\"",
+              "attribute": "disclaimer"
+            },
+            {
+              "kind": "field",
+              "name": "method",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Form submission method.",
+              "default": "\"post\"",
+              "attribute": "method"
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Email input placeholder.",
+              "default": "\"Your email address\"",
+              "attribute": "placeholder"
+            },
+            {
+              "kind": "field",
+              "name": "text",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional supporting paragraph.",
+              "default": "\"\"",
+              "attribute": "text"
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Section heading.",
+              "default": "\"\"",
+              "attribute": "title"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "action",
+              "type": {
+                "text": "string"
+              },
+              "description": "Form action URL.",
+              "default": "\"\"",
+              "fieldName": "action"
+            },
+            {
+              "name": "button-label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Submit button label.",
+              "default": "\"Subscribe\"",
+              "fieldName": "buttonLabel"
+            },
+            {
+              "name": "disclaimer",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional small disclaimer text below the form.",
+              "default": "\"\"",
+              "fieldName": "disclaimer"
+            },
+            {
+              "name": "method",
+              "type": {
+                "text": "string"
+              },
+              "description": "Form submission method.",
+              "default": "\"post\"",
+              "fieldName": "method"
+            },
+            {
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "description": "Email input placeholder.",
+              "default": "\"Your email address\"",
+              "fieldName": "placeholder"
+            },
+            {
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional supporting paragraph.",
+              "default": "\"\"",
+              "fieldName": "text"
+            },
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "description": "Section heading.",
+              "default": "\"\"",
+              "fieldName": "title"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "grantcodes-newsletter",
+          "customElement": true,
+          "modulePath": "src/components/newsletter/newsletter.component.js",
+          "definitionPath": "src/components/newsletter/newsletter.js"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GrantCodesNewsletter",
+          "declaration": {
+            "name": "GrantCodesNewsletter",
+            "module": "src/components/newsletter/newsletter.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/newsletter/newsletter.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/newsletter/newsletter.component.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "GrantCodesNewsletter",
+            "module": "src/components/newsletter/newsletter.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-newsletter",
+          "declaration": {
+            "name": "GrantCodesNewsletter",
+            "module": "/src/components/newsletter/newsletter.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/notice/index.js",
       "declarations": [],
       "exports": [
@@ -2488,7 +3790,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/notice/notice"
+            "module": "src/components/notice/notice.js"
           }
         }
       ]
@@ -2643,7 +3945,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/pagination/pagination"
+            "module": "src/components/pagination/pagination.js"
           }
         }
       ]
@@ -2797,6 +4099,150 @@
           "declaration": {
             "name": "GrantCodesPagination",
             "module": "/src/components/pagination/pagination.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pricing/index.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/pricing/pricing.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pricing/pricing.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "GrantCodesPricing",
+          "members": [
+            {
+              "kind": "field",
+              "name": "_tiers",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "subtitle",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional supporting text below the heading.",
+              "default": "\"\"",
+              "attribute": "subtitle"
+            },
+            {
+              "kind": "field",
+              "name": "tiers",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Pricing tiers as a JSON string array.\nEach tier: `{\"name\":\"...\",\"price\":\"...\",\"period\":\"...\",\"description\":\"...\",\"features\":[{\"text\":\"...\",\"included\":true}],\"cta\":{\"label\":\"...\",\"href\":\"...\"},\"highlighted\":false}`.",
+              "default": "\"[]\"",
+              "attribute": "tiers"
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional section heading.",
+              "default": "\"\"",
+              "attribute": "title"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "subtitle",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional supporting text below the heading.",
+              "default": "\"\"",
+              "fieldName": "subtitle"
+            },
+            {
+              "name": "tiers",
+              "type": {
+                "text": "string"
+              },
+              "description": "Pricing tiers as a JSON string array.\nEach tier: `{\"name\":\"...\",\"price\":\"...\",\"period\":\"...\",\"description\":\"...\",\"features\":[{\"text\":\"...\",\"included\":true}],\"cta\":{\"label\":\"...\",\"href\":\"...\"},\"highlighted\":false}`.",
+              "default": "\"[]\"",
+              "fieldName": "tiers"
+            },
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional section heading.",
+              "default": "\"\"",
+              "fieldName": "title"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "grantcodes-pricing",
+          "customElement": true,
+          "modulePath": "src/components/pricing/pricing.component.js",
+          "definitionPath": "src/components/pricing/pricing.js"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GrantCodesPricing",
+          "declaration": {
+            "name": "GrantCodesPricing",
+            "module": "src/components/pricing/pricing.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pricing/pricing.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/pricing/pricing.component.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "GrantCodesPricing",
+            "module": "src/components/pricing/pricing.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-pricing",
+          "declaration": {
+            "name": "GrantCodesPricing",
+            "module": "/src/components/pricing/pricing.component.js"
           }
         }
       ]
@@ -3023,6 +4469,150 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/stats/index.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/stats/stats.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/stats/stats.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "GrantCodesStats",
+          "members": [
+            {
+              "kind": "field",
+              "name": "_items",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "columns",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "Number of columns in the grid (1–6).",
+              "default": "4",
+              "attribute": "columns"
+            },
+            {
+              "kind": "field",
+              "name": "items",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Stat items as a JSON string array: `[{\"label\":\"...\",\"value\":\"...\",\"context\":\"...\"}]`.",
+              "default": "\"[]\"",
+              "attribute": "items"
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional section heading.",
+              "default": "\"\"",
+              "attribute": "title"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "columns",
+              "type": {
+                "text": "number"
+              },
+              "description": "Number of columns in the grid (1–6).",
+              "default": "4",
+              "fieldName": "columns"
+            },
+            {
+              "name": "items",
+              "type": {
+                "text": "string"
+              },
+              "description": "Stat items as a JSON string array: `[{\"label\":\"...\",\"value\":\"...\",\"context\":\"...\"}]`.",
+              "default": "\"[]\"",
+              "fieldName": "items"
+            },
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional section heading.",
+              "default": "\"\"",
+              "fieldName": "title"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "grantcodes-stats",
+          "customElement": true,
+          "modulePath": "src/components/stats/stats.component.js",
+          "definitionPath": "src/components/stats/stats.js"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GrantCodesStats",
+          "declaration": {
+            "name": "GrantCodesStats",
+            "module": "src/components/stats/stats.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/stats/stats.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/stats/stats.component.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "GrantCodesStats",
+            "module": "src/components/stats/stats.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-stats",
+          "declaration": {
+            "name": "GrantCodesStats",
+            "module": "/src/components/stats/stats.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/tabs/index.js",
       "declarations": [],
       "exports": [
@@ -3031,7 +4621,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/tabs/tabs"
+            "module": "src/components/tabs/tabs.js"
           }
         },
         {
@@ -3039,7 +4629,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/tabs/tab"
+            "module": "src/components/tabs/tab.js"
           }
         }
       ]
@@ -3854,6 +5444,151 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/testimonials/index.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/testimonials/testimonials.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/testimonials/testimonials.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "GrantCodesTestimonials",
+          "members": [
+            {
+              "kind": "field",
+              "name": "_items",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "items",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Testimonial items as a JSON string array: `[{\"quote\":\"...\",\"name\":\"...\",\"role\":\"...\",\"company\":\"...\",\"avatar\":\"...\"}]`.",
+              "default": "\"[]\"",
+              "attribute": "items"
+            },
+            {
+              "kind": "field",
+              "name": "layout",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Display layout of the testimonials.",
+              "default": "\"cards\"",
+              "attribute": "layout",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional section heading.",
+              "default": "\"\"",
+              "attribute": "title"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "items",
+              "type": {
+                "text": "string"
+              },
+              "description": "Testimonial items as a JSON string array: `[{\"quote\":\"...\",\"name\":\"...\",\"role\":\"...\",\"company\":\"...\",\"avatar\":\"...\"}]`.",
+              "default": "\"[]\"",
+              "fieldName": "items"
+            },
+            {
+              "name": "layout",
+              "type": {
+                "text": "string"
+              },
+              "description": "Display layout of the testimonials.",
+              "default": "\"cards\"",
+              "fieldName": "layout"
+            },
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional section heading.",
+              "default": "\"\"",
+              "fieldName": "title"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "grantcodes-testimonials",
+          "customElement": true,
+          "modulePath": "src/components/testimonials/testimonials.component.js",
+          "definitionPath": "src/components/testimonials/testimonials.js"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GrantCodesTestimonials",
+          "declaration": {
+            "name": "GrantCodesTestimonials",
+            "module": "src/components/testimonials/testimonials.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/testimonials/testimonials.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/testimonials/testimonials.component.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "GrantCodesTestimonials",
+            "module": "src/components/testimonials/testimonials.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-testimonials",
+          "declaration": {
+            "name": "GrantCodesTestimonials",
+            "module": "/src/components/testimonials/testimonials.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/toast/index.js",
       "declarations": [],
       "exports": [
@@ -4148,7 +5883,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/tooltip/tooltip"
+            "module": "src/components/tooltip/tooltip.js"
           }
         }
       ]
