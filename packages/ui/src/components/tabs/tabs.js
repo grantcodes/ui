@@ -4,5 +4,5 @@ export * from "./tabs.component.js";
 export default GrantCodesTabs;
 
 if (!customElements.get("grantcodes-tabs")) {
-  customElements.define("grantcodes-tabs", GrantCodesTabs);
+	customElements.define("grantcodes-tabs", GrantCodesTabs);
 }

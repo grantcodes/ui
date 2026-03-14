@@ -68,12 +68,16 @@ export class GrantCodesFeatureList extends LitElement {
 		return html`
 			<section class="feature-list">
 				<div class="feature-list__container">
-					${this.title
-						? html`<h2 class="feature-list__title">${this.title}</h2>`
-						: null}
-					${this.subtitle
-						? html`<p class="feature-list__subtitle">${this.subtitle}</p>`
-						: null}
+					${
+						this.title
+							? html`<h2 class="feature-list__title">${this.title}</h2>`
+							: null
+					}
+					${
+						this.subtitle
+							? html`<p class="feature-list__subtitle">${this.subtitle}</p>`
+							: null
+					}
 					<ul
 						class="feature-list__grid"
 						style="--columns: ${this.columns}"
@@ -82,33 +86,39 @@ export class GrantCodesFeatureList extends LitElement {
 						${items.map(
 							(item) => html`
 								<li class="feature-list__item">
-									${item.href
-										? html`
+									${
+										item.href
+											? html`
 												<a href=${item.href} class="feature-list__link">
 												${this._renderIcon(item.icon)}
 												<h3 class="feature-list__item-title">
 														${item.title}
 													</h3>
-													${item.description
-														? html`<p class="feature-list__item-desc">
+													${
+														item.description
+															? html`<p class="feature-list__item-desc">
 																${item.description}
 															</p>`
-														: null}
+															: null
+													}
 												</a>
 											`
-										: html`
+											: html`
 												<div class="feature-list__content">
 												${this._renderIcon(item.icon)}
 												<h3 class="feature-list__item-title">
 														${item.title}
 													</h3>
-													${item.description
-														? html`<p class="feature-list__item-desc">
+													${
+														item.description
+															? html`<p class="feature-list__item-desc">
 																${item.description}
 															</p>`
-														: null}
+															: null
+													}
 												</div>
-											`}
+											`
+									}
 								</li>
 							`,
 						)}

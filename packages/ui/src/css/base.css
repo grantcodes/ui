@@ -11,24 +11,24 @@
 
 /* Design tokens are provided by @grantcodes/style-dictionary and applied to :root */
 :root {
-  --grantcodes-ui-theme: "none";
-  background-color: var(--g-theme-color-background-default);
-  fill: currentColor;
+	--grantcodes-ui-theme: "none";
+	background-color: var(--g-theme-color-background-default);
+	fill: currentColor;
 }
 
 /* Allow transitioning auto */
 :root {
-  @supports (interpolate-size: allow-keywords) {
-    interpolate-size: allow-keywords;
-  }
+	@supports (interpolate-size: allow-keywords) {
+		interpolate-size: allow-keywords;
+	}
 }
 
 ::selection {
-  background-color: var(--g-color-brand-purple-200);
+	background-color: var(--g-color-brand-purple-200);
 }
 
 /* Default backdrop styles */
 ::backdrop {
-  background-color: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(6px);
+	background-color: rgba(0, 0, 0, 0.4);
+	backdrop-filter: blur(6px);
 }

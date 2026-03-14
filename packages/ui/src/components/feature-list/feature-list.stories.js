@@ -1,7 +1,9 @@
 import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
 import "./feature-list.js";
 
-const { events, args, argTypes } = getStorybookHelpers("grantcodes-feature-list");
+const { events, args, argTypes } = getStorybookHelpers(
+	"grantcodes-feature-list",
+);
 
 const meta = {
 	title: "Blocks/FeatureList",
@@ -26,7 +28,8 @@ const sampleItems = JSON.stringify([
 	},
 	{
 		title: "Accessible",
-		description: "WAI-ARIA compliant components with keyboard navigation support.",
+		description:
+			"WAI-ARIA compliant components with keyboard navigation support.",
 		icon: "♿",
 	},
 	{
@@ -72,7 +75,8 @@ export const TwoColumn = {
 		items: JSON.stringify([
 			{
 				title: "Design tokens",
-				description: "Consistent spacing, colour, and typography across your entire UI.",
+				description:
+					"Consistent spacing, colour, and typography across your entire UI.",
 				icon: "🎯",
 			},
 			{
@@ -92,9 +96,21 @@ export const WithLinks = {
 	args: {
 		title: "Explore components",
 		items: JSON.stringify([
-			{ title: "Button", description: "Primary, secondary, ghost variants.", href: "/button" },
-			{ title: "Card", description: "Flexible content containers.", href: "/card" },
-			{ title: "Dialog", description: "Accessible modal dialogs.", href: "/dialog" },
+			{
+				title: "Button",
+				description: "Primary, secondary, ghost variants.",
+				href: "/button",
+			},
+			{
+				title: "Card",
+				description: "Flexible content containers.",
+				href: "/card",
+			},
+			{
+				title: "Dialog",
+				description: "Accessible modal dialogs.",
+				href: "/dialog",
+			},
 		]),
 		columns: 3,
 	},

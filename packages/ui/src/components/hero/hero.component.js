@@ -47,14 +47,18 @@ export class GrantCodesHero extends LitElement {
 			<section class="hero">
 				<div class="hero__container">
 					<h1 class="hero__title">${this.title}</h1>
-					${this.subtitle
-						? html`<p class="hero__text">${this.subtitle}</p>`
-						: null}
-					${this.href && this.button
-						? html`<grantcodes-button href=${this.href}
+					${
+						this.subtitle
+							? html`<p class="hero__text">${this.subtitle}</p>`
+							: null
+					}
+					${
+						this.href && this.button
+							? html`<grantcodes-button href=${this.href}
 								>${this.button}</grantcodes-button
 							>`
-						: null}
+							: null
+					}
 				</div>
 			</section>
 		`;

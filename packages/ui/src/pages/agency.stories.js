@@ -75,9 +75,24 @@ export const Default = {
 			title="What we do"
 			columns="3"
 			items=${JSON.stringify([
-				{ title: "Product design", description: "UX research, interaction design, and visual design from concept to delivery.", icon: "pen-tool" },
-				{ title: "Web development", description: "Fast, accessible front-ends built with modern tooling and a focus on longevity.", icon: "code" },
-				{ title: "Brand identity", description: "Naming, logo, and visual language for startups that want to stand out from day one.", icon: "layers" },
+				{
+					title: "Product design",
+					description:
+						"UX research, interaction design, and visual design from concept to delivery.",
+					icon: "pen-tool",
+				},
+				{
+					title: "Web development",
+					description:
+						"Fast, accessible front-ends built with modern tooling and a focus on longevity.",
+					icon: "code",
+				},
+				{
+					title: "Brand identity",
+					description:
+						"Naming, logo, and visual language for startups that want to stand out from day one.",
+					icon: "layers",
+				},
 			])}
 		></grantcodes-feature-list>
 
@@ -108,14 +123,16 @@ export const Default = {
 			layout="list"
 			items=${JSON.stringify([
 				{
-					quote: "Studio North turned a very messy brief into a product that exceeded what we imagined. They pushed back in the right places and delivered something genuinely special.",
+					quote:
+						"Studio North turned a very messy brief into a product that exceeded what we imagined. They pushed back in the right places and delivered something genuinely special.",
 					name: "Leo Hartmann",
 					role: "Founder",
 					company: "Archvault",
 					avatar: "https://i.pravatar.cc/80?img=53",
 				},
 				{
-					quote: "Their process is tight. We always knew what was happening, what was coming next, and why. That clarity is rare in agency relationships.",
+					quote:
+						"Their process is tight. We always knew what was happening, what was coming next, and why. That clarity is rare in agency relationships.",
 					name: "Chloe Bergstrom",
 					role: "VP Product",
 					company: "Meridian Health",

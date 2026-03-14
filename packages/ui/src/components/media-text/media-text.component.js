@@ -65,29 +65,33 @@ export class GrantCodesMediaText extends LitElement {
 			<section class="media-text">
 				<div class="media-text__container">
 					<div class="media-text__media">
-						${media?.kind === "video"
-							? html`<video
+						${
+							media?.kind === "video"
+								? html`<video
 									src=${media.src}
 									class="media-text__video"
 									controls
 									preload="metadata"
 									aria-label=${media.alt ?? ""}
 								></video>`
-							: html`<img
+								: html`<img
 									src=${media?.src ?? ""}
 									alt=${media?.alt ?? ""}
 									class="media-text__image"
 									loading="lazy"
-								/>`}
+								/>`
+						}
 					</div>
 					<div class="media-text__content">
 						<h2 class="media-text__title">${this.title}</h2>
 						<p class="media-text__text">${this.text}</p>
-						${cta
-							? html`<grantcodes-button href=${cta.href}
+						${
+							cta
+								? html`<grantcodes-button href=${cta.href}
 									>${cta.label}</grantcodes-button
 								>`
-							: null}
+								: null
+						}
 					</div>
 				</div>
 			</section>

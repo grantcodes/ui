@@ -3,22 +3,22 @@ import { html } from "lit/static-html.js";
 import { accordionStyles } from "./accordion.styles.js";
 
 export class GrantCodesAccordion extends LitElement {
-  static styles = [accordionStyles];
+	static styles = [accordionStyles];
 
-  static properties = {
-    items: { type: Array },
-  };
+	static properties = {
+		items: { type: Array },
+	};
 
-  constructor() {
-    super();
-    this.items = [];
-  }
+	constructor() {
+		super();
+		this.items = [];
+	}
 
-  render() {
-    return html`
+	render() {
+		return html`
       <div class="accordion">
         ${this.items.map(
-          (item, index) => html`
+					(item, index) => html`
             <details class="accordion__item">
               <summary class="accordion__summary focus-ring">
                 ${item.title}
@@ -26,8 +26,8 @@ export class GrantCodesAccordion extends LitElement {
               <div class="accordion__content">${item.content}</div>
             </details>
           `,
-        )}
+				)}
       </div>
     `;
-  }
+	}
 }

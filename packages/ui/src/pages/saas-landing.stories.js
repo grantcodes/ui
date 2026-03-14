@@ -94,12 +94,36 @@ export const Default = {
 		<grantcodes-logo-cloud
 			title="Trusted by teams at"
 			logos=${JSON.stringify([
-				{ name: "Vercel", src: "https://placehold.co/120x40?text=Vercel", alt: "Vercel" },
-				{ name: "Linear", src: "https://placehold.co/120x40?text=Linear", alt: "Linear" },
-				{ name: "Stripe", src: "https://placehold.co/120x40?text=Stripe", alt: "Stripe" },
-				{ name: "Notion", src: "https://placehold.co/120x40?text=Notion", alt: "Notion" },
-				{ name: "Figma", src: "https://placehold.co/120x40?text=Figma", alt: "Figma" },
-				{ name: "Loom", src: "https://placehold.co/120x40?text=Loom", alt: "Loom" },
+				{
+					name: "Vercel",
+					src: "https://placehold.co/120x40?text=Vercel",
+					alt: "Vercel",
+				},
+				{
+					name: "Linear",
+					src: "https://placehold.co/120x40?text=Linear",
+					alt: "Linear",
+				},
+				{
+					name: "Stripe",
+					src: "https://placehold.co/120x40?text=Stripe",
+					alt: "Stripe",
+				},
+				{
+					name: "Notion",
+					src: "https://placehold.co/120x40?text=Notion",
+					alt: "Notion",
+				},
+				{
+					name: "Figma",
+					src: "https://placehold.co/120x40?text=Figma",
+					alt: "Figma",
+				},
+				{
+					name: "Loom",
+					src: "https://placehold.co/120x40?text=Loom",
+					alt: "Loom",
+				},
 			])}
 		></grantcodes-logo-cloud>
 
@@ -108,12 +132,42 @@ export const Default = {
 			subtitle="Flowbase combines the tools you already love into a single, cohesive experience — so your team stays in flow."
 			columns="3"
 			items=${JSON.stringify([
-				{ title: "Task management", description: "Create, assign, and track work across your entire team with a simple, powerful interface.", icon: "check-square" },
-				{ title: "Real-time docs", description: "Write collaboratively without conflicts. Docs live next to the tasks they belong to.", icon: "file-text" },
-				{ title: "CI/CD pipelines", description: "Trigger builds, run tests, and deploy to production without leaving your workspace.", icon: "git-branch" },
-				{ title: "Team inbox", description: "Pull in Slack, email, and GitHub notifications into one shared inbox your team can triage together.", icon: "inbox" },
-				{ title: "Analytics", description: "Understand velocity, cycle time, and deployment frequency with built-in engineering metrics.", icon: "bar-chart-2" },
-				{ title: "Access controls", description: "Fine-grained roles and SSO keep your data secure without slowing your team down.", icon: "shield" },
+				{
+					title: "Task management",
+					description:
+						"Create, assign, and track work across your entire team with a simple, powerful interface.",
+					icon: "check-square",
+				},
+				{
+					title: "Real-time docs",
+					description:
+						"Write collaboratively without conflicts. Docs live next to the tasks they belong to.",
+					icon: "file-text",
+				},
+				{
+					title: "CI/CD pipelines",
+					description:
+						"Trigger builds, run tests, and deploy to production without leaving your workspace.",
+					icon: "git-branch",
+				},
+				{
+					title: "Team inbox",
+					description:
+						"Pull in Slack, email, and GitHub notifications into one shared inbox your team can triage together.",
+					icon: "inbox",
+				},
+				{
+					title: "Analytics",
+					description:
+						"Understand velocity, cycle time, and deployment frequency with built-in engineering metrics.",
+					icon: "bar-chart-2",
+				},
+				{
+					title: "Access controls",
+					description:
+						"Fine-grained roles and SSO keep your data secure without slowing your team down.",
+					icon: "shield",
+				},
 			])}
 		></grantcodes-feature-list>
 
@@ -121,10 +175,26 @@ export const Default = {
 			title="Built for teams that care about output"
 			columns="4"
 			items=${JSON.stringify([
-				{ value: "12×", label: "Faster shipping", context: "compared to teams using 4+ separate tools" },
-				{ value: "98%", label: "Uptime SLA", context: "backed by our enterprise plan" },
-				{ value: "50k+", label: "Active teams", context: "across 80 countries" },
-				{ value: "4.9 / 5", label: "Customer rating", context: "across G2, Capterra, and Product Hunt" },
+				{
+					value: "12×",
+					label: "Faster shipping",
+					context: "compared to teams using 4+ separate tools",
+				},
+				{
+					value: "98%",
+					label: "Uptime SLA",
+					context: "backed by our enterprise plan",
+				},
+				{
+					value: "50k+",
+					label: "Active teams",
+					context: "across 80 countries",
+				},
+				{
+					value: "4.9 / 5",
+					label: "Customer rating",
+					context: "across G2, Capterra, and Product Hunt",
+				},
 			])}
 		></grantcodes-stats>
 
@@ -133,21 +203,24 @@ export const Default = {
 			layout="cards"
 			items=${JSON.stringify([
 				{
-					quote: "We cut our weekly planning meeting from 90 minutes to 15. Flowbase just… makes it obvious what needs to happen next.",
+					quote:
+						"We cut our weekly planning meeting from 90 minutes to 15. Flowbase just… makes it obvious what needs to happen next.",
 					name: "Maya Okafor",
 					role: "Engineering Lead",
 					company: "Pulse Labs",
 					avatar: "https://i.pravatar.cc/80?img=47",
 				},
 				{
-					quote: "I've tried every project tool out there. Flowbase is the first one that didn't need a dedicated Ops person to keep it clean.",
+					quote:
+						"I've tried every project tool out there. Flowbase is the first one that didn't need a dedicated Ops person to keep it clean.",
 					name: "Sam Torres",
 					role: "CTO",
 					company: "Stackform",
 					avatar: "https://i.pravatar.cc/80?img=12",
 				},
 				{
-					quote: "The CI integration alone saved us four hours a week. The rest is just a bonus at this point.",
+					quote:
+						"The CI integration alone saved us four hours a week. The rest is just a bonus at this point.",
 					name: "Priya Nair",
 					role: "Senior Developer",
 					company: "Mintcode",
