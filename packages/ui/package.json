@@ -20,9 +20,9 @@
       "import": "./src/css/base.css",
       "require": "./src/css/base.css"
     },
-    "./styles/themes/grantcodes.css": {
-      "import": "./src/css/themes/grantcodes.css",
-      "require": "./src/css/themes/grantcodes.css"
+    "./styles/themes/*": {
+      "import": "./src/css/themes/*",
+      "require": "./src/css/themes/*"
     },
     "./components/*": {
       "import": "./src/components/*",
@@ -32,6 +32,7 @@
   },
   "scripts": {
     "dev": "storybook dev -p 6006",
+    "watch": "vite build --watch",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "build": "npm run build-storybook",
@@ -45,7 +46,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@grantcodes/style-dictionary": "^1.2.0",
+    "@grantcodes/style-dictionary": "workspace:^",
     "lit": "^3.3.1",
     "sanitize.css": "^13.0.0",
     "shiki": "^3.17.1"
