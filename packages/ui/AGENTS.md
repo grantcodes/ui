@@ -115,3 +115,78 @@ npm run fix:lint   # Fix linting issues
 ## Design Tokens
 
 Tokens are defined in `packages/style-dictionary/tokens/` and built into CSS variables. The style dictionary supports multiple themes (grantcodes, wireframe, todomap).
+
+## Adding New Components
+
+When adding a new component, follow these steps:
+
+### 1. Create Component Files
+
+Create the following files in `src/components/<component-name>/`:
+
+- `<component-name>.component.js` - Main component class
+- `<component-name>.styles.js` - Component styles
+- `<component-name>.js` - Export and register custom element
+- `<component-name>.stories.js` - Storybook stories
+
+### 2. Register Custom Element
+
+In the `.js` file, register the custom element:
+
+```javascript
+import { GrantCodesComponent } from "./component-name.component.js";
+
+export * from "./component-name.component.js";
+export default GrantCodesComponent;
+
+customElements.define("grantcodes-component-name", GrantCodesComponent);
+```
+
+### 3. Create Storybook Story
+
+Create stories following the pattern in existing components:
+
+```javascript
+import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
+import { html } from "lit/static-html.js";
+import "./component-name.js";
+
+const { events, args, argTypes, template } =
+  getStorybookHelpers("grantcodes-component-name");
+
+const meta = {
+  title: "Components/ComponentName",
+  component: "grantcodes-component-name",
+  args,
+  argTypes,
+  parameters: {
+    actions: { handles: events },
+  },
+};
+
+export default meta;
+
+export const Default = {};
+```
+
+### 4. Update Package Exports
+
+Ensure `package.json` exports are set up:
+
+```json
+"./components/*": {
+  "import": "./src/components/*",
+  "require": "./src/components/*"
+}
+```
+
+### 5. Regenerate Custom Elements Manifest
+
+After adding the component, regenerate the CEM:
+
+```bash
+cd packages/ui
+pnpm cem
+```
+
+This updates `custom-elements.json` which is used by Storybook and the CEM validator.

@@ -6,3 +6,4 @@ storybook-static/
 *.log
 .DS_Store
 pnpm-lock.yaml
+_tmp/
