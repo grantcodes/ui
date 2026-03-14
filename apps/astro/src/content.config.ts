@@ -1,6 +1,6 @@
 import { z, defineCollection } from 'astro:content'
 import { docsSchema } from '@astrojs/starlight/schema'
-import { blockSchema, pageCollection, navigationCollection, settingsCollection } from './schemas/schema.ts'
+import { pageCollection, navigationCollection, settingsCollection } from './lib/content/schema'
 
 const blogCollection = defineCollection({
   type: 'content',
