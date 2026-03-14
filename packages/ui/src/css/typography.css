@@ -1,10 +1,8 @@
-@import "./util/index.css";
-
 html {
-	font-family: var(--g-theme-typography-body-default-font-family);
-	line-height: var(--g-theme-typography-body-default-line-height);
-	font-size: var(--g-typography-font-size-16);
-	font-weight: var(--g-theme-typography-body-default-font-weight);
+  font-family: var(--g-theme-typography-body-default-font-family);
+  line-height: var(--g-theme-typography-body-default-line-height);
+  font-size: var(--g-typography-font-size-16);
+  font-weight: var(--g-theme-typography-body-default-font-weight);
 }
 
 h1,
@@ -13,52 +11,52 @@ h3,
 h4,
 h5,
 h6 {
-	line-height: var(--g-theme-typography-headline-default-line-height);
-	font-weight: var(--g-theme-typography-headline-default-font-weight);
-	text-wrap: balance;
+  line-height: var(--g-theme-typography-headline-default-line-height);
+  font-weight: var(--g-theme-typography-headline-default-font-weight);
+  text-wrap: balance;
 }
 
 h1 {
-	font-size: var(--g-typography-font-size-48);
+  font-size: var(--g-typography-font-size-48);
 }
 
 h2 {
-	font-size: var(--g-typography-font-size-24);
+  font-size: var(--g-typography-font-size-24);
 }
 
 h3 {
-	font-size: var(--g-typography-font-size-20);
+  font-size: var(--g-typography-font-size-20);
 }
 
 h4 {
-	font-size: var(--g-typography-font-size-16);
+  font-size: var(--g-typography-font-size-16);
 }
 
 h5 {
-	font-size: var(--g-typography-font-size-14);
+  font-size: var(--g-typography-font-size-14);
 }
 
 h6 {
-	font-size: var(--g-typography-font-size-12);
+  font-size: var(--g-typography-font-size-12);
 }
 
 p {
-	text-wrap: pretty;
+  text-wrap: pretty;
 }
 
 pre {
-	font-family: var(--g-typography-font-family-system);
-	line-height: 1.2;
-	width: 100%;
-	overflow: auto;
-	border-radius: var(--g-theme-border-radius-md);
-	/* PLACEHOLDER: u.shadow(0) - manual conversion needed */
-	box-shadow: var(--g-theme-box-shadow-sm);
-	font-size: var(--g-typography-font-size-16);
-	font-weight: 400;
-	padding: 1rem;
+  font-family: var(--g-typography-font-family-system);
+  line-height: 1.2;
+  inline-size: 100%;
+  overflow: auto;
+  border-radius: var(--g-theme-border-radius-md);
+  /* PLACEHOLDER: u.shadow(0) - manual conversion needed */
+  box-shadow: var(--g-theme-box-shadow-sm);
+  font-size: var(--g-typography-font-size-16);
+  font-weight: 400;
+  padding: 1rem;
 }
 
 mark {
-	background-color: var(--g-color-neutral-300);
+  background-color: var(--g-color-neutral-300);
 }

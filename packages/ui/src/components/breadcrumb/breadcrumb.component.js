@@ -24,7 +24,7 @@ export class GrantCodesBreadcrumb extends LitElement {
 		this.style.setProperty("--component-breadcrumb-separator", `'${value}'`);
 
 		// Track slot content changes to update separators
-		const slot = this.renderRoot.querySelector('slot:not([name])');
+		const slot = this.renderRoot.querySelector("slot:not([name])");
 		if (slot) {
 			slot.addEventListener("slotchange", () => this._updateSeparators());
 			this._updateSeparators();
@@ -45,11 +45,11 @@ export class GrantCodesBreadcrumb extends LitElement {
 	}
 
 	_updateSeparators() {
-		const slot = this.renderRoot.querySelector('slot:not([name])');
+		const slot = this.renderRoot.querySelector("slot:not([name])");
 		if (!slot) return;
-		const items = slot.assignedElements({ flatten: true }).filter((el) =>
-			el.tagName === "GRANTCODES-BREADCRUMB-ITEM",
-		);
+		const items = slot
+			.assignedElements({ flatten: true })
+			.filter((el) => el.tagName === "GRANTCODES-BREADCRUMB-ITEM");
 		items.forEach((el, index) => {
 			if (index < items.length - 1) {
 				el.setAttribute("data-has-separator", "");
@@ -95,9 +95,10 @@ export class GrantCodesBreadcrumbItem extends LitElement {
 	}
 
 	render() {
-		const content = this.href && !this.current
-			? html`<a href="${this.href}" class="breadcrumb__link"><slot></slot></a>`
-			: html`<span class="breadcrumb__text"><slot></slot></span>`;
+		const content =
+			this.href && !this.current
+				? html`<a href="${this.href}" class="breadcrumb__link focus-ring"><slot></slot></a>`
+				: html`<span class="breadcrumb__text"><slot></slot></span>`;
 
 		return html`
 			<li class="breadcrumb__item" ?data-current=${this.current}>
@@ -106,5 +107,3 @@ export class GrantCodesBreadcrumbItem extends LitElement {
 		`;
 	}
 }
-
-

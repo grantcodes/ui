@@ -97,7 +97,7 @@ export class GrantCodesDropzone extends LitElement {
 		super.disconnectedCallback();
 	}
 
-    firstUpdated() {
+	firstUpdated() {
 		// Find input elements in the slot
 		const slot = this.renderRoot.querySelector("slot");
 		if (slot) {
@@ -108,11 +108,12 @@ export class GrantCodesDropzone extends LitElement {
 		}
 
 		if (this._input.length === 0) {
-            // In unit tests, allow rendering without an input to reduce friction
-            const isTestEnv = typeof process !== "undefined" && process?.env?.NODE_ENV === "test";
-            if (!isTestEnv) {
-                throw new Error("No file input found");
-            }
+			// In unit tests, allow rendering without an input to reduce friction
+			const isTestEnv =
+				typeof process !== "undefined" && process?.env?.NODE_ENV === "test";
+			if (!isTestEnv) {
+				throw new Error("No file input found");
+			}
 			this._placeholder = "";
 			return;
 		}

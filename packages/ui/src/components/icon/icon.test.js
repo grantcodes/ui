@@ -44,7 +44,8 @@ describe("Icon Component", () => {
 
 	it("should accept any SVG as slot content", async () => {
 		element = await fixture("grantcodes-icon");
-		element.innerHTML = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>';
+		element.innerHTML =
+			'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>';
 
 		await element.updateComplete;
 
@@ -53,5 +54,3 @@ describe("Icon Component", () => {
 		assert.ok(svg.querySelector("circle"), "SVG content should be preserved");
 	});
 });
-
-

@@ -1,13 +1,13 @@
-import grantcodes from '@grantcodes/style-dictionary/grantcodes/json'
-import wireframe from '@grantcodes/style-dictionary/wireframe/json'
-import todomap from '@grantcodes/style-dictionary/todomap/json'
-import { LitElement, html, css } from 'lit'
+import grantcodes from "@grantcodes/style-dictionary/grantcodes/json";
+import wireframe from "@grantcodes/style-dictionary/wireframe/json";
+import todomap from "@grantcodes/style-dictionary/todomap/json";
+import { LitElement, html, css } from "lit";
 
 const allTokens = {
 	grantcodes,
 	wireframe,
 	todomap,
-}
+};
 
 // Token List Component
 class TokenList extends LitElement {
@@ -96,31 +96,34 @@ class TokenList extends LitElement {
 			color: var(--g-theme-color-content-subtle, #666);
 			word-break: break-all;
 		}
-	`
+	`;
 
 	static properties = {
 		theme: { type: String },
-	}
+	};
 
 	constructor() {
 		super();
-		this.theme = 'grantcodes';
+		this.theme = "grantcodes";
 	}
 
 	formatValue(value) {
 		if (value === null || value === undefined) {
-			return String(value)
+			return String(value);
 		}
-		if (typeof value === 'object') {
-			return JSON.stringify(value, null, 2)
+		if (typeof value === "object") {
+			return JSON.stringify(value, null, 2);
 		}
-		return String(value)
+		return String(value);
 	}
 
 	render() {
 		const currentThemeTokens = allTokens[this.theme] || allTokens.grantcodes;
-		const tokenEntries = Object.entries(currentThemeTokens).sort(([a], [b]) => a.localeCompare(b));
-		const themeDisplay = this.theme.charAt(0).toUpperCase() + this.theme.slice(1);
+		const tokenEntries = Object.entries(currentThemeTokens).sort(([a], [b]) =>
+			a.localeCompare(b),
+		);
+		const themeDisplay =
+			this.theme.charAt(0).toUpperCase() + this.theme.slice(1);
 
 		return html`
 			<div class="banner">
@@ -143,21 +146,23 @@ class TokenList extends LitElement {
 						</tr>
 					</thead>
 					<tbody>
-						${tokenEntries.map(([tokenName, value]) => html`
+						${tokenEntries.map(
+							([tokenName, value]) => html`
 							<tr>
 								<td class="token-name">--${tokenName}</td>
 								<td class="token-value">${this.formatValue(value)}</td>
 								<td style="background-color: var(--${tokenName});"></td>
 							</tr>
-						`)}
+						`,
+						)}
 					</tbody>
 				</table>
 			</div>
-		`
+		`;
 	}
 }
 
-customElements.define('token-list', TokenList)
+customElements.define("token-list", TokenList);
 
 // This default export determines where your story goes in the story list
 const meta = {
@@ -170,9 +175,9 @@ const meta = {
 			},
 		},
 	},
-}
+};
 
-export default meta
+export default meta;
 
 // Main tokens story that responds to theme changes
 export const AllTokens = {
@@ -180,4 +185,4 @@ export const AllTokens = {
 		const theme = context.globals?.theme || "grantcodes";
 		return html`<token-list .theme=${theme}></token-list>`;
 	},
-}
+};

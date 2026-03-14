@@ -151,5 +151,3 @@ export const MobileResponsive = {
 		</div>
 	`,
 };
-
-

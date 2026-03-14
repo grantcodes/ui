@@ -4,4 +4,3 @@ export * from "./tab.component.js";
 export default GrantCodesTab;
 
 customElements.define("grantcodes-tab", GrantCodesTab);
-

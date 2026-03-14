@@ -1,94 +1,91 @@
 import { css } from "lit";
 
 export const badgeStyles = css`
-	*,
-	*::before,
-	*::after {
-		box-sizing: border-box;
-	}
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-	:host {
-		display: inline-block;
-	}
+  :host {
+    display: inline-block;
+  }
 
-	.badge {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.375rem;
-		padding-inline: 0.625em;
-		padding-block: 0.375em;
-		border-radius: var(--g-theme-border-radius-md, 0.375rem);
-		font-size: var(--g-typography-font-size-14);
-		font-weight: 500;
-		line-height: 1;
-		white-space: nowrap;
-		border-width: 1px;
-		border-style: solid;
-		transition: all 0.2s ease;
-	}
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--g-theme-spacing-xs);
+    padding-inline: 0.625em;
+    padding-block: 0.375em;
+    border-radius: var(--g-theme-border-radius-md, 0.375rem);
+    font: var(--g-typography-font-label-sm);
+    line-height: 1;
+    white-space: nowrap;
+    border-width: 1px;
+    border-style: solid;
+    transition: all 0.2s ease;
+  }
 
-	
+  /* Soft style variants */
+  .badge--primary {
+    background-color: color-mix(
+      in srgb,
+      var(--g-color-brand-purple-500) 15%,
+      transparent
+    );
+    color: var(--g-color-brand-purple-700);
+    border-color: transparent;
+  }
 
-	/* Soft style variants */
-	.badge--primary {
-		background-color: color-mix(
-			in srgb,
-			var(--g-color-brand-purple-500) 15%,
-			transparent
-		);
-		color: var(--g-color-brand-purple-700);
-		border-color: transparent;
-	}
+  .badge--success {
+    background-color: color-mix(
+      in srgb,
+      var(--g-color-utility-green-500) 15%,
+      transparent
+    );
+    color: var(--g-color-utility-green-700);
+    border-color: transparent;
+  }
 
-	.badge--success {
-		background-color: color-mix(
-			in srgb,
-			var(--g-color-utility-green-500) 15%,
-			transparent
-		);
-		color: var(--g-color-utility-green-700);
-		border-color: transparent;
-	}
+  .badge--warning {
+    background-color: color-mix(
+      in srgb,
+      var(--g-color-utility-yellow-500) 15%,
+      transparent
+    );
+    color: var(--g-color-utility-yellow-700);
+    border-color: transparent;
+  }
 
-	.badge--warning {
-		background-color: color-mix(
-			in srgb,
-			var(--g-color-utility-yellow-500) 15%,
-			transparent
-		);
-		color: var(--g-color-utility-yellow-700);
-		border-color: transparent;
-	}
+  .badge--error {
+    background-color: color-mix(
+      in srgb,
+      var(--g-color-utility-red-500) 15%,
+      transparent
+    );
+    color: var(--g-color-utility-red-700);
+    border-color: transparent;
+  }
 
-	.badge--error {
-		background-color: color-mix(
-			in srgb,
-			var(--g-color-utility-red-500) 15%,
-			transparent
-		);
-		color: var(--g-color-utility-red-700);
-		border-color: transparent;
-	}
+  .badge--info {
+    background-color: color-mix(
+      in srgb,
+      var(--g-color-utility-blue-500) 15%,
+      transparent
+    );
+    color: var(--g-color-utility-blue-700);
+    border-color: transparent;
+  }
 
-	.badge--info {
-		background-color: color-mix(
-			in srgb,
-			var(--g-color-utility-blue-500) 15%,
-			transparent
-		);
-		color: var(--g-color-utility-blue-700);
-		border-color: transparent;
-	}
+  .badge--neutral {
+    background-color: var(--g-color-brand-purple-100);
+    color: var(--g-color-brand-purple-800);
+    border-color: transparent;
+  }
 
-	.badge--neutral {
-		background-color: var(--g-color-brand-purple-100);
-		color: var(--g-color-brand-purple-800);
-		border-color: transparent;
-	}
-
-	.badge__content {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.25em;
-	}
+  .badge__content {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25em;
+  }
 `;

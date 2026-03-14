@@ -18,7 +18,11 @@ describe("Badge Component", () => {
 
 	it("should have neutral variant by default", async () => {
 		element = await fixture("grantcodes-badge");
-		assert.strictEqual(element.variant, "neutral", "Default variant should be neutral");
+		assert.strictEqual(
+			element.variant,
+			"neutral",
+			"Default variant should be neutral",
+		);
 	});
 
 	// it("should have outline style by default", async () => {
@@ -41,11 +45,22 @@ describe("Badge Component", () => {
 
 		await element.updateComplete;
 
-		assert.strictEqual(element.textContent, "Badge Text", "Slotted content should be rendered");
+		assert.strictEqual(
+			element.textContent,
+			"Badge Text",
+			"Slotted content should be rendered",
+		);
 	});
 
 	it("should support all variant types", async () => {
-		const variants = ["primary", "success", "warning", "error", "info", "neutral"];
+		const variants = [
+			"primary",
+			"success",
+			"warning",
+			"error",
+			"info",
+			"neutral",
+		];
 
 		for (const variant of variants) {
 			element = await fixture("grantcodes-badge", { variant });
@@ -66,5 +81,3 @@ describe("Badge Component", () => {
 	// 	}
 	// });
 });
-
-

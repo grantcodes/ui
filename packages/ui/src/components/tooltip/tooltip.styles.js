@@ -13,8 +13,8 @@ export const tooltipStyles = css`
 }
 
 .tooltip__slot {
-  padding: 0.5rem;
-  margin: -0.5rem;
+  padding: var(--g-theme-spacing-sm);
+  margin: calc(-1 * var(--g-theme-spacing-sm));
   /* Anchor name will be set via JavaScript to include unique ID */
 }
 

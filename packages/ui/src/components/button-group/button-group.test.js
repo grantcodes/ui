@@ -53,5 +53,3 @@ describe("Button Group Component", () => {
 		assert.ok(group, "Button group should provide visual grouping");
 	});
 });
-
-

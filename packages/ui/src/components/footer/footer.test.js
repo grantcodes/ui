@@ -40,7 +40,10 @@ describe("Footer Component", () => {
 
 		const columns = element.shadowRoot.querySelector(".footer__columns");
 		const style = columns.getAttribute("style");
-		assert.ok(style.includes("--footer-columns: 4"), "Should set columns CSS variable");
+		assert.ok(
+			style.includes("--footer-columns: 4"),
+			"Should set columns CSS variable",
+		);
 	});
 
 	it("should have default content slot", async () => {
@@ -72,7 +75,11 @@ describe("Footer Component", () => {
 
 		for (const count of columnCounts) {
 			element = await fixture("grantcodes-footer", { columns: count });
-			assert.strictEqual(element.columns, count, `Should support ${count} columns`);
+			assert.strictEqual(
+				element.columns,
+				count,
+				`Should support ${count} columns`,
+			);
 			cleanup(element);
 		}
 	});
@@ -103,5 +110,3 @@ describe("Footer Component", () => {
 		);
 	});
 });
-
-

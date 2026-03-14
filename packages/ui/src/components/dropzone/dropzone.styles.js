@@ -17,7 +17,7 @@ export const dropzoneStyles = css`
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	padding: 2rem;
+	padding: var(--g-theme-spacing-xl);
 	border: max(var(--g-theme-border-width-md), 0.2rem) dashed var(--g-theme-color-border-default);
 	border-radius: var(--g-theme-border-radius-md);
 	background-color: var(--g-theme-color-background-subtle);
@@ -34,14 +34,14 @@ export const dropzoneStyles = css`
 	content: '';
 	display: flex;
 	position: fixed;
-	inset: 2rem;
+	inset: var(--g-theme-spacing-xl);
 	justify-content: center;
 	align-items: center;
-	padding: 2rem;
+	padding: var(--g-theme-spacing-xl);
 	border: max(calc(var(--g-theme-border-width-md) * 2), 0.4rem) dashed var(--g-theme-color-border-default);
 	border-radius: calc(var(--g-theme-border-radius-md) * 2);
 	z-index: 11;
-	font-weight: bold;
+	font-weight: var(--g-typography-font-weight-700);
 	color: inherit;
 }
 

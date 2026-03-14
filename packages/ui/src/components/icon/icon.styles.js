@@ -1,28 +1,30 @@
 import { css } from "lit";
 
 export const iconStyles = css`
+  :host {
+    display: block;
+  }
 
-.icon {
-  display: inline-block;
-  color: inherit;
-  width: 1em;
-  height: 1em;
-}
+  .icon {
+    display: block;
+    color: inherit;
+    width: 1em;
+    height: 1em;
+  }
 
-.icon svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-}
+  .icon ::slotted(svg) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
 
-.icon svg:not([fill]) {
-  fill: currentColor;
-}
+  .icon ::slotted(svg:not([fill])) {
+    fill: currentColor;
+  }
 
-.icon svg:not([stoke]) {
-  stroke: currentColor;
-}
-
+  .icon ::slotted(svg:not([stoke])) {
+    stroke: currentColor;
+  }
 `;

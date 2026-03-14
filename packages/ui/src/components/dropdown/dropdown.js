@@ -6,7 +6,9 @@ import {
 export * from "./dropdown.component.js";
 export default GrantCodesDropdown;
 
-customElements.define("grantcodes-dropdown", GrantCodesDropdown);
-customElements.define("grantcodes-dropdown-item", GrantCodesDropdownItem);
-
-
+if (!customElements.get("grantcodes-dropdown")) {
+  customElements.define("grantcodes-dropdown", GrantCodesDropdown);
+}
+if (!customElements.get("grantcodes-dropdown-item")) {
+  customElements.define("grantcodes-dropdown-item", GrantCodesDropdownItem);
+}

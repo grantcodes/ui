@@ -66,7 +66,7 @@ export class GrantCodesAppBar extends LitElement {
 					<!-- Mobile Menu Button -->
 					<button
 						type="button"
-						class="app-bar__menu-button"
+						class="app-bar__menu-button focus-ring"
 						aria-label="${this._mobileMenuOpen ? "Close menu" : "Open menu"}"
 						aria-expanded="${this._mobileMenuOpen}"
 						@click=${this._toggleMobileMenu}
@@ -86,5 +86,3 @@ export class GrantCodesAppBar extends LitElement {
 		`;
 	}
 }
-
-

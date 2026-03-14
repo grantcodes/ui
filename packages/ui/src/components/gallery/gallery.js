@@ -4,4 +4,3 @@ export * from "./gallery.component.js";
 export default GrantCodesGallery;
 
 customElements.define("grantcodes-gallery", GrantCodesGallery);
-

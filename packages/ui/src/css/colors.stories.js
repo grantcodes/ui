@@ -1,28 +1,25 @@
-import grantcodes from '@grantcodes/style-dictionary/grantcodes/json'
-import wireframe from '@grantcodes/style-dictionary/wireframe/json'
-import todomap from '@grantcodes/style-dictionary/todomap/json'
-import { LitElement, html, css } from 'lit'
-import '../../.storybook/components/color-group.component.js'
+import grantcodes from "@grantcodes/style-dictionary/grantcodes/json";
+import wireframe from "@grantcodes/style-dictionary/wireframe/json";
+import todomap from "@grantcodes/style-dictionary/todomap/json";
+import { LitElement, html, css } from "lit";
+import "../../.storybook/components/color-group.component.js";
 
-const COLOR_PREFIXES = [
-    'g-color-',
-    'g-theme-color-'
-]
+const COLOR_PREFIXES = ["g-color-", "g-theme-color-"];
 
 // Filter function to only include keys that start with one of the color prefixes
 const filterByColorPrefixes = (tokens) => {
-    return Object.fromEntries(
-        Object.entries(tokens).filter(([key]) => 
-            COLOR_PREFIXES.some(prefix => key.startsWith(prefix))
-        )
-    )
-}
+	return Object.fromEntries(
+		Object.entries(tokens).filter(([key]) =>
+			COLOR_PREFIXES.some((prefix) => key.startsWith(prefix)),
+		),
+	);
+};
 
 const themeColors = {
-    grantcodes: filterByColorPrefixes(grantcodes),
-    wireframe: filterByColorPrefixes(wireframe),
-    todomap: filterByColorPrefixes(todomap),
-}
+	grantcodes: filterByColorPrefixes(grantcodes),
+	wireframe: filterByColorPrefixes(wireframe),
+	todomap: filterByColorPrefixes(todomap),
+};
 
 // Color Palette Component
 class ColorPalette extends LitElement {
@@ -54,19 +51,20 @@ class ColorPalette extends LitElement {
 			color: var(--g-theme-color-content-subtle, #666);
 			font-size: 0.875rem;
 		}
-	`
+	`;
 
 	static properties = {
 		theme: { type: String },
-	}
+	};
 
 	constructor() {
 		super();
-		this.theme = 'grantcodes';
+		this.theme = "grantcodes";
 	}
 
 	getColorGroups() {
-		const currentThemeColors = themeColors[this.theme] || themeColors.grantcodes;
+		const currentThemeColors =
+			themeColors[this.theme] || themeColors.grantcodes;
 		const colorGroups = {
 			neutral: {},
 			"utility-green": {},
@@ -136,7 +134,8 @@ class ColorPalette extends LitElement {
 
 	render() {
 		const colorGroups = this.getColorGroups();
-		const themeDisplay = this.theme.charAt(0).toUpperCase() + this.theme.slice(1);
+		const themeDisplay =
+			this.theme.charAt(0).toUpperCase() + this.theme.slice(1);
 
 		return html`
 			<div class="banner">
@@ -150,12 +149,12 @@ class ColorPalette extends LitElement {
 
 			${Object.entries(colorGroups).map(([groupKey, colors]) => {
 				if (Object.keys(colors).length === 0) return null;
-				
+
 				const title = groupKey
 					.split("-")
 					.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
 					.join(" ");
-				
+
 				return html`
 					<color-group
 						.title=${title}
@@ -163,10 +162,10 @@ class ColorPalette extends LitElement {
 					></color-group>
 				`;
 			})}
-		`
+		`;
 	}
 }
-customElements.define('color-palette', ColorPalette)
+customElements.define("color-palette", ColorPalette);
 
 // This default export determines where your story goes in the story list
 const meta = {

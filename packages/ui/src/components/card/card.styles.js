@@ -10,6 +10,7 @@ export const cardStyles = css`
 
   :host {
     display: block;
+    flex-grow: 1;
     /* Enable container queries for responsive card layouts */
     container-type: inline-size;
     container-name: card;
@@ -18,6 +19,7 @@ export const cardStyles = css`
   .card {
     display: flex;
     inline-size: 100%;
+    min-block-size: 100%;
     flex-direction: column;
     justify-content: flex-start;
     overflow: hidden;
@@ -26,47 +28,49 @@ export const cardStyles = css`
     border-width: var(--g-theme-border-width-sm);
     border-color: var(--g-theme-color-border-default);
     border-radius: var(--g-theme-border-radius-md);
-    box-shadow:
-      0 1px 3px rgba(0, 0, 0, 0.12),
-      0 1px 2px rgba(0, 0, 0, 0.24);
+    box-shadow: var(--g-theme-box-shadow-md);
     transition:
       box-shadow 0.2s ease,
       transform 0.2s ease,
       border-color 0.2s ease,
       background-color 0.2s ease;
-    box-shadow:
-      0 8px 24px rgba(0, 0, 0, 0.08),
-      0 6px 12px rgba(0, 0, 0, 0.04);
   }
 
   /* Image support - images in header or content will be styled appropriately */
   .card__header img,
   .card__content img {
     display: block;
-    width: 100%;
-    height: auto;
+    inline-size: 100%;
+    block-size: auto;
     border-radius: inherit;
   }
 
   .card__header {
-    padding-inline: 1rem;
-    padding-block: calc(1rem * 0.75);
+    padding-inline: var(--g-theme-spacing-md);
+    padding-block: var(--g-spacing-12);
     border-block-end: 1px solid var(--g-theme-color-border-default);
+  }
+
+  .card__header:has(> slot:empty) {
+    display: none;
   }
 
   .card__header ::slotted(*) {
     margin: 0;
-    font-weight: 600;
-    font-size: var(--g-typography-font-size-24);
+    font: var(--g-theme-typography-title-default);
   }
 
   .card__content {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 1rem;
-    padding-block: 1rem;
-    padding-inline: 1rem;
+    gap: var(--g-theme-spacing-md);
+    padding-block: var(--g-theme-spacing-md);
+    padding-inline: var(--g-theme-spacing-md);
+  }
+
+  .card__content:has(::slotted(:empty)) {
+    display: none;
   }
 
   .card__content > * {
@@ -77,10 +81,17 @@ export const cardStyles = css`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: calc(1rem * 0.5);
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--g-theme-spacing-sm);
+    padding-inline: var(--g-theme-spacing-md);
+    padding-block: var(--g-spacing-12);
     border-block-start: 1px solid var(--g-theme-color-border-default);
     background: var(--g-theme-color-background-default);
+  }
+
+  .card__footer:has(> slot:empty) {
+    display: none;
   }
 
   .card__footer ::slotted(grantcodes-button-group) {
@@ -93,11 +104,11 @@ export const cardStyles = css`
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: var(--g-theme-spacing-md);
     margin: 0;
-    padding-inline: 1rem;
+    padding-inline: var(--g-theme-spacing-md);
     padding-block: 1em;
-    font-size: var(--g-typography-font-size-14);
+    font-size: var(--g-theme-typography-meta-sm-font-size);
     /* Use color-mix() for modern color manipulation */
     background-color: color-mix(
       in srgb,
@@ -124,5 +135,20 @@ export const cardStyles = css`
 
   .card__meta__item dt::after {
     content: ":";
+  }
+
+  :host(.is-clickable) .card {
+    cursor: pointer;
+  }
+
+  :host(.is-clickable:hover) .card {
+    transform: translateY(-2px);
+    box-shadow: var(--g-theme-box-shadow-lg);
+    border-color: var(--g-theme-color-border-default);
+  }
+
+  :host(.is-clickable:active) .card {
+    transform: translateY(-1px);
+    border-color: var(--g-theme-color-border-active);
   }
 `;

@@ -4,4 +4,3 @@ export * from "./dialog.component.js";
 export default GrantCodesDialog;
 
 customElements.define("grantcodes-dialog", GrantCodesDialog);
-

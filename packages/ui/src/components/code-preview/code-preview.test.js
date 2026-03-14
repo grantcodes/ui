@@ -26,12 +26,20 @@ describe.skip("Code Preview Component", () => {
 
 	it("should have language property defaulting to html", async () => {
 		element = await fixture("grantcodes-code-preview");
-		assert.strictEqual(element.language, "html", "Language should default to html");
+		assert.strictEqual(
+			element.language,
+			"html",
+			"Language should default to html",
+		);
 	});
 
 	it("should have theme property defaulting to aurora-x", async () => {
 		element = await fixture("grantcodes-code-preview");
-		assert.strictEqual(element.theme, "aurora-x", "Theme should default to aurora-x");
+		assert.strictEqual(
+			element.theme,
+			"aurora-x",
+			"Theme should default to aurora-x",
+		);
 	});
 
 	it("should support different languages", async () => {
@@ -39,7 +47,11 @@ describe.skip("Code Preview Component", () => {
 			language: "javascript",
 		});
 
-		assert.strictEqual(element.language, "javascript", "Language should be javascript");
+		assert.strictEqual(
+			element.language,
+			"javascript",
+			"Language should be javascript",
+		);
 	});
 
 	it("should support different themes", async () => {
@@ -47,7 +59,11 @@ describe.skip("Code Preview Component", () => {
 			theme: "github-dark",
 		});
 
-		assert.strictEqual(element.theme, "github-dark", "Theme should be github-dark");
+		assert.strictEqual(
+			element.theme,
+			"github-dark",
+			"Theme should be github-dark",
+		);
 	});
 
 	it("should render code preview wrapper", async () => {
@@ -93,14 +109,21 @@ describe.skip("Code Preview Component", () => {
 	it.skip("should initialize codePreview property", async () => {
 		// Skipped: Can cause memory issues
 		element = await fixture("grantcodes-code-preview");
-		assert.strictEqual(element.codePreview, null, "codePreview should be null initially");
+		assert.strictEqual(
+			element.codePreview,
+			null,
+			"codePreview should be null initially",
+		);
 	});
 
 	it.skip("should set codePreview in firstUpdated", async () => {
 		// Skipped: Can cause memory issues
 		element = await fixture("grantcodes-code-preview");
 		await element.updateComplete;
-		assert.ok(element.codePreview !== null, "codePreview should be set after firstUpdated");
+		assert.ok(
+			element.codePreview !== null,
+			"codePreview should be set after firstUpdated",
+		);
 	});
 
 	it.skip("should support various programming languages", async () => {
@@ -114,5 +137,3 @@ describe.skip("Code Preview Component", () => {
 		}
 	});
 });
-
-

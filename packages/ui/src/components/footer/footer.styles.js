@@ -18,8 +18,8 @@ export const footerStyles = css`
 	}
 
 	.footer__container {
-		padding-block: 3rem 2rem;
-		padding-inline: 1rem;
+		padding-block: var(--g-theme-spacing-2xl) var(--g-theme-spacing-xl);
+		padding-inline: var(--g-theme-spacing-md);
 		max-inline-size: 1400px;
 		margin-inline: auto;
 	}
@@ -27,7 +27,7 @@ export const footerStyles = css`
 	.footer__columns {
 		display: grid;
 		grid-template-columns: repeat(var(--footer-columns, 3), 1fr);
-		gap: 2rem;
+		gap: var(--g-theme-spacing-xl);
 	}
 
 	/* Responsive grid using container queries */
@@ -45,14 +45,14 @@ export const footerStyles = css`
 
 	/* Bottom section (copyright, social links, etc.) */
 	.footer__bottom {
-		margin-block-start: 2rem;
-		padding-block-start: 2rem;
+		margin-block-start: var(--g-theme-spacing-xl);
+		padding-block-start: var(--g-theme-spacing-xl);
 		border-block-start: 1px solid var(--g-theme-color-border-default);
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
 		align-items: center;
-		gap: 1rem;
+		gap: var(--g-theme-spacing-md);
 	}
 
 	.footer__bottom:has(slot[name="bottom"]:empty) {

@@ -55,5 +55,3 @@ describe("Card Component", () => {
 		);
 	});
 });
-
-

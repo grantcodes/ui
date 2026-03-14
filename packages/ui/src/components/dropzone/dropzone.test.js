@@ -52,7 +52,9 @@ describe("Dropzone Component", () => {
 		input.placeholder = "Drop files here";
 		element.appendChild(input);
 		await element.updateComplete;
-		const placeholder = element.shadowRoot.querySelector(".dropzone__placeholder");
+		const placeholder = element.shadowRoot.querySelector(
+			".dropzone__placeholder",
+		);
 		assert.ok(placeholder, "Placeholder element should exist");
 	});
 
@@ -103,10 +105,10 @@ describe("Dropzone Component", () => {
 
 		await element.updateComplete;
 
-		const placeholder = element.shadowRoot.querySelector(".dropzone__placeholder");
+		const placeholder = element.shadowRoot.querySelector(
+			".dropzone__placeholder",
+		);
 		// The placeholder text is set from the input's placeholder in firstUpdated
 		assert.ok(placeholder, "Placeholder should exist");
 	});
 });
-
-
