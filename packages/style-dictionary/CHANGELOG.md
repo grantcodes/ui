@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/grantcodes/ui/compare/style-dictionary-v1.2.1...style-dictionary-v1.3.0) (2026-03-14)
+
+
+### Features
+
+* **tokens:** expand spacing tokens and add typography shorthand ([0d9a558](https://github.com/grantcodes/ui/commit/0d9a5580a32a6ecf2b170d54fde3d1c68008e314))
+
 ## [1.2.1](https://github.com/grantcodes/ui/compare/style-dictionary-v1.2.0...style-dictionary-v1.2.1) (2026-03-07)
 
 
