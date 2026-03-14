@@ -16,8 +16,8 @@ export interface AstroOgImagesOptions {
 
 const defaultOptions: Required<AstroOgImagesOptions> = {
   favicon: './public/favicon.svg',
-  fontFile: './node_modules/@fontsource/lexend/files/lexend-latin-400-normal.woff',
-  fontName: 'Lexend',
+  fontFile: './node_modules/@grantcodes/style-dictionary/assets/fonts/greycliff-regular.woff',
+  fontName: 'Greycliff',
   foregroundColor: '#f0f1f3',
   backgroundColor: '#13171f',
   titleTemplate: '%s',
