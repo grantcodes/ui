@@ -8,11 +8,14 @@
     "dev": "turbo run dev",
     "dev:ui": "pnpm --filter @grantcodes/ui dev",
     "dev:website": "pnpm --filter @grantcodes/website dev",
+    "dev:astro": "pnpm --filter @grantcodes/astro-starter dev",
+    "dev:astro:ui": "pnpm --filter @grantcodes/ui watch --filter @grantcodes/astro-starter dev",
     "dev:style-dictionary": "pnpm --filter @grantcodes/style-dictionary build --watch",
     "build": "turbo run build",
     "build:ui": "pnpm --filter @grantcodes/ui build",
     "build:style-dictionary": "pnpm --filter @grantcodes/style-dictionary build",
     "build:website": "pnpm --filter @grantcodes/website build",
+    "build:astro": "pnpm --filter @grantcodes/astro-starter build",
     "test": "turbo run test",
     "test:ui": "pnpm --filter @grantcodes/ui test",
     "test:style-dictionary": "pnpm --filter @grantcodes/style-dictionary test",
@@ -24,17 +27,19 @@
     "fix:style-dictionary": "pnpm --filter @grantcodes/style-dictionary fix",
     "clean": "turbo run clean && rm -rf node_modules",
     "clean:all": "turbo run clean && rm -rf node_modules packages/*/node_modules apps/*/node_modules",
-    "storybook": "pnpm --filter @grantcodes/ui storybook",
+    "storybook": "pnpm --filter @grantcodes/ui,@grantcodes/astro-blocks storybook",
+    "dev:astro-blocks": "pnpm --filter @grantcodes/astro-blocks dev",
     "generate": "pnpm --filter @grantcodes/ui generate"
   },
   "license": "MIT",
   "devDependencies": {
     "@grantcodes/commit": "^2.0.0",
-    "turbo": "^2.8.14"
+    "@storybook/html-vite": "^10.2.19",
+    "turbo": "^2.8.17"
   },
   "engines": {
     "node": ">=18.0.0",
     "pnpm": ">=8.0.0"
   },
-  "packageManager": "pnpm@8.15.0"
+  "packageManager": "pnpm@10.32.1"
 }

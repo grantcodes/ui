@@ -1,0 +1,146 @@
+---
+import Hero from './hero.astro'
+import Cards from './cards.astro'
+import Text from './text.astro'
+import Gallery from './gallery.astro'
+import Accordion from './accordion.astro'
+import Cta from './cta.astro'
+import FeatureList from './feature-list.astro'
+import Stats from './stats.astro'
+import LogoCloud from './logo-cloud.astro'
+import Testimonials from './testimonials.astro'
+import Pricing from './pricing.astro'
+import Newsletter from './newsletter.astro'
+
+import MediaText from './media-text.astro'
+
+interface Block {
+  type:
+    | 'hero'
+    | 'text'
+    | 'gallery'
+    | 'accordion'
+    | 'cards'
+    | 'cta'
+    | 'feature-list'
+    | 'stats'
+    | 'logo-cloud'
+    | 'testimonials'
+    | 'pricing'
+    | 'newsletter'
+    | 'media-text'
+  [key: string]: unknown
+}
+
+interface Props {
+  block: Block
+}
+
+const { block } = Astro.props
+---
+
+{(() => {
+  switch (block.type) {
+    case 'hero':
+      return (
+        <Hero
+          title={block.title as string}
+          subtitle={block.subtitle as string | undefined}
+          button={block.button as string | undefined}
+          href={block.href as string | undefined}
+          size={block.size as 'sm' | 'md' | 'lg' | undefined}
+        />
+      )
+    case 'text':
+      return <Text content={block.content as string} />
+    case 'gallery':
+      return <Gallery images={block.images as { src: string; alt?: string; caption?: string }[]} />
+    case 'accordion':
+      return <Accordion items={block.items as { title: string; content: string }[]} />
+    case 'cards':
+      return <Cards cards={block.cards as { title: string; description?: string; image?: string; href?: string }[]} />
+    case 'cta':
+      return (
+        <Cta
+          eyebrow={block.eyebrow as string | undefined}
+          title={block.title as string}
+          text={block.text as string | undefined}
+          primaryAction={block.primaryAction as { label: string; href: string } | undefined}
+          secondaryAction={block.secondaryAction as { label: string; href: string } | undefined}
+          align={block.align as 'left' | 'center' | undefined}
+        />
+      )
+    case 'feature-list':
+      return (
+        <FeatureList
+          title={block.title as string | undefined}
+          subtitle={block.subtitle as string | undefined}
+          items={block.items as { title: string; description?: string; icon?: string; href?: string }[]}
+          columns={block.columns as number | undefined}
+        />
+      )
+    case 'stats':
+      return (
+        <Stats
+          title={block.title as string | undefined}
+          items={block.items as { label: string; value: string; context?: string }[]}
+          columns={block.columns as number | undefined}
+        />
+      )
+    case 'logo-cloud':
+      return (
+        <LogoCloud
+          title={block.title as string | undefined}
+          logos={block.logos as { name: string; src: string; alt?: string; href?: string }[]}
+        />
+      )
+    case 'testimonials':
+      return (
+        <Testimonials
+          title={block.title as string | undefined}
+          items={block.items as { quote: string; name: string; role?: string; company?: string; avatar?: string }[]}
+          layout={block.layout as 'cards' | 'list' | undefined}
+        />
+      )
+    case 'pricing':
+      return (
+        <Pricing
+          title={block.title as string | undefined}
+          subtitle={block.subtitle as string | undefined}
+          tiers={block.tiers as {
+            name: string
+            price: string
+            period?: string
+            description?: string
+            features: { text: string; included: boolean }[]
+            cta: { label: string; href: string }
+            highlighted?: boolean
+          }[]}
+        />
+      )
+    case 'newsletter':
+      return (
+        <Newsletter
+          title={block.title as string}
+          text={block.text as string | undefined}
+          action={block.action as string}
+          method={block.method as 'get' | 'post' | undefined}
+          placeholder={block.placeholder as string | undefined}
+          buttonLabel={block.buttonLabel as string | undefined}
+          disclaimer={block.disclaimer as string | undefined}
+        />
+      )
+    case 'media-text':
+      return (
+        <MediaText
+          title={block.title as string}
+          text={block.text as string}
+          media={block.media as { src: string; alt?: string; kind?: 'image' | 'video' }}
+          reverse={block.reverse as boolean | undefined}
+          cta={block.cta as { label: string; href: string } | undefined}
+        />
+      )
+    default:
+      return null
+  }
+})()}

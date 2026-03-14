@@ -1,48 +1,48 @@
 {
-	"$schema": "https://turborepo.com/schema.json",
-	"globalDependencies": ["**/package.json"],
-	"tasks": {
-		"build": {
-			"dependsOn": ["^build"],
-			"outputs": ["dist/**", ".storybook-static/**", "build/**", "storybook-static/**"],
-			"cache": true
-		},
-		"build-storybook": {
-			"dependsOn": ["^build"],
-			"outputs": [".storybook-static/**", "storybook-static/**"],
-			"cache": true
-		},
-		"test": {
-			"dependsOn": ["^build"],
-			"outputs": [],
-			"cache": false
-		},
-		"test:lint": {
-			"dependsOn": ["^build"],
-			"cache": true,
-			"outputs": []
-		},
-		"test:unit": {
-			"dependsOn": ["^build"],
-			"cache": true,
-			"outputs": []
-		},
-		"lint": {
-			"dependsOn": ["^build"],
-			"cache": true,
-			"outputs": []
-		},
-		"fix": {
-			"cache": false
-		},
-		"dev": {
-			"cache": false,
-			"persistent": true
-		},
-		"storybook": {
-			"dependsOn": ["^build"],
-			"cache": false,
-			"persistent": true
-		}
-	}
+  "$schema": "https://turborepo.com/schema.json",
+  "globalDependencies": ["**/package.json"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [
+        "dist/**",
+        ".storybook-static/**",
+        "build/**",
+        "storybook-static/**"
+      ],
+      "cache": true
+    },
+    "build-storybook": {
+      "dependsOn": ["^build"],
+      "outputs": [".storybook-static/**", "storybook-static/**"],
+      "cache": true
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "outputs": [],
+      "cache": false
+    },
+    "test:lint": {
+      "dependsOn": ["^build"],
+      "cache": true,
+      "outputs": []
+    },
+    "test:unit": {
+      "dependsOn": ["^build"],
+      "cache": true,
+      "outputs": []
+    },
+    "lint": {
+      "dependsOn": ["^build"],
+      "cache": true,
+      "outputs": []
+    },
+    "fix": {
+      "cache": false
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    }
+  }
 }

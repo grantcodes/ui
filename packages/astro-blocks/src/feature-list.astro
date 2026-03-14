@@ -1,0 +1,26 @@
+---
+import '@grantcodes/ui/components/feature-list/feature-list.js'
+
+interface FeatureItem {
+  title: string
+  description?: string
+  icon?: string
+  href?: string
+}
+
+interface Props {
+  title?: string
+  subtitle?: string
+  items: FeatureItem[]
+  columns?: number
+}
+
+const { title, subtitle, items, columns = 3 } = Astro.props
+---
+
+<grantcodes-feature-list
+  title={title}
+  subtitle={subtitle}
+  items={JSON.stringify(items)}
+  columns={columns}
+></grantcodes-feature-list>

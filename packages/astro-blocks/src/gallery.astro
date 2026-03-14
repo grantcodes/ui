@@ -1,0 +1,40 @@
+---
+import { GrantCodesGallery } from '@grantcodes/ui/components/gallery/index.js'
+import { GrantCodesGalleryImage } from '@grantcodes/ui/components/gallery/index.js'
+
+interface GalleryImage {
+  src: string
+  alt?: string
+  caption?: string
+}
+
+interface Props {
+  images: GalleryImage[]
+}
+
+const { images } = Astro.props
+---
+
+<div class="gallery">
+  <div class="container">
+    <GrantCodesGallery>
+      {images.map((image) => (
+        <GrantCodesGalleryImage src={image.src} alt={image.alt || ''}>
+          {image.caption && <span slot="caption">{image.caption}</span>}
+        </GrantCodesGalleryImage>
+      ))}
+    </GrantCodesGallery>
+  </div>
+</div>
+
+<style>
+  .gallery {
+    padding: 3rem 0;
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+</style>

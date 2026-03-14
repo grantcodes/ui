@@ -1,0 +1,33 @@
+---
+import '@grantcodes/ui/components/newsletter/newsletter.js'
+
+interface Props {
+  title: string
+  text?: string
+  action: string
+  method?: 'get' | 'post'
+  placeholder?: string
+  buttonLabel?: string
+  disclaimer?: string
+}
+
+const {
+  title,
+  text,
+  action,
+  method = 'post',
+  placeholder = 'Your email address',
+  buttonLabel = 'Subscribe',
+  disclaimer,
+} = Astro.props
+---
+
+<grantcodes-newsletter
+  title={title}
+  text={text}
+  action={action}
+  method={method}
+  placeholder={placeholder}
+  button-label={buttonLabel}
+  disclaimer={disclaimer}
+></grantcodes-newsletter>

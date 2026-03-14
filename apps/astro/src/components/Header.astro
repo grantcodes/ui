@@ -1,0 +1,23 @@
+---
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '@i18n/utils'
+import { GrantCodesAppBar } from '@grantcodes/ui/components/app-bar/index.js'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+const translatePath = useTranslatedPath(lang)
+---
+
+<GrantCodesAppBar sticky>
+  <a href={translatePath('/')} slot="logo">
+    <img src="/favicon.svg" alt="grant.codes" width="60" height="60" />
+  </a>
+  
+  <ul slot="nav">
+    <li>
+      <a href={translatePath('/docs')}>{t('header.docs')}</a>
+    </li>
+    <li>
+      <a href={translatePath('/blog')}>{t('header.blog')}</a>
+    </li>
+  </ul>
+</GrantCodesAppBar>

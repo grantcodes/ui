@@ -1,0 +1,25 @@
+---
+import BaseLayout from './Layout.astro'
+import Header from '@components/Header.astro'
+import Footer from '@components/Footer.astro'
+import type { Props as LayoutProps } from './Layout.astro'
+
+export interface Props extends LayoutProps {}
+const { metadata } = Astro.props
+---
+
+<!doctype html>
+<BaseLayout metadata={metadata}>
+  <Header />
+  <main>
+    <slot />
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  body > main {
+    flex-grow: 1;
+    padding-block: 0;
+  }
+</style>

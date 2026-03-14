@@ -1,0 +1,22 @@
+---
+import '@grantcodes/ui/components/logo-cloud/logo-cloud.js'
+
+interface LogoItem {
+  name: string
+  src: string
+  alt?: string
+  href?: string
+}
+
+interface Props {
+  title?: string
+  logos: LogoItem[]
+}
+
+const { title, logos } = Astro.props
+---
+
+<grantcodes-logo-cloud
+  title={title}
+  logos={JSON.stringify(logos)}
+></grantcodes-logo-cloud>
