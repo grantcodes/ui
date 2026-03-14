@@ -1,35 +1,38 @@
 {
-	"name": "@grantcodes/astro-og-images",
-	"version": "0.0.1",
-	"type": "module",
-	"description": "Astro integration for generating OpenGraph images",
-	"main": "./src/integration.ts",
-	"exports": {
-		".": "./src/integration.ts"
-	},
-	"scripts": {
-		"build": "echo 'No build step required'",
-		"fix": "echo 'No lint configured'",
-		"test": "echo 'No tests configured'"
-	},
-	"keywords": [
-		"astro",
-		"og",
-		"opengraph",
-		"seo"
-	],
-	"author": {
-		"email": "mail@grant.codes",
-		"name": "Grant Richmond",
-		"url": "https://grant.codes"
-	},
-	"license": "MIT",
-	"peerDependencies": {
-		"astro": "^5.0.0"
-	},
-	"devDependencies": {
-		"astro": "^5.5.2",
-		"@resvg/resvg-js": "^2.6.2",
-		"satori": "^0.12.1"
-	}
+  "name": "@grantcodes/astro-og-images",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "Astro integration for generating OpenGraph images",
+  "main": "./src/integration.ts",
+  "exports": {
+    ".": "./src/integration.ts"
+  },
+  "scripts": {
+    "build": "echo 'No build step required'",
+    "fix": "echo 'No lint configured'",
+    "test": "echo 'No tests configured'"
+  },
+  "keywords": [
+    "astro",
+    "og",
+    "opengraph",
+    "seo"
+  ],
+  "author": {
+    "email": "mail@grant.codes",
+    "name": "Grant Richmond",
+    "url": "https://grant.codes"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "colorjs.io": "^0.5.2"
+  },
+  "peerDependencies": {
+    "astro": "^5.0.0"
+  },
+  "devDependencies": {
+    "astro": "^5.5.2",
+    "@resvg/resvg-js": "^2.6.2",
+    "satori": "^0.12.1"
+  }
 }
