@@ -121,8 +121,8 @@ importers:
   packages/ui:
     dependencies:
       '@grantcodes/style-dictionary':
-        specifier: workspace:^
-        version: link:../style-dictionary
+        specifier: ^1.3.0
+        version: 1.3.0
       lit:
         specifier: ^3.3.1
         version: 3.3.2
@@ -861,6 +861,9 @@ packages:
     resolution: {integrity: sha512-w9jNISQ354zyXP5RlDuJySnX/DsxViwGkFxLq86T5hjRfQimLKmb2KjTXqVyS4BoG7E6pQKR85QCKUmTFKSkbg==}
     engines: {node: '>=v18'}
     hasBin: true
+
+  '@grantcodes/style-dictionary@1.3.0':
+    resolution: {integrity: sha512-Rck0YiqCtPvX/9llfsy3Hh62QC/XChq92gzxtvVp6kMZDKWHseGauPE53cN+pXYcxaE7vrnVn77yoIki68WHEg==}
 
   '@img/colour@1.1.0':
     resolution: {integrity: sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ==}
@@ -5842,6 +5845,10 @@ snapshots:
     transitivePeerDependencies:
       - '@types/node'
       - typescript
+
+  '@grantcodes/style-dictionary@1.3.0':
+    dependencies:
+      colorjs.io: 0.5.2
 
   '@img/colour@1.1.0':
     optional: true
