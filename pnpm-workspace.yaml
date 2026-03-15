@@ -1,8 +1,12 @@
 packages:
   - 'packages/*'
   - 'apps/*'
+allowBuilds:
+  esbuild: true
+  rs-module-lexer: true
+  sharp: true
+  simple-git-hooks: true
 
 linkWorkspacePackages: true
 preferWorkspacePackages: true
 saveWorkspaceProtocol: false
-
