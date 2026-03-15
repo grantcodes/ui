@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.1](https://github.com/grantcodes/ui/compare/ui-v2.1.0...ui-v2.1.1) (2026-03-15)
+
+
+### Bug Fixes
+
+* **ui:** pnpm build issues ([9dae345](https://github.com/grantcodes/ui/commit/9dae345ea55d3ba8b674e16c989cf3d807381993))
+* **ui:** replace workspace protocol for published dependency ([fd1fbc3](https://github.com/grantcodes/ui/commit/fd1fbc3f3787ca26a4f9ff54d6b6c9c2941676d7))
+
 ## [2.1.0](https://github.com/grantcodes/ui/compare/ui-v2.0.2...ui-v2.1.0) (2026-03-14)
 
 
