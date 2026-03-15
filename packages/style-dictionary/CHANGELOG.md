@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/grantcodes/ui/compare/style-dictionary-v1.3.0...style-dictionary-v1.3.1) (2026-03-15)
+
+
+### Bug Fixes
+
+* **style-dictionary:** deploy files ([d2a4913](https://github.com/grantcodes/ui/commit/d2a49132cf7a526c134713e792c6d9fe076e7787))
+
 ## [1.3.0](https://github.com/grantcodes/ui/compare/style-dictionary-v1.2.1...style-dictionary-v1.3.0) (2026-03-14)
 
 
