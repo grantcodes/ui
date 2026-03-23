@@ -13,8 +13,8 @@ Migrate @grantcodes/ui from Lit `css` template literals to plain CSS files impor
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Build Tooling** - Configure Vite, Storybook, and test runner to support CSS import attributes
-- [ ] **Phase 2: Pilot Migration** - Migrate shared styles and 2-3 pilot components to validate the pattern end-to-end
-- [ ] **Phase 3: Full Component Migration** - Migrate all remaining components, remove old .styles.js files, verify everything
+- [x] **Phase 2: Pilot Migration** - Migrate shared styles and 2-3 pilot components to validate the pattern end-to-end
+- [x] **Phase 3: Full Component Migration** - Migrate all remaining components, remove old .styles.js files, verify everything
 - [ ] **Phase 4: Package Exports** - Expose component CSS files via package.json exports for external consumers
 
 ## Phase Details
@@ -44,7 +44,7 @@ Plans:
 **Plans:** 1 plan
 
 Plans:
-- [ ] 02-01-PLAN.md — Migrate focus-ring, badge, and button to CSS import attributes
+- [x] 02-01-PLAN.md — Migrate focus-ring, badge, and button to CSS import attributes
 
 ### Phase 3: Full Component Migration
 **Goal**: All 33 components use CSS import attributes and old `.styles.js` files are removed
@@ -55,7 +55,10 @@ Plans:
   2. Every component's `.component.js` imports styles via `import ... with { type: 'css' }` (no more `import { css } from 'lit'` in style files)
   3. All 23 existing unit tests pass (`pnpm test:unit` in packages/ui)
   4. All 33 components render correctly in Storybook with styles applied
-**Plans**: TBD
+**Plans:** 1 plan
+
+Plans:
+- [x] 03-01-PLAN.md — Migrate all 31 remaining components, delete old .styles.js files, remove _css-test fixture
 
 ### Phase 4: Package Exports
 **Goal**: External consumers can import individual component CSS files for use outside Lit web components
@@ -64,7 +67,10 @@ Plans:
 **Success Criteria** (what must be TRUE):
   1. A consumer can `import '@grantcodes/ui/components/button/button.styles.css'` to get button styles as a plain CSS file
   2. All existing package exports (`./components/*`, `./styles/*`, `./fonts/*`) continue to resolve correctly
-**Plans**: TBD
+**Plans:** 1 plan
+
+Plans:
+- [ ] 04-01-PLAN.md — Add explicit CSS subpath exports for all components and shared styles, verify resolution
 
 ## Progress
 
@@ -74,6 +80,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Build Tooling | 1/1 | Complete | 2026-03-23 |
-| 2. Pilot Migration | 0/? | Not started | - |
-| 3. Full Component Migration | 0/? | Not started | - |
-| 4. Package Exports | 0/? | Not started | - |
+| 2. Pilot Migration | 1/1 | Complete | 2026-03-23 |
+| 3. Full Component Migration | 1/1 | Complete | 2026-03-23 |
+| 4. Package Exports | 0/1 | Not started | - |
