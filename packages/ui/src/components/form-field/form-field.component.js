@@ -1,7 +1,7 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
 import { formFieldStyles } from "./form-field.styles.js";
-import { cx } from "../../lib/classnames.js";
+import { classMap } from "lit/directives/class-map.js";
 import { generateId } from "../../lib/generate-id.js";
 
 export class GrantCodesFormField extends LitElement {
@@ -129,34 +129,24 @@ export class GrantCodesFormField extends LitElement {
     `;
 	}
 
-	/**
-	 * Template for a group of form components
-	 *
-	 * @param   {string}  className  html class attribute
-	 *
-	 * @return  {}             [return description]
-	 */
-	groupTemplate(className) {
-		return html`
-      <fieldset class="${className}">
+	render() {
+		const classes = classMap({
+			"form-field": true,
+			"form-field--inline": this.inlineInput,
+		});
+
+		if (this.groupInput) {
+			return html`
+      <fieldset class=${classes}>
         <legend class="form-field__label">${this.label}</legend>
         <slot></slot>
         ${this.errorTemplate()}
       </fieldset>
     `;
-	}
-
-	render() {
-		const elementClass = cx("form-field", {
-			"form-field--inline": this.inlineInput,
-		});
-
-		if (this.groupInput) {
-			return this.groupTemplate(elementClass);
 		}
 
 		return html`
-      <div class="${elementClass}">
+      <div class=${classes}>
         <label>
           <span class="form-field__label" @click=${this.handleLabelClick}
             >${this.label}</span

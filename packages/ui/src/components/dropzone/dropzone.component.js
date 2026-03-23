@@ -1,6 +1,6 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
-import { cx } from "../../lib/classnames.js";
+import { classMap } from "lit/directives/class-map.js";
 import { dropzoneStyles } from "./dropzone.styles.js";
 
 export class GrantCodesDropzone extends LitElement {
@@ -121,13 +121,14 @@ export class GrantCodesDropzone extends LitElement {
 	}
 
 	render() {
-		const dropzoneClass = cx("dropzone", {
+		const classes = classMap({
+			dropzone: true,
 			"dropzone--fullscreen": this._fullscreen,
 		});
 
 		return html`
 			<div
-				class=${dropzoneClass}
+				class=${classes}
 				@mouseleave=${this._forceDisableFullscreen}
 				@dragend=${this._disableFullscreen}
 				@dragleave=${this._disableFullscreen}
