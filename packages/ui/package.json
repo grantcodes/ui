@@ -7,6 +7,9 @@
   "module": "src/main.js",
   "types": "src/main.d.ts",
   "author": "grantcodes",
+  "imports": {
+    "#styles/*": "./src/lib/styles/*"
+  },
   "exports": {
     ".": {
       "types": "./src/main.d.ts",
@@ -24,6 +27,41 @@
       "import": "./src/css/themes/*",
       "require": "./src/css/themes/*"
     },
+    "./styles/focus-ring.css": "./src/lib/styles/focus-ring.styles.css",
+    "./components/accordion/accordion.styles.css": "./src/components/accordion/accordion.styles.css",
+    "./components/app-bar/app-bar.styles.css": "./src/components/app-bar/app-bar.styles.css",
+    "./components/avatar/avatar.styles.css": "./src/components/avatar/avatar.styles.css",
+    "./components/badge/badge.styles.css": "./src/components/badge/badge.styles.css",
+    "./components/breadcrumb/breadcrumb.styles.css": "./src/components/breadcrumb/breadcrumb.styles.css",
+    "./components/button/button.styles.css": "./src/components/button/button.styles.css",
+    "./components/button-group/button-group.styles.css": "./src/components/button-group/button-group.styles.css",
+    "./components/card/card.styles.css": "./src/components/card/card.styles.css",
+    "./components/code-preview/code-preview.styles.css": "./src/components/code-preview/code-preview.styles.css",
+    "./components/container/container.styles.css": "./src/components/container/container.styles.css",
+    "./components/cta/cta.styles.css": "./src/components/cta/cta.styles.css",
+    "./components/dialog/dialog.styles.css": "./src/components/dialog/dialog.styles.css",
+    "./components/dropdown/dropdown.styles.css": "./src/components/dropdown/dropdown.styles.css",
+    "./components/dropzone/dropzone.styles.css": "./src/components/dropzone/dropzone.styles.css",
+    "./components/feature-list/feature-list.styles.css": "./src/components/feature-list/feature-list.styles.css",
+    "./components/footer/footer.styles.css": "./src/components/footer/footer.styles.css",
+    "./components/footer/footer-column.styles.css": "./src/components/footer/footer-column.styles.css",
+    "./components/form-field/form-field.styles.css": "./src/components/form-field/form-field.styles.css",
+    "./components/gallery/gallery.styles.css": "./src/components/gallery/gallery.styles.css",
+    "./components/hero/hero.styles.css": "./src/components/hero/hero.styles.css",
+    "./components/icon/icon.styles.css": "./src/components/icon/icon.styles.css",
+    "./components/loading/loading.styles.css": "./src/components/loading/loading.styles.css",
+    "./components/logo-cloud/logo-cloud.styles.css": "./src/components/logo-cloud/logo-cloud.styles.css",
+    "./components/media-text/media-text.styles.css": "./src/components/media-text/media-text.styles.css",
+    "./components/newsletter/newsletter.styles.css": "./src/components/newsletter/newsletter.styles.css",
+    "./components/notice/notice.styles.css": "./src/components/notice/notice.styles.css",
+    "./components/pagination/pagination.styles.css": "./src/components/pagination/pagination.styles.css",
+    "./components/pricing/pricing.styles.css": "./src/components/pricing/pricing.styles.css",
+    "./components/sidebar/sidebar.styles.css": "./src/components/sidebar/sidebar.styles.css",
+    "./components/stats/stats.styles.css": "./src/components/stats/stats.styles.css",
+    "./components/tabs/tabs.styles.css": "./src/components/tabs/tabs.styles.css",
+    "./components/testimonials/testimonials.styles.css": "./src/components/testimonials/testimonials.styles.css",
+    "./components/toast/toast.styles.css": "./src/components/toast/toast.styles.css",
+    "./components/tooltip/tooltip.styles.css": "./src/components/tooltip/tooltip.styles.css",
     "./components/*": {
       "import": "./src/components/*",
       "require": "./src/components/*"
@@ -42,7 +80,7 @@
     "fix:lint": "npx @biomejs/biome format --write src",
     "test": "run-s lint test:unit",
     "lint": "npx @biomejs/biome lint src",
-    "test:unit": "NODE_ENV=test node --test --test-concurrency=1 src/**/*.test.js"
+    "test:unit": "NODE_ENV=test node --import @lit-labs/ssr-dom-shim/register-css-hook.js --test --test-concurrency=1 src/**/*.test.js"
   },
   "license": "MIT",
   "dependencies": {
@@ -52,9 +90,11 @@
     "shiki": "^3.17.1"
   },
   "devDependencies": {
+    "@arcmantle/vite-plugin-import-css-sheet": "^1.0.12",
     "@biomejs/biome": "2.3.8",
     "@custom-elements-manifest/analyzer": "^0.11.0",
     "@grantcodes/commit": "^2.0.0",
+    "@lit-labs/ssr-dom-shim": "^1.5.1",
     "@playwright/test": "^1.57.0",
     "@storybook/addon-docs": "^10.1.4",
     "@storybook/addon-themes": "^10.1.4",
