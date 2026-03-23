@@ -1,13 +1,14 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
 import { literal } from "lit/static-html.js";
-import { buttonStyles } from "./button.styles.js";
+import focusRingStyles from "../../lib/styles/focus-ring.styles.css" with { type: "css" };
+import buttonStyles from "./button.styles.css" with { type: "css" };
 
 export class GrantCodesButton extends LitElement {
 	// Styles are scoped to this element: they won't conflict with styles
 	// on the main page or in other components. Styling API can be exposed
 	// via CSS custom properties.
-	static styles = [buttonStyles];
+	static styles = [focusRingStyles, buttonStyles];
 
 	static properties = {
 		href: { type: String },
