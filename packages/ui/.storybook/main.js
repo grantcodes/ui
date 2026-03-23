@@ -5,6 +5,7 @@ export default {
 
   core: {
     disableTelemetry: true,
+    allowedHosts: true,
   },
 
   addons: [
