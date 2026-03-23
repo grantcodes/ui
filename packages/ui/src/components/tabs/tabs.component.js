@@ -1,7 +1,8 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
 import { ifDefined } from "lit/directives/if-defined.js";
-import { tabsStyles } from "./tabs.styles.js";
+import focusRingStyles from "#styles/focus-ring.styles.css" with { type: "css" };
+import tabsStyles from "./tabs.styles.css" with { type: "css" };
 import { GrantCodesTab } from "./tab.component.js";
 import { GrantCodesTabsButton } from "./internal/tabs-button.component.js";
 import "./internal/tabs-button.js";
@@ -11,7 +12,7 @@ export class GrantCodesTabs extends LitElement {
 	// Styles are scoped to this element: they won't conflict with styles
 	// on the main page or in other components. Styling API can be exposed
 	// via CSS custom properties.
-	static styles = [tabsStyles];
+	static styles = [focusRingStyles, tabsStyles];
 
 	static properties = {
 		label: { type: String },

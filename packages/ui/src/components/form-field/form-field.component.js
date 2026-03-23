@@ -1,6 +1,6 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
-import { formFieldStyles } from "./form-field.styles.js";
+import formFieldStyles from "./form-field.styles.css" with { type: "css" };
 import { classMap } from "lit/directives/class-map.js";
 import { generateId } from "../../lib/generate-id.js";
 

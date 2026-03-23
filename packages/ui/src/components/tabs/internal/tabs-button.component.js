@@ -2,7 +2,8 @@ import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { GrantCodesTabsItem } from "./tabs-item.component.js";
-import { tabsStyles } from "../tabs.styles.js";
+import focusRingStyles from "#styles/focus-ring.styles.css" with { type: "css" };
+import tabsStyles from "../tabs.styles.css" with { type: "css" };
 
 export class GrantCodesTabsButton extends GrantCodesTabsItem {
 	static shadowRootOptions = {
@@ -10,7 +11,7 @@ export class GrantCodesTabsButton extends GrantCodesTabsItem {
 		delegatesFocus: true,
 	};
 
-	static styles = [tabsStyles];
+	static styles = [focusRingStyles, tabsStyles];
 
 	render() {
 		console.log("GrantCodesTabsButton", this, {

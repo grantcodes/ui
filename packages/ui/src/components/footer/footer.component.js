@@ -1,6 +1,6 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
-import { footerStyles } from "./footer.styles.js";
+import footerStyles from "./footer.styles.css" with { type: "css" };
 
 export class GrantCodesFooter extends LitElement {
 	static styles = [footerStyles];

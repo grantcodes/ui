@@ -1,5 +1,5 @@
 import { LitElement, html } from "lit";
-import { ctaStyles } from "./cta.styles.js";
+import ctaStyles from "./cta.styles.css" with { type: "css" };
 import "../button/button.js";
 
 export class GrantCodesCta extends LitElement {

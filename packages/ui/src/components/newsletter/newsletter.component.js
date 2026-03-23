@@ -1,5 +1,5 @@
 import { LitElement, html } from "lit";
-import { newsletterStyles } from "./newsletter.styles.js";
+import newsletterStyles from "./newsletter.styles.css" with { type: "css" };
 import "../button/button.js";
 
 export class GrantCodesNewsletter extends LitElement {

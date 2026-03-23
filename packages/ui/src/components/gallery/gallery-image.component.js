@@ -1,6 +1,6 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
-import { galleryStyles } from "./gallery.styles.js";
+import galleryStyles from "./gallery.styles.css" with { type: "css" };
 
 export class GrantCodesGalleryImage extends LitElement {
 	static styles = [galleryStyles];

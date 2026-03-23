@@ -1,6 +1,6 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
-import { dialogStyles } from "./dialog.styles.js";
+import dialogStyles from "./dialog.styles.css" with { type: "css" };
 
 export class GrantCodesDialog extends LitElement {
 	// Styles are scoped to this element: they won't conflict with styles

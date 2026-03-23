@@ -3,7 +3,7 @@
   outline: 0px solid transparent;
   outline-offset: var(--g-theme-focus-ring-offset-default);
   transition-duration: var(--g-animation-duration-20);
-  transition-properties: outline-color, width;
+  transition-property: outline-color, width;
 }
 
 .focus-ring:focus-visible,

@@ -1,9 +1,10 @@
 import { GrantCodesTabsItem } from "./internal/tabs-item.component.js";
 import { html } from "lit/static-html.js";
-import { tabsStyles } from "./tabs.styles.js";
+import focusRingStyles from "#styles/focus-ring.styles.css" with { type: "css" };
+import tabsStyles from "./tabs.styles.css" with { type: "css" };
 
 export class GrantCodesTab extends GrantCodesTabsItem {
-	static styles = [tabsStyles];
+	static styles = [focusRingStyles, tabsStyles];
 
 	render() {
 		return html`

@@ -1,5 +1,5 @@
 import { LitElement, html } from "lit";
-import { pricingStyles } from "./pricing.styles.js";
+import pricingStyles from "./pricing.styles.css" with { type: "css" };
 import "../button/button.js";
 
 export class GrantCodesPricing extends LitElement {

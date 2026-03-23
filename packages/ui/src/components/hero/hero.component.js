@@ -1,5 +1,5 @@
 import { LitElement, html } from "lit";
-import { heroStyles } from "./hero.styles.js";
+import heroStyles from "./hero.styles.css" with { type: "css" };
 import "../button/button.js";
 
 export class GrantCodesHero extends LitElement {

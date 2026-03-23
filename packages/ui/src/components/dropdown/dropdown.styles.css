@@ -1,0 +1,124 @@
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+
+	:host,
+	.dropdown {
+		display: inline-block;
+	}
+
+	.dropdown__trigger {
+		display: inline-block;
+		cursor: pointer;
+	}
+
+	.dropdown__menu {
+		display: none;
+		position: fixed;
+		anchor-name: --dropdown-trigger;
+		z-index: 1000;
+		min-inline-size: 12rem;
+		margin-block: var(--g-theme-spacing-xs);
+		padding-block: var(--g-theme-spacing-sm);
+		background-color: var(--g-theme-color-background-default);
+		border: 1px solid var(--g-theme-color-border-default);
+		border-radius: var(--g-theme-border-radius-md);
+		animation: dropdown-fade-in 0.15s ease-out;
+	}
+
+	.dropdown__menu--open {
+		display: block;
+	}
+
+	/* Position using anchor positioning when available */
+	@supports (anchor-name: --dropdown-trigger) {
+		.dropdown__menu--open {
+			position-area: bottom span-right;
+			position-try: block-end, block-start span-inline-start;
+		}
+	}
+
+	.dropdown__menu ::slotted(*) {
+		display: flex;
+		flex-direction: column;
+	}
+
+	/* Dropdown item */
+	.dropdown-item {
+		display: flex;
+		width: 100%;
+		align-items: center;
+		gap: var(--g-theme-spacing-sm);
+		padding-block: var(--g-theme-spacing-sm);
+		padding-inline: var(--g-theme-spacing-md);
+		font-size: var(--g-typography-font-size-16);
+		color: var(--g-theme-color-content-default);
+		cursor: pointer;
+		transition: background-color 0.15s ease;
+		user-select: none;
+	}
+
+	.dropdown-item:hover {
+		background-color: var(--g-theme-color-background-subtle-hover);
+	}
+
+	.dropdown-item:focus {
+		outline: none;
+		background-color: var(--g-theme-color-background-subtle-hover);
+	}
+
+	.dropdown-item:active {
+		background-color: var(--g-theme-color-background-subtle);
+	}
+
+	.dropdown-item--disabled {
+		color: var(--g-theme-color-content-disabled);
+		cursor: not-allowed;
+		opacity: 0.6;
+	}
+
+	.dropdown-item--disabled:hover,
+	.dropdown-item--disabled:focus,
+	.dropdown-item--disabled:active {
+		background-color: transparent;
+	}
+
+	/* Animation */
+	@keyframes dropdown-fade-in {
+		from {
+			opacity: 0;
+			transform: translateY(-0.5rem);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	/* For top placement, reverse animation */
+	.dropdown__menu--top-start,
+	.dropdown__menu--top-end {
+		animation: dropdown-fade-in-top 0.15s ease-out;
+	}
+
+	@keyframes dropdown-fade-in-top {
+		from {
+			opacity: 0;
+			transform: translateY(0.5rem);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	/* View transitions support */
+	@media (prefers-reduced-motion: no-preference) {
+		@supports (view-transition-name: auto) {
+			.dropdown__menu {
+				view-transition-name: dropdown-menu;
+			}
+		}
+	}

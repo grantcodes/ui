@@ -1,7 +1,7 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
 import { classMap } from "lit/directives/class-map.js";
-import { dropzoneStyles } from "./dropzone.styles.js";
+import dropzoneStyles from "./dropzone.styles.css" with { type: "css" };
 
 export class GrantCodesDropzone extends LitElement {
 	static styles = [dropzoneStyles];

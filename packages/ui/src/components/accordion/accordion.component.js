@@ -1,9 +1,10 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
-import { accordionStyles } from "./accordion.styles.js";
+import focusRingStyles from "#styles/focus-ring.styles.css" with { type: "css" };
+import accordionStyles from "./accordion.styles.css" with { type: "css" };
 
 export class GrantCodesAccordion extends LitElement {
-	static styles = [accordionStyles];
+	static styles = [focusRingStyles, accordionStyles];
 
 	static properties = {
 		items: { type: Array },

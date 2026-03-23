@@ -1,5 +1,5 @@
 import { LitElement, html } from "lit";
-import { mediaTextStyles } from "./media-text.styles.js";
+import mediaTextStyles from "./media-text.styles.css" with { type: "css" };
 import "../button/button.js";
 
 export class GrantCodesMediaText extends LitElement {
