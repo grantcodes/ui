@@ -12,7 +12,7 @@ Migrate @grantcodes/ui from Lit `css` template literals to plain CSS files impor
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Build Tooling** - Configure Vite, Storybook, and test runner to support CSS import attributes
+- [x] **Phase 1: Build Tooling** - Configure Vite, Storybook, and test runner to support CSS import attributes
 - [ ] **Phase 2: Pilot Migration** - Migrate shared styles and 2-3 pilot components to validate the pattern end-to-end
 - [ ] **Phase 3: Full Component Migration** - Migrate all remaining components, remove old .styles.js files, verify everything
 - [ ] **Phase 4: Package Exports** - Expose component CSS files via package.json exports for external consumers
@@ -30,7 +30,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans:** 1 plan
 
 Plans:
-- [ ] 01-01-PLAN.md — Configure Vite, Storybook, and test runner for CSS import attributes with test fixture
+- [x] 01-01-PLAN.md — Configure Vite, Storybook, and test runner for CSS import attributes with test fixture
 
 ### Phase 2: Pilot Migration
 **Goal**: The migration pattern is proven end-to-end with real components that pass tests and render in Storybook
@@ -41,7 +41,10 @@ Plans:
   2. Button component renders correctly in Storybook using CSS import attributes (button uses focus-ring, so it validates the shared style chain)
   3. Badge component renders correctly in Storybook using CSS import attributes (badge has no shared style dependencies, validates the simple case)
   4. Existing tests for pilot components (button, badge) pass without changing test assertions
-**Plans**: TBD
+**Plans:** 1 plan
+
+Plans:
+- [ ] 02-01-PLAN.md — Migrate focus-ring, badge, and button to CSS import attributes
 
 ### Phase 3: Full Component Migration
 **Goal**: All 33 components use CSS import attributes and old `.styles.js` files are removed
@@ -70,7 +73,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Build Tooling | 0/? | Not started | - |
+| 1. Build Tooling | 1/1 | Complete | 2026-03-23 |
 | 2. Pilot Migration | 0/? | Not started | - |
 | 3. Full Component Migration | 0/? | Not started | - |
 | 4. Package Exports | 0/? | Not started | - |
