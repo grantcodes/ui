@@ -1,7 +1,7 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
-import { cx } from "../../lib/classnames.js";
+import { classMap } from "lit/directives/class-map.js";
 import { noticeStyles } from "./notice.styles.js";
 import { GrantCodesIcon } from "../icon/icon.component.js";
 import { AlertCircle, Info, CheckCircle2, XCircle, X } from "../../icons.js";
@@ -60,9 +60,13 @@ export class GrantCodesNotice extends LitElement {
 
 	render() {
 		const icon = ICONS[this.variant];
+		const classes = classMap({
+			notice: true,
+			[`notice--${this.variant}`]: true,
+		});
 
 		return html`
-			<aside class="${cx("notice", `notice--${this.variant}`)}">
+			<aside class=${classes}>
 				<grantcodes-icon class="notice__icon">${unsafeHTML(icon)}</grantcodes-icon>
 
 				<div class="notice__content">
