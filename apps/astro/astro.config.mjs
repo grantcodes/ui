@@ -5,12 +5,14 @@ import { envDefaults } from './integrations/env-defaults.ts';
 import lit from '@semantic-ui/astro-lit';
 import astroOgImages from '@grantcodes/astro-og-images';
 import { fileURLToPath } from 'node:url';
+import { cssImportAttributes } from '../../packages/ui/vite-plugin-css-import-attributes.js';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://grant.codes',
   output: 'static',
   vite: {
+    plugins: [cssImportAttributes()],
     resolve: {
       alias: {
         '@layouts': fileURLToPath(new URL('./src/layouts', import.meta.url)),

@@ -77,8 +77,13 @@ export function cssImportAttributes() {
 
 			return (
 				`const css = \`${escaped}\`;\n` +
-				"const sheet = new CSSStyleSheet();\n" +
-				"sheet.replaceSync(css);\n" +
+				"let sheet;\n" +
+				"if (typeof CSSStyleSheet !== 'undefined') {\n" +
+				"  sheet = new CSSStyleSheet();\n" +
+				"  sheet.replaceSync(css);\n" +
+				"} else {\n" +
+				"  sheet = { cssText: css, replaceSync() {}, replace() { return Promise.resolve(this); } };\n" +
+				"}\n" +
 				"export default sheet;\n"
 			);
 		},
