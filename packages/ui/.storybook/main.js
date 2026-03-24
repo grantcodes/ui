@@ -1,5 +1,6 @@
 import { fileURLToPath } from "node:url";
 import { dirname } from "node:path";
+
 export default {
   stories: ["../src/**/*.stories.@(js|jsx|ts|tsx|mdx)"],
 
