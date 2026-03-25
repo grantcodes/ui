@@ -32,7 +32,11 @@
       "import": "./src/components/*",
       "require": "./src/components/*"
     },
-    "./fonts/*": "./src/fonts/*"
+    "./fonts/*": "./src/fonts/*",
+    "./css-import-attributes": {
+      "types": "./css-import-attributes.d.ts"
+    },
+    "./vite-plugin": "./vite-plugin-css-import-attributes.js"
   },
   "scripts": {
     "dev": "storybook dev -p 6006",
@@ -80,6 +84,8 @@
   "files": [
     "src/**/*",
     "custom-elements.json",
+    "css-import-attributes.d.ts",
+    "vite-plugin-css-import-attributes.js",
     "CHANGELOG.md",
     "README.md",
     "LICENCE"

@@ -4,14 +4,15 @@ import { readFile } from "node:fs/promises";
  * Vite plugin that handles CSS import attributes (`with { type: 'css' }`).
  *
  * When a JS/TS file imports a CSS file with `with { type: 'css' }`,
- * this plugin transforms it into a module that exports a CSSStyleSheet,
- * which is what Lit's `static styles` expects.
+ * this plugin transforms it into a module that exports a CSSStyleSheet
+ * (client) or a Lit CSSResult (SSR), compatible with Lit's `static styles`.
  *
  * The virtual module ID uses a `.js` suffix to prevent Vite's built-in
  * CSS plugin from intercepting and transforming the output.
  */
 export function cssImportAttributes() {
 	const virtualPrefix = "\0css-sheet:";
+	const ssrPrefix = "\0css-sheet-ssr:";
 	// Suffix prevents Vite's CSS plugin from treating this as a CSS module
 	const virtualSuffix = ".js";
 
@@ -53,18 +54,19 @@ export function cssImportAttributes() {
 				?.id;
 			if (!resolved) return;
 
-			// Virtual ID with .js suffix so Vite doesn't apply CSS transforms
-			return virtualPrefix + resolved + virtualSuffix;
+			// Encode SSR flag into virtual ID prefix so load() can detect it
+			const prefix = options.ssr ? ssrPrefix : virtualPrefix;
+			return prefix + resolved + virtualSuffix;
 		},
 
 		async load(id) {
-			if (!id.startsWith(virtualPrefix)) return;
+			const isSsr = id.startsWith(ssrPrefix);
+			const isClient = id.startsWith(virtualPrefix);
+			if (!isSsr && !isClient) return;
 
 			// Strip prefix and suffix to get real CSS path
-			const realPath = id.slice(
-				virtualPrefix.length,
-				-virtualSuffix.length,
-			);
+			const prefix = isSsr ? ssrPrefix : virtualPrefix;
+			const realPath = id.slice(prefix.length, -virtualSuffix.length);
 
 			const css = await readFile(realPath, "utf-8");
 			this.addWatchFile(realPath);
@@ -75,16 +77,19 @@ export function cssImportAttributes() {
 				.replace(/`/g, "\\`")
 				.replace(/\$/g, "\\$");
 
+			if (isSsr) {
+				// SSR: return a Lit CSSResult for proper Lit SSR integration
+				return (
+					`import { css } from "lit";\n` +
+					`export default css\`${escaped}\`;\n`
+				);
+			}
+
+			// Client: return a native CSSStyleSheet
 			return (
-				`const css = \`${escaped}\`;\n` +
-				"let sheet;\n" +
-				"if (typeof CSSStyleSheet !== 'undefined') {\n" +
-				"  sheet = new CSSStyleSheet();\n" +
-				"  sheet.replaceSync(css);\n" +
-				"} else {\n" +
-				"  sheet = { cssText: css, replaceSync() {}, replace() { return Promise.resolve(this); } };\n" +
-				"}\n" +
-				"export default sheet;\n"
+				`const sheet = new CSSStyleSheet();\n` +
+				`sheet.replaceSync(\`${escaped}\`);\n` +
+				`export default sheet;\n`
 			);
 		},
 	};
