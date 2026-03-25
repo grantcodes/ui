@@ -7,7 +7,7 @@ export default defineConfig({
 			formats: ["es"],
 		},
 		rollupOptions: {
-			external: ["lit", "@grantcodes/style-dictionary"],
+			external: ["lit", "@grantcodes/style-dictionary", "react", "@lit/react"],
 		},
 	},
 });

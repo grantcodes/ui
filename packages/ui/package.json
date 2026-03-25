@@ -28,7 +28,10 @@
       "import": "./src/components/*",
       "require": "./src/components/*"
     },
-    "./fonts/*": "./src/fonts/*"
+    "./fonts/*": "./src/fonts/*",
+    "./react": {
+      "import": "./src/react.js"
+    }
   },
   "scripts": {
     "dev": "storybook dev -p 6006",
@@ -47,6 +50,7 @@
   "license": "MIT",
   "dependencies": {
     "@grantcodes/style-dictionary": "workspace:^",
+    "@lit/react": "^1.0.8",
     "lit": "^3.3.1",
     "sanitize.css": "^13.0.0",
     "shiki": "^3.17.1"
@@ -78,5 +82,13 @@
     "README.md",
     "LICENCE"
   ],
-  "customElements": "custom-elements.json"
+  "customElements": "custom-elements.json",
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  }
 }
