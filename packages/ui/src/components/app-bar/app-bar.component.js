@@ -1,10 +1,11 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
-import { cx } from "../../lib/classnames.js";
-import { appBarStyles } from "./app-bar.styles.js";
+import { classMap } from "lit/directives/class-map.js";
+import focusRingStyles from "#styles/focus-ring.css" with { type: "css" };
+import appBarStyles from "./app-bar.css" with { type: "css" };
 
 export class GrantCodesAppBar extends LitElement {
-	static styles = [appBarStyles];
+	static styles = [focusRingStyles, appBarStyles];
 
 	static properties = {
 		sticky: { type: Boolean },
@@ -46,13 +47,14 @@ export class GrantCodesAppBar extends LitElement {
 	}
 
 	render() {
-		const appBarClass = cx("app-bar", {
+		const classes = classMap({
+			"app-bar": true,
 			"app-bar--sticky": this.sticky,
 			"app-bar--transparent": this.transparent,
 		});
 
 		return html`
-			<header class="${appBarClass}">
+			<header class=${classes}>
 				<div class="app-bar__container">
 					<div class="app-bar__logo">
 						<slot name="logo"></slot>

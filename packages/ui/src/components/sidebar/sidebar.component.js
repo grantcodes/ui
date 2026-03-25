@@ -1,10 +1,11 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
-import { cx } from "../../lib/classnames.js";
-import { sidebarStyles } from "./sidebar.styles.js";
+import { classMap } from "lit/directives/class-map.js";
+import focusRingStyles from "#styles/focus-ring.css" with { type: "css" };
+import sidebarStyles from "./sidebar.css" with { type: "css" };
 
 export class GrantCodesSidebar extends LitElement {
-	static styles = [sidebarStyles];
+	static styles = [focusRingStyles, sidebarStyles];
 
 	static properties = {
 		position: { type: String },
@@ -104,7 +105,8 @@ export class GrantCodesSidebar extends LitElement {
 	}
 
 	render() {
-		const sidebarClass = cx("sidebar", {
+		const sidebarClasses = classMap({
+			sidebar: true,
 			"sidebar--collapsed": this.collapsed,
 			[`sidebar--${this.position}`]: true,
 			"sidebar--drawer-open": this._drawerOpen,
@@ -137,7 +139,7 @@ export class GrantCodesSidebar extends LitElement {
 
 			<!-- Sidebar -->
 			<aside
-				class="${sidebarClass}"
+				class=${sidebarClasses}
 				style="--sidebar-width: ${this.width}"
 			>
 				<!-- Collapse Toggle (Desktop) -->

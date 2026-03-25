@@ -1,7 +1,7 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
 import { generateId } from "../../lib/generate-id.js";
-import { dropdownStyles } from "./dropdown.styles.js";
+import dropdownStyles from "./dropdown.css" with { type: "css" };
 
 export class GrantCodesDropdown extends LitElement {
 	static styles = [dropdownStyles];

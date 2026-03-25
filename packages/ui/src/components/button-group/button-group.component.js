@@ -1,6 +1,6 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
-import { buttonGroupStyles } from "./button-group.styles.js";
+import buttonGroupStyles from "./button-group.css" with { type: "css" };
 
 export class GrantCodesButtonGroup extends LitElement {
 	// Styles are scoped to this element: they won't conflict with styles

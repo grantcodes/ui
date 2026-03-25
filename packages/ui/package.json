@@ -1,12 +1,15 @@
 {
   "name": "@grantcodes/ui",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "A personal component system built with Lit web components",
   "type": "module",
   "main": "src/main.js",
   "module": "src/main.js",
   "types": "src/main.d.ts",
   "author": "grantcodes",
+  "imports": {
+    "#styles/*": "./src/lib/styles/*"
+  },
   "exports": {
     ".": {
       "types": "./src/main.d.ts",
@@ -24,6 +27,7 @@
       "import": "./src/css/themes/*",
       "require": "./src/css/themes/*"
     },
+    "./styles/focus-ring.css": "./src/lib/styles/focus-ring.css",
     "./components/*": {
       "import": "./src/components/*",
       "require": "./src/components/*"
@@ -31,7 +35,11 @@
     "./fonts/*": "./src/fonts/*",
     "./react": {
       "import": "./src/react.js"
-    }
+    },
+    "./css-import-attributes": {
+      "types": "./css-import-attributes.d.ts"
+    },
+    "./vite-plugin": "./vite-plugin-css-import-attributes.js"
   },
   "scripts": {
     "dev": "storybook dev -p 6006",
@@ -45,7 +53,7 @@
     "fix:lint": "npx @biomejs/biome format --write src",
     "test": "run-s lint test:unit",
     "lint": "npx @biomejs/biome lint src",
-    "test:unit": "NODE_ENV=test node --test --test-concurrency=1 src/**/*.test.js"
+    "test:unit": "NODE_ENV=test node --import @lit-labs/ssr-dom-shim/register-css-hook.js --test --test-concurrency=1 src/**/*.test.js"
   },
   "license": "MIT",
   "dependencies": {
@@ -56,9 +64,11 @@
     "shiki": "^3.17.1"
   },
   "devDependencies": {
+    "@arcmantle/vite-plugin-import-css-sheet": "^1.0.12",
     "@biomejs/biome": "2.3.8",
     "@custom-elements-manifest/analyzer": "^0.11.0",
     "@grantcodes/commit": "^2.0.0",
+    "@lit-labs/ssr-dom-shim": "^1.5.1",
     "@playwright/test": "^1.57.0",
     "@storybook/addon-docs": "^10.1.4",
     "@storybook/addon-themes": "^10.1.4",
@@ -79,6 +89,8 @@
   "files": [
     "src/**/*",
     "custom-elements.json",
+    "css-import-attributes.d.ts",
+    "vite-plugin-css-import-attributes.js",
     "CHANGELOG.md",
     "README.md",
     "LICENCE"

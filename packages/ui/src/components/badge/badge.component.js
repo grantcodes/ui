@@ -1,7 +1,7 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
-import { cx } from "../../lib/classnames.js";
-import { badgeStyles } from "./badge.styles.js";
+import { classMap } from "lit/directives/class-map.js";
+import badgeStyles from "./badge.css" with { type: "css" };
 
 export class GrantCodesBadge extends LitElement {
 	static styles = [badgeStyles];
@@ -21,12 +21,13 @@ export class GrantCodesBadge extends LitElement {
 	}
 
 	render() {
-		const badgeClass = cx("badge", {
+		const classes = classMap({
+			badge: true,
 			[`badge--${this.variant}`]: Boolean(this.variant),
 		});
 
 		return html`
-			<span class="${badgeClass}">
+			<span class=${classes}>
 				<span class="badge__content">
 					<slot></slot>
 				</span>

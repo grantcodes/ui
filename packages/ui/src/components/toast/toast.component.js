@@ -1,8 +1,9 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
-import { cx } from "../../lib/classnames.js";
-import { toastStyles } from "./toast.styles.js";
+import { classMap } from "lit/directives/class-map.js";
+import focusRingStyles from "#styles/focus-ring.css" with { type: "css" };
+import toastStyles from "./toast.css" with { type: "css" };
 import { GrantCodesIcon } from "../icon/icon.component.js";
 import { AlertCircle, Info, CheckCircle2, XCircle, X } from "../../icons.js";
 
@@ -15,7 +16,7 @@ const ICONS = {
 
 export class GrantCodesToast extends LitElement {
 	static dependencies = { "grancodes-icon": GrantCodesIcon };
-	static styles = [toastStyles];
+	static styles = [focusRingStyles, toastStyles];
 
 	static properties = {
 		variant: { type: String },
@@ -128,14 +129,15 @@ export class GrantCodesToast extends LitElement {
 
 	render() {
 		const icon = ICONS[this.variant];
-		const toastClass = cx("toast", {
+		const classes = classMap({
+			toast: true,
 			[`toast--${this.variant}`]: true,
 			[`toast--${this.position}`]: true,
 			"toast--visible": this._visible,
 		});
 
 		return html`
-			<div class="${toastClass}" role="status" aria-live="polite">
+			<div class=${classes} role="status" aria-live="polite">
 				<grantcodes-icon class="toast__icon">${unsafeHTML(icon)}</grantcodes-icon>
 
 				<div class="toast__content">
@@ -155,7 +157,7 @@ export class GrantCodesToast extends LitElement {
  * Toast container for managing multiple toasts
  */
 export class GrantCodesToastContainer extends LitElement {
-	static styles = [toastStyles];
+	static styles = [focusRingStyles, toastStyles];
 
 	static properties = {
 		position: { type: String },
@@ -172,12 +174,13 @@ export class GrantCodesToastContainer extends LitElement {
 	}
 
 	render() {
-		const containerClass = cx("toast-container", {
+		const classes = classMap({
+			"toast-container": true,
 			[`toast-container--${this.position}`]: true,
 		});
 
 		return html`
-			<div class="${containerClass}">
+			<div class=${classes}>
 				<slot></slot>
 			</div>
 		`;

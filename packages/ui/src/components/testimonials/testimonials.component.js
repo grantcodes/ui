@@ -1,5 +1,5 @@
 import { LitElement, html } from "lit";
-import { testimonialsStyles } from "./testimonials.styles.js";
+import testimonialsStyles from "./testimonials.css" with { type: "css" };
 import "../card/card.js";
 import "../avatar/avatar.js";
 

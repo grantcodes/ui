@@ -1,7 +1,7 @@
 import { LitElement, html } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import * as icons from "lucide-static";
-import { featureListStyles } from "./feature-list.styles.js";
+import featureListStyles from "./feature-list.css" with { type: "css" };
 import "../icon/icon.js";
 
 export class GrantCodesFeatureList extends LitElement {

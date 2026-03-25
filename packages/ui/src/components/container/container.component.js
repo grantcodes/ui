@@ -1,7 +1,7 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
-import { cx } from "../../lib/classnames.js";
-import { containerStyles } from "./container.styles.js";
+import { classMap } from "lit/directives/class-map.js";
+import containerStyles from "./container.css" with { type: "css" };
 
 export class GrantCodesContainer extends LitElement {
 	// Styles are scoped to this element: they won't conflict with styles
@@ -22,7 +22,8 @@ export class GrantCodesContainer extends LitElement {
 	}
 
 	render() {
-		const containerClass = cx("container", {
+		const classes = classMap({
+			container: true,
 			"container--wide": this.align === "wide",
 			"container--full": this.align === "full",
 			"container--prose": this.align === "prose",
@@ -31,7 +32,7 @@ export class GrantCodesContainer extends LitElement {
 		});
 
 		return html`
-      <div class="${containerClass}">
+      <div class=${classes}>
         <slot></slot>
       </div>
     `;
