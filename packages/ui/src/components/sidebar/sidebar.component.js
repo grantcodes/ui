@@ -1,8 +1,8 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
 import { classMap } from "lit/directives/class-map.js";
-import focusRingStyles from "#styles/focus-ring.styles.css" with { type: "css" };
-import sidebarStyles from "./sidebar.styles.css" with { type: "css" };
+import focusRingStyles from "#styles/focus-ring.css" with { type: "css" };
+import sidebarStyles from "./sidebar.css" with { type: "css" };
 
 export class GrantCodesSidebar extends LitElement {
 	static styles = [focusRingStyles, sidebarStyles];

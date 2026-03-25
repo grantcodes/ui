@@ -1,5 +1,5 @@
 import { LitElement, html } from "lit";
-import cardStyles from "./card.styles.css" with { type: "css" };
+import cardStyles from "./card.css" with { type: "css" };
 
 export class GrantCodesCard extends LitElement {
 	static properties = {

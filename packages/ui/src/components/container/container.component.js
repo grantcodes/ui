@@ -1,7 +1,7 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
 import { classMap } from "lit/directives/class-map.js";
-import containerStyles from "./container.styles.css" with { type: "css" };
+import containerStyles from "./container.css" with { type: "css" };
 
 export class GrantCodesContainer extends LitElement {
 	// Styles are scoped to this element: they won't conflict with styles

@@ -1,6 +1,6 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
-import galleryStyles from "./gallery.styles.css" with { type: "css" };
+import galleryStyles from "./gallery.css" with { type: "css" };
 
 export class GrantCodesGallery extends LitElement {
 	// Styles are scoped to this element: they won't conflict with styles

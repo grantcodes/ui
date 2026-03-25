@@ -1,8 +1,8 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
 import { ifDefined } from "lit/directives/if-defined.js";
-import focusRingStyles from "#styles/focus-ring.styles.css" with { type: "css" };
-import tabsStyles from "./tabs.styles.css" with { type: "css" };
+import focusRingStyles from "#styles/focus-ring.css" with { type: "css" };
+import tabsStyles from "./tabs.css" with { type: "css" };
 import { GrantCodesTab } from "./tab.component.js";
 import { GrantCodesTabsButton } from "./internal/tabs-button.component.js";
 import "./internal/tabs-button.js";

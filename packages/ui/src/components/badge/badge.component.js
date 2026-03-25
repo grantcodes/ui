@@ -1,7 +1,7 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
 import { classMap } from "lit/directives/class-map.js";
-import badgeStyles from "./badge.styles.css" with { type: "css" };
+import badgeStyles from "./badge.css" with { type: "css" };
 
 export class GrantCodesBadge extends LitElement {
 	static styles = [badgeStyles];

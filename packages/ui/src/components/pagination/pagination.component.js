@@ -1,6 +1,6 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
-import paginationStyles from "./pagination.styles.css" with { type: "css" };
+import paginationStyles from "./pagination.css" with { type: "css" };
 import { GrantCodesButton } from "../button/button.component.js";
 import "../button/button.js";
 

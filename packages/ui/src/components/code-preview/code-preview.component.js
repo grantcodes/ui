@@ -1,6 +1,6 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
-import codePreviewStyles from "./code-preview.styles.css" with { type: "css" };
+import codePreviewStyles from "./code-preview.css" with { type: "css" };
 
 export class GrantCodesCodePreview extends LitElement {
 	static styles = [codePreviewStyles];

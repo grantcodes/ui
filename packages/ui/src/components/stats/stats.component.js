@@ -1,5 +1,5 @@
 import { LitElement, html } from "lit";
-import statsStyles from "./stats.styles.css" with { type: "css" };
+import statsStyles from "./stats.css" with { type: "css" };
 
 export class GrantCodesStats extends LitElement {
 	static styles = [statsStyles];

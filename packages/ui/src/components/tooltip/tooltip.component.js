@@ -1,6 +1,6 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
-import tooltipStyles from "./tooltip.styles.css" with { type: "css" };
+import tooltipStyles from "./tooltip.css" with { type: "css" };
 import { generateId } from "../../lib/generate-id.js";
 
 export class GrantCodesTooltip extends LitElement {
