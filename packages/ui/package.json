@@ -33,6 +33,9 @@
       "require": "./src/components/*"
     },
     "./fonts/*": "./src/fonts/*",
+    "./react": {
+      "import": "./src/react.js"
+    },
     "./css-import-attributes": {
       "types": "./css-import-attributes.d.ts"
     },
@@ -55,6 +58,7 @@
   "license": "MIT",
   "dependencies": {
     "@grantcodes/style-dictionary": "workspace:^",
+    "@lit/react": "^1.0.8",
     "lit": "^3.3.1",
     "sanitize.css": "^13.0.0",
     "shiki": "^3.17.1"
@@ -78,6 +82,7 @@
     "lucide-static": "^0.555.0",
     "npm-run-all": "^4.1.5",
     "plop": "^4.0.4",
+    "react": "^19.2.4",
     "storybook": "^10.1.4",
     "vite": "^7.2.6"
   },
@@ -90,5 +95,13 @@
     "README.md",
     "LICENCE"
   ],
-  "customElements": "custom-elements.json"
+  "customElements": "custom-elements.json",
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  }
 }
