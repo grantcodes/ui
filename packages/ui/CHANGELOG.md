@@ -1,5 +1,26 @@
 # Changelog
 
+## [2.2.0](https://github.com/grantcodes/ui/compare/ui-v2.1.1...ui-v2.2.0) (2026-03-25)
+
+
+### Features
+
+* **01-01:** configure Vite and Storybook for CSS import attributes ([039436c](https://github.com/grantcodes/ui/commit/039436c20b160f1889944df02cab958641e768fe))
+* **02-01:** migrate button component to CSS import attributes with shared focus-ring ([a579ffd](https://github.com/grantcodes/ui/commit/a579ffd08916b37050d46ef459c458c1474567f9))
+* **02-01:** migrate focus-ring and badge to CSS import attributes ([becaad7](https://github.com/grantcodes/ui/commit/becaad7eed6ea0f233deb675b07edf1109840925))
+* **02-01:** update button to use #styles alias for focus-ring import ([6d1be3d](https://github.com/grantcodes/ui/commit/6d1be3db08f0575288436dc0eff25517060b1f1e))
+* **03-01:** migrate all 31 remaining components to CSS import attributes ([89eb3cd](https://github.com/grantcodes/ui/commit/89eb3cdbddf200dac6b606eba28f3f5f99bb663d))
+* **04-01:** add explicit CSS subpath exports for all components ([348746f](https://github.com/grantcodes/ui/commit/348746f0cf2b6de049b6ec20b6ed0887ed5dadfd))
+* **ui:** add Lit CSSResult for SSR and TypeScript declarations ([bada435](https://github.com/grantcodes/ui/commit/bada435b8dcd0fbfae75310e32c1e152ca736d84))
+* **ui:** migrate CSS styles from JS to CSS import attributes ([b9cac40](https://github.com/grantcodes/ui/commit/b9cac406ab902b3837a39b184d683849fe242402))
+
+
+### Bug Fixes
+
+* **04-01:** remove unused import in exports test ([ab70a17](https://github.com/grantcodes/ui/commit/ab70a1759545d837169d10eebe4c4da7e9387e59))
+* **ui:** add SSR-safe CSSStyleSheet guard and Astro vite plugin ([b75bddc](https://github.com/grantcodes/ui/commit/b75bddc7315107fe6f84f17f7320efb699f40f45))
+* **ui:** extract CSS import attributes plugin and fix Storybook compatibility ([5c282fc](https://github.com/grantcodes/ui/commit/5c282fc82387ef8278bb9273bf3b3522c3c7226b))
+
 ## [2.1.1](https://github.com/grantcodes/ui/compare/ui-v2.1.0...ui-v2.1.1) (2026-03-15)
 
 
