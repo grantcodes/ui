@@ -28,6 +28,7 @@
       "require": "./src/css/themes/*"
     },
     "./styles/focus-ring.css": "./src/lib/styles/focus-ring.css",
+    "./styles/all.css": "./src/lib/styles/all.css",
     "./components/*": {
       "import": "./src/components/*",
       "require": "./src/components/*"
