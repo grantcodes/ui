@@ -1,6 +1,6 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
-import { iconStyles } from "./icon.styles.js";
+import iconStyles from "./icon.css" with { type: "css" };
 
 export class GrantCodesIcon extends LitElement {
 	// Styles are scoped to this element: they won't conflict with styles

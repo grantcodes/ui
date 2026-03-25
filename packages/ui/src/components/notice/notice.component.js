@@ -2,7 +2,7 @@ import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { classMap } from "lit/directives/class-map.js";
-import { noticeStyles } from "./notice.styles.js";
+import noticeStyles from "./notice.css" with { type: "css" };
 import { GrantCodesIcon } from "../icon/icon.component.js";
 import { AlertCircle, Info, CheckCircle2, XCircle, X } from "../../icons.js";
 

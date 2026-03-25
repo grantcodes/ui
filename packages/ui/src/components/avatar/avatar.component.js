@@ -1,6 +1,6 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
-import { avatarStyles } from "./avatar.styles.js";
+import avatarStyles from "./avatar.css" with { type: "css" };
 
 export class GrantCodesAvatar extends LitElement {
 	static properties = {

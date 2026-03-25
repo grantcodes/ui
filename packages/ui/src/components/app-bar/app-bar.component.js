@@ -1,10 +1,11 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
 import { classMap } from "lit/directives/class-map.js";
-import { appBarStyles } from "./app-bar.styles.js";
+import focusRingStyles from "#styles/focus-ring.css" with { type: "css" };
+import appBarStyles from "./app-bar.css" with { type: "css" };
 
 export class GrantCodesAppBar extends LitElement {
-	static styles = [appBarStyles];
+	static styles = [focusRingStyles, appBarStyles];
 
 	static properties = {
 		sticky: { type: Boolean },

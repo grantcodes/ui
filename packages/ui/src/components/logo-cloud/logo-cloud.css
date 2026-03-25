@@ -1,0 +1,64 @@
+  :host {
+    display: block;
+  }
+
+  .logo-cloud {
+    padding-block: var(--g-theme-spacing-2xl);
+    padding-inline: var(--g-theme-spacing-md);
+    border-top: 1px solid var(--g-theme-color-border-default);
+    border-bottom: 1px solid var(--g-theme-color-border-default);
+  }
+
+  .logo-cloud__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .logo-cloud__title {
+    margin: 0 0 var(--g-theme-spacing-xl);
+    font-size: var(--g-theme-typography-meta-default-font-size);
+    font-weight: var(--g-theme-typography-meta-default-font-weight);
+    letter-spacing: var(--g-theme-typography-meta-default-letter-spacing);
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--g-theme-color-content-secondary);
+  }
+
+  .logo-cloud__grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--g-theme-spacing-lg) var(--g-theme-spacing-2xl);
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .logo-cloud__link {
+    display: block;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+
+  .logo-cloud__link:hover {
+    opacity: 1;
+  }
+
+  .logo-cloud__logo {
+    display: block;
+    block-size: var(--g-theme-spacing-xl);
+    inline-size: auto;
+    max-inline-size: 140px;
+    object-fit: contain;
+    filter: grayscale(1);
+    transition: filter 0.2s;
+  }
+
+  .logo-cloud__link:hover .logo-cloud__logo {
+    filter: none;
+  }
+
+  .logo-cloud__item:not(:has(.logo-cloud__link)) .logo-cloud__logo {
+    filter: none;
+  }

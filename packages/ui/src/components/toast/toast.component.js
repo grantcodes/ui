@@ -2,7 +2,8 @@ import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { classMap } from "lit/directives/class-map.js";
-import { toastStyles } from "./toast.styles.js";
+import focusRingStyles from "#styles/focus-ring.css" with { type: "css" };
+import toastStyles from "./toast.css" with { type: "css" };
 import { GrantCodesIcon } from "../icon/icon.component.js";
 import { AlertCircle, Info, CheckCircle2, XCircle, X } from "../../icons.js";
 
@@ -15,7 +16,7 @@ const ICONS = {
 
 export class GrantCodesToast extends LitElement {
 	static dependencies = { "grancodes-icon": GrantCodesIcon };
-	static styles = [toastStyles];
+	static styles = [focusRingStyles, toastStyles];
 
 	static properties = {
 		variant: { type: String },
@@ -156,7 +157,7 @@ export class GrantCodesToast extends LitElement {
  * Toast container for managing multiple toasts
  */
 export class GrantCodesToastContainer extends LitElement {
-	static styles = [toastStyles];
+	static styles = [focusRingStyles, toastStyles];
 
 	static properties = {
 		position: { type: String },

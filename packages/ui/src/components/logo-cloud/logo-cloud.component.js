@@ -1,5 +1,5 @@
 import { LitElement, html } from "lit";
-import { logoCloudStyles } from "./logo-cloud.styles.js";
+import logoCloudStyles from "./logo-cloud.css" with { type: "css" };
 
 export class GrantCodesLogoCloud extends LitElement {
 	static styles = [logoCloudStyles];
