@@ -1,13 +1,8 @@
-/* CSS defaults */
-/* NOTE: Converted from SCSS - using standard CSS imports */
+/* CSS reset / sanitize */
 @import "../../node_modules/sanitize.css/sanitize.css";
 @import "../../node_modules/sanitize.css/forms.css";
 @import "../../node_modules/sanitize.css/typography.css";
 @import "../../node_modules/sanitize.css/reduce-motion.css";
-
-@import "./typography.css";
-@import "./elements.css";
-@import "./util/index.css";
 
 /* Design tokens are provided by @grantcodes/style-dictionary and applied to :root */
 :root {
