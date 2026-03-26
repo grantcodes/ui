@@ -1,1 +1,7 @@
-@import "./base.css";
+@layer reset, base, utilities, components;
+
+@import "./base.css" layer(reset);
+@import "./typography.css" layer(base);
+@import "./elements.css" layer(base);
+@import "./util/index.css" layer(utilities);
+@import "./helpers.css" layer(utilities);
