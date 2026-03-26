@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.3.0](https://github.com/grantcodes/ui/compare/ui-v2.2.0...ui-v2.3.0) (2026-03-25)
+
+
+### Features
+
+* **01-01:** create React wrapper components for all Lit web components ([f5d47a7](https://github.com/grantcodes/ui/commit/f5d47a7e1dc45d5d5f21823dcba59c687feed56f))
+* **ui:** add react exports ([f040673](https://github.com/grantcodes/ui/commit/f04067332e5d70803d6f72aade875f08ad05e090))
+
 ## [2.2.0](https://github.com/grantcodes/ui/compare/ui-v2.1.1...ui-v2.2.0) (2026-03-25)
 
 
