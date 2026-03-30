@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.4.0](https://github.com/grantcodes/ui/compare/ui-v2.3.0...ui-v2.4.0) (2026-03-30)
+
+
+### Features
+
+* **ui:** add CSS layers and simplify component stylesheet bundle ([42c183c](https://github.com/grantcodes/ui/commit/42c183c303b81d8a4d0a7bb7a4d5f6482697b3d9))
+
+
+### Bug Fixes
+
+* **ui:** replace sanitize.css imports with inlined custom reset ([c97182b](https://github.com/grantcodes/ui/commit/c97182bc98406055f81e6b2433427e52723776b8))
+* **ui:** replace sanitize.css with inlined custom reset ([f5fe733](https://github.com/grantcodes/ui/commit/f5fe733007783452a4f4612e846960e074386677))
+
 ## [2.3.0](https://github.com/grantcodes/ui/compare/ui-v2.2.0...ui-v2.3.0) (2026-03-25)
 
 
