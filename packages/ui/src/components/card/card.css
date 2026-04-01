@@ -48,7 +48,7 @@
     border-block-end: 1px solid var(--g-theme-color-border-default);
   }
 
-  .card__header:has(> slot:empty) {
+  .card__header:not([data-has-content]) {
     display: none;
   }
 
@@ -87,7 +87,7 @@
     background: var(--g-theme-color-background-default);
   }
 
-  .card__footer:has(> slot:empty) {
+  .card__footer:not([data-has-content]) {
     display: none;
   }
 
