@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.4.1](https://github.com/grantcodes/ui/compare/ui-v2.4.0...ui-v2.4.1) (2026-04-01)
+
+
+### Bug Fixes
+
+* **card:** use data-has-content attribute to hide empty header/footer ([974890c](https://github.com/grantcodes/ui/commit/974890c86441a7e009a1d32bfef51533b22326df)), closes [#38](https://github.com/grantcodes/ui/issues/38)
+* **ui:** use data-has-content to hide empty card header/footer ([09df205](https://github.com/grantcodes/ui/commit/09df2051d6e2b7758a2b074ea3a99c3d5fdff30b))
+
 ## [2.4.0](https://github.com/grantcodes/ui/compare/ui-v2.3.0...ui-v2.4.0) (2026-03-30)
 
 
