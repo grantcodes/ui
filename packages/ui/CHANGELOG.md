@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.5.1](https://github.com/grantcodes/ui/compare/ui-v2.5.0...ui-v2.5.1) (2026-04-05)
+
+
+### Bug Fixes
+
+* add .light sub-element override CSS and fix ::selection token ([1ae9007](https://github.com/grantcodes/ui/commit/1ae900779cf6a241a7e430b86a3e3c0cb988f954))
+* add .light sub-element override CSS and fix ::selection token ([9e9c0c3](https://github.com/grantcodes/ui/commit/9e9c0c32d3b68fd6db5b0b7f40ab14341cc96684))
+
 ## [2.5.0](https://github.com/grantcodes/ui/compare/ui-v2.4.1...ui-v2.5.0) (2026-04-05)
 
 
