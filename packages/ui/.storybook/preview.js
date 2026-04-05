@@ -18,25 +18,53 @@ const THEMES = {
 // Enable/disable theme CSS files
 const toggleThemeCSS = (theme) => {
 	if (typeof document === "undefined") return;
-	
+
 	Object.keys(THEMES).forEach((themeName) => {
 		const link = document.getElementById(`theme-${themeName}`);
 		if (link) {
 			link.disabled = themeName !== theme;
 		}
 	});
-	
+
 	// Update the theme attribute
 	document.documentElement.setAttribute("data-theme", theme);
 };
 
+// Apply color scheme class to <html>
+const applyColorScheme = (scheme) => {
+	if (typeof document === "undefined") return;
+	const html = document.documentElement;
+	html.classList.remove("dark", "light");
+	if (scheme === "dark" || scheme === "light") {
+		html.classList.add(scheme);
+	}
+	// "auto" = no class, lets @media (prefers-color-scheme) take effect
+};
+
 const preview = {
 	parameters: {
-		// TODO: Fix this?
 		layout: "padded",
 		controls: {
 			expanded: true,
 		},
+	},
+	globalTypes: {
+		colorScheme: {
+			description: "Color scheme (light/dark mode)",
+			toolbar: {
+				title: "Color Scheme",
+				icon: "mirror",
+				items: [
+					{ value: "auto", title: "Auto (System)" },
+					{ value: "light", title: "Light" },
+					{ value: "dark", title: "Dark" },
+				],
+				dynamicTitle: true,
+			},
+		},
+	},
+	initialGlobals: {
+		colorScheme: "auto",
 	},
 	tags: ["autodocs"],
 	decorators: [
@@ -46,18 +74,16 @@ const preview = {
 			parentSelector: "html",
 		}),
 		(Story, context) => {
-			// Access the theme from globals (created by withThemeByClassName)
 			const theme = context.globals?.theme || "grantcodes";
-			
-			// Handle CSS file enabling/disabling and data-theme attribute
-			// This runs after withThemeByClassName applies the class
+			const colorScheme = context.globals?.colorScheme || "auto";
+
 			if (typeof window !== "undefined") {
-				// Use requestAnimationFrame to ensure DOM updates are complete
 				requestAnimationFrame(() => {
 					toggleThemeCSS(theme);
+					applyColorScheme(colorScheme);
 				});
 			}
-			
+
 			return Story();
 		},
 	],

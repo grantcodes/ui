@@ -1,5 +1,6 @@
 @import "@grantcodes/style-dictionary/todomap/css";
 @import "@grantcodes/style-dictionary/todomap/css/theme";
+@import "@grantcodes/style-dictionary/todomap/css/dark";
 @import "@grantcodes/style-dictionary/assets/fonts/quicksand";
 
 html.todomap {

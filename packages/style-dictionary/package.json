@@ -21,6 +21,10 @@
 		"./grantina/css/theme": "./dist/css/grantina/grantina.css",
 		"./grantina/js": "./dist/js/grantina/style-dictionary.js",
 		"./grantina/json": "./dist/json/grantina/tokens.json",
+		"./wireframe/css/dark": "./dist/css/wireframe/dark.css",
+		"./grantcodes/css/dark": "./dist/css/grantcodes/dark.css",
+		"./todomap/css/dark": "./dist/css/todomap/dark.css",
+		"./grantina/css/dark": "./dist/css/grantina/dark.css",
 		"./assets/fonts/greycliff": "./assets/fonts/greycliff.css",
 		"./assets/fonts/quicksand": "./assets/fonts/quicksand.css",
 		"./assets/fonts/grantina": "./assets/fonts/grantina.css"

@@ -223,8 +223,10 @@ pre {
 
 /* Design tokens are provided by @grantcodes/style-dictionary and applied to :root */
 :root {
+	color-scheme: light dark;
 	--grantcodes-ui-theme: "none";
 	background-color: var(--g-theme-color-background-default);
+	color: var(--g-theme-color-content-default);
 	fill: currentColor;
 }
 
