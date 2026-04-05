@@ -8,122 +8,45 @@
 				"value": "Helvetica, sans-serif"
 			}
 		},
-		"font-weight": {
-			"400": {
-				"value": "400"
-			},
-			"700": {
-				"value": "700"
-			}
-		},
 		"font-size": {
-			"12": {
-				"value": "12px"
+			"xs": {
+				"value": "0.75rem"
 			},
-			"14": {
-				"value": "14px"
+			"sm": {
+				"value": "0.875rem"
 			},
-			"16": {
-				"value": "16px"
+			"md": {
+				"value": "1rem"
 			},
-			"18": {
-				"value": "18px"
+			"lg": {
+				"value": "1.125rem"
 			},
-			"20": {
-				"value": "20px"
+			"xl": {
+				"value": "1.25rem"
 			},
-			"24": {
-				"value": "24px"
+			"2xl": {
+				"value": "1.5rem"
 			},
-			"28": {
-				"value": "28px"
+			"3xl": {
+				"value": "1.75rem"
 			},
-			"32": {
-				"value": "32px"
+			"4xl": {
+				"value": "2rem"
 			},
-			"40": {
-				"value": "40px"
+			"5xl": {
+				"value": "2.5rem"
 			},
-			"48": {
-				"value": "48px"
+			"6xl": {
+				"value": "3rem"
 			},
-			"56": {
-				"value": "56px"
+			"7xl": {
+				"value": "3.5rem"
 			},
-			"64": {
-				"value": "64px"
+			"8xl": {
+				"value": "4rem"
 			},
-			"100": {
-				"value": "100px"
-			}
-		},
-		"line-height": {
-			"16": {
-				"value": "16px"
-			},
-			"20": {
-				"value": "20px"
-			},
-			"24": {
-				"value": "24px"
-			},
-			"28": {
-				"value": "28px"
-			},
-			"32": {
-				"value": "32px"
-			},
-			"36": {
-				"value": "36px"
-			},
-			"40": {
-				"value": "40px"
-			},
-			"48": {
-				"value": "48px"
-			},
-			"56": {
-				"value": "56px"
-			},
-			"64": {
-				"value": "64px"
-			},
-			"72": {
-				"value": "72px"
-			},
-			"110": {
-				"value": "110px"
-			}
-		},
-		"letter-spacing": {
-			"0": {
-				"value": "0px"
-			},
-			"2": {
-				"value": "2px"
-			},
-			"minus-2": {
-				"value": "-2px"
-			},
-			"minus-1-half": {
-				"value": "-1.5px"
-			},
-			"minus-1": {
-				"value": "-1px"
-			},
-			"minus-half": {
-				"value": "-0.5px"
-			},
-			"half": {
-				"value": "0.5px"
-			}
-		},
-		"text-transform": {
-			"none": {
-				"value": "none"
-			},
-			"uppercase": {
-				"value": "uppercase"
+			"display": {
+				"value": "6.25rem"
 			}
 		}
 	}

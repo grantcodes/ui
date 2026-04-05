@@ -1,8 +1,5 @@
 html {
-	font-family: var(--g-theme-typography-body-default-font-family);
-	line-height: var(--g-theme-typography-body-default-line-height);
-	font-size: var(--g-typography-font-size-16);
-	font-weight: var(--g-theme-typography-body-default-font-weight);
+	font: var(--g-theme-typography-body);
 }
 
 h1,
@@ -11,33 +8,31 @@ h3,
 h4,
 h5,
 h6 {
-	line-height: var(--g-theme-typography-headline-default-line-height);
-	font-weight: var(--g-theme-typography-headline-default-font-weight);
 	text-wrap: balance;
 }
 
 h1 {
-	font-size: var(--g-typography-font-size-48);
+	font: var(--g-theme-typography-h1);
 }
 
 h2 {
-	font-size: var(--g-typography-font-size-24);
+	font: var(--g-theme-typography-h2);
 }
 
 h3 {
-	font-size: var(--g-typography-font-size-20);
+	font: var(--g-theme-typography-h3);
 }
 
 h4 {
-	font-size: var(--g-typography-font-size-16);
+	font: var(--g-theme-typography-h4);
 }
 
 h5 {
-	font-size: var(--g-typography-font-size-14);
+	font: var(--g-theme-typography-h5);
 }
 
 h6 {
-	font-size: var(--g-typography-font-size-12);
+	font: var(--g-theme-typography-h6);
 }
 
 p {
@@ -52,7 +47,7 @@ pre {
 	border-radius: var(--g-theme-border-radius-md);
 	/* PLACEHOLDER: u.shadow(0) - manual conversion needed */
 	box-shadow: var(--g-theme-box-shadow-sm);
-	font-size: var(--g-typography-font-size-16);
+	font-size: 1rem;
 	font-weight: 400;
 	padding: 1rem;
 }

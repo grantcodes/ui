@@ -1,5 +1,4 @@
-import { LitElement } from "lit";
-import { html } from "lit/static-html.js";
+import { html, LitElement } from "lit";
 import { ifDefined } from "lit/directives/if-defined.js";
 import focusRingStyles from "#styles/focus-ring.css" with { type: "css" };
 import tabsStyles from "./tabs.css" with { type: "css" };

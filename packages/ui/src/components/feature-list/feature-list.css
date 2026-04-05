@@ -14,7 +14,7 @@
 
   .feature-list__title {
     margin: 0 0 var(--g-theme-spacing-sm);
-    font: var(--g-theme-typography-headline-sm);
+    font: var(--g-theme-typography-h4);
     text-align: center;
     color: var(--g-theme-color-content-default);
   }
@@ -70,7 +70,7 @@
   }
 
   .feature-list__item-title {
-    font: var(--g-theme-typography-title-default);
+    font: var(--g-theme-typography-h5);
   }
 
   .feature-list__item-desc {

@@ -14,8 +14,8 @@
 
   .pricing__title {
     margin: 0 0 var(--g-theme-spacing-sm);
-    font-size: var(--g-theme-typography-headline-sm-font-size);
-    font-weight: var(--g-theme-typography-headline-sm-font-weight);
+    font-size: var(--g-theme-typography-h4-font-size);
+    font-weight: var(--g-theme-typography-h4-font-weight);
     text-align: center;
     color: var(--g-theme-color-content-default);
   }
@@ -74,7 +74,7 @@
   }
 
   .pricing__price {
-    font: var(--g-theme-typography-headline-lg);
+    font: var(--g-theme-typography-h2);
     color: var(--g-theme-color-content-default);
   }
 

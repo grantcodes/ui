@@ -1,0 +1,27 @@
+{
+	"border": {
+		"radius": {
+			"square": {
+				"value": "0"
+			},
+			"125": {
+				"value": "0.125rem"
+			},
+			"250": {
+				"value": "0.25rem"
+			},
+			"500": {
+				"value": "0.5rem"
+			},
+			"1000": {
+				"value": "1rem"
+			},
+			"pill": {
+				"value": "624.9375rem"
+			},
+			"rounded": {
+				"value": "50%"
+			}
+		}
+	}
+}

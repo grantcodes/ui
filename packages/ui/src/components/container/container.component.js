@@ -1,5 +1,4 @@
-import { LitElement } from "lit";
-import { html } from "lit/static-html.js";
+import { LitElement, html } from "lit";
 import { classMap } from "lit/directives/class-map.js";
 import containerStyles from "./container.css" with { type: "css" };
 

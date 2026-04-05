@@ -10,6 +10,7 @@ setStorybookHelpersConfig({});
 // Available themes
 const THEMES = {
 	grantcodes: "grantcodes",
+	grantina: "grantina",
 	todomap: "todomap",
 	wireframe: "wireframe",
 };

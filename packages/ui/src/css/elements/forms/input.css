@@ -9,7 +9,7 @@
 	color: var(--g-theme-form-color-content-default);
 	padding: 0.5em 1em;
 	transition-property: color, background-color, border-color, outline;
-	font-size: 1rem;
+	font-size: var(--g-theme-typography-body-font-size);
 }
 
 :where(input, textarea, select):not(textarea) {

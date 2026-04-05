@@ -125,13 +125,13 @@ export const Default = {
           <grantcodes-badge variant="primary">Engineering</grantcodes-badge>
 
           <h1
-            style="margin: 0; font-size: var(--g-theme-typography-display-default-font-size); font-weight: var(--g-theme-typography-display-default-font-weight); line-height: 1.15; color: var(--g-theme-color-content-default);"
+            style="margin: 0; font-size: var(--g-theme-typography-h1-font-size); font-weight: var(--g-theme-typography-h1-font-weight); line-height: 1.15; color: var(--g-theme-color-content-default);"
           >
             Shipping faster with async-first teams
           </h1>
 
           <p
-            style="margin: 0; font-size: var(--g-theme-typography-body-lg-font-size); color: var(--g-theme-color-content-secondary); line-height: 1.6;"
+            style="margin: 0; font-size: var(--g-theme-typography-body-font-size); color: var(--g-theme-color-content-secondary); line-height: 1.6;"
           >
             How we restructured communication to remove the hidden cost of
             synchronous coordination — and what we shipped as a result.
@@ -147,12 +147,12 @@ export const Default = {
             ></grantcodes-avatar>
             <div>
               <p
-                style="margin: 0; font-weight: var(--g-typography-font-weight-600); color: var(--g-theme-color-content-default); font-size: var(--g-theme-typography-label-default-font-size);"
+                style="margin: 0; font-weight: var(--g-typography-font-weight-600); color: var(--g-theme-color-content-default); font-size: var(--g-theme-typography-label-font-size);"
               >
                 Sam Torres
               </p>
               <p
-                style="margin: 0; color: var(--g-theme-color-content-secondary); font-size: var(--g-theme-typography-label-sm-font-size);"
+                style="margin: 0; color: var(--g-theme-color-content-secondary); font-size: var(--g-theme-typography-meta-font-size);"
               >
                 March 12, 2025 · 8 min read
               </p>
@@ -275,7 +275,7 @@ export const Default = {
               Sam Torres
             </p>
             <p
-              style="margin: 0; color: var(--g-theme-color-content-secondary); font-size: var(--g-theme-typography-body-sm-font-size);"
+              style="margin: 0; color: var(--g-theme-color-content-secondary); font-size: var(--g-theme-typography-body-font-size);"
             >
               CTO at Flowbase. Writes about engineering culture, distributed
               teams, and systems thinking.
@@ -291,7 +291,7 @@ export const Default = {
     >
       <grantcodes-container>
         <h2
-          style="margin: 0 0 var(--g-theme-spacing-lg); font-size: var(--g-theme-typography-headline-default-font-size); font-weight: var(--g-theme-typography-headline-default-font-weight); color: var(--g-theme-color-content-default);"
+          style="margin: 0 0 var(--g-theme-spacing-lg); font-size: var(--g-theme-typography-h2-font-size); font-weight: var(--g-theme-typography-h2-font-weight); color: var(--g-theme-color-content-default);"
         >
           More from the blog
         </h2>
@@ -309,7 +309,7 @@ export const Default = {
                     >${post.category}</grantcodes-badge
                   >
                   <span
-                    style="font-size: var(--g-theme-typography-label-sm-font-size); color: var(--g-theme-color-content-secondary);"
+                    style="font-size: var(--g-theme-typography-meta-font-size); color: var(--g-theme-color-content-secondary);"
                     >${post.date}</span
                   >
                 </div>
@@ -317,7 +317,7 @@ export const Default = {
                   style="display: flex; flex-direction: column; gap: var(--g-theme-spacing-sm);"
                 >
                   <h3
-                    style="margin: 0; font-size: var(--g-theme-typography-title-default-font-size); font-weight: var(--g-theme-typography-title-default-font-weight); color: var(--g-theme-color-content-default); line-height: 1.3;"
+                    style="margin: 0; font-size: var(--g-theme-typography-h5-font-size); font-weight: var(--g-theme-typography-h5-font-weight); color: var(--g-theme-color-content-default); line-height: 1.3;"
                   >
                     <a
                       href="${post.href}"
@@ -326,7 +326,7 @@ export const Default = {
                     >
                   </h3>
                   <p
-                    style="margin: 0; color: var(--g-theme-color-content-secondary); font-size: var(--g-theme-typography-body-sm-font-size); line-height: 1.6;"
+                    style="margin: 0; color: var(--g-theme-color-content-secondary); font-size: var(--g-theme-typography-body-font-size); line-height: 1.6;"
                   >
                     ${post.excerpt}
                   </p>
@@ -341,7 +341,7 @@ export const Default = {
                     size="small"
                   ></grantcodes-avatar>
                   <span
-                    style="font-size: var(--g-theme-typography-label-sm-font-size); color: var(--g-theme-color-content-secondary);"
+                    style="font-size: var(--g-theme-typography-meta-font-size); color: var(--g-theme-color-content-secondary);"
                     >${post.author.name}</span
                   >
                 </div>

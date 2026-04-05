@@ -204,7 +204,8 @@
     padding-inline: var(--g-spacing-12);
     border-radius: var(--g-theme-border-radius-md);
     transition: all 0.2s ease;
-    font-weight: var(--g-typography-font-weight-500);
+    font-family: var(--g-theme-typography-label-font-family);
+    font-weight: var(--g-theme-typography-label-font-weight);
   }
 
   ::slotted(a:hover) {

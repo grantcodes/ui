@@ -54,7 +54,7 @@
 
   .card__header ::slotted(*) {
     margin: 0;
-    font: var(--g-theme-typography-title-default);
+    font: var(--g-theme-typography-h5);
   }
 
   .card__content {

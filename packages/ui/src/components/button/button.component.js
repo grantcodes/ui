@@ -1,6 +1,4 @@
-import { LitElement } from "lit";
-import { html } from "lit/static-html.js";
-import { literal } from "lit/static-html.js";
+import { html, LitElement } from "lit";
 import focusRingStyles from "#styles/focus-ring.css" with { type: "css" };
 import buttonStyles from "./button.css" with { type: "css" };
 
@@ -36,22 +34,21 @@ export class GrantCodesButton extends LitElement {
 	/** @returns {import('lit').TemplateResult} */
 	render() {
 		const isLink = !!this.href;
-		const tag = isLink ? literal`a` : literal`button`;
 
 		if (isLink) {
 			return html`
-				<${tag}
+				<a
 					class="button focus-ring"
 					href=${this.href}
 					?disabled=${this.disabled}
 				>
 					<span><slot></slot></span>
-				</${tag}>
+				</a>
 			`;
 		}
 
 		return html`
-			<${tag}
+			<button
 				class="button focus-ring"
 				type=${this.type}
 				name=${this.name ?? ""}
@@ -59,7 +56,7 @@ export class GrantCodesButton extends LitElement {
 				?disabled=${this.disabled}
 			>
 				<span><slot></slot></span>
-			</${tag}>
+			</button>
 		`;
 	}
 }
