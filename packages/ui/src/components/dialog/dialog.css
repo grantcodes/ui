@@ -23,7 +23,7 @@
   position: absolute;
   border: none;
   line-height: 1;
-  font-size: var(--g-theme-typography-title-lg-font-size);
+  font-size: var(--g-theme-typography-h4-font-size);
   cursor: pointer;
   background: transparent;
   inset-block-start: var(--g-theme-spacing-md);

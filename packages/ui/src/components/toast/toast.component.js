@@ -1,5 +1,4 @@
-import { LitElement } from "lit";
-import { html } from "lit/static-html.js";
+import { html, LitElement } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { classMap } from "lit/directives/class-map.js";
 import focusRingStyles from "#styles/focus-ring.css" with { type: "css" };

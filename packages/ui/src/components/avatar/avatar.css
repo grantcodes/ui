@@ -21,7 +21,7 @@
   background-color: var(--g-color-brand-purple-200);
   color: var(--g-color-brand-purple-900);
   text-align: center;
-  font-size: var(--g-theme-typography-title-sm-font-size);
+  font-size: var(--g-theme-typography-h6-font-size);
   font-weight: var(--g-theme-typography-label-default-font-weight);
 }
 

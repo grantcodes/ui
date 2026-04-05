@@ -28,7 +28,7 @@
   border-end-start-radius: var(--button-border-radius-start);
   border-end-end-radius: var(--button-border-radius-end);
   font: var(--g-theme-typography-label-default);
-  font-family: inherit;
+  font-family: var(--g-theme-typography-label-font-family);
   text-decoration: none;
   transition-property: color, border-color, background-color, outline;
 }

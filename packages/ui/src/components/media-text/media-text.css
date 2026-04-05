@@ -51,7 +51,7 @@
 
   .media-text__title {
     margin: 0;
-    font: var(--g-theme-typography-headline-sm);
+    font: var(--g-theme-typography-h4);
     color: var(--g-theme-color-content-default);
   }
 

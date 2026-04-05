@@ -17,13 +17,19 @@
 		"./todomap/css/theme": "./dist/css/todomap/todomap.css",
 		"./todomap/js": "./dist/js/todomap/style-dictionary.js",
 		"./todomap/json": "./dist/json/todomap/tokens.json",
+		"./grantina/css": "./dist/css/grantina/tokens.css",
+		"./grantina/css/theme": "./dist/css/grantina/grantina.css",
+		"./grantina/js": "./dist/js/grantina/style-dictionary.js",
+		"./grantina/json": "./dist/json/grantina/tokens.json",
 		"./assets/fonts/greycliff": "./assets/fonts/greycliff.css",
-		"./assets/fonts/quicksand": "./assets/fonts/quicksand.css"
+		"./assets/fonts/quicksand": "./assets/fonts/quicksand.css",
+		"./assets/fonts/grantina": "./assets/fonts/grantina.css"
 	},
 	"types": {
 		"./wireframe/js": "./dist/js/wireframe/style-dictionary.d.ts",
 		"./grantcodes/js": "./dist/js/grantcodes/style-dictionary.d.ts",
-		"./todomap/js": "./dist/js/todomap/style-dictionary.d.ts"
+		"./todomap/js": "./dist/js/todomap/style-dictionary.d.ts",
+		"./grantina/js": "./dist/js/grantina/style-dictionary.d.ts"
 	},
 	"scripts": {
 		"build": "node ./build.js",

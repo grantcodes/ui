@@ -16,19 +16,18 @@
 	.hero__container {
 		width: 100%;
 		max-width: 65ch;
+		gap: var(--g-theme-spacing-lg);
 	}
 
 	.hero__title {
-		margin: 0 0 var(--g-theme-spacing-md);
-		font-weight: var(--g-typography-font-weight-900);
+		font: var(--g-theme-typography-h1);
 		font-size: clamp(2rem, 5vw, 4rem);
 		color: var(--g-theme-color-content-brand-knockout, #ffffff);
 	}
 
 	.hero__text {
-		font-size: var(--g-theme-typography-title-default-font-size);
+		font: var(--g-theme-typography-body-lg);
 		color: var(--g-theme-color-content-brand-knockout, #ffffff);
-		margin: 0 0 var(--g-theme-spacing-lg);
 	}
 
 	:host([size="sm"]) .hero {

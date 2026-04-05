@@ -5,7 +5,7 @@ import minimist from "minimist";
  * List of themes to build
  * 1) Add your new theme here in order to have it show up in the dropdown
  */
-const AVAILABLE_THEMES = ["wireframe", "grantcodes", "todomap"];
+const AVAILABLE_THEMES = ["wireframe", "grantcodes", "todomap", "grantina"];
 
 /**
  * Look for args passed on the command line
@@ -109,7 +109,16 @@ const transformLineHeight = (
 		(p) => p.path.join(".") === fontSizePath.join("."),
 	);
 
-	// Parse line-height value to pixels
+	const hasUnit = prop.value.endsWith("px") || prop.value.endsWith("rem");
+	const numericValue = parseFloat(prop.value);
+
+	// If already unitless (no px/rem suffix), pass through as-is — it's already the intended ratio
+	if (!hasUnit && !isNaN(numericValue)) {
+		outputArray.push(`  ${formatTokenName(cleanPath, prop)}: ${prop.value};`);
+		return;
+	}
+
+	// Parse line-height value to pixels for ratio calculation
 	let lineHeightPx;
 	if (prop.value.endsWith("px")) {
 		lineHeightPx = parseFloat(prop.value.replace("px", ""));

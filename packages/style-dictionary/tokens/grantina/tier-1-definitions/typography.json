@@ -1,0 +1,61 @@
+{
+	"typography": {
+		"font-family": {
+			"system-serif": {
+				"value": "Georgia, 'Times New Roman', Times, serif"
+			},
+			"system-sans": {
+				"value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif"
+			},
+			"system-script": {
+				"value": "'Brush Script MT', 'Segoe Script', cursive"
+			},
+			"vidaloka": {
+				"value": "Vidaloka, {typography.font-family.system-serif}"
+			},
+			"albert": {
+				"value": "'Albert Sans', {typography.font-family.system-sans}"
+			},
+			"pinyon-script": {
+				"value": "'Pinyon Script', {typography.font-family.system-script}"
+			}
+		},
+		"font-size": {
+			"xs": {
+				"value": "0.75rem"
+			},
+			"sm": {
+				"value": "0.875rem"
+			},
+			"md": {
+				"value": "1rem"
+			},
+			"lg": {
+				"value": "1.25rem"
+			},
+			"xl": {
+				"value": "1.5rem"
+			},
+			"2xl": {
+				"value": "2rem"
+			},
+			"3xl": {
+				"value": "2.5rem"
+			},
+			"4xl": {
+				"value": "3rem"
+			}
+		},
+		"letter-spacing": {
+			"none": {
+				"value": "0px"
+			},
+			"sm": {
+				"value": "0.5px"
+			},
+			"lg": {
+				"value": "2px"
+			}
+		}
+	}
+}

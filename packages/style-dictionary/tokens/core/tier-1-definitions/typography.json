@@ -1,0 +1,49 @@
+{
+	"typography": {
+		"font-weight": {
+			"400": {
+				"value": "400"
+			},
+			"500": {
+				"value": "500"
+			},
+			"600": {
+				"value": "600"
+			},
+			"700": {
+				"value": "700"
+			}
+		},
+		"letter-spacing": {
+			"none": {
+				"value": "0px"
+			},
+			"sm": {
+				"value": "0.5px"
+			},
+			"lg": {
+				"value": "2px"
+			},
+			"neg-sm": {
+				"value": "-0.5px"
+			},
+			"neg-md": {
+				"value": "-1px"
+			},
+			"neg-lg": {
+				"value": "-1.5px"
+			},
+			"neg-xl": {
+				"value": "-2px"
+			}
+		},
+		"text-transform": {
+			"none": {
+				"value": "none"
+			},
+			"uppercase": {
+				"value": "uppercase"
+			}
+		}
+	}
+}

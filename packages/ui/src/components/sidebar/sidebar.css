@@ -59,7 +59,7 @@
     border: 1px solid var(--g-theme-color-border-default);
     border-radius: var(--g-theme-border-radius-md);
     cursor: pointer;
-    font-size: var(--g-theme-typography-title-default-font-size);
+    font-size: var(--g-theme-typography-h5-font-size);
     transition: all 0.2s ease;
   }
 

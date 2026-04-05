@@ -15,8 +15,8 @@
 
   .stats__title {
     margin: 0 0 var(--g-theme-spacing-xl);
-    font-size: var(--g-theme-typography-headline-sm-font-size);
-    font-weight: var(--g-theme-typography-headline-sm-font-weight);
+    font-size: var(--g-theme-typography-h4-font-size);
+    font-weight: var(--g-theme-typography-h4-font-weight);
     text-align: center;
     color: var(--g-theme-color-content-default);
   }
@@ -44,7 +44,7 @@
   }
 
   .stats__value {
-    font: var(--g-theme-typography-display-default);
+    font: var(--g-theme-typography-h1);
     white-space: nowrap;
     line-height: 1;
     color: var(--g-theme-color-content-brand, #7c3aed);
