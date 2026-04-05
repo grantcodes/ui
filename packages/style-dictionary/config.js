@@ -709,33 +709,26 @@ const hasDarkTokens = (themeName) => {
  * 2) Otherwise, build the specified theme
  * 3) For each theme, also build dark mode CSS if dark tokens exist
  */
+const buildTheme = async (themeName) => {
+	console.log(`\n🏗️ Building ${themeName.toUpperCase()} theme`);
+	const themeConfig = getStyleDictionaryConfig(themeName);
+	const StyleDictionaryExtended = new StyleDictionary(themeConfig);
+	await StyleDictionaryExtended.buildAllPlatforms();
+
+	if (hasDarkTokens(themeName)) {
+		console.log(`🌙 Building ${themeName.toUpperCase()} dark theme`);
+		const lightTokenMap = parseLightTokenMap(`./dist/css/${themeName}/tokens.css`);
+		const darkConfig = getDarkStyleDictionaryConfig(themeName, lightTokenMap);
+		const DarkStyleDictionary = new StyleDictionary(darkConfig);
+		await DarkStyleDictionary.buildAllPlatforms();
+	}
+};
+
 if (!theme) {
 	console.log("🚧 No theme specified, building all themes...");
-	AVAILABLE_THEMES.forEach((themeName) => {
-		console.log(`\n🏗️ Building ${themeName.toUpperCase()} theme`);
-		const themeConfig = getStyleDictionaryConfig(themeName);
-		const StyleDictionaryExtended = new StyleDictionary(themeConfig);
-		StyleDictionaryExtended.buildAllPlatforms();
-
-		if (hasDarkTokens(themeName)) {
-			console.log(`🌙 Building ${themeName.toUpperCase()} dark theme`);
-			const lightTokenMap = parseLightTokenMap(`./dist/css/${themeName}/tokens.css`);
-			const darkConfig = getDarkStyleDictionaryConfig(themeName, lightTokenMap);
-			const DarkStyleDictionary = new StyleDictionary(darkConfig);
-			DarkStyleDictionary.buildAllPlatforms();
-		}
-	});
-} else {
-	console.log(`🚧 Building ${theme.toUpperCase()} theme`);
-	const config = getStyleDictionaryConfig(theme);
-	const StyleDictionaryExtended = new StyleDictionary(config);
-	StyleDictionaryExtended.buildAllPlatforms();
-
-	if (hasDarkTokens(theme)) {
-		console.log(`🌙 Building ${theme.toUpperCase()} dark theme`);
-		const lightTokenMap = parseLightTokenMap(`./dist/css/${theme}/tokens.css`);
-		const darkConfig = getDarkStyleDictionaryConfig(theme, lightTokenMap);
-		const DarkStyleDictionary = new StyleDictionary(darkConfig);
-		DarkStyleDictionary.buildAllPlatforms();
+	for (const themeName of AVAILABLE_THEMES) {
+		await buildTheme(themeName);
 	}
+} else {
+	await buildTheme(theme);
 }
