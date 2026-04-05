@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.4.0](https://github.com/grantcodes/ui/compare/style-dictionary-v1.3.1...style-dictionary-v1.4.0) (2026-04-05)
+
+
+### Features
+
+* add dark mode support for all themes ([c32766a](https://github.com/grantcodes/ui/commit/c32766af3948e11172107a4643e9a5d3132afac7))
+* add dark mode support for all themes ([101a2a3](https://github.com/grantcodes/ui/commit/101a2a371ad3cc12240b0c9c92c348c21c67934b))
+* **tokens:** migrate typography naming from display/headline/title to h1-h6 ([4b607a7](https://github.com/grantcodes/ui/commit/4b607a7450ff2b3d3236ca4aa7a42d63f8f2ff37))
+* **ui, style-dictionary:** add grantina theme and update typography tokens ([096b8e4](https://github.com/grantcodes/ui/commit/096b8e4fc1a17f7d1f8fc1154b7f5d540f475b8f))
+
+
+### Bug Fixes
+
+* await buildAllPlatforms() so dark build can read light tokens.css ([ba4f75a](https://github.com/grantcodes/ui/commit/ba4f75af58b9b89bad81a3302535084cec20115f))
+
 ## [1.3.1](https://github.com/grantcodes/ui/compare/style-dictionary-v1.3.0...style-dictionary-v1.3.1) (2026-03-15)
 
 
