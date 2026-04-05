@@ -1,4 +1,5 @@
 import StyleDictionary from "style-dictionary";
+import { existsSync, readFileSync } from "node:fs";
 import minimist from "minimist";
 
 /**
@@ -439,7 +440,12 @@ const getStyleDictionaryConfig = (theme) => {
 	 * 1) Used to define the platforms, prefixes, etc. to build the tokens with/for
 	 */
 	const config = {
-		source: [`./tokens/core/**/*.json`, `./tokens/${theme}/**/*.json`],
+		source: [
+			`./tokens/core/**/*.json`,
+			`./tokens/${theme}/tier-1-definitions/**/*.json`,
+			`./tokens/${theme}/tier-2-usage/**/*.json`,
+			`./tokens/${theme}/tier-3-components/**/*.json`,
+		],
 		log: {
 			// Set the log level to show errors, warnings, and info messages
 			verbosity: "verbose",
@@ -498,21 +504,231 @@ const getStyleDictionaryConfig = (theme) => {
 };
 
 /**
+ * Parse a built tokens.css file to extract a map of CSS variable name -> value.
+ * Works on both :root {} and .theme {} rulesets.
+ * @param {string} cssPath - Path to the built CSS file
+ * @returns {Map<string, string>}
+ */
+const parseLightTokenMap = (cssPath) => {
+	const map = new Map();
+	const css = readFileSync(cssPath, "utf-8");
+	const re = /\s*(--[\w-]+):\s*(.+?);/g;
+	for (const match of css.matchAll(re)) {
+		map.set(match[1], match[2]);
+	}
+	return map;
+};
+
+/**
+ * Format only the tier-2/tier-3 (theme-prefixed) variables from a dark dictionary.
+ * Only outputs tokens whose resolved value differs from the light build.
+ * @param {object} dictionary - Dark StyleDictionary dictionary
+ * @param {Map<string, string>} lightTokenMap - Light token values for comparison
+ */
+const formatDarkVariables = (dictionary, lightTokenMap) => {
+	const processedShadows = new Set();
+	const darkTokens = [];
+
+	const formatTokenName = (cleanPath, prop) => {
+		if (isHigherTierToken(prop.filePath)) {
+			return `--g-theme-${cleanPath}`;
+		}
+		return `--g-${cleanPath}`;
+	};
+
+	const shadowSizes = dictionary.tokens.shadow
+		? Object.keys(dictionary.tokens.shadow)
+				.map((key) => key.split("-")[0])
+				.filter((value, index, self) => self.indexOf(value) === index)
+		: [];
+
+	dictionary.allTokens.forEach((prop) => {
+		/* Only include tier-2/tier-3 tokens — dark mode only overrides theme-level tokens */
+		if (!isHigherTierToken(prop.filePath)) return;
+
+		if (
+			prop.path[0] === "box-shadow" &&
+			shadowSizes.includes(prop.path[1])
+		) {
+			const size = prop.path[1];
+			if (processedShadows.has(size)) return;
+			processedShadows.add(size);
+
+			/* Build the composed shadow value and compare to light */
+			const shadowProps = dictionary.allTokens.filter(
+				(p) =>
+					isHigherTierToken(p.filePath) &&
+					p.path[0] === "box-shadow" &&
+					p.path[1] === size,
+			);
+			const x = shadowProps.find((p) => p.path[2] === "x")?.value || "0px";
+			const y = shadowProps.find((p) => p.path[2] === "y")?.value || "0px";
+			const blur = shadowProps.find((p) => p.path[2] === "blur")?.value || "0px";
+			const spread = shadowProps.find((p) => p.path[2] === "spread")?.value || "0px";
+			const color = shadowProps.find((p) => p.path[2] === "color")?.value || "transparent";
+			const darkValue = `${x} ${y} ${blur} ${spread} ${color}`;
+			const lightValue = lightTokenMap.get(`--g-theme-box-shadow-${size}`);
+
+			if (darkValue !== lightValue) {
+				transformShadowTokens(dictionary, size, darkTokens);
+			}
+		} else if (
+			prop.path[0] === "typography" &&
+			prop.path.includes("line-height")
+		) {
+			const cleanPath = prop.path
+				.map((s) => (s.startsWith("@") ? s.substring(1) : s))
+				.filter((s) => s !== "")
+				.join("-");
+			const varName = formatTokenName(cleanPath, prop);
+			if (prop.value !== lightTokenMap.get(varName)) {
+				transformLineHeight(dictionary, prop, darkTokens, formatTokenName);
+			}
+		} else if (!prop.path.includes("box-shadow") || prop.path.length > 3) {
+			const cleanPath = prop.path
+				.map((segment) =>
+					segment.startsWith("@") ? segment.substring(1) : segment,
+				)
+				.filter((segment) => segment !== "")
+				.join("-");
+
+			const varName = formatTokenName(cleanPath, prop);
+			/* Only emit if the dark value differs from the light value */
+			if (prop.value !== lightTokenMap.get(varName)) {
+				darkTokens.push(`  ${varName}: ${prop.value};`);
+			}
+		}
+	});
+
+	return [...new Set(darkTokens)].join("\n");
+};
+
+/**
+ * Generate a Dark Theme Config
+ * Sources the light tokens + dark overlay tokens (dark overrides light via file order).
+ * Only outputs a dark.css file with media query and class-based selectors.
+ * @param {string} theme
+ * @param {Map<string, string>} lightTokenMap - Light token values for diff comparison
+ */
+const getDarkStyleDictionaryConfig = (theme, lightTokenMap) => {
+	/**
+	 * Register the dark CSS formatter
+	 * Wraps dark overrides in @media (prefers-color-scheme: dark) and .dark class
+	 */
+	StyleDictionary.registerFormat({
+		name: "css/variables-dark",
+		format: function (dictionary) {
+			const vars = formatDarkVariables(dictionary, lightTokenMap);
+			return [
+				`/* Dark mode overrides for ${theme} theme */`,
+				`/* Auto-detect: respects OS/browser preference unless .light is set */`,
+				`@media (prefers-color-scheme: dark) {`,
+				`  :root:not(.light) {`,
+				vars.split("\n").map((line) => `  ${line}`).join("\n"),
+				`  }`,
+				`}`,
+				``,
+				`/* Manual override: force dark mode on any element or subtree */`,
+				`.dark {`,
+				vars,
+				`}`,
+				``,
+			].join("\n");
+		},
+	});
+
+	const BASE_FONT_SIZE = 16;
+
+	StyleDictionary.registerTransform({
+		name: "size/px-to-rem",
+		type: "value",
+		matcher: function (prop) {
+			return (
+				prop &&
+				prop.value &&
+				typeof prop.value === "string" &&
+				prop.value.endsWith("px")
+			);
+		},
+		transform: function (prop) {
+			if (!prop || !prop.value) return prop.value;
+			const pxValue = prop.value.trim();
+			if (!pxValue.endsWith("px")) return prop.value;
+			const pixels = parseFloat(pxValue);
+			if (isNaN(pixels)) return prop.value;
+			const remValue = Number((pixels / BASE_FONT_SIZE).toFixed(4)).toString();
+			return `${remValue}rem`;
+		},
+	});
+
+	StyleDictionary.registerTransformGroup({
+		name: "custom/css",
+		transforms: ["attribute/cti", "name/kebab", "size/px-to-rem"],
+	});
+
+	return {
+		source: [
+			`./tokens/core/**/*.json`,
+			`./tokens/${theme}/tier-1-definitions/**/*.json`,
+			`./tokens/${theme}/tier-2-usage/**/*.json`,
+			`./tokens/${theme}/tier-3-components/**/*.json`,
+			/* Dark overlay tokens override light values via Style Dictionary merge */
+			`./tokens/${theme}/dark/**/*.json`,
+		],
+		log: {
+			verbosity: "verbose",
+		},
+		platforms: {
+			css: {
+				transformGroup: "custom/css",
+				prefix: "g",
+				buildPath: `./dist/css/${theme}/`,
+				files: [
+					{
+						destination: "dark.css",
+						format: "css/variables-dark",
+					},
+				],
+			},
+		},
+	};
+};
+
+/**
+ * Check if a theme has dark tokens
+ * @param {string} themeName
+ * @returns {boolean}
+ */
+const hasDarkTokens = (themeName) => {
+	return existsSync(`./tokens/${themeName}/dark`);
+};
+
+/**
  * Build the tokens
  * 1) If no theme is specified, build all themes
  * 2) Otherwise, build the specified theme
+ * 3) For each theme, also build dark mode CSS if dark tokens exist
  */
+const buildTheme = async (themeName) => {
+	console.log(`\n🏗️ Building ${themeName.toUpperCase()} theme`);
+	const themeConfig = getStyleDictionaryConfig(themeName);
+	const StyleDictionaryExtended = new StyleDictionary(themeConfig);
+	await StyleDictionaryExtended.buildAllPlatforms();
+
+	if (hasDarkTokens(themeName)) {
+		console.log(`🌙 Building ${themeName.toUpperCase()} dark theme`);
+		const lightTokenMap = parseLightTokenMap(`./dist/css/${themeName}/tokens.css`);
+		const darkConfig = getDarkStyleDictionaryConfig(themeName, lightTokenMap);
+		const DarkStyleDictionary = new StyleDictionary(darkConfig);
+		await DarkStyleDictionary.buildAllPlatforms();
+	}
+};
+
 if (!theme) {
 	console.log("🚧 No theme specified, building all themes...");
-	AVAILABLE_THEMES.forEach((themeName) => {
-		console.log(`\n🏗️ Building ${themeName.toUpperCase()} theme`);
-		const themeConfig = getStyleDictionaryConfig(themeName);
-		const StyleDictionaryExtended = new StyleDictionary(themeConfig);
-		StyleDictionaryExtended.buildAllPlatforms();
-	});
+	for (const themeName of AVAILABLE_THEMES) {
+		await buildTheme(themeName);
+	}
 } else {
-	console.log(`🚧 Building ${theme.toUpperCase()} theme`);
-	const config = getStyleDictionaryConfig(theme);
-	const StyleDictionaryExtended = new StyleDictionary(config);
-	StyleDictionaryExtended.buildAllPlatforms();
+	await buildTheme(theme);
 }
