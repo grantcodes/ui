@@ -1,5 +1,5 @@
 import StyleDictionary from "style-dictionary";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import minimist from "minimist";
 
 /**
@@ -704,6 +704,38 @@ const hasDarkTokens = (themeName) => {
 };
 
 /**
+ * Build light.css for a theme — outputs all --g-theme-* variables scoped to .light { }.
+ * This enables forcing light mode on any element or subtree within a .dark parent.
+ * Reads the already-built tokens.css to extract theme-scoped variables.
+ * @param {string} themeName
+ */
+const buildLightCSS = (themeName) => {
+	const tokensCssPath = `./dist/css/${themeName}/tokens.css`;
+	const css = readFileSync(tokensCssPath, "utf-8");
+
+	/* Extract only --g-theme-* variables (tier-2/tier-3) — those are what dark mode overrides */
+	const lines = [];
+	const re = /\s*(--g-theme-[\w-]+):\s*(.+?);/g;
+	for (const match of css.matchAll(re)) {
+		lines.push(`  ${match[1]}: ${match[2]};`);
+	}
+
+	const output = [
+		`/* Light mode override for ${themeName} theme */`,
+		`/* Force light mode on any element or subtree within a .dark parent */`,
+		`.light {`,
+		[...new Set(lines)].join("\n"),
+		`}`,
+		``,
+	].join("\n");
+
+	const outDir = `./dist/css/${themeName}/`;
+	mkdirSync(outDir, { recursive: true });
+	writeFileSync(`${outDir}light.css`, output, "utf-8");
+	console.log(`✔︎ dist/css/${themeName}/light.css`);
+};
+
+/**
  * Build the tokens
  * 1) If no theme is specified, build all themes
  * 2) Otherwise, build the specified theme
@@ -714,6 +746,9 @@ const buildTheme = async (themeName) => {
 	const themeConfig = getStyleDictionaryConfig(themeName);
 	const StyleDictionaryExtended = new StyleDictionary(themeConfig);
 	await StyleDictionaryExtended.buildAllPlatforms();
+
+	console.log(`☀️ Building ${themeName.toUpperCase()} light override`);
+	buildLightCSS(themeName);
 
 	if (hasDarkTokens(themeName)) {
 		console.log(`🌙 Building ${themeName.toUpperCase()} dark theme`);
