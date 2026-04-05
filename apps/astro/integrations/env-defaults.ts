@@ -1,8 +1,8 @@
 import {
   GThemeColorBackgroundBrand,
   GThemeColorContentDefault,
-  GThemeTypographyBodyDefaultFontWeight,
-  GThemeTypographyHeadlineDefaultFontWeight,
+  GThemeTypographyBodyFontWeight,
+  GThemeTypographyH1FontWeight as GThemeTypographyHeadlineDefaultFontWeight,
   GTypographyFontFamilyGreycliff,
 } from '@grantcodes/style-dictionary/grantcodes/js'
 import {
@@ -15,8 +15,8 @@ import {
 import {
   GThemeColorBackgroundBrand as WireframeThemeColorBackgroundBrand,
   GThemeColorContentDefault as WireframeThemeColorContentDefault,
-  GThemeTypographyBodyDefaultFontWeight as WireframeThemeTypographyBodyDefaultFontWeight,
-  GThemeTypographyHeadlineDefaultFontWeight as WireframeThemeTypographyHeadlineDefaultFontWeight,
+  GThemeTypographyBodyFontWeight as WireframeThemeTypographyBodyDefaultFontWeight,
+  GThemeTypographyH1FontWeight as WireframeThemeTypographyHeadlineDefaultFontWeight,
   GTypographyFontFamilyHelvetica,
 } from '@grantcodes/style-dictionary/wireframe/js'
 
@@ -26,7 +26,7 @@ const OG_THEMES = {
     backgroundColor: GThemeColorBackgroundBrand,
     fontName: GTypographyFontFamilyGreycliff.split(',')[0].trim(),
     headingFontWeight: GThemeTypographyHeadlineDefaultFontWeight,
-    bodyFontWeight: GThemeTypographyBodyDefaultFontWeight,
+    bodyFontWeight: GThemeTypographyBodyFontWeight,
     titleFontFile:
       './node_modules/@grantcodes/style-dictionary/assets/fonts/greycliff-heavy.woff',
     bodyFontFile:
