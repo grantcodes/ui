@@ -25,6 +25,10 @@
 		"./grantcodes/css/dark": "./dist/css/grantcodes/dark.css",
 		"./todomap/css/dark": "./dist/css/todomap/dark.css",
 		"./grantina/css/dark": "./dist/css/grantina/dark.css",
+		"./wireframe/css/light": "./dist/css/wireframe/light.css",
+		"./grantcodes/css/light": "./dist/css/grantcodes/light.css",
+		"./todomap/css/light": "./dist/css/todomap/light.css",
+		"./grantina/css/light": "./dist/css/grantina/light.css",
 		"./assets/fonts/greycliff": "./assets/fonts/greycliff.css",
 		"./assets/fonts/quicksand": "./assets/fonts/quicksand.css",
 		"./assets/fonts/grantina": "./assets/fonts/grantina.css"

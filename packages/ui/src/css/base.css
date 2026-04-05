@@ -238,7 +238,7 @@ pre {
 }
 
 ::selection {
-	background-color: var(--g-color-brand-purple-200);
+	background-color: var(--g-theme-color-background-brand);
 }
 
 /* Default backdrop styles */
