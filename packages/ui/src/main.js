@@ -5,6 +5,7 @@ export * from "./components/button-group/index.js";
 export * from "./components/card/index.js";
 export * from "./components/code-preview/index.js";
 export * from "./components/container/index.js";
+export * from "./components/countdown/index.js";
 export * from "./components/cta/index.js";
 export * from "./components/dialog/index.js";
 export * from "./components/dropzone/index.js";

@@ -136,6 +136,11 @@
               "attribute": "_mobileMenuOpen"
             },
             {
+              "kind": "field",
+              "name": "_resizeObserver",
+              "description": "Close mobile menu when the component crosses the desktop breakpoint.\nMatches the 768px container query in app-bar.css."
+            },
+            {
               "kind": "method",
               "name": "_toggleMobileMenu"
             },
@@ -1409,6 +1414,331 @@
           "declaration": {
             "name": "*",
             "module": "src/components/container/container.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/countdown/countdown.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "GrantCodesCountdown",
+          "members": [
+            {
+              "kind": "field",
+              "name": "",
+              "type": {
+                "text": "string"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_days",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"---\"",
+              "attribute": "_days"
+            },
+            {
+              "kind": "field",
+              "name": "_hours",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"--\"",
+              "attribute": "_hours"
+            },
+            {
+              "kind": "field",
+              "name": "_intervalId",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "_minutes",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"--\"",
+              "attribute": "_minutes"
+            },
+            {
+              "kind": "field",
+              "name": "_past",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_past"
+            },
+            {
+              "kind": "field",
+              "name": "_seconds",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"--\"",
+              "attribute": "_seconds"
+            },
+            {
+              "kind": "method",
+              "name": "_startInterval"
+            },
+            {
+              "kind": "method",
+              "name": "_stopInterval"
+            },
+            {
+              "kind": "method",
+              "name": "_tick"
+            },
+            {
+              "kind": "field",
+              "name": "\"days-label\"",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Label for the days unit.",
+              "attribute": "days-label"
+            },
+            {
+              "kind": "field",
+              "name": "\"hours-label\"",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Label for the hours unit.",
+              "attribute": "hours-label"
+            },
+            {
+              "kind": "field",
+              "name": "\"minutes-label\"",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Label for the minutes unit.",
+              "attribute": "minutes-label"
+            },
+            {
+              "kind": "field",
+              "name": "\"past-message\"",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Message displayed when the target date has passed.",
+              "attribute": "past-message"
+            },
+            {
+              "kind": "field",
+              "name": "\"seconds-label\"",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Label for the seconds unit (only shown when show-seconds is true).",
+              "attribute": "seconds-label"
+            },
+            {
+              "kind": "field",
+              "name": "\"show-seconds\"",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether to show a seconds unit.",
+              "attribute": "show-seconds"
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "ISO 8601 datetime string for the countdown target.",
+              "default": "\"\"",
+              "attribute": "target"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "_days",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"---\"",
+              "fieldName": "_days"
+            },
+            {
+              "name": "_hours",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"--\"",
+              "fieldName": "_hours"
+            },
+            {
+              "name": "_minutes",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"--\"",
+              "fieldName": "_minutes"
+            },
+            {
+              "name": "_past",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_past"
+            },
+            {
+              "name": "_seconds",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"--\"",
+              "fieldName": "_seconds"
+            },
+            {
+              "name": "days-label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Label for the days unit.",
+              "fieldName": "\"days-label\""
+            },
+            {
+              "name": "hours-label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Label for the hours unit.",
+              "fieldName": "\"hours-label\""
+            },
+            {
+              "name": "minutes-label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Label for the minutes unit.",
+              "fieldName": "\"minutes-label\""
+            },
+            {
+              "name": "past-message",
+              "type": {
+                "text": "string"
+              },
+              "description": "Message displayed when the target date has passed.",
+              "fieldName": "\"past-message\""
+            },
+            {
+              "name": "seconds-label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Label for the seconds unit (only shown when show-seconds is true).",
+              "fieldName": "\"seconds-label\""
+            },
+            {
+              "name": "show-seconds",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether to show a seconds unit.",
+              "fieldName": "\"show-seconds\""
+            },
+            {
+              "name": "target",
+              "type": {
+                "text": "string"
+              },
+              "description": "ISO 8601 datetime string for the countdown target.",
+              "default": "\"\"",
+              "fieldName": "target"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "grantcodes-countdown",
+          "customElement": true,
+          "modulePath": "src/components/countdown/countdown.component.js",
+          "definitionPath": "src/components/countdown/countdown.js"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GrantCodesCountdown",
+          "declaration": {
+            "name": "GrantCodesCountdown",
+            "module": "src/components/countdown/countdown.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/countdown/countdown.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/countdown/countdown.component.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "GrantCodesCountdown",
+            "module": "src/components/countdown/countdown.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-countdown",
+          "declaration": {
+            "name": "GrantCodesCountdown",
+            "module": "/src/components/countdown/countdown.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/countdown/index.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/countdown/countdown.js"
           }
         }
       ]
