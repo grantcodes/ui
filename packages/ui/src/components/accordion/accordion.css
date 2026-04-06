@@ -58,6 +58,7 @@
     padding: var(--g-theme-spacing-md);
     border-block-start: 1px solid var(--g-theme-color-border-subtle, var(--g-theme-color-border-default));
     background: var(--g-theme-color-background-default);
+    border-radius: 0 0 var(--g-theme-border-radius-md, 0.5rem) var(--g-theme-border-radius-md, 0.5rem);
   }
 
   @media (prefers-reduced-motion: reduce) {
