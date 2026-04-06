@@ -12,6 +12,8 @@
 
 	.footer {
 		margin-block-start: auto;
+		border-block-start: 1px solid var(--g-theme-color-border-subtle);
+		background-color: var(--g-theme-color-background-subtle);
 	}
 
 	.footer__container {
@@ -65,12 +67,7 @@
 
 	/* Slotted content styling */
 	::slotted(*) {
-		font-size: var(--g-typography-font-size-14);
-	}
-
-	::slotted(p),
-	::slotted(small),
-	::slotted(span) {
+		font: var(--g-typography-font-body-sm);
 		color: var(--g-theme-color-content-secondary);
 	}
 

@@ -1,5 +1,6 @@
 import { html } from "lit";
 import "../components/app-bar/app-bar.js";
+import "../components/app-bar/nav-link.js";
 import "../components/button/button.js";
 import "../components/breadcrumb/breadcrumb.js";
 import "../components/container/container.js";
@@ -93,10 +94,10 @@ export const Default = {
         Flowbase
       </a>
       <div slot="nav" style="display: flex; gap: 0.5rem;">
-        <a href="/">Home</a>
-        <a href="/features">Features</a>
-        <a href="/blog">Blog</a>
-        <a href="/pricing">Pricing</a>
+        <grantcodes-nav-link><a href="/">Home</a></grantcodes-nav-link>
+        <grantcodes-nav-link><a href="/features">Features</a></grantcodes-nav-link>
+        <grantcodes-nav-link><a href="/blog">Blog</a></grantcodes-nav-link>
+        <grantcodes-nav-link><a href="/pricing">Pricing</a></grantcodes-nav-link>
       </div>
       <div slot="actions" style="display: flex; gap: 0.5rem;">
         <grantcodes-button variant="ghost">Sign in</grantcodes-button>
@@ -287,7 +288,7 @@ export const Default = {
 
     <!-- Related posts -->
     <div
-      style="background: var(--g-theme-color-background-subtle); padding-block: var(--g-theme-spacing-2xl);"
+      style="padding-block: var(--g-theme-spacing-2xl);"
     >
       <grantcodes-container>
         <h2
@@ -352,20 +353,7 @@ export const Default = {
       </grantcodes-container>
     </div>
 
-    <grantcodes-cta
-      eyebrow="Ready to try it?"
-      title="See how Flowbase keeps your team in flow"
-      text="Join thousands of teams who've replaced their meeting-heavy workflows with a calmer, more productive way of working."
-      primary-action=${JSON.stringify({
-				label: "Start for free",
-				href: "/signup",
-			})}
-      secondary-action=${JSON.stringify({
-				label: "See all features",
-				href: "/features",
-			})}
-      align="center"
-    ></grantcodes-cta>
+
 
     <grantcodes-footer columns="3">
       ${footerContent}
