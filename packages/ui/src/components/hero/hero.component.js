@@ -31,6 +31,11 @@ export class GrantCodesHero extends LitElement {
 		 * @type {'sm' | 'md' | 'lg'}
 		 */
 		size: { type: String, reflect: true },
+		/**
+		 * Whether to center-align text content.
+		 * @type {boolean}
+		 */
+		center: { type: Boolean, reflect: true },
 	};
 
 	constructor() {
@@ -40,6 +45,7 @@ export class GrantCodesHero extends LitElement {
 		this.button = "";
 		this.href = "";
 		this.size = "md";
+		this.center = false;
 	}
 
 	render() {
@@ -59,6 +65,7 @@ export class GrantCodesHero extends LitElement {
 							>`
 							: null
 					}
+					<slot></slot>
 				</div>
 			</section>
 		`;
