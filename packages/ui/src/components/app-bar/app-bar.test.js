@@ -40,6 +40,12 @@ describe("App Bar Component", () => {
 		assert.ok(header, "Header element should exist");
 	});
 
+	it("should not have sticky class by default", async () => {
+		element = await fixture("grantcodes-app-bar");
+		const appBar = element.shadowRoot.querySelector(".app-bar--sticky");
+		assert.ok(!appBar, "Should not have sticky class by default");
+	});
+
 	it("should apply sticky class when sticky", async () => {
 		element = await fixture("grantcodes-app-bar", {
 			sticky: true,
