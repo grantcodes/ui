@@ -1,0 +1,47 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+:host {
+	display: block;
+}
+
+.countdown {
+	display: flex;
+	justify-content: center;
+	gap: var(--g-theme-spacing-lg, 2rem);
+	padding: var(--g-theme-spacing-lg, 2rem) var(--g-theme-spacing-md, 1rem);
+	text-align: center;
+}
+
+.countdown__unit {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--g-theme-spacing-xs, 0.25rem);
+}
+
+.countdown__value {
+	font-size: var(--g-theme-typography-heading-lg-font-size, 3rem);
+	font-weight: var(--g-theme-typography-heading-lg-font-weight, 700);
+	line-height: 1;
+	color: var(--g-theme-color-content-default);
+	font-variant-numeric: tabular-nums;
+}
+
+.countdown__label {
+	font-size: var(--g-theme-typography-body-sm-font-size, 0.875rem);
+	color: var(--g-theme-color-content-secondary);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.countdown__past {
+	font-size: var(--g-theme-typography-heading-md-font-size, 1.5rem);
+	font-weight: var(--g-theme-typography-heading-md-font-weight, 600);
+	color: var(--g-theme-color-content-default);
+	text-align: center;
+	padding: var(--g-theme-spacing-lg, 2rem) var(--g-theme-spacing-md, 1rem);
+}
