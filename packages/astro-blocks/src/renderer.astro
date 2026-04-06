@@ -49,6 +49,7 @@ const { block } = Astro.props
           button={block.button as string | undefined}
           href={block.href as string | undefined}
           size={block.size as 'sm' | 'md' | 'lg' | undefined}
+          center={block.center as boolean | undefined}
         />
       )
     case 'text':

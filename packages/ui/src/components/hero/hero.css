@@ -8,7 +8,6 @@
 		justify-content: center;
 		align-items: center;
 		min-height: 50vh;
-		text-align: center;
 		padding: var(--g-theme-spacing-2xl) var(--g-theme-spacing-md);
 		background: var(--g-theme-color-background-brand-knockout, #7c3aed);
 	}
@@ -17,6 +16,14 @@
 		width: 100%;
 		max-width: 65ch;
 		gap: var(--g-theme-spacing-lg);
+	}
+
+	:host([center]) .hero {
+		text-align: center;
+	}
+
+	:host([center]) .hero__container {
+		margin-inline: auto;
 	}
 
 	.hero__title {
@@ -38,4 +45,8 @@
 	:host([size="lg"]) .hero {
 		min-height: 70vh;
 		padding: var(--g-theme-spacing-3xl) var(--g-theme-spacing-md);
+	}
+
+	::slotted(*) {
+		color: var(--g-theme-color-content-brand-knockout, #ffffff);
 	}

@@ -7,9 +7,10 @@ interface Props {
   button?: string
   href?: string
   size?: 'sm' | 'md' | 'lg'
+  center?: boolean
 }
 
-const { title, subtitle, button, href, size } = Astro.props
+const { title, subtitle, button, href, size, center } = Astro.props
 ---
 
 <grantcodes-hero
@@ -18,4 +19,7 @@ const { title, subtitle, button, href, size } = Astro.props
   button={button}
   href={href}
   size={size}
-></grantcodes-hero>
+  center={center || undefined}
+>
+  <slot />
+</grantcodes-hero>
