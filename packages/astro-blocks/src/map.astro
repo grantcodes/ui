@@ -1,0 +1,23 @@
+---
+import '@grantcodes/ui/components/map/map.js'
+
+interface Props {
+  lat: number | string
+  lng: number | string
+  zoom?: number
+  label?: string
+  directionsUrl?: string
+  height?: string
+}
+
+const { lat, lng, zoom = 14, label, directionsUrl, height } = Astro.props
+---
+
+<grantcodes-map
+  lat={String(lat)}
+  lng={String(lng)}
+  zoom={zoom}
+  label={label}
+  directions-url={directionsUrl}
+  height={height}
+></grantcodes-map>

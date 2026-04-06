@@ -169,6 +169,27 @@ export const mediaTextBlock = baseBlockFields.extend({
   cta: z.object({ label: z.string(), href: z.string() }).optional(),
 });
 
+export const mapBlock = baseBlockFields.extend({
+  type: z.literal('map'),
+  lat: z.union([z.number(), z.string()]),
+  lng: z.union([z.number(), z.string()]),
+  zoom: z.number().int().min(1).max(18).default(14),
+  label: z.string().optional(),
+  directionsUrl: z.string().optional(),
+  height: z.string().optional(),
+});
+
+export const countdownBlock = baseBlockFields.extend({
+  type: z.literal('countdown'),
+  target: z.string(),
+  daysLabel: z.string().default('days'),
+  hoursLabel: z.string().default('hours'),
+  minutesLabel: z.string().default('minutes'),
+  secondsLabel: z.string().default('seconds'),
+  pastMessage: z.string().default('The event has started!'),
+  showSeconds: z.boolean().default(false),
+});
+
 export const blockSchema = z.discriminatedUnion('type', [
   heroBlock,
   textBlock,
@@ -183,4 +204,6 @@ export const blockSchema = z.discriminatedUnion('type', [
   pricingBlock,
   newsletterBlock,
   mediaTextBlock,
+  mapBlock,
+  countdownBlock,
 ]);

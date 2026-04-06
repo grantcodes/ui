@@ -1,0 +1,33 @@
+---
+import '@grantcodes/ui/components/countdown/countdown.js'
+
+interface Props {
+  target: string
+  daysLabel?: string
+  hoursLabel?: string
+  minutesLabel?: string
+  secondsLabel?: string
+  pastMessage?: string
+  showSeconds?: boolean
+}
+
+const {
+  target,
+  daysLabel,
+  hoursLabel,
+  minutesLabel,
+  secondsLabel,
+  pastMessage,
+  showSeconds,
+} = Astro.props
+---
+
+<grantcodes-countdown
+  target={target}
+  days-label={daysLabel}
+  hours-label={hoursLabel}
+  minutes-label={minutesLabel}
+  seconds-label={secondsLabel}
+  past-message={pastMessage}
+  show-seconds={showSeconds || undefined}
+></grantcodes-countdown>
