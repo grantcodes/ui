@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v2.1
 milestone_name: milestone
-status: unknown
-stopped_at: Completed 08-01-PLAN.md
-last_updated: "2026-04-06T10:01:02.881Z"
+status: executing
+stopped_at: Completed 08-03-SUMMARY.md (mobile menu overlay)
+last_updated: "2026-04-06T13:40:00.000Z"
 progress:
   total_phases: 2
   completed_phases: 0
   total_plans: 5
-  completed_plans: 1
+  completed_plans: 3
 ---
 
 # Project State
@@ -24,13 +24,13 @@ See: .planning/PROJECT.md (updated 2026-04-05)
 ## Current Position
 
 Phase: 08 (app-bar-improvements) — EXECUTING
-Plan: 2 of 2
+Plan: 3 of 3
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 0
+- Total plans completed: 3
 - Average duration: -
 - Total execution time: 0 hours
 
@@ -42,6 +42,8 @@ Plan: 2 of 2
 
 *Updated after each plan completion*
 | Phase 08 P01 | 3 min | 2 tasks | 2 files |
+| Phase 08 P02 | 45 min | 2 tasks | 14 files |
+| Phase 08 P03 | 30 min | 3 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -56,6 +58,8 @@ Recent decisions affecting current work:
 - Manual override via `.dark` / `.light` classnames on any element
 - Dark variants for all 4 themes: grantcodes, wireframe, todomap, grantina
 - [Phase 08]: Used --g-theme-spacing-sm to replace --g-spacing-12 for token consistency; 2.75rem (44px) touch targets meet WCAG minimum
+- [Phase 08]: ::slotted() loses to outer-tree normal rules in CSS cascade — use !important for shadow DOM encapsulation
+- [Phase 08]: Mobile menu uses absolute positioning below bar (inset-block-start: 100%) with fixed overlay backdrop
 
 ### Pending Todos
 
@@ -67,6 +71,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-06T10:01:02.878Z
-Stopped at: Completed 08-01-PLAN.md
-Resume file: None
+Last session: 2026-04-06T13:40:00.000Z
+Stopped at: Completed 08-03-SUMMARY.md (mobile menu overlay)
+Resume file: .planning/phases/08-app-bar-improvements/08-03-SUMMARY.md

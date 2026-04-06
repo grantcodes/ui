@@ -33,6 +33,30 @@ export class GrantCodesAppBar extends LitElement {
 		 * @type {boolean}
 		 */
 		this._mobileMenuOpen = false;
+
+		/**
+		 * Close mobile menu when the component crosses the desktop breakpoint.
+		 * Matches the 768px container query in app-bar.css.
+		 */
+		this._resizeObserver = typeof ResizeObserver !== "undefined"
+			? new ResizeObserver((entries) => {
+					for (const entry of entries) {
+						if (entry.contentBoxSize[0].inlineSize >= 768 && this._mobileMenuOpen) {
+							this._mobileMenuOpen = false;
+						}
+					}
+				})
+			: null;
+	}
+
+	connectedCallback() {
+		super.connectedCallback();
+		this._resizeObserver?.observe(this);
+	}
+
+	disconnectedCallback() {
+		super.disconnectedCallback();
+		this._resizeObserver?.disconnect();
 	}
 
 	_toggleMobileMenu() {
