@@ -17,6 +17,7 @@
 
   .map__iframe {
     display: block;
+    vertical-align: top;
     width: 100%;
     height: var(--map-height, 400px);
     border: 0;
