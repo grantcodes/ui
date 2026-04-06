@@ -88,6 +88,7 @@ export class GrantCodesCountdown extends LitElement {
 			this._tick();
 			this._startInterval();
 		}
+		this._animateChangedValues(changed);
 	}
 
 	_startInterval() {
@@ -120,10 +121,28 @@ export class GrantCodesCountdown extends LitElement {
 		const totalMinutes = Math.floor(totalSeconds / 60);
 		const totalHours = Math.floor(totalMinutes / 60);
 
+		const pad = (n) => String(n).padStart(2, "0");
+
 		this._days = Math.floor(totalHours / 24);
-		this._hours = totalHours % 24;
-		this._minutes = totalMinutes % 60;
-		this._seconds = totalSeconds % 60;
+		this._hours = pad(totalHours % 24);
+		this._minutes = pad(totalMinutes % 60);
+		this._seconds = pad(totalSeconds % 60);
+	}
+
+	/** Re-trigger the flip animation on value elements that changed. */
+	_animateChangedValues(changed) {
+		const keys = ["_days", "_hours", "_minutes", "_seconds"];
+		for (const key of keys) {
+			if (!changed.has(key)) continue;
+			const el = this.shadowRoot?.querySelector(
+				`[data-unit="${key.slice(1)}"]`,
+			);
+			if (!el) continue;
+			el.classList.remove("countdown__value--flip");
+			// Force reflow so re-adding the class restarts the animation
+			void el.offsetWidth;
+			el.classList.add("countdown__value--flip");
+		}
 	}
 
 	render() {
@@ -136,21 +155,21 @@ export class GrantCodesCountdown extends LitElement {
 		return html`
 			<div class="countdown" role="timer" aria-label="Countdown">
 				<div class="countdown__unit">
-					<span class="countdown__value">${this._days}</span>
+					<span class="countdown__value" data-unit="days">${this._days}</span>
 					<span class="countdown__label">${this["days-label"]}</span>
 				</div>
 				<div class="countdown__unit">
-					<span class="countdown__value">${this._hours}</span>
+					<span class="countdown__value" data-unit="hours">${this._hours}</span>
 					<span class="countdown__label">${this["hours-label"]}</span>
 				</div>
 				<div class="countdown__unit">
-					<span class="countdown__value">${this._minutes}</span>
+					<span class="countdown__value" data-unit="minutes">${this._minutes}</span>
 					<span class="countdown__label">${this["minutes-label"]}</span>
 				</div>
 				${this["show-seconds"]
 					? html`
 						<div class="countdown__unit">
-							<span class="countdown__value">${this._seconds}</span>
+							<span class="countdown__value" data-unit="seconds">${this._seconds}</span>
 							<span class="countdown__label">${this["seconds-label"]}</span>
 						</div>
 					`
