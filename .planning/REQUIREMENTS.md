@@ -63,15 +63,15 @@
 
 ### App Bar Improvements (APPBAR)
 
-- [ ] **APPBAR-01**: Remove dead CSS — delete `.app-bar__mobile-nav` rule (unused in component template) and clean up duplicate/conflicting container query blocks
-- [ ] **APPBAR-02**: Fix inconsistent token usage — replace `--g-spacing-12` with `--g-theme-spacing-sm` in `.app-bar__actions` and `::slotted(a)` padding
-- [ ] **APPBAR-03**: Fix sticky property — make `position: sticky` conditional on the `sticky` attribute instead of always-on; default to `position: relative`
-- [ ] **APPBAR-04**: Meet 44x44px touch target minimum on menu button (currently 2.5rem/40px)
-- [ ] **APPBAR-05**: Add `prefers-reduced-motion: reduce` to disable hamburger-to-X animation and slide-down keyframe
-- [ ] **APPBAR-06**: Replace `transition: all` on `::slotted(a)` with specific properties (`color`, `background-color`)
-- [ ] **APPBAR-07**: Mobile nav `::slotted(ul)` should stack vertically when inside `.app-bar__nav--mobile-open` (currently always row)
+- [x] **APPBAR-01**: Remove dead CSS — delete `.app-bar__mobile-nav` rule (unused in component template) and clean up duplicate/conflicting container query blocks
+- [x] **APPBAR-02**: Fix inconsistent token usage — replace `--g-spacing-12` with `--g-theme-spacing-sm` in `.app-bar__actions` and `::slotted(a)` padding
+- [x] **APPBAR-03**: Fix sticky property — make `position: sticky` conditional on the `sticky` attribute instead of always-on; default to `position: relative`
+- [x] **APPBAR-04**: Meet 44x44px touch target minimum on menu button (currently 2.5rem/40px)
+- [x] **APPBAR-05**: Add `prefers-reduced-motion: reduce` to disable hamburger-to-X animation and slide-down keyframe
+- [x] **APPBAR-06**: Replace `transition: all` on `::slotted(a)` with specific properties (`color`, `background-color`)
+- [x] **APPBAR-07**: Mobile nav `::slotted(ul)` should stack vertically when inside `.app-bar__nav--mobile-open` (currently always row)
 - [ ] **APPBAR-08**: Improve Storybook stories — remove inline styles, add responsive demo story, add story with `<ul>` nav pattern matching real Astro usage
-- [ ] **APPBAR-09**: All existing tests pass; add test for non-sticky default (position not sticky when `sticky` is false)
+- [x] **APPBAR-09**: All existing tests pass; add test for non-sticky default (position not sticky when `sticky` is false)
 
 ## v2 (Deferred)
 
@@ -127,15 +127,15 @@
 | DARK-09 | Phase 7 | Pending |
 | DARK-10 | Phase 7 | Pending |
 
-| APPBAR-01 | Phase 8 | Pending |
-| APPBAR-02 | Phase 8 | Pending |
-| APPBAR-03 | Phase 8 | Pending |
-| APPBAR-04 | Phase 8 | Pending |
-| APPBAR-05 | Phase 8 | Pending |
-| APPBAR-06 | Phase 8 | Pending |
-| APPBAR-07 | Phase 8 | Pending |
+| APPBAR-01 | Phase 8 | Complete |
+| APPBAR-02 | Phase 8 | Complete |
+| APPBAR-03 | Phase 8 | Complete |
+| APPBAR-04 | Phase 8 | Complete |
+| APPBAR-05 | Phase 8 | Complete |
+| APPBAR-06 | Phase 8 | Complete |
+| APPBAR-07 | Phase 8 | Complete |
 | APPBAR-08 | Phase 8 | Pending |
-| APPBAR-09 | Phase 8 | Pending |
+| APPBAR-09 | Phase 8 | Complete |
 
 **Coverage:**
 - v1 requirements: 25 total
