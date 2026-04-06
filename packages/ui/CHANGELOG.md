@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.6.0](https://github.com/grantcodes/ui/compare/ui-v2.5.1...ui-v2.6.0) (2026-04-06)
+
+
+### Features
+
+* **08-02:** add nav-link component, fix CSS cascade, refactor base styles ([fa143e2](https://github.com/grantcodes/ui/commit/fa143e2362b90b8d2879148bee7044db21dcb5e7))
+* **08-02:** rewrite app bar Storybook stories without inline styles ([1424640](https://github.com/grantcodes/ui/commit/1424640b696b5c97aca269f2594cbad8b51ec45f))
+* **08-03:** redesign mobile menu as full-screen overlay with animation ([600dc6e](https://github.com/grantcodes/ui/commit/600dc6e478691d0642ca34f52306ff67489baf12))
+* app bar improvements — nav-link component, CSS fixes, mobile menu overlay ([d1e66a2](https://github.com/grantcodes/ui/commit/d1e66a20d9d258eda22303f827491780d1d2467b))
+
+
+### Bug Fixes
+
+* **08-01:** clean up app-bar CSS — dead code, tokens, sticky, a11y, responsive ([000fd4b](https://github.com/grantcodes/ui/commit/000fd4b2c5b4be04900ab42a63298e6d8735d67c))
+* **08-03:** close mobile menu on resize past desktop breakpoint ([dac56e1](https://github.com/grantcodes/ui/commit/dac56e1bcfa735e37fe82c43fde89be3c211d0c3))
+* move font shorthand before line-height in reset.css to fix lint error ([98c9bba](https://github.com/grantcodes/ui/commit/98c9bbac15e3a7db81c103023352f6f8f071dbb6))
+
 ## [2.5.1](https://github.com/grantcodes/ui/compare/ui-v2.5.0...ui-v2.5.1) (2026-04-05)
 
 
