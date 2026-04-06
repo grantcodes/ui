@@ -13,9 +13,13 @@
   .app-bar {
     background-color: var(--g-theme-color-background-default);
     border-block-end: 1px solid var(--g-theme-color-border-default);
+    position: relative;
+    z-index: 100;
+  }
+
+  .app-bar--sticky {
     position: sticky;
     inset-block-start: 0;
-    z-index: 100;
   }
 
   .app-bar--transparent {
@@ -63,18 +67,15 @@
     width: 100%;
   }
 
-  /* Show nav on larger screens using container queries */
-  @container app-bar (min-width: 768px) {
-    .app-bar__nav {
-      display: flex;
-    }
+  .app-bar__nav--mobile-open ::slotted(ul) {
+    flex-direction: column;
   }
 
   /* Actions */
   .app-bar__actions {
     display: flex;
     align-items: center;
-    gap: var(--g-spacing-12);
+    gap: var(--g-theme-spacing-sm);
     margin-inline-start: auto;
   }
 
@@ -84,8 +85,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    inline-size: 2.5rem;
-    block-size: 2.5rem;
+    inline-size: 2.75rem;
+    block-size: 2.75rem;
     padding: var(--g-theme-spacing-sm);
     border-radius: var(--g-theme-border-radius-md);
     cursor: pointer;
@@ -95,13 +96,6 @@
 
   .app-bar__menu-button:hover {
     background-color: var(--g-theme-color-background-subtle-hover);
-  }
-
-  /* Hide menu button on larger screens */
-  @container app-bar (min-width: 768px) {
-    .app-bar__menu-button {
-      display: none;
-    }
   }
 
   /* Hamburger Icon */
@@ -144,15 +138,20 @@
     transform: rotate(-45deg);
   }
 
-  /* Mobile Navigation */
-  .app-bar__mobile-nav {
-    display: flex;
-    flex-direction: column;
-    gap: var(--g-theme-spacing-sm);
-    padding-inline: var(--g-theme-spacing-md);
-    padding-block: var(--g-theme-spacing-md);
-    border-block-start: 1px solid var(--g-theme-color-border-default);
-    animation: slide-down 0.2s ease-out;
+  /* Reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .app-bar__menu-icon::before,
+    .app-bar__menu-icon::after {
+      transition: none;
+    }
+
+    .app-bar__menu-button {
+      transition: none;
+    }
+
+    @keyframes slide-down {
+      from { opacity: 1; transform: none; }
+    }
   }
 
   /* Desktop: show nav inline and reset mobile styles */
@@ -176,6 +175,7 @@
     }
 
     .app-bar__menu-button {
+      display: none;
       order: 4;
     }
 
@@ -201,9 +201,9 @@
     color: var(--g-theme-color-content-default);
     text-decoration: none;
     padding-block: var(--g-theme-spacing-sm);
-    padding-inline: var(--g-spacing-12);
+    padding-inline: var(--g-theme-spacing-sm);
     border-radius: var(--g-theme-border-radius-md);
-    transition: all 0.2s ease;
+    transition: color 0.2s ease, background-color 0.2s ease;
     font-family: var(--g-theme-typography-label-font-family);
     font-weight: var(--g-theme-typography-label-font-weight);
   }
