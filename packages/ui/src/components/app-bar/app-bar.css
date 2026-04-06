@@ -28,7 +28,8 @@
     box-shadow: none;
   }
 
-  .app-bar__container {
+  /* Top bar row — always visible */
+  .app-bar__bar {
     display: flex;
     align-items: center;
     gap: var(--g-theme-spacing-lg);
@@ -36,7 +37,6 @@
     padding-block: var(--g-theme-spacing-md);
     max-inline-size: 1400px;
     margin-inline: auto;
-    flex-wrap: wrap;
   }
 
   /* Logo */
@@ -46,31 +46,9 @@
     flex-shrink: 0;
   }
 
-  /* Navigation */
+  /* Navigation — hidden on mobile, shown on desktop */
   .app-bar__nav {
     display: none;
-    flex: 1;
-    align-items: center;
-    gap: var(--g-theme-spacing-sm);
-    order: 5;
-    inline-size: 100%;
-  }
-
-  /* Mobile: when menu is open, show nav stacked vertically */
-  .app-bar__nav--mobile-open {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    padding-block: var(--g-theme-spacing-sm);
-    border-block-start: 1px solid var(--g-theme-color-border-default);
-    width: 100%;
-  }
-
-  .app-bar__nav--mobile-open ::slotted(ul),
-  .app-bar__nav--mobile-open ::slotted(div[slot="nav"]) {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
   }
 
   /* Actions */
@@ -128,7 +106,7 @@
     inset-block-end: 0;
   }
 
-  /* Animated hamburger to X — both lines move to vertical center then rotate */
+  /* Animated hamburger to X */
   .app-bar__menu-button[aria-expanded="true"] .app-bar__menu-icon::before {
     inset-block-start: calc(50% - 1px);
     transform: rotate(45deg);
@@ -138,6 +116,67 @@
   .app-bar__menu-button[aria-expanded="true"] .app-bar__menu-icon::after {
     inset-block-end: calc(50% - 1px);
     transform: rotate(-45deg);
+  }
+
+  /*
+   * Mobile menu — full-width panel below the app bar.
+   * Uses clip-path for a clean slide-down reveal animation.
+   */
+  .app-bar__nav--open {
+    display: flex;
+    flex-direction: column;
+    gap: var(--g-theme-spacing-xs, 0.25rem);
+    position: absolute;
+    inset-inline: 0;
+    inset-block-start: 100%;
+    z-index: 99;
+    background-color: var(--g-theme-color-background-default);
+    border-block-end: 1px solid var(--g-theme-color-border-default);
+    padding-block: var(--g-theme-spacing-md);
+    padding-inline: var(--g-theme-spacing-md);
+    box-shadow: var(--g-theme-shadow-lg, 0 8px 24px rgba(0, 0, 0, 0.12));
+    animation: menu-open 0.25s ease-out;
+  }
+
+  @keyframes menu-open {
+    from {
+      opacity: 0;
+      transform: translateY(-0.5rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Slotted nav content stacks vertically in mobile menu */
+  .app-bar__nav--open ::slotted(ul),
+  .app-bar__nav--open ::slotted(div[slot="nav"]) {
+    display: flex;
+    flex-direction: column;
+    gap: var(--g-theme-spacing-xs, 0.25rem);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /* Backdrop overlay — covers viewport below app bar when menu is open */
+  .app-bar__overlay {
+    display: none;
+  }
+
+  .app-bar__overlay--visible {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 98;
+    background-color: rgba(0, 0, 0, 0.2);
+    animation: overlay-fade 0.2s ease-out;
+  }
+
+  @keyframes overlay-fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 
   /* Reduced motion preferences */
@@ -151,25 +190,34 @@
       transition: none;
     }
 
-    @keyframes slide-down {
-      from { opacity: 1; transform: none; }
+    .app-bar__nav--open {
+      animation: none;
+    }
+
+    .app-bar__overlay--visible {
+      animation: none;
     }
   }
 
-  /* Desktop: show nav inline and reset mobile styles */
+  /* Desktop: show nav inline, hide hamburger */
   @container app-bar (min-width: 768px) {
-    .app-bar__container {
-      flex-wrap: nowrap;
-    }
-
     .app-bar__nav {
       display: flex;
       flex-direction: row;
+      align-items: center;
       gap: var(--g-theme-spacing-xs, 0.25rem);
-      padding: 0;
+      flex: 1;
+    }
+
+    /* Reset mobile-open styles at desktop — nav is always inline */
+    .app-bar__nav--open {
+      position: static;
+      background-color: transparent;
       border: 0;
-      width: auto;
-      order: 2;
+      padding: 0;
+      box-shadow: none;
+      animation: none;
+      flex-direction: row;
     }
 
     .app-bar__actions {
@@ -178,30 +226,18 @@
 
     .app-bar__menu-button {
       display: none;
-      order: 4;
     }
 
-    /* Ensure mobile-open class doesn't affect desktop */
-    .app-bar__nav--mobile-open {
-      display: flex;
-    }
-  }
-
-  @keyframes slide-down {
-    from {
-      opacity: 0;
-      transform: translateY(-0.5rem);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
+    /* Overlay is never visible on desktop */
+    .app-bar__overlay--visible {
+      display: none;
     }
   }
 
   /* Slotted content styling */
   ::slotted(a[slot="logo"]) {
-    color: var(--g-theme-color-content-default);
-    text-decoration: none;
+    color: var(--g-theme-color-content-default) !important;
+    text-decoration: none !important;
     font-family: var(--g-theme-typography-label-font-family);
     font-weight: var(--g-theme-typography-label-font-weight);
   }

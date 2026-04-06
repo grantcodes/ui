@@ -53,12 +53,26 @@ export class GrantCodesAppBar extends LitElement {
 			"app-bar--transparent": this.transparent,
 		});
 
+		const navClasses = classMap({
+			"app-bar__nav": true,
+			"app-bar__nav--open": this._mobileMenuOpen,
+		});
+
 		return html`
 			<header class=${classes}>
-				<div class="app-bar__container">
+				<div class="app-bar__bar">
 					<div class="app-bar__logo">
 						<slot name="logo"></slot>
 					</div>
+
+					<!-- Navigation (inline on desktop, overlay on mobile) -->
+					<nav
+						part="nav"
+						class=${navClasses}
+						aria-label="Main navigation"
+					>
+						<slot name="nav"></slot>
+					</nav>
 
 					<!-- Actions (right side) -->
 					<div class="app-bar__actions">
@@ -75,16 +89,13 @@ export class GrantCodesAppBar extends LitElement {
 					>
 						<span class="app-bar__menu-icon"></span>
 					</button>
-
-					<!-- Navigation (single slot, collapsible on mobile) -->
-					<nav
-						part="nav"
-						class="app-bar__nav ${this._mobileMenuOpen ? "app-bar__nav--mobile-open" : ""}"
-						aria-label="Main navigation"
-					>
-						<slot name="nav"></slot>
-					</nav>
 				</div>
+
+				<!-- Mobile overlay backdrop -->
+				<div
+					class="app-bar__overlay ${this._mobileMenuOpen ? "app-bar__overlay--visible" : ""}"
+					@click=${this._toggleMobileMenu}
+				></div>
 			</header>
 		`;
 	}
