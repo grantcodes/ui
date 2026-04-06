@@ -17,6 +17,7 @@
 
 /* Root defaults */
 :where(:root) {
+	font: var(--g-theme-typography-body);
 	cursor: default;
 	line-height: 1.5;
 	overflow-wrap: break-word;
@@ -24,7 +25,6 @@
 	tab-size: 4;
 	-webkit-tap-highlight-color: transparent;
 	-webkit-text-size-adjust: 100%;
-    font: var(--g-theme-typography-body);
 }
 
 :where(:root, body) {
