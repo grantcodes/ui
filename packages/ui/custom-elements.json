@@ -136,6 +136,11 @@
               "attribute": "_mobileMenuOpen"
             },
             {
+              "kind": "field",
+              "name": "_resizeObserver",
+              "description": "Close mobile menu when the component crosses the desktop breakpoint.\nMatches the 768px container query in app-bar.css."
+            },
+            {
               "kind": "method",
               "name": "_toggleMobileMenu"
             },
@@ -3409,6 +3414,232 @@
           "declaration": {
             "name": "GrantCodesLogoCloud",
             "module": "/src/components/logo-cloud/logo-cloud.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/map/index.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/map/map.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/map/map.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "GrantCodesMap",
+          "members": [
+            {
+              "kind": "field",
+              "name": "",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "_embedUrl",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_getBoundingBox",
+              "parameters": [
+                {
+                  "name": "lat"
+                },
+                {
+                  "name": "lng"
+                },
+                {
+                  "name": "zoom"
+                }
+              ],
+              "description": "Calculate a bounding box around a point for the given zoom level."
+            },
+            {
+              "kind": "field",
+              "name": "\"directions-url\"",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "URL for a \"Get directions\" link below the map.",
+              "attribute": "directions-url"
+            },
+            {
+              "kind": "field",
+              "name": "height",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Height of the map. Accepts any CSS length value.",
+              "default": "\"\"",
+              "attribute": "height"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Accessible label for the map iframe.",
+              "default": "\"Map\"",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "lat",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Latitude coordinate.",
+              "default": "\"\"",
+              "attribute": "lat"
+            },
+            {
+              "kind": "field",
+              "name": "lng",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Longitude coordinate.",
+              "default": "\"\"",
+              "attribute": "lng"
+            },
+            {
+              "kind": "field",
+              "name": "zoom",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "Map zoom level (1-18).",
+              "default": "14",
+              "attribute": "zoom"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "directions-url",
+              "type": {
+                "text": "string"
+              },
+              "description": "URL for a \"Get directions\" link below the map.",
+              "fieldName": "\"directions-url\""
+            },
+            {
+              "name": "height",
+              "type": {
+                "text": "string"
+              },
+              "description": "Height of the map. Accepts any CSS length value.",
+              "default": "\"\"",
+              "fieldName": "height"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Accessible label for the map iframe.",
+              "default": "\"Map\"",
+              "fieldName": "label"
+            },
+            {
+              "name": "lat",
+              "type": {
+                "text": "string"
+              },
+              "description": "Latitude coordinate.",
+              "default": "\"\"",
+              "fieldName": "lat"
+            },
+            {
+              "name": "lng",
+              "type": {
+                "text": "string"
+              },
+              "description": "Longitude coordinate.",
+              "default": "\"\"",
+              "fieldName": "lng"
+            },
+            {
+              "name": "zoom",
+              "type": {
+                "text": "number"
+              },
+              "description": "Map zoom level (1-18).",
+              "default": "14",
+              "fieldName": "zoom"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "grantcodes-map",
+          "customElement": true,
+          "modulePath": "src/components/map/map.component.js",
+          "definitionPath": "src/components/map/map.js"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GrantCodesMap",
+          "declaration": {
+            "name": "GrantCodesMap",
+            "module": "src/components/map/map.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/map/map.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/map/map.component.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "GrantCodesMap",
+            "module": "src/components/map/map.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-map",
+          "declaration": {
+            "name": "GrantCodesMap",
+            "module": "/src/components/map/map.component.js"
           }
         }
       ]
