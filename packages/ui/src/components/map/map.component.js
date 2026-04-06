@@ -35,6 +35,8 @@ export class GrantCodesMap extends LitElement {
 		 * @type {string}
 		 */
 		height: { type: String },
+		/** @internal */
+		_dark: { state: true },
 	};
 
 	constructor() {
@@ -45,6 +47,21 @@ export class GrantCodesMap extends LitElement {
 		this.label = "Map";
 		this["directions-url"] = "";
 		this.height = "";
+		this._darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
+		this._dark = this._darkQuery.matches;
+		this._onSchemeChange = (e) => {
+			this._dark = e.matches;
+		};
+	}
+
+	connectedCallback() {
+		super.connectedCallback();
+		this._darkQuery.addEventListener("change", this._onSchemeChange);
+	}
+
+	disconnectedCallback() {
+		super.disconnectedCallback();
+		this._darkQuery.removeEventListener("change", this._onSchemeChange);
 	}
 
 	get _embedUrl() {
@@ -54,7 +71,8 @@ export class GrantCodesMap extends LitElement {
 			Number.parseFloat(this.lng),
 			this.zoom,
 		);
-		return `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&marker=${this.lat},${this.lng}&layers=mapnik`;
+		const layer = this._dark ? "S" : "hot";
+		return `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&marker=${this.lat},${this.lng}&layers=${layer}`;
 	}
 
 	/**
@@ -82,6 +100,8 @@ export class GrantCodesMap extends LitElement {
 					title="${this.label}"
 					loading="lazy"
 					referrerpolicy="no-referrer"
+					frameborder="0"
+					seamless
 				></iframe>
 				${
 					this["directions-url"]
