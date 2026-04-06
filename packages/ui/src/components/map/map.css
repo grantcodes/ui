@@ -21,6 +21,7 @@
     width: 100%;
     height: var(--map-height, 21rem);
     border: 0;
+    filter: var(--g-map-filter, none);
   }
 
   .map__directions {
@@ -37,10 +38,4 @@
   .map__directions:hover {
     background: var(--g-theme-color-background-subtle-hover);
     text-decoration: underline;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .map__iframe {
-      filter: invert(1) hue-rotate(180deg) brightness(0.95) contrast(0.9);
-    }
   }
