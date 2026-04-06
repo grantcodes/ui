@@ -36,6 +36,10 @@ export const Default = {
 export const WithSeconds = {
 	args: {
 		target: new Date(Date.now() + 2 * 60 * 60 * 1000).toISOString(),
+		"days-label": "days",
+		"hours-label": "hours",
+		"minutes-label": "minutes",
+		"seconds-label": "seconds",
 		"show-seconds": true,
 	},
 };
