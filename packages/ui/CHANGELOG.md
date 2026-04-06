@@ -1,5 +1,40 @@
 # Changelog
 
+## [2.7.0](https://github.com/grantcodes/ui/compare/ui-v2.6.0...ui-v2.7.0) (2026-04-06)
+
+
+### Features
+
+* add center prop and default slot to hero component ([7e1ffde](https://github.com/grantcodes/ui/commit/7e1ffdebc1a51f12f6c8685e36ac9f1e142eb9f1))
+* add center prop and default slot to hero component ([89f0b42](https://github.com/grantcodes/ui/commit/89f0b42c8eb0214ab2126efdd8f2bc959b170922)), closes [#49](https://github.com/grantcodes/ui/issues/49) [#58](https://github.com/grantcodes/ui/issues/58)
+* add grantcodes-countdown component ([a67ab75](https://github.com/grantcodes/ui/commit/a67ab7560b73c3f3f55d65371497d331ce9896ea))
+* add grantcodes-countdown component ([5beb8a1](https://github.com/grantcodes/ui/commit/5beb8a1bf87ff91542ab03974e68b049ed02a2ae)), closes [#56](https://github.com/grantcodes/ui/issues/56)
+* add grantcodes-map component (OpenStreetMap embed) ([0671693](https://github.com/grantcodes/ui/commit/0671693285fc44a945f6be77ed50b3128dcbbb3c))
+* add grantcodes-map component (OpenStreetMap embed) ([69919ae](https://github.com/grantcodes/ui/commit/69919ae03307406b166baf2ee33a1b33c5eca517)), closes [#55](https://github.com/grantcodes/ui/issues/55)
+* add TypeScript ambient declarations for component import paths ([c456370](https://github.com/grantcodes/ui/commit/c456370ff3130b9d77d5abcce94157bb454c8a40))
+* add TypeScript ambient declarations for component import paths ([3c08b56](https://github.com/grantcodes/ui/commit/3c08b56d5907f5f1ab4e11fed559b6d9aef4af23)), closes [#54](https://github.com/grantcodes/ui/issues/54)
+* improve accordion styling with SVG chevron and unified borders ([4a84167](https://github.com/grantcodes/ui/commit/4a84167b2b3956544085dd47c8d9ccf0dd5707f4))
+* improve accordion styling with SVG chevron and unified borders ([f35c83d](https://github.com/grantcodes/ui/commit/f35c83d594dd7453257096c510c57a73124d2667)), closes [#50](https://github.com/grantcodes/ui/issues/50)
+* **map:** dark mode filter based on .dark/.light classes ([40550b7](https://github.com/grantcodes/ui/commit/40550b7969858a83cf298680471e525ed57d0854))
+* **map:** switch tile layer based on color scheme ([ccd991e](https://github.com/grantcodes/ui/commit/ccd991e40bde054b664b61ab83579d5ec83358bb))
+
+
+### Bug Fixes
+
+* accordion chevron axis, focus ring, and subtle styling ([c44d877](https://github.com/grantcodes/ui/commit/c44d8774f88c80ade425f735110472e0d8cb91cd))
+* **accordion:** add bottom border-radius to content panel ([111aa87](https://github.com/grantcodes/ui/commit/111aa87ba682d3a9faa8beb06a8e8746503eac87))
+* **accordion:** remove top border from content panel ([7668223](https://github.com/grantcodes/ui/commit/766822325ecd65d04a6e43bafcfca206999941b2))
+* **accordion:** swap backgrounds — subtle on summary, default on content ([c3fe7a5](https://github.com/grantcodes/ui/commit/c3fe7a52f35d1cc1e15d8e7ee9eec089f57da420))
+* **accordion:** use subtle background for content panel ([182e8f3](https://github.com/grantcodes/ui/commit/182e8f3fd3a8179b3c196003188abb08fe5e67b8))
+* add box-sizing border-box reset to all component shadow roots ([c5cfb8f](https://github.com/grantcodes/ui/commit/c5cfb8faa15b480b915b29d4458d2d92bd5aef12))
+* add box-sizing border-box reset to all component shadow roots ([184fa6b](https://github.com/grantcodes/ui/commit/184fa6b3b064e445f540b05bc4b6686a91a6690e)), closes [#48](https://github.com/grantcodes/ui/issues/48)
+* bump countdown font size to h1 scale, zero-pad values, add flip animation ([94ee0fa](https://github.com/grantcodes/ui/commit/94ee0fac8793284a61c6abca65754571b2c76743))
+* **footer:** subtle background + border, simplify slotted typography ([48d1037](https://github.com/grantcodes/ui/commit/48d10371b530321c833efe9677ce2e94b7282337))
+* improve footer styling with subtle background and simplified typography ([2c727d9](https://github.com/grantcodes/ui/commit/2c727d97c836469adc019ce39493044fdd732c62))
+* **map:** remove 1px gap below iframe ([2663c2a](https://github.com/grantcodes/ui/commit/2663c2ab350e43f2b7e0c3c18c1c368ac83b563f))
+* **map:** revert layer switching, use CSS filters for dark mode ([d24071a](https://github.com/grantcodes/ui/commit/d24071a712a290e06347e022112b013bc324e503))
+* narrow footer slotted content color to specific elements ([4ed977e](https://github.com/grantcodes/ui/commit/4ed977ec2b7c4b897baa45686f85503d80abcf5a)), closes [#51](https://github.com/grantcodes/ui/issues/51)
+
 ## [2.6.0](https://github.com/grantcodes/ui/compare/ui-v2.5.1...ui-v2.6.0) (2026-04-06)
 
 
