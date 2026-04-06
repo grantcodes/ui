@@ -66,6 +66,11 @@
 	/* Slotted content styling */
 	::slotted(*) {
 		font-size: var(--g-typography-font-size-14);
+	}
+
+	::slotted(p),
+	::slotted(small),
+	::slotted(span) {
 		color: var(--g-theme-color-content-secondary);
 	}
 
