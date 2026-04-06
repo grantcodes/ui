@@ -40,6 +40,12 @@ describe("App Bar Component", () => {
 		assert.ok(header, "Header element should exist");
 	});
 
+	it("should not have sticky class by default", async () => {
+		element = await fixture("grantcodes-app-bar");
+		const appBar = element.shadowRoot.querySelector(".app-bar--sticky");
+		assert.ok(!appBar, "Should not have sticky class by default");
+	});
+
 	it("should apply sticky class when sticky", async () => {
 		element = await fixture("grantcodes-app-bar", {
 			sticky: true,
@@ -108,7 +114,7 @@ describe("App Bar Component", () => {
 		await element.updateComplete;
 
 		const mobileNav = element.shadowRoot.querySelector(
-			".app-bar__nav--mobile-open",
+			".app-bar__nav--open",
 		);
 		assert.ok(mobileNav, "Mobile nav should be rendered when open");
 	});

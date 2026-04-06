@@ -1,0 +1,58 @@
+  *,
+	*::before,
+	*::after {
+    box-sizing: border-box;
+  }
+
+  :host {
+    display: inline-flex;
+  }
+
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    border-radius: var(--g-theme-border-radius-md);
+    background-color: transparent;
+    transition: background-color 0.15s ease;
+  }
+
+  .nav-link:hover {
+    background-color: color-mix(in srgb, var(--g-theme-color-content-default) 8%, transparent);
+  }
+
+  /*
+   * Override light-DOM :where(a) base styles for slotted links.
+   * ::slotted() has lower cascade priority than outer-tree normal rules,
+   * so !important is needed for properties that the base layer also sets
+   * (color, text-decoration, opacity). This is a legitimate encapsulation
+   * use-case — nav links must look like ghost buttons regardless of what
+   * global link styles exist in the light DOM.
+   */
+  ::slotted(a),
+  ::slotted(a:visited),
+  ::slotted(a:hover),
+  ::slotted(a:active),
+  ::slotted(a:focus-visible) {
+    display: inline-flex;
+    align-items: center;
+    color: var(--g-theme-color-content-default) !important;
+    text-decoration: none !important;
+    opacity: 1 !important;
+    padding-block: var(--g-theme-spacing-xs, 0.25rem);
+    padding-inline: var(--g-theme-spacing-sm);
+    font-family: var(--g-theme-typography-label-font-family);
+    font-weight: var(--g-theme-typography-label-font-weight);
+    white-space: nowrap;
+  }
+
+  ::slotted(a:focus-visible) {
+    outline: var(--g-theme-focus-ring-width-default) solid var(--g-theme-focus-ring-color-default);
+    outline-offset: var(--g-theme-focus-ring-offset-default);
+    border-radius: var(--g-theme-border-radius-md);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nav-link {
+      transition: none;
+    }
+  }
