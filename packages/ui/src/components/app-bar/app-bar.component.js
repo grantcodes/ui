@@ -78,6 +78,7 @@ export class GrantCodesAppBar extends LitElement {
 
 					<!-- Navigation (single slot, collapsible on mobile) -->
 					<nav
+						part="nav"
 						class="app-bar__nav ${this._mobileMenuOpen ? "app-bar__nav--mobile-open" : ""}"
 						aria-label="Main navigation"
 					>

@@ -1,5 +1,6 @@
 import { html } from "lit";
 import "./app-bar.js";
+import "./nav-link.js";
 import "../button/button.js";
 
 const meta = {
@@ -11,17 +12,17 @@ export default meta;
 
 /**
  * Basic app bar with logo, navigation links, and a sign in action.
- * No inline styles on slotted content — the component's ::slotted() rules handle styling.
+ * Nav links use <grantcodes-nav-link> for consistent ghost button styling.
  */
 export const Default = {
 	render: () => html`
 		<grantcodes-app-bar>
 			<a slot="logo" href="/">MyApp</a>
 			<div slot="nav">
-				<a href="/">Home</a>
-				<a href="/about">About</a>
-				<a href="/features">Features</a>
-				<a href="/pricing">Pricing</a>
+				<grantcodes-nav-link><a href="/">Home</a></grantcodes-nav-link>
+				<grantcodes-nav-link><a href="/about">About</a></grantcodes-nav-link>
+				<grantcodes-nav-link><a href="/features">Features</a></grantcodes-nav-link>
+				<grantcodes-nav-link><a href="/pricing">Pricing</a></grantcodes-nav-link>
 			</div>
 			<div slot="actions">
 				<grantcodes-button>Sign In</grantcodes-button>
@@ -31,17 +32,17 @@ export const Default = {
 };
 
 /**
- * Navigation using a <ul> list — matches the real-world pattern from the Astro site's Header component.
- * The component's ::slotted(ul) rule applies display: flex and removes list styling.
+ * Navigation using a <ul> list — matches the real-world pattern from the Astro site.
+ * Each <li> wraps a <grantcodes-nav-link> so styling works through the shadow boundary.
  */
 export const WithListNav = {
 	render: () => html`
 		<grantcodes-app-bar>
 			<a slot="logo" href="/">MyApp</a>
 			<ul slot="nav">
-				<li><a href="/docs">Docs</a></li>
-				<li><a href="/blog">Blog</a></li>
-				<li><a href="/changelog">Changelog</a></li>
+				<li><grantcodes-nav-link><a href="/docs">Docs</a></grantcodes-nav-link></li>
+				<li><grantcodes-nav-link><a href="/blog">Blog</a></grantcodes-nav-link></li>
+				<li><grantcodes-nav-link><a href="/changelog">Changelog</a></grantcodes-nav-link></li>
 			</ul>
 			<div slot="actions">
 				<grantcodes-button>Sign In</grantcodes-button>
@@ -52,7 +53,6 @@ export const WithListNav = {
 
 /**
  * Sticky app bar that stays at the top of the viewport when scrolling.
- * Wrapped in a tall container to allow scroll testing.
  */
 export const Sticky = {
 	render: () => html`
@@ -60,10 +60,10 @@ export const Sticky = {
 			<grantcodes-app-bar sticky>
 				<a slot="logo" href="/">MyApp</a>
 				<div slot="nav">
-					<a href="/">Home</a>
-					<a href="/about">About</a>
-					<a href="/features">Features</a>
-					<a href="/pricing">Pricing</a>
+					<grantcodes-nav-link><a href="/">Home</a></grantcodes-nav-link>
+					<grantcodes-nav-link><a href="/about">About</a></grantcodes-nav-link>
+					<grantcodes-nav-link><a href="/features">Features</a></grantcodes-nav-link>
+					<grantcodes-nav-link><a href="/pricing">Pricing</a></grantcodes-nav-link>
 				</div>
 				<div slot="actions">
 					<grantcodes-button>Sign In</grantcodes-button>
@@ -81,7 +81,6 @@ export const Sticky = {
 
 /**
  * Transparent app bar for use over hero sections or colored backgrounds.
- * The background wrapper uses inline styles for story framing — slotted content remains style-free.
  */
 export const Transparent = {
 	render: () => html`
@@ -89,9 +88,9 @@ export const Transparent = {
 			<grantcodes-app-bar transparent>
 				<a slot="logo" href="/">MyApp</a>
 				<div slot="nav">
-					<a href="/">Home</a>
-					<a href="/about">About</a>
-					<a href="/features">Features</a>
+					<grantcodes-nav-link><a href="/">Home</a></grantcodes-nav-link>
+					<grantcodes-nav-link><a href="/about">About</a></grantcodes-nav-link>
+					<grantcodes-nav-link><a href="/features">Features</a></grantcodes-nav-link>
 				</div>
 				<div slot="actions">
 					<grantcodes-button>Sign Up</grantcodes-button>
@@ -102,17 +101,16 @@ export const Transparent = {
 };
 
 /**
- * App bar with multiple action buttons in the actions slot.
- * Uses text labels instead of emoji for accessibility and clarity.
+ * App bar with multiple action buttons.
  */
 export const WithMultipleActions = {
 	render: () => html`
 		<grantcodes-app-bar>
 			<a slot="logo" href="/">Dashboard</a>
 			<div slot="nav">
-				<a href="/">Overview</a>
-				<a href="/analytics">Analytics</a>
-				<a href="/reports">Reports</a>
+				<grantcodes-nav-link><a href="/">Overview</a></grantcodes-nav-link>
+				<grantcodes-nav-link><a href="/analytics">Analytics</a></grantcodes-nav-link>
+				<grantcodes-nav-link><a href="/reports">Reports</a></grantcodes-nav-link>
 			</div>
 			<div slot="actions">
 				<grantcodes-button>Notifications</grantcodes-button>

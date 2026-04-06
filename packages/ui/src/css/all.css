@@ -1,6 +1,8 @@
+/* Basically the same as base.css but with component styles included */
+
 @layer reset, base, utilities, components;
 
-@import "./base.css" layer(reset);
+@import "./reset.css" layer(reset);
 @import "./typography.css" layer(base);
 @import "./elements.css" layer(base);
 @import "./util/index.css" layer(utilities);

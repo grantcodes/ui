@@ -268,6 +268,67 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/app-bar/nav-link.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "GrantCodesNavLink",
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "grantcodes-nav-link",
+          "customElement": true,
+          "modulePath": "src/components/app-bar/nav-link.component.js",
+          "definitionPath": "src/components/app-bar/nav-link.js"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GrantCodesNavLink",
+          "declaration": {
+            "name": "GrantCodesNavLink",
+            "module": "src/components/app-bar/nav-link.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/app-bar/nav-link.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/app-bar/nav-link.component.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "GrantCodesNavLink",
+            "module": "src/components/app-bar/nav-link.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-nav-link",
+          "declaration": {
+            "name": "GrantCodesNavLink",
+            "module": "/src/components/app-bar/nav-link.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/avatar/avatar.component.js",
       "declarations": [
         {
@@ -2491,25 +2552,6 @@
                 "text": "boolean"
               },
               "default": "false"
-            },
-            {
-              "kind": "method",
-              "name": "groupTemplate",
-              "parameters": [
-                {
-                  "name": "className",
-                  "description": "html class attribute",
-                  "type": {
-                    "text": "string"
-                  }
-                }
-              ],
-              "description": "Template for a group of form components",
-              "return": {
-                "type": {
-                  "text": ""
-                }
-              }
             },
             {
               "kind": "method",

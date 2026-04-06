@@ -1,5 +1,6 @@
 export { Accordion } from "./components/accordion/accordion.react.js"
 export { AppBar } from "./components/app-bar/app-bar.react.js"
+export { NavLink } from "./components/app-bar/nav-link.react.js"
 export { Avatar } from "./components/avatar/avatar.react.js"
 export { Badge } from "./components/badge/badge.react.js"
 export { Breadcrumb, BreadcrumbItem } from "./components/breadcrumb/breadcrumb.react.js"

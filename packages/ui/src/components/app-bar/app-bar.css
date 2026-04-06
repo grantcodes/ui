@@ -51,7 +51,7 @@
     display: none;
     flex: 1;
     align-items: center;
-    gap: var(--g-theme-spacing-lg);
+    gap: var(--g-theme-spacing-sm);
     order: 5;
     inline-size: 100%;
   }
@@ -60,15 +60,17 @@
   .app-bar__nav--mobile-open {
     display: flex;
     flex-direction: column;
-    gap: var(--g-theme-spacing-sm);
-    padding-inline: var(--g-theme-spacing-md);
-    padding-block: var(--g-theme-spacing-md);
+    gap: 0;
+    padding-block: var(--g-theme-spacing-sm);
     border-block-start: 1px solid var(--g-theme-color-border-default);
     width: 100%;
   }
 
-  .app-bar__nav--mobile-open ::slotted(ul) {
+  .app-bar__nav--mobile-open ::slotted(ul),
+  .app-bar__nav--mobile-open ::slotted(div[slot="nav"]) {
+    display: flex;
     flex-direction: column;
+    gap: 0;
   }
 
   /* Actions */
@@ -101,8 +103,8 @@
   /* Hamburger Icon */
   .app-bar__menu-icon {
     display: block;
-    inline-size: 1.5rem;
-    block-size: 1.5rem;
+    inline-size: 1.25rem;
+    block-size: 1rem;
     position: relative;
   }
 
@@ -114,27 +116,27 @@
     block-size: 2px;
     inset-inline-start: 0;
     background-color: currentColor;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, inset 0.2s ease;
   }
 
   .app-bar__menu-icon::before {
-    inset-block-start: 0.25rem;
-    box-shadow: 0 0.5rem 0 currentColor;
+    inset-block-start: 0;
+    box-shadow: 0 0.4375rem 0 currentColor;
   }
 
   .app-bar__menu-icon::after {
-    inset-block-end: 0.25rem;
+    inset-block-end: 0;
   }
 
-  /* Animated hamburger to X */
+  /* Animated hamburger to X — both lines move to vertical center then rotate */
   .app-bar__menu-button[aria-expanded="true"] .app-bar__menu-icon::before {
-    inset-block-start: 0.5rem;
+    inset-block-start: calc(50% - 1px);
     transform: rotate(45deg);
     box-shadow: none;
   }
 
   .app-bar__menu-button[aria-expanded="true"] .app-bar__menu-icon::after {
-    inset-block-end: 0.5rem;
+    inset-block-end: calc(50% - 1px);
     transform: rotate(-45deg);
   }
 
@@ -163,7 +165,7 @@
     .app-bar__nav {
       display: flex;
       flex-direction: row;
-      gap: var(--g-theme-spacing-lg);
+      gap: var(--g-theme-spacing-xs, 0.25rem);
       padding: 0;
       border: 0;
       width: auto;
@@ -196,26 +198,19 @@
     }
   }
 
-  /* Slotted content styling helpers */
-  ::slotted(a) {
+  /* Slotted content styling */
+  ::slotted(a[slot="logo"]) {
     color: var(--g-theme-color-content-default);
     text-decoration: none;
-    padding-block: var(--g-theme-spacing-sm);
-    padding-inline: var(--g-theme-spacing-sm);
-    border-radius: var(--g-theme-border-radius-md);
-    transition: color 0.2s ease, background-color 0.2s ease;
     font-family: var(--g-theme-typography-label-font-family);
     font-weight: var(--g-theme-typography-label-font-weight);
   }
 
-  ::slotted(a:hover) {
-    color: var(--g-theme-color-content-default);
-    background-color: var(--g-theme-color-background-subtle-hover);
-  }
-
-  ::slotted(ul) {
+  ::slotted(ul),
+  ::slotted(div[slot="nav"]) {
     display: flex;
     flex-direction: row;
+    gap: var(--g-theme-spacing-xs, 0.25rem);
     margin: 0;
     padding: 0;
     list-style: none;

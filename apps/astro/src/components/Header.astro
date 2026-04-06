@@ -1,6 +1,7 @@
 ---
 import { getLangFromUrl, useTranslations, useTranslatedPath } from '@i18n/utils'
 import { GrantCodesAppBar } from '@grantcodes/ui/components/app-bar/index.js'
+import '@grantcodes/ui/components/app-bar/nav-link.js'
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
@@ -14,10 +15,14 @@ const translatePath = useTranslatedPath(lang)
   
   <ul slot="nav">
     <li>
-      <a href={translatePath('/docs')}>{t('header.docs')}</a>
+      <grantcodes-nav-link>
+        <a href={translatePath('/docs')}>{t('header.docs')}</a>
+      </grantcodes-nav-link>
     </li>
     <li>
-      <a href={translatePath('/blog')}>{t('header.blog')}</a>
+      <grantcodes-nav-link>
+        <a href={translatePath('/blog')}>{t('header.blog')}</a>
+      </grantcodes-nav-link>
     </li>
   </ul>
 </GrantCodesAppBar>
