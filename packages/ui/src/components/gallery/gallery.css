@@ -38,8 +38,6 @@
   display: block;
   width: 100%;
   height: auto;
-  /* Make the image square */
-  aspect-ratio: 1;
   object-fit: cover;
   object-position: center;
 }
@@ -56,6 +54,27 @@
 }
 
 /* =============================================
+   GALLERY-IMAGE DEFAULT STYLES
+   (applied inside grantcodes-gallery-image shadow DOM via :host)
+   ============================================= */
+
+/* Default square crop. :host selector comes after .gallery__image img so
+   wins on equal specificity. Uses custom properties so filmstrip mode can
+   override them via inheritance from the parent gallery element. */
+:host .gallery__image img {
+  aspect-ratio: var(--_gallery-img-aspect-ratio, 1);
+  block-size: var(--_gallery-img-block-size, auto);
+  width: var(--_gallery-img-width, 100%);
+  height: var(--_gallery-img-height, auto);
+  max-inline-size: var(--_gallery-img-max-inline-size, unset);
+}
+
+:host .gallery__image {
+  block-size: var(--_gallery-image-block-size, auto);
+  width: var(--_gallery-image-width, 100%);
+}
+
+/* =============================================
    FILMSTRIP VARIANT
    ============================================= */
 
@@ -64,12 +83,13 @@
    without requiring JS attribute propagation, making the filmstrip work
    correctly with SSR-rendered content. */
 :host([filmstrip]) {
-  --_filmstrip-image-block-size: 100%;
-  --_filmstrip-image-width: fit-content;
-  --_filmstrip-img-block-size: 100%;
-  --_filmstrip-img-width: auto;
-  --_filmstrip-img-aspect-ratio: unset;
-  --_filmstrip-img-max-inline-size: none;
+  --_gallery-image-block-size: 100%;
+  --_gallery-image-width: fit-content;
+  --_gallery-img-aspect-ratio: auto;
+  --_gallery-img-block-size: 100%;
+  --_gallery-img-width: auto;
+  --_gallery-img-height: 100%;
+  --_gallery-img-max-inline-size: none;
 }
 
 :host([filmstrip]) .gallery {
@@ -118,35 +138,4 @@
     opacity: 1;
     scale: 1;
   }
-}
-
-/* Gallery-image filmstrip styles. These rules live in the gallery-image
-   shadow DOM context (:host = grantcodes-gallery-image). They read the
-   --_filmstrip-* custom properties inherited from the parent gallery
-   component, so they work without a filmstrip attribute on the image
-   element itself. The [filmstrip] attribute selector is kept as a
-   fallback for direct attribute usage. */
-:host .gallery__image {
-  block-size: var(--_filmstrip-image-block-size, auto);
-  width: var(--_filmstrip-image-width, 100%);
-}
-
-:host .gallery__image img {
-  block-size: var(--_filmstrip-img-block-size, auto);
-  width: var(--_filmstrip-img-width, 100%);
-  aspect-ratio: var(--_filmstrip-img-aspect-ratio, 1);
-  max-inline-size: var(--_filmstrip-img-max-inline-size, unset);
-}
-
-/* Attribute-based fallback (e.g. filmstrip set directly on the image) */
-:host([filmstrip]) .gallery__image {
-  block-size: 100%;
-  width: fit-content;
-}
-
-:host([filmstrip]) .gallery__image img {
-  block-size: 100%;
-  width: auto;
-  aspect-ratio: unset;
-  max-inline-size: none;
 }
