@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.8.1](https://github.com/grantcodes/ui/compare/ui-v2.8.0...ui-v2.8.1) (2026-04-07)
+
+
+### Bug Fixes
+
+* **gallery:** filmstrip images should fill height with auto width, not square crop ([62d436f](https://github.com/grantcodes/ui/commit/62d436fe75f42c6d99c380c9d4384e53a97abef1))
+* **gallery:** SSR-safe filmstrip variant with variant prop refactor ([2af368c](https://github.com/grantcodes/ui/commit/2af368cba60b55021f563a06c1416219abb0b024))
+* **gallery:** use CSS custom properties for filmstrip styles instead of JS attribute propagation ([f83efcf](https://github.com/grantcodes/ui/commit/f83efcfcf24a896dcdcb943b5988a9daefcf8947))
+
 ## [2.8.0](https://github.com/grantcodes/ui/compare/ui-v2.7.0...ui-v2.8.0) (2026-04-07)
 
 
