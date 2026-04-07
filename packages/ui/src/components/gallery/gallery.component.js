@@ -6,7 +6,7 @@ export class GrantCodesGallery extends LitElement {
 	static styles = [galleryStyles];
 
 	static properties = {
-		filmstrip: { type: Boolean, reflect: true },
+		variant: { type: String, reflect: true },
 	};
 
 	/** @type {any[]} */
@@ -14,7 +14,7 @@ export class GrantCodesGallery extends LitElement {
 
 	constructor() {
 		super();
-		this.filmstrip = false;
+		this.variant = "default";
 	}
 
 	render() {

@@ -82,7 +82,7 @@
    mode. These cascade down to slotted grantcodes-gallery-image children
    without requiring JS attribute propagation, making the filmstrip work
    correctly with SSR-rendered content. */
-:host([filmstrip]) {
+:host([variant="filmstrip"]) {
   --_gallery-image-block-size: 100%;
   --_gallery-image-width: fit-content;
   --_gallery-img-aspect-ratio: auto;
@@ -92,11 +92,11 @@
   --_gallery-img-max-inline-size: none;
 }
 
-:host([filmstrip]) .gallery {
+:host([variant="filmstrip"]) .gallery {
   overflow: hidden;
 }
 
-:host([filmstrip]) .gallery__slot {
+:host([variant="filmstrip"]) .gallery__slot {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
@@ -108,11 +108,11 @@
   scrollbar-width: none;
 }
 
-:host([filmstrip]) .gallery__slot::-webkit-scrollbar {
+:host([variant="filmstrip"]) .gallery__slot::-webkit-scrollbar {
   display: none;
 }
 
-:host([filmstrip]) .gallery__slot::slotted(*) {
+:host([variant="filmstrip"]) .gallery__slot::slotted(*) {
   flex: 0 0 auto;
   block-size: 100%;
   scroll-snap-align: start;
@@ -121,7 +121,7 @@
 /* Scroll-driven reveal animation */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
-    :host([filmstrip]) .gallery__slot::slotted(*) {
+    :host([variant="filmstrip"]) .gallery__slot::slotted(*) {
       animation: filmstrip-reveal linear both;
       animation-timeline: view(inline);
       animation-range: entry 0% entry 60%;

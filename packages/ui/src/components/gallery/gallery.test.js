@@ -66,18 +66,19 @@ describe("Gallery Component", () => {
 			cleanup(element);
 		});
 
-		it("should have filmstrip property default to false", async () => {
+		it("should have variant property default to 'default'", async () => {
 			element = await fixture("grantcodes-gallery");
-			assert.strictEqual(element.filmstrip, false, "filmstrip should default to false");
+			assert.strictEqual(element.variant, "default", "variant should default to 'default'");
 		});
 
-		it("should reflect filmstrip attribute when property is set", async () => {
+		it("should reflect variant attribute when property is set", async () => {
 			element = await fixture("grantcodes-gallery");
-			element.filmstrip = true;
+			element.variant = "filmstrip";
 			await element.updateComplete;
-			assert.ok(
-				element.hasAttribute("filmstrip"),
-				"filmstrip attribute should be reflected",
+			assert.strictEqual(
+				element.getAttribute("variant"),
+				"filmstrip",
+				"variant attribute should be reflected",
 			);
 		});
 	});

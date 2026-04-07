@@ -77,7 +77,7 @@ const filmstripImages = [
 
 export const Filmstrip = {
 	args: {
-		filmstrip: true,
+		variant: "filmstrip",
 	},
 	render: (args) =>
 		template(
