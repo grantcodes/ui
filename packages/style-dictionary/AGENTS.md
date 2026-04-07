@@ -27,9 +27,9 @@ tokens/
 
 ### Tier System
 
-- **Tier 1** - Primitive/base tokens (colors, spacing, typography)
-- **Tier 2** - Usage tokens (semantic, component-level)
-- **Tier 3** - Component-specific tokens
+- **Tier 1** - Primitive/base tokens (colors, spacing, typography). Raw values (e.g. `oklch(...)`, `#hex`, `16px`) are **only** defined here.
+- **Tier 2** - Usage/semantic tokens. **Must only reference tier-1 tokens** (e.g. `{color.brand.blue.500}`). Never define raw color/spacing/font values directly — if the value you need doesn't exist in tier 1, add it there first, then reference it.
+- **Tier 3** - Component-specific tokens. **Must only reference tier-1 or tier-2 tokens.** Same rule: no raw values.
 
 ## Exports
 

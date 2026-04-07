@@ -2,13 +2,13 @@
 	"color": {
 		"border": {
 		"default": {
-			"value": "oklch(0.90 0.018 270)"
+			"value": "{color.brand.cool-cream.400}"
 		},
 		"default-hover": {
 			"value": "{color.brand.cream.600}"
 		},
 		"subtle": {
-			"value": "oklch(0.93 0.014 270)"
+			"value": "{color.brand.cool-cream.300}"
 		},
 			"strong": {
 				"value": "{color.brand.navy.500}"

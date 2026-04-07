@@ -2,13 +2,13 @@
 	"color": {
 		"background": {
 		"default": {
-			"value": "oklch(0.975 0.008 270)"
+			"value": "{color.brand.cool-cream.100}"
 		},
 		"default-hover": {
 			"value": "{color.brand.cream.300}"
 		},
 		"subtle": {
-			"value": "oklch(0.955 0.012 270)"
+			"value": "{color.brand.cool-cream.200}"
 		},
 			"subtle-hover": {
 				"value": "{color.brand.cream.300}"
