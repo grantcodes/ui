@@ -59,6 +59,21 @@ export default meta;
 
 export const Gallery = {};
 
+const filmstripImages = [
+	{ w: 400, h: 240 },
+	{ w: 160, h: 240 },
+	{ w: 360, h: 240 },
+	{ w: 180, h: 240 },
+	{ w: 420, h: 240 },
+	{ w: 160, h: 240 },
+	{ w: 380, h: 240 },
+	{ w: 200, h: 240 },
+	{ w: 440, h: 240 },
+	{ w: 160, h: 240 },
+	{ w: 350, h: 240 },
+	{ w: 170, h: 240 },
+];
+
 export const Filmstrip = {
 	args: {
 		filmstrip: true,
@@ -66,14 +81,13 @@ export const Filmstrip = {
 	render: (args) =>
 		template(
 			args,
-			html`${Array.from(
-				{ length: 10 },
-				(_, i) =>
+			html`${filmstripImages.map(
+				({ w, h }, i) =>
 					html`<grantcodes-gallery-image
-						src="https://picsum.photos/seed/${i + 10}/400/240"
+						src="https://picsum.photos/seed/${i + 10}/${w}/${h}"
 						alt="Photo ${i + 1}"
-						width="400"
-						height="240"
+						width="${w}"
+						height="${h}"
 					></grantcodes-gallery-image>`,
 			)}`,
 		),
@@ -87,6 +101,25 @@ export const Filmstrip = {
 	},
 };
 
+const marqueeImages = [
+	{ w: 360, h: 240 },
+	{ w: 160, h: 240 },
+	{ w: 400, h: 240 },
+	{ w: 170, h: 240 },
+	{ w: 320, h: 240 },
+	{ w: 180, h: 240 },
+	{ w: 380, h: 240 },
+	{ w: 160, h: 240 },
+	{ w: 420, h: 240 },
+	{ w: 175, h: 240 },
+	{ w: 340, h: 240 },
+	{ w: 165, h: 240 },
+	{ w: 390, h: 240 },
+	{ w: 160, h: 240 },
+	{ w: 360, h: 240 },
+	{ w: 180, h: 240 },
+];
+
 export const Marquee = {
 	args: {
 		filmstrip: true,
@@ -95,14 +128,13 @@ export const Marquee = {
 	render: (args) =>
 		template(
 			args,
-			html`${Array.from(
-				{ length: 16 },
-				(_, i) =>
+			html`${marqueeImages.map(
+				({ w, h }, i) =>
 					html`<grantcodes-gallery-image
-						src="https://picsum.photos/seed/${i + 20}/320/240"
+						src="https://picsum.photos/seed/${i + 20}/${w}/${h}"
 						alt="Photo ${i + 1}"
-						width="320"
-						height="240"
+						width="${w}"
+						height="${h}"
 					></grantcodes-gallery-image>`,
 			)}`,
 		),
