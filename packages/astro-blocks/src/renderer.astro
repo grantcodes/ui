@@ -11,8 +11,9 @@ import LogoCloud from './logo-cloud.astro'
 import Testimonials from './testimonials.astro'
 import Pricing from './pricing.astro'
 import Newsletter from './newsletter.astro'
-
 import MediaText from './media-text.astro'
+import MapEmbed from './map.astro'
+import Countdown from './countdown.astro'
 
 interface Block {
   type:
@@ -29,6 +30,8 @@ interface Block {
     | 'pricing'
     | 'newsletter'
     | 'media-text'
+    | 'map'
+    | 'countdown'
   [key: string]: unknown
 }
 
@@ -139,6 +142,29 @@ const { block } = Astro.props
           media={block.media as { src: string; alt?: string; kind?: 'image' | 'video' }}
           reverse={block.reverse as boolean | undefined}
           cta={block.cta as { label: string; href: string } | undefined}
+        />
+      )
+    case 'map':
+      return (
+        <MapEmbed
+          lat={block.lat as number | string}
+          lng={block.lng as number | string}
+          zoom={block.zoom as number | undefined}
+          label={block.label as string | undefined}
+          directionsUrl={block.directionsUrl as string | undefined}
+          height={block.height as string | undefined}
+        />
+      )
+    case 'countdown':
+      return (
+        <Countdown
+          target={block.target as string}
+          daysLabel={block.daysLabel as string | undefined}
+          hoursLabel={block.hoursLabel as string | undefined}
+          minutesLabel={block.minutesLabel as string | undefined}
+          secondsLabel={block.secondsLabel as string | undefined}
+          pastMessage={block.pastMessage as string | undefined}
+          showSeconds={block.showSeconds as boolean | undefined}
         />
       )
     default:

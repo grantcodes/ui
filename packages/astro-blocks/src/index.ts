@@ -1,11 +1,12 @@
 export { default as Accordion } from './accordion.astro';
 export { default as Cards } from './cards.astro';
-
+export { default as Countdown } from './countdown.astro';
 export { default as Cta } from './cta.astro';
 export { default as FeatureList } from './feature-list.astro';
 export { default as Gallery } from './gallery.astro';
 export { default as Hero } from './hero.astro';
 export { default as LogoCloud } from './logo-cloud.astro';
+export { default as MapEmbed } from './map.astro';
 export { default as MediaText } from './media-text.astro';
 export { default as Newsletter } from './newsletter.astro';
 export { default as Pricing } from './pricing.astro';
