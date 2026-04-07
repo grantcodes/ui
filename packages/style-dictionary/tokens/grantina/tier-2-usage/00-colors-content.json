@@ -1,15 +1,15 @@
 {
 	"color": {
 		"content": {
-			"default": {
-				"value": "{color.brand.navy.500}"
-			},
-			"default-hover": {
-				"value": "{color.brand.navy.700}"
-			},
-			"subtle": {
-				"value": "{color.brand.navy.300}"
-			},
+		"default": {
+			"value": "oklch(0.24 0.045 274)"
+		},
+		"default-hover": {
+			"value": "{color.brand.navy.700}"
+		},
+		"subtle": {
+			"value": "oklch(0.65 0.04 274)"
+		},
 			"knockout": {
 				"value": "{color.brand.cream.100}"
 			},

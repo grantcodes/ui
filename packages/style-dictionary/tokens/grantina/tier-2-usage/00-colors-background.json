@@ -1,15 +1,15 @@
 {
 	"color": {
 		"background": {
-			"default": {
-				"value": "{color.brand.cream.100}"
-			},
-			"default-hover": {
-				"value": "{color.brand.cream.300}"
-			},
-			"subtle": {
-				"value": "{color.brand.cream.200}"
-			},
+		"default": {
+			"value": "oklch(0.975 0.008 270)"
+		},
+		"default-hover": {
+			"value": "{color.brand.cream.300}"
+		},
+		"subtle": {
+			"value": "oklch(0.955 0.012 270)"
+		},
 			"subtle-hover": {
 				"value": "{color.brand.cream.300}"
 			},
