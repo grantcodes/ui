@@ -59,7 +59,19 @@
    FILMSTRIP VARIANT
    ============================================= */
 
-/* Gallery container in filmstrip mode */
+/* Set inherited CSS custom properties on the gallery host when in filmstrip
+   mode. These cascade down to slotted grantcodes-gallery-image children
+   without requiring JS attribute propagation, making the filmstrip work
+   correctly with SSR-rendered content. */
+:host([filmstrip]) {
+  --_filmstrip-image-block-size: 100%;
+  --_filmstrip-image-width: fit-content;
+  --_filmstrip-img-block-size: 100%;
+  --_filmstrip-img-width: auto;
+  --_filmstrip-img-aspect-ratio: unset;
+  --_filmstrip-img-max-inline-size: none;
+}
+
 :host([filmstrip]) .gallery {
   overflow: hidden;
 }
@@ -108,7 +120,25 @@
   }
 }
 
-/* Gallery-image host in filmstrip mode */
+/* Gallery-image filmstrip styles. These rules live in the gallery-image
+   shadow DOM context (:host = grantcodes-gallery-image). They read the
+   --_filmstrip-* custom properties inherited from the parent gallery
+   component, so they work without a filmstrip attribute on the image
+   element itself. The [filmstrip] attribute selector is kept as a
+   fallback for direct attribute usage. */
+:host .gallery__image {
+  block-size: var(--_filmstrip-image-block-size, auto);
+  width: var(--_filmstrip-image-width, 100%);
+}
+
+:host .gallery__image img {
+  block-size: var(--_filmstrip-img-block-size, auto);
+  width: var(--_filmstrip-img-width, 100%);
+  aspect-ratio: var(--_filmstrip-img-aspect-ratio, 1);
+  max-inline-size: var(--_filmstrip-img-max-inline-size, unset);
+}
+
+/* Attribute-based fallback (e.g. filmstrip set directly on the image) */
 :host([filmstrip]) .gallery__image {
   block-size: 100%;
   width: fit-content;
@@ -119,7 +149,4 @@
   width: auto;
   aspect-ratio: unset;
   max-inline-size: none;
-  object-fit: cover;
-  object-position: center;
 }
-
