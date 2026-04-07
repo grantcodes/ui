@@ -58,3 +58,45 @@ const meta = {
 export default meta;
 
 export const Gallery = {};
+
+const filmstripImages = [
+	{ w: 400, h: 240 },
+	{ w: 160, h: 240 },
+	{ w: 360, h: 240 },
+	{ w: 180, h: 240 },
+	{ w: 420, h: 240 },
+	{ w: 160, h: 240 },
+	{ w: 380, h: 240 },
+	{ w: 200, h: 240 },
+	{ w: 440, h: 240 },
+	{ w: 160, h: 240 },
+	{ w: 350, h: 240 },
+	{ w: 170, h: 240 },
+];
+
+export const Filmstrip = {
+	args: {
+		filmstrip: true,
+	},
+	render: (args) =>
+		template(
+			args,
+			html`${filmstripImages.map(
+				({ w, h }, i) =>
+					html`<grantcodes-gallery-image
+						src="https://picsum.photos/seed/${i + 10}/${w}/${h}"
+						alt="Photo ${i + 1}"
+						width="${w}"
+						height="${h}"
+					></grantcodes-gallery-image>`,
+			)}`,
+		),
+	parameters: {
+		docs: {
+			description: {
+				story:
+					"Filmstrip variant: images in a scrollable horizontal row at uniform height. Uses scroll-snap and scroll-driven animations.",
+			},
+		},
+	},
+};

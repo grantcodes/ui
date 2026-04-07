@@ -12,6 +12,7 @@ export class GrantCodesGalleryImage extends LitElement {
 		alt: { type: String },
 		caption: { type: String },
 		thumbnail: { type: String },
+		filmstrip: { type: Boolean, reflect: true },
 	};
 
 	constructor() {
@@ -23,6 +24,7 @@ export class GrantCodesGalleryImage extends LitElement {
 		this.alt = "";
 		this.caption = "";
 		this.thumbnail = "";
+		this.filmstrip = false;
 	}
 
 	captionTemplate() {

@@ -2,6 +2,7 @@ import { describe, it, afterEach } from "node:test";
 import { strict as assert } from "node:assert";
 import { fixture, cleanup } from "../../test-utils/index.js";
 import "./gallery.js";
+import "./gallery-image.js";
 
 describe("Gallery Component", () => {
 	let element;
@@ -56,5 +57,28 @@ describe("Gallery Component", () => {
 			0,
 			"Images array should be empty initially",
 		);
+	});
+
+	describe("Gallery filmstrip variant", () => {
+		let element;
+
+		afterEach(() => {
+			cleanup(element);
+		});
+
+		it("should have filmstrip property default to false", async () => {
+			element = await fixture("grantcodes-gallery");
+			assert.strictEqual(element.filmstrip, false, "filmstrip should default to false");
+		});
+
+		it("should reflect filmstrip attribute when property is set", async () => {
+			element = await fixture("grantcodes-gallery");
+			element.filmstrip = true;
+			await element.updateComplete;
+			assert.ok(
+				element.hasAttribute("filmstrip"),
+				"filmstrip attribute should be reflected",
+			);
+		});
 	});
 });
