@@ -3,17 +3,48 @@ import { html } from "lit/static-html.js";
 import galleryStyles from "./gallery.css" with { type: "css" };
 
 export class GrantCodesGallery extends LitElement {
-	// Styles are scoped to this element: they won't conflict with styles
-	// on the main page or in other components. Styling API can be exposed
-	// via CSS custom properties.
 	static styles = [galleryStyles];
+
+	static properties = {
+		filmstrip: { type: Boolean, reflect: true },
+		marquee: { type: Boolean, reflect: true },
+	};
 
 	/** @type {any[]} */
 	images = [];
 
-	// Define reactive properties--updating a reactive property causes
-	// the component to update.
-	// @property() label = 'Button Label'
+	constructor() {
+		super();
+		this.filmstrip = false;
+		this.marquee = false;
+	}
+
+	firstUpdated() {
+		const slot = this.renderRoot.querySelector(".gallery__slot");
+		if (slot) {
+			slot.addEventListener("slotchange", () => this._updateChildren());
+			this._updateChildren();
+		}
+	}
+
+	updated(changedProperties) {
+		if (changedProperties.has("filmstrip")) {
+			this._updateChildren();
+		}
+	}
+
+	_updateChildren() {
+		const slot = this.renderRoot.querySelector(".gallery__slot");
+		if (!slot) return;
+		const assigned = slot.assignedElements({ flatten: true });
+		for (const el of assigned) {
+			if (this.filmstrip) {
+				el.setAttribute("filmstrip", "");
+			} else {
+				el.removeAttribute("filmstrip");
+			}
+		}
+	}
 
 	render() {
 		return html`

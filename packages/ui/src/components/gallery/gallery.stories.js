@@ -58,3 +58,60 @@ const meta = {
 export default meta;
 
 export const Gallery = {};
+
+export const Filmstrip = {
+	args: {
+		filmstrip: true,
+	},
+	render: (args) =>
+		template(
+			args,
+			html`${Array.from(
+				{ length: 10 },
+				(_, i) =>
+					html`<grantcodes-gallery-image
+						src="https://picsum.photos/seed/${i + 10}/400/240"
+						alt="Photo ${i + 1}"
+						width="400"
+						height="240"
+					></grantcodes-gallery-image>`,
+			)}`,
+		),
+	parameters: {
+		docs: {
+			description: {
+				story:
+					"Filmstrip variant: images in a scrollable horizontal row at uniform height. Uses scroll-snap and scroll-driven animations.",
+			},
+		},
+	},
+};
+
+export const Marquee = {
+	args: {
+		filmstrip: true,
+		marquee: true,
+	},
+	render: (args) =>
+		template(
+			args,
+			html`${Array.from(
+				{ length: 16 },
+				(_, i) =>
+					html`<grantcodes-gallery-image
+						src="https://picsum.photos/seed/${i + 20}/320/240"
+						alt="Photo ${i + 1}"
+						width="320"
+						height="240"
+					></grantcodes-gallery-image>`,
+			)}`,
+		),
+	parameters: {
+		docs: {
+			description: {
+				story:
+					"Marquee variant: filmstrip auto-scrolls left-to-right and back. Hover to pause. Animation disabled when prefers-reduced-motion is set.",
+			},
+		},
+	},
+};

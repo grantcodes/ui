@@ -55,3 +55,95 @@
   color: white;
 }
 
+/* =============================================
+   FILMSTRIP VARIANT
+   ============================================= */
+
+/* Gallery container in filmstrip mode */
+:host([filmstrip]) .gallery {
+  container-type: inline-size;
+  overflow: hidden;
+}
+
+:host([filmstrip]) .gallery__slot {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  block-size: var(--filmstrip-height, 240px);
+  gap: var(--gallery-gap, 4px);
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+
+:host([filmstrip]) .gallery__slot::-webkit-scrollbar {
+  display: none;
+}
+
+:host([filmstrip]) .gallery__slot::slotted(*) {
+  flex: 0 0 auto;
+  block-size: 100%;
+  scroll-snap-align: start;
+}
+
+/* Scroll-driven reveal animation */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    :host([filmstrip]) .gallery__slot::slotted(*) {
+      animation: filmstrip-reveal linear both;
+      animation-timeline: view(inline);
+      animation-range: entry 0% entry 60%;
+    }
+  }
+}
+
+@keyframes filmstrip-reveal {
+  from {
+    opacity: 0.3;
+    scale: 0.92;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+/* Marquee auto-scroll variant */
+@media (prefers-reduced-motion: no-preference) {
+  :host([filmstrip][marquee]) .gallery__slot {
+    animation: gallery-marquee var(--marquee-duration, 20s) linear infinite alternate;
+    overflow: hidden;
+    scroll-snap-type: none;
+  }
+
+  :host([filmstrip][marquee]):hover .gallery__slot,
+  :host([filmstrip][marquee]):focus-within .gallery__slot {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes gallery-marquee {
+  from {
+    translate: 0;
+  }
+  to {
+    translate: calc(-1 * (100% - 100cqw));
+  }
+}
+
+/* Gallery-image host in filmstrip mode */
+:host([filmstrip]) .gallery__image {
+  block-size: 100%;
+  width: fit-content;
+}
+
+:host([filmstrip]) .gallery__image img {
+  block-size: 100%;
+  width: auto;
+  aspect-ratio: unset;
+  max-inline-size: none;
+  object-fit: cover;
+  object-position: center;
+}
+
