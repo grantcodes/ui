@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.8.0](https://github.com/grantcodes/ui/compare/ui-v2.7.0...ui-v2.8.0) (2026-04-07)
+
+
+### Features
+
+* **09-gallery-film-strip:** add filmstrip and marquee gallery variants ([0a4ff3e](https://github.com/grantcodes/ui/commit/0a4ff3e620bc21a6d291943acc72608d1c08d371))
+* **ui:** gallery filmstrip variant ([d22a93d](https://github.com/grantcodes/ui/commit/d22a93d615874ca76fcf7525ea8d1dfa71721e2b))
+
 ## [2.7.0](https://github.com/grantcodes/ui/compare/ui-v2.6.0...ui-v2.7.0) (2026-04-06)
 
 
