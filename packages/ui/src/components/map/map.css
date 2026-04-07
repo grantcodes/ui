@@ -1,0 +1,41 @@
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  :host {
+    display: block;
+  }
+
+  .map {
+    position: relative;
+    border: 1px solid var(--g-theme-color-border-default);
+    border-radius: var(--g-theme-border-radius-md, 0.5rem);
+    overflow: hidden;
+  }
+
+  .map__iframe {
+    display: block;
+    vertical-align: top;
+    width: 100%;
+    height: var(--map-height, 21rem);
+    border: 0;
+    filter: var(--g-map-filter, none);
+  }
+
+  .map__directions {
+    display: block;
+    padding: var(--g-theme-spacing-sm) var(--g-theme-spacing-md);
+    font-size: var(--g-theme-typography-body-sm-font-size);
+    color: var(--g-theme-color-content-brand, #7c3aed);
+    text-decoration: none;
+    border-block-start: 1px solid var(--g-theme-color-border-default);
+    background: var(--g-theme-color-background-subtle);
+    transition: background-color 0.2s ease;
+  }
+
+  .map__directions:hover {
+    background: var(--g-theme-color-background-subtle-hover);
+    text-decoration: underline;
+  }

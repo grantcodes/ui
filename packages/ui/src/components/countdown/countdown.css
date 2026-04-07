@@ -1,0 +1,62 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+:host {
+	display: block;
+}
+
+.countdown {
+	display: flex;
+	justify-content: center;
+	gap: var(--g-theme-spacing-lg, 2rem);
+	padding: var(--g-theme-spacing-lg, 2rem) var(--g-theme-spacing-md, 1rem);
+	text-align: center;
+}
+
+.countdown__unit {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--g-theme-spacing-xs, 0.25rem);
+}
+
+.countdown__value {
+	font-size: var(--g-theme-typography-h1-font-size, 6.25rem);
+	font-weight: var(--g-theme-typography-h1-font-weight, 900);
+	line-height: var(--g-theme-typography-h1-line-height, 1.1);
+	color: var(--g-theme-color-content-default);
+	font-variant-numeric: tabular-nums;
+}
+
+.countdown__value--flip {
+	animation: countdown-flip 0.35s ease-out;
+}
+
+.countdown__label {
+	font-size: var(--g-theme-typography-body-sm-font-size, 0.875rem);
+	color: var(--g-theme-color-content-secondary);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.countdown__past {
+	font-size: var(--g-theme-typography-h2-font-size, 3rem);
+	font-weight: var(--g-theme-typography-h2-font-weight, 900);
+	color: var(--g-theme-color-content-default);
+	text-align: center;
+	padding: var(--g-theme-spacing-lg, 2rem) var(--g-theme-spacing-md, 1rem);
+}
+
+@keyframes countdown-flip {
+	0% {
+		opacity: 0;
+		transform: translateY(0.25em);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}

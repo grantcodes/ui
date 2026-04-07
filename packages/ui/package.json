@@ -1,22 +1,22 @@
 {
   "name": "@grantcodes/ui",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "description": "A personal component system built with Lit web components",
   "type": "module",
   "main": "src/main.js",
   "module": "src/main.js",
-  "types": "src/main.d.ts",
+  "types": "src/types.d.ts",
   "author": "grantcodes",
   "imports": {
     "#styles/*": "./src/lib/styles/*"
   },
   "exports": {
     ".": {
-      "types": "./src/main.d.ts",
+      "types": "./src/types.d.ts",
       "import": "./src/main.js"
     },
     "./icons": {
-      "types": "./src/icons.d.ts",
+      "types": "./src/types.d.ts",
       "import": "./src/icons.js"
     },
     "./styles/base.css": {

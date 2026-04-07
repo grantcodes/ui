@@ -1,4 +1,5 @@
 import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
+import { html } from "lit";
 import "./hero.js";
 
 const { events, args, argTypes } = getStorybookHelpers("grantcodes-hero");
@@ -29,6 +30,35 @@ export const Default = {
 		href: "/docs",
 		size: "md",
 	},
+};
+
+/**
+ * Centered hero — explicitly center-aligns text content.
+ */
+export const Centered = {
+	args: {
+		title: "Build something great",
+		subtitle: "A personal web component library with a custom design system.",
+		button: "Get started",
+		href: "/docs",
+		size: "md",
+		center: true,
+	},
+};
+
+/**
+ * Hero with slotted content — custom HTML inside the hero.
+ */
+export const WithSlottedContent = {
+	render: () => html`
+		<grantcodes-hero
+			title="Event countdown"
+			subtitle="Something exciting is coming soon."
+			center
+		>
+			<p style="font-size: 1.5rem; margin-top: 1rem;">Custom slotted content here</p>
+		</grantcodes-hero>
+	`,
 };
 
 /**
