@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.4.2](https://github.com/grantcodes/ui/compare/style-dictionary-v1.4.1...style-dictionary-v1.4.2) (2026-04-07)
+
+
+### Bug Fixes
+
+* **quick-260407-glu:** improve dark mode link contrast and add subtle primary tint to light mode ([1830c5d](https://github.com/grantcodes/ui/commit/1830c5d22bb9cb3c741cd9133895ecd972fc08a3))
+* **style-dictionary:** bump grantina border colors up one scale step ([c2b3d8c](https://github.com/grantcodes/ui/commit/c2b3d8cd33a873b00dc96def9e6e23d329059cdf))
+* **style-dictionary:** grantina theme token tweaks ([f7789c5](https://github.com/grantcodes/ui/commit/f7789c5936d0e7128d71a8f32c5f009cb68c5f6c))
+* **style-dictionary:** move raw oklch values from tier-2 to tier-1 tokens ([799010f](https://github.com/grantcodes/ui/commit/799010f3d75b116775c438f17724e18c81d15236))
+* **style-dictionary:** revert grantina borders back to blue palette ([2d0b400](https://github.com/grantcodes/ui/commit/2d0b400d300ae2d9fa5e13079810e2254906d644))
+* **style-dictionary:** switch grantina borders from blue to navy palette ([e347c9c](https://github.com/grantcodes/ui/commit/e347c9cdea058069557a41c98f2d3f66f98dedca))
+* **style-dictionary:** use blue palette for grantina light mode backgrounds and borders ([fbc03a8](https://github.com/grantcodes/ui/commit/fbc03a821645174a200cff9ef98f57dfd7f6dfd7))
+* **style-dictionary:** use existing navy/blue tier-1 tokens instead of bespoke palettes ([354e113](https://github.com/grantcodes/ui/commit/354e113316ab09a5405fa4a5b62fcb03034b1054))
+* **style-dictionary:** use navy.300/200 for grantina borders ([da6ebd2](https://github.com/grantcodes/ui/commit/da6ebd2c3b3dbe920c4f69a1afe9c65fa8621572))
+
 ## [1.4.1](https://github.com/grantcodes/ui/compare/style-dictionary-v1.4.0...style-dictionary-v1.4.1) (2026-04-05)
 
 
