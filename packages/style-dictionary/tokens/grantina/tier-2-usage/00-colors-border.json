@@ -2,13 +2,13 @@
 	"color": {
 		"border": {
 		"default": {
-			"value": "{color.brand.blue.200}"
+			"value": "{color.brand.navy.200}"
 		},
 		"default-hover": {
-			"value": "{color.brand.blue.300}"
+			"value": "{color.brand.navy.300}"
 		},
 		"subtle": {
-			"value": "{color.brand.blue.300}"
+			"value": "{color.brand.navy.300}"
 		},
 			"strong": {
 				"value": "{color.brand.navy.500}"
