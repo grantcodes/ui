@@ -1,17 +1,17 @@
 {
 	"color": {
 		"background": {
-			"default": {
-				"value": "{color.brand.cream.100}"
-			},
-			"default-hover": {
-				"value": "{color.brand.cream.300}"
-			},
-			"subtle": {
-				"value": "{color.brand.cream.200}"
-			},
+		"default": {
+			"value": "{color.brand.blue.100}"
+		},
+		"default-hover": {
+			"value": "{color.brand.navy.200}"
+		},
+		"subtle": {
+			"value": "{color.brand.blue.200}"
+		},
 			"subtle-hover": {
-				"value": "{color.brand.cream.300}"
+				"value": "{color.brand.blue.300}"
 			},
 			"knockout": {
 				"value": "{color.brand.navy.500}"
