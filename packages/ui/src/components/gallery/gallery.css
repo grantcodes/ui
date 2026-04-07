@@ -61,7 +61,6 @@
 
 /* Gallery container in filmstrip mode */
 :host([filmstrip]) .gallery {
-  container-type: inline-size;
   overflow: hidden;
 }
 
@@ -106,29 +105,6 @@
   to {
     opacity: 1;
     scale: 1;
-  }
-}
-
-/* Marquee auto-scroll variant */
-@media (prefers-reduced-motion: no-preference) {
-  :host([filmstrip][marquee]) .gallery__slot {
-    animation: gallery-marquee var(--marquee-duration, 20s) linear infinite alternate;
-    overflow: hidden;
-    scroll-snap-type: none;
-  }
-
-  :host([filmstrip][marquee]):hover .gallery__slot,
-  :host([filmstrip][marquee]):focus-within .gallery__slot {
-    animation-play-state: paused;
-  }
-}
-
-@keyframes gallery-marquee {
-  from {
-    translate: 0;
-  }
-  to {
-    translate: calc(-1 * (100% - 100cqw));
   }
 }
 

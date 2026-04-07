@@ -80,20 +80,5 @@ describe("Gallery Component", () => {
 				"filmstrip attribute should be reflected",
 			);
 		});
-
-		it("should have marquee property default to false", async () => {
-			element = await fixture("grantcodes-gallery");
-			assert.strictEqual(element.marquee, false, "marquee should default to false");
-		});
-
-		it("should reflect marquee attribute when property is set", async () => {
-			element = await fixture("grantcodes-gallery");
-			element.marquee = true;
-			await element.updateComplete;
-			assert.ok(
-				element.hasAttribute("marquee"),
-				"marquee attribute should be reflected",
-			);
-		});
 	});
 });

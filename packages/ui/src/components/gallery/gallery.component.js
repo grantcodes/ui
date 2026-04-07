@@ -7,7 +7,6 @@ export class GrantCodesGallery extends LitElement {
 
 	static properties = {
 		filmstrip: { type: Boolean, reflect: true },
-		marquee: { type: Boolean, reflect: true },
 	};
 
 	/** @type {any[]} */
@@ -16,7 +15,6 @@ export class GrantCodesGallery extends LitElement {
 	constructor() {
 		super();
 		this.filmstrip = false;
-		this.marquee = false;
 	}
 
 	firstUpdated() {
