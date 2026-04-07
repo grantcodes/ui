@@ -2,13 +2,13 @@
 	"color": {
 		"content": {
 		"default": {
-			"value": "{color.brand.blue-navy.500}"
+			"value": "{color.brand.navy.500}"
 		},
 		"default-hover": {
 			"value": "{color.brand.navy.700}"
 		},
 		"subtle": {
-			"value": "{color.brand.blue-navy.300}"
+			"value": "{color.brand.navy.300}"
 		},
 			"knockout": {
 				"value": "{color.brand.cream.100}"

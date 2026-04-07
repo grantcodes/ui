@@ -2,13 +2,13 @@
 	"color": {
 		"background": {
 		"default": {
-			"value": "{color.brand.cool-cream.100}"
+			"value": "{color.brand.navy.100}"
 		},
 		"default-hover": {
 			"value": "{color.brand.cream.300}"
 		},
 		"subtle": {
-			"value": "{color.brand.cool-cream.200}"
+			"value": "{color.brand.blue.100}"
 		},
 			"subtle-hover": {
 				"value": "{color.brand.cream.300}"
