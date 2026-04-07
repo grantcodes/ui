@@ -6,7 +6,7 @@ export class GrantCodesGallery extends LitElement {
 	static styles = [galleryStyles];
 
 	static properties = {
-		filmstrip: { type: Boolean, reflect: true },
+		variant: { type: String, reflect: true },
 	};
 
 	/** @type {any[]} */
@@ -14,34 +14,7 @@ export class GrantCodesGallery extends LitElement {
 
 	constructor() {
 		super();
-		this.filmstrip = false;
-	}
-
-	firstUpdated() {
-		const slot = this.renderRoot.querySelector(".gallery__slot");
-		if (slot) {
-			slot.addEventListener("slotchange", () => this._updateChildren());
-			this._updateChildren();
-		}
-	}
-
-	updated(changedProperties) {
-		if (changedProperties.has("filmstrip")) {
-			this._updateChildren();
-		}
-	}
-
-	_updateChildren() {
-		const slot = this.renderRoot.querySelector(".gallery__slot");
-		if (!slot) return;
-		const assigned = slot.assignedElements({ flatten: true });
-		for (const el of assigned) {
-			if (this.filmstrip) {
-				el.setAttribute("filmstrip", "");
-			} else {
-				el.removeAttribute("filmstrip");
-			}
-		}
+		this.variant = "default";
 	}
 
 	render() {

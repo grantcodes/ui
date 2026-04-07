@@ -38,8 +38,6 @@
   display: block;
   width: 100%;
   height: auto;
-  /* Make the image square */
-  aspect-ratio: 1;
   object-fit: cover;
   object-position: center;
 }
@@ -56,15 +54,49 @@
 }
 
 /* =============================================
+   GALLERY-IMAGE DEFAULT STYLES
+   (applied inside grantcodes-gallery-image shadow DOM via :host)
+   ============================================= */
+
+/* Default square crop. :host selector comes after .gallery__image img so
+   wins on equal specificity. Uses custom properties so filmstrip mode can
+   override them via inheritance from the parent gallery element. */
+:host .gallery__image img {
+  aspect-ratio: var(--_gallery-img-aspect-ratio, 1);
+  block-size: var(--_gallery-img-block-size, auto);
+  width: var(--_gallery-img-width, 100%);
+  height: var(--_gallery-img-height, auto);
+  max-inline-size: var(--_gallery-img-max-inline-size, unset);
+}
+
+:host .gallery__image {
+  block-size: var(--_gallery-image-block-size, auto);
+  width: var(--_gallery-image-width, 100%);
+}
+
+/* =============================================
    FILMSTRIP VARIANT
    ============================================= */
 
-/* Gallery container in filmstrip mode */
-:host([filmstrip]) .gallery {
+/* Set inherited CSS custom properties on the gallery host when in filmstrip
+   mode. These cascade down to slotted grantcodes-gallery-image children
+   without requiring JS attribute propagation, making the filmstrip work
+   correctly with SSR-rendered content. */
+:host([variant="filmstrip"]) {
+  --_gallery-image-block-size: 100%;
+  --_gallery-image-width: fit-content;
+  --_gallery-img-aspect-ratio: auto;
+  --_gallery-img-block-size: 100%;
+  --_gallery-img-width: auto;
+  --_gallery-img-height: 100%;
+  --_gallery-img-max-inline-size: none;
+}
+
+:host([variant="filmstrip"]) .gallery {
   overflow: hidden;
 }
 
-:host([filmstrip]) .gallery__slot {
+:host([variant="filmstrip"]) .gallery__slot {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
@@ -76,11 +108,11 @@
   scrollbar-width: none;
 }
 
-:host([filmstrip]) .gallery__slot::-webkit-scrollbar {
+:host([variant="filmstrip"]) .gallery__slot::-webkit-scrollbar {
   display: none;
 }
 
-:host([filmstrip]) .gallery__slot::slotted(*) {
+:host([variant="filmstrip"]) .gallery__slot::slotted(*) {
   flex: 0 0 auto;
   block-size: 100%;
   scroll-snap-align: start;
@@ -89,7 +121,7 @@
 /* Scroll-driven reveal animation */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
-    :host([filmstrip]) .gallery__slot::slotted(*) {
+    :host([variant="filmstrip"]) .gallery__slot::slotted(*) {
       animation: filmstrip-reveal linear both;
       animation-timeline: view(inline);
       animation-range: entry 0% entry 60%;
@@ -107,19 +139,3 @@
     scale: 1;
   }
 }
-
-/* Gallery-image host in filmstrip mode */
-:host([filmstrip]) .gallery__image {
-  block-size: 100%;
-  width: fit-content;
-}
-
-:host([filmstrip]) .gallery__image img {
-  block-size: 100%;
-  width: auto;
-  aspect-ratio: unset;
-  max-inline-size: none;
-  object-fit: cover;
-  object-position: center;
-}
-

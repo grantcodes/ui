@@ -64,6 +64,7 @@ const filmstripImages = [
 	{ w: 160, h: 240 },
 	{ w: 360, h: 240 },
 	{ w: 180, h: 240 },
+	{ w: 160, h: 900 }, // tall portrait image
 	{ w: 420, h: 240 },
 	{ w: 160, h: 240 },
 	{ w: 380, h: 240 },
@@ -76,7 +77,7 @@ const filmstripImages = [
 
 export const Filmstrip = {
 	args: {
-		filmstrip: true,
+		variant: "filmstrip",
 	},
 	render: (args) =>
 		template(
