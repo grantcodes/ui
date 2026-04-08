@@ -33,7 +33,7 @@
     font-weight: var(--g-theme-typography-meta-default-font-weight);
     letter-spacing: var(--g-theme-typography-meta-default-letter-spacing);
     text-transform: uppercase;
-    color: var(--g-theme-color-content-brand, #7c3aed);
+    color: var(--g-theme-color-content-primary, #7c3aed);
   }
 
   .cta__title {
@@ -62,5 +62,5 @@
   }
 
   .cta__secondary-link:hover {
-    color: var(--g-theme-color-content-brand, #7c3aed);
+    color: var(--g-theme-color-content-primary, #7c3aed);
   }

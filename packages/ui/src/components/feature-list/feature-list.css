@@ -62,7 +62,7 @@
   }
 
   .feature-list__link:hover .feature-list__item-title {
-    color: var(--g-theme-color-content-brand, #7c3aed);
+    color: var(--g-theme-color-content-primary, #7c3aed);
   }
 
   .feature-list__icon {
@@ -71,8 +71,8 @@
     border-radius: 50%;
     inline-size: fit-content;
     margin-block-end: var(--g-theme-spacing-md);
-    color: var(--g-theme-color-content-brand, currentColor);
-    background-color: var(--g-theme-color-background-brand);
+    color: var(--g-theme-color-content-primary, currentColor);
+    background-color: var(--g-theme-color-background-primary);
   }
 
   .feature-list__item-title {

@@ -55,7 +55,7 @@
   }
 
   .pricing__tier--highlighted {
-    border-color: var(--g-theme-color-border-brand, #7c3aed);
+    border-color: var(--g-theme-color-border-primary, #7c3aed);
     background: var(--g-theme-color-background-subtle);
     box-shadow: var(--g-theme-shadow-lg);
   }
@@ -120,7 +120,7 @@
 
   .pricing__feature-icon {
     font: var(--g-theme-typography-body-sm);
-    color: var(--g-theme-color-content-brand, #7c3aed);
+    color: var(--g-theme-color-content-primary, #7c3aed);
     flex-shrink: 0;
   }
 

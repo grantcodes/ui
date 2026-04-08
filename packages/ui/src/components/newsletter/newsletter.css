@@ -11,7 +11,7 @@
   .newsletter {
     padding-block: var(--g-theme-spacing-3xl);
     padding-inline: var(--g-theme-spacing-md);
-    background: var(--g-theme-color-background-brand-knockout, #7c3aed);
+    background: var(--g-theme-color-background-primary-knockout, #7c3aed);
     text-align: center;
   }
 
@@ -23,13 +23,13 @@
   .newsletter__title {
     margin: 0 0 var(--g-theme-spacing-sm);
     font: var(--g-theme-typography-h4);
-    color: var(--g-theme-color-content-brand-knockout, #ffffff);
+    color: var(--g-theme-color-content-primary-knockout, #ffffff);
   }
 
   .newsletter__text {
     margin: 0 0 var(--g-theme-spacing-xl);
     font: var(--g-theme-typography-body-lg);
-    color: var(--g-theme-color-content-brand-knockout, #ffffff);
+    color: var(--g-theme-color-content-primary-knockout, #ffffff);
     opacity: 0.9;
   }
 
@@ -80,7 +80,7 @@
   .newsletter__disclaimer {
     margin: var(--g-theme-spacing-md) 0 0;
     font: var(--g-theme-typography-body-sm);
-    color: var(--g-theme-color-content-brand-knockout, #ffffff);
+    color: var(--g-theme-color-content-primary-knockout, #ffffff);
     opacity: 0.75;
   }
 

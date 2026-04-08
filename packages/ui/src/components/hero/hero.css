@@ -15,7 +15,7 @@
 		align-items: center;
 		min-height: 50vh;
 		padding: var(--g-theme-spacing-2xl) var(--g-theme-spacing-md);
-		background: var(--g-theme-color-background-brand-knockout, #7c3aed);
+		background: var(--g-theme-color-background-primary-knockout, #7c3aed);
 	}
 
 	.hero__container {
@@ -35,12 +35,12 @@
 	.hero__title {
 		font: var(--g-theme-typography-h1);
 		font-size: clamp(2rem, 5vw, 4rem);
-		color: var(--g-theme-color-content-brand-knockout, #ffffff);
+		color: var(--g-theme-color-content-primary-knockout, #ffffff);
 	}
 
 	.hero__text {
 		font: var(--g-theme-typography-body-lg);
-		color: var(--g-theme-color-content-brand-knockout, #ffffff);
+		color: var(--g-theme-color-content-primary-knockout, #ffffff);
 	}
 
 	:host([size="sm"]) .hero {
@@ -54,5 +54,5 @@
 	}
 
 	::slotted(*) {
-		color: var(--g-theme-color-content-brand-knockout, #ffffff);
+		color: var(--g-theme-color-content-primary-knockout, #ffffff);
 	}

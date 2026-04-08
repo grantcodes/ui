@@ -18,7 +18,7 @@
   overflow: hidden;
   padding-top: var(--height);
   background-repeat: no-repeat;
-  background-color: var(--g-color-brand-purple-500);
+  background-color: var(--g-color-primary-500);
   background-image: linear-gradient(
     to right,
     transparent 0%,

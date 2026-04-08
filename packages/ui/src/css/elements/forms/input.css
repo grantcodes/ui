@@ -85,8 +85,8 @@
 }
 
 :where(input, textarea, select):where(option):checked {
-	background: var(--g-theme-color-background-brand);
-	color: var(--g-theme-color-content-brand-knockout);
+	background: var(--g-theme-color-background-primary);
+	color: var(--g-theme-color-content-primary-knockout);
 }
 
 :where(input, textarea, select):where([type="checkbox"]),
@@ -121,8 +121,8 @@
 }
 
 :where(input, textarea, select):where([type="checkbox"]):checked {
-	border-color: var(--g-theme-color-border-brand);
-	background-color: var(--g-theme-color-border-brand);
+	border-color: var(--g-theme-color-border-primary);
+	background-color: var(--g-theme-color-border-primary);
 }
 
 :where(input, textarea, select):where([type="checkbox"]):checked::after {
@@ -147,5 +147,5 @@
 }
 
 :where(input, textarea, select):where([type="radio"]):checked::after {
-	background-color: var(--g-theme-color-border-brand);
+	background-color: var(--g-theme-color-border-primary);
 }
