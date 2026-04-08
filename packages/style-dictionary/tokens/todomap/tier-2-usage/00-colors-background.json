@@ -10,24 +10,75 @@
 			"knockout": {
 				"value": "{color.neutral.black}"
 			},
-			"brand": {
-				"value": "{color.brand.100}"
+			"primary": {
+				"value": "{color.primary.100}"
 			},
-			"brand-hover": {
-				"value": "{color.brand.200}"
+			"primary-hover": {
+				"value": "{color.primary.200}"
+			},
+			"primary-disabled": {
+				"value": "{color.neutral.200}"
+			},
+			"primary-knockout": {
+				"value": "{color.primary.800}"
+			},
+			"primary-knockout-hover": {
+				"value": "{color.primary.700}"
+			},
+			"secondary": {
+				"value": "{color.secondary.100}"
+			},
+			"secondary-hover": {
+				"value": "{color.secondary.200}"
+			},
+			"secondary-disabled": {
+				"value": "{color.neutral.200}"
+			},
+			"secondary-knockout": {
+				"value": "{color.secondary.800}"
+			},
+			"secondary-knockout-hover": {
+				"value": "{color.secondary.700}"
+			},
+			"tertiary": {
+				"value": "{color.tertiary.100}"
+			},
+			"tertiary-hover": {
+				"value": "{color.tertiary.200}"
+			},
+			"tertiary-disabled": {
+				"value": "{color.neutral.200}"
+			},
+			"tertiary-knockout": {
+				"value": "{color.tertiary.800}"
+			},
+			"tertiary-knockout-hover": {
+				"value": "{color.tertiary.700}"
 			},
 			"utility": {
 				"error": {
 					"value": "{color.utility.red.100}"
 				},
+				"error-hover": {
+					"value": "{color.utility.red.200}"
+				},
 				"warning": {
 					"value": "{color.utility.yellow.100}"
+				},
+				"warning-hover": {
+					"value": "{color.utility.yellow.200}"
 				},
 				"success": {
 					"value": "{color.utility.green.100}"
 				},
+				"success-hover": {
+					"value": "{color.utility.green.200}"
+				},
 				"info": {
 					"value": "{color.utility.blue.100}"
+				},
+				"info-hover": {
+					"value": "{color.utility.blue.200}"
 				}
 			}
 		}
