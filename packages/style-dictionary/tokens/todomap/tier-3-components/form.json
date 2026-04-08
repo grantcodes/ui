@@ -40,13 +40,13 @@
 					"value": "{color.neutral.500}"
 				},
 				"focus": {
-					"value": "{color.brand.600}"
+					"value": "{color.border.primary}"
 				},
 				"hover": {
 					"value": "{color.neutral.700}"
 				},
 				"active": {
-					"value": "{color.brand.600}"
+					"value": "{color.border.primary}"
 				},
 				"disabled": {
 					"value": "{color.neutral.300}"
@@ -60,7 +60,7 @@
 			"accent": {
 				"color": {
 					"default": {
-						"value": "{color.brand.500}"
+						"value": "{color.content.primary}"
 					}
 				}
 			}

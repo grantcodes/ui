@@ -3,16 +3,16 @@
 		"color": {
 			"content": {
 				"default": {
-					"value": "{color.brand.purple.500}"
+					"value": "{color.content.primary}"
 				},
 				"hover": {
-					"value": "{color.brand.purple.600}"
+					"value": "{color.content.primary-hover}"
 				},
 				"active": {
-					"value": "{color.brand.purple.600}"
+					"value": "{color.content.primary-hover}"
 				},
 				"visited": {
-					"value": "{color.brand.purple.500}"
+					"value": "{color.content.primary}"
 				}
 			}
 		},
