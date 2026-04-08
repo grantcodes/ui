@@ -22,8 +22,8 @@
     width: fit-content;
     min-width: 100%;
     background-image: linear-gradient(
-      var(--g-theme-color-border-default, var(--g-color-primary-100)),
-      var(--g-theme-color-border-default, var(--g-color-primary-100))
+      var(--g-theme-color-border-default, var(--g-theme-color-primary-100)),
+      var(--g-theme-color-border-default, var(--g-theme-color-primary-100))
     );
     background-size: auto var(--border-width);
     background-position: bottom;
@@ -37,7 +37,7 @@
     border: none;
     border-block-start: var(--border-width) solid transparent;
     border-block-end: var(--border-width) solid
-      var(--g-theme-color-border-default, var(--g-color-primary-100));
+      var(--g-theme-color-border-default, var(--g-theme-color-primary-100));
     background-color: transparent;
     color: var(--g-theme-color-content-default);
     opacity: 0.7;
@@ -60,14 +60,14 @@
     opacity: 1;
     border-block-end-color: var(
       --g-theme-color-border-default,
-      var(--g-color-primary-200)
+      var(--g-theme-color-primary-200)
     );
   }
 
   .tabs__tab.is-active {
     border-block-end-color: var(
       --g-theme-color-border-primary,
-      var(--g-color-primary-500)
+      var(--g-theme-color-primary-500)
     );
     background-color: var(--g-theme-color-background-subtle);
     color: var(--g-theme-color-content-default);
@@ -80,7 +80,7 @@
     margin-block-start: var(--g-theme-spacing-md);
     outline-color: var(
       --g-theme-color-border-primary,
-      var(--g-color-primary-500)
+      var(--g-theme-color-primary-500)
     );
     outline-offset: 1rem;
     display: none;
