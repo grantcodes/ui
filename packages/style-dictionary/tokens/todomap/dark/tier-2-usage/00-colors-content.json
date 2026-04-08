@@ -10,21 +10,57 @@
 			"knockout": {
 				"value": "{color.neutral.900}"
 			},
-			"brand": {
-				"value": "{color.brand.300}"
+			"primary": {
+				"value": "{color.primary.300}"
+			},
+			"primary-hover": {
+				"value": "{color.primary.100}"
+			},
+			"primary-knockout": {
+				"value": "{color.primary.900}"
+			},
+			"secondary": {
+				"value": "{color.secondary.400}"
+			},
+			"secondary-hover": {
+				"value": "{color.secondary.100}"
+			},
+			"secondary-knockout": {
+				"value": "{color.secondary.900}"
+			},
+			"tertiary": {
+				"value": "{color.tertiary.400}"
+			},
+			"tertiary-hover": {
+				"value": "{color.tertiary.100}"
+			},
+			"tertiary-knockout": {
+				"value": "{color.tertiary.900}"
 			},
 			"utility": {
 				"error": {
 					"value": "{color.utility.red.400}"
 				},
+				"error-hover": {
+					"value": "{color.utility.red.200}"
+				},
 				"warning": {
 					"value": "{color.utility.yellow.400}"
+				},
+				"warning-hover": {
+					"value": "{color.utility.yellow.200}"
 				},
 				"success": {
 					"value": "{color.utility.green.400}"
 				},
+				"success-hover": {
+					"value": "{color.utility.green.200}"
+				},
 				"info": {
 					"value": "{color.utility.blue.300}"
+				},
+				"info-hover": {
+					"value": "{color.utility.blue.200}"
 				}
 			}
 		}

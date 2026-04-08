@@ -16,20 +16,50 @@
 			"knockout": {
 				"value": "{color.neutral.white}"
 			},
-			"brand": {
-				"value": "{color.brand.purple.900}"
+			"primary": {
+				"value": "{color.primary.900}"
 			},
-			"brand-hover": {
-				"value": "{color.brand.purple.800}"
+			"primary-hover": {
+				"value": "{color.primary.800}"
 			},
-			"brand-disabled": {
+			"primary-disabled": {
 				"value": "{color.neutral.700}"
 			},
-			"brand-knockout": {
-				"value": "{color.brand.purple.200}"
+			"primary-knockout": {
+				"value": "{color.primary.200}"
 			},
-			"brand-knockout-hover": {
-				"value": "{color.brand.purple.300}"
+			"primary-knockout-hover": {
+				"value": "{color.primary.300}"
+			},
+			"secondary": {
+				"value": "{color.secondary.900}"
+			},
+			"secondary-hover": {
+				"value": "{color.secondary.800}"
+			},
+			"secondary-disabled": {
+				"value": "{color.neutral.700}"
+			},
+			"secondary-knockout": {
+				"value": "{color.secondary.200}"
+			},
+			"secondary-knockout-hover": {
+				"value": "{color.secondary.300}"
+			},
+			"tertiary": {
+				"value": "{color.tertiary.900}"
+			},
+			"tertiary-hover": {
+				"value": "{color.tertiary.800}"
+			},
+			"tertiary-disabled": {
+				"value": "{color.neutral.700}"
+			},
+			"tertiary-knockout": {
+				"value": "{color.tertiary.200}"
+			},
+			"tertiary-knockout-hover": {
+				"value": "{color.tertiary.300}"
 			},
 			"utility": {
 				"error": {
@@ -38,11 +68,17 @@
 				"error-knockout": {
 					"value": "{color.utility.red.400}"
 				},
+				"error-hover": {
+					"value": "{color.utility.red.800}"
+				},
 				"warning": {
 					"value": "{color.utility.yellow.900}"
 				},
 				"warning-knockout": {
 					"value": "{color.utility.yellow.400}"
+				},
+				"warning-hover": {
+					"value": "{color.utility.yellow.800}"
 				},
 				"success": {
 					"value": "{color.utility.green.900}"
@@ -50,11 +86,17 @@
 				"success-knockout": {
 					"value": "{color.utility.green.400}"
 				},
+				"success-hover": {
+					"value": "{color.utility.green.800}"
+				},
 				"info": {
 					"value": "{color.utility.blue.900}"
 				},
 				"info-knockout": {
 					"value": "{color.utility.blue.300}"
+				},
+				"info-hover": {
+					"value": "{color.utility.blue.800}"
 				}
 			},
 			"disabled": {

@@ -16,21 +16,39 @@
 			"knockout": {
 				"value": "{color.neutral.500}"
 			},
-			"brand": {
-				"value": "{color.brand.400}"
+			"primary": {
+				"value": "{color.primary.400}"
+			},
+			"secondary": {
+				"value": "{color.secondary.300}"
+			},
+			"tertiary": {
+				"value": "{color.tertiary.300}"
 			},
 			"utility": {
 				"error": {
 					"value": "{color.utility.red.400}"
 				},
+				"error-hover": {
+					"value": "{color.utility.red.200}"
+				},
 				"warning": {
 					"value": "{color.utility.yellow.400}"
+				},
+				"warning-hover": {
+					"value": "{color.utility.yellow.200}"
 				},
 				"success": {
 					"value": "{color.utility.green.400}"
 				},
+				"success-hover": {
+					"value": "{color.utility.green.200}"
+				},
 				"info": {
 					"value": "{color.utility.blue.300}"
+				},
+				"info-hover": {
+					"value": "{color.utility.blue.200}"
 				}
 			},
 			"disabled": {
