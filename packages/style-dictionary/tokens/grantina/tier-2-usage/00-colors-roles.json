@@ -1,0 +1,37 @@
+{
+	"color": {
+		"primary": {
+			"100": { "value": "{color.blue.100}" },
+			"200": { "value": "{color.blue.200}" },
+			"300": { "value": "{color.blue.300}" },
+			"400": { "value": "{color.blue.400}" },
+			"500": { "value": "{color.blue.500}" },
+			"600": { "value": "{color.blue.600}" },
+			"700": { "value": "{color.blue.700}" },
+			"800": { "value": "{color.blue.800}" },
+			"900": { "value": "{color.blue.900}" }
+		},
+		"secondary": {
+			"100": { "value": "{color.yellow.100}" },
+			"200": { "value": "{color.yellow.200}" },
+			"300": { "value": "{color.yellow.300}" },
+			"400": { "value": "{color.yellow.400}" },
+			"500": { "value": "{color.yellow.500}" },
+			"600": { "value": "{color.yellow.600}" },
+			"700": { "value": "{color.yellow.700}" },
+			"800": { "value": "{color.yellow.800}" },
+			"900": { "value": "{color.yellow.900}" }
+		},
+		"tertiary": {
+			"100": { "value": "{color.gold.100}" },
+			"200": { "value": "{color.gold.200}" },
+			"300": { "value": "{color.gold.300}" },
+			"400": { "value": "{color.gold.400}" },
+			"500": { "value": "{color.gold.500}" },
+			"600": { "value": "{color.gold.600}" },
+			"700": { "value": "{color.gold.700}" },
+			"800": { "value": "{color.gold.800}" },
+			"900": { "value": "{color.gold.900}" }
+		}
+	}
+}
