@@ -28,10 +28,10 @@ Requirements for Token System Modernization. Each maps to roadmap phases.
 
 ### Fluid Typography (TYPE)
 
-- [ ] **TYPE-01**: Static font-size tokens replaced with `clamp(min, fluid, max)` responsive values
-- [ ] **TYPE-02**: Modular scale generated using `pow()` for consistent ratio-based type sizing
-- [ ] **TYPE-03**: Separate scale ratios defined for small and large viewport breakpoints
-- [ ] **TYPE-04**: Fluid typography values pass WCAG 1.4.4 (200% browser zoom)
+- [x] **TYPE-01**: Static font-size tokens replaced with `clamp(min, fluid, max)` responsive values
+- [x] **TYPE-02**: Modular scale generated using `pow()` for consistent ratio-based type sizing
+- [x] **TYPE-03**: Separate scale ratios defined for small and large viewport breakpoints
+- [x] **TYPE-04**: Fluid typography values pass WCAG 1.4.4 (200% browser zoom)
 
 ## Future Requirements
 
@@ -70,10 +70,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | COLOR-02 | Phase 13 | Complete |
 | COLOR-03 | Phase 13 | Complete |
 | COLOR-04 | Phase 11 | Complete |
-| TYPE-01 | Phase 14 | Pending |
-| TYPE-02 | Phase 14 | Pending |
-| TYPE-03 | Phase 14 | Pending |
-| TYPE-04 | Phase 14 | Pending |
+| TYPE-01 | Phase 14 | Complete |
+| TYPE-02 | Phase 14 | Complete |
+| TYPE-03 | Phase 14 | Complete |
+| TYPE-04 | Phase 14 | Complete |
 
 **Coverage:**
 - v3.0 requirements: 14 total

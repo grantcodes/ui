@@ -1,6 +1,7 @@
 import StyleDictionary from "style-dictionary";
 import minimist from "minimist";
 import { generateOklchScale } from "./lib/color-generator.js";
+import { generateFluidScale, DEFAULT_FLUID_CONFIG, DEFAULT_FLUID_STEPS } from "./lib/fluid-typography.js";
 
 /**
  * Auto-palette preprocessor
@@ -42,6 +43,26 @@ StyleDictionary.registerPreprocessor({
 		};
 
 		walkTokens(dictionary);
+		return dictionary;
+	},
+});
+
+/**
+ * Fluid typography preprocessor
+ * Replaces static rem font-size values with clamp() strings
+ * using a dual-ratio modular type scale for fluid sizing.
+ */
+StyleDictionary.registerPreprocessor({
+	name: "fluid-typography",
+	preprocessor: (dictionary) => {
+		const fontSizes = dictionary?.typography?.["font-size"];
+		if (!fontSizes) return dictionary;
+		const fluidScale = generateFluidScale(DEFAULT_FLUID_CONFIG, DEFAULT_FLUID_STEPS);
+		for (const [name, entry] of Object.entries(fontSizes)) {
+			if (name in fluidScale && entry && typeof entry === "object") {
+				entry.value = fluidScale[name];
+			}
+		}
 		return dictionary;
 	},
 });
@@ -485,7 +506,7 @@ const getStyleDictionaryConfig = (theme) => {
 	 * 1) Used to define the platforms, prefixes, etc. to build the tokens with/for
 	 */
 	const config = {
-		preprocessors: ["auto-palette"],
+		preprocessors: ["auto-palette", "fluid-typography"],
 		source: [
 			`./tokens/core/**/*.json`,
 			`./tokens/${theme}/tier-1-definitions/**/*.json`,
