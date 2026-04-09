@@ -121,6 +121,6 @@ Note: Phase 14 (Fluid Typography) depends only on Phase 10, not on Phases 11-13.
 |-------|-----------|----------------|--------|-----------|
 | 10. Token Rename & Architecture Prep | v3.0 | 3/3 | Complete   | 2026-04-09 |
 | 11. Auto-Palette Generation | 2/2 | Complete    | 2026-04-09 | - |
-| 12. CSS light-dark() Integration | v3.0 | 0/? | Not started | - |
+| 12. CSS light-dark() Integration | 1/2 | In Progress|  | - |
 | 13. Relative Colors & Runtime Generation | v3.0 | 0/? | Not started | - |
 | 14. Fluid Typography | v3.0 | 0/? | Not started | - |
