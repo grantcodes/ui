@@ -2,7 +2,7 @@
 	"focus-ring": {
 		"color": {
 			"default": {
-				"value": "rgba(76, 74, 252, 0.4)"
+				"value": "oklch(from var(--g-theme-color-primary-500) l c h / 0.4)"
 			},
 			"contrast": {
 				"value": "{color.primary.200}"

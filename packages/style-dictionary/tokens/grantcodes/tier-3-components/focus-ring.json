@@ -2,7 +2,7 @@
 	"focus-ring": {
 		"color": {
 			"default": {
-				"value": "rgba(106, 91, 197, 0.4)"
+				"value": "oklch(from var(--g-theme-color-primary-500) l c h / 0.4)"
 			},
 			"contrast": {
 				"value": "{color.primary.200}"
@@ -13,7 +13,7 @@
 		},
 		"width": {
 			"default": {
-				"value": "0.2rem"
+				"value": "oklch(from var(--g-theme-color-primary-500) l c h / 0.4)"
 			}
 		},
 		"offset": {
