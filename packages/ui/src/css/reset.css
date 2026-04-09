@@ -228,6 +228,16 @@ pre {
 	fill: currentColor;
 }
 
+/* Force dark mode on any element or subtree */
+.dark {
+	color-scheme: dark;
+}
+
+/* Force light mode on any element or subtree */
+.light {
+	color-scheme: light;
+}
+
 /* Allow transitioning auto */
 :root {
 	@supports (interpolate-size: allow-keywords) {
