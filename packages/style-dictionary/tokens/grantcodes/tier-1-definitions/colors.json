@@ -3,6 +3,14 @@
 		"purple": {
 			"autoPalette": true,
 			"base": { "value": "oklch(65% 0.22 279.42)" }
+		},
+		"teal": {
+			"autoPalette": true,
+			"base": { "value": "oklch(62% 0.12 195)" }
+		},
+		"amber": {
+			"autoPalette": true,
+			"base": { "value": "oklch(72% 0.14 75)" }
 		}
 	}
 }
