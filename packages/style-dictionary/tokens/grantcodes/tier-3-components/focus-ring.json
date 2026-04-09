@@ -13,7 +13,7 @@
 		},
 		"width": {
 			"default": {
-				"value": "oklch(from var(--g-theme-color-primary-500) l c h / 0.4)"
+				"value": "0.2rem"
 			}
 		},
 		"offset": {

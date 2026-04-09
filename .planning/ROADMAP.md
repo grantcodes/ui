@@ -90,10 +90,11 @@ Plans:
   1. CSS output uses `oklch(from var(--base) ...)` expressions for runtime color variant generation
   2. Alpha/transparent color variants (e.g. semi-transparent primary) are generated using relative color syntax rather than separate static tokens
   3. Rendered colors in the browser match the expected oklch values (no visible color shift from relative color computation)
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 13-01: TBD
+- [ ] 13-01-PLAN.md — Background transparent tokens → CSS relative color syntax + remove static transparent tier-1 tokens
+- [ ] 13-02-PLAN.md — Focus-ring rgba → CSS relative color syntax in all 4 themes + visual verification
 
 ### Phase 14: Fluid Typography
 
@@ -121,6 +122,6 @@ Note: Phase 14 (Fluid Typography) depends only on Phase 10, not on Phases 11-13.
 |-------|-----------|----------------|--------|-----------|
 | 10. Token Rename & Architecture Prep | v3.0 | 3/3 | Complete   | 2026-04-09 |
 | 11. Auto-Palette Generation | 2/2 | Complete    | 2026-04-09 | - |
-| 12. CSS light-dark() Integration | 2/2 | Complete   | 2026-04-09 | - |
-| 13. Relative Colors & Runtime Generation | v3.0 | 0/? | Not started | - |
+| 12. CSS light-dark() Integration | 2/2 | Complete    | 2026-04-09 | - |
+| 13. Relative Colors & Runtime Generation | 1/2 | In Progress|  | - |
 | 14. Fluid Typography | v3.0 | 0/? | Not started | - |

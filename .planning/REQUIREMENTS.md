@@ -22,8 +22,8 @@ Requirements for Token System Modernization. Each maps to roadmap phases.
 ### Color System (COLOR)
 
 - [x] **COLOR-01**: Single base color per theme auto-generates full 100-900 oklch color scale
-- [ ] **COLOR-02**: CSS output uses `oklch(from ...)` relative color expressions for runtime color variants
-- [ ] **COLOR-03**: Alpha/transparent color variants generated using relative color syntax
+- [x] **COLOR-02**: CSS output uses `oklch(from ...)` relative color expressions for runtime color variants
+- [x] **COLOR-03**: Alpha/transparent color variants generated using relative color syntax
 - [x] **COLOR-04**: Auto-palette applies to grantcodes/base themes; grantina/todomap retain manual color definitions
 
 ### Fluid Typography (TYPE)
@@ -67,8 +67,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DARK-03 | Phase 12 | Complete |
 | DARK-04 | Phase 12 | Complete |
 | COLOR-01 | Phase 11 | Complete |
-| COLOR-02 | Phase 13 | Pending |
-| COLOR-03 | Phase 13 | Pending |
+| COLOR-02 | Phase 13 | Complete |
+| COLOR-03 | Phase 13 | Complete |
 | COLOR-04 | Phase 11 | Complete |
 | TYPE-01 | Phase 14 | Pending |
 | TYPE-02 | Phase 14 | Pending |
