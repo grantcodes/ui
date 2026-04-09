@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v3.0
 milestone_name: Token System Modernization
 status: unknown
-stopped_at: Completed 14-01-PLAN.md
-last_updated: "2026-04-09T16:39:14.604Z"
+stopped_at: Completed 14-02-PLAN.md
+last_updated: "2026-04-09T17:51:03.557Z"
 last_activity: 2026-04-09
 progress:
   total_phases: 5
-  completed_phases: 4
+  completed_phases: 5
   total_plans: 11
-  completed_plans: 10
+  completed_plans: 11
 ---
 
 # Project State
@@ -47,6 +47,7 @@ Plan: 2 of 2
 | Phase 13-relative-colors-runtime-generation P01 | 11min | 2 tasks | 4 files |
 | Phase 13-relative-colors-runtime-generation P02 | 10min | 2 tasks | 4 files |
 | Phase 14 P01 | 1 min | 1 tasks | 2 files |
+| Phase 14-fluid-typography P02 | 35 min | 3 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -77,6 +78,8 @@ Recent decisions affecting current work:
 - [Phase 12]: All dark/ directories deleted — single source of truth in tier-2 JSON files using CSS light-dark() expressions
 - [Phase 13]: CSS relative color expressions (oklch(from var(...))) pass through Style Dictionary verbatim — transparent tokens now derive runtime alpha from actual background color
 - [Phase 13-relative-colors-runtime-generation]: All 4 themes use same oklch(from var(--g-theme-color-primary-500) l c h / 0.4) expression for focus-ring — each theme's primary-500 CSS var provides the correct base color
+- [Phase 14-fluid-typography]: Register fluid-typography as Style Dictionary preprocessor (not transformer) to replace rem values with clamp() at build time — Architectural pattern established in Plan 01
+- [Phase 14-fluid-typography]: Display step minRem capped at 4rem: clamp(4rem, calc(2rem + 10vw), 10rem) after user feedback on oversized H1 on mobile — User accepted cap as safe default and may manually adjust in future
 
 ### Pending Todos
 
@@ -89,5 +92,5 @@ None.
 ## Session Continuity
 
 Last activity: 2026-04-09
-Stopped at: Completed 14-01-PLAN.md
+Stopped at: Completed 14-02-PLAN.md
 Resume file: None

@@ -27,7 +27,7 @@ See MILESTONES.md for details on completed phases 1-9.
 - [x] **Phase 11: Auto-Palette Generation** - Generate full oklch color scales from a single base color per theme (completed 2026-04-09)
 - [x] **Phase 12: CSS light-dark() Integration** - Replace separate dark token files with inline light-dark() functions (completed 2026-04-09)
 - [x] **Phase 13: Relative Colors & Runtime Generation** - Use CSS relative color syntax for runtime color variants and alpha transparency (completed 2026-04-09)
-- [ ] **Phase 14: Fluid Typography** - Replace static font-size tokens with responsive clamp()-based fluid values
+- [x] **Phase 14: Fluid Typography** - Replace static font-size tokens with responsive clamp()-based fluid values (completed 2026-04-09)
 
 ## Phase Details
 
@@ -125,4 +125,4 @@ Note: Phase 14 (Fluid Typography) depends only on Phase 10, not on Phases 11-13.
 | 11. Auto-Palette Generation | 2/2 | Complete    | 2026-04-09 | - |
 | 12. CSS light-dark() Integration | 2/2 | Complete    | 2026-04-09 | - |
 | 13. Relative Colors & Runtime Generation | 2/2 | Complete    | 2026-04-09 | - |
-| 14. Fluid Typography | 1/2 | In Progress|  | - |
+| 14. Fluid Typography | 2/2 | Complete   | 2026-04-09 | - |
