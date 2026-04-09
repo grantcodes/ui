@@ -75,8 +75,9 @@ export const generateFluidScale = (
 		// WCAG floor: no font size below 0.75rem
 		minRem = Math.max(minRem, 0.75);
 
-		// Display cap: limit max to 10rem
+		// Display cap: limit min to 4rem (mobile) and max to 10rem (desktop)
 		if (name === "display") {
+			minRem = Math.min(minRem, 4);
 			maxRem = Math.min(maxRem, 10);
 		}
 

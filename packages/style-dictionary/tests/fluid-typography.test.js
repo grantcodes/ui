@@ -65,10 +65,27 @@ describe("generateFluidScale", () => {
 		}
 	});
 
-	it("same ratioSm/ratioLg returns plain rem for all steps (no fluid)", () => {
+	it("display min <= 4rem (mobile cap)", () => {
+		const result = generateFluidScale();
+		const displayValue = result["display"];
+		if (displayValue.startsWith("clamp(")) {
+			const minMatch = displayValue.match(/^clamp\((\d+(\.\d+)?)rem/);
+			assert.ok(minMatch, "Could not parse min from display clamp");
+			const minVal = parseFloat(minMatch[1]);
+			assert.ok(
+				minVal <= 4,
+				`Display min ${minVal}rem exceeds mobile cap of 4rem`,
+			);
+		}
+	});
+
+	it("same ratioSm/ratioLg returns plain rem for non-display steps (no fluid)", () => {
 		const cfg = { ...DEFAULT_FLUID_CONFIG, ratioSm: 1.333, ratioLg: 1.333 };
 		const result = generateFluidScale(cfg);
 		for (const [name, value] of Object.entries(result)) {
+			// display always has asymmetric caps (min 4rem, max 10rem) so it produces
+			// a clamp() even when ratios are equal — that's intentional
+			if (name === "display") continue;
 			assert.match(
 				value,
 				/^\d+(\.\d+)?rem$/,
