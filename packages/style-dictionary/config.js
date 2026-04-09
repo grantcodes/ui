@@ -1,6 +1,51 @@
 import StyleDictionary from "style-dictionary";
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import minimist from "minimist";
+import { generateOklchScale } from "./lib/color-generator.js";
+
+/**
+ * Auto-palette preprocessor
+ * Walks the token tree looking for nodes with autoPalette: true and a base value.
+ * Replaces them with a generated 100-900 oklch scale.
+ */
+StyleDictionary.registerPreprocessor({
+	name: "auto-palette",
+	preprocessor: (dictionary) => {
+		const walkTokens = (obj) => {
+			if (!obj || typeof obj !== "object") return;
+
+			for (const [key, child] of Object.entries(obj)) {
+				if (key === "value" || key === "autoPalette") continue;
+
+				// Check if this child node has autoPalette: true and a base value
+				if (
+					child &&
+					typeof child === "object" &&
+					child.autoPalette === true &&
+					child.base &&
+					child.base.value
+				) {
+					const baseValue = child.base.value;
+					const scale = generateOklchScale(baseValue);
+
+					// Remove autoPalette flag and base token
+					delete child.autoPalette;
+					delete child.base;
+
+					// Add generated shade tokens
+					for (const [shade, value] of Object.entries(scale)) {
+						child[shade] = { value };
+					}
+				}
+
+				walkTokens(child);
+			}
+		};
+
+		walkTokens(dictionary);
+		return dictionary;
+	},
+});
 
 /**
  * List of themes to build
@@ -22,6 +67,7 @@ const theme = args.theme;
  * 1) Used to determine if the token should be included in the theme tokens to apply `theme` prefix
  */
 const isHigherTierToken = (filePath) => {
+	if (!filePath) return false;
 	const isHigherTier =
 		filePath.includes("tier-2-usage") || filePath.includes("tier-3-components");
 	return isHigherTier;
@@ -440,6 +486,7 @@ const getStyleDictionaryConfig = (theme) => {
 	 * 1) Used to define the platforms, prefixes, etc. to build the tokens with/for
 	 */
 	const config = {
+		preprocessors: ["auto-palette"],
 		source: [
 			`./tokens/core/**/*.json`,
 			`./tokens/${theme}/tier-1-definitions/**/*.json`,
@@ -667,6 +714,7 @@ const getDarkStyleDictionaryConfig = (theme, lightTokenMap) => {
 	});
 
 	return {
+		preprocessors: ["auto-palette"],
 		source: [
 			`./tokens/core/**/*.json`,
 			`./tokens/${theme}/tier-1-definitions/**/*.json`,
