@@ -103,10 +103,10 @@
 				"value": "light-dark({color.neutral.200}, {color.neutral.700})"
 			},
 			"transparent": {
-				"value": "{color.transparent.25}"
+				"value": "oklch(from var(--g-theme-color-background-default) l c h / 0.25)"
 			},
 			"transparent-strong": {
-				"value": "{color.transparent.90}"
+				"value": "oklch(from var(--g-theme-color-background-default) l c h / 0.9)"
 			}
 		}
 	}

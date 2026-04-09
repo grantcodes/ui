@@ -25,7 +25,7 @@ See MILESTONES.md for details on completed phases 1-9.
 
 - [x] **Phase 10: Token Rename & Architecture Prep** - Rename "brand" tokens to "primary"/"secondary"/"tertiary" across all tiers and themes (completed 2026-04-08)
 - [x] **Phase 11: Auto-Palette Generation** - Generate full oklch color scales from a single base color per theme (completed 2026-04-09)
-- [ ] **Phase 12: CSS light-dark() Integration** - Replace separate dark token files with inline light-dark() functions
+- [x] **Phase 12: CSS light-dark() Integration** - Replace separate dark token files with inline light-dark() functions (completed 2026-04-09)
 - [ ] **Phase 13: Relative Colors & Runtime Generation** - Use CSS relative color syntax for runtime color variants and alpha transparency
 - [ ] **Phase 14: Fluid Typography** - Replace static font-size tokens with responsive clamp()-based fluid values
 
@@ -121,6 +121,6 @@ Note: Phase 14 (Fluid Typography) depends only on Phase 10, not on Phases 11-13.
 |-------|-----------|----------------|--------|-----------|
 | 10. Token Rename & Architecture Prep | v3.0 | 3/3 | Complete   | 2026-04-09 |
 | 11. Auto-Palette Generation | 2/2 | Complete    | 2026-04-09 | - |
-| 12. CSS light-dark() Integration | 1/2 | In Progress|  | - |
+| 12. CSS light-dark() Integration | 2/2 | Complete   | 2026-04-09 | - |
 | 13. Relative Colors & Runtime Generation | v3.0 | 0/? | Not started | - |
 | 14. Fluid Typography | v3.0 | 0/? | Not started | - |

@@ -16,8 +16,8 @@ Requirements for Token System Modernization. Each maps to roadmap phases.
 
 - [x] **DARK-01**: Dark tier-2 token files merged into main tier-2 files using CSS `light-dark()` function
 - [x] **DARK-02**: Separate `dark/tier-2-usage/` directories eliminated from all themes
-- [ ] **DARK-03**: `color-scheme: light dark` declaration added to theme root styles
-- [ ] **DARK-04**: `.dark`/`.light` class overrides maintained for manual theme switching
+- [x] **DARK-03**: `color-scheme: light dark` declaration added to theme root styles
+- [x] **DARK-04**: `.dark`/`.light` class overrides maintained for manual theme switching
 
 ### Color System (COLOR)
 
@@ -64,8 +64,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | RENAME-02 | Phase 10 | Complete |
 | DARK-01 | Phase 12 | Complete |
 | DARK-02 | Phase 12 | Complete |
-| DARK-03 | Phase 12 | Pending |
-| DARK-04 | Phase 12 | Pending |
+| DARK-03 | Phase 12 | Complete |
+| DARK-04 | Phase 12 | Complete |
 | COLOR-01 | Phase 11 | Complete |
 | COLOR-02 | Phase 13 | Pending |
 | COLOR-03 | Phase 13 | Pending |
