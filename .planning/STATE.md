@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v3.0
 milestone_name: Token System Modernization
 status: unknown
-stopped_at: Completed 13-01-PLAN.md
-last_updated: "2026-04-09T11:29:49.311Z"
+stopped_at: Completed 13-02-PLAN.md
+last_updated: "2026-04-09T13:19:32.269Z"
 last_activity: 2026-04-09
 progress:
   total_phases: 5
-  completed_phases: 3
+  completed_phases: 4
   total_plans: 9
-  completed_plans: 8
+  completed_plans: 9
 ---
 
 # Project State
@@ -45,6 +45,7 @@ Plan: 1 of 2
 | Phase 12 P01 | 30 min | 2 tasks | 33 files |
 | Phase 12-css-light-dark-integration P02 | 20min | 3 tasks | 7 files |
 | Phase 13-relative-colors-runtime-generation P01 | 11min | 2 tasks | 4 files |
+| Phase 13-relative-colors-runtime-generation P02 | 10min | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -74,6 +75,7 @@ Recent decisions affecting current work:
 - [Phase 12]: Tokens with identical light/dark values keep plain references — no unnecessary light-dark() wrapper
 - [Phase 12]: All dark/ directories deleted — single source of truth in tier-2 JSON files using CSS light-dark() expressions
 - [Phase 13]: CSS relative color expressions (oklch(from var(...))) pass through Style Dictionary verbatim — transparent tokens now derive runtime alpha from actual background color
+- [Phase 13-relative-colors-runtime-generation]: All 4 themes use same oklch(from var(--g-theme-color-primary-500) l c h / 0.4) expression for focus-ring — each theme's primary-500 CSS var provides the correct base color
 
 ### Pending Todos
 
@@ -86,5 +88,5 @@ None.
 ## Session Continuity
 
 Last activity: 2026-04-09
-Stopped at: Completed 13-01-PLAN.md
+Stopped at: Completed 13-02-PLAN.md
 Resume file: None
