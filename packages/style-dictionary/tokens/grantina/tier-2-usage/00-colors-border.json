@@ -2,57 +2,57 @@
 	"color": {
 		"border": {
 			"default": {
-				"value": "{color.primary.200}"
+				"value": "light-dark({color.primary.200}, {color.navy.400})"
 			},
 			"default-hover": {
-				"value": "{color.primary.300}"
+				"value": "light-dark({color.primary.300}, {color.navy.300})"
 			},
 			"subtle": {
-				"value": "{color.primary.100}"
+				"value": "light-dark({color.primary.100}, {color.navy.500})"
 			},
 			"strong": {
-				"value": "{color.navy.500}"
+				"value": "light-dark({color.navy.500}, {color.cream.200})"
 			},
 			"knockout": {
 				"value": "{color.cream.700}"
 			},
 			"primary": {
-				"value": "{color.primary.700}"
+				"value": "light-dark({color.primary.700}, {color.primary.400})"
 			},
 			"secondary": {
-				"value": "{color.secondary.700}"
+				"value": "light-dark({color.secondary.700}, {color.secondary.300})"
 			},
 			"tertiary": {
-				"value": "{color.tertiary.700}"
+				"value": "light-dark({color.tertiary.700}, {color.tertiary.300})"
 			},
 			"utility": {
 				"error": {
-					"value": "{color.utility.red.700}"
+					"value": "light-dark({color.utility.red.700}, {color.utility.red.400})"
 				},
 				"error-hover": {
-					"value": "{color.utility.red.800}"
+					"value": "light-dark({color.utility.red.800}, {color.utility.red.200})"
 				},
 				"warning": {
-					"value": "{color.utility.yellow.700}"
+					"value": "light-dark({color.utility.yellow.700}, {color.utility.yellow.400})"
 				},
 				"warning-hover": {
-					"value": "{color.utility.yellow.800}"
+					"value": "light-dark({color.utility.yellow.800}, {color.utility.yellow.200})"
 				},
 				"success": {
-					"value": "{color.utility.green.700}"
+					"value": "light-dark({color.utility.green.700}, {color.utility.green.400})"
 				},
 				"success-hover": {
-					"value": "{color.utility.green.800}"
+					"value": "light-dark({color.utility.green.800}, {color.utility.green.200})"
 				},
 				"info": {
-					"value": "{color.utility.blue.700}"
+					"value": "light-dark({color.utility.blue.700}, {color.utility.blue.300})"
 				},
 				"info-hover": {
-					"value": "{color.utility.blue.800}"
+					"value": "light-dark({color.utility.blue.800}, {color.utility.blue.200})"
 				}
 			},
 			"disabled": {
-				"value": "{color.neutral.200}"
+				"value": "light-dark({color.neutral.200}, {color.neutral.700})"
 			}
 		}
 	}
