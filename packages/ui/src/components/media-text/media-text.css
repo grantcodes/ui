@@ -64,5 +64,5 @@
   .media-text__text {
     margin: 0;
     font: var(--g-theme-typography-body-lg);
-    color: var(--g-theme-color-content-secondary);
+    color: var(--g-theme-color-content-subtle);
   }

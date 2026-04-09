@@ -29,7 +29,7 @@
     margin: 0 auto var(--g-theme-spacing-2xl);
     font-size: var(--g-theme-typography-body-lg-font-size);
     text-align: center;
-    color: var(--g-theme-color-content-secondary);
+    color: var(--g-theme-color-content-subtle);
     max-width: 55ch;
   }
 
@@ -80,5 +80,5 @@
   }
 
   .feature-list__item-desc {
-    color: var(--g-theme-color-content-secondary);
+    color: var(--g-theme-color-content-subtle);
   }

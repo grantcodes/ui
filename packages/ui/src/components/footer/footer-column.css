@@ -29,7 +29,7 @@
   }
 
   ::slotted(a) {
-    color: var(--g-theme-color-content-secondary);
+    color: var(--g-theme-color-content-subtle);
     text-decoration: none;
     transition: color 0.2s ease;
   }
@@ -41,6 +41,6 @@
 
   ::slotted(p) {
     margin: 0;
-    color: var(--g-theme-color-content-secondary);
+    color: var(--g-theme-color-content-subtle);
     font: var(--g-typography-body-sm);
   }

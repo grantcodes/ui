@@ -54,9 +54,6 @@
 		gap: var(--g-theme-spacing-md);
 	}
 
-	.footer__bottom:has(slot[name="bottom"]:empty) {
-		display: none;
-	}
 
 	@container footer (max-width: 640px) {
 		.footer__bottom {
@@ -68,7 +65,7 @@
 	/* Slotted content styling */
 	::slotted(*) {
 		font: var(--g-typography-font-body-sm);
-		color: var(--g-theme-color-content-secondary);
+		color: var(--g-theme-color-content-subtle);
 	}
 
 	::slotted(p) {
@@ -77,7 +74,7 @@
 	}
 
 	::slotted(a) {
-		color: var(--g-theme-color-content-secondary);
+		color: var(--g-theme-color-content-subtle);
 		text-decoration: none;
 		transition: color 0.2s ease;
 	}

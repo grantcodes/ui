@@ -64,5 +64,5 @@
 
   .stats__context {
     font-size: var(--g-theme-typography-body-sm-font-size);
-    color: var(--g-theme-color-content-secondary);
+    color: var(--g-theme-color-content-subtle);
   }

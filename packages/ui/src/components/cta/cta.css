@@ -45,7 +45,7 @@
   .cta__text {
     margin: 0 0 var(--g-theme-spacing-xl);
     font: var(--g-theme-typography-body-lg);
-    color: var(--g-theme-color-content-secondary);
+    color: var(--g-theme-color-content-subtle);
   }
 
   .cta__actions {

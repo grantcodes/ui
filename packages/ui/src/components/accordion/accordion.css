@@ -47,7 +47,7 @@
     block-size: 1em;
     flex-shrink: 0;
     transition: transform 0.25s ease;
-    color: var(--g-theme-color-content-secondary, currentColor);
+    color: var(--g-theme-color-content-subtle, currentColor);
   }
 
   .accordion__item[open] .accordion__chevron {

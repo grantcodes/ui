@@ -27,7 +27,7 @@
     letter-spacing: var(--g-theme-typography-meta-default-letter-spacing);
     text-transform: uppercase;
     text-align: center;
-    color: var(--g-theme-color-content-secondary);
+    color: var(--g-theme-color-content-subtle);
   }
 
   .logo-cloud__grid {

@@ -30,7 +30,7 @@
     margin: 0 auto var(--g-theme-spacing-2xl);
     font-size: var(--g-theme-typography-body-lg-font-size);
     text-align: center;
-    color: var(--g-theme-color-content-secondary);
+    color: var(--g-theme-color-content-subtle);
     max-width: 55ch;
   }
 
@@ -86,13 +86,13 @@
 
   .pricing__period {
     font-size: var(--g-theme-typography-body-default-font-size);
-    color: var(--g-theme-color-content-secondary);
+    color: var(--g-theme-color-content-subtle);
   }
 
   .pricing__tier-desc {
     margin: 0;
     font: var(--g-theme-typography-body-sm);
-    color: var(--g-theme-color-content-secondary);
+    color: var(--g-theme-color-content-subtle);
   }
 
   .pricing__features {
@@ -114,7 +114,7 @@
   }
 
   .pricing__feature--excluded {
-    color: var(--g-theme-color-content-secondary);
+    color: var(--g-theme-color-content-subtle);
     text-decoration: line-through;
   }
 
@@ -125,7 +125,7 @@
   }
 
   .pricing__feature--excluded .pricing__feature-icon {
-    color: var(--g-theme-color-content-secondary);
+    color: var(--g-theme-color-content-subtle);
   }
 
   .pricing__cta {
