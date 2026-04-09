@@ -14,7 +14,7 @@
 				"value": "{shadow.sm.spread}"
 			},
 			"color": {
-				"value": "{shadow.sm.color}"
+				"value": "light-dark({shadow.sm.color}, #00000080)"
 			}
 		},
 		"md": {
@@ -31,7 +31,7 @@
 				"value": "{shadow.md.spread}"
 			},
 			"color": {
-				"value": "{shadow.md.color}"
+				"value": "light-dark({shadow.md.color}, #00000040)"
 			}
 		}
 	}
