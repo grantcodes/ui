@@ -19,6 +19,11 @@ const packageRoot = path.resolve(__dirname, "..");
 
 describe("CSS output contract", () => {
 	it("build emits only supported CSS contract entries per theme", () => {
+		fs.rmSync(path.join(packageRoot, "dist"), {
+			recursive: true,
+			force: true,
+		});
+
 		execSync("node ./build.js", {
 			cwd: packageRoot,
 			stdio: "pipe",

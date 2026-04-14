@@ -1,7 +1,6 @@
 import StyleDictionary from "style-dictionary";
 import minimist from "minimist";
 import { generateOklchScale } from "./lib/color-generator.js";
-import { generateFluidScale, DEFAULT_FLUID_CONFIG, DEFAULT_FLUID_STEPS } from "./lib/fluid-typography.js";
 
 /**
  * Auto-palette preprocessor
@@ -43,26 +42,6 @@ StyleDictionary.registerPreprocessor({
 		};
 
 		walkTokens(dictionary);
-		return dictionary;
-	},
-});
-
-/**
- * Fluid typography preprocessor
- * Replaces static rem font-size values with clamp() strings
- * using a dual-ratio modular type scale for fluid sizing.
- */
-StyleDictionary.registerPreprocessor({
-	name: "fluid-typography",
-	preprocessor: (dictionary) => {
-		const fontSizes = dictionary?.typography?.["font-size"];
-		if (!fontSizes) return dictionary;
-		const fluidScale = generateFluidScale(DEFAULT_FLUID_CONFIG, DEFAULT_FLUID_STEPS);
-		for (const [name, entry] of Object.entries(fontSizes)) {
-			if (name in fluidScale && entry && typeof entry === "object") {
-				entry.value = fluidScale[name];
-			}
-		}
 		return dictionary;
 	},
 });
@@ -410,38 +389,6 @@ const getStyleDictionaryConfig = (theme) => {
 	const BASE_FONT_SIZE = 16; // Typically 16px = 1rem
 
 	/**
-	 * Register the size/px-to-rem transform
-	 * 1) Used to convert px values to rem values
-	 * 2) Match only properties with px values
-	 * 3) Only transform if it's a valid px value
-	 */
-	StyleDictionary.registerTransform({
-		name: "size/px-to-rem",
-		type: "value",
-		matcher: function (prop) {
-			/* 2 */
-			return (
-				prop &&
-				prop.value &&
-				typeof prop.value === "string" &&
-				prop.value.endsWith("px")
-			);
-		},
-		transform: function (prop) {
-			if (!prop || !prop.value) return prop.value;
-			/* 3 */
-			const pxValue = prop.value.trim();
-			if (!pxValue.endsWith("px")) return prop.value;
-
-			const pixels = parseFloat(pxValue);
-			if (isNaN(pixels)) return prop.value;
-
-			const remValue = Number((pixels / BASE_FONT_SIZE).toFixed(4)).toString();
-			return `${remValue}rem`;
-		},
-	});
-
-	/**
 	 * Register the CSS formatter
 	 * 1) Used to format the inner contents of the :root ruleset for Storybook only or if you want to define tokens with theme prefix
 	 */
@@ -490,7 +437,7 @@ const getStyleDictionaryConfig = (theme) => {
 	 */
 	StyleDictionary.registerTransformGroup({
 		name: "custom/css",
-		transforms: ["attribute/cti", "name/kebab", "size/px-to-rem"],
+		transforms: ["attribute/cti", "name/kebab"]
 	});
 
 	/**
@@ -498,7 +445,7 @@ const getStyleDictionaryConfig = (theme) => {
 	 */
 	StyleDictionary.registerTransformGroup({
 		name: "custom/js",
-		transforms: ["attribute/cti", "name/theme-prefix", "size/px-to-rem"],
+		transforms: ["attribute/cti", "name/theme-prefix"]
 	});
 
 	/**
@@ -506,7 +453,9 @@ const getStyleDictionaryConfig = (theme) => {
 	 * 1) Used to define the platforms, prefixes, etc. to build the tokens with/for
 	 */
 	const config = {
-		preprocessors: ["auto-palette", "fluid-typography"],
+        preprocessors: [
+            "auto-palette",
+        ],
 		source: [
 			`./tokens/core/**/*.json`,
 			`./tokens/${theme}/tier-1-definitions/**/*.json`,
