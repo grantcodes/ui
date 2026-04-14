@@ -433,14 +433,6 @@ const getStyleDictionaryConfig = (theme) => {
 	});
 
 	/**
-	 * Register the custom/css transform group
-	 */
-	StyleDictionary.registerTransformGroup({
-		name: "custom/css",
-		transforms: ["attribute/cti", "name/kebab"]
-	});
-
-	/**
 	 * Register the custom/js transform group
 	 */
 	StyleDictionary.registerTransformGroup({
@@ -488,7 +480,7 @@ const getStyleDictionaryConfig = (theme) => {
 				],
 			},
 			css: {
-				transformGroup: "custom/css",
+				transformGroup: "css",
 				prefix: "g",
 				buildPath: `./dist/css/${theme}/`,
 				files: [
@@ -503,7 +495,7 @@ const getStyleDictionaryConfig = (theme) => {
 				],
 			},
 			json: {
-				transformGroup: "custom/css",
+				transformGroup: "css",
 				prefix: "g",
 				buildPath: `./dist/json/${theme}/`,
 				files: [
