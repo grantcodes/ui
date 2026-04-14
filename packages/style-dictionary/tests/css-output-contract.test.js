@@ -1,4 +1,4 @@
-import { describe, it } from "node:test";
+import { describe, it, before } from "node:test";
 import assert from "node:assert";
 import fs from "node:fs";
 import path from "node:path";
@@ -18,6 +18,14 @@ const __dirname = path.dirname(__filename);
 const packageRoot = path.resolve(__dirname, "..");
 
 describe("CSS output contract", () => {
+	before(() => {
+		execSync("node ./build.js", {
+			cwd: packageRoot,
+			stdio: "pipe",
+			encoding: "utf8",
+		});
+	});
+
 	it("build emits only supported CSS contract entries per theme", () => {
 		fs.rmSync(path.join(packageRoot, "dist"), {
 			recursive: true,
@@ -55,6 +63,25 @@ describe("CSS output contract", () => {
 					tokensContent,
 					new RegExp(requiredKey.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")),
 					`Expected ${requiredKey} in ${theme}/tokens.css`,
+				);
+			}
+		}
+	});
+
+	it("required contract keys exist in each theme tokens.css", () => {
+		for (const theme of THEMES) {
+			const tokensPath = path.join(packageRoot, "dist", "css", theme, "tokens.css");
+			assert.ok(
+				fs.existsSync(tokensPath),
+				`Expected tokens.css to exist before key checks for theme ${theme}`,
+			);
+
+			const tokensContent = fs.readFileSync(tokensPath, "utf8");
+			for (const requiredKey of REQUIRED_KEYS) {
+				assert.match(
+					tokensContent,
+					new RegExp(requiredKey.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")),
+					`Missing required key ${requiredKey} in ${theme}/tokens.css`,
 				);
 			}
 		}
