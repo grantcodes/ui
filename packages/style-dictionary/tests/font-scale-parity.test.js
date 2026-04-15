@@ -179,8 +179,8 @@ describe("grantina font-scale parity", () => {
   it("grantina tier-2 typography font-sizes reference calc-based font-size tokens", () => {
     // h1 references font-size.4xl which will be calc(); outputReferences emits var()
     assert.match(content, /--g-theme-typography-h1-font-size:\s*var\(--g-typography-font-size-/);
-    // body uses font-size.md which is the literal 1rem from core
-    assert.match(content, /--g-theme-typography-body-font-size:\s*1rem/);
+    // body uses font-size.md; outputReferences emits var(--g-typography-font-size-md)
+    assert.match(content, /--g-theme-typography-body-font-size:\s*var\(--g-typography-font-size-md\)/);
   });
 });
 

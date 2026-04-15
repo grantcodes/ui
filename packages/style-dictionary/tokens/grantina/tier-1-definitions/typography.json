@@ -21,30 +21,13 @@
 			}
 		},
 		"font-size": {
-			"xs": {
-				"value": "0.75rem"
-			},
-			"sm": {
-				"value": "0.875rem"
-			},
-			"md": {
-				"value": "1rem"
-			},
-			"lg": {
-				"value": "1.25rem"
-			},
-			"xl": {
-				"value": "1.5rem"
-			},
-			"2xl": {
-				"value": "2rem"
-			},
-			"3xl": {
-				"value": "2.5rem"
-			},
-			"4xl": {
-				"value": "3rem"
-			}
+			"3xl":     { "value": "calc(1rem * pow({typography.font-scale.default}, 5))" },
+			"4xl":     { "value": "calc(1rem * pow({typography.font-scale.default}, 6))" },
+			"5xl":     { "value": "calc(1rem * pow({typography.font-scale.default}, 7))" },
+			"6xl":     { "value": "calc(1rem * pow({typography.font-scale.default}, 8))" },
+			"7xl":     { "value": "calc(1rem * pow({typography.font-scale.default}, 9))" },
+			"8xl":     { "value": "calc(1rem * pow({typography.font-scale.default}, 10))" },
+			"display": { "value": "calc(1rem * pow({typography.font-scale.default}, 14))" }
 		},
 		"letter-spacing": {
 			"none": {
