@@ -59,9 +59,10 @@ describe("wireframe font-scale parity", () => {
     }
   });
 
-  it("wireframe tier-2 h1/h2/h3 font-size resolve to calc expressions", () => {
-    assert.match(content, /--g-theme-typography-h1-font-size:\s*calc\(/);
-    assert.match(content, /--g-theme-typography-h2-font-size:\s*calc\(/);
-    assert.match(content, /--g-theme-typography-h3-font-size:\s*calc\(/);
+  it("wireframe tier-2 h1/h2/h3 font-size reference calc-based font-size tokens", () => {
+    // outputReferences: true means tier-2 tokens emit var() references to the tier-1 calc tokens
+    assert.match(content, /--g-theme-typography-h1-font-size:\s*var\(--g-typography-font-size-/);
+    assert.match(content, /--g-theme-typography-h2-font-size:\s*var\(--g-typography-font-size-/);
+    assert.match(content, /--g-theme-typography-h3-font-size:\s*var\(--g-typography-font-size-/);
   });
 });
