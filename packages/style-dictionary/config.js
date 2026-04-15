@@ -338,6 +338,15 @@ const transformShadowTokensJSON = (dictionary, size) => {
  * @param {string} theme
  */
 const getStyleDictionaryConfig = (theme) => {
+	// Register the custom CSS tokens formatter
+	// Uses formatVariables to produce --g-theme-* prefixes for tier-2/3 tokens
+	StyleDictionary.registerFormat({
+		name: "css/custom-tokens",
+		format: function (dictionary) {
+			return `:root, .${theme} {\n${formatVariables(dictionary)}\n}\n`;
+		},
+	});
+
 	// Register the JSON formatter
 	StyleDictionary.registerFormat({
 		name: "json/flat/custom",
@@ -369,33 +378,6 @@ const getStyleDictionaryConfig = (theme) => {
 			});
 
 			return JSON.stringify(transformedTokens, null, 2);
-		},
-	});
-
-	/**
-	 * Register the CSS formatter
-	 * 1) Used to format the inner contents of the .[theme-name] ruleset for Storybook only or if you want to define tokens using a theme name
-	 */
-	StyleDictionary.registerFormat({
-		name: "css/variables-themed",
-		format: function (dictionary) {
-			return `.${theme} {\n${formatVariables(dictionary)}\n}\n`;
-		},
-	});
-
-	/**
-	 * Define the base pixel value for rem conversion
-	 */
-	const BASE_FONT_SIZE = 16; // Typically 16px = 1rem
-
-	/**
-	 * Register the CSS formatter
-	 * 1) Used to format the inner contents of the :root ruleset for Storybook only or if you want to define tokens with theme prefix
-	 */
-	StyleDictionary.registerFormat({
-		name: "css/custom-variables",
-		format: function (dictionary) {
-			return `:root {\n${formatVariables(dictionary)}\n}`;
 		},
 	});
 
@@ -485,12 +467,16 @@ const getStyleDictionaryConfig = (theme) => {
 				buildPath: `./dist/css/${theme}/`,
 				files: [
 					{
-						destination: "tokens.css",
-						format: "css/custom-variables",
+						destination: `${theme}.css`,
+						format: "css/variables",
+						options: {
+						  selector: `:root, .${theme}`,
+							outputReferences: true,
+            },
 					},
 					{
-						destination: `${theme}.css`,
-						format: "css/variables-themed",
+						destination: "tokens.css",
+						format: "css/custom-tokens",
 					},
 				],
 			},
