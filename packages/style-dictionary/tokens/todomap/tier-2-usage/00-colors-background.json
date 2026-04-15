@@ -4,8 +4,14 @@
 			"default": {
 				"value": "light-dark({color.neutral.white}, {color.neutral.900})"
 			},
+			"default-hover": {
+				"value": "light-dark({color.neutral.300}, {color.neutral.700})"
+			},
 			"subtle": {
 				"value": "light-dark({color.neutral.100}, {color.neutral.800})"
+			},
+			"subtle-hover": {
+				"value": "light-dark({color.neutral.200}, {color.neutral.700})"
 			},
 			"knockout": {
 				"value": "light-dark({color.neutral.black}, {color.neutral.white})"
@@ -54,6 +60,15 @@
 			},
 			"tertiary-knockout-hover": {
 				"value": "light-dark({color.tertiary.700}, {color.tertiary.600})"
+			},
+			"disabled": {
+				"value": "light-dark({color.neutral.200}, {color.neutral.700})"
+			},
+			"transparent": {
+				"value": "oklch(from var(--g-theme-color-background-default) l c h / 0.25)"
+			},
+			"transparent-strong": {
+				"value": "oklch(from var(--g-theme-color-background-default) l c h / 0.9)"
 			},
 			"utility": {
 				"error": {
