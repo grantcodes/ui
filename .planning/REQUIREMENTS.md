@@ -33,9 +33,24 @@ Requirements for Token System Modernization. Each maps to roadmap phases.
 - [x] **TYPE-03**: Separate scale ratios defined for small and large viewport breakpoints
 - [x] **TYPE-04**: Fluid typography values pass WCAG 1.4.4 (200% browser zoom)
 
+### Build Simplification (BUILD)
+
+- [x] **BUILD-01**: Resolve contract/output conflicts between `default-variables.css` and `tokens.css` so consumers have one consistent source of token values per theme
+- [x] **BUILD-02**: Migrate theme CSS outputs to one supported CSS token file per theme while preserving required downstream token contracts
+- [x] **BUILD-03**: Remove unnecessary custom Style Dictionary CSS formatters/transforms, keeping only what is required to emit consumer contract-compatible tokens
+
 ## Future Requirements
 
 Deferred to future release. Tracked but not in current roadmap.
+
+### Theme Parity (PARITY)
+
+Requirements for v3.1 — updating wireframe, todomap, and grantina to match grantcodes' v3.0 token structure.
+
+- [ ] **PARITY-01**: Wireframe and todomap tier-1 typography replaces static `font-size.*` tokens with `font-scale-sm/lg/default` and `calc(1rem * pow(...))` references matching the core token structure
+- [x] **PARITY-02**: Wireframe and todomap tier-2 typography refs updated from removed static font-size steps (display, 6xl–8xl) to equivalent calc-based scale steps
+- [x] **PARITY-03**: Todomap tier-2 background tokens expanded to include the full grantcodes set (`default-hover`, `subtle-hover`, `disabled`, `transparent`, `transparent-strong`)
+- [x] **PARITY-04**: Grantina tier-1 typography replaces static `font-size.*` tokens with `font-scale-sm/lg/default` and `calc(1rem * pow(...))` references, including all missing font-size keys (display, 5xl–8xl)
 
 ### Migration
 
@@ -74,12 +89,21 @@ Which phases cover which requirements. Updated during roadmap creation.
 | TYPE-02 | Phase 14 | Complete |
 | TYPE-03 | Phase 14 | Complete |
 | TYPE-04 | Phase 14 | Complete |
+| BUILD-01 | Phase 15 | Complete |
+| BUILD-02 | Phase 15 | Complete |
+| BUILD-03 | Phase 15 | Complete |
+| PARITY-01 | Phase 16 | Pending |
+| PARITY-02 | Phase 16 | Complete |
+| PARITY-03 | Phase 16 | Complete |
+| PARITY-04 | Phase 16 | Complete |
 
 **Coverage:**
-- v3.0 requirements: 14 total
-- Mapped to phases: 14
+- v3.0 requirements: 17 total
+- Mapped to phases: 17
+- v3.1 requirements: 4 total
+- Mapped to phases: 4
 - Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-04-08*
-*Last updated: 2026-04-08 after roadmap creation*
+*Last updated: 2026-04-15 after Phase 16 insertion*

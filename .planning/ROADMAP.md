@@ -6,7 +6,8 @@
 - ✅ **v1.1 Additional UI Features** - Phases 5-6 (shipped 2026-03-25)
 - ✅ **v2.0 Grantina Theme** - Phases 3-6 (shipped 2026-04-05)
 - ✅ **v2.1 Dark Theme Support & UI Improvements** - Phases 7-9 (shipped 2026-04-07)
-- 🚧 **v3.0 Token System Modernization** - Phases 10-14 (in progress)
+- ✅ **v3.0 Token System Modernization** - Phases 10-15 (shipped 2026-04-14)
+- 🚧 **v3.1 Theme Font Scale Parity** - Phase 16 (in progress)
 
 ## Phases
 
@@ -21,13 +22,14 @@ See MILESTONES.md for details on completed phases 1-9.
 
 </details>
 
-### 🚧 v3.0 Token System Modernization (In Progress)
+### ✅ v3.0 Token System Modernization (Shipped 2026-04-14)
 
 - [x] **Phase 10: Token Rename & Architecture Prep** - Rename "brand" tokens to "primary"/"secondary"/"tertiary" across all tiers and themes (completed 2026-04-08)
 - [x] **Phase 11: Auto-Palette Generation** - Generate full oklch color scales from a single base color per theme (completed 2026-04-09)
 - [x] **Phase 12: CSS light-dark() Integration** - Replace separate dark token files with inline light-dark() functions (completed 2026-04-09)
 - [x] **Phase 13: Relative Colors & Runtime Generation** - Use CSS relative color syntax for runtime color variants and alpha transparency (completed 2026-04-09)
 - [x] **Phase 14: Fluid Typography** - Replace static font-size tokens with responsive clamp()-based fluid values (completed 2026-04-09)
+- [x] **Phase 15: Native-First CSS Output Simplification** - Consolidate theme CSS outputs to one file, resolve `default-variables.css` vs `tokens.css` contract issues, and remove unneeded custom Style Dictionary formatting/transforms while preserving consumer token contracts (completed 2026-04-14)
 
 ## Phase Details
 
@@ -112,17 +114,57 @@ Plans:
 - [ ] 14-01-PLAN.md — TDD: fluid typography generator (generateFluidScale, DEFAULT_FLUID_CONFIG, DEFAULT_FLUID_STEPS)
 - [ ] 14-02-PLAN.md — Wire preprocessor into Style Dictionary config, build all 4 themes, human verify
 
+### Phase 15: Native-First CSS Output Simplification
+
+**Goal**: Consumers import a single, reliable CSS file per theme with stable token contracts and no duplicated/conflicting variable layers
+**Depends on**: Phase 14
+**Requirements**: BUILD-01, BUILD-02, BUILD-03
+**Success Criteria** (what must be TRUE):
+  1. Each theme exposes exactly one supported CSS token entry file for consumers, and that file contains the complete token contract needed by downstream packages
+  2. Token values exposed to consumers are consistent and conflict-free (no unresolved or contradictory definitions between `default-variables.css` and `tokens.css`)
+  3. Existing required consumer-facing token names/contracts continue to resolve after migration (no breaking removal of required variables)
+  4. Style Dictionary build output no longer depends on unnecessary custom formatters/transforms for CSS emission, while still producing the required token outputs for consumers
+**Plans**: 2 plans
+
+Plans:
+- [x] 15-01-PLAN.md — Enforce single CSS consumer contract output (remove default-variables.css, add contract tests, update docs)
+- [x] 15-02-PLAN.md — Simplify CSS build internals safely with parity-verified contract preservation
+
+### 🚧 v3.1 Theme Font Scale Parity (In Progress)
+
+- [x] **Phase 16: All-Theme Font Scale Parity** - Replace static font-size tokens in wireframe, todomap, and grantina with CSS-reference-based fluid scale matching the grantcodes/core token structure (completed 2026-04-15)
+
+## Phase Details (continued)
+
+### Phase 16: All-Theme Font Scale Parity
+
+**Goal**: Wireframe, todomap, and grantina typography outputs use the same CSS-reference-based fluid scale as grantcodes — font sizes are computed at runtime via `calc(1rem * pow(var(--g-typography-font-scale-default), N))` and the scale ratio transitions fluidly between viewports
+**Depends on**: Phase 15
+**Requirements**: PARITY-01, PARITY-02, PARITY-03, PARITY-04
+**Success Criteria** (what must be TRUE):
+  1. Wireframe, todomap, and grantina CSS outputs contain `--g-typography-font-scale-sm`, `--g-typography-font-scale-lg`, and `--g-typography-font-size-root` tokens identical to grantcodes
+  2. All wireframe, todomap, and grantina `font-size-*` tokens are CSS `calc()` expressions referencing `--g-typography-font-scale-default` — no static rem values remain in tier-1 typography
+  3. Wireframe and todomap tier-2 typography tokens that reference oversized static steps (display, 6xl–8xl as plain rem) are updated to reference the calc-based scale steps instead
+  4. `pnpm build` succeeds for all themes with zero Style Dictionary reference errors
+  5. Todomap background tokens include the same full set as grantcodes: `default-hover`, `subtle-hover`, `disabled`, `transparent`, `transparent-strong`
+**Plans**: 3 plans
+
+Plans:
+- [x] 16-01-PLAN.md — Update wireframe tier-1 typography to fluid scale + fix tier-2 oversized font-size refs
+- [x] 16-02-PLAN.md — Update todomap tier-1 typography to fluid scale + fill missing background tokens
+- [x] 16-03-PLAN.md — Update grantina tier-1 typography to fluid scale + add missing font-size keys + build verify all themes
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 10 → 11 → 12 → 13 → 14
-
-Note: Phase 14 (Fluid Typography) depends only on Phase 10, not on Phases 11-13. It could theoretically run in parallel with the color pipeline, but sequential execution keeps things simple.
+Phases execute in numeric order: 10 → 11 → 12 → 13 → 14 → 15 → 16
 
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
-| 10. Token Rename & Architecture Prep | v3.0 | 3/3 | Complete   | 2026-04-09 |
-| 11. Auto-Palette Generation | 2/2 | Complete    | 2026-04-09 | - |
-| 12. CSS light-dark() Integration | 2/2 | Complete    | 2026-04-09 | - |
-| 13. Relative Colors & Runtime Generation | 2/2 | Complete    | 2026-04-09 | - |
-| 14. Fluid Typography | 2/2 | Complete   | 2026-04-09 | - |
+| 10. Token Rename & Architecture Prep | v3.0 | 3/3 | Complete | 2026-04-09 |
+| 11. Auto-Palette Generation | v3.0 | 2/2 | Complete | 2026-04-09 |
+| 12. CSS light-dark() Integration | v3.0 | 2/2 | Complete | 2026-04-09 |
+| 13. Relative Colors & Runtime Generation | v3.0 | 2/2 | Complete | 2026-04-09 |
+| 14. Fluid Typography | v3.0 | 2/2 | Complete | 2026-04-09 |
+| 15. Native-First CSS Output Simplification | v3.0 | 2/2 | Complete | 2026-04-14 |
+| 16. All-Theme Font Scale Parity | v3.1 | 3/3 | Complete   | 2026-04-15 |

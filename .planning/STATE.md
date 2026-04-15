@@ -1,16 +1,17 @@
 ---
 gsd_state_version: 1.0
-milestone: v3.0
-milestone_name: Token System Modernization
-status: unknown
-stopped_at: Completed 14-02-PLAN.md
-last_updated: "2026-04-09T17:51:03.557Z"
-last_activity: 2026-04-09
+milestone: v3.1
+milestone_name: Theme Font Scale Parity
+status: Phase added, ready for planning
+stopped_at: Completed Phase 16 all 3 plans — theme font scale parity
+last_updated: "2026-04-15T07:44:25.630Z"
+last_activity: 2026-04-14
 progress:
-  total_phases: 5
-  completed_phases: 5
-  total_plans: 11
-  completed_plans: 11
+  total_phases: 7
+  completed_phases: 7
+  total_plans: 16
+  completed_plans: 16
+  percent: 100
 ---
 
 # Project State
@@ -20,18 +21,18 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-08)
 
 **Core value:** Provide a single, coherent token system that any consumer can use to theme UI components
-**Current focus:** Phase 14 — fluid-typography
+**Current focus:** Phase 16 — wireframe-todomap-font-scale-parity
 
 ## Current Position
 
-Phase: 14 (fluid-typography) — EXECUTING
-Plan: 2 of 2
+Phase: 16
+Plan: Not started
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 5
+- Total plans completed: 7
 - Average duration: 6 min
 - Total execution time: 29 min
 
@@ -48,6 +49,10 @@ Plan: 2 of 2
 | Phase 13-relative-colors-runtime-generation P02 | 10min | 2 tasks | 4 files |
 | Phase 14 P01 | 1 min | 1 tasks | 2 files |
 | Phase 14-fluid-typography P02 | 35 min | 3 tasks | 7 files |
+| Phase 15 P02 | 4 min | 2 tasks | 2 files |
+| Phase 16 P01 | 25 | 3 tasks | 3 files |
+| Phase 16 P02 | 10 | 3 tasks | 4 files |
+| Phase 16 P03 | 8 | 3 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -80,6 +85,11 @@ Recent decisions affecting current work:
 - [Phase 13-relative-colors-runtime-generation]: All 4 themes use same oklch(from var(--g-theme-color-primary-500) l c h / 0.4) expression for focus-ring — each theme's primary-500 CSS var provides the correct base color
 - [Phase 14-fluid-typography]: Register fluid-typography as Style Dictionary preprocessor (not transformer) to replace rem values with clamp() at build time — Architectural pattern established in Plan 01
 - [Phase 14-fluid-typography]: Display step minRem capped at 4rem: clamp(4rem, calc(2rem + 10vw), 10rem) after user feedback on oversized H1 on mobile — User accepted cap as safe default and may manually adjust in future
+- [Phase 15-native-first-css-output-simplification]: Simplification must preserve required consumer token contracts while consolidating CSS output to one supported file per theme
+- [Phase 15]: Retain tokens.css as canonical consumer contract and remove duplicate default-variables.css output
+- [Phase 16]: Wireframe has static font-size tokens xs through display; need to remove and replace with calc references like grantcodes core. Tier-2 typography uses display/6xl-8xl which will need to map to equivalent scale steps (e.g. step 14 for display). Todomap same situation plus missing background tokens: default-hover, subtle-hover, disabled, transparent, transparent-strong. Core typography.json already has the correct font-scale + calc structure shared by all themes — wireframe/todomap tier-1 typography just needs static font-size block removed and replaced with font-scale tokens + relevant font-size refs. The wireframe animation.json has extra tokens not in grantcodes — leave those alone.
+- [Phase 16]: outputReferences:true emits var() references; tier-2 font-size test assertions must match var() pattern not calc() directly
+- [Phase 16]: custom/css-tokens transform group with name/css-theme-prefix produces --g-theme-* for tier-2/3 and --g-* for tier-1
 
 ### Pending Todos
 
@@ -91,6 +101,6 @@ None.
 
 ## Session Continuity
 
-Last activity: 2026-04-09
-Stopped at: Completed 14-02-PLAN.md
+Last activity: 2026-04-14
+Stopped at: Completed Phase 16 all 3 plans — theme font scale parity
 Resume file: None

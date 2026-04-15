@@ -39,7 +39,7 @@
 		"fix:lint": "npx @biomejs/biome format --write tokens build.js",
 		"test": "run-s lint",
 		"lint": "npx @biomejs/biome lint tokens build.js lib",
-		"test:unit": "node --test"
+		"test:unit": "node --test --test-concurrency=1"
 	},
 	"author": {
 		"email": "mail@grant.codes",
