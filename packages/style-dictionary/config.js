@@ -338,13 +338,51 @@ const transformShadowTokensJSON = (dictionary, size) => {
  * @param {string} theme
  */
 const getStyleDictionaryConfig = (theme) => {
-	// Register the custom CSS tokens formatter
-	// Uses formatVariables to produce --g-theme-* prefixes for tier-2/3 tokens
-	StyleDictionary.registerFormat({
-		name: "css/custom-tokens",
-		format: function (dictionary) {
-			return `:root, .${theme} {\n${formatVariables(dictionary)}\n}\n`;
+	/**
+	 * Register a name transform that produces css-variable-ready names with
+	 * g-theme- prefix for tier-2/3 tokens and g- for tier-1/core tokens.
+	 * Hardcodes the "g" prefix (the project-wide CSS variable prefix).
+	 */
+	StyleDictionary.registerTransform({
+		name: "name/css-theme-prefix",
+		type: "name",
+		transform: function (token) {
+			const cleanPath = token.path
+				.map((segment) =>
+					segment.startsWith("@") ? segment.substring(1) : segment,
+				)
+				.filter((segment) => segment !== "")
+				.join("-");
+			if (isHigherTierToken(token.filePath)) {
+				return `g-theme-${cleanPath}`;
+			}
+			return `g-${cleanPath}`;
 		},
+	});
+
+	/**
+	 * Register the custom/css-tokens transform group.
+	 * Uses the same transforms as the built-in css group, but replaces name/kebab
+	 * with name/css-theme-prefix so tier-2/3 tokens get --g-theme-* CSS variable names.
+	 */
+	StyleDictionary.registerTransformGroup({
+		name: "custom/css-tokens",
+		transforms: [
+			"attribute/cti",
+			"name/css-theme-prefix",
+			"time/seconds",
+			"html/icon",
+			"size/rem",
+			"color/css",
+			"asset/url",
+			"fontFamily/css",
+			"cubicBezier/css",
+			"strokeStyle/css/shorthand",
+			"border/css/shorthand",
+			"typography/css/shorthand",
+			"transition/css/shorthand",
+			"shadow/css/shorthand",
+		],
 	});
 
 	// Register the JSON formatter
@@ -474,9 +512,19 @@ const getStyleDictionaryConfig = (theme) => {
 							outputReferences: true,
             },
 					},
+				],
+			},
+			"css-tokens": {
+				transformGroup: "custom/css-tokens",
+				buildPath: `./dist/css/${theme}/`,
+				files: [
 					{
 						destination: "tokens.css",
-						format: "css/custom-tokens",
+						format: "css/variables",
+						options: {
+							selector: `:root, .${theme}`,
+							outputReferences: true,
+						},
 					},
 				],
 			},

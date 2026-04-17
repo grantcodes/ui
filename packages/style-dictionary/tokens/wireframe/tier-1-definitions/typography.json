@@ -8,14 +8,13 @@
 				"value": "Helvetica, sans-serif"
 			}
 		},
-		"font-size": {
-			"3xl":     { "value": "calc(1rem * pow({typography.font-scale.default}, 5))" },
-			"4xl":     { "value": "calc(1rem * pow({typography.font-scale.default}, 6))" },
-			"5xl":     { "value": "calc(1rem * pow({typography.font-scale.default}, 7))" },
-			"6xl":     { "value": "calc(1rem * pow({typography.font-scale.default}, 8))" },
-			"7xl":     { "value": "calc(1rem * pow({typography.font-scale.default}, 9))" },
-			"8xl":     { "value": "calc(1rem * pow({typography.font-scale.default}, 10))" },
-			"display": { "value": "calc(1rem * pow({typography.font-scale.default}, 14))" }
+		"font-weight": {
+			"800": {
+				"value": "800"
+			},
+			"900": {
+				"value": "900"
+			}
 		}
 	}
 }

@@ -7,8 +7,8 @@
 			"400": { "value": "{color.blue.400}" },
 			"500": { "value": "{color.blue.500}" },
 			"600": { "value": "{color.blue.600}" },
-			"700": { "value": "{color.blue.700}" },
-			"800": { "value": "{color.blue.800}" },
+			"700": { "value": "light-dark({color.blue.700}, {color.blue.300})" },
+			"800": { "value": "light-dark({color.blue.800}, {color.blue.200})" },
 			"900": { "value": "{color.blue.900}" }
 		},
 		"secondary": {

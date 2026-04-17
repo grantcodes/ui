@@ -8,13 +8,13 @@
 				"value": "light-dark({color.navy.700}, {color.cream.100})"
 			},
 			"subtle": {
-				"value": "light-dark({color.navy.300}, {color.cream.600})"
+				"value": "light-dark({color.navy.400}, {color.cream.600})"
 			},
 			"knockout": {
 				"value": "light-dark({color.cream.100}, {color.navy.700})"
 			},
 			"primary": {
-				"value": "light-dark({color.primary.600}, {color.primary.300})"
+				"value": "light-dark({color.primary.600}, {color.primary.200})"
 			},
 			"primary-hover": {
 				"value": "light-dark({color.primary.900}, {color.primary.100})"
