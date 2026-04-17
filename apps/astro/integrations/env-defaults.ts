@@ -1,19 +1,19 @@
 import {
-  GThemeColorBackgroundBrand,
+  GThemeColorBackgroundPrimary,
   GThemeColorContentDefault,
   GThemeTypographyBodyFontWeight,
   GThemeTypographyH1FontWeight as GThemeTypographyHeadlineDefaultFontWeight,
   GTypographyFontFamilyGreycliff,
 } from '@grantcodes/style-dictionary/grantcodes/js'
 import {
-  GThemeColorBackgroundBrand as TodomapThemeColorBackgroundBrand,
+  GThemeColorBackgroundPrimary as TodomapThemeColorBackgroundBrand,
   GThemeColorContentDefault as TodomapThemeColorContentDefault,
-  GThemeTypographyFontWeightBody,
-  GThemeTypographyFontWeightHeading,
+  GThemeTypographyBodyFontWeight as GThemeTypographyFontWeightBody,
+  GThemeTypographyH1FontWeight as GThemeTypographyFontWeightHeading,
   GTypographyFontFamilyQuicksand,
 } from '@grantcodes/style-dictionary/todomap/js'
 import {
-  GThemeColorBackgroundBrand as WireframeThemeColorBackgroundBrand,
+  GThemeColorBackgroundPrimary as WireframeThemeColorBackgroundBrand,
   GThemeColorContentDefault as WireframeThemeColorContentDefault,
   GThemeTypographyBodyFontWeight as WireframeThemeTypographyBodyDefaultFontWeight,
   GThemeTypographyH1FontWeight as WireframeThemeTypographyHeadlineDefaultFontWeight,
@@ -23,7 +23,7 @@ import {
 const OG_THEMES = {
   grantcodes: {
     color: GThemeColorContentDefault,
-    backgroundColor: GThemeColorBackgroundBrand,
+    backgroundColor: GThemeColorBackgroundPrimary,
     fontName: GTypographyFontFamilyGreycliff.split(',')[0].trim(),
     headingFontWeight: GThemeTypographyHeadlineDefaultFontWeight,
     bodyFontWeight: GThemeTypographyBodyFontWeight,
