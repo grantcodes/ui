@@ -20,7 +20,7 @@
 
   .feature-list__title {
     margin: 0 0 var(--g-theme-spacing-sm);
-    font: var(--g-theme-typography-h4);
+    font: var(--g-typography-h4-font);
     text-align: center;
     color: var(--g-theme-color-content-default);
   }
@@ -29,7 +29,7 @@
     margin: 0 auto var(--g-theme-spacing-2xl);
     font-size: var(--g-theme-typography-body-lg-font-size);
     text-align: center;
-    color: var(--g-theme-color-content-secondary);
+    color: var(--g-theme-color-content-subtle);
     max-width: 55ch;
   }
 
@@ -62,7 +62,7 @@
   }
 
   .feature-list__link:hover .feature-list__item-title {
-    color: var(--g-theme-color-content-brand, #7c3aed);
+    color: var(--g-theme-color-content-primary, #7c3aed);
   }
 
   .feature-list__icon {
@@ -71,14 +71,14 @@
     border-radius: 50%;
     inline-size: fit-content;
     margin-block-end: var(--g-theme-spacing-md);
-    color: var(--g-theme-color-content-brand, currentColor);
-    background-color: var(--g-theme-color-background-brand);
+    color: var(--g-theme-color-content-primary, currentColor);
+    background-color: var(--g-theme-color-background-primary);
   }
 
   .feature-list__item-title {
-    font: var(--g-theme-typography-h5);
+    font: var(--g-typography-h5-font);
   }
 
   .feature-list__item-desc {
-    color: var(--g-theme-color-content-secondary);
+    color: var(--g-theme-color-content-subtle);
   }

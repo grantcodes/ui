@@ -1,5 +1,24 @@
-html {
-	font: var(--g-theme-typography-body);
+:root {
+	font: var(--g-typography-body-font);
+	font-size: var(--g-typography-font-size-root);
+}
+@media (min-width: 40em) {
+	:root {
+	/* TODO: Would like to get rid of important */
+	  --g-typography-font-scale-default: var(--g-typography-font-scale-lg) !important;
+    }
+}
+
+:where(h1,h1,h3,h4,h5,h6,p) {
+    margin-block-end: 1rem;
+}
+
+:where(h1,h1,h3,h4,h5,h6,p):first-child {
+    margin-block-start: 0;
+}
+
+:where(h1,h1,h3,h4,h5,h6,p):last-child {
+    margin-block-end: 0;
 }
 
 h1,
@@ -12,31 +31,36 @@ h6 {
 }
 
 h1 {
-	font: var(--g-theme-typography-h1);
+	font: var(--g-typography-h1-font);
 }
 
 h2 {
-	font: var(--g-theme-typography-h2);
+	font: var(--g-typography-h2-font);
 }
 
 h3 {
-	font: var(--g-theme-typography-h3);
+	font: var(--g-typography-h3-font);
 }
 
 h4 {
-	font: var(--g-theme-typography-h4);
+	font: var(--g-typography-h4-font);
 }
 
 h5 {
-	font: var(--g-theme-typography-h5);
+	font: var(--g-typography-h5-font);
 }
 
 h6 {
-	font: var(--g-theme-typography-h6);
+	font: var(--g-typography-h6-font);
 }
 
 p {
 	text-wrap: pretty;
+	margin: 0
+}
+
+p + p {
+    margin-block-start: 1rem;
 }
 
 pre {

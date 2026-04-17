@@ -137,7 +137,7 @@
 
   .toast__message {
     font-size: var(--g-typography-font-size-14);
-    color: var(--g-theme-color-content-secondary);
+    color: var(--g-theme-color-content-subtle);
     line-height: 1.5;
   }
 
@@ -151,7 +151,7 @@
     align-items: center;
     justify-content: center;
     border-radius: var(--g-theme-border-radius-md);
-    color: var(--g-theme-color-content-secondary);
+    color: var(--g-theme-color-content-subtle);
     cursor: pointer;
     transition: all 0.2s ease;
     margin-inline-start: 0.5rem;

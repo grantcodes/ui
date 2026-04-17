@@ -37,7 +37,7 @@
 
 .countdown__label {
 	font-size: var(--g-theme-typography-body-sm-font-size, 0.875rem);
-	color: var(--g-theme-color-content-secondary);
+	color: var(--g-theme-color-content-subtle);
 	text-transform: uppercase;
 	letter-spacing: 0.05em;
 }

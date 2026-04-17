@@ -54,7 +54,7 @@
 
   .card__header ::slotted(*) {
     margin: 0;
-    font: var(--g-theme-typography-h5);
+    font: var(--g-typography-h5-font);
   }
 
   .card__content {
@@ -110,7 +110,7 @@
     background-color: color-mix(
       in srgb,
       var(--g-theme-color-background-default) 90%,
-      var(--g-color-brand-purple-500) 10%
+      var(--g-theme-color-primary-500) 10%
     );
     color: var(--g-theme-color-content-default);
   }

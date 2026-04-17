@@ -17,7 +17,7 @@
 
 /* Root defaults */
 :where(:root) {
-	font: var(--g-theme-typography-body);
+	font: var(--g-typography-body-font);
 	cursor: default;
 	line-height: 1.5;
 	overflow-wrap: break-word;
@@ -228,6 +228,16 @@ pre {
 	fill: currentColor;
 }
 
+/* Force dark mode on any element or subtree */
+.dark {
+	color-scheme: dark;
+}
+
+/* Force light mode on any element or subtree */
+.light {
+	color-scheme: light;
+}
+
 /* Allow transitioning auto */
 :root {
 	@supports (interpolate-size: allow-keywords) {
@@ -236,7 +246,7 @@ pre {
 }
 
 ::selection {
-	background-color: var(--g-theme-color-background-brand);
+	background-color: var(--g-theme-color-background-primary);
 }
 
 /* Default backdrop styles */

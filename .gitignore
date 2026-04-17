@@ -8,3 +8,4 @@ storybook-static/
 pnpm-lock.yaml
 _tmp/
 .planning/
+.playwright-mcp

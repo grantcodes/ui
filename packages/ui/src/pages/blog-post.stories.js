@@ -54,12 +54,12 @@ const relatedPosts = [
 
 const footerContent = html`
   <grantcodes-footer-column>
-    <h3>Flowbase</h3>
+    <h3 style="font: var(--g-typography-h6-font);">Flowbase</h3>
     <p>The modern platform for teams that move fast and ship great software.</p>
   </grantcodes-footer-column>
 
   <grantcodes-footer-column>
-    <h3>Product</h3>
+    <h3 style="font: var(--g-typography-h6-font);">Product</h3>
     <ul>
       <li><a href="/features">Features</a></li>
       <li><a href="/pricing">Pricing</a></li>
@@ -68,7 +68,7 @@ const footerContent = html`
   </grantcodes-footer-column>
 
   <grantcodes-footer-column>
-    <h3>Company</h3>
+    <h3 style="font: var(--g-typography-h6-font);">Company</h3>
     <ul>
       <li><a href="/blog">Blog</a></li>
       <li><a href="/about">About</a></li>
@@ -106,34 +106,24 @@ export const Default = {
     </grantcodes-app-bar>
 
     <!-- Article header -->
-    <grantcodes-container
-      style="padding-block-start: var(--g-theme-spacing-xl);"
-    >
+    <grantcodes-container>
       <div style="max-inline-size: 48rem; margin-inline: auto;">
-        <grantcodes-breadcrumb>
+        <grantcodes-breadcrumb style="margin-block: var(--g-theme-spacing-lg);">
           <grantcodes-breadcrumb-item href="/">Home</grantcodes-breadcrumb-item>
-          <grantcodes-breadcrumb-item href="/blog"
-            >Blog</grantcodes-breadcrumb-item
-          >
-          <grantcodes-breadcrumb-item current
-            >Shipping faster with async-first teams</grantcodes-breadcrumb-item
-          >
+          <grantcodes-breadcrumb-item href="/blog">Blog</grantcodes-breadcrumb-item>
+          <grantcodes-breadcrumb-item current>Shipping faster with async-first teams</grantcodes-breadcrumb-item>
         </grantcodes-breadcrumb>
 
         <div
-          style="margin-block-start: var(--g-theme-spacing-lg); display: flex; flex-direction: column; gap: var(--g-theme-spacing-md);"
+          style="display: flex; flex-direction: column; gap: var(--g-theme-spacing-md);"
         >
           <grantcodes-badge variant="primary">Engineering</grantcodes-badge>
 
-          <h1
-            style="margin: 0; font-size: var(--g-theme-typography-h1-font-size); font-weight: var(--g-theme-typography-h1-font-weight); line-height: 1.15; color: var(--g-theme-color-content-default);"
-          >
+          <h1>
             Shipping faster with async-first teams
           </h1>
 
-          <p
-            style="margin: 0; font-size: var(--g-theme-typography-body-font-size); color: var(--g-theme-color-content-secondary); line-height: 1.6;"
-          >
+          <p style="var(--g-theme-typography-body-lg);">
             How we restructured communication to remove the hidden cost of
             synchronous coordination — and what we shipped as a result.
           </p>
@@ -153,7 +143,7 @@ export const Default = {
                 Sam Torres
               </p>
               <p
-                style="margin: 0; color: var(--g-theme-color-content-secondary); font-size: var(--g-theme-typography-meta-font-size);"
+                style="margin: 0; color: var(--g-theme-color-content-subtle); font-size: var(--g-theme-typography-meta-font-size);"
               >
                 March 12, 2025 · 8 min read
               </p>
@@ -164,10 +154,7 @@ export const Default = {
     </grantcodes-container>
 
     <!-- Featured image -->
-    <grantcodes-container
-      nopad
-      style="margin-block: var(--g-theme-spacing-lg);"
-    >
+    <grantcodes-container align="wide" nopad>
       <img
         src="https://placehold.co/1200x500?text=Featured+Image"
         alt="An abstract illustration of async communication flows"
@@ -275,9 +262,7 @@ export const Default = {
             >
               Sam Torres
             </p>
-            <p
-              style="margin: 0; color: var(--g-theme-color-content-secondary); font-size: var(--g-theme-typography-body-font-size);"
-            >
+            <p style="font: var(--g-theme-typography-meta);">
               CTO at Flowbase. Writes about engineering culture, distributed
               teams, and systems thinking.
             </p>
@@ -287,18 +272,10 @@ export const Default = {
     </grantcodes-container>
 
     <!-- Related posts -->
-    <div
-      style="padding-block: var(--g-theme-spacing-2xl);"
-    >
+    <div style="padding-block: var(--g-theme-spacing-2xl);">
       <grantcodes-container>
-        <h2
-          style="margin: 0 0 var(--g-theme-spacing-lg); font-size: var(--g-theme-typography-h2-font-size); font-weight: var(--g-theme-typography-h2-font-weight); color: var(--g-theme-color-content-default);"
-        >
-          More from the blog
-        </h2>
-        <div
-          style="display: grid; grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); gap: var(--g-theme-spacing-lg);"
-        >
+        <h2>More from the blog</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); gap: var(--g-theme-spacing-lg);">
           ${relatedPosts.map(
 						(post) => html`
               <grantcodes-card>
@@ -306,19 +283,14 @@ export const Default = {
                   slot="header"
                   style="display: flex; align-items: center; justify-content: space-between;"
                 >
-                  <grantcodes-badge variant="neutral"
-                    >${post.category}</grantcodes-badge
-                  >
-                  <span
-                    style="font-size: var(--g-theme-typography-meta-font-size); color: var(--g-theme-color-content-secondary);"
-                    >${post.date}</span
-                  >
+                  <grantcodes-badge variant="neutral">${post.category}</grantcodes-badge>
+                  <span style="font: var(--g-theme-typography-meta);">${post.date}</span>
                 </div>
                 <div
-                  style="display: flex; flex-direction: column; gap: var(--g-theme-spacing-sm);"
+                  style="display: flex; flex-direction: column; gap: var(--g-theme-spacing-sm); flex: 1;"
                 >
                   <h3
-                    style="margin: 0; font-size: var(--g-theme-typography-h5-font-size); font-weight: var(--g-theme-typography-h5-font-weight); color: var(--g-theme-color-content-default); line-height: 1.3;"
+                    style="font: var(--g-typography-h6-font);"
                   >
                     <a
                       href="${post.href}"
@@ -326,9 +298,7 @@ export const Default = {
                       >${post.title}</a
                     >
                   </h3>
-                  <p
-                    style="margin: 0; color: var(--g-theme-color-content-secondary); font-size: var(--g-theme-typography-body-font-size); line-height: 1.6;"
-                  >
+                  <p>
                     ${post.excerpt}
                   </p>
                 </div>
@@ -342,7 +312,7 @@ export const Default = {
                     size="small"
                   ></grantcodes-avatar>
                   <span
-                    style="font-size: var(--g-theme-typography-meta-font-size); color: var(--g-theme-color-content-secondary);"
+                    style="font: var(--g-theme-typography-meta);"
                     >${post.author.name}</span
                   >
                 </div>

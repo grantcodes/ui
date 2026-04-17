@@ -31,10 +31,16 @@ Priciples:
 
 ## Usage
 
+Supported consumer token CSS contract entrypoints:
+
+- `@grantcodes/style-dictionary/grantcodes/css` → `dist/css/grantcodes/tokens.css`
+- `@grantcodes/style-dictionary/wireframe/css` → `dist/css/wireframe/tokens.css`
+- `@grantcodes/style-dictionary/todomap/css` → `dist/css/todomap/tokens.css`
+- `@grantcodes/style-dictionary/grantina/css` → `dist/css/grantina/tokens.css`
+
 ```css
-
-@import "@grantcodes/style-dictionary";
-
-
-
+@import "@grantcodes/style-dictionary/grantcodes/css";
+@import "@grantcodes/style-dictionary/wireframe/css";
+@import "@grantcodes/style-dictionary/todomap/css";
+@import "@grantcodes/style-dictionary/grantina/css";
 ```

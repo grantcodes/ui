@@ -37,3 +37,7 @@ pnpm test:style-dictionary
 
 - Do not manually update package version numbers in `package.json` files.
 - Versions are managed by the release process.
+
+## Git Guidelines
+
+- **Never commit `.planning/`** — it is listed in `.gitignore` and must not be tracked. If it appears in `git status`, use `git rm -r --cached .planning` to remove it from the index. Do not stage it under any circumstances.

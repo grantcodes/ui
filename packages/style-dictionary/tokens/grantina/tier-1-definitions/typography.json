@@ -20,41 +20,12 @@
 				"value": "'Pinyon Script', {typography.font-family.system-script}"
 			}
 		},
-		"font-size": {
-			"xs": {
-				"value": "0.75rem"
+		"font-weight": {
+			"800": {
+				"value": "800"
 			},
-			"sm": {
-				"value": "0.875rem"
-			},
-			"md": {
-				"value": "1rem"
-			},
-			"lg": {
-				"value": "1.25rem"
-			},
-			"xl": {
-				"value": "1.5rem"
-			},
-			"2xl": {
-				"value": "2rem"
-			},
-			"3xl": {
-				"value": "2.5rem"
-			},
-			"4xl": {
-				"value": "3rem"
-			}
-		},
-		"letter-spacing": {
-			"none": {
-				"value": "0px"
-			},
-			"sm": {
-				"value": "0.5px"
-			},
-			"lg": {
-				"value": "2px"
+			"900": {
+				"value": "900"
 			}
 		}
 	}

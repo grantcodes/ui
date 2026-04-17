@@ -2,32 +2,98 @@
 	"color": {
 		"background": {
 			"default": {
-				"value": "{color.neutral.white}"
+				"value": "light-dark({color.neutral.white}, {color.neutral.900})"
+			},
+			"default-hover": {
+				"value": "light-dark({color.neutral.300}, {color.neutral.700})"
 			},
 			"subtle": {
-				"value": "{color.neutral.100}"
+				"value": "light-dark({color.neutral.100}, {color.neutral.800})"
+			},
+			"subtle-hover": {
+				"value": "light-dark({color.neutral.200}, {color.neutral.700})"
 			},
 			"knockout": {
-				"value": "{color.neutral.black}"
+				"value": "light-dark({color.neutral.black}, {color.neutral.white})"
 			},
-			"brand": {
-				"value": "{color.brand.100}"
+			"primary": {
+				"value": "light-dark({color.primary.100}, {color.primary.900})"
 			},
-			"brand-hover": {
-				"value": "{color.brand.200}"
+			"primary-hover": {
+				"value": "light-dark({color.primary.200}, {color.primary.800})"
+			},
+			"primary-disabled": {
+				"value": "light-dark({color.neutral.200}, {color.neutral.700})"
+			},
+			"primary-knockout": {
+				"value": "light-dark({color.primary.800}, {color.primary.500})"
+			},
+			"primary-knockout-hover": {
+				"value": "light-dark({color.primary.700}, {color.primary.600})"
+			},
+			"secondary": {
+				"value": "light-dark({color.secondary.100}, {color.secondary.900})"
+			},
+			"secondary-hover": {
+				"value": "light-dark({color.secondary.200}, {color.secondary.800})"
+			},
+			"secondary-disabled": {
+				"value": "light-dark({color.neutral.200}, {color.neutral.700})"
+			},
+			"secondary-knockout": {
+				"value": "light-dark({color.secondary.800}, {color.secondary.500})"
+			},
+			"secondary-knockout-hover": {
+				"value": "light-dark({color.secondary.700}, {color.secondary.600})"
+			},
+			"tertiary": {
+				"value": "light-dark({color.tertiary.100}, {color.tertiary.900})"
+			},
+			"tertiary-hover": {
+				"value": "light-dark({color.tertiary.200}, {color.tertiary.800})"
+			},
+			"tertiary-disabled": {
+				"value": "light-dark({color.neutral.200}, {color.neutral.700})"
+			},
+			"tertiary-knockout": {
+				"value": "light-dark({color.tertiary.800}, {color.tertiary.500})"
+			},
+			"tertiary-knockout-hover": {
+				"value": "light-dark({color.tertiary.700}, {color.tertiary.600})"
+			},
+			"disabled": {
+				"value": "light-dark({color.neutral.200}, {color.neutral.700})"
+			},
+			"transparent": {
+				"value": "oklch(from var(--g-theme-color-background-default) l c h / 0.25)"
+			},
+			"transparent-strong": {
+				"value": "oklch(from var(--g-theme-color-background-default) l c h / 0.9)"
 			},
 			"utility": {
 				"error": {
-					"value": "{color.utility.red.100}"
+					"value": "light-dark({color.utility.red.100}, {color.utility.red.900})"
+				},
+				"error-hover": {
+					"value": "light-dark({color.utility.red.200}, {color.utility.red.800})"
 				},
 				"warning": {
-					"value": "{color.utility.yellow.100}"
+					"value": "light-dark({color.utility.yellow.100}, {color.utility.yellow.900})"
+				},
+				"warning-hover": {
+					"value": "light-dark({color.utility.yellow.200}, {color.utility.yellow.800})"
 				},
 				"success": {
-					"value": "{color.utility.green.100}"
+					"value": "light-dark({color.utility.green.100}, {color.utility.green.900})"
+				},
+				"success-hover": {
+					"value": "light-dark({color.utility.green.200}, {color.utility.green.800})"
 				},
 				"info": {
-					"value": "{color.utility.blue.100}"
+					"value": "light-dark({color.utility.blue.100}, {color.utility.blue.900})"
+				},
+				"info-hover": {
+					"value": "light-dark({color.utility.blue.200}, {color.utility.blue.800})"
 				}
 			}
 		}
