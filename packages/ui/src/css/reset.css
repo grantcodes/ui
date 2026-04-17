@@ -17,7 +17,7 @@
 
 /* Root defaults */
 :where(:root) {
-	font: var(--g-theme-typography-body);
+	font: var(--g-typography-body-font);
 	cursor: default;
 	line-height: 1.5;
 	overflow-wrap: break-word;

@@ -10,31 +10,44 @@ interface GalleryImage {
 
 interface Props {
   images: GalleryImage[]
+  filmstrip?: boolean
+  marquee?: boolean
 }
 
-const { images } = Astro.props
+const { images, filmstrip = false, marquee = false } = Astro.props
 ---
 
-<div class="gallery">
-  <div class="container">
-    <GrantCodesGallery>
+<div class:list={['gallery', { 'gallery--filmstrip': filmstrip }]}>
+  {filmstrip ? (
+    <GrantCodesGallery filmstrip={true} marquee={marquee}>
       {images.map((image) => (
-        <GrantCodesGalleryImage src={image.src} alt={image.alt || ''}>
-          {image.caption && <span slot="caption">{image.caption}</span>}
-        </GrantCodesGalleryImage>
+        <GrantCodesGalleryImage src={image.src} alt={image.alt || ''} />
       ))}
     </GrantCodesGallery>
-  </div>
+  ) : (
+    <div class="container">
+      <GrantCodesGallery>
+        {images.map((image) => (
+          <GrantCodesGalleryImage src={image.src} alt={image.alt || ''} />
+        ))}
+      </GrantCodesGallery>
+    </div>
+  )}
 </div>
 
 <style>
   .gallery {
-    padding: 3rem 0;
+    padding-block: 3rem;
+  }
+
+  .gallery--filmstrip {
+    padding-block: 2rem;
+    overflow: hidden;
   }
 
   .container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 1rem;
+    max-inline-size: 1400px;
+    margin-inline: auto;
+    padding-inline: 1rem;
   }
 </style>

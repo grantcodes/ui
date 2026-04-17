@@ -33,7 +33,7 @@
 	}
 
 	.hero__title {
-		font: var(--g-theme-typography-h1);
+		font: var(--g-typography-h1-font);
 		font-size: clamp(2rem, 5vw, 4rem);
 		color: var(--g-theme-color-content-primary-knockout, #ffffff);
 	}

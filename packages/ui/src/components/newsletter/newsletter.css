@@ -22,7 +22,7 @@
 
   .newsletter__title {
     margin: 0 0 var(--g-theme-spacing-sm);
-    font: var(--g-theme-typography-h4);
+    font: var(--g-typography-h4-font);
     color: var(--g-theme-color-content-primary-knockout, #ffffff);
   }
 

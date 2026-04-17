@@ -8,7 +8,7 @@
 				"value": "light-dark({color.neutral.black}, {color.neutral.white})"
 			},
 			"subtle": {
-				"value": "light-dark({color.neutral.600}, {color.neutral.400})"
+				"value": "light-dark({color.neutral.700}, {color.neutral.400})"
 			},
 			"knockout": {
 				"value": "light-dark({color.neutral.white}, {color.neutral.900})"

@@ -38,7 +38,7 @@
 
   .cta__title {
     margin: 0 0 var(--g-theme-spacing-md);
-    font: var(--g-theme-typography-h2);
+    font: var(--g-typography-h2-font);
     color: var(--g-theme-color-content-default);
   }
 

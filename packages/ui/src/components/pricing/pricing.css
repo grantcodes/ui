@@ -80,7 +80,7 @@
   }
 
   .pricing__price {
-    font: var(--g-theme-typography-h2);
+    font: var(--g-typography-h2-font);
     color: var(--g-theme-color-content-default);
   }
 
