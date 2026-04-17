@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.9.0](https://github.com/grantcodes/ui/compare/ui-v2.8.1...ui-v2.9.0) (2026-04-17)
+
+
+### Features
+
+* **10-03:** rename CSS brand token references to primary and fix dark tier-3 overrides ([6d85136](https://github.com/grantcodes/ui/commit/6d85136e632509517d503805a4cf813cc6659b97))
+* **12-02:** add .dark/.light class overrides to UI reset.css + verify all themes build ([c4211b5](https://github.com/grantcodes/ui/commit/c4211b5b2e688cafefcf698e523fc6d4f84e4429))
+
+
+### Bug Fixes
+
+* **10-03:** correct CSS variable prefix from --g-color-primary to --g-theme-color-primary ([30a6bcd](https://github.com/grantcodes/ui/commit/30a6bcd4272dc5217b9425a0c10354347f7224d4))
+* **10-03:** replace content-secondary with content-subtle for body text ([4227296](https://github.com/grantcodes/ui/commit/422729665b979fc8fa955378392a8565df8f0acb))
+* **12-02:** remove stale dark/light [@import](https://github.com/import) lines from all 4 UI theme CSS files ([6033010](https://github.com/grantcodes/ui/commit/60330101bc61d0746c5f18a0d768c3590f70057b))
+* **token-refactor:** fix theme colors for badges, buttons, borders, and content contrast across grantcodes and grantina themes ([e3c093d](https://github.com/grantcodes/ui/commit/e3c093d1db89664ca532d9d9ef146db695a69cd4))
+
 ## [2.8.1](https://github.com/grantcodes/ui/compare/ui-v2.8.0...ui-v2.8.1) (2026-04-07)
 
 
