@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.1](https://github.com/grantcodes/ui/compare/style-dictionary-v1.5.0...style-dictionary-v1.5.1) (2026-04-18)
+
+
+### Bug Fixes
+
+* **ui:** improve hero and button colors across all themes ([523d783](https://github.com/grantcodes/ui/commit/523d78376ee263edd0b3ce08dbca48a71f5c33a7))
+* **ui:** improve hero and button colors across all themes ([04fbe12](https://github.com/grantcodes/ui/commit/04fbe12979678de97771ba811e4a150f5cf46cca))
+
 ## [1.5.0](https://github.com/grantcodes/ui/compare/style-dictionary-v1.4.2...style-dictionary-v1.5.0) (2026-04-17)
 
 
