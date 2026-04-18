@@ -26,10 +26,10 @@
 				"value": "light-dark({color.neutral.200}, {color.neutral.700})"
 			},
 			"primary-knockout": {
-				"value": "light-dark({color.primary.800}, {color.primary.500})"
+				"value": "light-dark({color.primary.800}, {color.primary.800})"
 			},
 			"primary-knockout-hover": {
-				"value": "light-dark({color.primary.700}, {color.primary.600})"
+				"value": "light-dark({color.primary.700}, {color.primary.700})"
 			},
 			"secondary": {
 				"value": "light-dark({color.secondary.100}, {color.secondary.900})"

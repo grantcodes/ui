@@ -48,16 +48,16 @@
 			"color": {
 				"background": {
 					"default": {
-						"value": "{color.background.tertiary-knockout}"
+						"value": "{color.primary.500}"
 					},
 					"hover": {
-						"value": "{color.background.tertiary-knockout-hover}"
+						"value": "{color.primary.400}"
 					},
 					"active": {
-						"value": "{color.background.tertiary-knockout-hover}"
+						"value": "{color.primary.400}"
 					},
 					"disabled": {
-						"value": "{color.background.tertiary-disabled}"
+						"value": "{color.background.primary-disabled}"
 					}
 				},
 				"content": {
@@ -76,16 +76,16 @@
 				},
 				"border": {
 					"default": {
-						"value": "{color.border.tertiary}"
+						"value": "{color.primary.500}"
 					},
 					"hover": {
-						"value": "{color.border.tertiary}"
+						"value": "{color.primary.400}"
 					},
 					"active": {
-						"value": "{color.border.tertiary}"
+						"value": "{color.primary.400}"
 					},
 					"disabled": {
-						"value": "{color.border.disabled}"
+						"value": "{color.neutral.300}"
 					}
 				}
 			}
