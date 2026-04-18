@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.9.1](https://github.com/grantcodes/ui/compare/ui-v2.9.0...ui-v2.9.1) (2026-04-18)
+
+
+### Bug Fixes
+
+* **ui:** improve hero and button colors across all themes ([523d783](https://github.com/grantcodes/ui/commit/523d78376ee263edd0b3ce08dbca48a71f5c33a7))
+* **ui:** improve hero and button colors across all themes ([04fbe12](https://github.com/grantcodes/ui/commit/04fbe12979678de97771ba811e4a150f5cf46cca))
+
 ## [2.9.0](https://github.com/grantcodes/ui/compare/ui-v2.8.1...ui-v2.9.0) (2026-04-17)
 
 
