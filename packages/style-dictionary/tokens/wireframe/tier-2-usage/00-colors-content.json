@@ -17,7 +17,7 @@
 				"value": "light-dark({color.primary.900}, {color.primary.100})"
 			},
 			"primary-knockout": {
-				"value": "light-dark({color.primary.100}, {color.primary.900})"
+				"value": "light-dark({color.neutral.white}, {color.neutral.white})"
 			},
 			"secondary": {
 				"value": "light-dark({color.secondary.600}, {color.secondary.400})"
