@@ -7,9 +7,6 @@
   "module": "src/main.js",
   "types": "src/types.d.ts",
   "author": "grantcodes",
-  "imports": {
-    "#styles/*": "./src/lib/styles/*"
-  },
   "exports": {
     ".": {
       "types": "./src/types.d.ts",
