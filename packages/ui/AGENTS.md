@@ -129,6 +129,14 @@ Create the following files in `src/components/<component-name>/`:
 - `<component-name>.js` - Export and register custom element
 - `<component-name>.stories.js` - Storybook stories
 
+### Shared Styles
+
+Use relative paths (not `#styles/` subpath imports) for shared CSS files like focus-ring styles. This ensures components work in all environments including Vite dev mode and `<script>` tag imports:
+
+```javascript
+import focusRingStyles from "../../lib/styles/focus-ring.css" with { type: "css" };
+```
+
 ### 2. Register Custom Element
 
 In the `.js` file, register the custom element:

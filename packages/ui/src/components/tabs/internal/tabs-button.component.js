@@ -2,7 +2,7 @@ import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { GrantCodesTabsItem } from "./tabs-item.component.js";
-import focusRingStyles from "#styles/focus-ring.css" with { type: "css" };
+import focusRingStyles from "../../../lib/styles/focus-ring.css" with { type: "css" };
 import tabsStyles from "../tabs.css" with { type: "css" };
 
 export class GrantCodesTabsButton extends GrantCodesTabsItem {
