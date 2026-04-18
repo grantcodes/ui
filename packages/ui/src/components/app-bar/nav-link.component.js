@@ -1,5 +1,5 @@
 import { LitElement, html } from "lit";
-import focusRingStyles from "#styles/focus-ring.css" with { type: "css" };
+import focusRingStyles from "../../lib/styles/focus-ring.css" with { type: "css" };
 import navLinkStyles from "./nav-link.css" with { type: "css" };
 
 export class GrantCodesNavLink extends LitElement {
