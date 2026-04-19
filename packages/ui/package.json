@@ -1,6 +1,6 @@
 {
   "name": "@grantcodes/ui",
-  "version": "2.9.1",
+  "version": "2.9.2",
   "description": "A personal component system built with Lit web components",
   "type": "module",
   "main": "src/main.js",

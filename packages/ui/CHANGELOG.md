@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.9.2](https://github.com/grantcodes/ui/compare/ui-v2.9.1...ui-v2.9.2) (2026-04-19)
+
+
+### Bug Fixes
+
+* **ui:** replace #styles/ subpath imports with relative paths for SSR/Vite compatibility ([1bb7490](https://github.com/grantcodes/ui/commit/1bb749028328bd573524c9c72f7c830098c23850)), closes [#53](https://github.com/grantcodes/ui/issues/53)
+
 ## [2.9.1](https://github.com/grantcodes/ui/compare/ui-v2.9.0...ui-v2.9.1) (2026-04-18)
 
 
