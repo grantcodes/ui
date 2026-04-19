@@ -138,10 +138,6 @@ import { GrantCodesNavLink } from '@grantcodes/ui/components/app-bar/nav-link.co
 ---
 ```
 
-### Known Issue: `#styles/` Imports in Vite Dev Mode
-
-Component files that import from `#styles/focus-ring.css` use a Node subpath import that resolves via the `cssImportAttributes` Vite plugin at build time. When loaded via a `<script>` tag in Vite dev mode, the browser cannot resolve the `#styles/*` alias, causing import failures. This affects components that use focus-ring styles (accordion, app-bar, button, nav-link, tabs, breadcrumb, sidebar, toast). See [#53](https://github.com/grantcodes/ui/issues/53).
-
 ## Development
 
 ```bash
