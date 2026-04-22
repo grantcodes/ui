@@ -104,6 +104,40 @@ Components use reactive properties. Pass them as attributes:
 <grantcodes-button disabled variant="primary">Disabled</grantcodes-button>
 ```
 
+## SSR / Astro Integration
+
+When using `@grantcodes/ui` in an Astro project with the `@semantic-ui/astro-lit` SSR integration, importing a component registration file (e.g. `nav-link.js`) in Astro frontmatter causes the Lit SSR renderer to attempt server-side instantiation. This fails for components not registered in the Node.js SSR context, throwing `customElements.get(...) is not a constructor`.
+
+### Client-Side-Only Pattern
+
+Use the `<script>` tag to register components client-side only. Imports in `<script>` tags are not processed by the SSR renderer:
+
+```astro
+---
+// Don't import registration files in frontmatter for client-only components
+// import '@grantcodes/ui/components/app-bar/nav-link.js' ← breaks SSR
+---
+
+<!-- Use the custom element tag directly in the template -->
+<grantcodes-nav-link><a href="/">Home</a></grantcodes-nav-link>
+
+<script>
+  // Register via <script> tag — runs client-side only
+  import '@grantcodes/ui/components/app-bar/nav-link.js'
+</script>
+```
+
+### Importing Component Classes for SSR
+
+The `.component.js` files export the Lit element class without side effects (no `customElements.define()` call). These are safe to import in frontmatter if the astro-lit renderer needs the class reference:
+
+```astro
+---
+import { GrantCodesNavLink } from '@grantcodes/ui/components/app-bar/nav-link.component.js'
+// Class is available for SSR, but must still be registered client-side
+---
+```
+
 ## Development
 
 ```bash
