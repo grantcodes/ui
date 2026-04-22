@@ -4,13 +4,56 @@ import formFieldStyles from "./form-field.css" with { type: "css" };
 import { classMap } from "lit/directives/class-map.js";
 import { generateId } from "../../lib/generate-id.js";
 
+/**
+ * Wraps native inputs with labels, help text, error messages, and aria-describedby.
+ * Checkbox/radio inputs are auto-detected (label displays inline).
+ * Nesting form-fields creates a fieldset/legend group.
+ *
+ * @example
+ * ```html
+ * <grantcodes-form-field label="Name">
+ *   <input type="text" name="name" />
+ * </grantcodes-form-field>
+ * ```
+ *
+ * @example
+ * ```html
+ * <grantcodes-form-field label="Accept terms">
+ *   <input type="checkbox" name="terms" />
+ * </grantcodes-form-field>
+ * ```
+ *
+ * @example
+ * ```html
+ * <grantcodes-form-field label="Plan">
+ *   <grantcodes-form-field label="Free">
+ *     <input type="radio" name="plan" value="free" />
+ *   </grantcodes-form-field>
+ *   <grantcodes-form-field label="Pro">
+ *     <input type="radio" name="plan" value="pro" />
+ *   </grantcodes-form-field>
+ * </grantcodes-form-field>
+ * ```
+ *
+ * @example
+ * ```html
+ * <grantcodes-form-field label="Email" error="Enter a valid email" help="We won't spam you">
+ *   <input type="email" name="email" />
+ * </grantcodes-form-field>
+ * ```
+ *
+ * @slot default - The input, select, or textarea element, or nested form-field elements for groups
+ */
 export class GrantCodesFormField extends LitElement {
 	static formAssociated = true;
 	static styles = [formFieldStyles];
 
 	static properties = {
+		/** Label text (renders as `<legend>` in grouped variant) */
 		label: { type: String },
+		/** Error message, linked to input via aria-describedby */
 		error: { type: String },
+		/** Help text, linked to input via aria-describedby */
 		help: { type: String },
 	};
 
