@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.10.0](https://github.com/grantcodes/ui/compare/ui-v2.9.2...ui-v2.10.0) (2026-04-23)
+
+
+### Features
+
+* **css:** add svh reset, scrollbar-gutter, and details animation ([f4403e6](https://github.com/grantcodes/ui/commit/f4403e618862b9b24aa6f9d7f3df0c51d5505a83))
+
 ## [2.9.2](https://github.com/grantcodes/ui/compare/ui-v2.9.1...ui-v2.9.2) (2026-04-19)
 
 
