@@ -5,252 +5,256 @@
 *,
 ::before,
 ::after {
-	box-sizing: border-box;
-	background-repeat: no-repeat;
+  box-sizing: border-box;
+  background-repeat: no-repeat;
 }
 
 ::before,
 ::after {
-	text-decoration: inherit;
-	vertical-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
 }
 
 /* Root defaults */
 :where(:root) {
-	font: var(--g-typography-body-font);
-	cursor: default;
-	line-height: 1.5;
-	overflow-wrap: break-word;
-	-moz-tab-size: 4;
-	tab-size: 4;
-	-webkit-tap-highlight-color: transparent;
-	-webkit-text-size-adjust: 100%;
+  font: var(--g-typography-body-font);
+  cursor: default;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+  scrollbar-gutter: stable;
+  -moz-tab-size: 4;
+  tab-size: 4;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
 }
 
 :where(:root, body) {
-    padding: 0;
-   	margin: 0;
+  padding: 0;
+  margin: 0;
+}
+
+:where(body) {
+  min-block-size: 100svh;
 }
 
 code,
 kbd,
 samp,
 pre {
-	font-family:
-		ui-monospace,
-		"Menlo",
-		"Consolas",
-		"Roboto Mono",
-		"Ubuntu Monospace",
-		"Noto Mono",
-		"Oxygen Mono",
-		"Liberation Mono",
-		monospace,
-		"Apple Color Emoji",
-		"Segoe UI Emoji",
-		"Segoe UI Symbol",
-		"Noto Color Emoji";
+  font-family:
+    ui-monospace,
+    "Menlo",
+    "Consolas",
+    "Roboto Mono",
+    "Ubuntu Monospace",
+    "Noto Mono",
+    "Oxygen Mono",
+    "Liberation Mono",
+    monospace,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
 }
-
 
 /* Grouping */
 :where(dl, ol, ul) :where(dl, ol, ul) {
-	margin: 0;
+  margin: 0;
 }
 
 :where(hr) {
-	color: inherit;
-	height: 0;
+  color: inherit;
+  height: 0;
 }
 
 :where(nav) :where(ol, ul) {
-	list-style-type: none;
-	padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
 /* Prevent VoiceOver from ignoring list semantics in Safari */
 :where(nav li)::before {
-	content: "\200B";
-	float: left;
+  content: "\200B";
+  float: left;
 }
 
 :where(pre) {
-	font-size: 1em;
-	overflow: auto;
+  font-size: 1em;
+  overflow: auto;
 }
 
 /* Text-level semantics */
 :where(abbr[title]) {
-	text-decoration: underline dotted;
+  text-decoration: underline dotted;
 }
 
 :where(b, strong) {
-	font-weight: bolder;
+  font-weight: bolder;
 }
 
 :where(code, kbd, samp) {
-	font-size: 1em;
+  font-size: 1em;
 }
 
 :where(small) {
-	font-size: 80%;
+  font-size: 80%;
 }
 
 /* Embedded content */
 :where(audio, canvas, iframe, img, svg, video) {
-	vertical-align: middle;
+  vertical-align: middle;
 }
 
 :where(iframe) {
-	border-style: none;
+  border-style: none;
 }
 
 :where(svg:not([fill])) {
-	fill: currentColor;
+  fill: currentColor;
 }
 
 /* Tabular data */
 :where(table) {
-	border-collapse: collapse;
-	border-color: inherit;
-	text-indent: 0;
+  border-collapse: collapse;
+  border-color: inherit;
+  text-indent: 0;
 }
 
 /* Forms — baseline normalisation */
 :where(button, input, select) {
-	margin: 0;
+  margin: 0;
 }
 
 :where(button, [type="button" i], [type="reset" i], [type="submit" i]) {
-	-webkit-appearance: button;
+  -webkit-appearance: button;
 }
 
 :where(fieldset) {
-	border: 1px solid #a0a0a0;
+  border: 1px solid #a0a0a0;
 }
 
 :where(progress) {
-	vertical-align: baseline;
+  vertical-align: baseline;
 }
 
 :where(textarea) {
-	margin: 0;
-	resize: vertical;
+  margin: 0;
+  resize: vertical;
 }
 
 :where([type="search" i]) {
-	-webkit-appearance: textfield;
-	outline-offset: -2px;
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
 }
 
 ::-webkit-inner-spin-button,
 ::-webkit-outer-spin-button {
-	height: auto;
+  height: auto;
 }
 
 ::-webkit-input-placeholder {
-	color: inherit;
-	opacity: 0.54;
+  color: inherit;
+  opacity: 0.54;
 }
 
 ::-webkit-search-decoration {
-	-webkit-appearance: none;
+  -webkit-appearance: none;
 }
 
 ::-webkit-file-upload-button {
-	-webkit-appearance: button;
-	font: inherit;
+  -webkit-appearance: button;
+  font: inherit;
 }
 
 /* Forms — typography and colour inheritance */
 :where(button, input, select, textarea) {
-	background-color: transparent;
-	border: 1px solid WindowFrame;
-	color: inherit;
-	font: inherit;
-	letter-spacing: inherit;
-	padding: 0.25em 0.375em;
+  background-color: transparent;
+  border: 1px solid WindowFrame;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  padding: 0.25em 0.375em;
 }
 
 :where([type="color" i], [type="range" i]) {
-	border-width: 0;
-	padding: 0;
+  border-width: 0;
+  padding: 0;
 }
 
 /* Interactive */
 :where(details > summary:first-of-type) {
-	display: list-item;
+  display: list-item;
 }
 
 /* Accessibility */
 :where([aria-busy="true" i]) {
-	cursor: progress;
+  cursor: progress;
 }
 
 :where([aria-controls]) {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 :where([aria-disabled="true" i], [disabled]) {
-	cursor: not-allowed;
+  cursor: not-allowed;
 }
 
 :where([aria-hidden="false" i][hidden]) {
-	display: initial;
+  display: initial;
 }
 
 :where([aria-hidden="false" i][hidden]:not(:focus)) {
-	clip: rect(0, 0, 0, 0);
-	position: absolute;
+  clip: rect(0, 0, 0, 0);
+  position: absolute;
 }
 
 /* Reduced motion — !important is required here to override any animation/transition regardless of specificity */
 @media (prefers-reduced-motion: reduce) {
-	*,
-	::before,
-	::after {
-		animation-delay: -1ms !important;
-		animation-duration: 1ms !important;
-		animation-iteration-count: 1 !important;
-		background-attachment: initial !important;
-		scroll-behavior: auto !important;
-		transition-delay: 0s !important;
-		transition-duration: 0s !important;
-	}
+  *,
+  ::before,
+  ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-delay: 0s !important;
+    transition-duration: 0s !important;
+  }
 }
 
 /* Design tokens are provided by @grantcodes/style-dictionary and applied to :root */
 :root {
-	color-scheme: light dark;
-	--grantcodes-ui-theme: "none";
-	background-color: var(--g-theme-color-background-default);
-	color: var(--g-theme-color-content-default);
-	fill: currentColor;
+  color-scheme: light dark;
+  --grantcodes-ui-theme: "none";
+  background-color: var(--g-theme-color-background-default);
+  color: var(--g-theme-color-content-default);
+  fill: currentColor;
 }
 
 /* Force dark mode on any element or subtree */
 .dark {
-	color-scheme: dark;
+  color-scheme: dark;
 }
 
 /* Force light mode on any element or subtree */
 .light {
-	color-scheme: light;
+  color-scheme: light;
 }
 
 /* Allow transitioning auto */
 :root {
-	@supports (interpolate-size: allow-keywords) {
-		interpolate-size: allow-keywords;
-	}
+  @supports (interpolate-size: allow-keywords) {
+    interpolate-size: allow-keywords;
+  }
 }
 
 ::selection {
-	background-color: var(--g-theme-color-background-primary);
+  background-color: var(--g-theme-color-background-primary);
 }
 
 /* Default backdrop styles */
 ::backdrop {
-	background-color: rgba(0, 0, 0, 0.4);
-	backdrop-filter: blur(6px);
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
 }
