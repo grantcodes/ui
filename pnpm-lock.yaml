@@ -67,10 +67,10 @@ importers:
   packages/astro-blocks:
     dependencies:
       '@grantcodes/style-dictionary':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../style-dictionary
       '@grantcodes/ui':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../ui
       marked:
         specifier: ^17.0.4
