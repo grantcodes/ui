@@ -2,12 +2,15 @@
 	"release-type": "node",
 	"include-v-in-tags": false,
 	"bootstrap-sha": "9490cfce72bb08e3ff001af5e3a08b2a1b760884",
-	"packages": {
+  "packages": {
 		"packages/ui": {
 			"package-name": "@grantcodes/ui"
 		},
 		"packages/style-dictionary": {
 			"package-name": "@grantcodes/style-dictionary"
+		},
+		"packages/astro-blocks": {
+			"package-name": "@grantcodes/astro-blocks"
 		}
 	}
 }
