@@ -1,137 +1,137 @@
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
 
-  :host {
-    display: block;
-  }
+:host {
+	display: block;
+}
 
-  .pricing {
-    padding-block: var(--g-theme-spacing-3xl);
-    padding-inline: var(--g-theme-spacing-md);
-  }
+.pricing {
+	padding-block: var(--g-theme-spacing-3xl);
+	padding-inline: var(--g-theme-spacing-md);
+}
 
-  .pricing__container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+.pricing__container {
+	max-width: 1200px;
+	margin: 0 auto;
+}
 
-  .pricing__title {
-    margin: 0 0 var(--g-theme-spacing-sm);
-    font-size: var(--g-theme-typography-h4-font-size);
-    font-weight: var(--g-theme-typography-h4-font-weight);
-    text-align: center;
-    color: var(--g-theme-color-content-default);
-  }
+.pricing__title {
+	margin: 0 0 var(--g-theme-spacing-sm);
+	font-size: var(--g-theme-typography-h4-font-size);
+	font-weight: var(--g-theme-typography-h4-font-weight);
+	text-align: center;
+	color: var(--g-theme-color-content-default);
+}
 
-  .pricing__subtitle {
-    margin: 0 auto var(--g-theme-spacing-2xl);
-    font-size: var(--g-theme-typography-body-lg-font-size);
-    text-align: center;
-    color: var(--g-theme-color-content-subtle);
-    max-width: 55ch;
-  }
+.pricing__subtitle {
+	margin: 0 auto var(--g-theme-spacing-2xl);
+	font-size: var(--g-theme-typography-body-lg-font-size);
+	text-align: center;
+	color: var(--g-theme-color-content-subtle);
+	max-width: 55ch;
+}
 
-  .pricing__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: var(--g-theme-spacing-lg);
-    align-items: start;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
+.pricing__grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	gap: var(--g-theme-spacing-lg);
+	align-items: start;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
 
-  .pricing__tier {
-    display: flex;
-    flex-direction: column;
-    gap: var(--g-theme-spacing-lg);
-    padding: var(--g-theme-spacing-xl);
-    border: 1px solid var(--g-theme-color-border-default);
-    border-radius: var(--g-theme-border-radius-md, 0.5rem);
-    background: var(--g-theme-color-background-default);
-  }
+.pricing__tier {
+	display: flex;
+	flex-direction: column;
+	gap: var(--g-theme-spacing-lg);
+	padding: var(--g-theme-spacing-xl);
+	border: 1px solid var(--g-theme-color-border-default);
+	border-radius: var(--g-theme-border-radius-md, 0.5rem);
+	background: var(--g-theme-color-background-default);
+}
 
-  .pricing__tier--highlighted {
-    border-color: var(--g-theme-color-border-primary, #7c3aed);
-    background: var(--g-theme-color-background-subtle);
-    box-shadow: var(--g-theme-shadow-lg);
-  }
+.pricing__tier--highlighted {
+	border-color: var(--g-theme-color-border-primary, #7c3aed);
+	background: var(--g-theme-color-background-subtle);
+	box-shadow: var(--g-theme-shadow-lg);
+}
 
-  .pricing__tier-header {
-    display: flex;
-    flex-direction: column;
-    gap: var(--g-theme-spacing-sm);
-  }
+.pricing__tier-header {
+	display: flex;
+	flex-direction: column;
+	gap: var(--g-theme-spacing-sm);
+}
 
-  .pricing__tier-name {
-    margin: 0;
-    font-size: var(--g-theme-typography-body-lg-font-size);
-    font-weight: var(--g-theme-typography-label-lg-font-weight);
-    color: var(--g-theme-color-content-default);
-  }
+.pricing__tier-name {
+	margin: 0;
+	font-size: var(--g-theme-typography-body-lg-font-size);
+	font-weight: var(--g-theme-typography-label-lg-font-weight);
+	color: var(--g-theme-color-content-default);
+}
 
-  .pricing__price-wrap {
-    display: flex;
-    align-items: baseline;
-    gap: var(--g-theme-spacing-xs);
-  }
+.pricing__price-wrap {
+	display: flex;
+	align-items: baseline;
+	gap: var(--g-theme-spacing-xs);
+}
 
-  .pricing__price {
-    font: var(--g-typography-h2-font);
-    color: var(--g-theme-color-content-default);
-  }
+.pricing__price {
+	font: var(--g-typography-h2-font);
+	color: var(--g-theme-color-content-default);
+}
 
-  .pricing__period {
-    font-size: var(--g-theme-typography-body-default-font-size);
-    color: var(--g-theme-color-content-subtle);
-  }
+.pricing__period {
+	font-size: var(--g-theme-typography-body-default-font-size);
+	color: var(--g-theme-color-content-subtle);
+}
 
-  .pricing__tier-desc {
-    margin: 0;
-    font: var(--g-theme-typography-body-sm);
-    color: var(--g-theme-color-content-subtle);
-  }
+.pricing__tier-desc {
+	margin: 0;
+	font: var(--g-theme-typography-body-sm);
+	color: var(--g-theme-color-content-subtle);
+}
 
-  .pricing__features {
-    display: flex;
-    flex-direction: column;
-    gap: var(--g-theme-spacing-sm);
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    flex: 1;
-  }
+.pricing__features {
+	display: flex;
+	flex-direction: column;
+	gap: var(--g-theme-spacing-sm);
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	flex: 1;
+}
 
-  .pricing__feature {
-    display: flex;
-    align-items: center;
-    gap: var(--g-theme-spacing-sm);
-    font-size: var(--g-theme-typography-body-default-font-size);
-    color: var(--g-theme-color-content-default);
-  }
+.pricing__feature {
+	display: flex;
+	align-items: center;
+	gap: var(--g-theme-spacing-sm);
+	font-size: var(--g-theme-typography-body-default-font-size);
+	color: var(--g-theme-color-content-default);
+}
 
-  .pricing__feature--excluded {
-    color: var(--g-theme-color-content-subtle);
-    text-decoration: line-through;
-  }
+.pricing__feature--excluded {
+	color: var(--g-theme-color-content-subtle);
+	text-decoration: line-through;
+}
 
-  .pricing__feature-icon {
-    font: var(--g-theme-typography-body-sm);
-    color: var(--g-theme-color-content-primary, #7c3aed);
-    flex-shrink: 0;
-  }
+.pricing__feature-icon {
+	font: var(--g-theme-typography-body-sm);
+	color: var(--g-theme-color-content-primary, #7c3aed);
+	flex-shrink: 0;
+}
 
-  .pricing__feature--excluded .pricing__feature-icon {
-    color: var(--g-theme-color-content-subtle);
-  }
+.pricing__feature--excluded .pricing__feature-icon {
+	color: var(--g-theme-color-content-subtle);
+}
 
-  .pricing__cta {
-    margin-top: auto;
-  }
+.pricing__cta {
+	margin-top: auto;
+}
 
-  .pricing__cta grantcodes-button {
-    width: 100%;
-  }
+.pricing__cta grantcodes-button {
+	width: 100%;
+}

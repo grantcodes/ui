@@ -1,7 +1,8 @@
 import { LitElement, html, nothing } from "lit";
 import mapStyles from "./map.css" with { type: "css" };
 
-const DARK_FILTER = "invert(1) hue-rotate(180deg) brightness(0.95) contrast(0.9)";
+const DARK_FILTER =
+	"invert(1) hue-rotate(180deg) brightness(0.95) contrast(0.9)";
 
 export class GrantCodesMap extends LitElement {
 	static styles = [mapStyles];
@@ -104,9 +105,7 @@ export class GrantCodesMap extends LitElement {
 			return nothing;
 		}
 
-		const heightStyle = this.height
-			? `--map-height: ${this.height}`
-			: "";
+		const heightStyle = this.height ? `--map-height: ${this.height}` : "";
 
 		return html`
 			<div class="map" style="${heightStyle}">

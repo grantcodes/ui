@@ -166,14 +166,16 @@ export class GrantCodesCountdown extends LitElement {
 					<span class="countdown__value" data-unit="minutes">${this._minutes}</span>
 					<span class="countdown__label">${this["minutes-label"]}</span>
 				</div>
-				${this["show-seconds"]
-					? html`
+				${
+					this["show-seconds"]
+						? html`
 						<div class="countdown__unit">
 							<span class="countdown__value" data-unit="seconds">${this._seconds}</span>
 							<span class="countdown__label">${this["seconds-label"]}</span>
 						</div>
 					`
-					: nothing}
+						: nothing
+				}
 			</div>
 		`;
 	}

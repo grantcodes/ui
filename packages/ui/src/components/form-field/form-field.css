@@ -1,47 +1,47 @@
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
 
-  .form-field {
-    display: flex;
-    flex-direction: column;
-    gap: var(--g-theme-spacing-xs);
-    padding: 0;
-    margin: 0;
-    border: none;
-  }
+.form-field {
+	display: flex;
+	flex-direction: column;
+	gap: var(--g-theme-spacing-xs);
+	padding: 0;
+	margin: 0;
+	border: none;
+}
 
-  .form-field label,
-  .form-field slot {
-    display: flex;
-    flex-direction: column;
-    gap: inherit;
-  }
+.form-field label,
+.form-field slot {
+	display: flex;
+	flex-direction: column;
+	gap: inherit;
+}
 
-  .form-field--inline label {
-    flex-direction: row-reverse;
-    align-items: center;
-    justify-content: flex-end;
-  }
+.form-field--inline label {
+	flex-direction: row-reverse;
+	align-items: center;
+	justify-content: flex-end;
+}
 
-  .form-field__label {
-    margin: 0;
-    padding: 0;
+.form-field__label {
+	margin: 0;
+	padding: 0;
 
-    &:where(legend) {
-      margin-bottom: var(--g-theme-spacing-xs);
-    }
-  }
+	&:where(legend) {
+		margin-bottom: var(--g-theme-spacing-xs);
+	}
+}
 
-  .form-field__help {
-    font-size: var(--g-theme-typography-body-sm-font-size);
-    opacity: 0.7;
-  }
+.form-field__help {
+	font-size: var(--g-theme-typography-body-sm-font-size);
+	opacity: 0.7;
+}
 
-  .form-field__error {
-    margin: 0;
-    font-size: var(--g-theme-typography-body-sm-font-size);
-    color: var(--g-color-utility-red-700);
-  }
+.form-field__error {
+	margin: 0;
+	font-size: var(--g-theme-typography-body-sm-font-size);
+	color: var(--g-color-utility-red-700);
+}

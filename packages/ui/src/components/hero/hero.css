@@ -1,57 +1,61 @@
-	*,
-	*::before,
-	*::after {
-		box-sizing: border-box;
-	}
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
 
-	:host {
-		display: block;
-	}
+:host {
+	display: block;
+}
 
-	.hero {
-		display: flex;
-		width: 100%;
-		justify-content: center;
-		align-items: center;
-		min-height: 50vh;
-		padding: var(--g-theme-spacing-2xl) var(--g-theme-spacing-md);
-		background: linear-gradient(135deg, var(--g-theme-color-background-primary-knockout), var(--g-color-primary-900));
-	}
+.hero {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	min-height: 50vh;
+	padding: var(--g-theme-spacing-2xl) var(--g-theme-spacing-md);
+	background: linear-gradient(
+		135deg,
+		var(--g-theme-color-background-primary-knockout),
+		var(--g-color-primary-900)
+	);
+}
 
-	.hero__container {
-		width: 100%;
-		max-width: 65ch;
-		gap: var(--g-theme-spacing-lg);
-	}
+.hero__container {
+	width: 100%;
+	max-width: 65ch;
+	gap: var(--g-theme-spacing-lg);
+}
 
-	:host([center]) .hero {
-		text-align: center;
-	}
+:host([center]) .hero {
+	text-align: center;
+}
 
-	:host([center]) .hero__container {
-		margin-inline: auto;
-	}
+:host([center]) .hero__container {
+	margin-inline: auto;
+}
 
-	.hero__title {
-		font: var(--g-typography-h1-font);
-		color: var(--g-theme-color-content-primary-knockout);
-	}
+.hero__title {
+	font: var(--g-typography-h1-font);
+	color: var(--g-theme-color-content-primary-knockout);
+}
 
-	.hero__text {
-		font: var(--g-typography-body-lg);
-		color: var(--g-theme-color-content-primary-knockout);
-	}
+.hero__text {
+	font: var(--g-typography-body-lg);
+	color: var(--g-theme-color-content-primary-knockout);
+}
 
-	:host([size="sm"]) .hero {
-		min-height: 30vh;
-		padding: var(--g-theme-spacing-xl) var(--g-theme-spacing-md);
-	}
+:host([size="sm"]) .hero {
+	min-height: 30vh;
+	padding: var(--g-theme-spacing-xl) var(--g-theme-spacing-md);
+}
 
-	:host([size="lg"]) .hero {
-		min-height: 70vh;
-		padding: var(--g-theme-spacing-3xl) var(--g-theme-spacing-md);
-	}
+:host([size="lg"]) .hero {
+	min-height: 70vh;
+	padding: var(--g-theme-spacing-3xl) var(--g-theme-spacing-md);
+}
 
-	::slotted(*) {
-		color: var(--g-theme-color-content-primary-knockout, #ffffff);
-	}
+::slotted(*) {
+	color: var(--g-theme-color-content-primary-knockout, #ffffff);
+}

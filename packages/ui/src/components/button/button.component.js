@@ -1,5 +1,7 @@
 import { html, LitElement } from "lit";
-import focusRingStyles from "../../lib/styles/focus-ring.css" with { type: "css" };
+import focusRingStyles from "../../lib/styles/focus-ring.css" with {
+	type: "css",
+};
 import buttonStyles from "./button.css" with { type: "css" };
 
 export class GrantCodesButton extends LitElement {

@@ -68,7 +68,11 @@ describe("Gallery Component", () => {
 
 		it("should have variant property default to 'default'", async () => {
 			element = await fixture("grantcodes-gallery");
-			assert.strictEqual(element.variant, "default", "variant should default to 'default'");
+			assert.strictEqual(
+				element.variant,
+				"default",
+				"variant should default to 'default'",
+			);
 		});
 
 		it("should reflect variant attribute when property is set", async () => {

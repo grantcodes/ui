@@ -1,8 +1,7 @@
 import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
 import "./countdown.js";
 
-const { events, args, argTypes } =
-	getStorybookHelpers("grantcodes-countdown");
+const { events, args, argTypes } = getStorybookHelpers("grantcodes-countdown");
 
 const meta = {
 	title: "Components/Countdown",

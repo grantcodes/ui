@@ -2,61 +2,61 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 :host {
-  display: block;
-  --button-border-radius-start: var(--g-theme-border-radius-md);
-  --button-border-radius-end: var(--g-theme-border-radius-md);
+	display: block;
+	--button-border-radius-start: var(--g-theme-border-radius-md);
+	--button-border-radius-end: var(--g-theme-border-radius-md);
 }
 
 .button {
-  display: inline-flex;
-  flex-direction: row;
-  align-items: center;
-  gap: var(--g-theme-spacing-sm);
-  background: var(--g-theme-button-primary-color-background-default);
-  color: var(--g-theme-button-primary-color-content-default);
-  border-width: var(--g-theme-border-width-md);
-  border-style: solid;
-  border-color: var(--g-theme-button-primary-color-border-default);
-  padding-block: var(--g-theme-spacing-sm);
-  padding-inline: var(--g-theme-spacing-md);
-  border-start-start-radius: var(--button-border-radius-start);
-  border-start-end-radius: var(--button-border-radius-end);
-  border-end-start-radius: var(--button-border-radius-start);
-  border-end-end-radius: var(--button-border-radius-end);
-  font: var(--g-theme-typography-label-default);
-  font-family: var(--g-theme-typography-label-font-family);
-  text-decoration: none;
-  transition-property: color, border-color, background-color, outline;
+	display: inline-flex;
+	flex-direction: row;
+	align-items: center;
+	gap: var(--g-theme-spacing-sm);
+	background: var(--g-theme-button-primary-color-background-default);
+	color: var(--g-theme-button-primary-color-content-default);
+	border-width: var(--g-theme-border-width-md);
+	border-style: solid;
+	border-color: var(--g-theme-button-primary-color-border-default);
+	padding-block: var(--g-theme-spacing-sm);
+	padding-inline: var(--g-theme-spacing-md);
+	border-start-start-radius: var(--button-border-radius-start);
+	border-start-end-radius: var(--button-border-radius-end);
+	border-end-start-radius: var(--button-border-radius-start);
+	border-end-end-radius: var(--button-border-radius-end);
+	font: var(--g-theme-typography-label-default);
+	font-family: var(--g-theme-typography-label-font-family);
+	text-decoration: none;
+	transition-property: color, border-color, background-color, outline;
 }
 
 .button:hover,
 .button:focus-visible {
-  color: var(--g-theme-button-primary-color-content-hover);
-  background: var(--g-theme-button-primary-color-background-hover);
-  border-color: var(--g-theme-button-primary-color-border-hover);
-  cursor: pointer;
-  text-decoration: none;
+	color: var(--g-theme-button-primary-color-content-hover);
+	background: var(--g-theme-button-primary-color-background-hover);
+	border-color: var(--g-theme-button-primary-color-border-hover);
+	cursor: pointer;
+	text-decoration: none;
 }
 
 .button:active {
-  color: var(--g-theme-button-primary-color-content-active);
-  background: var(--g-theme-button-primary-color-background-active);
-  border-color: var(--g-theme-button-primary-color-border-active);
+	color: var(--g-theme-button-primary-color-content-active);
+	background: var(--g-theme-button-primary-color-background-active);
+	border-color: var(--g-theme-button-primary-color-border-active);
 }
 
 .button:active {
-  transform: translateY(1px);
+	transform: translateY(1px);
 }
 
 .button[disabled] {
-  background: var(--g-theme-button-primary-color-background-disabled);
-  color: var(--g-theme-button-primary-color-content-disabled);
-  border-color: var(--g-theme-button-primary-color-border-disabled);
-  cursor: not-allowed;
-  filter: grayscale(70%);
-  opacity: 0.8;
+	background: var(--g-theme-button-primary-color-background-disabled);
+	color: var(--g-theme-button-primary-color-content-disabled);
+	border-color: var(--g-theme-button-primary-color-border-disabled);
+	cursor: not-allowed;
+	filter: grayscale(70%);
+	opacity: 0.8;
 }

@@ -1,253 +1,259 @@
-  *,
-	*::before,
-	*::after {
-    box-sizing: border-box;
-  }
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
 
-  :host {
-    display: block;
-    container-type: inline-size;
-    container-name: app-bar;
-  }
+:host {
+	display: block;
+	container-type: inline-size;
+	container-name: app-bar;
+}
 
-  .app-bar {
-    background-color: var(--g-theme-color-background-default);
-    border-block-end: 1px solid var(--g-theme-color-border-default);
-    position: relative;
-    z-index: 100;
-  }
+.app-bar {
+	background-color: var(--g-theme-color-background-default);
+	border-block-end: 1px solid var(--g-theme-color-border-default);
+	position: relative;
+	z-index: 100;
+}
 
-  .app-bar--sticky {
-    position: sticky;
-    inset-block-start: 0;
-  }
+.app-bar--sticky {
+	position: sticky;
+	inset-block-start: 0;
+}
 
-  .app-bar--transparent {
-    background-color: transparent;
-    border-block-end-color: transparent;
-    box-shadow: none;
-  }
+.app-bar--transparent {
+	background-color: transparent;
+	border-block-end-color: transparent;
+	box-shadow: none;
+}
 
-  /* Top bar row — always visible */
-  .app-bar__bar {
-    display: flex;
-    align-items: center;
-    gap: var(--g-theme-spacing-lg);
-    padding-inline: var(--g-theme-spacing-md);
-    padding-block: var(--g-theme-spacing-md);
-    max-inline-size: 1400px;
-    margin-inline: auto;
-  }
+/* Top bar row — always visible */
+.app-bar__bar {
+	display: flex;
+	align-items: center;
+	gap: var(--g-theme-spacing-lg);
+	padding-inline: var(--g-theme-spacing-md);
+	padding-block: var(--g-theme-spacing-md);
+	max-inline-size: 1400px;
+	margin-inline: auto;
+}
 
-  /* Logo */
-  .app-bar__logo {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-  }
+/* Logo */
+.app-bar__logo {
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+}
 
-  /* Navigation — hidden on mobile, shown on desktop */
-  .app-bar__nav {
-    display: none;
-  }
+/* Navigation — hidden on mobile, shown on desktop */
+.app-bar__nav {
+	display: none;
+}
 
-  /* Actions */
-  .app-bar__actions {
-    display: flex;
-    align-items: center;
-    gap: var(--g-theme-spacing-sm);
-    margin-inline-start: auto;
-  }
+/* Actions */
+.app-bar__actions {
+	display: flex;
+	align-items: center;
+	gap: var(--g-theme-spacing-sm);
+	margin-inline-start: auto;
+}
 
-  /* Mobile Menu Button */
-  .app-bar__menu-button {
-    all: unset;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    inline-size: 2.75rem;
-    block-size: 2.75rem;
-    padding: var(--g-theme-spacing-sm);
-    border-radius: var(--g-theme-border-radius-md);
-    cursor: pointer;
-    color: var(--g-theme-color-content-default);
-    transition: background-color 0.2s ease;
-  }
+/* Mobile Menu Button */
+.app-bar__menu-button {
+	all: unset;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	inline-size: 2.75rem;
+	block-size: 2.75rem;
+	padding: var(--g-theme-spacing-sm);
+	border-radius: var(--g-theme-border-radius-md);
+	cursor: pointer;
+	color: var(--g-theme-color-content-default);
+	transition: background-color 0.2s ease;
+}
 
-  .app-bar__menu-button:hover {
-    background-color: var(--g-theme-color-background-subtle-hover);
-  }
+.app-bar__menu-button:hover {
+	background-color: var(--g-theme-color-background-subtle-hover);
+}
 
-  /* Hamburger Icon */
-  .app-bar__menu-icon {
-    display: block;
-    inline-size: 1.25rem;
-    block-size: 1rem;
-    position: relative;
-  }
+/* Hamburger Icon */
+.app-bar__menu-icon {
+	display: block;
+	inline-size: 1.25rem;
+	block-size: 1rem;
+	position: relative;
+}
 
-  .app-bar__menu-icon::before,
-  .app-bar__menu-icon::after {
-    content: "";
-    position: absolute;
-    inline-size: 100%;
-    block-size: 2px;
-    inset-inline-start: 0;
-    background-color: currentColor;
-    transition: transform 0.2s ease, inset 0.2s ease;
-  }
+.app-bar__menu-icon::before,
+.app-bar__menu-icon::after {
+	content: "";
+	position: absolute;
+	inline-size: 100%;
+	block-size: 2px;
+	inset-inline-start: 0;
+	background-color: currentColor;
+	transition:
+		transform 0.2s ease,
+		inset 0.2s ease;
+}
 
-  .app-bar__menu-icon::before {
-    inset-block-start: 0;
-    box-shadow: 0 0.4375rem 0 currentColor;
-  }
+.app-bar__menu-icon::before {
+	inset-block-start: 0;
+	box-shadow: 0 0.4375rem 0 currentColor;
+}
 
-  .app-bar__menu-icon::after {
-    inset-block-end: 0;
-  }
+.app-bar__menu-icon::after {
+	inset-block-end: 0;
+}
 
-  /* Animated hamburger to X */
-  .app-bar__menu-button[aria-expanded="true"] .app-bar__menu-icon::before {
-    inset-block-start: calc(50% - 1px);
-    transform: rotate(45deg);
-    box-shadow: none;
-  }
+/* Animated hamburger to X */
+.app-bar__menu-button[aria-expanded="true"] .app-bar__menu-icon::before {
+	inset-block-start: calc(50% - 1px);
+	transform: rotate(45deg);
+	box-shadow: none;
+}
 
-  .app-bar__menu-button[aria-expanded="true"] .app-bar__menu-icon::after {
-    inset-block-end: calc(50% - 1px);
-    transform: rotate(-45deg);
-  }
+.app-bar__menu-button[aria-expanded="true"] .app-bar__menu-icon::after {
+	inset-block-end: calc(50% - 1px);
+	transform: rotate(-45deg);
+}
 
-  /*
+/*
    * Mobile menu — full-width panel below the app bar.
    * Uses clip-path for a clean slide-down reveal animation.
    */
-  .app-bar__nav--open {
-    display: flex;
-    flex-direction: column;
-    gap: var(--g-theme-spacing-xs, 0.25rem);
-    position: absolute;
-    inset-inline: 0;
-    inset-block-start: 100%;
-    z-index: 99;
-    background-color: var(--g-theme-color-background-default);
-    border-block-end: 1px solid var(--g-theme-color-border-default);
-    padding-block: var(--g-theme-spacing-md);
-    padding-inline: var(--g-theme-spacing-md);
-    box-shadow: var(--g-theme-shadow-lg, 0 8px 24px rgba(0, 0, 0, 0.12));
-    animation: menu-open 0.25s ease-out;
-  }
+.app-bar__nav--open {
+	display: flex;
+	flex-direction: column;
+	gap: var(--g-theme-spacing-xs, 0.25rem);
+	position: absolute;
+	inset-inline: 0;
+	inset-block-start: 100%;
+	z-index: 99;
+	background-color: var(--g-theme-color-background-default);
+	border-block-end: 1px solid var(--g-theme-color-border-default);
+	padding-block: var(--g-theme-spacing-md);
+	padding-inline: var(--g-theme-spacing-md);
+	box-shadow: var(--g-theme-shadow-lg, 0 8px 24px rgba(0, 0, 0, 0.12));
+	animation: menu-open 0.25s ease-out;
+}
 
-  @keyframes menu-open {
-    from {
-      opacity: 0;
-      transform: translateY(-0.5rem);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+@keyframes menu-open {
+	from {
+		opacity: 0;
+		transform: translateY(-0.5rem);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
 
-  /* Slotted nav content stacks vertically in mobile menu */
-  .app-bar__nav--open ::slotted(ul),
-  .app-bar__nav--open ::slotted(div[slot="nav"]) {
-    display: flex;
-    flex-direction: column;
-    gap: var(--g-theme-spacing-xs, 0.25rem);
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
+/* Slotted nav content stacks vertically in mobile menu */
+.app-bar__nav--open ::slotted(ul),
+.app-bar__nav--open ::slotted(div[slot="nav"]) {
+	display: flex;
+	flex-direction: column;
+	gap: var(--g-theme-spacing-xs, 0.25rem);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
 
-  /* Backdrop overlay — covers viewport below app bar when menu is open */
-  .app-bar__overlay {
-    display: none;
-  }
+/* Backdrop overlay — covers viewport below app bar when menu is open */
+.app-bar__overlay {
+	display: none;
+}
 
-  .app-bar__overlay--visible {
-    display: block;
-    position: fixed;
-    inset: 0;
-    z-index: 98;
-    background-color: rgba(0, 0, 0, 0.2);
-    animation: overlay-fade 0.2s ease-out;
-  }
+.app-bar__overlay--visible {
+	display: block;
+	position: fixed;
+	inset: 0;
+	z-index: 98;
+	background-color: rgba(0, 0, 0, 0.2);
+	animation: overlay-fade 0.2s ease-out;
+}
 
-  @keyframes overlay-fade {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
+@keyframes overlay-fade {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
 
-  /* Reduced motion preferences */
-  @media (prefers-reduced-motion: reduce) {
-    .app-bar__menu-icon::before,
-    .app-bar__menu-icon::after {
-      transition: none;
-    }
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+	.app-bar__menu-icon::before,
+	.app-bar__menu-icon::after {
+		transition: none;
+	}
 
-    .app-bar__menu-button {
-      transition: none;
-    }
+	.app-bar__menu-button {
+		transition: none;
+	}
 
-    .app-bar__nav--open {
-      animation: none;
-    }
+	.app-bar__nav--open {
+		animation: none;
+	}
 
-    .app-bar__overlay--visible {
-      animation: none;
-    }
-  }
+	.app-bar__overlay--visible {
+		animation: none;
+	}
+}
 
-  /* Desktop: show nav inline, hide hamburger */
-  @container app-bar (min-width: 768px) {
-    .app-bar__nav {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: var(--g-theme-spacing-xs, 0.25rem);
-      flex: 1;
-    }
+/* Desktop: show nav inline, hide hamburger */
+@container app-bar (min-width: 768px) {
+	.app-bar__nav {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: var(--g-theme-spacing-xs, 0.25rem);
+		flex: 1;
+	}
 
-    /* Reset mobile-open styles at desktop — nav is always inline */
-    .app-bar__nav--open {
-      position: static;
-      background-color: transparent;
-      border: 0;
-      padding: 0;
-      box-shadow: none;
-      animation: none;
-      flex-direction: row;
-    }
+	/* Reset mobile-open styles at desktop — nav is always inline */
+	.app-bar__nav--open {
+		position: static;
+		background-color: transparent;
+		border: 0;
+		padding: 0;
+		box-shadow: none;
+		animation: none;
+		flex-direction: row;
+	}
 
-    .app-bar__actions {
-      order: 3;
-    }
+	.app-bar__actions {
+		order: 3;
+	}
 
-    .app-bar__menu-button {
-      display: none;
-    }
+	.app-bar__menu-button {
+		display: none;
+	}
 
-    /* Overlay is never visible on desktop */
-    .app-bar__overlay--visible {
-      display: none;
-    }
-  }
+	/* Overlay is never visible on desktop */
+	.app-bar__overlay--visible {
+		display: none;
+	}
+}
 
-  /* Slotted content styling */
-  ::slotted(a[slot="logo"]) {
-    color: var(--g-theme-color-content-default) !important;
-    text-decoration: none !important;
-    font-family: var(--g-theme-typography-label-font-family);
-    font-weight: var(--g-theme-typography-label-font-weight);
-  }
+/* Slotted content styling */
+::slotted(a[slot="logo"]) {
+	color: var(--g-theme-color-content-default) !important;
+	text-decoration: none !important;
+	font-family: var(--g-theme-typography-label-font-family);
+	font-weight: var(--g-theme-typography-label-font-weight);
+}
 
-  ::slotted(ul),
-  ::slotted(div[slot="nav"]) {
-    display: flex;
-    flex-direction: row;
-    gap: var(--g-theme-spacing-xs, 0.25rem);
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
+::slotted(ul),
+::slotted(div[slot="nav"]) {
+	display: flex;
+	flex-direction: row;
+	gap: var(--g-theme-spacing-xs, 0.25rem);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}

@@ -1,6 +1,6 @@
-import React from "react"
-import { createComponent } from "@lit/react"
-import { GrantCodesDropdown, GrantCodesDropdownItem } from "./dropdown.js"
+import React from "react";
+import { createComponent } from "@lit/react";
+import { GrantCodesDropdown, GrantCodesDropdownItem } from "./dropdown.js";
 
 export const Dropdown = createComponent({
 	tagName: "grantcodes-dropdown",
@@ -9,7 +9,7 @@ export const Dropdown = createComponent({
 	events: {
 		onToggle: "toggle",
 	},
-})
+});
 
 export const DropdownItem = createComponent({
 	tagName: "grantcodes-dropdown-item",
@@ -18,4 +18,4 @@ export const DropdownItem = createComponent({
 	events: {
 		onSelect: "select",
 	},
-})
+});
