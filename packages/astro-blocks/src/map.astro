@@ -1,5 +1,5 @@
 ---
-import '@grantcodes/ui/components/map/map.js'
+import { GrantCodesMap } from '@grantcodes/ui/components/map/index.js'
 
 interface Props {
   lat: number | string
@@ -13,11 +13,12 @@ interface Props {
 const { lat, lng, zoom = 14, label, directionsUrl, height } = Astro.props
 ---
 
-<grantcodes-map
+<GrantCodesMap
   lat={String(lat)}
   lng={String(lng)}
   zoom={zoom}
   label={label}
   directions-url={directionsUrl}
   height={height}
-></grantcodes-map>
+  client:visible
+></GrantCodesMap>

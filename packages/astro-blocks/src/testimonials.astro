@@ -1,5 +1,5 @@
 ---
-import '@grantcodes/ui/components/testimonials/testimonials.js'
+import { GrantCodesTestimonials } from '@grantcodes/ui/components/testimonials/index.js'
 
 interface TestimonialItem {
   quote: string
@@ -18,8 +18,8 @@ interface Props {
 const { title, items, layout = 'cards' } = Astro.props
 ---
 
-<grantcodes-testimonials
+<GrantCodesTestimonials
   title={title}
   items={JSON.stringify(items)}
   layout={layout}
-></grantcodes-testimonials>
+></GrantCodesTestimonials>

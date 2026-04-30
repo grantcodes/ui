@@ -1,5 +1,5 @@
 ---
-import '@grantcodes/ui/components/newsletter/newsletter.js'
+import { GrantCodesNewsletter } from '@grantcodes/ui/components/newsletter/index.js'
 
 interface Props {
   title: string
@@ -22,7 +22,7 @@ const {
 } = Astro.props
 ---
 
-<grantcodes-newsletter
+<GrantCodesNewsletter
   title={title}
   text={text}
   action={action}
@@ -30,4 +30,4 @@ const {
   placeholder={placeholder}
   button-label={buttonLabel}
   disclaimer={disclaimer}
-></grantcodes-newsletter>
+></GrantCodesNewsletter>

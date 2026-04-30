@@ -1,19 +1,29 @@
+import { fileURLToPath } from 'node:url';
 import { defineConfig, envField } from 'astro/config';
-import starlight from '@astrojs/starlight';
 import sitemap from '@astrojs/sitemap';
-import { envDefaults } from './integrations/env-defaults.ts';
+import starlight from '@astrojs/starlight';
 import lit from '@semantic-ui/astro-lit';
 import astroOgImages from '@grantcodes/astro-og-images';
-import { fileURLToPath } from 'node:url';
 import { cssImportAttributes } from '@grantcodes/ui/vite-plugin';
+import { envDefaults } from './integrations/env-defaults.ts';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://grant.codes',
   output: 'static',
   vite: {
+    server: {
+      allowedHosts: ['.munchkin-beaver.ts.net'],
+    },
+    optimizeDeps: {
+      exclude: ['@grantcodes/ui'],
+    },
     plugins: [cssImportAttributes()],
+    ssr: {
+      noExternal: ['@grantcodes/ui', '@grantcodes/astro-blocks'],
+    },
     resolve: {
+      noExternal   : ['@grantcodes/ui', '@grantcodes/astro-blocks'],
       alias: {
         '@layouts': fileURLToPath(new URL('./src/layouts', import.meta.url)),
         '@components': fileURLToPath(new URL('./src/components', import.meta.url)),
