@@ -1,5 +1,5 @@
 ---
-import '@grantcodes/ui/components/countdown/countdown.js'
+import { GrantCodesCountdown } from '@grantcodes/ui/components/countdown/index.js'
 
 interface Props {
   target: string
@@ -22,7 +22,7 @@ const {
 } = Astro.props
 ---
 
-<grantcodes-countdown
+<GrantCodesCountdown
   target={target}
   days-label={daysLabel}
   hours-label={hoursLabel}
@@ -30,4 +30,5 @@ const {
   seconds-label={secondsLabel}
   past-message={pastMessage}
   show-seconds={showSeconds || undefined}
-></grantcodes-countdown>
+  client:only
+></GrantCodesCountdown>

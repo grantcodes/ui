@@ -1,5 +1,5 @@
 ---
-import '@grantcodes/ui/components/stats/stats.js'
+import {GrantCodesStats} from '@grantcodes/ui/components/stats/index.js'
 
 interface StatItem {
   label: string
@@ -16,8 +16,8 @@ interface Props {
 const { title, items, columns = 4 } = Astro.props
 ---
 
-<grantcodes-stats
+<GrantCodesStats
   title={title}
   items={JSON.stringify(items)}
   columns={columns}
-></grantcodes-stats>
+></GrantCodesStats>

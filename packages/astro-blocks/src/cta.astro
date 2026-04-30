@@ -1,5 +1,5 @@
 ---
-import '@grantcodes/ui/components/cta/cta.js'
+import { GrantCodesCta } from '@grantcodes/ui/components/cta/index.js'
 
 interface Action {
   label: string
@@ -18,11 +18,11 @@ interface Props {
 const { eyebrow, title, text, primaryAction, secondaryAction, align = 'center' } = Astro.props
 ---
 
-<grantcodes-cta
+<GrantCodesCta
   eyebrow={eyebrow}
   title={title}
   text={text}
   primary-action={primaryAction ? JSON.stringify(primaryAction) : undefined}
   secondary-action={secondaryAction ? JSON.stringify(secondaryAction) : undefined}
   align={align}
-></grantcodes-cta>
+></GrantCodesCta>

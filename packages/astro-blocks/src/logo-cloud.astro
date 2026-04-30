@@ -1,5 +1,5 @@
 ---
-import '@grantcodes/ui/components/logo-cloud/logo-cloud.js'
+import { GrantCodesLogoCloud } from  '@grantcodes/ui/components/logo-cloud/index.js'
 
 interface LogoItem {
   name: string
@@ -16,7 +16,7 @@ interface Props {
 const { title, logos } = Astro.props
 ---
 
-<grantcodes-logo-cloud
+<GrantCodesLogoCloud
   title={title}
   logos={JSON.stringify(logos)}
-></grantcodes-logo-cloud>
+></GrantCodesLogoCloud>

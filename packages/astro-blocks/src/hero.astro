@@ -1,5 +1,5 @@
 ---
-import '@grantcodes/ui/components/hero/hero.js'
+import { GrantCodesHero } from '@grantcodes/ui/components/hero/index.js'
 
 interface Props {
   title: string
@@ -13,7 +13,7 @@ interface Props {
 const { title, subtitle, button, href, size, center } = Astro.props
 ---
 
-<grantcodes-hero
+<GrantCodesHero
   title={title}
   subtitle={subtitle}
   button={button}
@@ -22,4 +22,4 @@ const { title, subtitle, button, href, size, center } = Astro.props
   center={center || undefined}
 >
   <slot />
-</grantcodes-hero>
+</GrantCodesHero>

@@ -1,5 +1,5 @@
 ---
-import '@grantcodes/ui/components/media-text/media-text.js'
+import { GrantCodesMediaText } from '@grantcodes/ui/components/media-text/index.js'
 
 interface Props {
   title: string
@@ -16,10 +16,10 @@ interface Props {
 const { title, text, media, reverse = false, cta } = Astro.props
 ---
 
-<grantcodes-media-text
+<GrantCodesMediaText
   title={title}
   text={text}
   media={JSON.stringify(media)}
   reverse={reverse || undefined}
   cta={cta ? JSON.stringify(cta) : undefined}
-></grantcodes-media-text>
+></GrantCodesMediaText>
