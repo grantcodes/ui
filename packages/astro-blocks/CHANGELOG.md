@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/grantcodes/ui/compare/astro-blocks-v1.0.0...astro-blocks-v1.1.0) (2026-04-30)
+
+
+### Features
+
+* upgrade astro to v6 with content layer API migration ([c2ea1dc](https://github.com/grantcodes/ui/commit/c2ea1dc68200afd49b628d9430e1945bcc68af21))
+
 ## 1.0.0 (2026-04-26)
 
 
