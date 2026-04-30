@@ -99,9 +99,9 @@ export default defineConfig({
         },
         { label: 'Tech choices', link: '/docs/tech-choices/' },
       ],
-      social: {
-        github: 'https://github.com/grantcodes/ui',
-      },
+      social: [
+        { label: 'GitHub', icon: 'github', href: 'https://github.com/grantcodes/ui' },
+      ],
     }),
     sitemap(),
   ],

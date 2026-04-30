@@ -21,10 +21,10 @@ export function useTranslatedPath(lang: keyof typeof ui) {
 export function getEntryStaticPaths(entries: any[]): any[] {
   const staticPaths = entries.map((entry) => {
     let lang = defaultLang
-    let slug = [entry.slug]
-    if (entry.slug.includes('/')) {
+    let slug = [entry.id]
+    if (entry.id.includes('/')) {
       // Is in a language subdirectory
-      const [entryLang, ...entrySlug] = entry.slug.split('/')
+      const [entryLang, ...entrySlug] = entry.id.split('/')
       if (
         Object.keys(languages).includes(entryLang) &&
         entryLang !== defaultLang
@@ -45,12 +45,12 @@ export function getEntryStaticPaths(entries: any[]): any[] {
 export function entryMatchesLang(entry: any, lang: string) {
   // If not a default language, then it will be in a language subdirectory.
   if (lang !== defaultLang) {
-    return entry.slug.startsWith(`${lang}/`)
+    return entry.id.startsWith(`${lang}/`)
   }
 
   // If it is the default language, then it will not be in a language subdirectory.
   return !Object.keys(languages).some((lang) =>
-    entry.slug.startsWith(`${lang}/`)
+    entry.id.startsWith(`${lang}/`)
   )
 }
 
