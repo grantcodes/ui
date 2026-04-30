@@ -1,7 +1,9 @@
 import { html, LitElement } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { classMap } from "lit/directives/class-map.js";
-import focusRingStyles from "../../lib/styles/focus-ring.css" with { type: "css" };
+import focusRingStyles from "../../lib/styles/focus-ring.css" with {
+	type: "css",
+};
 import toastStyles from "./toast.css" with { type: "css" };
 import { GrantCodesIcon } from "../icon/icon.component.js";
 import { AlertCircle, Info, CheckCircle2, XCircle, X } from "../../icons.js";

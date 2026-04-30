@@ -1,6 +1,8 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
-import focusRingStyles from "../../lib/styles/focus-ring.css" with { type: "css" };
+import focusRingStyles from "../../lib/styles/focus-ring.css" with {
+	type: "css",
+};
 import breadcrumbStyles from "./breadcrumb.css" with { type: "css" };
 
 export class GrantCodesBreadcrumb extends LitElement {

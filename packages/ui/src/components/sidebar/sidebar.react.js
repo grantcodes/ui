@@ -1,6 +1,6 @@
-import React from "react"
-import { createComponent } from "@lit/react"
-import { GrantCodesSidebar } from "./sidebar.js"
+import React from "react";
+import { createComponent } from "@lit/react";
+import { GrantCodesSidebar } from "./sidebar.js";
 
 export const Sidebar = createComponent({
 	tagName: "grantcodes-sidebar",
@@ -10,4 +10,4 @@ export const Sidebar = createComponent({
 		onToggle: "toggle",
 		onDrawerToggle: "drawer-toggle",
 	},
-})
+});

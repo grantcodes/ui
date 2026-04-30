@@ -1,20 +1,19 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .pagination {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }
 
 .pagination__next {
-  margin-inline-start: auto;
+	margin-inline-start: auto;
 }
 
 .pagination__previous {
-  margin-inline-end: auto;
+	margin-inline-end: auto;
 }
-

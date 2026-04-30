@@ -113,9 +113,7 @@ describe("App Bar Component", () => {
 
 		await element.updateComplete;
 
-		const mobileNav = element.shadowRoot.querySelector(
-			".app-bar__nav--open",
-		);
+		const mobileNav = element.shadowRoot.querySelector(".app-bar__nav--open");
 		assert.ok(mobileNav, "Mobile nav should be rendered when open");
 	});
 

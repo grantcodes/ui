@@ -1,7 +1,9 @@
 import { LitElement } from "lit";
 import { html } from "lit";
 import { classMap } from "lit/directives/class-map.js";
-import focusRingStyles from "../../lib/styles/focus-ring.css" with { type: "css" };
+import focusRingStyles from "../../lib/styles/focus-ring.css" with {
+	type: "css",
+};
 import appBarStyles from "./app-bar.css" with { type: "css" };
 
 export class GrantCodesAppBar extends LitElement {
@@ -38,15 +40,19 @@ export class GrantCodesAppBar extends LitElement {
 		 * Close mobile menu when the component crosses the desktop breakpoint.
 		 * Matches the 768px container query in app-bar.css.
 		 */
-		this._resizeObserver = typeof ResizeObserver !== "undefined"
-			? new ResizeObserver((entries) => {
-					for (const entry of entries) {
-						if (entry.contentBoxSize[0].inlineSize >= 768 && this._mobileMenuOpen) {
-							this._mobileMenuOpen = false;
+		this._resizeObserver =
+			typeof ResizeObserver !== "undefined"
+				? new ResizeObserver((entries) => {
+						for (const entry of entries) {
+							if (
+								entry.contentBoxSize[0].inlineSize >= 768 &&
+								this._mobileMenuOpen
+							) {
+								this._mobileMenuOpen = false;
+							}
 						}
-					}
-				})
-			: null;
+					})
+				: null;
 	}
 
 	connectedCallback() {

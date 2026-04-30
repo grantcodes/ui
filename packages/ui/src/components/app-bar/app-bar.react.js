@@ -1,6 +1,6 @@
-import React from "react"
-import { createComponent } from "@lit/react"
-import { GrantCodesAppBar } from "./app-bar.js"
+import React from "react";
+import { createComponent } from "@lit/react";
+import { GrantCodesAppBar } from "./app-bar.js";
 
 export const AppBar = createComponent({
 	tagName: "grantcodes-app-bar",
@@ -9,4 +9,4 @@ export const AppBar = createComponent({
 	events: {
 		onMenuToggle: "menu-toggle",
 	},
-})
+});

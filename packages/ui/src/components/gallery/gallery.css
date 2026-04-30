@@ -1,56 +1,56 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .gallery {
-  display: block;
+	display: block;
 }
 
 .gallery__slot {
-  display: grid;
-  grid-template-columns: repeat(var(--gallery-columns, 3), 1fr);
-  width: 100%;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: var(--gallery-gap, 0);
+	display: grid;
+	grid-template-columns: repeat(var(--gallery-columns, 3), 1fr);
+	width: 100%;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: var(--gallery-gap, 0);
 }
 
 .gallery__slot > * {
-  display: block;
-  width: 100%;
+	display: block;
+	width: 100%;
 }
 
 .gallery--has-lightbox > * {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .gallery__image {
-  position: relative;
-  width: 100%;
-  display: block;
-  flex-direction: column;
-  margin: 0;
+	position: relative;
+	width: 100%;
+	display: block;
+	flex-direction: column;
+	margin: 0;
 }
 
 .gallery__image img {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  object-position: center;
+	display: block;
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+	object-position: center;
 }
 
 .gallery__image__caption {
-  position: absolute;
-  inset: 0;
-  inset-block-start: auto;
-  background-color: rgba(0, 0, 0, 0.4);
-  padding-inline: 0.5em;
-  padding-block: 0.3em;
-  line-height: 1.2;
-  color: white;
+	position: absolute;
+	inset: 0;
+	inset-block-start: auto;
+	background-color: rgba(0, 0, 0, 0.4);
+	padding-inline: 0.5em;
+	padding-block: 0.3em;
+	line-height: 1.2;
+	color: white;
 }
 
 /* =============================================
@@ -62,16 +62,16 @@
    wins on equal specificity. Uses custom properties so filmstrip mode can
    override them via inheritance from the parent gallery element. */
 :host .gallery__image img {
-  aspect-ratio: var(--_gallery-img-aspect-ratio, 1);
-  block-size: var(--_gallery-img-block-size, auto);
-  width: var(--_gallery-img-width, 100%);
-  height: var(--_gallery-img-height, auto);
-  max-inline-size: var(--_gallery-img-max-inline-size, unset);
+	aspect-ratio: var(--_gallery-img-aspect-ratio, 1);
+	block-size: var(--_gallery-img-block-size, auto);
+	width: var(--_gallery-img-width, 100%);
+	height: var(--_gallery-img-height, auto);
+	max-inline-size: var(--_gallery-img-max-inline-size, unset);
 }
 
 :host .gallery__image {
-  block-size: var(--_gallery-image-block-size, auto);
-  width: var(--_gallery-image-width, 100%);
+	block-size: var(--_gallery-image-block-size, auto);
+	width: var(--_gallery-image-width, 100%);
 }
 
 /* =============================================
@@ -83,59 +83,59 @@
    without requiring JS attribute propagation, making the filmstrip work
    correctly with SSR-rendered content. */
 :host([variant="filmstrip"]) {
-  --_gallery-image-block-size: 100%;
-  --_gallery-image-width: fit-content;
-  --_gallery-img-aspect-ratio: auto;
-  --_gallery-img-block-size: 100%;
-  --_gallery-img-width: auto;
-  --_gallery-img-height: 100%;
-  --_gallery-img-max-inline-size: none;
+	--_gallery-image-block-size: 100%;
+	--_gallery-image-width: fit-content;
+	--_gallery-img-aspect-ratio: auto;
+	--_gallery-img-block-size: 100%;
+	--_gallery-img-width: auto;
+	--_gallery-img-height: 100%;
+	--_gallery-img-max-inline-size: none;
 }
 
 :host([variant="filmstrip"]) .gallery {
-  overflow: hidden;
+	overflow: hidden;
 }
 
 :host([variant="filmstrip"]) .gallery__slot {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  overflow-y: hidden;
-  block-size: var(--filmstrip-height, 240px);
-  gap: var(--gallery-gap, 4px);
-  scroll-snap-type: x mandatory;
-  overscroll-behavior-x: contain;
-  scrollbar-width: none;
+	display: flex;
+	flex-wrap: nowrap;
+	overflow-x: auto;
+	overflow-y: hidden;
+	block-size: var(--filmstrip-height, 240px);
+	gap: var(--gallery-gap, 4px);
+	scroll-snap-type: x mandatory;
+	overscroll-behavior-x: contain;
+	scrollbar-width: none;
 }
 
 :host([variant="filmstrip"]) .gallery__slot::-webkit-scrollbar {
-  display: none;
+	display: none;
 }
 
 :host([variant="filmstrip"]) .gallery__slot::slotted(*) {
-  flex: 0 0 auto;
-  block-size: 100%;
-  scroll-snap-align: start;
+	flex: 0 0 auto;
+	block-size: 100%;
+	scroll-snap-align: start;
 }
 
 /* Scroll-driven reveal animation */
 @supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    :host([variant="filmstrip"]) .gallery__slot::slotted(*) {
-      animation: filmstrip-reveal linear both;
-      animation-timeline: view(inline);
-      animation-range: entry 0% entry 60%;
-    }
-  }
+	@media (prefers-reduced-motion: no-preference) {
+		:host([variant="filmstrip"]) .gallery__slot::slotted(*) {
+			animation: filmstrip-reveal linear both;
+			animation-timeline: view(inline);
+			animation-range: entry 0% entry 60%;
+		}
+	}
 }
 
 @keyframes filmstrip-reveal {
-  from {
-    opacity: 0.3;
-    scale: 0.92;
-  }
-  to {
-    opacity: 1;
-    scale: 1;
-  }
+	from {
+		opacity: 0.3;
+		scale: 0.92;
+	}
+	to {
+		opacity: 1;
+		scale: 1;
+	}
 }
