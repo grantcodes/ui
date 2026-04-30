@@ -51,7 +51,7 @@
     "components"
   ],
   "peerDependencies": {
-    "astro": "^5.0.0"
+    "astro": "^6.0.0"
   },
   "dependencies": {
     "@grantcodes/style-dictionary": "workspace:^",
@@ -59,6 +59,6 @@
     "marked": "^17.0.4"
   },
   "devDependencies": {
-    "astro": "^5.5.2"
+    "astro": "^6.2.1"
   }
 }

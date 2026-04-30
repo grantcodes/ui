@@ -1,4 +1,4 @@
-import { z, defineCollection } from 'astro:content'
+import { z } from 'astro/zod'
 
 const baseBlockFields = z.object({
   id: z.string().optional(),
@@ -60,7 +60,7 @@ export const formBlock = baseBlockFields.extend({
   title: z.string().optional(),
   submitText: z.string().default('Submit'),
   successMessage: z.string().default('Thank you for your message!'),
-  notifyEmail: z.string().email(),
+  notifyEmail: z.email(),
   buttonText: z.string().default('Send Message'),
 })
 
@@ -73,37 +73,30 @@ export const blockSchema = z.discriminatedUnion('type', [
   formBlock,
 ])
 
-export const pageCollection = defineCollection({
-  type: 'content',
-  schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-    blocks: z.array(blockSchema).default([]),
-  }),
+export const blogSchema = z.object({
+  title: z.string(),
+  date: z.date(),
+  description: z.string(),
+  tags: z.array(z.string()),
+  image: z.string().optional(),
 })
 
-export const navigationCollection = defineCollection({
-  type: 'data',
-  schema: z.array(
-    z.object({
-      label: z.string(),
-      href: z.string(),
-      order: z.number().default(0),
-      locale: z.string().default('en'),
-    }),
-  ),
+export const pageSchema = z.object({
+  title: z.string(),
+  description: z.string().optional(),
+  blocks: z.array(blockSchema).default([]),
 })
 
-export const settingsCollection = defineCollection({
-  type: 'data',
-  schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-  }),
+export const navigationSchema = z.object({
+  id: z.string(),
+  label: z.string(),
+  href: z.string(),
+  order: z.number().default(0),
+  locale: z.string().default('en'),
 })
 
-export const collections = {
-  pages: pageCollection,
-  navigation: navigationCollection,
-  settings: settingsCollection,
-}
+export const settingsSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  description: z.string().optional(),
+})

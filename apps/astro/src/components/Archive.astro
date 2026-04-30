@@ -25,7 +25,7 @@ const metadata = { title }
         <ol>
             {entries.map((entry) => (
                 <li>
-                    <a href={getRelativeLocaleUrl(lang, entry.slug, {
+                    <a href={getRelativeLocaleUrl(lang, entry.id, {
                         prependWith: urlPrependWith,
                     })}>
                         <GrantCodesCard class="is-clickable">

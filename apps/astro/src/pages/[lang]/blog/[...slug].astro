@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content'
+import { getCollection, render } from 'astro:content'
 import Layout from '@layouts/Page.astro'
 import { defaultLang, getEntryStaticPaths } from '@i18n/utils'
 import { Hero } from '@grantcodes/astro-blocks'
@@ -17,7 +17,7 @@ const { entry } = Astro.props
 if (!entry) {
   throw new Error('No entry provided')
 }
-const { Content } = await entry.render()
+const { Content } = await render(entry)
 const metadata = { title: entry.data.title }
 ---
 

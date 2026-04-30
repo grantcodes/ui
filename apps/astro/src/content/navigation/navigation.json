@@ -1,6 +1,5 @@
 [
-  { "label": "Home", "href": "/", "order": 0, "locale": "en" },
-  { "label": "About", "href": "/about", "order": 1, "locale": "en" },
-
-  { "label": "Blog", "href": "/blog", "order": 3, "locale": "en" }
+  { "id": "home", "label": "Home", "href": "/", "order": 0, "locale": "en" },
+  { "id": "about", "label": "About", "href": "/about", "order": 1, "locale": "en" },
+  { "id": "blog", "label": "Blog", "href": "/blog", "order": 3, "locale": "en" }
 ]
