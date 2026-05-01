@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.0](https://github.com/grantcodes/ui/compare/astro-blocks-v1.1.0...astro-blocks-v1.2.0) (2026-05-01)
+
+
+### Features
+
+* **astro-blocks:** update component imports ([6703540](https://github.com/grantcodes/ui/commit/6703540b9f4e03c0fce925e2a6373bdeba63ecd4))
+
+
+### Bug Fixes
+
+* **astro-blocks:** some block rendering issues ([54b61c5](https://github.com/grantcodes/ui/commit/54b61c5ee45d12f8990a7ad69f2f4374f261d4ed))
+
 ## [1.1.0](https://github.com/grantcodes/ui/compare/astro-blocks-v1.0.0...astro-blocks-v1.1.0) (2026-04-30)
 
 
