@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.10.1](https://github.com/grantcodes/ui/compare/ui-v2.10.0...ui-v2.10.1) (2026-05-01)
+
+
+### Bug Fixes
+
+* **astro-blocks:** some block rendering issues ([54b61c5](https://github.com/grantcodes/ui/commit/54b61c5ee45d12f8990a7ad69f2f4374f261d4ed))
+
 ## [2.10.0](https://github.com/grantcodes/ui/compare/ui-v2.9.2...ui-v2.10.0) (2026-04-23)
 
 
