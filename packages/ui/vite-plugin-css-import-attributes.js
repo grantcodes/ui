@@ -45,12 +45,15 @@ export function cssImportAttributes() {
 			);
 			const regex = new RegExp(
 				escapedSource +
-					`['"] *(?:with|assert) *{ *type: *['"]css['"]`,
+					`['"]\\s*(?:with|assert)\\s*{\\s*type:\\s*['"]css['"]`,
 			);
 			if (!regex.test(importerContent)) return;
 
 			// Resolve to absolute path
-			const resolved = (await this.resolve(source, importer, options))
+			const resolved = (await this.resolve(source, importer, {
+				...options,
+				skipSelf: true,
+			}))
 				?.id;
 			if (!resolved) return;
 

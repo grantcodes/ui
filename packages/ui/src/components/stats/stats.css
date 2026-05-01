@@ -50,7 +50,7 @@
 }
 
 .stats__value {
-	font: var(--g-typography-h1-font);
+	font: var(--g-theme-typography-h2);
 	white-space: nowrap;
 	line-height: 1;
 	color: var(--g-theme-color-content-primary, #7c3aed);
