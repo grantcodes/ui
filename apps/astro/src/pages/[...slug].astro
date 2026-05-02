@@ -4,7 +4,7 @@ import PageLayout from '@layouts/Page.astro'
 import BlockRenderer from '@components/BlockRenderer.astro'
 
 export async function getStaticPaths() {
-  const pages = await getCollection('pages', ({ data }) => !data.fixture)
+  const pages = await getCollection('pages')
   
   return pages.map((page) => ({
     params: { slug: page.id || undefined },
