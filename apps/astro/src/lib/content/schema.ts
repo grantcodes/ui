@@ -94,6 +94,7 @@ export const blogSchema = z.object({
 export const pageSchema = z.object({
   title: z.string(),
   description: z.string().optional(),
+  fixture: z.boolean().default(false),
   blocks: z.array(blockSchema).default([]),
 })
 
