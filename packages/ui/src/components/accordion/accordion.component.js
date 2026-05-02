@@ -1,5 +1,6 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
+import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import focusRingStyles from "../../lib/styles/focus-ring.css" with {
 	type: "css",
 };
@@ -17,6 +18,12 @@ export class GrantCodesAccordion extends LitElement {
 		this.items = [];
 	}
 
+	renderPanelContent(item) {
+		return item.htmlContent !== undefined && item.htmlContent !== null
+			? unsafeHTML(item.htmlContent)
+			: item.content;
+	}
+
 	render() {
 		return html`
       <div class="accordion">
@@ -29,7 +36,7 @@ export class GrantCodesAccordion extends LitElement {
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </summary>
-              <div class="accordion__content">${item.content}</div>
+              <div class="accordion__content">${this.renderPanelContent(item)}</div>
             </details>
           `,
 				)}
