@@ -28,7 +28,7 @@
 	background: var(--g-theme-form-color-background-focus);
 }
 
-:where(input, textarea, select):invalid:not(:active) {
+:where(input, textarea, select):focus:invalid {
 	border-color: var(--g-theme-form-color-border-error);
 }
 
