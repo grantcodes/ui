@@ -1,7 +1,6 @@
 import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
-import { html } from "lit/static-html.js";
 import "./accordion.js";
-const { events, args, argTypes, template } = getStorybookHelpers(
+const { events, args, argTypes } = getStorybookHelpers(
 	"grantcodes-accordion",
 );
 
@@ -82,6 +81,50 @@ export const MultipleItems = {
 			{
 				title: "Fourth Section",
 				content: "Content for the fourth section.",
+			},
+		],
+	},
+};
+
+/**
+ * `content` is escaped plain text, so HTML-looking strings display literally.
+ */
+export const EscapedPlainTextContent = {
+	args: {
+		items: [
+			{
+				title: "HTML-looking plain text",
+				content: "<strong>This stays text</strong>",
+			},
+		],
+	},
+};
+
+/**
+ * `htmlContent` is a trusted HTML path; only pass trusted or already-sanitized strings.
+ */
+export const TrustedHtmlContent = {
+	args: {
+		items: [
+			{
+				title: "Trusted rich content",
+				htmlContent:
+					"<p>This renders <strong>trusted HTML</strong>.</p><ul><li>Only pass trusted or already-sanitized strings.</li></ul>",
+			},
+		],
+	},
+};
+
+/**
+ * When both fields are present, `htmlContent` is trusted/sanitized-only and wins over `content`.
+ */
+export const HtmlContentPrecedence = {
+	args: {
+		items: [
+			{
+				title: "Both fields",
+				content: "<em>This content fallback is ignored</em>",
+				htmlContent: "<strong>htmlContent wins</strong>",
 			},
 		],
 	},
