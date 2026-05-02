@@ -10,7 +10,7 @@ blocks:
   - type: accordion
     items:
       - title: Content-only item
-        content: Existing plain content remains valid.
+        content: Content-only accordion item
       - title: HTML-only item
         htmlContent: '<strong data-phase-18="trusted">Trusted HTML</strong>'
       - title: Both content fields item
