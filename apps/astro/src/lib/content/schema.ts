@@ -33,10 +33,20 @@ export const galleryBlock = baseBlockFields.extend({
     .default([]),
 })
 
-export const accordionItem = z.object({
-  title: z.string(),
-  content: z.string(),
-})
+export const accordionItem = z
+  .object({
+    title: z.string(),
+    content: z.string().optional(),
+    htmlContent: z.string().optional(),
+  })
+  .superRefine((item, ctx) => {
+    if (item.content === undefined && item.htmlContent === undefined) {
+      ctx.addIssue({
+        code: 'custom',
+        message: 'Accordion item requires content or htmlContent',
+      })
+    }
+  })
 
 export const accordionBlock = baseBlockFields.extend({
   type: z.literal('accordion'),
