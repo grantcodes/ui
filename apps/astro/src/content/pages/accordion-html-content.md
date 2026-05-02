@@ -1,6 +1,7 @@
 ---
 title: Accordion HTML Content Fixture
 description: Build fixture proving accordion htmlContent validates through app content schemas.
+fixture: true
 blocks:
   - type: hero
     title: Accordion HTML Content Fixture

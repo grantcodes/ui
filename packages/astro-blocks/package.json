@@ -42,7 +42,7 @@
   "scripts": {
     "build": "echo 'No build step required'",
     "fix": "echo 'No lint configured'",
-    "test": "echo 'No tests configured'",
+    "test": "node --test src/**/*.test.mjs",
     "dev": "echo 'No dev server configured'"
   },
   "keywords": [

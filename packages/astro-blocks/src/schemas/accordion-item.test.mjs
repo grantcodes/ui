@@ -1,7 +1,12 @@
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 import { test } from 'node:test'
-import { pathToFileURL } from 'node:url'
+import { fileURLToPath, pathToFileURL } from 'node:url'
+import { dirname, resolve } from 'node:path'
+
+const testDir = dirname(fileURLToPath(import.meta.url))
+const packageRoot = resolve(testDir, '../..')
+const repoRoot = resolve(packageRoot, '../..')
 
 const schemaModuleUrl = async (path) => {
   const source = await readFile(path, 'utf8')
@@ -17,11 +22,11 @@ const schemaModuleUrl = async (path) => {
 const schemaModules = [
   {
     name: '@grantcodes/astro-blocks schema',
-    load: async () => import(await schemaModuleUrl('./src/schemas/index.ts')),
+    load: async () => import(await schemaModuleUrl(resolve(packageRoot, 'src/schemas/index.ts'))),
   },
   {
     name: '@grantcodes/astro-starter schema',
-    load: async () => import(pathToFileURL('../../apps/astro/src/lib/content/schema.ts')),
+    load: async () => import(pathToFileURL(resolve(repoRoot, 'apps/astro/src/lib/content/schema.ts'))),
   },
 ]
 
