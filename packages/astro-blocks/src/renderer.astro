@@ -60,7 +60,7 @@ const { block } = Astro.props
     case 'gallery':
       return <Gallery images={block.images as { src: string; alt?: string; caption?: string }[]} />
     case 'accordion':
-      return <Accordion items={block.items as { title: string; content: string }[]} />
+      return <Accordion items={block.items as { title: string; content?: string; htmlContent?: string }[]} />
     case 'cards':
       return <Cards cards={block.cards as { title: string; description?: string; image?: string; href?: string }[]} />
     case 'cta':
