@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.10.2](https://github.com/grantcodes/ui/compare/ui-v2.10.1...ui-v2.10.2) (2026-05-02)
+
+
+### Bug Fixes
+
+* **ui:** only show invalid input style on focus ([3474346](https://github.com/grantcodes/ui/commit/3474346104c1073de2c866ea4f721991521df46d))
+
 ## [2.10.1](https://github.com/grantcodes/ui/compare/ui-v2.10.0...ui-v2.10.1) (2026-05-01)
 
 
