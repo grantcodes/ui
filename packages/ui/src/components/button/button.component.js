@@ -28,7 +28,7 @@ export class GrantCodesButton extends LitElement {
 		this.type = "button";
 		this.name = "";
 		this.value = "";
-		this.form = "";
+		// Do NOT set form="" — an empty form attribute overrides ancestor form association
 
 		// Attach ElementInternals for form participation.
 		// try/catch because happy-dom (DOM-shim test env) may not support attachInternals()
@@ -49,17 +49,25 @@ export class GrantCodesButton extends LitElement {
 		}
 	}
 
+	connectedCallback() {
+		super.connectedCallback();
+		this.addEventListener("click", this._handleFormClick);
+	}
+
+	disconnectedCallback() {
+		super.disconnectedCallback();
+		this.removeEventListener("click", this._handleFormClick);
+	}
+
 	_handleFormClick(e) {
+		// href mode renders a link — do not intercept form actions
+		if (this.href) return;
 		// Only handle form actions when we have internals and are inside a form
-		if (!this.internals || !this.internals.form || this.disabled) {
-			return;
-		}
+		if (!this.internals || !this.internals.form || this.disabled) return;
 
 		if (this.type === "submit") {
-			e.preventDefault();
-			this.internals.form.requestSubmit(this);
+			this.internals.form.requestSubmit();
 		} else if (this.type === "reset") {
-			e.preventDefault();
 			this.internals.form.reset();
 		}
 		// type === "button" or any other value: no form action (default no-op)
@@ -113,11 +121,10 @@ export class GrantCodesButton extends LitElement {
 		return html`
 			<button
 				class="button focus-ring"
-				type=${this.type}
+				type="button"
 				name=${this.name ?? ""}
 				value=${this.value ?? ""}
 				?disabled=${this.disabled}
-				@click=${this._handleFormClick}
 			>
 				<span><slot></slot></span>
 			</button>
