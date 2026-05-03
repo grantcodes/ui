@@ -56,7 +56,10 @@ describe("GrantCodesAccordionItem", () => {
 		assert.ok(details, "Details element should exist");
 		assert.ok(summary, "Summary should exist");
 		assert.ok(slot, "Slot should exist");
-		assert.strictEqual(summary.textContent.trim().replace(/\s+/g, " "), "Section");
+		assert.strictEqual(
+			summary.textContent.trim().replace(/\s+/g, " "),
+			"Section",
+		);
 	});
 
 	it("renders HTML content via slot", async () => {
@@ -79,7 +82,11 @@ describe("GrantCodesAccordionItem", () => {
 		await element.updateComplete;
 
 		const strong = element.querySelector("strong");
-		assert.strictEqual(strong, null, "Escaped text should not create a strong element");
+		assert.strictEqual(
+			strong,
+			null,
+			"Escaped text should not create a strong element",
+		);
 		assert.strictEqual(element.textContent, "<strong>Plain</strong>");
 	});
 

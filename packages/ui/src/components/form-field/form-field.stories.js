@@ -42,7 +42,7 @@ export const FormFieldWithHelp = {
 };
 
 export const FormFieldWithSelect = {
-  args: {
+	args: {
 		slot: html`
       <select>
         <option value="1">Option 1</option>
@@ -60,15 +60,15 @@ export const FormFieldWithTextArea = {
 };
 
 export const FormFieldWithCheckbox = {
-  args: {
-    direction: 'horizontal',
+	args: {
+		direction: "horizontal",
 		slot: html`<input type="checkbox" value="1" name="name" />`,
 	},
 };
 
 export const FormFieldWithRadio = {
-  args: {
-    direction: 'horizontal',
+	args: {
+		direction: "horizontal",
 		slot: html`<input type="radio" />`,
 	},
 };

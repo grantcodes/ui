@@ -10,15 +10,39 @@
 	--button-base: var(--g-theme-button-primary-color-background-default);
 	--button-border-radius-start: var(--g-theme-border-radius-md);
 	--button-border-radius-end: var(--g-theme-border-radius-md);
-	--button-background:  var(--button-base);
+	--button-background: var(--button-base);
 	--button-border: var(--button-background);
 	--button-color: var(--g-theme-button-primary-color-content-default);
-	--button-background-hover: color-mix(in oklab, var(--button-background), var(--g-color-neutral-white) 20%);
-	--button-border-hover: color-mix(in oklab, var(--button-border), var(--g-color-neutral-white) 20%);
-	--button-color-hover: color-mix(in oklab, var(--button-color), var(--g-color-neutral-white) 20%);
-	--button-background-active: color-mix(in oklab, var(--button-background-hover), var(--g-color-neutral-white) 10%);
-	--button-border-active: color-mix(in oklab, var(--button-border-hover), var(--g-color-neutral-white) 10%);
-	--button-color-active: color-mix(in oklab, var(--button-color-hover), var(--g-color-neutral-white) 10%);
+	--button-background-hover: color-mix(
+		in oklab,
+		var(--button-background),
+		var(--g-color-neutral-white) 20%
+	);
+	--button-border-hover: color-mix(
+		in oklab,
+		var(--button-border),
+		var(--g-color-neutral-white) 20%
+	);
+	--button-color-hover: color-mix(
+		in oklab,
+		var(--button-color),
+		var(--g-color-neutral-white) 20%
+	);
+	--button-background-active: color-mix(
+		in oklab,
+		var(--button-background-hover),
+		var(--g-color-neutral-white) 10%
+	);
+	--button-border-active: color-mix(
+		in oklab,
+		var(--button-border-hover),
+		var(--g-color-neutral-white) 10%
+	);
+	--button-color-active: color-mix(
+		in oklab,
+		var(--button-color-hover),
+		var(--g-color-neutral-white) 10%
+	);
 }
 
 .button {
@@ -53,7 +77,7 @@
 }
 
 .button:active {
-    color: var(--button-color-active);
+	color: var(--button-color-active);
 	background: var(--button-background-active);
 	border-color: var(--button-border-active);
 }
@@ -69,29 +93,29 @@
 }
 
 /* Color variants */
-:host([color=secondary]) {
+:host([color="secondary"]) {
 	--button-base: var(--g-color-secondary-500);
-    --button-color: var(--g-color-neutral-white);
+	--button-color: var(--g-color-neutral-white);
 }
-:host([color=neutral]) {
+:host([color="neutral"]) {
 	--button-base: var(--g-color-neutral-500);
-    --button-color: var(--g-color-neutral-white);
+	--button-color: var(--g-color-neutral-white);
 }
-:host([color=danger]) {
+:host([color="danger"]) {
 	--button-base: var(--g-color-utility-red-500);
 	--button-color: var(--g-color-neutral-white);
 }
 
 /* Style variants */
-:host([variant=outline]) {
+:host([variant="outline"]) {
 	--button-border: var(--button-base);
 	--button-color: var(--button-base);
 	--button-background: transparent;
-	--button-background-hover: rgb(from var(--button-base) r g b / .2);
+	--button-background-hover: rgb(from var(--button-base) r g b / 0.2);
 }
-:host([variant=ghost]) {
-    --button-color: var(--button-base);
-    --button-background: transparent;
-    --button-border-hover: transparent;
-    --button-background-hover: rgb(from var(--button-base) r g b / .3);
+:host([variant="ghost"]) {
+	--button-color: var(--button-base);
+	--button-background: transparent;
+	--button-border-hover: transparent;
+	--button-background-hover: rgb(from var(--button-base) r g b / 0.3);
 }

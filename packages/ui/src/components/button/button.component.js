@@ -15,9 +15,9 @@ export class GrantCodesButton extends LitElement {
 		type: { type: String },
 		name: { type: String },
 		value: { type: String },
-    disabled: { type: Boolean, reflect: true },
-    variant: { type: String },
-    color: { type: String },
+		disabled: { type: Boolean, reflect: true },
+		variant: { type: String },
+		color: { type: String },
 	};
 
 	constructor() {
@@ -27,19 +27,19 @@ export class GrantCodesButton extends LitElement {
 		this.type = "button";
 		this.name = "";
 		this.value = "";
-    this.disabled = false;
+		this.disabled = false;
 
-    /**
+		/**
 		 * The style of the button.
 		 * @type {'solid' | 'outline' | 'ghost'}
 		 */
-    this.variant = 'solid'
+		this.variant = "solid";
 
-    /**
-     * The color of the button.
-     * @type {'primary' | 'secondary' | 'neutral' | 'danger'}
-     */
-    this.color = 'primary'
+		/**
+		 * The color of the button.
+		 * @type {'primary' | 'secondary' | 'neutral' | 'danger'}
+		 */
+		this.color = "primary";
 	}
 
 	// The render() method is called any time reactive properties change.
@@ -49,7 +49,7 @@ export class GrantCodesButton extends LitElement {
 	// and child nodes/text.
 	/** @returns {import('lit').TemplateResult} */
 	render() {
-    const isLink = !!this.href;
+		const isLink = !!this.href;
 
 		if (isLink) {
 			return html`
