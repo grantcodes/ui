@@ -1,5 +1,6 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
+import { classMap } from "lit/directives/class-map.js";
 import formFieldStyles from "./form-field.css" with { type: "css" };
 import { generateId } from "../../lib/generate-id.js";
 
@@ -8,7 +9,8 @@ export class GrantCodesFormField extends LitElement {
 	static styles = [formFieldStyles];
 
 	static properties = {
-		label: { type: String, reflect: true },
+    label: { type: String, reflect: true },
+		direction: { type: String },
 		error: { type: String },
 		help: { type: String },
 	};
@@ -20,7 +22,13 @@ export class GrantCodesFormField extends LitElement {
 		this.error = undefined;
 		this.help = undefined;
 
-		this.groupInput = false;
+    this.groupInput = false;
+
+    /**
+		 * Direction of the field. Generally want horizontal for checkboxes and radios.
+		 * @type {'vertical' | 'horizontal'}
+		 */
+		this.direction = "vertical";
 
 		/** @type {NodeListOf<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>} */
 		this.inputElements;
@@ -123,19 +131,23 @@ export class GrantCodesFormField extends LitElement {
     `;
 	}
 
-	render() {
+  render() {
+    const wrapperClass = classMap({
+      'form-field': true,
+      'form-field--horizontal': this.direction === 'horizontal'
+    })
 		if (this.groupInput) {
 			return html`
-      <fieldset class="form-field">
+      <fieldset class=${wrapperClass}>
         <legend class="form-field__label">${this.label}</legend>
         <slot></slot>
         ${this.errorTemplate()}
       </fieldset>
     `;
-		}
+    }
 
 		return html`
-      <div class="form-field">
+      <div class=${wrapperClass}>
         <label>
           <span class="form-field__label" @click=${this.handleLabelClick}
             >${this.label}</span
