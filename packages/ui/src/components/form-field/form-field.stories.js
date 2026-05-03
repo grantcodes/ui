@@ -42,7 +42,7 @@ export const FormFieldWithHelp = {
 };
 
 export const FormFieldWithSelect = {
-	args: {
+  args: {
 		slot: html`
       <select>
         <option value="1">Option 1</option>
@@ -60,13 +60,15 @@ export const FormFieldWithTextArea = {
 };
 
 export const FormFieldWithCheckbox = {
-	args: {
+  args: {
+    direction: 'horizontal',
 		slot: html`<input type="checkbox" value="1" name="name" />`,
 	},
 };
 
 export const FormFieldWithRadio = {
-	args: {
+  args: {
+    direction: 'horizontal',
 		slot: html`<input type="radio" />`,
 	},
 };
@@ -74,13 +76,13 @@ export const FormFieldWithRadio = {
 export const FormFieldWithRadioGroup = {
 	args: {
 		slot: html`
-      <grantcodes-form-field label="Radio number 1">
+      <grantcodes-form-field label="Radio number 1" direction="horizontal">
         <input type="radio" name="radio-group" value="1" />
       </grantcodes-form-field>
-      <grantcodes-form-field label="Radio number 2">
+      <grantcodes-form-field label="Radio number 2" direction="horizontal">
         <input type="radio" name="radio-group" value="2" />
       </grantcodes-form-field>
-      <grantcodes-form-field label="Radio number 3">
+      <grantcodes-form-field label="Radio number 3" direction="horizontal">
         <input type="radio" name="radio-group" value="3" />
       </grantcodes-form-field>
     `,
@@ -90,13 +92,13 @@ export const FormFieldWithRadioGroup = {
 export const FormFieldWithCheckboxGroup = {
 	args: {
 		slot: html`
-      <grantcodes-form-field label="Checkbox number 1"
+      <grantcodes-form-field label="Checkbox number 1" direction="horizontal"
         ><input type="checkbox"
       /></grantcodes-form-field>
-      <grantcodes-form-field label="Checkbox number 2"
+      <grantcodes-form-field label="Checkbox number 2" direction="horizontal"
         ><input type="checkbox"
       /></grantcodes-form-field>
-      <grantcodes-form-field label="Checkbox number 3"
+      <grantcodes-form-field label="Checkbox number 3" direction="horizontal"
         ><input type="checkbox"
       /></grantcodes-form-field>
     `,

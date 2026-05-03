@@ -20,10 +20,11 @@
 	gap: inherit;
 }
 
-:host(:has(> input[type="checkbox"], > input[type="radio"])) .form-field label {
+.form-field--horizontal label {
 	flex-direction: row-reverse;
 	align-items: center;
 	justify-content: flex-end;
+	gap: var(--g-theme-spacing-sm);
 }
 
 .form-field__label {
