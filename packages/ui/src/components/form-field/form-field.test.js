@@ -30,6 +30,18 @@ describe("Form Field Component", () => {
 		);
 	});
 
+	it("should reflect label text for SSR client upgrade", async () => {
+		element = await fixture("grantcodes-form-field", {
+			label: "Username",
+		});
+
+		assert.strictEqual(
+			element.getAttribute("label"),
+			"Username",
+			"Label should be serialized to an attribute for client upgrade",
+		);
+	});
+
 	it("should display error message when error is set", async () => {
 		element = await fixture("grantcodes-form-field", {
 			label: "Email",

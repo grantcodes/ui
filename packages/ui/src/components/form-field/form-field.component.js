@@ -1,7 +1,6 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
 import formFieldStyles from "./form-field.css" with { type: "css" };
-import { classMap } from "lit/directives/class-map.js";
 import { generateId } from "../../lib/generate-id.js";
 
 export class GrantCodesFormField extends LitElement {
@@ -9,7 +8,7 @@ export class GrantCodesFormField extends LitElement {
 	static styles = [formFieldStyles];
 
 	static properties = {
-		label: { type: String },
+		label: { type: String, reflect: true },
 		error: { type: String },
 		help: { type: String },
 	};
@@ -21,7 +20,6 @@ export class GrantCodesFormField extends LitElement {
 		this.error = undefined;
 		this.help = undefined;
 
-		this.inlineInput = false;
 		this.groupInput = false;
 
 		/** @type {NodeListOf<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>} */
@@ -77,10 +75,6 @@ export class GrantCodesFormField extends LitElement {
 		input.id = this.id;
 		input.setAttribute("aria-describedby", this.ariaDescribedBy);
 
-		if (input.type === "checkbox" || input.type === "radio") {
-			this.inlineInput = true;
-			this.requestUpdate();
-		}
 	}
 
 	handleLabelClick() {
@@ -130,14 +124,9 @@ export class GrantCodesFormField extends LitElement {
 	}
 
 	render() {
-		const classes = classMap({
-			"form-field": true,
-			"form-field--inline": this.inlineInput,
-		});
-
 		if (this.groupInput) {
 			return html`
-      <fieldset class=${classes}>
+      <fieldset class="form-field">
         <legend class="form-field__label">${this.label}</legend>
         <slot></slot>
         ${this.errorTemplate()}
@@ -146,7 +135,7 @@ export class GrantCodesFormField extends LitElement {
 		}
 
 		return html`
-      <div class=${classes}>
+      <div class="form-field">
         <label>
           <span class="form-field__label" @click=${this.handleLabelClick}
             >${this.label}</span
