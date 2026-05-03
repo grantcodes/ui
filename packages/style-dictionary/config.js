@@ -469,9 +469,11 @@ const getStyleDictionaryConfig = (theme) => {
             "auto-palette",
         ],
 		source: [
-			`./tokens/core/**/*.json`,
-			`./tokens/${theme}/tier-1-definitions/**/*.json`,
-			`./tokens/${theme}/tier-2-usage/**/*.json`,
+			`./tokens/core/tier-1-definitions/**/*.json`,
+      `./tokens/${theme}/tier-1-definitions/**/*.json`,
+      `./tokens/core/tier-2-usage/**/*.json`,
+      `./tokens/${theme}/tier-2-usage/**/*.json`,
+      `./tokens/core/tier-3-components/**/*.json`,
 			`./tokens/${theme}/tier-3-components/**/*.json`,
 		],
 		log: {
