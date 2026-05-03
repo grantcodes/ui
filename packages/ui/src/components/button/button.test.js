@@ -85,8 +85,11 @@ describe("Button Component", () => {
 
 		for (const type of types) {
 			const testElement = await fixture("grantcodes-button", { type });
+			// Internal button is always type="button" — form behavior is handled
+			// by the host element via FACE (requestSubmit/reset on ElementInternals)
 			const button = testElement.shadowRoot.querySelector("button");
-			assert.strictEqual(button.type, type, `Button type should be ${type}`);
+			assert.strictEqual(button.type, "button", `Internal button should always be type="button"`);
+			assert.strictEqual(testElement.type, type, `Host type property should be ${type}`);
 			cleanup(testElement);
 		}
 	});
@@ -132,18 +135,22 @@ describe("Form Context", () => {
 		assert.strictEqual(button.type, "button", "Default type should be 'button'");
 	});
 
-	it("should reflect type='submit' on internal button", async () => {
+	it("should keep internal button as type='button' when host type is submit", async () => {
 		element = await fixture("grantcodes-button", { type: "submit" });
 
 		const button = element.shadowRoot.querySelector("button");
-		assert.strictEqual(button.type, "submit", "Internal button type should be 'submit'");
+		// Internal button is always type="button" — FACE handles submit via requestSubmit()
+		assert.strictEqual(button.type, "button", "Internal button should be type='button'");
+		assert.strictEqual(element.type, "submit", "Host type property should be 'submit'");
 	});
 
-	it("should reflect type='reset' on internal button", async () => {
+	it("should keep internal button as type='button' when host type is reset", async () => {
 		element = await fixture("grantcodes-button", { type: "reset" });
 
 		const button = element.shadowRoot.querySelector("button");
-		assert.strictEqual(button.type, "reset", "Internal button type should be 'reset'");
+		// Internal button is always type="button" — FACE handles reset via form.reset()
+		assert.strictEqual(button.type, "button", "Internal button should be type='button'");
+		assert.strictEqual(element.type, "reset", "Host type property should be 'reset'");
 	});
 
 	it("should reflect name property on internal button", async () => {
@@ -253,15 +260,15 @@ describe("FACE Infrastructure", () => {
 		);
 	});
 
-	it("should still reflect type='submit' on internal button after FACE changes", async () => {
+	it("should use type='button' on internal button after FACE changes", async () => {
 		element = await fixture("grantcodes-button", { type: "submit" });
 
 		const button = element.shadowRoot.querySelector("button");
 		assert.ok(button, "Internal button should exist");
 		assert.strictEqual(
 			button.type,
-			"submit",
-			"Internal button type should still be 'submit' after FACE wiring",
+			"button",
+			"Internal button should be type='button' — FACE handles submit via requestSubmit()",
 		);
 	});
 
@@ -316,15 +323,15 @@ describe("FACE Infrastructure", () => {
 		assert.strictEqual(threw, false, "Clicking disabled button should not throw");
 	});
 
-	it("should have type='reset' on internal button when type property is reset", async () => {
+	it("should keep internal button as type='button' when host type is reset", async () => {
 		element = await fixture("grantcodes-button", { type: "reset" });
 
 		const button = element.shadowRoot.querySelector("button");
 		assert.ok(button, "Internal button should exist");
 		assert.strictEqual(
 			button.type,
-			"reset",
-			"Internal button type should be 'reset'",
+			"button",
+			"Internal button should be type='button' — FACE handles reset via form.reset()",
 		);
 	});
 
