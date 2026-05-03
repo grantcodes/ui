@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.3.0](https://github.com/grantcodes/ui/compare/astro-blocks-v1.2.0...astro-blocks-v1.3.0) (2026-05-03)
+
+
+### Features
+
+* **18-01:** mirror accordion htmlContent schemas ([6697aa1](https://github.com/grantcodes/ui/commit/6697aa1965f34bf631afea5293415ccdb0fd25f7))
+* **18-02:** preserve accordion htmlContent in Astro wrappers ([cd321fb](https://github.com/grantcodes/ui/commit/cd321fb0c83a979a8f21d958ed9d5596b6078ada))
+* **accordion:** redesign with slot-based GrantCodesAccordionItem ([59506a6](https://github.com/grantcodes/ui/commit/59506a6a51018837792679b93c641b7303faa5ad))
+
+
+### Bug Fixes
+
+* **18:** keep accordion html fixture test-only ([e131bdb](https://github.com/grantcodes/ui/commit/e131bdbff790c8cafcd12d4b70bf046652102500))
+
 ## [1.2.0](https://github.com/grantcodes/ui/compare/astro-blocks-v1.1.0...astro-blocks-v1.2.0) (2026-05-01)
 
 
