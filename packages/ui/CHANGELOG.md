@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.11.1](https://github.com/grantcodes/ui/compare/ui-v2.11.0...ui-v2.11.1) (2026-05-03)
+
+
+### Bug Fixes
+
+* **form-field:** reflect label for SSR hydration and replace JS inline detection with CSS :has() ([9bc091b](https://github.com/grantcodes/ui/commit/9bc091bfaf838549479cc32f2ec9408e13eb14e3))
+
 ## [2.11.0](https://github.com/grantcodes/ui/compare/ui-v2.10.2...ui-v2.11.0) (2026-05-03)
 
 
