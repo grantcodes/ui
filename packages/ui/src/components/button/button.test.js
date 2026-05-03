@@ -177,4 +177,21 @@ describe("Form Context", () => {
 			"Internal button should have disabled attribute",
 		);
 	});
+
+	it("should render as link not button when href is set", async () => {
+		element = await fixture("grantcodes-button", {
+			href: "https://example.com",
+		});
+		await element.updateComplete;
+
+		const button = element.shadowRoot.querySelector("button");
+		const link = element.shadowRoot.querySelector("a");
+		assert.strictEqual(button, null, "Should not render a button when href is set");
+		assert.ok(link, "Should render a link when href is set");
+		const href = link.getAttribute("href");
+		assert.ok(
+			href === "https://example.com" || href.includes("example.com"),
+			"Link href should contain example.com",
+		);
+	});
 });
