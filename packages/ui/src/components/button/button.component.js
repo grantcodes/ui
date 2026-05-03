@@ -10,12 +10,15 @@ export class GrantCodesButton extends LitElement {
 	// via CSS custom properties.
 	static styles = [focusRingStyles, buttonStyles];
 
+	static formAssociated = true;
+
 	static properties = {
 		href: { type: String },
 		type: { type: String },
 		name: { type: String },
 		value: { type: String },
 		disabled: { type: Boolean, reflect: true },
+		form: { type: String, reflect: true },
 	};
 
 	constructor() {
@@ -25,7 +28,25 @@ export class GrantCodesButton extends LitElement {
 		this.type = "button";
 		this.name = "";
 		this.value = "";
+		this.form = "";
+
+		// Attach ElementInternals for form participation.
+		// try/catch because happy-dom (DOM-shim test env) may not support attachInternals()
+		try {
+			this.internals = this.attachInternals();
+		} catch (e) {
+			this.internals = null;
+		}
 		this.disabled = false;
+	}
+
+	updated(changedProperties) {
+		super.updated(changedProperties);
+		if (this.internals) {
+			if (changedProperties.has("name") || changedProperties.has("value")) {
+				this.internals.setFormValue(this.name ? this.value : null);
+			}
+		}
 	}
 
 	// The render() method is called any time reactive properties change.
