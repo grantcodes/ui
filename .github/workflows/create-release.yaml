@@ -1,56 +1,63 @@
 name: Create Release
 
 on:
-  push:
-    branches:
-      - main
+    push:
+        branches:
+            - main
 
 jobs:
-  release-please:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-        name: Checkout code
+    release-please:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v6
+              name: Checkout code
 
-      - uses: googleapis/release-please-action@v4
-        name: Create release PR
-        id: release
-        with:
-          config-file: release-please-config.json
+            - uses: googleapis/release-please-action@v4
+              name: Create release PR
+              id: release
+              with:
+                  config-file: release-please-config.json
 
-      - uses: pnpm/action-setup@v4
-        name: Setup pnpm
-        if: ${{ steps.release.outputs.releases_created }}
+            - uses: pnpm/action-setup@v4
+              name: Setup pnpm
+              if: ${{ steps.release.outputs.releases_created }}
 
-      - uses: actions/setup-node@v4
-        name: Setup node
-        with:
-          node-version: 22
-          registry-url: 'https://registry.npmjs.org'
-        if: ${{ steps.release.outputs.releases_created }}
+            - uses: actions/setup-node@v4
+              name: Setup node
+              with:
+                  node-version: 22
+                  registry-url: "https://registry.npmjs.org"
+              if: ${{ steps.release.outputs.releases_created }}
 
-      - run: pnpm install --frozen-lockfile
-        name: Install dependencies
-        if: ${{ steps.release.outputs.releases_created }}
+            - run: pnpm install --frozen-lockfile
+              name: Install dependencies
+              if: ${{ steps.release.outputs.releases_created }}
 
-      - run: pnpm test
-        name: Run tests
-        if: ${{ steps.release.outputs.releases_created }}
+            - run: pnpm test
+              name: Run tests
+              if: ${{ steps.release.outputs.releases_created }}
 
-      - run: pnpm build
-        name: Run build
-        if: ${{ steps.release.outputs.releases_created }}
+            - run: pnpm build
+              name: Run build
+              if: ${{ steps.release.outputs.releases_created }}
 
-      - name: Publish @grantcodes/ui
-        if: ${{ steps.release.outputs['packages/ui--release_created'] }}
-        working-directory: packages/ui
-        run: pnpm publish --access public --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+            - name: Publish @grantcodes/ui
+              if: ${{ steps.release.outputs['packages/ui--release_created'] }}
+              working-directory: packages/ui
+              run: pnpm publish --access public --no-git-checks
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish @grantcodes/style-dictionary
-        if: ${{ steps.release.outputs['packages/style-dictionary--release_created'] }}
-        working-directory: packages/style-dictionary
-        run: pnpm publish --access public --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+            - name: Publish @grantcodes/style-dictionary
+              if: ${{ steps.release.outputs['packages/style-dictionary--release_created'] }}
+              working-directory: packages/style-dictionary
+              run: pnpm publish --access public --no-git-checks
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+            - name: Publish @grantcodes/astro-blocks
+              if: ${{ steps.release.outputs['packages/astro-blocks--release_created'] }}
+              working-directory: packages/astro-blocks
+              run: pnpm publish --access public --no-git-checks
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
