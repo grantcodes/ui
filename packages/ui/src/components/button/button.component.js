@@ -49,6 +49,22 @@ export class GrantCodesButton extends LitElement {
 		}
 	}
 
+	_handleFormClick(e) {
+		// Only handle form actions when we have internals and are inside a form
+		if (!this.internals || !this.internals.form || this.disabled) {
+			return;
+		}
+
+		if (this.type === "submit") {
+			e.preventDefault();
+			this.internals.form.requestSubmit(this);
+		} else if (this.type === "reset") {
+			e.preventDefault();
+			this.internals.form.reset();
+		}
+		// type === "button" or any other value: no form action (default no-op)
+	}
+
 	// The render() method is called any time reactive properties change.
 	// Return HTML in a string template literal tagged with the `html`
 	// tag function to describe the component's internal DOM.
@@ -77,6 +93,7 @@ export class GrantCodesButton extends LitElement {
 				name=${this.name ?? ""}
 				value=${this.value ?? ""}
 				?disabled=${this.disabled}
+				@click=${this._handleFormClick}
 			>
 				<span><slot></slot></span>
 			</button>
