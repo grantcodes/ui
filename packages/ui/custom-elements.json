@@ -977,6 +977,17 @@
           "members": [
             {
               "kind": "field",
+              "name": "color",
+              "privacy": "public",
+              "type": {
+                "text": "'primary' | 'secondary' | 'neutral' | 'danger'"
+              },
+              "description": "The color of the button.",
+              "default": "'primary'",
+              "attribute": "color"
+            },
+            {
+              "kind": "field",
               "name": "disabled",
               "privacy": "public",
               "type": {
@@ -1025,9 +1036,29 @@
               },
               "default": "\"\"",
               "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "privacy": "public",
+              "type": {
+                "text": "'solid' | 'outline' | 'ghost'"
+              },
+              "description": "The style of the button.",
+              "default": "'solid'",
+              "attribute": "variant"
             }
           ],
           "attributes": [
+            {
+              "name": "color",
+              "type": {
+                "text": "'primary' | 'secondary' | 'neutral' | 'danger'"
+              },
+              "description": "The color of the button.",
+              "default": "'primary'",
+              "fieldName": "color"
+            },
             {
               "name": "disabled",
               "type": {
@@ -1067,6 +1098,15 @@
               },
               "default": "\"\"",
               "fieldName": "value"
+            },
+            {
+              "name": "variant",
+              "type": {
+                "text": "'solid' | 'outline' | 'ghost'"
+              },
+              "description": "The style of the button.",
+              "default": "'solid'",
+              "fieldName": "variant"
             }
           ],
           "superclass": {
@@ -2940,6 +2980,17 @@
             },
             {
               "kind": "field",
+              "name": "direction",
+              "privacy": "public",
+              "type": {
+                "text": "'vertical' | 'horizontal'"
+              },
+              "description": "Direction of the field. Generally want horizontal for checkboxes and radios.",
+              "default": "\"vertical\"",
+              "attribute": "direction"
+            },
+            {
+              "kind": "field",
               "name": "error",
               "privacy": "public",
               "type": {
@@ -2999,24 +3050,26 @@
             },
             {
               "kind": "field",
-              "name": "inlineInput",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
               "name": "label",
               "privacy": "public",
               "type": {
                 "text": "string"
               },
               "default": "\"\"",
-              "attribute": "label"
+              "attribute": "label",
+              "reflects": true
             }
           ],
           "attributes": [
+            {
+              "name": "direction",
+              "type": {
+                "text": "'vertical' | 'horizontal'"
+              },
+              "description": "Direction of the field. Generally want horizontal for checkboxes and radios.",
+              "default": "\"vertical\"",
+              "fieldName": "direction"
+            },
             {
               "name": "error",
               "type": {

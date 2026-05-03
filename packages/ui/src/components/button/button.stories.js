@@ -46,17 +46,14 @@ export const AsLink = {
 };
 
 /**
- * Different button types for forms.
- * - button: Standard button (default)
- * - submit: Submits a form
- * - reset: Resets form fields
+ * Different styles and colors for buttons
  */
-export const ButtonTypes = {
+export const ButtonStyles = {
 	render: () => html`
 		<div style="display: flex; gap: 1rem;">
-			<grantcodes-button type="button">Button</grantcodes-button>
-			<grantcodes-button type="submit">Submit</grantcodes-button>
-			<grantcodes-button type="reset">Reset</grantcodes-button>
+			<grantcodes-button type="button" color="secondary" variant="solid">Solid Secondary</grantcodes-button>
+			<grantcodes-button type="submit" color="neutral" variant="outline">Outline Neutral</grantcodes-button>
+			<grantcodes-button type="reset" color="danger" variant="ghost">Danger Ghost</grantcodes-button>
 		</div>
 	`,
 };
