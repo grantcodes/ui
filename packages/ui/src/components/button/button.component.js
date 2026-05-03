@@ -29,6 +29,7 @@ export class GrantCodesButton extends LitElement {
 		this.name = "";
 		this.value = "";
 		// Do NOT set form="" — an empty form attribute overrides ancestor form association
+		this._fieldsetDisabled = false;
 
 		// Attach ElementInternals for form participation.
 		// try/catch because happy-dom (DOM-shim test env) may not support attachInternals()
@@ -65,20 +66,18 @@ export class GrantCodesButton extends LitElement {
 		// Only handle form actions when we have internals and are inside a form
 		if (!this.internals || !this.internals.form || this.disabled) return;
 
-		if (this.type === "submit") {
+		const t = this.type.toLowerCase();
+		if (t === "submit") {
 			this.internals.form.requestSubmit();
-		} else if (this.type === "reset") {
+		} else if (t === "reset") {
 			this.internals.form.reset();
 		}
 		// type === "button" or any other value: no form action (default no-op)
 	}
 
 	formDisabledCallback(disabled) {
-		// Called by the browser when the button or an ancestor fieldset becomes disabled.
-		// The internal <button>'s ?disabled binding handles visual/ARIA state.
-		// This callback ensures the host-level disabled state is synced.
-		// No additional action needed — the existing disabled property + ?disabled binding
-		// + _handleFormClick guard (checks this.disabled) already handle this.
+		this._fieldsetDisabled = disabled;
+		this.requestUpdate();
 	}
 
 	formResetCallback() {
@@ -86,15 +85,6 @@ export class GrantCodesButton extends LitElement {
 		// Reset the value to an empty string (default state).
 		// If a future version tracks an initial value, restore it here.
 		this.value = "";
-	}
-
-	firstUpdated(changedProperties) {
-		super.firstUpdated(changedProperties);
-		// Ensure initial form value is set after first render.
-		// updated() handles subsequent changes; this handles the initial state.
-		if (this.internals) {
-			this.internals.setFormValue(this.name ? this.value : null);
-		}
 	}
 
 	// The render() method is called any time reactive properties change.
@@ -111,7 +101,7 @@ export class GrantCodesButton extends LitElement {
 				<a
 					class="button focus-ring"
 					href=${this.href}
-					?disabled=${this.disabled}
+					?disabled=${this.disabled || this._fieldsetDisabled}
 				>
 					<span><slot></slot></span>
 				</a>
@@ -124,7 +114,7 @@ export class GrantCodesButton extends LitElement {
 				type="button"
 				name=${this.name ?? ""}
 				value=${this.value ?? ""}
-				?disabled=${this.disabled}
+				?disabled=${this.disabled || this._fieldsetDisabled}
 			>
 				<span><slot></slot></span>
 			</button>
