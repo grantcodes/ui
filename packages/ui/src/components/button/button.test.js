@@ -100,3 +100,81 @@ describe("Button Component", () => {
 		assert.ok(slot, "Slot should exist");
 	});
 });
+
+describe("Form Context", () => {
+	let element;
+	let form;
+
+	afterEach(() => {
+		cleanup(element);
+		cleanup(form);
+	});
+
+	it("should render button inside a form element", async () => {
+		form = document.createElement("form");
+		document.body.appendChild(form);
+
+		element = document.createElement("grantcodes-button");
+		form.appendChild(element);
+		await element.updateComplete;
+
+		const button = element.shadowRoot.querySelector("button");
+		assert.ok(button, "Button should exist in shadow DOM when inside form");
+		const link = element.shadowRoot.querySelector("a");
+		assert.strictEqual(link, null, "Should not render a link when inside form");
+	});
+
+	it("should use type='button' as default on internal button", async () => {
+		element = await fixture("grantcodes-button");
+
+		const button = element.shadowRoot.querySelector("button");
+		assert.strictEqual(button.type, "button", "Default type should be 'button'");
+	});
+
+	it("should reflect type='submit' on internal button", async () => {
+		element = await fixture("grantcodes-button", { type: "submit" });
+
+		const button = element.shadowRoot.querySelector("button");
+		assert.strictEqual(button.type, "submit", "Internal button type should be 'submit'");
+	});
+
+	it("should reflect type='reset' on internal button", async () => {
+		element = await fixture("grantcodes-button", { type: "reset" });
+
+		const button = element.shadowRoot.querySelector("button");
+		assert.strictEqual(button.type, "reset", "Internal button type should be 'reset'");
+	});
+
+	it("should reflect name property on internal button", async () => {
+		element = await fixture("grantcodes-button", { name: "myButton" });
+
+		const button = element.shadowRoot.querySelector("button");
+		assert.strictEqual(
+			button.getAttribute("name"),
+			"myButton",
+			"Internal button name attribute should be 'myButton'",
+		);
+	});
+
+	it("should reflect value property on internal button", async () => {
+		element = await fixture("grantcodes-button", { value: "send" });
+
+		const button = element.shadowRoot.querySelector("button");
+		assert.strictEqual(
+			button.getAttribute("value"),
+			"send",
+			"Internal button value attribute should be 'send'",
+		);
+	});
+
+	it("should reflect disabled property on internal button", async () => {
+		element = await fixture("grantcodes-button", { disabled: true });
+
+		const button = element.shadowRoot.querySelector("button");
+		assert.strictEqual(button.disabled, true, "Internal button should be disabled");
+		assert.ok(
+			button.hasAttribute("disabled"),
+			"Internal button should have disabled attribute",
+		);
+	});
+});
