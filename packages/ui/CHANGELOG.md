@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.11.0](https://github.com/grantcodes/ui/compare/ui-v2.10.2...ui-v2.11.0) (2026-05-03)
+
+
+### Features
+
+* **17-02:** add accordion htmlContent stories ([dbaafa6](https://github.com/grantcodes/ui/commit/dbaafa65806aa83c85e08254a59853f2b5aef4a6))
+* **17-02:** implement accordion htmlContent rendering ([19f4fe1](https://github.com/grantcodes/ui/commit/19f4fe1f7fb40e06ab4e069233061716264ef130))
+* **accordion:** redesign with slot-based GrantCodesAccordionItem ([59506a6](https://github.com/grantcodes/ui/commit/59506a6a51018837792679b93c641b7303faa5ad))
+
 ## [2.10.2](https://github.com/grantcodes/ui/compare/ui-v2.10.1...ui-v2.10.2) (2026-05-02)
 
 
