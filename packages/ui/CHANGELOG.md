@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.12.0](https://github.com/grantcodes/ui/compare/ui-v2.11.2...ui-v2.12.0) (2026-05-03)
+
+
+### Features
+
+* **22-button-face-native-behavior:** add FACE static properties and ElementInternals wiring ([b6ee7f4](https://github.com/grantcodes/ui/commit/b6ee7f4084f2916cd6799c0a79ec13cf87c3c0e5))
+* **22-button-face-native-behavior:** add form lifecycle callbacks and initial setFormValue ([e3f015c](https://github.com/grantcodes/ui/commit/e3f015c40c1d67cfb970d028745bad2c126eb976))
+* **22-button-face-native-behavior:** fix FACE form behavior implementation ([c7b8caa](https://github.com/grantcodes/ui/commit/c7b8caa534b1d85049c89b5121cb67c39914f9f2))
+* **22-button-face-native-behavior:** wire form click handler for submit/reset ([4c9ef53](https://github.com/grantcodes/ui/commit/4c9ef535f8d2a5df711042036b8c855cf23f3ce5))
+
 ## [2.11.2](https://github.com/grantcodes/ui/compare/ui-v2.11.1...ui-v2.11.2) (2026-05-03)
 
 
