@@ -1,6 +1,7 @@
 import { describe, it, afterEach } from "node:test";
 import { strict as assert } from "node:assert";
 import { fixture, cleanup, click } from "../../test-utils/index.js";
+import { GrantCodesButton } from "./button.component.js";
 import "./button.js";
 
 describe("Button Component", () => {
@@ -193,5 +194,86 @@ describe("Form Context", () => {
 			href === "https://example.com" || href.includes("example.com"),
 			"Link href should contain example.com",
 		);
+	});
+});
+
+describe("FACE Infrastructure", () => {
+	let element;
+
+	afterEach(() => {
+		cleanup(element);
+	});
+
+	it("should declare formAssociated as true", () => {
+		assert.strictEqual(
+			GrantCodesButton.formAssociated,
+			true,
+			"GrantCodesButton.formAssociated should be true",
+		);
+	});
+
+	it("should have internals property after construction", async () => {
+		element = await fixture("grantcodes-button");
+		// internals may be null in happy-dom (attachInternals throws), but the
+		// property must exist — it was assigned in the constructor's try/catch.
+		assert.ok(
+			"internals" in element,
+			"Element should have internals property",
+		);
+		// In happy-dom: element.internals === null (expected — DOM shim limitation)
+		// In real browser: element.internals instanceof ElementInternals
+	});
+
+	it("should reflect form attribute when set as property", async () => {
+		element = await fixture("grantcodes-button", {
+			form: "myForm",
+		});
+		await element.updateComplete;
+
+		assert.strictEqual(
+			element.getAttribute("form"),
+			"myForm",
+			"form attribute should reflect property value 'myForm'",
+		);
+		assert.strictEqual(
+			element.form,
+			"myForm",
+			"element.form property should be 'myForm'",
+		);
+	});
+
+	it("should not have form attribute by default", async () => {
+		element = await fixture("grantcodes-button");
+		await element.updateComplete;
+
+		const formAttr = element.getAttribute("form");
+		assert.ok(
+			formAttr === null || formAttr === "",
+			"form attribute should be null or empty by default",
+		);
+	});
+
+	it("should still reflect type='submit' on internal button after FACE changes", async () => {
+		element = await fixture("grantcodes-button", { type: "submit" });
+
+		const button = element.shadowRoot.querySelector("button");
+		assert.ok(button, "Internal button should exist");
+		assert.strictEqual(
+			button.type,
+			"submit",
+			"Internal button type should still be 'submit' after FACE wiring",
+		);
+	});
+
+	it("should still render as link not button when href is set", async () => {
+		element = await fixture("grantcodes-button", {
+			href: "https://example.com",
+		});
+		await element.updateComplete;
+
+		const button = element.shadowRoot.querySelector("button");
+		const link = element.shadowRoot.querySelector("a");
+		assert.strictEqual(button, null, "Should not render a button when href is set");
+		assert.ok(link, "Should render a link when href is set");
 	});
 });
