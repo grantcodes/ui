@@ -20,7 +20,7 @@
 	gap: inherit;
 }
 
-.form-field--inline label {
+:host(:has(> input[type="checkbox"], > input[type="radio"])) .form-field label {
 	flex-direction: row-reverse;
 	align-items: center;
 	justify-content: flex-end;
