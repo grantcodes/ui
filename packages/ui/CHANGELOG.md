@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.11.2](https://github.com/grantcodes/ui/compare/ui-v2.11.1...ui-v2.11.2) (2026-05-03)
+
+
+### Bug Fixes
+
+* **ui:** add horizontal property to form field ([1a0bbfa](https://github.com/grantcodes/ui/commit/1a0bbfa1ed69e341c5e43ee0678bcb9d0f0469a7))
+
 ## [2.11.1](https://github.com/grantcodes/ui/compare/ui-v2.11.0...ui-v2.11.1) (2026-05-03)
 
 
