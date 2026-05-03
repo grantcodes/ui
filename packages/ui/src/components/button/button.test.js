@@ -276,4 +276,67 @@ describe("FACE Infrastructure", () => {
 		assert.strictEqual(button, null, "Should not render a button when href is set");
 		assert.ok(link, "Should render a link when href is set");
 	});
+
+	it("should have disabled attribute on internal button when disabled", async () => {
+		element = await fixture("grantcodes-button", {
+			disabled: true,
+		});
+
+		const button = element.shadowRoot.querySelector("button");
+		assert.ok(button, "Internal button should exist");
+		assert.strictEqual(
+			button.disabled,
+			true,
+			"Internal button should be disabled when element.disabled is true",
+		);
+		assert.ok(
+			button.hasAttribute("disabled"),
+			"Internal button should have disabled attribute",
+		);
+	});
+
+	it("should not throw when clicking internal button while disabled", async () => {
+		element = await fixture("grantcodes-button", {
+			disabled: true,
+			type: "submit",
+		});
+		await element.updateComplete;
+
+		const button = element.shadowRoot.querySelector("button");
+		assert.ok(button, "Internal button should exist");
+
+		// _handleFormClick should early-return when this.disabled is true.
+		// Verify clicking does not throw (no internals.form access attempted).
+		let threw = false;
+		try {
+			button.click();
+		} catch (e) {
+			threw = true;
+		}
+		assert.strictEqual(threw, false, "Clicking disabled button should not throw");
+	});
+
+	it("should have type='reset' on internal button when type property is reset", async () => {
+		element = await fixture("grantcodes-button", { type: "reset" });
+
+		const button = element.shadowRoot.querySelector("button");
+		assert.ok(button, "Internal button should exist");
+		assert.strictEqual(
+			button.type,
+			"reset",
+			"Internal button type should be 'reset'",
+		);
+	});
+
+	it("should have type='button' as default on internal button", async () => {
+		element = await fixture("grantcodes-button");
+
+		const button = element.shadowRoot.querySelector("button");
+		assert.ok(button, "Internal button should exist");
+		assert.strictEqual(
+			button.type,
+			"button",
+			"Default internal button type should be 'button'",
+		);
+	});
 });
