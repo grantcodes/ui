@@ -1,0 +1,2 @@
+# Client-side hydration entrypoint directory
+# Phase 29: client/entry.ts — Astro client:load/client:visible hydration support
