@@ -1,20 +1,35 @@
-/**
- * Server DOM Shim
- *
- * Patches browser globals (customElements, HTMLElement, document) for Node.js SSR
- * using @lit-labs/ssr-dom-shim (^1.3.0, direct dependency of @grantcodes/astro).
- *
- * WARNING (PITFALLS #7): These globals leak into the Node.js process and can
- * interfere with other libraries that check for window/document existence to
- * detect browser environment. The @semantic-ui/astro-lit README explicitly
- * documents this limitation.
- *
- * Phase 29 will implement:
- *   - customElements.define() patching for tag name tracking
- *   - HTMLElement shim for Lit component instantiation on server
- *   - document shim with minimal DOM API surface
- *
- * For now (placeholder): exports nothing, document the intent.
- */
+import { customElements as litCE, HTMLElement as litShimHTMLElement } from '@lit-labs/ssr-dom-shim';
 
-export {};
+// Something at build time injects document.currentScript = undefined instead of
+// document.currentScript = null. This causes Sass build to fail because it
+// seems to be expecting `=== null`. This set to `undefined` doesn't seem to be
+// caused by Lit and only happens at build / test time, but not in dev or
+// preview time.
+if (globalThis.document) {
+	document.currentScript = null;
+}
+
+if (globalThis.HTMLElement) {
+	// Seems Astro's Element shim does nothing when `.setAttribute` is called
+	// and subsequently `.getAttribute` is called. Causes Lit to not SSR attrs
+	globalThis.HTMLElement = litShimHTMLElement;
+}
+
+// Astro seems to have a DOM shim and the only real difference that we need out
+// of the Lit DOM shim is that the Lit DOM shim reads
+// `HTMLElement.observedAttributes` which is meant to trigger
+// `ReactiveElement.finalize()`. So this is the only thing we will re-shim since
+// Lit will try to respect other global DOM shims.
+globalThis.customElements = litCE;
+
+const litCeDefine = customElements.define;
+
+// We need to patch customElements.define to keep track of the tagName on the
+// class itself so that we can transform JSX custom element class definition to
+// a DSD string on the server, because there is no way to get the tagName from a
+// CE class otherwise. Not an issue on client:only because the browser supports
+// appending a class instance directly to the DOM.
+customElements.define = function (tagName: string, Ctr: typeof HTMLElement & { [Symbol.for('tagName')]?: string }) {
+	Ctr[Symbol.for('tagName')] = tagName;
+	return litCeDefine.call(this, tagName, Ctr);
+};
