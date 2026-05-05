@@ -4,7 +4,11 @@
   "type": "module",
   "description": "Zero-config Astro integration for @grantcodes/ui Lit web components — Lit SSR, Vite config, and DSD polyfills in one import",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./server": "./src/server.ts",
+    "./client": "./client/entry.ts",
+    "./blocks": "./src/blocks.ts",
+    "./hydration-support": "./shims/hydration-support.ts"
   },
   "scripts": {
     "build": "echo 'No build step required — source-based imports'",
