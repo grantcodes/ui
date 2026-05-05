@@ -5,14 +5,14 @@
 			"y": { "value": "{shadow.sm.y}" },
 			"blur": { "value": "{shadow.sm.blur}" },
 			"spread": { "value": "{shadow.sm.spread}" },
-			"color": { "value": "light-dark({shadow.sm.color}, #00000080)" }
+			"color": { "value": "light-dark({shadow.sm.color}, {shadow.dark.sm.color})" }
 		},
 		"md": {
 			"x": { "value": "{shadow.md.x}" },
 			"y": { "value": "{shadow.md.y}" },
 			"blur": { "value": "{shadow.md.blur}" },
 			"spread": { "value": "{shadow.md.spread}" },
-			"color": { "value": "light-dark({shadow.md.color}, #00000040)" }
+			"color": { "value": "light-dark({shadow.md.color}, {shadow.dark.md.color})" }
 		}
 	}
 }
