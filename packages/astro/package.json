@@ -2,7 +2,7 @@
   "name": "@grantcodes/astro",
   "version": "0.0.1",
   "type": "module",
-  "description": "Zero-config Astro integration for @grantcodes/ui Lit web components — Lit SSR, Vite config, and DSD polyfills in one import",
+  "description": "Zero-config Astro integration for @grantcodes/ui Lit web components — Lit SSR and Vite config in one import",
   "exports": {
     ".": "./src/index.ts",
     "./server": "./src/server.ts",
@@ -13,7 +13,7 @@
   "scripts": {
     "build": "echo 'No build step required — source-based imports'",
     "fix": "echo 'No lint configured'",
-    "test": "echo 'No tests configured'"
+    "test": "node --test test/smoke.test.js"
   },
   "keywords": [
     "astro",
@@ -38,7 +38,6 @@
     "parse5": "^7.2.1"
   },
   "peerDependencies": {
-    "@webcomponents/template-shadowroot": "^0.2.1",
     "astro": "^6.0.0",
     "lit": "^3.2.0"
   },
