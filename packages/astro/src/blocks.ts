@@ -1,1 +1,1 @@
-export * from "@grantcodes/astro-blocks";
+export * from "./blocks/index.ts";

@@ -66,9 +66,6 @@ importers:
 
   packages/astro:
     dependencies:
-      '@grantcodes/astro-blocks':
-        specifier: workspace:^
-        version: link:../astro-blocks
       '@grantcodes/ui':
         specifier: workspace:^
         version: link:../ui
@@ -87,25 +84,12 @@ importers:
       lit:
         specifier: ^3.3.1
         version: 3.3.2
-      parse5:
-        specifier: ^7.2.1
-        version: 7.3.0
-    devDependencies:
-      astro:
-        specifier: ^6.2.1
-        version: 6.2.1(@types/node@25.5.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(typescript@5.4.5)(yaml@2.8.2)
-
-  packages/astro-blocks:
-    dependencies:
-      '@grantcodes/style-dictionary':
-        specifier: workspace:^
-        version: link:../style-dictionary
-      '@grantcodes/ui':
-        specifier: workspace:^
-        version: link:../ui
       marked:
         specifier: ^17.0.4
         version: 17.0.4
+      parse5:
+        specifier: ^7.2.1
+        version: 7.3.0
     devDependencies:
       astro:
         specifier: ^6.2.1
