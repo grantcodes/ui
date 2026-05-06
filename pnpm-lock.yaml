@@ -32,9 +32,9 @@ importers:
       '@astrojs/starlight':
         specifier: ^0.38.4
         version: 0.38.4(astro@6.2.1(@types/node@25.5.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(typescript@5.4.5)(yaml@2.8.2))
-      '@grantcodes/astro-blocks':
+      '@grantcodes/astro':
         specifier: workspace:*
-        version: link:../../packages/astro-blocks
+        version: link:../../packages/astro
       '@grantcodes/astro-og-images':
         specifier: workspace:*
         version: link:../../packages/astro-og-images
@@ -44,9 +44,6 @@ importers:
       '@grantcodes/ui':
         specifier: workspace:*
         version: link:../../packages/ui
-      '@semantic-ui/astro-lit':
-        specifier: ^5.3.0
-        version: 5.3.0(@webcomponents/template-shadowroot@0.2.1)(lit@3.3.2)
       '@webcomponents/template-shadowroot':
         specifier: ^0.2.1
         version: 0.2.1
@@ -69,6 +66,9 @@ importers:
 
   packages/astro:
     dependencies:
+      '@grantcodes/astro-blocks':
+        specifier: workspace:^
+        version: link:../astro-blocks
       '@grantcodes/ui':
         specifier: workspace:^
         version: link:../ui
@@ -1656,12 +1656,6 @@ packages:
     resolution: {integrity: sha512-2HRCml6OztYXyJXAvdDXPKcawukWY2GpR5/nxKp4iBgiO3wcoEGkAaqctIbZcNB6KlUQBIqt8VYkNSj2397EfA==}
     cpu: [x64]
     os: [win32]
-
-  '@semantic-ui/astro-lit@5.3.0':
-    resolution: {integrity: sha512-IQ/EPmHg7RQUfvwhhp1uy+zcZ+037AVs7fGpfLQLfhcQNg+mjAeFqu6Eyx6X2YSH6Jt4ZvyDqRzIkCj3gxyBrA==}
-    peerDependencies:
-      '@webcomponents/template-shadowroot': ^0.2.1
-      lit: ^3.3.1
 
   '@shikijs/core@3.23.0':
     resolution: {integrity: sha512-NSWQz0riNb67xthdm5br6lAkvpDJRTgB36fxlo37ZzM2yq0PQFFzbd8psqC2XMPgCzo1fW6cVi18+ArJ44wqgA==}
@@ -6789,15 +6783,6 @@ snapshots:
 
   '@rollup/rollup-win32-x64-msvc@4.59.0':
     optional: true
-
-  '@semantic-ui/astro-lit@5.3.0(@webcomponents/template-shadowroot@0.2.1)(lit@3.3.2)':
-    dependencies:
-      '@lit-labs/ssr': 3.3.1
-      '@lit-labs/ssr-client': 1.1.8
-      '@lit-labs/ssr-dom-shim': 1.5.1
-      '@webcomponents/template-shadowroot': 0.2.1
-      lit: 3.3.2
-      parse5: 7.3.0
 
   '@shikijs/core@3.23.0':
     dependencies:
