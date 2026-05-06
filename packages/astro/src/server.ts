@@ -1,5 +1,5 @@
 // Import the DOM shim FIRST — side-effect order matters for SSR
-import "./shims/server-shim.js";
+import "../shims/server-shim.ts";
 
 import { check, renderToStaticMarkup } from "./ssr/lit-renderer.js";
 

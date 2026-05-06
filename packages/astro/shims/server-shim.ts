@@ -29,7 +29,7 @@ const litCeDefine = customElements.define;
 // a DSD string on the server, because there is no way to get the tagName from a
 // CE class otherwise. Not an issue on client:only because the browser supports
 // appending a class instance directly to the DOM.
-customElements.define = function (tagName: string, Ctr: typeof HTMLElement & { [Symbol.for('tagName')]?: string }) {
+customElements.define = function (tagName: string, Ctr: typeof HTMLElement & { [key: symbol]?: string }) {
 	Ctr[Symbol.for('tagName')] = tagName;
 	return litCeDefine.call(this, tagName, Ctr);
 };
