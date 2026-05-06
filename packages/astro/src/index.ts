@@ -1,20 +1,20 @@
 import type { AstroIntegration } from "astro";
-import { readFileSync } from "node:fs";
 import { getViteConfig } from "./vite-config.js";
+import type { AstroOgImagesOptions } from "./og-images.js";
+import { getOgHooks, resolveOgOptions } from "./og-images.js";
 
-export interface AstroUiOptions {
-	blocks?: boolean;
+export interface UiOptions {
+	ogImages?: boolean | AstroOgImagesOptions;
 }
 
-export default function integration(options: AstroUiOptions = {}): AstroIntegration {
+export default function integration(options?: UiOptions): AstroIntegration {
+	const resolved = resolveOgOptions({ ogImages: options?.ogImages });
+	const ogHooks = resolved.enabled ? getOgHooks(resolved.options) : {};
+
 	return {
 		name: "@grantcodes/astro",
 		hooks: {
 			"astro:config:setup": ({ addRenderer, updateConfig, injectScript, config }) => {
-				injectScript(
-					"head-inline",
-					readFileSync(new URL("../shims/client-shim.ts", import.meta.url), "utf-8")
-				);
 				injectScript("before-hydration", "import '@grantcodes/astro/hydration-support';");
 				addRenderer({
 					name: "@grantcodes/astro",
@@ -34,6 +34,9 @@ export default function integration(options: AstroUiOptions = {}): AstroIntegrat
 					);
 				}
 			},
+			...ogHooks,
 		},
 	};
 }
+
+export type { AstroOgImagesOptions } from "./og-images.js";
