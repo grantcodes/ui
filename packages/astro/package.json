@@ -30,6 +30,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@grantcodes/astro-blocks": "workspace:^",
     "@grantcodes/ui": "workspace:^",
     "@lit-labs/ssr": "^3.3.1",
     "@lit-labs/ssr-client": "^1.1.7",
