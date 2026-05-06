@@ -2,9 +2,8 @@ import { fileURLToPath } from 'node:url';
 import { defineConfig, envField } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import starlight from '@astrojs/starlight';
-import lit from '@semantic-ui/astro-lit';
+import ui from '@grantcodes/astro';
 import astroOgImages from '@grantcodes/astro-og-images';
-import { cssImportAttributes } from '@grantcodes/ui/vite-plugin';
 import { envDefaults } from './integrations/env-defaults.ts';
 
 // https://astro.build/config
@@ -15,15 +14,7 @@ export default defineConfig({
     server: {
       allowedHosts: ['.munchkin-beaver.ts.net'],
     },
-    optimizeDeps: {
-      exclude: ['@grantcodes/ui'],
-    },
-    plugins: [cssImportAttributes()],
-    ssr: {
-      noExternal: ['@grantcodes/ui', '@grantcodes/astro-blocks'],
-    },
     resolve: {
-      noExternal   : ['@grantcodes/ui', '@grantcodes/astro-blocks'],
       alias: {
         '@layouts': fileURLToPath(new URL('./src/layouts', import.meta.url)),
         '@components': fileURLToPath(new URL('./src/components', import.meta.url)),
@@ -71,7 +62,7 @@ export default defineConfig({
     },
   },
   integrations: [
-    lit(),
+    ui(),
     astroOgImages({
       titleTemplate: envDefaults.META_TITLE_TEMPLATE,
       backgroundColor: envDefaults.OG_IMAGE_BACKGROUND_COLOR,
