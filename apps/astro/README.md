@@ -6,7 +6,7 @@ An Astro starter with web components, designed for fast, accessible, and sustain
 
 - Built with [Astro](https://astro.build)
 - Uses [@grantcodes/ui](https://github.com/grantcodes/ui) web components
-- Includes [@grantcodes/astro-blocks](https://github.com/grantcodes/ui) for content blocks
+- Includes [@grantcodes/astro/blocks](https://github.com/grantcodes/ui) for content blocks
 - Starlight documentation integration
 - Internationalization support (en, es)
 - OG image generation
@@ -41,7 +41,7 @@ Import and use content blocks:
 
 ```astro
 ---
-import { Hero, Cards, Text } from '@grantcodes/astro-blocks'
+import { Hero, Cards, Text } from '@grantcodes/astro/blocks'
 ---
 
 <Hero title="Welcome" subtitle="Hello world" />
