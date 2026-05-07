@@ -1,9 +1,9 @@
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
-import { fileURLToPath } from 'node:url'
 import { Resvg } from '@resvg/resvg-js'
 import type { IntegrationResolvedRoute } from 'astro'
 import Color from 'colorjs.io'
 import satori from 'satori'
+import { resolveColorSchemeToken, type UiColorScheme } from './themes.js'
 
 export interface AstroOgImagesOptions {
   favicon?: string
@@ -28,17 +28,15 @@ export interface ResolvedOgOptions {
 interface ResolveOgOptionsInput {
   ogImages?: boolean | AstroOgImagesOptions
   titleTemplate?: string
-  colors?: {
-    foregroundColor?: string
-    backgroundColor?: string
-  }
+  colorScheme?: UiColorScheme
+  themeDefaults?: Partial<AstroOgImagesOptions>
 }
 
 const defaultOptions: Required<AstroOgImagesOptions> = {
   favicon: './public/favicon.svg',
-  fontFile: resolveFontPath('regular'),
-  titleFontFile: resolveFontPath('heavy'),
-  bodyFontFile: resolveFontPath('regular'),
+  fontFile: './node_modules/@grantcodes/style-dictionary/assets/fonts/greycliff-regular.woff',
+  titleFontFile: './node_modules/@grantcodes/style-dictionary/assets/fonts/greycliff-heavy.woff',
+  bodyFontFile: './node_modules/@grantcodes/style-dictionary/assets/fonts/greycliff-regular.woff',
   fontName: 'Greycliff',
   titleFontWeight: 900,
   bodyFontWeight: 500,
@@ -49,25 +47,12 @@ const defaultOptions: Required<AstroOgImagesOptions> = {
   height: 630,
 }
 
-function normalizeColor(color: string): string {
+function normalizeColor(color: string, colorScheme: UiColorScheme = 'dark'): string {
+  const resolvedColor = resolveColorSchemeToken(color, colorScheme)
   try {
-    return new Color(color).to('srgb').toString({ format: 'hex' })
+    return new Color(resolvedColor).to('srgb').toString({ format: 'hex' })
   } catch {
-    return color
-  }
-}
-
-function resolveFontPath(weight: 'regular' | 'heavy'): string {
-  try {
-    const importPath = weight === 'heavy'
-      ? '@grantcodes/style-dictionary/assets/fonts/greycliff-heavy.woff'
-      : '@grantcodes/style-dictionary/assets/fonts/greycliff-regular.woff'
-    const resolved = import.meta.resolve(importPath)
-    return resolved.startsWith('file:') ? fileURLToPath(resolved) : resolved
-  } catch {
-    return weight === 'heavy'
-      ? './node_modules/@grantcodes/style-dictionary/assets/fonts/greycliff-heavy.woff'
-      : './node_modules/@grantcodes/style-dictionary/assets/fonts/greycliff-regular.woff'
+    return resolvedColor
   }
 }
 
@@ -89,14 +74,13 @@ export function resolveOgOptions(input: ResolveOgOptionsInput = {}): ResolvedOgO
 
   const metadataDefaults: Partial<AstroOgImagesOptions> = {
     titleTemplate: input.titleTemplate,
-    foregroundColor: input.colors?.foregroundColor,
-    backgroundColor: input.colors?.backgroundColor,
     favicon: detectFaviconPath(),
   }
 
   const explicitOptions = typeof ogImages === 'object' ? ogImages : {}
   const rawOptions = {
     ...defaultOptions,
+    ...input.themeDefaults,
     ...metadataDefaults,
     ...explicitOptions,
   }
@@ -105,8 +89,8 @@ export function resolveOgOptions(input: ResolveOgOptionsInput = {}): ResolvedOgO
     enabled: true,
     options: {
       ...rawOptions,
-      foregroundColor: normalizeColor(rawOptions.foregroundColor),
-      backgroundColor: normalizeColor(rawOptions.backgroundColor),
+      foregroundColor: normalizeColor(rawOptions.foregroundColor, input.colorScheme),
+      backgroundColor: normalizeColor(rawOptions.backgroundColor, input.colorScheme),
     },
   }
 }

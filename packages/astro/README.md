@@ -32,9 +32,11 @@ import { defineConfig } from 'astro/config';
 import ui from '@grantcodes/astro';
 
 export default defineConfig({
-  integrations: [ui()],
+  integrations: [ui({ theme: 'grantcodes' })],
 });
 ```
+
+Passing `theme` auto-loads the matching `@grantcodes/ui` theme stylesheet for the site and gives bundled OG image generation a matching set of default colors and fonts.
 
 ## Usage
 
@@ -65,15 +67,55 @@ Components render on the server and hydrate automatically in the browser. Use As
 
 > Most components work fine without any directive. Add `client:load` or `client:visible` only when you need interactivity.
 
-### Importing Styles
+### Theme and Styles
 
-Import CSS and theme files as side effects:
+Set the UI theme in the integration when you want `@grantcodes/astro` to load it for you:
+
+```javascript
+// astro.config.mjs
+import { defineConfig } from 'astro/config';
+import ui from '@grantcodes/astro';
+
+export default defineConfig({
+  integrations: [
+    ui({
+      theme: 'grantcodes',
+      ogImages: {
+        titleTemplate: '%s | grant.codes',
+      },
+    }),
+  ],
+});
+```
+
+Supported themes: `grantcodes`, `grantina`, `todomap`, `wireframe`.
+
+If you prefer to manage styles manually, you can still import CSS side effects yourself:
 
 ```astro
 ---
 import '@grantcodes/ui/styles/themes/grantcodes.css';
 import '@grantcodes/ui/styles/base.css';
 ---
+```
+
+### OG Images
+
+Bundled OG generation is enabled through the same `ui()` integration:
+
+```javascript
+// astro.config.mjs
+import { defineConfig } from 'astro/config';
+import ui from '@grantcodes/astro';
+
+export default defineConfig({
+  integrations: [
+    ui({
+      theme: 'grantcodes',
+      ogImages: true,
+    }),
+  ],
+});
 ```
 
 ## Blocks

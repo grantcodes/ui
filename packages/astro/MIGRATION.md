@@ -92,13 +92,15 @@ import ui from '@grantcodes/astro';
 export default defineConfig({
   // ... other config (vite.resolve.alias can stay)
   integrations: [
-    ui(),
+    ui({ theme: 'grantcodes' }),
     // ... other integrations
   ],
 });
 ```
 
 > You can safely remove `resolve.noExternal` — it was a known bug duplicating `ssr.noExternal`. The integration applies `ssr.noExternal` correctly for you.
+>
+> If you pass `theme`, `@grantcodes/astro` will load the matching `@grantcodes/ui` theme stylesheet for you, so you no longer need a separate manual theme import just to activate a standard bundled theme.
 
 ## Step 4: Update component imports
 

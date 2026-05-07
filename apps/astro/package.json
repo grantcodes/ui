@@ -15,7 +15,6 @@
     "@astrojs/starlight": "^0.38.4",
     "@grantcodes/astro": "workspace:*",
     "@grantcodes/ui": "workspace:*",
-    "@grantcodes/astro-og-images": "workspace:*",
     "@grantcodes/style-dictionary": "workspace:*",
     "astro": "^6.2.1",
     "astro-seo": "^1.1.0",
