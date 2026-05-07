@@ -17,7 +17,6 @@
     "@grantcodes/ui": "workspace:*",
     "@grantcodes/astro-og-images": "workspace:*",
     "@grantcodes/style-dictionary": "workspace:*",
-    "@webcomponents/template-shadowroot": "^0.2.1",
     "astro": "^6.2.1",
     "astro-seo": "^1.1.0",
     "lit": "^3.2.1",
