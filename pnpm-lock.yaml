@@ -35,9 +35,6 @@ importers:
       '@grantcodes/astro':
         specifier: workspace:*
         version: link:../../packages/astro
-      '@grantcodes/astro-og-images':
-        specifier: workspace:*
-        version: link:../../packages/astro-og-images
       '@grantcodes/style-dictionary':
         specifier: workspace:*
         version: link:../../packages/style-dictionary

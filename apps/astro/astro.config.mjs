@@ -3,7 +3,6 @@ import { defineConfig, envField } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import starlight from '@astrojs/starlight';
 import ui from '@grantcodes/astro';
-import astroOgImages from '@grantcodes/astro-og-images';
 import { envDefaults } from './integrations/env-defaults.ts';
 
 // https://astro.build/config
@@ -62,16 +61,11 @@ export default defineConfig({
     },
   },
   integrations: [
-    ui(),
-    astroOgImages({
-      titleTemplate: envDefaults.META_TITLE_TEMPLATE,
-      backgroundColor: envDefaults.OG_IMAGE_BACKGROUND_COLOR,
-      foregroundColor: envDefaults.OG_IMAGE_COLOR,
-      fontName: envDefaults.OG_IMAGE_FONT_NAME,
-      titleFontFile: envDefaults.OG_IMAGE_TITLE_FONT_FILE,
-      bodyFontFile: envDefaults.OG_IMAGE_BODY_FONT_FILE,
-      titleFontWeight: envDefaults.OG_IMAGE_TITLE_FONT_WEIGHT,
-      bodyFontWeight: envDefaults.OG_IMAGE_BODY_FONT_WEIGHT,
+    ui({
+      theme: envDefaults.UI_THEME,
+      ogImages: {
+        titleTemplate: envDefaults.META_TITLE_TEMPLATE,
+      },
     }),
     starlight({
       logo: {
@@ -81,7 +75,6 @@ export default defineConfig({
         en: 'grant.codes',
       },
       customCss: [
-        '@grantcodes/ui/styles/themes/grantcodes.css',
         './src/styles/style.css',
         './src/styles/docs.css',
       ],

@@ -66,6 +66,7 @@ describe("@grantcodes/astro smoke test", () => {
 
       sanitizePkg(astroPkg, {
         "@grantcodes/ui": `file:${uiPkg}`,
+        "@grantcodes/style-dictionary": `file:${styleDictPkg}`,
       });
       sanitizePkg(uiPkg, {
         "@grantcodes/style-dictionary": `file:${styleDictPkg}`,
