@@ -55,6 +55,7 @@ export class GrantCodesSidebar extends LitElement {
 
 	connectedCallback() {
 		super.connectedCallback();
+		if (typeof document === "undefined") return;
 		document.addEventListener("click", this._handleDocumentClick);
 		document.addEventListener("keydown", this._handleEscape);
 	}
