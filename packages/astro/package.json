@@ -30,8 +30,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@grantcodes/style-dictionary": "workspace:^",
-    "@grantcodes/ui": "workspace:^",
+    "@grantcodes/style-dictionary": "^1.5.1",
+    "@grantcodes/ui": "^2.12.0",
     "@resvg/resvg-js": "^2.6.2",
     "@lit-labs/ssr": "^3.3.1",
     "@lit-labs/ssr-client": "^1.1.7",
