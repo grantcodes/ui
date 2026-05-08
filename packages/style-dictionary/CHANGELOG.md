@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.6.0](https://github.com/grantcodes/ui/compare/style-dictionary-v1.5.1...style-dictionary-v1.6.0) (2026-05-08)
+
+
+### Features
+
+* **25-fix-token-inheritance-build:** add tier-1 dark shadow color tokens ([9a3b92d](https://github.com/grantcodes/ui/commit/9a3b92dd2325b4fc10fc5c3fc62a9353d08263eb))
+
+
+### Bug Fixes
+
+* **25-fix-token-inheritance-build:** fix body-sm font shorthand in all 4 themes ([8b81e15](https://github.com/grantcodes/ui/commit/8b81e1580ea3c2c6f19fa8832e35d80bedde24be))
+* **25-fix-token-inheritance-build:** fix grantcodes border.primary dark-mode palette reference ([0a3df7c](https://github.com/grantcodes/ui/commit/0a3df7cae2dcb6857b4c0696551814065aa0801e))
+* **25-fix-token-inheritance-build:** fix grantina tier-2 color files to use semantic primary tokens ([159b641](https://github.com/grantcodes/ui/commit/159b64194f9a70f0507b520902666fb967fd87cf))
+* **25-fix-token-inheritance-build:** replace raw hex with tier-1 dark shadow token refs ([c3e2ded](https://github.com/grantcodes/ui/commit/c3e2dede4d528d68b4736421fe47786e70a24441))
+
 ## [1.5.1](https://github.com/grantcodes/ui/compare/style-dictionary-v1.5.0...style-dictionary-v1.5.1) (2026-04-18)
 
 

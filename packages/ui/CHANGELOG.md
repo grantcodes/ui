@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.12.1](https://github.com/grantcodes/ui/compare/ui-v2.12.0...ui-v2.12.1) (2026-05-08)
+
+
+### Bug Fixes
+
+* **31-02:** align Astro docs and SSR behavior with modern browsers ([2f679f6](https://github.com/grantcodes/ui/commit/2f679f657fd65adb9594764585c3481531347107))
+
 ## [2.12.0](https://github.com/grantcodes/ui/compare/ui-v2.11.2...ui-v2.12.0) (2026-05-03)
 
 
