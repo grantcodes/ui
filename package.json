@@ -27,8 +27,7 @@
     "fix:style-dictionary": "pnpm --filter @grantcodes/style-dictionary fix",
     "clean": "turbo run clean && rm -rf node_modules",
     "clean:all": "turbo run clean && rm -rf node_modules packages/*/node_modules apps/*/node_modules",
-    "storybook": "pnpm --filter @grantcodes/ui,@grantcodes/astro-blocks storybook",
-    "dev:astro-blocks": "pnpm --filter @grantcodes/astro-blocks dev",
+    "storybook": "pnpm --filter @grantcodes/ui storybook",
     "generate": "pnpm --filter @grantcodes/ui generate"
   },
   "license": "MIT",

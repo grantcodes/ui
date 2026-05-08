@@ -6,7 +6,7 @@ export function getViteConfig() {
 			exclude: ["@grantcodes/ui"],
 		},
 		ssr: {
-			noExternal: ["@grantcodes/ui", "@grantcodes/astro-blocks"],
+			noExternal: ["@grantcodes/ui"],
 		},
 		plugins: [cssImportAttributes()],
 	};

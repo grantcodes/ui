@@ -21,7 +21,7 @@ export default function integration(options?: UiOptions): AstroIntegration {
 
 	return {
 		name: "@grantcodes/astro",
-		hooks: {
+			hooks: {
 			"astro:config:setup": ({ addRenderer, updateConfig, injectScript, config }) => {
 				if (options?.theme) {
 					injectScript("page-ssr", `import '${theme.stylesheetImport}';`);
@@ -38,10 +38,10 @@ export default function integration(options?: UiOptions): AstroIntegration {
 				const noExternal = config.vite?.resolve?.noExternal;
 				if (
 					Array.isArray(noExternal) &&
-					(noExternal.includes("@grantcodes/ui") || noExternal.includes("@grantcodes/astro-blocks"))
+					noExternal.includes("@grantcodes/ui")
 				) {
 					console.warn(
-						"[@grantcodes/astro] WARNING: Your astro.config.mjs has `resolve.noExternal` which duplicates `ssr.noExternal`. This is a known config bug. Remove `resolve.noExternal` to avoid unexpected behavior."
+						"[@grantcodes/astro] WARNING: Your astro.config.mjs has `resolve.noExternal` including `@grantcodes/ui`, which duplicates integration-managed `ssr.noExternal`. Remove `resolve.noExternal` to avoid unexpected behavior."
 					);
 				}
 			},
