@@ -54,55 +54,201 @@ Remove the following packages from your project:
 
 ## Step 3: Update `astro.config.mjs`
 
+`@grantcodes/astro` should become the only place that owns Lit SSR wiring for this package set.
+Keep unrelated app config such as aliases, Starlight, sitemap, env schema, image settings, and other integrations.
+Remove the manual migration leftovers that the integration already handles for you.
+
 ### Before
 
 ```javascript
-import { defineConfig } from 'astro/config';
+import { fileURLToPath } from 'node:url';
+import { defineConfig, envField } from 'astro/config';
 import lit from '@semantic-ui/astro-lit';
+import sitemap from '@astrojs/sitemap';
+import starlight from '@astrojs/starlight';
 import { cssImportAttributes } from '@grantcodes/ui/vite-plugin';
 
 export default defineConfig({
-  // ... other config
+  site: 'https://example.com',
   vite: {
-    optimizeDeps: {
-      exclude: ['@grantcodes/ui'],
+    resolve: {
+      alias: {
+        '@layouts': fileURLToPath(new URL('./src/layouts', import.meta.url)),
+        '@components': fileURLToPath(new URL('./src/components', import.meta.url)),
+      },
+      noExternal: ['@grantcodes/ui', '@grantcodes/astro-blocks'],
     },
     plugins: [cssImportAttributes()],
     ssr: {
       noExternal: ['@grantcodes/ui', '@grantcodes/astro-blocks'],
     },
-    resolve: {
-      noExternal: ['@grantcodes/ui', '@grantcodes/astro-blocks'],
-      // ... aliases
+  },
+  env: {
+    schema: {
+      TITLE: envField.string({ context: 'server', access: 'public' }),
     },
   },
   integrations: [
     lit(),
-    // ... other integrations
+    starlight({
+      title: 'Docs',
+    }),
+    sitemap(),
   ],
 });
 ```
 
 ### After
 
+Use a starter-like migrated config as the primary target shape:
+
+```javascript
+import { fileURLToPath } from 'node:url';
+import { defineConfig, envField } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
+import starlight from '@astrojs/starlight';
+import ui from '@grantcodes/astro';
+import { envDefaults } from './integrations/env-defaults.ts';
+
+export default defineConfig({
+  site: 'https://example.com',
+  vite: {
+    resolve: {
+      alias: {
+        '@layouts': fileURLToPath(new URL('./src/layouts', import.meta.url)),
+        '@components': fileURLToPath(new URL('./src/components', import.meta.url)),
+      },
+    },
+  },
+  env: {
+    schema: {
+      TITLE: envField.string({
+        context: 'server',
+        access: 'public',
+        default: envDefaults.TITLE,
+      }),
+    },
+  },
+  integrations: [
+    ui({
+      theme: 'grantcodes',
+      ogImages: {
+        titleTemplate: envDefaults.META_TITLE_TEMPLATE,
+      },
+    }),
+    starlight({
+      title: 'Docs',
+    }),
+    sitemap(),
+  ],
+});
+```
+
+If you want the smallest safe config reference, this is the minimal fallback shape:
+
 ```javascript
 import { defineConfig } from 'astro/config';
 import ui from '@grantcodes/astro';
 
 export default defineConfig({
-  // ... other config (vite.resolve.alias can stay)
-  integrations: [
-    ui({ theme: 'grantcodes' }),
-    // ... other integrations
-  ],
+  integrations: [ui({ theme: 'grantcodes' })],
 });
 ```
 
-> You can safely remove `resolve.noExternal` — it was a known bug duplicating `ssr.noExternal`. The integration applies `ssr.noExternal` correctly for you.
->
-> If you pass `theme`, `@grantcodes/astro` will load the matching `@grantcodes/ui` theme stylesheet for you, so you no longer need a separate manual theme import just to activate a standard bundled theme.
+If your real app already has aliases, image settings, env schema, i18n, or other integrations, keep them. The migration is about removing obsolete Lit/Vite wiring, not flattening the rest of your app config.
 
-## Step 4: Update component imports
+### Remove the old integration-owned wiring
+
+```diff
+- import lit from '@semantic-ui/astro-lit';
+- import { cssImportAttributes } from '@grantcodes/ui/vite-plugin';
+  import ui from '@grantcodes/astro';
+
+  export default defineConfig({
+    vite: {
+-     plugins: [cssImportAttributes()],
+-     ssr: {
+-       noExternal: ['@grantcodes/ui', '@grantcodes/astro-blocks'],
+-     },
+      resolve: {
+-       noExternal: ['@grantcodes/ui', '@grantcodes/astro-blocks'],
+        alias: {
+          // keep app aliases
+        },
+      },
+    },
+    integrations: [
+-     lit(),
+-     manualLitRenderer(),
+-     manualLitHydration(),
++     ui({ theme: 'grantcodes' }),
+    ],
+  })
+```
+
+### Remove these manual wiring leftovers
+
+After migrating, delete these items from your old config if they were only there to support the previous Lit setup:
+
+- `import lit from '@semantic-ui/astro-lit'`
+- `import { cssImportAttributes } from '@grantcodes/ui/vite-plugin'`
+- manual `vite.plugins` entries for `cssImportAttributes()`
+- manual `vite.ssr.noExternal`
+- duplicated `vite.resolve.noExternal`
+- `vite.optimizeDeps.exclude` entries that only existed for `@grantcodes/ui`
+- any standalone manual Lit SSR renderer or hydration wiring tied to the old integration
+
+`vite.resolve.alias` and other app-specific config can stay.
+
+> `@grantcodes/astro` already applies the Lit SSR renderer, `cssImportAttributes()`, `vite.ssr.noExternal`, and `vite.optimizeDeps.exclude` for `@grantcodes/ui`.
+>
+> If you pass `theme`, `@grantcodes/astro` loads the matching bundled theme stylesheet for you. That replaces a separate manual theme import, but it does not inject `@grantcodes/ui/styles/base.css`.
+
+## What changed?
+
+The integration absorbs these manual configuration items:
+
+| Manual Config Item | What the integration does |
+|--------------------|---------------------------|
+| Lit SSR renderer (`@semantic-ui/astro-lit`) | Internal renderer via `addRenderer()` |
+| CSS import attributes Vite plugin (`cssImportAttributes()`) | Registered automatically via `updateConfig()` |
+| Vite `ssr.noExternal` | Applied for `@grantcodes/ui` and `@grantcodes/astro-blocks` |
+| Vite `optimizeDeps.exclude` | Applied for `@grantcodes/ui` |
+| Hydration support | Injected via `injectScript('before-hydration', ...)` |
+
+## Step 4: Keep the style contract intact
+
+Do **not** patch or strip `@grantcodes/ui` CSS imports to silence warnings or force a build through.
+That is unsupported, can break Lit shadow styles, and can surface `<style>undefined</style>` in rendered output.
+
+Use this decision tree after migrating:
+
+1. If you pass `theme` to `ui({ theme: 'grantcodes' })`, the integration loads the bundled theme stylesheet for you.
+2. If your app still relies on `@grantcodes/ui` global base styles, keep `@grantcodes/ui/styles/base.css` as a manual app import.
+3. Only remove the manual `base.css` import if your app already provides equivalent global UI base styles another way.
+4. If styles disappear after migration, restore the package CSS imports and remove bad manual Vite wiring instead of patching package source.
+
+Known-good split:
+
+```javascript
+// astro.config.mjs
+import { defineConfig } from 'astro/config';
+import ui from '@grantcodes/astro';
+
+export default defineConfig({
+  integrations: [ui({ theme: 'grantcodes' })],
+});
+```
+
+```astro
+---
+import '@grantcodes/ui/styles/base.css';
+---
+```
+
+The integration-owned theme import and the app-owned `base.css` import solve different problems. Keep them separate in the docs and in migrated apps.
+
+## Step 5: Update component imports
 
 If you were using `@grantcodes/astro-blocks`, change your imports:
 
@@ -118,7 +264,7 @@ import { Hero, Cards } from '@grantcodes/astro/blocks';
 
 All other component imports from `@grantcodes/ui` remain unchanged.
 
-## Step 5: Verify the migration
+## Step 6: Verify the migration
 
 1. **Start the dev server:**
    ```bash
@@ -135,18 +281,6 @@ All other component imports from `@grantcodes/ui` remain unchanged.
 3. **Inspect the HTML output:**
    Look for `<template shadowrootmode="open">` inside your component tags in the rendered HTML. This confirms SSR is working.
 
-## What changed?
-
-The integration absorbs these manual configuration items:
-
-| Manual Config Item | What the integration does |
-|--------------------|---------------------------|
-| Lit SSR renderer (`@semantic-ui/astro-lit`) | Internal renderer via `addRenderer()` |
-| CSS import attributes Vite plugin (`cssImportAttributes()`) | Registered automatically via `updateConfig()` |
-| Vite `ssr.noExternal` | Applied for `@grantcodes/ui` and `@grantcodes/astro-blocks` |
-| Vite `optimizeDeps.exclude` | Applied for `@grantcodes/ui` |
-| Hydration support | Injected via `injectScript('before-hydration', ...)` |
-
 ## Troubleshooting
 
 ### "Warning about `resolve.noExternal`"
@@ -158,6 +292,21 @@ If you see this warning from `@grantcodes/astro`:
 ```
 
 **Fix:** Remove the `resolve.noExternal` array from your Vite config. It was incorrectly duplicating `ssr.noExternal` and is not needed.
+
+### `<style>undefined</style>` or missing component styles
+
+If a migrated app starts rendering `<style>undefined</style>` or web components lose their shadow styles, check for unsupported CSS import patching first.
+
+**Common cause:** stripping or rewriting `@grantcodes/ui` CSS imports in built package files to quiet warnings.
+
+**Fix path:**
+
+1. Restore the original `@grantcodes/ui` package CSS imports.
+2. Remove obsolete manual Vite wiring such as `cssImportAttributes()`, manual `vite.ssr.noExternal`, and duplicated `vite.resolve.noExternal`.
+3. Keep `ui({ theme })` for bundled theme loading.
+4. Keep `@grantcodes/ui/styles/base.css` as a manual app import unless equivalent global UI base styles already exist elsewhere in your app.
+
+Do not patch package source as the long-term fix.
 
 ### Build errors after migration
 
