@@ -19,15 +19,15 @@
 }
 
 .feature-list__title {
-	margin: 0 0 var(--g-theme-spacing-sm);
-	font: var(--g-typography-h4-font);
+	margin: 0 0 var(--g-theme-spacing-lg);
+	font: var(--g-typography-h2-font);
 	text-align: center;
 	color: var(--g-theme-color-content-default);
 }
 
 .feature-list__subtitle {
 	margin: 0 auto var(--g-theme-spacing-2xl);
-	font-size: var(--g-theme-typography-body-lg-font-size);
+	font: var(--g-theme-typography-body-lg);
 	text-align: center;
 	color: var(--g-theme-color-content-subtle);
 	max-width: 55ch;
@@ -76,7 +76,7 @@
 }
 
 .feature-list__item-title {
-	font: var(--g-typography-h5-font);
+	font: var(--g-typography-h4-font);
 }
 
 .feature-list__item-desc {
