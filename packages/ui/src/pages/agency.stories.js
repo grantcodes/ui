@@ -49,14 +49,14 @@ const footerContent = html`
  */
 export const Default = {
 	render: () => html`
-		<grantcodes-app-bar>
+		<grantcodes-app-bar sticky>
 			<a slot="logo" href="/" style="font-weight: 700; font-size: 1.25rem; text-decoration: none; color: inherit;">
 				Studio North
 			</a>
 			<div slot="nav" style="display: flex; gap: 0.5rem;">
-				<a href="/work">Work</a>
-				<a href="/services">Services</a>
-				<a href="/about">About</a>
+				<grantcodes-nav-link><a href="/work">Work</a></grantcodes-nav-link>
+				<grantcodes-nav-link><a href="/services">Services</a></grantcodes-nav-link>
+				<grantcodes-nav-link><a href="/about">About</a></grantcodes-nav-link>
 			</div>
 			<div slot="actions">
 				<grantcodes-button>Get in touch</grantcodes-button>

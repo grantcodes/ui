@@ -5,10 +5,11 @@ import "../components/button/button.js";
 import "../components/breadcrumb/breadcrumb.js";
 import "../components/container/container.js";
 import "../components/badge/badge.js";
-import "../components/avatar/avatar.js";
+import "../components/person/person.js";
 import "../components/card/card.js";
 import "../components/cta/cta.js";
 import "../components/footer/footer.js";
+import { WithListNav } from '../components/app-bar/app-bar.stories.js'
 
 const meta = {
 	title: "Pages/Blog Post",
@@ -131,23 +132,11 @@ export const Default = {
           <div
             style="display: flex; align-items: center; gap: var(--g-theme-spacing-sm); padding-block: var(--g-theme-spacing-md); border-block: 1px solid var(--g-theme-color-border-default);"
           >
-            <grantcodes-avatar
-              src="https://i.pravatar.cc/80?img=12"
+            <grantcodes-person
+              avatar="https://i.pravatar.cc/80?img=12"
               name="Sam Torres"
-              size="small"
+              subtitle="March 12, 2025 · 8 min read"
             ></grantcodes-avatar>
-            <div>
-              <p
-                style="margin: 0; font-weight: var(--g-typography-font-weight-600); color: var(--g-theme-color-content-default); font-size: var(--g-theme-typography-label-font-size);"
-              >
-                Sam Torres
-              </p>
-              <p
-                style="margin: 0; color: var(--g-theme-color-content-subtle); font-size: var(--g-theme-typography-meta-font-size);"
-              >
-                March 12, 2025 · 8 min read
-              </p>
-            </div>
           </div>
         </div>
       </div>
@@ -251,22 +240,11 @@ export const Default = {
         <div
           style="margin-block-start: var(--g-theme-spacing-xl); padding: var(--g-theme-spacing-md); background: var(--g-theme-color-background-subtle); border-radius: var(--g-theme-border-radius-md); display: flex; align-items: center; gap: var(--g-theme-spacing-md);"
         >
-          <grantcodes-avatar
-            src="https://i.pravatar.cc/80?img=12"
+          <grantcodes-person
+            avatar="https://i.pravatar.cc/80?img=12"
             name="Sam Torres"
-            size="medium"
-          ></grantcodes-avatar>
-          <div>
-            <p
-              style="margin: 0; font-weight: var(--g-typography-font-weight-600); color: var(--g-theme-color-content-default);"
-            >
-              Sam Torres
-            </p>
-            <p style="font: var(--g-theme-typography-meta);">
-              CTO at Flowbase. Writes about engineering culture, distributed
-              teams, and systems thinking.
-            </p>
-          </div>
+            subtitle="CTO at Flowbase. Writes about engineering culture, distributed teams, and systems thinking."
+          ></grantcodes-person>
         </div>
       </article>
     </grantcodes-container>
@@ -306,15 +284,10 @@ export const Default = {
                   slot="footer"
                   style="display: flex; align-items: center; gap: var(--g-theme-spacing-sm);"
                 >
-                  <grantcodes-avatar
-                    src="${post.author.avatar}"
+                  <grantcodes-person
+                    avatar="${post.author.avatar}"
                     name="${post.author.name}"
-                    size="small"
-                  ></grantcodes-avatar>
-                  <span
-                    style="font: var(--g-theme-typography-meta);"
-                    >${post.author.name}</span
-                  >
+                  ></grantcodes-person>
                 </div>
               </grantcodes-card>
             `,

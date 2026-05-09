@@ -1,7 +1,7 @@
 import { LitElement, html } from "lit";
 import testimonialsStyles from "./testimonials.css" with { type: "css" };
 import "../card/card.js";
-import "../avatar/avatar.js";
+import "../person/person.js";
 
 export class GrantCodesTestimonials extends LitElement {
 	static styles = [testimonialsStyles];
@@ -57,33 +57,18 @@ export class GrantCodesTestimonials extends LitElement {
 							(item) => html`
 								<li class="testimonials__item">
 									<grantcodes-card>
-										<blockquote class="testimonials__quote" slot="header">
+										<blockquote class="testimonials__quote">
 											<p class="testimonials__text">
 												&ldquo;${item.quote}&rdquo;
 											</p>
 										</blockquote>
 										<footer class="testimonials__attribution" slot="footer">
-											${
-												item.avatar
-													? html`<grantcodes-avatar
-														src=${item.avatar}
-														name=${item.name}
-														size="small"
-													></grantcodes-avatar>`
-													: null
-											}
-											<div class="testimonials__meta">
-												<cite class="testimonials__name">${item.name}</cite>
-												${
-													item.role || item.company
-														? html`<span class="testimonials__role">
-															${[item.role, item.company]
-																.filter(Boolean)
-																.join(", ")}
-														</span>`
-														: null
-												}
-											</div>
+										   <!-- TODO: Would be nice to include a cite element in here somehow -->
+										   <grantcodes-person
+													avatar=${item.avatar}
+													name=${item.name}
+													subtitle=${[item.role, item.company].filter(Boolean).join(", ")}
+												></grantcodes-person>
 										</footer>
 									</grantcodes-card>
 								</li>
