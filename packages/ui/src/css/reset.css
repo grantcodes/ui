@@ -232,6 +232,11 @@ pre {
 	fill: currentColor;
 }
 
+.docs-story {
+    background-color: var(--g-theme-color-background-default);
+}
+
+
 /* Force dark mode on any element or subtree */
 .dark {
 	color-scheme: dark;
