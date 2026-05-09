@@ -9,7 +9,7 @@ export class GrantCodesFormField extends LitElement {
 	static styles = [formFieldStyles];
 
 	static properties = {
-    label: { type: String, reflect: true },
+		label: { type: String, reflect: true },
 		direction: { type: String },
 		error: { type: String },
 		help: { type: String },
@@ -22,9 +22,9 @@ export class GrantCodesFormField extends LitElement {
 		this.error = undefined;
 		this.help = undefined;
 
-    this.groupInput = false;
+		this.groupInput = false;
 
-    /**
+		/**
 		 * Direction of the field. Generally want horizontal for checkboxes and radios.
 		 * @type {'vertical' | 'horizontal'}
 		 */
@@ -82,7 +82,6 @@ export class GrantCodesFormField extends LitElement {
 
 		input.id = this.id;
 		input.setAttribute("aria-describedby", this.ariaDescribedBy);
-
 	}
 
 	handleLabelClick() {
@@ -131,11 +130,11 @@ export class GrantCodesFormField extends LitElement {
     `;
 	}
 
-  render() {
-    const wrapperClass = classMap({
-      'form-field': true,
-      'form-field--horizontal': this.direction === 'horizontal'
-    })
+	render() {
+		const wrapperClass = classMap({
+			"form-field": true,
+			"form-field--horizontal": this.direction === "horizontal",
+		});
 		if (this.groupInput) {
 			return html`
       <fieldset class=${wrapperClass}>
@@ -144,7 +143,7 @@ export class GrantCodesFormField extends LitElement {
         ${this.errorTemplate()}
       </fieldset>
     `;
-    }
+		}
 
 		return html`
       <div class=${wrapperClass}>

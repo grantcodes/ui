@@ -1074,9 +1074,29 @@
               },
               "default": "\"\"",
               "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "privacy": "public",
+              "type": {
+                "text": "'solid' | 'outline' | 'ghost'"
+              },
+              "description": "The style of the button.",
+              "default": "'solid'",
+              "attribute": "variant"
             }
           ],
           "attributes": [
+            {
+              "name": "color",
+              "type": {
+                "text": "'primary' | 'secondary' | 'neutral' | 'danger'"
+              },
+              "description": "The color of the button.",
+              "default": "'primary'",
+              "fieldName": "color"
+            },
             {
               "name": "disabled",
               "type": {
@@ -1123,6 +1143,15 @@
               },
               "default": "\"\"",
               "fieldName": "value"
+            },
+            {
+              "name": "variant",
+              "type": {
+                "text": "'solid' | 'outline' | 'ghost'"
+              },
+              "description": "The style of the button.",
+              "default": "'solid'",
+              "fieldName": "variant"
             }
           ],
           "superclass": {

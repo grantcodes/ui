@@ -44,7 +44,7 @@
     "watch": "vite build --watch",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build": "npm run build-storybook",
+    "build": "run-s cem build-storybook",
     "generate": "plop",
     "cem": "cem analyze --config custom-elements-manifest.config.js --litelement",
     "fix": "run-s fix:lint",

@@ -18,6 +18,8 @@ export class GrantCodesButton extends LitElement {
 		name: { type: String },
 		value: { type: String },
 		disabled: { type: Boolean, reflect: true },
+		variant: { type: String },
+		color: { type: String },
 		form: { type: String, reflect: true },
 	};
 
@@ -39,6 +41,18 @@ export class GrantCodesButton extends LitElement {
 			this.internals = null;
 		}
 		this.disabled = false;
+
+		/**
+		 * The style of the button.
+		 * @type {'solid' | 'outline' | 'ghost'}
+		 */
+		this.variant = "solid";
+
+		/**
+		 * The color of the button.
+		 * @type {'primary' | 'secondary' | 'neutral' | 'danger'}
+		 */
+		this.color = "primary";
 	}
 
 	updated(changedProperties) {
