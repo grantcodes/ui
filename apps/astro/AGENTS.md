@@ -7,7 +7,7 @@ Personal website built with Astro, using `@grantcodes/ui` components and `@grant
 - **Astro** - Static site generator
 - **Starlight** - Documentation theme
 - **@grantcodes/ui** - Web components library
-- **@grantcodes/astro-blocks** - Reusable content blocks
+- **@grantcodes/astro** - Astro integration with reusable content blocks
 
 ## Project Structure
 
@@ -46,5 +46,4 @@ pnpm build
 
 - `@grantcodes/ui` - Web components
 - `@grantcodes/style-dictionary` - Design tokens
-- `@grantcodes/astro-blocks` - Content blocks
-- `@grantcodes/astro-og-images` - Open Graph images
+- `@grantcodes/astro` - Integration + content blocks + Open Graph images

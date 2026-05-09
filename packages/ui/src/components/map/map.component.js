@@ -48,31 +48,36 @@ export class GrantCodesMap extends LitElement {
 		this.label = "Map";
 		this["directions-url"] = "";
 		this.height = "";
-		this._darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
+		this._darkQuery = null;
 		this._onSchemeChange = () => this._updateFilter();
+		if (typeof window !== "undefined") {
+			this._darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
+		}
 	}
 
 	connectedCallback() {
 		super.connectedCallback();
+		if (typeof window === "undefined") return;
 		this._observer = new MutationObserver(() => this._updateFilter());
 		this._observer.observe(document.documentElement, {
 			attributes: true,
 			attributeFilter: ["class"],
 		});
-		this._darkQuery.addEventListener("change", this._onSchemeChange);
+		this._darkQuery?.addEventListener("change", this._onSchemeChange);
 		this._updateFilter();
 	}
 
 	disconnectedCallback() {
 		super.disconnectedCallback();
 		this._observer?.disconnect();
-		this._darkQuery.removeEventListener("change", this._onSchemeChange);
+		this._darkQuery?.removeEventListener("change", this._onSchemeChange);
 	}
 
 	_isDark() {
+		if (typeof document === "undefined") return false;
 		if (document.documentElement.classList.contains("dark")) return true;
 		if (document.documentElement.classList.contains("light")) return false;
-		return this._darkQuery.matches;
+		return this._darkQuery?.matches ?? false;
 	}
 
 	_updateFilter() {

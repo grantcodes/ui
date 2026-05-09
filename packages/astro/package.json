@@ -1,0 +1,51 @@
+{
+  "name": "@grantcodes/astro",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Zero-config Astro integration for @grantcodes/ui Lit web components — Lit SSR and Vite config in one import",
+  "exports": {
+    ".": "./src/index.ts",
+    "./server": "./src/server.ts",
+    "./client": "./client/entry.ts",
+    "./blocks": "./src/blocks.ts",
+    "./hydration-support": "./shims/hydration-support.ts"
+  },
+  "scripts": {
+    "build": "echo 'No build step required — source-based imports'",
+    "fix": "echo 'No lint configured'",
+    "test": "node --test test/smoke.test.js"
+  },
+  "keywords": [
+    "astro",
+    "astro-integration",
+    "lit",
+    "web-components",
+    "ssr",
+    "grantcodes"
+  ],
+  "author": {
+    "email": "mail@grant.codes",
+    "name": "Grant Richmond",
+    "url": "https://grant.codes"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@grantcodes/style-dictionary": "^1.5.1",
+    "@grantcodes/ui": "^2.12.0",
+    "@resvg/resvg-js": "^2.6.2",
+    "@lit-labs/ssr": "^3.3.1",
+    "@lit-labs/ssr-client": "^1.1.7",
+    "@lit-labs/ssr-dom-shim": "^1.3.0",
+    "colorjs.io": "^0.5.2",
+    "marked": "^17.0.4",
+    "parse5": "^7.2.1",
+    "satori": "^0.12.1"
+  },
+  "peerDependencies": {
+    "astro": "^6.0.0",
+    "lit": "^3.2.0"
+  },
+  "devDependencies": {
+    "astro": "^6.2.1"
+  }
+}

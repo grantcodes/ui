@@ -55,9 +55,9 @@ jobs:
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-            - name: Publish @grantcodes/astro-blocks
-              if: ${{ steps.release.outputs['packages/astro-blocks--release_created'] }}
-              working-directory: packages/astro-blocks
+            - name: Publish @grantcodes/astro
+              if: ${{ steps.release.outputs['packages/astro--release_created'] }}
+              working-directory: packages/astro
               run: pnpm publish --access public --no-git-checks
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

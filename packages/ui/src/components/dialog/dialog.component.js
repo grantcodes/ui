@@ -33,6 +33,7 @@ export class GrantCodesDialog extends LitElement {
 	}
 
 	_handleOpenChange() {
+		if (!this.dialog) return;
 		if (this.open) {
 			this.dialog.showModal();
 		} else {

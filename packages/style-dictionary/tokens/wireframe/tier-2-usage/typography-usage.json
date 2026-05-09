@@ -87,7 +87,7 @@
 			"line-height": { "value": "1.43" },
 			"letter-spacing": { "value": "{typography.letter-spacing.none}" },
 			"font": {
-				"value": "{typography.body-lg.font-weight} {typography.body-lg.font-size}/{typography.body-lg.line-height} {typography.body-lg.font-family}"
+				"value": "{typography.body-sm.font-weight} {typography.body-sm.font-size}/{typography.body-sm.line-height} {typography.body-sm.font-family}"
 			}
 		},
 		"label-lg": {

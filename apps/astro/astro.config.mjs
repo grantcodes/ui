@@ -2,9 +2,7 @@ import { fileURLToPath } from 'node:url';
 import { defineConfig, envField } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import starlight from '@astrojs/starlight';
-import lit from '@semantic-ui/astro-lit';
-import astroOgImages from '@grantcodes/astro-og-images';
-import { cssImportAttributes } from '@grantcodes/ui/vite-plugin';
+import ui from '@grantcodes/astro';
 import { envDefaults } from './integrations/env-defaults.ts';
 
 // https://astro.build/config
@@ -15,15 +13,7 @@ export default defineConfig({
     server: {
       allowedHosts: ['.munchkin-beaver.ts.net'],
     },
-    optimizeDeps: {
-      exclude: ['@grantcodes/ui'],
-    },
-    plugins: [cssImportAttributes()],
-    ssr: {
-      noExternal: ['@grantcodes/ui', '@grantcodes/astro-blocks'],
-    },
     resolve: {
-      noExternal   : ['@grantcodes/ui', '@grantcodes/astro-blocks'],
       alias: {
         '@layouts': fileURLToPath(new URL('./src/layouts', import.meta.url)),
         '@components': fileURLToPath(new URL('./src/components', import.meta.url)),
@@ -71,16 +61,11 @@ export default defineConfig({
     },
   },
   integrations: [
-    lit(),
-    astroOgImages({
-      titleTemplate: envDefaults.META_TITLE_TEMPLATE,
-      backgroundColor: envDefaults.OG_IMAGE_BACKGROUND_COLOR,
-      foregroundColor: envDefaults.OG_IMAGE_COLOR,
-      fontName: envDefaults.OG_IMAGE_FONT_NAME,
-      titleFontFile: envDefaults.OG_IMAGE_TITLE_FONT_FILE,
-      bodyFontFile: envDefaults.OG_IMAGE_BODY_FONT_FILE,
-      titleFontWeight: envDefaults.OG_IMAGE_TITLE_FONT_WEIGHT,
-      bodyFontWeight: envDefaults.OG_IMAGE_BODY_FONT_WEIGHT,
+    ui({
+      theme: envDefaults.UI_THEME,
+      ogImages: {
+        titleTemplate: envDefaults.META_TITLE_TEMPLATE,
+      },
     }),
     starlight({
       logo: {
@@ -90,7 +75,6 @@ export default defineConfig({
         en: 'grant.codes',
       },
       customCss: [
-        '@grantcodes/ui/styles/themes/grantcodes.css',
         './src/styles/style.css',
         './src/styles/docs.css',
       ],

@@ -82,6 +82,7 @@ export class GrantCodesDropzone extends LitElement {
 
 	connectedCallback() {
 		super.connectedCallback();
+		if (typeof document === "undefined") return;
 		document.addEventListener("dragenter", this._enableFullscreen);
 		document.addEventListener("dragend", this._disableFullscreen);
 		document.addEventListener("dragleave", this._disableFullscreen);

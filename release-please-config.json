@@ -9,8 +9,8 @@
 		"packages/style-dictionary": {
 			"package-name": "@grantcodes/style-dictionary"
 		},
-		"packages/astro-blocks": {
-			"package-name": "@grantcodes/astro-blocks"
+		"packages/astro": {
+			"package-name": "@grantcodes/astro"
 		}
 	}
 }
