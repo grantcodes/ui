@@ -977,6 +977,23 @@
           "members": [
             {
               "kind": "field",
+              "name": "_fieldsetDisabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "method",
+              "name": "_handleFormClick",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
               "name": "disabled",
               "privacy": "public",
               "type": {
@@ -985,6 +1002,38 @@
               "default": "false",
               "attribute": "disabled",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "form",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "form",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "formAssociated",
+              "type": {
+                "text": "boolean"
+              },
+              "static": true,
+              "default": "true"
+            },
+            {
+              "kind": "method",
+              "name": "formDisabledCallback",
+              "parameters": [
+                {
+                  "name": "disabled"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "formResetCallback"
             },
             {
               "kind": "field",
@@ -1035,6 +1084,13 @@
               },
               "default": "false",
               "fieldName": "disabled"
+            },
+            {
+              "name": "form",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "form"
             },
             {
               "name": "href",
@@ -2940,6 +2996,17 @@
             },
             {
               "kind": "field",
+              "name": "direction",
+              "privacy": "public",
+              "type": {
+                "text": "'vertical' | 'horizontal'"
+              },
+              "description": "Direction of the field. Generally want horizontal for checkboxes and radios.",
+              "default": "\"vertical\"",
+              "attribute": "direction"
+            },
+            {
+              "kind": "field",
               "name": "error",
               "privacy": "public",
               "type": {
@@ -2999,24 +3066,26 @@
             },
             {
               "kind": "field",
-              "name": "inlineInput",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
               "name": "label",
               "privacy": "public",
               "type": {
                 "text": "string"
               },
               "default": "\"\"",
-              "attribute": "label"
+              "attribute": "label",
+              "reflects": true
             }
           ],
           "attributes": [
+            {
+              "name": "direction",
+              "type": {
+                "text": "'vertical' | 'horizontal'"
+              },
+              "description": "Direction of the field. Generally want horizontal for checkboxes and radios.",
+              "default": "\"vertical\"",
+              "fieldName": "direction"
+            },
             {
               "name": "error",
               "type": {
@@ -3910,7 +3979,11 @@
             },
             {
               "kind": "field",
-              "name": "_darkQuery"
+              "name": "_darkQuery",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
             },
             {
               "kind": "field",
@@ -4852,6 +4925,180 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/person/index.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/person/person.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/person/person.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "GrantCodesPerson",
+          "members": [
+            {
+              "kind": "field",
+              "name": "cta",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional CTA as a JSON string: `{\"label\":\"...\",\"href\":\"...\"}`.",
+              "default": "\"\"",
+              "attribute": "cta"
+            },
+            {
+              "kind": "field",
+              "name": "media",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The persons name.",
+              "attribute": "name"
+            },
+            {
+              "kind": "field",
+              "name": "reverse",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "When true, the media appears on the right and text on the left.",
+              "default": "false",
+              "attribute": "reverse",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "text",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Body text paragraph.",
+              "default": "\"\"",
+              "attribute": "text"
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            }
+          ],
+          "attributes": [
+            {
+              "name": "cta",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional CTA as a JSON string: `{\"label\":\"...\",\"href\":\"...\"}`.",
+              "default": "\"\"",
+              "fieldName": "cta"
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "description": "The persons name.",
+              "fieldName": "name"
+            },
+            {
+              "name": "reverse",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "When true, the media appears on the right and text on the left.",
+              "default": "false",
+              "fieldName": "reverse"
+            },
+            {
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "description": "Body text paragraph.",
+              "default": "\"\"",
+              "fieldName": "text"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "grantcodes-person",
+          "customElement": true,
+          "modulePath": "src/components/person/person.component.js",
+          "definitionPath": "src/components/person/person.js"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GrantCodesPerson",
+          "declaration": {
+            "name": "GrantCodesPerson",
+            "module": "src/components/person/person.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/person/person.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/person/person.component.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "GrantCodesPerson",
+            "module": "src/components/person/person.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-person",
+          "declaration": {
+            "name": "GrantCodesPerson",
+            "module": "/src/components/person/person.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/pricing/index.js",
       "declarations": [],
       "exports": [
@@ -5383,631 +5630,21 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/tabs/internal/tabs-button.component.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "GrantCodesTabsButton",
-          "members": [
-            {
-              "kind": "field",
-              "name": "active",
-              "privacy": "public",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "active",
-              "inheritedFrom": {
-                "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "buttonId",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "readonly": true,
-              "attribute": "buttonId",
-              "reflects": true,
-              "inheritedFrom": {
-                "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "containerId",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "attribute": "containerId",
-              "inheritedFrom": {
-                "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "content",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "readonly": true,
-              "attribute": "content",
-              "inheritedFrom": {
-                "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "index",
-              "privacy": "public",
-              "type": {
-                "text": "number"
-              },
-              "default": "-1",
-              "attribute": "index",
-              "inheritedFrom": {
-                "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "label",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "attribute": "label",
-              "inheritedFrom": {
-                "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "panelId",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "readonly": true,
-              "attribute": "panelId",
-              "inheritedFrom": {
-                "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "shadowRootOptions",
-              "type": {
-                "text": "object"
-              },
-              "static": true,
-              "default": "{ ...LitElement.shadowRootOptions, delegatesFocus: true, }"
-            }
-          ],
-          "superclass": {
-            "name": "GrantCodesTabsItem",
-            "module": "/src/components/tabs/internal/tabs-item.component.js"
-          },
-          "tagName": "grantcodes-tabs-button",
-          "customElement": true,
-          "attributes": [
-            {
-              "name": "active",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "active",
-              "inheritedFrom": {
-                "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
-              }
-            },
-            {
-              "name": "buttonId",
-              "type": {
-                "text": "string"
-              },
-              "readonly": true,
-              "fieldName": "buttonId",
-              "inheritedFrom": {
-                "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
-              }
-            },
-            {
-              "name": "containerId",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "fieldName": "containerId",
-              "inheritedFrom": {
-                "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
-              }
-            },
-            {
-              "name": "content",
-              "type": {
-                "text": "string"
-              },
-              "readonly": true,
-              "fieldName": "content",
-              "inheritedFrom": {
-                "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
-              }
-            },
-            {
-              "name": "index",
-              "type": {
-                "text": "number"
-              },
-              "default": "-1",
-              "fieldName": "index",
-              "inheritedFrom": {
-                "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
-              }
-            },
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "fieldName": "label",
-              "inheritedFrom": {
-                "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
-              }
-            },
-            {
-              "name": "panelId",
-              "type": {
-                "text": "string"
-              },
-              "readonly": true,
-              "fieldName": "panelId",
-              "inheritedFrom": {
-                "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
-              }
-            }
-          ],
-          "modulePath": "src/components/tabs/internal/tabs-button.component.js",
-          "definitionPath": "src/components/tabs/internal/tabs-button.js",
-          "cssProperties": [],
-          "cssParts": [],
-          "cssStates": [],
-          "events": [],
-          "slots": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "GrantCodesTabsButton",
-          "declaration": {
-            "name": "GrantCodesTabsButton",
-            "module": "src/components/tabs/internal/tabs-button.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/tabs/internal/tabs-button.js",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "module": "src/components/tabs/internal/tabs-button.component.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "GrantCodesTabsButton",
-            "module": "src/components/tabs/internal/tabs-button.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-tabs-button",
-          "declaration": {
-            "name": "GrantCodesTabsButton",
-            "module": "/src/components/tabs/internal/tabs-button.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/tabs/internal/tabs-item.component.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "GrantCodesTabsItem",
-          "members": [
-            {
-              "kind": "field",
-              "name": "active",
-              "privacy": "public",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "active"
-            },
-            {
-              "kind": "field",
-              "name": "buttonId",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "readonly": true,
-              "attribute": "buttonId",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "containerId",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "attribute": "containerId"
-            },
-            {
-              "kind": "field",
-              "name": "content",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "readonly": true,
-              "attribute": "content"
-            },
-            {
-              "kind": "field",
-              "name": "index",
-              "privacy": "public",
-              "type": {
-                "text": "number"
-              },
-              "default": "-1",
-              "attribute": "index"
-            },
-            {
-              "kind": "field",
-              "name": "label",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "attribute": "label"
-            },
-            {
-              "kind": "field",
-              "name": "panelId",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "readonly": true,
-              "attribute": "panelId"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "active",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "active"
-            },
-            {
-              "name": "buttonId",
-              "type": {
-                "text": "string"
-              },
-              "readonly": true,
-              "fieldName": "buttonId"
-            },
-            {
-              "name": "containerId",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "fieldName": "containerId"
-            },
-            {
-              "name": "content",
-              "type": {
-                "text": "string"
-              },
-              "readonly": true,
-              "fieldName": "content"
-            },
-            {
-              "name": "index",
-              "type": {
-                "text": "number"
-              },
-              "default": "-1",
-              "fieldName": "index"
-            },
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "fieldName": "label"
-            },
-            {
-              "name": "panelId",
-              "type": {
-                "text": "string"
-              },
-              "readonly": true,
-              "fieldName": "panelId"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "customElement": true,
-          "modulePath": "src/components/tabs/internal/tabs-item.component.js"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "GrantCodesTabsItem",
-          "declaration": {
-            "name": "GrantCodesTabsItem",
-            "module": "src/components/tabs/internal/tabs-item.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/tabs/tab.component.js",
       "declarations": [
         {
           "kind": "class",
           "description": "",
           "name": "GrantCodesTab",
-          "members": [
-            {
-              "kind": "field",
-              "name": "active",
-              "privacy": "public",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "active",
-              "inheritedFrom": {
-                "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "buttonId",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "readonly": true,
-              "attribute": "buttonId",
-              "reflects": true,
-              "inheritedFrom": {
-                "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "containerId",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "attribute": "containerId",
-              "inheritedFrom": {
-                "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "content",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "readonly": true,
-              "attribute": "content",
-              "inheritedFrom": {
-                "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "index",
-              "privacy": "public",
-              "type": {
-                "text": "number"
-              },
-              "default": "-1",
-              "attribute": "index",
-              "inheritedFrom": {
-                "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "label",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "attribute": "label",
-              "inheritedFrom": {
-                "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "panelId",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "readonly": true,
-              "attribute": "panelId",
-              "inheritedFrom": {
-                "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
-              }
-            }
-          ],
+          "members": [],
           "superclass": {
             "name": "GrantCodesTabsItem",
             "module": "/src/components/tabs/internal/tabs-item.component.js"
           },
           "tagName": "grantcodes-tab",
           "customElement": true,
-          "attributes": [
-            {
-              "name": "active",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "active",
-              "inheritedFrom": {
-                "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
-              }
-            },
-            {
-              "name": "buttonId",
-              "type": {
-                "text": "string"
-              },
-              "readonly": true,
-              "fieldName": "buttonId",
-              "inheritedFrom": {
-                "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
-              }
-            },
-            {
-              "name": "containerId",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "fieldName": "containerId",
-              "inheritedFrom": {
-                "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
-              }
-            },
-            {
-              "name": "content",
-              "type": {
-                "text": "string"
-              },
-              "readonly": true,
-              "fieldName": "content",
-              "inheritedFrom": {
-                "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
-              }
-            },
-            {
-              "name": "index",
-              "type": {
-                "text": "number"
-              },
-              "default": "-1",
-              "fieldName": "index",
-              "inheritedFrom": {
-                "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
-              }
-            },
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "fieldName": "label",
-              "inheritedFrom": {
-                "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
-              }
-            },
-            {
-              "name": "panelId",
-              "type": {
-                "text": "string"
-              },
-              "readonly": true,
-              "fieldName": "panelId",
-              "inheritedFrom": {
-                "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
-              }
-            }
-          ],
           "modulePath": "src/components/tabs/tab.component.js",
-          "definitionPath": "src/components/tabs/tab.js",
-          "cssProperties": [],
-          "cssParts": [],
-          "cssStates": [],
-          "events": [],
-          "slots": []
+          "definitionPath": "src/components/tabs/tab.js"
         }
       ],
       "exports": [
