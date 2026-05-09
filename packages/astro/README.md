@@ -69,7 +69,14 @@ Components render on the server and hydrate automatically in the browser. Use As
 
 ### Theme and Styles
 
-Set the UI theme in the integration when you want `@grantcodes/astro` to load it for you:
+Use this decision tree for styles after adopting `@grantcodes/astro`:
+
+1. If you pass `theme` to `ui({ theme: 'grantcodes' })`, the integration loads the bundled theme stylesheet for you.
+2. If your app still depends on the shared global UI base styles, keep `@grantcodes/ui/styles/base.css` as a manual app import.
+3. Only remove the manual `base.css` import if your app already provides equivalent global UI base styles another way.
+4. Do not document or expect automatic `base.css` injection from the integration. It does not happen.
+
+Known-good split (this mirrors `apps/astro/src/layouts/Layout.astro`):
 
 ```javascript
 // astro.config.mjs
@@ -90,12 +97,17 @@ export default defineConfig({
 
 Supported themes: `grantcodes`, `grantina`, `todomap`, `wireframe`.
 
-If you prefer to manage styles manually, you can still import CSS side effects yourself:
+```astro
+---
+import '@grantcodes/ui/styles/base.css';
+---
+```
+
+If you prefer to manage theme styles manually, import the theme stylesheet yourself. Keep theme CSS and `base.css` as separate decisions:
 
 ```astro
 ---
 import '@grantcodes/ui/styles/themes/grantcodes.css';
-import '@grantcodes/ui/styles/base.css';
 ---
 ```
 
