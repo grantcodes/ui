@@ -219,7 +219,8 @@ The integration absorbs these manual configuration items:
 ## Step 4: Keep the style contract intact
 
 Do **not** patch or strip `@grantcodes/ui` CSS imports to silence warnings or force a build through.
-That is unsupported, can break Lit shadow styles, and can surface `<style>undefined</style>` in rendered output.
+That is unsupported, breaks Lit shadow styles, and can surface `<style>undefined</style>` in rendered output.
+The fix is to restore the original package CSS imports and trust the integration-owned Vite wiring instead of patching built package files.
 
 Use this decision tree after migrating:
 
@@ -228,7 +229,7 @@ Use this decision tree after migrating:
 3. Only remove the manual `base.css` import if your app already provides equivalent global UI base styles another way.
 4. If styles disappear after migration, restore the package CSS imports and remove bad manual Vite wiring instead of patching package source.
 
-Known-good split:
+Known-good split (this mirrors `apps/astro/src/layouts/Layout.astro`):
 
 ```javascript
 // astro.config.mjs
@@ -247,6 +248,13 @@ import '@grantcodes/ui/styles/base.css';
 ```
 
 The integration-owned theme import and the app-owned `base.css` import solve different problems. Keep them separate in the docs and in migrated apps.
+
+### Quick checklist
+
+- `ui({ theme: 'grantcodes' })` owns the bundled theme stylesheet
+- `@grantcodes/ui/styles/base.css` stays as a manual app import unless your app already replaces those base styles
+- `@grantcodes/astro` owns `cssImportAttributes()`, `vite.ssr.noExternal`, and related Lit SSR wiring
+- Restoring package CSS imports is the supported fix when you see `<style>undefined</style>`
 
 ## Step 5: Update component imports
 
@@ -305,6 +313,7 @@ If a migrated app starts rendering `<style>undefined</style>` or web components 
 2. Remove obsolete manual Vite wiring such as `cssImportAttributes()`, manual `vite.ssr.noExternal`, and duplicated `vite.resolve.noExternal`.
 3. Keep `ui({ theme })` for bundled theme loading.
 4. Keep `@grantcodes/ui/styles/base.css` as a manual app import unless equivalent global UI base styles already exist elsewhere in your app.
+5. Re-test after restoring the package imports instead of carrying a patch against compiled package source.
 
 Do not patch package source as the long-term fix.
 
