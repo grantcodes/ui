@@ -10,6 +10,7 @@
 
 .breadcrumb {
 	display: block;
+	font: var(--g-theme-typography-meta-sm-font);
 }
 
 .breadcrumb__list {
@@ -26,7 +27,6 @@
 	display: inline-flex;
 	align-items: center;
 	gap: var(--g-theme-spacing-sm);
-	font-size: var(--g-typography-font-size-14);
 	color: var(--g-theme-color-primary-700);
 }
 
