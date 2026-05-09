@@ -1,0 +1,35 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+:host {
+	display: block;
+}
+
+.person {
+    display: flex;
+    flex-direction: row;
+	gap: var(--g-theme-spacing-md);
+}
+.person:has(.person__subtitle:empty) {
+    align-items: center;
+}
+
+.person__name {
+	margin: 0;
+	font: var(--g-typography-h6-font);
+	color: var(--g-theme-color-content-default);
+}
+
+.person__subtitle {
+	margin: 0;
+	font: var(--g-theme-typography-body-sm-font);
+	color: var(--g-theme-color-content-subtle);
+	line-height: var(--g-)
+}
+
+.person__subtitle:empty {
+    display: none;
+}
