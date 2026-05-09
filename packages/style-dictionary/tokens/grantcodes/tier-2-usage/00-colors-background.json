@@ -8,7 +8,7 @@
 				"value": "light-dark({color.neutral.300}, {color.neutral.700})"
 			},
 			"subtle": {
-				"value": "light-dark({color.neutral.100}, {color.neutral.800})"
+				"value": "light-dark({color.neutral.100}, {color.neutral.850})"
 			},
 			"subtle-hover": {
 				"value": "light-dark({color.neutral.200}, {color.neutral.700})"
