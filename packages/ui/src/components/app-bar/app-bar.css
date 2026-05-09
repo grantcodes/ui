@@ -17,7 +17,7 @@
 	z-index: 100;
 }
 
-.app-bar--sticky {
+:host:has(.app-bar--sticky) {
 	position: sticky;
 	inset-block-start: 0;
 }
