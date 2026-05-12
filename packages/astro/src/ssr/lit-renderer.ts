@@ -12,6 +12,7 @@
 
 import { LitElementRenderer } from '@lit-labs/ssr/lib/lit-element-renderer.js';
 import * as parse5 from 'parse5';
+import { getSsrConstructorDiagnostic } from './constructor-diagnostics.js';
 
 function isCustomElementTag(name: unknown): boolean {
 	return typeof name === 'string' && /-/.test(name);
@@ -32,9 +33,14 @@ async function isLitElement(Component: unknown): Promise<boolean> {
 }
 
 export async function check(Component: unknown): Promise<boolean> {
-	// Lit doesn't support getting a tagName from a Constructor at this time.
-	// So this must be a string at the moment.
-	return !!(await isLitElement(Component));
+	// Use the same SSR eligibility rules as the render guard.
+	// For string tag names (the common SSR path), use the diagnostic check.
+	// For constructor-based components (legacy path), check _$litElement$ directly.
+	if (typeof Component === 'string') {
+		return getSsrConstructorDiagnostic(Component).eligible;
+	}
+	const Ctr = getCustomElementConstructor(Component as string | Function);
+	return !!Ctr?._$litElement$;
 }
 
 function* render(
@@ -45,6 +51,13 @@ function* render(
 	let tagName = Component;
 	if (typeof tagName !== 'string') {
 		tagName = (Component as Record<symbol, string>)[Symbol.for('tagName')];
+	}
+
+	// SSR constructor guard: fail early before opaque Lit crash path
+	const isDev = process.env.NODE_ENV !== 'production';
+	const { eligible, message } = getSsrConstructorDiagnostic(tagName, isDev);
+	if (!eligible) {
+		throw new Error(message);
 	}
 
 	const instance = new LitElementRenderer(tagName);

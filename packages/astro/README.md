@@ -52,7 +52,7 @@ import { GrantCodesButton } from '@grantcodes/ui/components/button/index.js';
 <grantcodes-button variant="primary">Click me</grantcodes-button>
 ```
 
-Components render on the server and hydrate automatically in the browser. Use Astro's `client:*` directives to control hydration timing when needed:
+Components render on the server by default. Choose a `client:*` directive only when you want a different rendering or hydration tradeoff:
 
 ```astro
 <!-- Hydrate as soon as the page loads -->
@@ -61,15 +61,33 @@ Components render on the server and hydrate automatically in the browser. Use As
 <!-- Hydrate when scrolled into view -->
 <grantcodes-button client:visible>Click me</grantcodes-button>
 
-<!-- Never hydrate — static server-rendered output only -->
+<!-- Skip SSR and render in the browser only -->
 <grantcodes-button client:only="lit">Click me</grantcodes-button>
 ```
 
-> Most components work fine without any directive. Add `client:load` or `client:visible` only when you need interactivity.
+> Most components work fine without any directive. `client:only="lit"` is a safe fallback when you want predictable browser-only rendering during or after migration.
+
+#### Directive decision matrix
+
+| Directive | Preserves SSR? | When to use it | Tradeoff |
+|-----------|----------------|----------------|----------|
+| No directive | Yes | Default choice for components that SSR cleanly and do not need immediate client interactivity | Best SSR output, but depends on SSR compatibility |
+| `client:load` | Yes | Use when the component should SSR first, then hydrate as soon as the page loads | More eager client work |
+| `client:visible` | Yes | Use when the component can wait to hydrate until it scrolls into view | Better client performance, delayed interactivity |
+| `client:only="lit"` | No | Use when you want browser-only rendering because of intermittent SSR constructor trouble, browser-only component behavior, or migration uncertainty around SSR | Gives up SSR benefits in exchange for predictable browser rendering |
+
+`client:only="lit"` is not just an emergency workaround. It is an acceptable long-term choice when your team prefers predictable browser rendering over SSR benefits for a specific component.
 
 ### Theme and Styles
 
-Set the UI theme in the integration when you want `@grantcodes/astro` to load it for you:
+Use this decision tree for styles after adopting `@grantcodes/astro`:
+
+1. If you pass `theme` to `ui({ theme: 'grantcodes' })`, the integration loads the bundled theme stylesheet for you.
+2. If your app still depends on the shared global UI base styles, keep `@grantcodes/ui/styles/base.css` as a manual app import.
+3. Only remove the manual `base.css` import if your app already provides equivalent global UI base styles another way.
+4. Do not document or expect automatic `base.css` injection from the integration. It does not happen.
+
+Known-good split (this mirrors `apps/astro/src/layouts/Layout.astro`):
 
 ```javascript
 // astro.config.mjs
@@ -90,12 +108,17 @@ export default defineConfig({
 
 Supported themes: `grantcodes`, `grantina`, `todomap`, `wireframe`.
 
-If you prefer to manage styles manually, you can still import CSS side effects yourself:
+```astro
+---
+import '@grantcodes/ui/styles/base.css';
+---
+```
+
+If you prefer to manage theme styles manually, import the theme stylesheet yourself. Keep theme CSS and `base.css` as separate decisions:
 
 ```astro
 ---
 import '@grantcodes/ui/styles/themes/grantcodes.css';
-import '@grantcodes/ui/styles/base.css';
 ---
 ```
 
@@ -138,6 +161,12 @@ Available blocks: `accordion`, `cards`, `countdown`, `cta`, `feature-list`, `gal
 ### Async Components Not SSRable
 
 Components that perform asynchronous operations during render (for example, fetching data inside `render()`) cannot be server-side rendered by `@lit-labs/ssr`. Use `client:only="lit"` for these components.
+
+Other migration signals that make `client:only="lit"` a good fit:
+
+- intermittent SSR constructor trouble during Astro rendering
+- components that rely on browser-only behavior
+- migrated apps where browser rendering is the safer long-term tradeoff than SSR for a specific component
 
 ### DOM Shim Interference
 
