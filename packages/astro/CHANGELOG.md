@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.2.0](https://github.com/grantcodes/ui/compare/astro-v0.1.0...astro-v0.2.0) (2026-05-12)
+
+
+### Features
+
+* **36-01:** add style contract migration troubleshooting ([a6a0c31](https://github.com/grantcodes/ui/commit/a6a0c31734c64970960e864acd8c3f31191a3532))
+* **36-01:** upgrade migration config guidance ([023a511](https://github.com/grantcodes/ui/commit/023a5114b7fec2e1e0d3634d4eea853149028cff))
+* **36-02:** add README client directive matrix ([0b23ab7](https://github.com/grantcodes/ui/commit/0b23ab7baf95b864ff3310714e24c25ace0c5b5c))
+* **36-02:** add README style decision tree ([3aa02b4](https://github.com/grantcodes/ui/commit/3aa02b457360c706e9937b235e6b167fd6c7c282))
+* **37-01:** add SSR constructor diagnostics ([75b91b2](https://github.com/grantcodes/ui/commit/75b91b20b25b7ef5c814371fc116b7ab76064451))
+
 ## [0.1.0](https://github.com/grantcodes/ui/compare/astro-v0.0.1...astro-v0.1.0) (2026-05-08)
 
 
