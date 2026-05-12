@@ -1,6 +1,6 @@
 {
   "name": "@grantcodes/astro",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "description": "Zero-config Astro integration for @grantcodes/ui Lit web components — Lit SSR and Vite config in one import",
   "exports": {
