@@ -128,8 +128,8 @@ describe('resolveTheme OG fonts', () => {
     assert.strictEqual(result.fontName, 'Albert Sans');
     assert.strictEqual(result.titleFontName, 'Vidaloka');
     assert.strictEqual(result.bodyFontName, 'Albert Sans');
-    assert.match(result.titleFontFile, /vidaloka-latin-400-normal\.woff2$/);
-    assert.match(result.bodyFontFile, /albert-sans-latin-wght-normal\.woff2$/);
+    assert.match(result.titleFontFile, /vidaloka-latin-400-normal\.woff$/);
+    assert.match(result.bodyFontFile, /albert-sans-latin-500-normal\.woff$/);
   });
 
   it('uses a bundled local fallback font for wireframe OG output', () => {
