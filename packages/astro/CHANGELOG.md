@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/grantcodes/ui/compare/astro-v0.2.0...astro-v0.2.1) (2026-05-14)
+
+
+### Bug Fixes
+
+* **og-images:** align Grantina web fonts and OG generation ([2b5e19f](https://github.com/grantcodes/ui/commit/2b5e19f1dd90156b8c6038095e7f2c7c0ee89696))
+
 ## [0.2.0](https://github.com/grantcodes/ui/compare/astro-v0.1.0...astro-v0.2.0) (2026-05-12)
 
 
