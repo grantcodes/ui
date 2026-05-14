@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.1](https://github.com/grantcodes/ui/compare/style-dictionary-v1.6.0...style-dictionary-v1.6.1) (2026-05-14)
+
+
+### Bug Fixes
+
+* **og-images:** align Grantina web fonts and OG generation ([2b5e19f](https://github.com/grantcodes/ui/commit/2b5e19f1dd90156b8c6038095e7f2c7c0ee89696))
+
 ## [1.6.0](https://github.com/grantcodes/ui/compare/style-dictionary-v1.5.1...style-dictionary-v1.6.0) (2026-05-08)
 
 
