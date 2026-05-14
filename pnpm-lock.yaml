@@ -119,6 +119,18 @@ importers:
 
   packages/style-dictionary:
     dependencies:
+      '@fontsource-variable/albert-sans':
+        specifier: ^5.2.8
+        version: 5.2.8
+      '@fontsource/albert-sans':
+        specifier: ^5.2.8
+        version: 5.2.8
+      '@fontsource/pinyon-script':
+        specifier: ^5.2.8
+        version: 5.2.8
+      '@fontsource/vidaloka':
+        specifier: ^5.2.7
+        version: 5.2.7
       colorjs.io:
         specifier: ^0.5.2
         version: 0.5.2
@@ -912,6 +924,18 @@ packages:
 
   '@expressive-code/plugin-text-markers@0.41.7':
     resolution: {integrity: sha512-Ewpwuc5t6eFdZmWlFyeuy3e1PTQC0jFvw2Q+2bpcWXbOZhPLsT7+h8lsSIJxb5mS7wZko7cKyQ2RLYDyK6Fpmw==}
+
+  '@fontsource-variable/albert-sans@5.2.8':
+    resolution: {integrity: sha512-hDtxW/K8gj8y+42BvH50UUIgpY7oriWXi+79Aam0MN+BIwk2CyN3kI/NP37e39PvC1625UFHEyBi48IcMy3DiA==}
+
+  '@fontsource/albert-sans@5.2.8':
+    resolution: {integrity: sha512-DCBojiRL/lxTC+fQPwg2eoszTo4dX3uH6iWmpsZ0ytn8rGfhUNl5QJjZNEVQmbZgeRRDZqc5iaPTl1+9AxU2Lg==}
+
+  '@fontsource/pinyon-script@5.2.8':
+    resolution: {integrity: sha512-X2besX/JgOOPGwPy3CX6InZwmMQ7wmLGNGTWDHHhUfpfSj94TbfTieFpDW2/PoFLjWswiTdWwlOM8rQY0QGEVg==}
+
+  '@fontsource/vidaloka@5.2.7':
+    resolution: {integrity: sha512-LPbfgNfnRuH8WkAaA8149DLTfKOwT+ap+23d2JagHkqwYpmaIHOz79MV1RR7rW64VHtURwpVHrNEl/RvLgdFhA==}
 
   '@github/catalyst@1.8.0':
     resolution: {integrity: sha512-uLpi/D/mKfylYaFLfzNuloXNENi0AlcM0Z7hwYLH8Z030jBCr+ueMdX2xLxCzpMH/keYXKh0uPrHSMfcbxU6KA==}
@@ -6203,6 +6227,14 @@ snapshots:
   '@expressive-code/plugin-text-markers@0.41.7':
     dependencies:
       '@expressive-code/core': 0.41.7
+
+  '@fontsource-variable/albert-sans@5.2.8': {}
+
+  '@fontsource/albert-sans@5.2.8': {}
+
+  '@fontsource/pinyon-script@5.2.8': {}
+
+  '@fontsource/vidaloka@5.2.7': {}
 
   '@github/catalyst@1.8.0': {}
 

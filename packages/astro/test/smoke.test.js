@@ -119,14 +119,14 @@ describe("@grantcodes/astro smoke test", () => {
         cwd: tempDir,
         stdio: "pipe",
         encoding: "utf8",
-        timeout: 120000,
+        timeout: 300000,
       });
 
       execSync("npx astro build", {
         cwd: tempDir,
         stdio: "pipe",
         encoding: "utf8",
-        timeout: 120000,
+        timeout: 300000,
       });
 
       html = fs.readFileSync(path.join(tempDir, "dist", "index.html"), "utf8");

@@ -36,7 +36,7 @@ export default defineConfig({
 });
 ```
 
-Passing `theme` auto-loads the matching `@grantcodes/ui` theme stylesheet for the site and gives bundled OG image generation a matching set of default colors and fonts.
+Passing `theme` auto-loads the matching `@grantcodes/ui` theme stylesheet for the site and gives bundled OG image generation matching default colors plus bundled local font defaults or fallbacks, depending on the theme.
 
 ## Usage
 
@@ -140,6 +140,10 @@ export default defineConfig({
   ],
 });
 ```
+
+- Set `ogImages: false` to disable bundled OG generation entirely.
+- OG images use the resolved site favicon as their default mark.
+- Theme OG defaults always match the selected theme colors. Grantina now uses package-managed local Albert Sans + Vidaloka assets for OG generation, while other themes keep their existing local font defaults.
 
 ## Blocks
 
