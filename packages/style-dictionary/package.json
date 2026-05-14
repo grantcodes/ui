@@ -19,6 +19,7 @@
 		"./todomap/json": "./dist/json/todomap/tokens.json",
 		"./grantina/css": "./dist/css/grantina/tokens.css",
 		"./grantina/css/theme": "./dist/css/grantina/grantina.css",
+		"./grantina/fonts": "./lib/grantina-fonts.js",
 		"./grantina/js": "./dist/js/grantina/style-dictionary.js",
 		"./grantina/json": "./dist/json/grantina/tokens.json",
 		"./assets/fonts/greycliff": "./assets/fonts/greycliff.css",
@@ -63,10 +64,15 @@
 		"style-dictionary": "^5.0.1"
 	},
 	"dependencies": {
+		"@fontsource-variable/albert-sans": "^5.2.8",
+		"@fontsource/albert-sans": "^5.2.8",
+		"@fontsource/pinyon-script": "^5.2.8",
+		"@fontsource/vidaloka": "^5.2.7",
 		"colorjs.io": "^0.5.2"
 	},
 	"files": [
 		"dist/**/*",
+		"lib/**/*",
 		"assets/**/*",
 		"README.md",
 		"CHANGELOG.md"

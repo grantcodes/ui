@@ -11,6 +11,8 @@ export interface AstroOgImagesOptions {
   titleFontFile?: string
   bodyFontFile?: string
   fontName?: string
+  titleFontName?: string
+  bodyFontName?: string
   titleFontWeight?: number
   bodyFontWeight?: number
   foregroundColor?: string
@@ -38,6 +40,8 @@ const defaultOptions: Required<AstroOgImagesOptions> = {
   titleFontFile: './node_modules/@grantcodes/style-dictionary/assets/fonts/greycliff-heavy.woff',
   bodyFontFile: './node_modules/@grantcodes/style-dictionary/assets/fonts/greycliff-regular.woff',
   fontName: 'Greycliff',
+  titleFontName: 'Greycliff',
+  bodyFontName: 'Greycliff',
   titleFontWeight: 900,
   bodyFontWeight: 500,
   foregroundColor: '#f0f1f3',
@@ -63,12 +67,12 @@ function detectFaviconPath(): string {
 
 export function resolveOgOptions(input: ResolveOgOptionsInput = {}): ResolvedOgOptions {
   const ogImages = input.ogImages
-  if (typeof ogImages === 'undefined') {
+
+  // Explicit false or undefined → disabled
+  if (ogImages === false || typeof ogImages === 'undefined') {
     return {
       enabled: false,
-      options: {
-        ...defaultOptions,
-      },
+      options: { ...defaultOptions },
     }
   }
 
@@ -85,14 +89,37 @@ export function resolveOgOptions(input: ResolveOgOptionsInput = {}): ResolvedOgO
     ...explicitOptions,
   }
 
+  const titleFontName = explicitOptions.titleFontName
+    || input.themeDefaults?.titleFontName
+    || explicitOptions.fontName
+    || input.themeDefaults?.fontName
+    || defaultOptions.titleFontName
+
+  const bodyFontName = explicitOptions.bodyFontName
+    || input.themeDefaults?.bodyFontName
+    || explicitOptions.fontName
+    || input.themeDefaults?.fontName
+    || defaultOptions.bodyFontName
+
   return {
     enabled: true,
     options: {
       ...rawOptions,
+      titleFontName,
+      bodyFontName,
       foregroundColor: normalizeColor(rawOptions.foregroundColor, input.colorScheme),
       backgroundColor: normalizeColor(rawOptions.backgroundColor, input.colorScheme),
     },
   }
+}
+
+export function decodeHtmlEntities(text: string): string {
+  return text
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
 }
 
 export function getOgHooks(options: Required<AstroOgImagesOptions>) {
@@ -135,8 +162,8 @@ export function getOgHooks(options: Required<AstroOgImagesOptions>) {
             const descriptionQuery = html.match(/<meta name="description" content="(.*?)"/)
 
             const titleWithTemplate = titleQuery ? titleQuery[1] : ''
-            const title = titleWithTemplate.replace(options.titleTemplate.replace('%s', ''), '')
-            const description = descriptionQuery ? descriptionQuery[1] : ''
+            const title = decodeHtmlEntities(titleWithTemplate.replace(options.titleTemplate.replace('%s', ''), ''))
+            const description = decodeHtmlEntities(descriptionQuery ? descriptionQuery[1] : '')
 
             const svg = await satori(
               {
@@ -150,7 +177,7 @@ export function getOgHooks(options: Required<AstroOgImagesOptions>) {
                     color: options.foregroundColor,
                     backgroundColor: options.backgroundColor,
                     padding: '55px 70px',
-                    fontFamily: options.fontName,
+                    fontFamily: options.bodyFontName || options.fontName,
                     fontSize: 72,
                   },
                   children: [
@@ -167,6 +194,7 @@ export function getOgHooks(options: Required<AstroOgImagesOptions>) {
                         style: {
                           marginTop: 96,
                           fontWeight: options.titleFontWeight,
+                          fontFamily: options.titleFontName || options.fontName,
                         },
                         children: title,
                       },
@@ -190,13 +218,13 @@ export function getOgHooks(options: Required<AstroOgImagesOptions>) {
                 height: options.height,
                 fonts: [
                   {
-                    name: options.fontName,
+                    name: options.titleFontName || options.fontName,
                     data: titleFont,
                     weight: options.titleFontWeight,
                     style: 'normal',
                   },
                   {
-                    name: options.fontName,
+                    name: options.bodyFontName || options.fontName,
                     data: bodyFont,
                     weight: options.bodyFontWeight,
                     style: 'normal',
