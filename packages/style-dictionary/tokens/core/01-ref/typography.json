@@ -71,18 +71,6 @@
 				},
 				"lg": {
 					"value": "2px"
-				},
-				"neg-sm": {
-					"value": "-0.5px"
-				},
-				"neg-md": {
-					"value": "-1px"
-				},
-				"neg-lg": {
-					"value": "-1.5px"
-				},
-				"neg-xl": {
-					"value": "-2px"
 				}
 			}
 		}
