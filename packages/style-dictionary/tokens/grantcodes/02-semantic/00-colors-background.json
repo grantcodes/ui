@@ -17,16 +17,16 @@
 				"value": "light-dark({ref.color.neutral.black}, {ref.color.neutral.white})"
 			},
 			"primary": {
-				"value": "light-dark({color.primary.200}, {color.primary.800})"
+				"value": "{ref.color.purple.200}"
 			},
 			"primary-hover": {
-				"value": "light-dark({color.primary.300}, {color.primary.700})"
+				"value": "{ref.color.purple.300}"
 			},
 			"primary-disabled": {
 				"value": "light-dark({ref.color.neutral.200}, {ref.color.neutral.700})"
 			},
 			"primary-knockout": {
-				"value": "light-dark({color.primary.700}, {color.primary.700})"
+				"value": "light-dark({ref.color.purple.700}, {ref.color.purple.300})"
 			},
 			"primary-knockout-hover": {
 				"value": "light-dark({color.primary.600}, {color.primary.600})"
