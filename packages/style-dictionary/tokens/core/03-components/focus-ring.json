@@ -8,7 +8,7 @@
 				"value": "{color.primary.200}"
 			},
 			"contrast-shadow": {
-				"value": "{color.primary.800}"
+				"value": "light-dark({color.primary.800}, {color.primary.200})"
 			}
 		},
 		"width": {
