@@ -29,7 +29,7 @@ export const LayerOverrideDemo = {
 		<style>
 			/* This override is unlayered, so it beats all layers */
 			.layer-demo-override {
-				color: var(--g-theme-color-content-brand, rebeccapurple);
+				color: var(--g-color-content-brand, rebeccapurple);
 				font-weight: bold;
 			}
 		</style>
@@ -72,8 +72,8 @@ export const AllLayers = {
 			}
 			.layer-card {
 				padding: 1rem;
-				border: 1px solid var(--g-theme-color-border-default, #ccc);
-				border-radius: var(--g-theme-border-radius-md, 0.5rem);
+				border: 1px solid var(--g-color-border-default, #ccc);
+				border-radius: var(--g-border-radius-md, 0.5rem);
 			}
 			.layer-card h4 {
 				margin-top: 0;

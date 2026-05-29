@@ -9,10 +9,10 @@
 }
 
 .logo-cloud {
-	padding-block: var(--g-theme-spacing-2xl);
-	padding-inline: var(--g-theme-spacing-md);
-	border-top: 1px solid var(--g-theme-color-border-default);
-	border-bottom: 1px solid var(--g-theme-color-border-default);
+	padding-block: var(--g-spacing-2xl);
+	padding-inline: var(--g-spacing-md);
+	border-top: 1px solid var(--g-color-border-default);
+	border-bottom: 1px solid var(--g-color-border-default);
 }
 
 .logo-cloud__container {
@@ -21,13 +21,13 @@
 }
 
 .logo-cloud__title {
-	margin: 0 0 var(--g-theme-spacing-xl);
-	font-size: var(--g-theme-typography-meta-default-font-size);
-	font-weight: var(--g-theme-typography-meta-default-font-weight);
-	letter-spacing: var(--g-theme-typography-meta-default-letter-spacing);
+	margin: 0 0 var(--g-spacing-xl);
+	font-size: var(--g-typography-meta-default-font-size);
+	font-weight: var(--g-typography-meta-default-font-weight);
+	letter-spacing: var(--g-typography-meta-default-letter-spacing);
 	text-transform: uppercase;
 	text-align: center;
-	color: var(--g-theme-color-content-subtle);
+	color: var(--g-color-content-subtle);
 }
 
 .logo-cloud__grid {
@@ -35,7 +35,7 @@
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
-	gap: var(--g-theme-spacing-lg) var(--g-theme-spacing-2xl);
+	gap: var(--g-spacing-lg) var(--g-spacing-2xl);
 	padding: 0;
 	margin: 0;
 	list-style: none;
@@ -53,7 +53,7 @@
 
 .logo-cloud__logo {
 	display: block;
-	block-size: var(--g-theme-spacing-xl);
+	block-size: var(--g-spacing-xl);
 	inline-size: auto;
 	max-inline-size: 140px;
 	object-fit: contain;

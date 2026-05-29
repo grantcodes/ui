@@ -1,0 +1,8 @@
+{
+	"typography": {
+		"font-family": {
+			"heading": { "value": "{ref.typography.font-family.helvetica}" },
+			"body": { "value": "{ref.typography.font-family.helvetica}" }
+		}
+	}
+}

@@ -62,13 +62,13 @@ const args = minimist(process.argv.slice(2));
 const theme = args.theme;
 
 /**
- * Helper function to check if token is from tier-2 or tier-3
+ * Helper function to check if token is from semantic (02) or component (03) layer
  * 1) Used to determine if the token should be included in the theme tokens to apply `theme` prefix
  */
 const isHigherTierToken = (filePath) => {
 	if (!filePath) return false;
 	const isHigherTier =
-		filePath.includes("tier-2-usage") || filePath.includes("tier-3-components");
+		filePath.includes("02-semantic") || filePath.includes("03-components");
 	return isHigherTier;
 };
 
@@ -92,7 +92,7 @@ const transformTypographyTokens = (dictionary, themeTokens) => {
     const group = typographyGroups[style];
     if (group['font-family'] && group['font-weight'] && group['font-size'] && group['line-height']) {
       const shorthand = `${group['font-weight']} ${group['font-size']}/${group['line-height']} ${group['font-family']}`;
-      themeTokens.push(`  --g-theme-typography-${style}: ${shorthand};`);
+      themeTokens.push(`  --g-typography-${style}: ${shorthand};`);
     }
   });
 };
@@ -115,7 +115,7 @@ const transformShadowTokens = (dictionary, size, themeTokens) => {
 
 	/* 1 */
 	themeTokens.push(
-		`  --g-theme-box-shadow-${size}: ${x} ${y} ${blur} ${spread} ${color};`,
+		`  --g-box-shadow-${size}: ${x} ${y} ${blur} ${spread} ${color};`,
 	);
 };
 
@@ -220,12 +220,9 @@ const formatVariables = (dictionary) => {
 	 * 1) If the token is from tier-2 or tier-3, prefix it with `g-theme-`
 	 * 2) Otherwise, prefix it with `g-`
 	 */
-	const formatTokenName = (cleanPath, prop) => {
-		if (isHigherTierToken(prop.filePath)) {
-			return `--g-theme-${cleanPath}`;
-		}
-		return `--g-${cleanPath}`;
-	};
+	const formatTokenName = (cleanPath, _prop) => {
+	return `--g-${cleanPath}`;
+};
 
 	/**
 	 * Get all box-shadow values from tier 2/3
@@ -248,7 +245,7 @@ const formatVariables = (dictionary) => {
 		/**
 		 * 1) Always include z-index and size tokens from core
 		 */
-		if (prop.path[0] === "z-index") {
+		if (prop.path[0] === "z-index" || (prop.path[0] === "ref" && prop.path[1] === "z-index")) {
 			const cleanPath = prop.path
 				.map((segment) =>
 					segment.startsWith("@") ? segment.substring(1) : segment,
@@ -353,9 +350,6 @@ const getStyleDictionaryConfig = (theme) => {
 				)
 				.filter((segment) => segment !== "")
 				.join("-");
-			if (isHigherTierToken(token.filePath)) {
-				return `g-theme-${cleanPath}`;
-			}
 			return `g-${cleanPath}`;
 		},
 	});
@@ -403,15 +397,13 @@ const getStyleDictionaryConfig = (theme) => {
 
 			// Process regular tokens
 			dictionary.allTokens.forEach((token) => {
-				// Remove the isHigherTierToken check to include all tokens
-				if (token.path[0] === "box-shadow" && token.path.length > 2) return;
-				const prefix = isHigherTierToken(token.filePath) ? "g-theme-" : "g-";
-				transformedTokens[`${prefix}${token.path.join("-")}`] = token.value;
+			if (token.path[0] === "box-shadow" && token.path.length > 2) return;
+			transformedTokens[`g-${token.path.join("-")}`] = token.value;
 			});
 
 			// Process shadow tokens
 			shadowSizes.forEach((size) => {
-				transformedTokens[`g-theme-box-shadow-${size}`] =
+				transformedTokens[`g-box-shadow-${size}`] =
 					transformShadowTokensJSON(dictionary, size);
 			});
 
@@ -436,15 +428,6 @@ const getStyleDictionaryConfig = (theme) => {
 				.filter((segment) => segment !== "")
 				.join("-");
 
-			/* 2 */
-			if (isHigherTierToken(token.filePath)) {
-				return `GTheme${cleanPath
-					.split("-")
-					.map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-					.join("")}`;
-			}
-
-			/* 3 */
 			return `G${cleanPath
 				.split("-")
 				.map((part) => part.charAt(0).toUpperCase() + part.slice(1))
@@ -469,10 +452,12 @@ const getStyleDictionaryConfig = (theme) => {
             "auto-palette",
         ],
 		source: [
-			`./tokens/core/**/*.json`,
-			`./tokens/${theme}/tier-1-definitions/**/*.json`,
-			`./tokens/${theme}/tier-2-usage/**/*.json`,
-			`./tokens/${theme}/tier-3-components/**/*.json`,
+			`./tokens/core/01-ref/**/*.json`,
+			`./tokens/${theme}/01-ref/**/*.json`,
+			`./tokens/core/02-semantic/**/*.json`,
+			`./tokens/${theme}/02-semantic/**/*.json`,
+			`./tokens/core/03-components/**/*.json`,
+			`./tokens/${theme}/03-components/**/*.json`,
 		],
 		log: {
 			// Set the log level to show errors, warnings, and info messages

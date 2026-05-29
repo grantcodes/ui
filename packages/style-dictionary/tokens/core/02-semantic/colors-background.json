@@ -1,0 +1,12 @@
+{
+	"color": {
+		"background": {
+			"shimmer": {
+				"value": "{ref.color.neutral.500}"
+			},
+			"highlight": {
+				"value": "{ref.color.neutral.300}"
+			}
+		}
+	}
+}

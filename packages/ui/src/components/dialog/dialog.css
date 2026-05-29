@@ -8,11 +8,11 @@
 	width: 100%;
 	padding: 0;
 	max-width: 1200px;
-	background: var(--g-theme-color-background-default);
+	background: var(--g-color-background-default);
 	border-style: solid;
-	border-width: var(--g-theme-border-width-sm);
-	border-color: var(--g-theme-color-border-default);
-	border-radius: var(--g-theme-border-radius-md);
+	border-width: var(--g-border-width-sm);
+	border-color: var(--g-color-border-default);
+	border-radius: var(--g-border-radius-md);
 	overflow: hidden;
 }
 
@@ -28,17 +28,17 @@
 	position: absolute;
 	border: none;
 	line-height: 1;
-	font-size: var(--g-theme-typography-h4-font-size);
+	font-size: var(--g-typography-h4-font-size);
 	cursor: pointer;
 	background: transparent;
-	inset-block-start: var(--g-theme-spacing-md);
-	inset-inline-end: var(--g-theme-spacing-md);
+	inset-block-start: var(--g-spacing-md);
+	inset-inline-end: var(--g-spacing-md);
 	margin-block-start: -0.25rem;
 	margin-inline-end: -0.25rem;
 	border-radius: 50%;
 	width: 2rem;
 	height: 2rem;
-	padding: var(--g-theme-spacing-xs);
+	padding: var(--g-spacing-xs);
 	justify-content: center;
 	align-items: center;
 }
@@ -47,8 +47,8 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	gap: var(--g-theme-spacing-md);
-	padding: var(--g-theme-spacing-md);
+	gap: var(--g-spacing-md);
+	padding: var(--g-spacing-md);
 }
 
 .dialog__header,
@@ -64,11 +64,11 @@
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	padding: var(--g-theme-spacing-md);
-	border-bottom: var(--g-theme-border-width-sm) solid
-		var(--g-theme-color-border-default);
+	padding: var(--g-spacing-md);
+	border-bottom: var(--g-border-width-sm) solid
+		var(--g-color-border-default);
 }
 
 .dialog__footer ::slotted(grantcodes-button-group) {
-	--g-theme-border-radius-md: 0;
+	--g-border-radius-md: 0;
 }

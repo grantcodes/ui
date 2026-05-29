@@ -227,8 +227,8 @@ pre {
 :root {
 	color-scheme: light dark;
 	--grantcodes-ui-theme: "none";
-	background-color: var(--g-theme-color-background-default);
-	color: var(--g-theme-color-content-default);
+	background-color: var(--g-color-background-default);
+	color: var(--g-color-content-default);
 	fill: currentColor;
 }
 
@@ -250,7 +250,7 @@ pre {
 }
 
 ::selection {
-	background-color: var(--g-theme-color-background-primary);
+	background-color: var(--g-color-background-primary);
 }
 
 /* Default backdrop styles */

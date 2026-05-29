@@ -1,0 +1,22 @@
+{
+	"ref": {
+		"animation": {
+			"duration": {
+				"10": {
+					"value": "100ms"
+				},
+				"20": {
+					"value": "200ms"
+				},
+				"40": {
+					"value": "400ms"
+				}
+			},
+			"timing-function": {
+				"ease": {
+					"value": "ease-in-out"
+				}
+			}
+		}
+	}
+}

@@ -26,7 +26,7 @@ const meta = {
 		template(
 			args,
 			html`<div
-        style="background-color: var(--g-theme-color-background-subtle)"
+        style="background-color: var(--g-color-background-subtle)"
       >
         ${args.content}
       </div>`,

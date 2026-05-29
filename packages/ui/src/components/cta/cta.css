@@ -9,9 +9,9 @@
 }
 
 .cta {
-	padding-block: var(--g-theme-spacing-3xl);
-	padding-inline: var(--g-theme-spacing-md);
-	background: var(--g-theme-color-background-subtle);
+	padding-block: var(--g-spacing-3xl);
+	padding-inline: var(--g-spacing-md);
+	background: var(--g-color-background-subtle);
 }
 
 .cta__container {
@@ -28,39 +28,39 @@
 }
 
 .cta__eyebrow {
-	margin: 0 0 var(--g-theme-spacing-sm);
-	font-size: var(--g-theme-typography-meta-default-font-size);
-	font-weight: var(--g-theme-typography-meta-default-font-weight);
-	letter-spacing: var(--g-theme-typography-meta-default-letter-spacing);
+	margin: 0 0 var(--g-spacing-sm);
+	font-size: var(--g-typography-meta-default-font-size);
+	font-weight: var(--g-typography-meta-default-font-weight);
+	letter-spacing: var(--g-typography-meta-default-letter-spacing);
 	text-transform: uppercase;
-	color: var(--g-theme-color-content-primary, #7c3aed);
+	color: var(--g-color-content-primary, #7c3aed);
 }
 
 .cta__title {
-	margin: 0 0 var(--g-theme-spacing-md);
+	margin: 0 0 var(--g-spacing-md);
 	font: var(--g-typography-h2-font);
-	color: var(--g-theme-color-content-default);
+	color: var(--g-color-content-default);
 }
 
 .cta__text {
-	margin: 0 0 var(--g-theme-spacing-xl);
-	font: var(--g-theme-typography-body-lg);
-	color: var(--g-theme-color-content-subtle);
+	margin: 0 0 var(--g-spacing-xl);
+	font: var(--g-typography-body-lg);
+	color: var(--g-color-content-subtle);
 }
 
 .cta__actions {
 	display: flex;
 	flex-wrap: wrap;
-	gap: var(--g-theme-spacing-md);
+	gap: var(--g-spacing-md);
 	align-items: center;
 }
 
 .cta__secondary-link {
-	font-size: var(--g-theme-typography-body-default-font-size);
-	font-weight: var(--g-typography-font-weight-500);
-	color: var(--g-theme-color-content-default);
+	font-size: var(--g-typography-body-default-font-size);
+	font-weight: var(--g-typography-body-font-weight);
+	color: var(--g-color-content-default);
 }
 
 .cta__secondary-link:hover {
-	color: var(--g-theme-color-content-primary, #7c3aed);
+	color: var(--g-color-content-primary, #7c3aed);
 }

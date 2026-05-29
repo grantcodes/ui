@@ -20,11 +20,11 @@
 	anchor-name: --dropdown-trigger;
 	z-index: 1000;
 	min-inline-size: 12rem;
-	margin-block: var(--g-theme-spacing-xs);
-	padding-block: var(--g-theme-spacing-sm);
-	background-color: var(--g-theme-color-background-default);
-	border: 1px solid var(--g-theme-color-border-default);
-	border-radius: var(--g-theme-border-radius-md);
+	margin-block: var(--g-spacing-xs);
+	padding-block: var(--g-spacing-sm);
+	background-color: var(--g-color-background-default);
+	border: 1px solid var(--g-color-border-default);
+	border-radius: var(--g-border-radius-md);
 	animation: dropdown-fade-in 0.15s ease-out;
 }
 
@@ -52,31 +52,31 @@
 	display: flex;
 	width: 100%;
 	align-items: center;
-	gap: var(--g-theme-spacing-sm);
-	padding-block: var(--g-theme-spacing-sm);
-	padding-inline: var(--g-theme-spacing-md);
-	font-size: var(--g-typography-font-size-16);
-	color: var(--g-theme-color-content-default);
+	gap: var(--g-spacing-sm);
+	padding-block: var(--g-spacing-sm);
+	padding-inline: var(--g-spacing-md);
+	font-size: var(--g-typography-body-font-size);
+	color: var(--g-color-content-default);
 	cursor: pointer;
 	transition: background-color 0.15s ease;
 	user-select: none;
 }
 
 .dropdown-item:hover {
-	background-color: var(--g-theme-color-background-subtle-hover);
+	background-color: var(--g-color-background-subtle-hover);
 }
 
 .dropdown-item:focus {
 	outline: none;
-	background-color: var(--g-theme-color-background-subtle-hover);
+	background-color: var(--g-color-background-subtle-hover);
 }
 
 .dropdown-item:active {
-	background-color: var(--g-theme-color-background-subtle);
+	background-color: var(--g-color-background-subtle);
 }
 
 .dropdown-item--disabled {
-	color: var(--g-theme-color-content-disabled);
+	color: var(--g-color-content-disabled);
 	cursor: not-allowed;
 	opacity: 0.6;
 }

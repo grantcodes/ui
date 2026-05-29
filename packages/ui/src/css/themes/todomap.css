@@ -3,5 +3,5 @@
 @import "@grantcodes/style-dictionary/assets/fonts/quicksand";
 
 html.todomap {
-	font-family: var(--g-theme-typography-font-family-body);
+	font-family: var(--g-typography-font-family-body);
 }

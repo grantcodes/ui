@@ -1,0 +1,8 @@
+{
+	"typography": {
+		"font-family": {
+			"heading": { "value": "{ref.typography.font-family.quicksand}" },
+			"body": { "value": "{ref.typography.font-family.quicksand}" }
+		}
+	}
+}
