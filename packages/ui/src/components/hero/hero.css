@@ -14,10 +14,10 @@
 	justify-content: center;
 	align-items: center;
 	min-height: 50vh;
-	padding: var(--g-theme-spacing-2xl) var(--g-theme-spacing-md);
+	padding: var(--g-spacing-2xl) var(--g-spacing-md);
 	background: linear-gradient(
 		135deg,
-		var(--g-theme-color-background-primary-knockout),
+		var(--g-color-background-primary-knockout),
 		var(--g-color-primary-900)
 	);
 }
@@ -25,7 +25,7 @@
 .hero__container {
 	width: 100%;
 	max-width: 65ch;
-	gap: var(--g-theme-spacing-lg);
+	gap: var(--g-spacing-lg);
 }
 
 :host([center]) .hero {
@@ -38,24 +38,24 @@
 
 .hero__title {
 	font: var(--g-typography-h1-font);
-	color: var(--g-theme-color-content-primary-knockout);
+	color: var(--g-color-content-primary-knockout);
 }
 
 .hero__text {
-	font: var(--g-typography-body-lg);
-	color: var(--g-theme-color-content-primary-knockout);
+	font: var(--g-typography-body-lg-font);
+	color: var(--g-color-content-primary-knockout);
 }
 
 :host([size="sm"]) .hero {
 	min-height: 30vh;
-	padding: var(--g-theme-spacing-xl) var(--g-theme-spacing-md);
+	padding: var(--g-spacing-xl) var(--g-spacing-md);
 }
 
 :host([size="lg"]) .hero {
 	min-height: 70vh;
-	padding: var(--g-theme-spacing-3xl) var(--g-theme-spacing-md);
+	padding: var(--g-spacing-3xl) var(--g-spacing-md);
 }
 
 ::slotted(*) {
-	color: var(--g-theme-color-content-primary-knockout, #ffffff);
+	color: var(--g-color-content-primary-knockout, #ffffff);
 }

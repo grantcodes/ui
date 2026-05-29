@@ -1,15 +1,15 @@
 :where(input, textarea, select) {
 	display: block;
-	accent-color: var(--g-theme-form-input-accent-color-default);
-	border-radius: var(--g-theme-border-radius-md);
-	border-width: var(--g-theme-border-width-md);
+	accent-color: var(--g-form-input-accent-color-default);
+	border-radius: var(--g-border-radius-md);
+	border-width: var(--g-border-width-md);
 	border-style: solid;
-	border-color: var(--g-theme-form-color-border-default);
-	background: var(--g-theme-form-color-background-default);
-	color: var(--g-theme-form-color-content-default);
+	border-color: var(--g-form-color-border-default);
+	background: var(--g-form-color-background-default);
+	color: var(--g-form-color-content-default);
 	padding: 0.5em 1em;
 	transition-property: color, background-color, border-color, outline;
-	font-size: var(--g-theme-typography-body-font-size);
+	font-size: var(--g-typography-body-font-size);
 }
 
 :where(input, textarea, select):not(textarea) {
@@ -17,19 +17,19 @@
 }
 
 :where(input, textarea, select):hover {
-	border-color: var(--g-theme-form-color-border-hover);
-	color: var(--g-theme-form-color-content-hover);
-	background: var(--g-theme-form-color-background-hover);
+	border-color: var(--g-form-color-border-hover);
+	color: var(--g-form-color-content-hover);
+	background: var(--g-form-color-background-hover);
 }
 
 :where(input, textarea, select):focus {
-	border-color: var(--g-theme-form-color-border-focus);
-	color: var(--g-theme-form-color-content-focus);
-	background: var(--g-theme-form-color-background-focus);
+	border-color: var(--g-form-color-border-focus);
+	color: var(--g-form-color-content-focus);
+	background: var(--g-form-color-background-focus);
 }
 
 :where(input, textarea, select):focus:invalid {
-	border-color: var(--g-theme-form-color-border-error);
+	border-color: var(--g-form-color-border-error);
 }
 
 :where(input, textarea, select)[readonly] {
@@ -38,9 +38,9 @@
 }
 
 :where(input, textarea, select):disabled {
-	border-color: var(--g-theme-form-color-border-disabled);
-	background: var(--g-theme-form-color-background-disabled);
-	color: var(--g-theme-form-color-content-disabled);
+	border-color: var(--g-form-color-border-disabled);
+	background: var(--g-form-color-background-disabled);
+	color: var(--g-form-color-content-disabled);
 	cursor: not-allowed;
 	opacity: 0.6;
 	filter: grayscale(100%) brightness(80%);
@@ -48,9 +48,9 @@
 
 :where(input, textarea, select):disabled:hover,
 :where(input, textarea, select):disabled:focus-visible {
-	border-color: var(--g-theme-form-color-border-disabled);
-	background: var(--g-theme-form-color-background-disabled);
-	color: var(--g-theme-form-color-content-disabled);
+	border-color: var(--g-form-color-border-disabled);
+	background: var(--g-form-color-background-disabled);
+	color: var(--g-form-color-content-disabled);
 }
 
 :where(input, textarea, select):where(textarea) {
@@ -85,8 +85,8 @@
 }
 
 :where(input, textarea, select):where(option):checked {
-	background: var(--g-theme-color-background-primary);
-	color: var(--g-theme-color-content-primary-knockout);
+	background: var(--g-color-background-primary);
+	color: var(--g-color-content-primary-knockout);
 }
 
 :where(input, textarea, select):where([type="checkbox"]),
@@ -101,7 +101,7 @@
 }
 
 :where(input, textarea, select):where([type="checkbox"]) {
-	border-radius: calc(var(--g-theme-border-radius-md) / 2);
+	border-radius: calc(var(--g-border-radius-md) / 2);
 }
 
 :where(input, textarea, select):where([type="checkbox"])::after {
@@ -121,12 +121,12 @@
 }
 
 :where(input, textarea, select):where([type="checkbox"]):checked {
-	border-color: var(--g-theme-color-border-primary);
-	background-color: var(--g-theme-color-border-primary);
+	border-color: var(--g-color-border-primary);
+	background-color: var(--g-color-border-primary);
 }
 
 :where(input, textarea, select):where([type="checkbox"]):checked::after {
-	color: var(--g-theme-color-border-default);
+	color: var(--g-color-border-default);
 }
 
 :where(input, textarea, select):where([type="radio"]) {
@@ -147,5 +147,5 @@
 }
 
 :where(input, textarea, select):where([type="radio"]):checked::after {
-	background-color: var(--g-theme-color-border-primary);
+	background-color: var(--g-color-border-primary);
 }

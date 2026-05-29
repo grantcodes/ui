@@ -22,8 +22,8 @@
 	width: fit-content;
 	min-width: 100%;
 	background-image: linear-gradient(
-		var(--g-theme-color-border-default, var(--g-theme-color-primary-100)),
-		var(--g-theme-color-border-default, var(--g-theme-color-primary-100))
+		var(--g-color-border-default, var(--g-color-primary-100)),
+		var(--g-color-border-default, var(--g-color-primary-100))
 	);
 	background-size: auto var(--border-width);
 	background-position: bottom;
@@ -33,13 +33,13 @@
 .tabs__tab {
 	padding: 0.6em 1.2em;
 	line-height: 1;
-	font-size: var(--g-theme-typography-body-default-font-size);
+	font-size: var(--g-typography-body-default-font-size);
 	border: none;
 	border-block-start: var(--border-width) solid transparent;
 	border-block-end: var(--border-width) solid
-		var(--g-theme-color-border-default, var(--g-theme-color-primary-100));
+		var(--g-color-border-default, var(--g-color-primary-100));
 	background-color: transparent;
-	color: var(--g-theme-color-content-default);
+	color: var(--g-color-content-default);
 	opacity: 0.7;
 	white-space: nowrap;
 	cursor: pointer;
@@ -51,7 +51,7 @@
 
 @media (min-width: 40em) {
 	.tabs__tab {
-		padding-inline: var(--g-theme-spacing-md);
+		padding-inline: var(--g-spacing-md);
 	}
 }
 
@@ -59,28 +59,28 @@
 .tabs__tab:focus-visible {
 	opacity: 1;
 	border-block-end-color: var(
-		--g-theme-color-border-default,
-		var(--g-theme-color-primary-200)
+		--g-color-border-default,
+		var(--g-color-primary-200)
 	);
 }
 
 .tabs__tab.is-active {
 	border-block-end-color: var(
-		--g-theme-color-border-primary,
-		var(--g-theme-color-primary-500)
+		--g-color-border-primary,
+		var(--g-color-primary-500)
 	);
-	background-color: var(--g-theme-color-background-subtle);
-	color: var(--g-theme-color-content-default);
+	background-color: var(--g-color-background-subtle);
+	color: var(--g-color-content-default);
 	z-index: 1;
 	position: relative;
 	opacity: 1;
 }
 
 .tabs__panel {
-	margin-block-start: var(--g-theme-spacing-md);
+	margin-block-start: var(--g-spacing-md);
 	outline-color: var(
-		--g-theme-color-border-primary,
-		var(--g-theme-color-primary-500)
+		--g-color-border-primary,
+		var(--g-color-primary-500)
 	);
 	outline-offset: 1rem;
 	display: none;

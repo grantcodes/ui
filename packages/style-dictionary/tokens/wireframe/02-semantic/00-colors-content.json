@@ -1,0 +1,74 @@
+{
+	"color": {
+		"content": {
+			"default": {
+				"value": "light-dark({ref.color.neutral.900}, {ref.color.neutral.100})"
+			},
+			"default-hover": {
+				"value": "light-dark({ref.color.neutral.black}, {ref.color.neutral.white})"
+			},
+			"subtle": {
+				"value": "light-dark({ref.color.neutral.500}, {ref.color.neutral.400})"
+			},
+			"primary": {
+				"value": "light-dark({color.primary.700}, {color.primary.300})"
+			},
+			"primary-hover": {
+				"value": "light-dark({color.primary.900}, {color.primary.100})"
+			},
+			"primary-knockout": {
+				"value": "light-dark({ref.color.neutral.white}, {ref.color.neutral.white})"
+			},
+			"secondary": {
+				"value": "light-dark({color.secondary.600}, {color.secondary.400})"
+			},
+			"secondary-hover": {
+				"value": "light-dark({color.secondary.900}, {color.secondary.100})"
+			},
+			"secondary-knockout": {
+				"value": "light-dark({color.secondary.100}, {color.secondary.900})"
+			},
+			"tertiary": {
+				"value": "light-dark({color.tertiary.600}, {color.tertiary.400})"
+			},
+			"tertiary-hover": {
+				"value": "light-dark({color.tertiary.900}, {color.tertiary.100})"
+			},
+			"tertiary-knockout": {
+				"value": "light-dark({color.tertiary.100}, {color.tertiary.900})"
+			},
+			"knockout": {
+				"value": "light-dark({ref.color.neutral.white}, {ref.color.neutral.900})"
+			},
+			"disabled": {
+				"value": "light-dark({ref.color.neutral.600}, {ref.color.neutral.500})"
+			},
+			"utility": {
+				"error": {
+					"value": "light-dark({ref.color.red.600}, {ref.color.red.400})"
+				},
+				"error-hover": {
+					"value": "light-dark({ref.color.red.800}, {ref.color.red.200})"
+				},
+				"warning": {
+					"value": "light-dark({ref.color.yellow.600}, {ref.color.yellow.400})"
+				},
+				"warning-hover": {
+					"value": "light-dark({ref.color.yellow.800}, {ref.color.yellow.200})"
+				},
+				"success": {
+					"value": "light-dark({ref.color.green.600}, {ref.color.green.400})"
+				},
+				"success-hover": {
+					"value": "light-dark({ref.color.green.800}, {ref.color.green.200})"
+				},
+				"info": {
+					"value": "light-dark({ref.color.blue.600}, {ref.color.blue.300})"
+				},
+				"info-hover": {
+					"value": "light-dark({ref.color.blue.800}, {ref.color.blue.200})"
+				}
+			}
+		}
+	}
+}

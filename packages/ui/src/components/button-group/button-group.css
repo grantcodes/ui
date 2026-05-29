@@ -13,8 +13,8 @@
 	display: inline-flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	background: var(--g-theme-color-background-default);
-	border-radius: var(--g-theme-border-radius-md);
+	background: var(--g-color-background-default);
+	border-radius: var(--g-border-radius-md);
 	min-width: fit-content;
 	max-width: 100%;
 	overflow: hidden;
@@ -26,11 +26,11 @@
 }
 
 .button-group ::slotted(grantcodes-button:first-child) {
-	--button-border-radius-start: var(--g-theme-border-radius-md);
+	--button-border-radius-start: var(--g-border-radius-md);
 }
 
 .button-group ::slotted(grantcodes-button:last-child) {
-	--button-border-radius-end: var(--g-theme-border-radius-md);
+	--button-border-radius-end: var(--g-border-radius-md);
 }
 
 .button-group ::slotted(grantcodes-button:focus-visible) {

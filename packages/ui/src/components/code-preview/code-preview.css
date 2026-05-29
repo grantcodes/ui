@@ -6,13 +6,13 @@
 
 .code-preview > pre {
 	display: block;
-	font-family: var(--g-typography-font-family-system);
+	font-family: var(--g-typography-font-family-code);
 	line-height: 1.2;
 	width: 100%;
 	overflow: auto;
-	border-radius: var(--g-theme-border-radius-md);
-	box-shadow: var(--g-theme-box-shadow-sm);
-	font-size: var(--g-typography-font-size-14);
-	font-weight: var(--g-typography-font-weight-400);
-	padding: var(--g-theme-spacing-md);
+	border-radius: var(--g-border-radius-md);
+	box-shadow: var(--g-box-shadow-sm);
+	font-size: var(--g-typography-body-sm-font-size);
+	font-weight: var(--g-typography-body-lg-font-weight);
+	padding: var(--g-spacing-md);
 }

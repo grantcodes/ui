@@ -11,8 +11,8 @@
 }
 
 .app-bar {
-	background-color: var(--g-theme-color-background-default);
-	border-block-end: 1px solid var(--g-theme-color-border-default);
+	background-color: var(--g-color-background-default);
+	border-block-end: 1px solid var(--g-color-border-default);
 	position: relative;
 	z-index: 100;
 }
@@ -32,9 +32,9 @@
 .app-bar__bar {
 	display: flex;
 	align-items: center;
-	gap: var(--g-theme-spacing-lg);
-	padding-inline: var(--g-theme-spacing-md);
-	padding-block: var(--g-theme-spacing-md);
+	gap: var(--g-spacing-lg);
+	padding-inline: var(--g-spacing-md);
+	padding-block: var(--g-spacing-md);
 	max-inline-size: 1400px;
 	margin-inline: auto;
 }
@@ -55,7 +55,7 @@
 .app-bar__actions {
 	display: flex;
 	align-items: center;
-	gap: var(--g-theme-spacing-sm);
+	gap: var(--g-spacing-sm);
 	margin-inline-start: auto;
 }
 
@@ -67,15 +67,15 @@
 	justify-content: center;
 	inline-size: 2.75rem;
 	block-size: 2.75rem;
-	padding: var(--g-theme-spacing-sm);
-	border-radius: var(--g-theme-border-radius-md);
+	padding: var(--g-spacing-sm);
+	border-radius: var(--g-border-radius-md);
 	cursor: pointer;
-	color: var(--g-theme-color-content-default);
+	color: var(--g-color-content-default);
 	transition: background-color 0.2s ease;
 }
 
 .app-bar__menu-button:hover {
-	background-color: var(--g-theme-color-background-subtle-hover);
+	background-color: var(--g-color-background-subtle-hover);
 }
 
 /* Hamburger Icon */
@@ -127,16 +127,16 @@
 .app-bar__nav--open {
 	display: flex;
 	flex-direction: column;
-	gap: var(--g-theme-spacing-xs, 0.25rem);
+	gap: var(--g-spacing-xs, 0.25rem);
 	position: absolute;
 	inset-inline: 0;
 	inset-block-start: 100%;
 	z-index: 99;
-	background-color: var(--g-theme-color-background-default);
-	border-block-end: 1px solid var(--g-theme-color-border-default);
-	padding-block: var(--g-theme-spacing-md);
-	padding-inline: var(--g-theme-spacing-md);
-	box-shadow: var(--g-theme-shadow-lg, 0 8px 24px rgba(0, 0, 0, 0.12));
+	background-color: var(--g-color-background-default);
+	border-block-end: 1px solid var(--g-color-border-default);
+	padding-block: var(--g-spacing-md);
+	padding-inline: var(--g-spacing-md);
+	box-shadow: var(--g-box-shadow-lg, 0 8px 24px rgba(0, 0, 0, 0.12));
 	animation: menu-open 0.25s ease-out;
 }
 
@@ -156,7 +156,7 @@
 .app-bar__nav--open ::slotted(div[slot="nav"]) {
 	display: flex;
 	flex-direction: column;
-	gap: var(--g-theme-spacing-xs, 0.25rem);
+	gap: var(--g-spacing-xs, 0.25rem);
 	margin: 0;
 	padding: 0;
 	list-style: none;
@@ -211,7 +211,7 @@
 		display: flex;
 		flex-direction: row;
 		align-items: center;
-		gap: var(--g-theme-spacing-xs, 0.25rem);
+		gap: var(--g-spacing-xs, 0.25rem);
 		flex: 1;
 	}
 
@@ -242,17 +242,17 @@
 
 /* Slotted content styling */
 ::slotted(a[slot="logo"]) {
-	color: var(--g-theme-color-content-default) !important;
+	color: var(--g-color-content-default) !important;
 	text-decoration: none !important;
-	font-family: var(--g-theme-typography-label-font-family);
-	font-weight: var(--g-theme-typography-label-font-weight);
+	font-family: var(--g-typography-label-font-family);
+	font-weight: var(--g-typography-label-font-weight);
 }
 
 ::slotted(ul),
 ::slotted(div[slot="nav"]) {
 	display: flex;
 	flex-direction: row;
-	gap: var(--g-theme-spacing-xs, 0.25rem);
+	gap: var(--g-spacing-xs, 0.25rem);
 	margin: 0;
 	padding: 0;
 	list-style: none;

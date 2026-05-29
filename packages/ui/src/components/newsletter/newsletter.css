@@ -9,9 +9,9 @@
 }
 
 .newsletter {
-	padding-block: var(--g-theme-spacing-3xl);
-	padding-inline: var(--g-theme-spacing-md);
-	background: var(--g-theme-color-background-primary-knockout, #7c3aed);
+	padding-block: var(--g-spacing-3xl);
+	padding-inline: var(--g-spacing-md);
+	background: var(--g-color-background-primary-knockout, #7c3aed);
 	text-align: center;
 }
 
@@ -21,15 +21,15 @@
 }
 
 .newsletter__title {
-	margin: 0 0 var(--g-theme-spacing-sm);
+	margin: 0 0 var(--g-spacing-sm);
 	font: var(--g-typography-h4-font);
-	color: var(--g-theme-color-content-primary-knockout, #ffffff);
+	color: var(--g-color-content-primary-knockout, #ffffff);
 }
 
 .newsletter__text {
-	margin: 0 0 var(--g-theme-spacing-xl);
-	font: var(--g-theme-typography-body-lg);
-	color: var(--g-theme-color-content-primary-knockout, #ffffff);
+	margin: 0 0 var(--g-spacing-xl);
+	font: var(--g-typography-body-lg);
+	color: var(--g-color-content-primary-knockout, #ffffff);
 	opacity: 0.9;
 }
 
@@ -52,35 +52,35 @@
 .newsletter__field {
 	display: flex;
 	flex-direction: column;
-	gap: var(--g-theme-spacing-sm);
+	gap: var(--g-spacing-sm);
 }
 
 .newsletter__input-wrap {
 	display: flex;
-	gap: var(--g-theme-spacing-sm);
+	gap: var(--g-spacing-sm);
 }
 
 .newsletter__input {
 	flex: 1;
 	min-width: 0;
-	padding-block: var(--g-theme-spacing-sm);
-	padding-inline: var(--g-theme-spacing-md);
-	font-size: var(--g-theme-typography-body-default-font-size);
+	padding-block: var(--g-spacing-sm);
+	padding-inline: var(--g-spacing-md);
+	font-size: var(--g-typography-body-default-font-size);
 	border: 2px solid transparent;
-	border-radius: var(--g-theme-border-radius-md, 0.5rem);
-	background: var(--g-theme-color-background-default);
-	color: var(--g-theme-color-content-default);
+	border-radius: var(--g-border-radius-md, 0.5rem);
+	background: var(--g-color-background-default);
+	color: var(--g-color-content-default);
 	outline: none;
 }
 
 .newsletter__input:focus {
-	border-color: var(--g-theme-color-border-default);
+	border-color: var(--g-color-border-default);
 }
 
 .newsletter__disclaimer {
-	margin: var(--g-theme-spacing-md) 0 0;
-	font: var(--g-theme-typography-body-sm);
-	color: var(--g-theme-color-content-primary-knockout, #ffffff);
+	margin: var(--g-spacing-md) 0 0;
+	font: var(--g-typography-body-sm);
+	color: var(--g-color-content-primary-knockout, #ffffff);
 	opacity: 0.75;
 }
 

@@ -11,5 +11,5 @@
 .accordion {
 	display: flex;
 	flex-direction: column;
-	gap: var(--g-theme-spacing-sm);
+	gap: var(--g-spacing-sm);
 }

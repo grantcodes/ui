@@ -10,8 +10,8 @@
 
 .map {
 	position: relative;
-	border: 1px solid var(--g-theme-color-border-default);
-	border-radius: var(--g-theme-border-radius-md, 0.5rem);
+	border: 1px solid var(--g-color-border-default);
+	border-radius: var(--g-border-radius-md, 0.5rem);
 	overflow: hidden;
 }
 
@@ -26,16 +26,16 @@
 
 .map__directions {
 	display: block;
-	padding: var(--g-theme-spacing-sm) var(--g-theme-spacing-md);
-	font-size: var(--g-theme-typography-body-sm-font-size);
-	color: var(--g-theme-color-content-primary, #7c3aed);
+	padding: var(--g-spacing-sm) var(--g-spacing-md);
+	font-size: var(--g-typography-body-sm-font-size);
+	color: var(--g-color-content-primary, #7c3aed);
 	text-decoration: none;
-	border-block-start: 1px solid var(--g-theme-color-border-default);
-	background: var(--g-theme-color-background-subtle);
+	border-block-start: 1px solid var(--g-color-border-default);
+	background: var(--g-color-background-subtle);
 	transition: background-color 0.2s ease;
 }
 
 .map__directions:hover {
-	background: var(--g-theme-color-background-subtle-hover);
+	background: var(--g-color-background-subtle-hover);
 	text-decoration: underline;
 }

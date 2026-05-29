@@ -1,0 +1,9 @@
+{
+	"typography": {
+		"font-family": {
+			"code": {
+				"value": "{ref.typography.font-family.system}"
+			}
+		}
+	}
+}

@@ -9,8 +9,8 @@
 }
 
 .testimonials {
-	padding-block: var(--g-theme-spacing-3xl);
-	padding-inline: var(--g-theme-spacing-md);
+	padding-block: var(--g-spacing-3xl);
+	padding-inline: var(--g-spacing-md);
 }
 
 .testimonials__container {
@@ -19,17 +19,17 @@
 }
 
 .testimonials__title {
-	margin: 0 0 var(--g-theme-spacing-2xl);
-	font-size: var(--g-theme-typography-h4-font-size);
-	font-weight: var(--g-theme-typography-h4-font-weight);
+	margin: 0 0 var(--g-spacing-2xl);
+	font-size: var(--g-typography-h4-font-size);
+	font-weight: var(--g-typography-h4-font-weight);
 	text-align: center;
-	color: var(--g-theme-color-content-default);
+	color: var(--g-color-content-default);
 }
 
 .testimonials__grid--cards {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-	gap: var(--g-theme-spacing-lg);
+	gap: var(--g-spacing-lg);
 	padding: 0;
 	margin: 0;
 	list-style: none;
@@ -38,7 +38,7 @@
 .testimonials__grid--list {
 	display: flex;
 	flex-direction: column;
-	gap: var(--g-theme-spacing-xl);
+	gap: var(--g-spacing-xl);
 	max-width: 65ch;
 	margin: 0 auto;
 	padding: 0;
@@ -49,36 +49,36 @@
 	margin: 0;
 	display: flex;
 	flex-direction: column;
-	gap: var(--g-theme-spacing-lg);
+	gap: var(--g-spacing-lg);
 	height: 100%;
 }
 
 .testimonials__text {
 	margin: 0;
-	font: var(--g-theme-typography-body-default);
-	color: var(--g-theme-color-content-default);
+	font: var(--g-typography-body-default);
+	color: var(--g-color-content-default);
 	flex: 1;
 }
 
 .testimonials__attribution {
 	display: flex;
 	align-items: center;
-	gap: var(--g-theme-spacing-sm);
+	gap: var(--g-spacing-sm);
 }
 
 .testimonials__meta {
 	display: flex;
 	flex-direction: column;
-	gap: var(--g-theme-spacing-xs);
+	gap: var(--g-spacing-xs);
 }
 
 .testimonials__name {
-	font: var(--g-theme-typography-label-default);
+	font: var(--g-typography-label-default);
 	font-style: normal;
-	color: var(--g-theme-color-content-default);
+	color: var(--g-color-content-default);
 }
 
 .testimonials__role {
-	font-size: var(--g-theme-typography-body-sm-font-size);
-	color: var(--g-theme-color-content-subtle);
+	font-size: var(--g-typography-body-sm-font-size);
+	color: var(--g-color-content-subtle);
 }

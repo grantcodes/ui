@@ -297,7 +297,7 @@ export const Default = {
 			<div slot="bottom">
 				<p>&copy; 2025 Flowbase, Inc. All rights reserved.</p>
 			</div>
-			<div slot="bottom" style="display: flex; gap: var(--g-theme-spacing-md);">
+			<div slot="bottom" style="display: flex; gap: var(--g-spacing-md);">
 				<a href="/privacy">Privacy</a>
 				<a href="/terms">Terms</a>
 				<a href="/security">Security</a>

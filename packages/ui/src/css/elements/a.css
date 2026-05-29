@@ -1,5 +1,5 @@
 :where(a) {
-	color: var(--g-theme-link-color-content-default);
+	color: var(--g-link-color-content-default);
 	text-decoration: underline;
 	transition:
 		color 0.2s,
@@ -7,19 +7,19 @@
 }
 
 :where(a:visited) {
-	color: var(--g-theme-link-color-content-visited);
+	color: var(--g-link-color-content-visited);
 	opacity: 0.6;
 }
 
 :where(a:hover),
 :where(a:focus-visible) {
 	opacity: 1;
-	color: var(--g-theme-link-color-content-hover);
+	color: var(--g-link-color-content-hover);
 	text-decoration: underline wavy;
 }
 
 :where(a:active) {
-	color: var(--g-theme-link-color-content-active);
+	color: var(--g-link-color-content-active);
 }
 
 /* External links - special styling for links opening in new windows */

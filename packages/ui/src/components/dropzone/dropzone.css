@@ -14,33 +14,33 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	padding: var(--g-theme-spacing-xl);
-	border: max(var(--g-theme-border-width-md), 0.2rem) dashed
-		var(--g-theme-color-border-default);
-	border-radius: var(--g-theme-border-radius-md);
-	background-color: var(--g-theme-color-background-subtle);
+	padding: var(--g-spacing-xl);
+	border: max(var(--g-border-width-md), 0.2rem) dashed
+		var(--g-color-border-default);
+	border-radius: var(--g-border-radius-md);
+	background-color: var(--g-color-background-subtle);
 }
 
 .dropzone--fullscreen {
 	position: fixed;
 	inset: 0;
 	z-index: 10;
-	background-color: var(--g-theme-color-background-default);
+	background-color: var(--g-color-background-default);
 }
 
 .dropzone--fullscreen::after {
 	content: "";
 	display: flex;
 	position: fixed;
-	inset: var(--g-theme-spacing-xl);
+	inset: var(--g-spacing-xl);
 	justify-content: center;
 	align-items: center;
-	padding: var(--g-theme-spacing-xl);
-	border: max(calc(var(--g-theme-border-width-md) * 2), 0.4rem) dashed
-		var(--g-theme-color-border-default);
-	border-radius: calc(var(--g-theme-border-radius-md) * 2);
+	padding: var(--g-spacing-xl);
+	border: max(calc(var(--g-border-width-md) * 2), 0.4rem) dashed
+		var(--g-color-border-default);
+	border-radius: calc(var(--g-border-radius-md) * 2);
 	z-index: 11;
-	font-weight: var(--g-typography-font-weight-700);
+	font-weight: var(--g-typography-label-font-weight);
 	color: inherit;
 }
 

@@ -1,0 +1,25 @@
+{
+	"spacing": {
+		"xs": {
+			"value": "{ref.spacing.4}"
+		},
+		"sm": {
+			"value": "{ref.spacing.8}"
+		},
+		"md": {
+			"value": "{ref.spacing.16}"
+		},
+		"lg": {
+			"value": "{ref.spacing.24}"
+		},
+		"xl": {
+			"value": "{ref.spacing.32}"
+		},
+		"2xl": {
+			"value": "{ref.spacing.48}"
+		},
+		"3xl": {
+			"value": "{ref.spacing.64}"
+		}
+	}
+}

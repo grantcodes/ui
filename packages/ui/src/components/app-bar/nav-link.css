@@ -11,7 +11,7 @@
 .nav-link {
 	display: inline-flex;
 	align-items: center;
-	border-radius: var(--g-theme-border-radius-md);
+	border-radius: var(--g-border-radius-md);
 	background-color: transparent;
 	transition: background-color 0.15s ease;
 }
@@ -19,7 +19,7 @@
 .nav-link:hover {
 	background-color: color-mix(
 		in srgb,
-		var(--g-theme-color-content-default) 8%,
+		var(--g-color-content-default) 8%,
 		transparent
 	);
 }
@@ -39,21 +39,21 @@
 ::slotted(a:focus-visible) {
 	display: inline-flex;
 	align-items: center;
-	color: var(--g-theme-color-content-default) !important;
+	color: var(--g-color-content-default) !important;
 	text-decoration: none !important;
 	opacity: 1 !important;
-	padding-block: var(--g-theme-spacing-xs, 0.25rem);
-	padding-inline: var(--g-theme-spacing-sm);
-	font-family: var(--g-theme-typography-label-font-family);
-	font-weight: var(--g-theme-typography-label-font-weight);
+	padding-block: var(--g-spacing-xs, 0.25rem);
+	padding-inline: var(--g-spacing-sm);
+	font-family: var(--g-typography-label-font-family);
+	font-weight: var(--g-typography-label-font-weight);
 	white-space: nowrap;
 }
 
 ::slotted(a:focus-visible) {
-	outline: var(--g-theme-focus-ring-width-default) solid
-		var(--g-theme-focus-ring-color-default);
-	outline-offset: var(--g-theme-focus-ring-offset-default);
-	border-radius: var(--g-theme-border-radius-md);
+	outline: var(--g-focus-ring-width-default) solid
+		var(--g-focus-ring-color-default);
+	outline-offset: var(--g-focus-ring-offset-default);
+	border-radius: var(--g-border-radius-md);
 }
 
 @media (prefers-reduced-motion: reduce) {

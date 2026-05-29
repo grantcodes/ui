@@ -72,14 +72,19 @@ import '@grantcodes/ui/styles/themes/grantcodes.css';
 
 ### Key Theme Variables
 
-- `--g-theme-color-background-default` - Main background
-- `--g-theme-color-background-subtle` - Subtle background
-- `--g-theme-color-background-brand` - Brand background
-- `--g-theme-color-content-default` - Main text color
-- `--g-theme-color-content-secondary` - Secondary text
-- `--g-theme-color-border-default` - Default border
-- `--g-theme-border-radius-md` - Medium border radius
-- `--g-theme-shadow-sm`, `--g-theme-shadow-lg` - Shadow utilities
+- `--g-color-background-default` - Main background
+- `--g-color-background-subtle` - Subtle background
+- `--g-color-background-brand` - Brand background
+- `--g-color-content-default` - Main text color
+- `--g-color-content-secondary` - Secondary text
+- `--g-color-border-default` - Default border
+- `--g-border-radius-md` - Medium border radius
+- `--g-box-shadow-sm`, `--g-box-shadow-lg` - Shadow utilities
+
+### Naming policy
+
+- **No `--g-theme-*` prefix.** All semantic and component variables use plain `--g-*` names.
+- **No direct ref variables in component CSS.** Components must always use semantic or component-level tokens (e.g., `--g-color-content-default` instead of `--g-ref-color-neutral-900`).
 
 See `CSS_VARIABLES.md` for complete reference.
 

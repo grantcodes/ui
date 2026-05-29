@@ -1,5 +1,5 @@
 label {
 	color: inherit;
-	font-size: var(--g-theme-typography-label-font-size);
+	font-size: var(--g-typography-label-font-size);
 	cursor: pointer;
 }

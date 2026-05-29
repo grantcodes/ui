@@ -1,0 +1,23 @@
+{
+	"animation": {
+		"fade": {
+			"quick": {
+				"value": "{ref.animation.duration.10}"
+			},
+			"long": {
+				"value": "{ref.animation.duration.40}"
+			}
+		},
+		"move": {
+			"quick": {
+				"value": "{ref.animation.duration.20}"
+			},
+			"long": {
+				"value": "{ref.animation.duration.40}"
+			}
+		},
+		"ease": {
+			"value": "{ref.animation.timing-function.ease}"
+		}
+	}
+}

@@ -108,14 +108,14 @@ export const Default = {
     <!-- Article header -->
     <grantcodes-container>
       <div style="max-inline-size: 48rem; margin-inline: auto;">
-        <grantcodes-breadcrumb style="margin-block: var(--g-theme-spacing-lg);">
+        <grantcodes-breadcrumb style="margin-block: var(--g-spacing-lg);">
           <grantcodes-breadcrumb-item href="/">Home</grantcodes-breadcrumb-item>
           <grantcodes-breadcrumb-item href="/blog">Blog</grantcodes-breadcrumb-item>
           <grantcodes-breadcrumb-item current>Shipping faster with async-first teams</grantcodes-breadcrumb-item>
         </grantcodes-breadcrumb>
 
         <div
-          style="display: flex; flex-direction: column; gap: var(--g-theme-spacing-md);"
+          style="display: flex; flex-direction: column; gap: var(--g-spacing-md);"
         >
           <grantcodes-badge variant="primary">Engineering</grantcodes-badge>
 
@@ -123,13 +123,13 @@ export const Default = {
             Shipping faster with async-first teams
           </h1>
 
-          <p style="var(--g-theme-typography-body-lg);">
+          <p style="var(--g-typography-body-lg);">
             How we restructured communication to remove the hidden cost of
             synchronous coordination — and what we shipped as a result.
           </p>
 
           <div
-            style="display: flex; align-items: center; gap: var(--g-theme-spacing-sm); padding-block: var(--g-theme-spacing-md); border-block: 1px solid var(--g-theme-color-border-default);"
+            style="display: flex; align-items: center; gap: var(--g-spacing-sm); padding-block: var(--g-spacing-md); border-block: 1px solid var(--g-color-border-default);"
           >
             <grantcodes-avatar
               src="https://i.pravatar.cc/80?img=12"
@@ -138,12 +138,12 @@ export const Default = {
             ></grantcodes-avatar>
             <div>
               <p
-                style="margin: 0; font-weight: var(--g-typography-font-weight-600); color: var(--g-theme-color-content-default); font-size: var(--g-theme-typography-label-font-size);"
+                style="margin: 0; font-weight: var(--g-typography-label-font-weight); color: var(--g-color-content-default); font-size: var(--g-typography-label-font-size);"
               >
                 Sam Torres
               </p>
               <p
-                style="margin: 0; color: var(--g-theme-color-content-subtle); font-size: var(--g-theme-typography-meta-font-size);"
+                style="margin: 0; color: var(--g-color-content-subtle); font-size: var(--g-typography-meta-font-size);"
               >
                 March 12, 2025 · 8 min read
               </p>
@@ -158,14 +158,14 @@ export const Default = {
       <img
         src="https://placehold.co/1200x500?text=Featured+Image"
         alt="An abstract illustration of async communication flows"
-        style="display: block; width: 100%; height: auto; border-radius: var(--g-theme-border-radius-md);"
+        style="display: block; width: 100%; height: auto; border-radius: var(--g-border-radius-md);"
       />
     </grantcodes-container>
 
     <!-- Article body -->
     <grantcodes-container
       align="prose"
-      style="padding-block-end: var(--g-theme-spacing-2xl);"
+      style="padding-block-end: var(--g-spacing-2xl);"
     >
       <article>
         <p>
@@ -249,7 +249,7 @@ export const Default = {
         </p>
 
         <div
-          style="margin-block-start: var(--g-theme-spacing-xl); padding: var(--g-theme-spacing-md); background: var(--g-theme-color-background-subtle); border-radius: var(--g-theme-border-radius-md); display: flex; align-items: center; gap: var(--g-theme-spacing-md);"
+          style="margin-block-start: var(--g-spacing-xl); padding: var(--g-spacing-md); background: var(--g-color-background-subtle); border-radius: var(--g-border-radius-md); display: flex; align-items: center; gap: var(--g-spacing-md);"
         >
           <grantcodes-avatar
             src="https://i.pravatar.cc/80?img=12"
@@ -258,11 +258,11 @@ export const Default = {
           ></grantcodes-avatar>
           <div>
             <p
-              style="margin: 0; font-weight: var(--g-typography-font-weight-600); color: var(--g-theme-color-content-default);"
+              style="margin: 0; font-weight: var(--g-typography-label-font-weight); color: var(--g-color-content-default);"
             >
               Sam Torres
             </p>
-            <p style="font: var(--g-theme-typography-meta);">
+            <p style="font: var(--g-typography-meta);">
               CTO at Flowbase. Writes about engineering culture, distributed
               teams, and systems thinking.
             </p>
@@ -272,10 +272,10 @@ export const Default = {
     </grantcodes-container>
 
     <!-- Related posts -->
-    <div style="padding-block: var(--g-theme-spacing-2xl);">
+    <div style="padding-block: var(--g-spacing-2xl);">
       <grantcodes-container>
         <h2>More from the blog</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); gap: var(--g-theme-spacing-lg);">
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); gap: var(--g-spacing-lg);">
           ${relatedPosts.map(
 						(post) => html`
               <grantcodes-card>
@@ -284,10 +284,10 @@ export const Default = {
                   style="display: flex; align-items: center; justify-content: space-between;"
                 >
                   <grantcodes-badge variant="neutral">${post.category}</grantcodes-badge>
-                  <span style="font: var(--g-theme-typography-meta);">${post.date}</span>
+                  <span style="font: var(--g-typography-meta);">${post.date}</span>
                 </div>
                 <div
-                  style="display: flex; flex-direction: column; gap: var(--g-theme-spacing-sm); flex: 1;"
+                  style="display: flex; flex-direction: column; gap: var(--g-spacing-sm); flex: 1;"
                 >
                   <h3
                     style="font: var(--g-typography-h6-font);"
@@ -304,7 +304,7 @@ export const Default = {
                 </div>
                 <div
                   slot="footer"
-                  style="display: flex; align-items: center; gap: var(--g-theme-spacing-sm);"
+                  style="display: flex; align-items: center; gap: var(--g-spacing-sm);"
                 >
                   <grantcodes-avatar
                     src="${post.author.avatar}"
@@ -312,7 +312,7 @@ export const Default = {
                     size="small"
                   ></grantcodes-avatar>
                   <span
-                    style="font: var(--g-theme-typography-meta);"
+                    style="font: var(--g-typography-meta);"
                     >${post.author.name}</span
                   >
                 </div>
@@ -330,7 +330,7 @@ export const Default = {
       <div slot="bottom">
         <p>&copy; 2025 Flowbase, Inc. All rights reserved.</p>
       </div>
-      <div slot="bottom" style="display: flex; gap: var(--g-theme-spacing-md);">
+      <div slot="bottom" style="display: flex; gap: var(--g-spacing-md);">
         <a href="/privacy">Privacy</a>
         <a href="/terms">Terms</a>
       </div>

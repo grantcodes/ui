@@ -1,12 +1,12 @@
 :root {
 	font: var(--g-typography-body-font);
-	font-size: var(--g-typography-font-size-root);
+	font-size: var(--g-ref-typography-font-size-root);
 }
 @media (min-width: 40em) {
 	:root {
 		/* TODO: Would like to get rid of important */
-		--g-typography-font-scale-default: var(
-			--g-typography-font-scale-lg
+		--g-ref-typography-font-scale-default: var(
+			--g-ref-typography-font-scale-lg
 		) !important;
 	}
 }
@@ -66,18 +66,18 @@ p + p {
 }
 
 pre {
-	font-family: var(--g-typography-font-family-system);
+	font-family: var(--g-typography-font-family-code);
 	line-height: 1.2;
 	inline-size: 100%;
 	overflow: auto;
-	border-radius: var(--g-theme-border-radius-md);
+	border-radius: var(--g-border-radius-md);
 	/* PLACEHOLDER: u.shadow(0) - manual conversion needed */
-	box-shadow: var(--g-theme-box-shadow-sm);
+	box-shadow: var(--g-box-shadow-sm);
 	font-size: 1rem;
 	font-weight: 400;
 	padding: 1rem;
 }
 
 mark {
-	background-color: var(--g-color-neutral-300);
+	background-color: var(--g-color-background-highlight);
 }

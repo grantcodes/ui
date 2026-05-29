@@ -1,0 +1,11 @@
+{
+	"ref": {
+		"typography": {
+			"font-family": {
+				"greycliff": {
+					"value": "Greycliff, {ref.typography.font-family.system}"
+				}
+			}
+		}
+	}
+}

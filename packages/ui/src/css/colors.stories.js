@@ -27,28 +27,28 @@ class ColorPalette extends LitElement {
 		:host {
 			display: block;
 			padding: 2rem;
-			background: var(--g-theme-color-background-default, #fff);
-			color: var(--g-theme-color-content-default, #333);
+			background: var(--g-color-background-default, #fff);
+			color: var(--g-color-content-default, #333);
 		}
 
 		.banner {
 			margin-bottom: 2rem;
 			padding: 1rem;
-			background: var(--g-theme-color-background-subtle, #f5f5f5);
+			background: var(--g-color-background-subtle, #f5f5f5);
 			border-radius: 0.5rem;
-			border: 1px solid var(--g-theme-color-border-default, #ccc);
+			border: 1px solid var(--g-color-border-default, #ccc);
 		}
 
 		.theme-title {
 			margin: 0;
 			font-weight: 600;
-			color: var(--g-theme-color-content-default, #333);
+			color: var(--g-color-content-default, #333);
 			font-size: 1rem;
 		}
 
 		.theme-hint {
 			margin: 0.5rem 0 0 0;
-			color: var(--g-theme-color-content-subtle, #666);
+			color: var(--g-color-content-subtle, #666);
 			font-size: 0.875rem;
 		}
 	`;

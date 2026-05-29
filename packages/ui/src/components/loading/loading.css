@@ -18,12 +18,12 @@
 	overflow: hidden;
 	padding-top: var(--height);
 	background-repeat: no-repeat;
-	background-color: var(--g-theme-color-primary-500);
+	background-color: var(--g-color-primary-500);
 	background-image: linear-gradient(
 		to right,
 		transparent 0%,
-		var(--g-color-neutral-500) 10%,
-		var(--g-color-neutral-500) 90%,
+		var(--g-color-background-shimmer) 10%,
+		var(--g-color-background-shimmer) 90%,
 		transparent 100%
 	);
 	background-size: var(--inner-width) 100%;

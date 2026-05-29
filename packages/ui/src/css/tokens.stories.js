@@ -15,28 +15,28 @@ class TokenList extends LitElement {
 		:host {
 			display: block;
 			padding: 2rem;
-			background: var(--g-theme-color-background-default, #fff);
-			color: var(--g-theme-color-content-default, #333);
+			background: var(--g-color-background-default, #fff);
+			color: var(--g-color-content-default, #333);
 		}
 
 		.banner {
 			margin-bottom: 2rem;
 			padding: 1rem;
-			background: var(--g-theme-color-background-subtle, #f5f5f5);
+			background: var(--g-color-background-subtle, #f5f5f5);
 			border-radius: 0.5rem;
-			border: 1px solid var(--g-theme-color-border-default, #ccc);
+			border: 1px solid var(--g-color-border-default, #ccc);
 		}
 
 		.theme-title {
 			margin: 0;
 			font-weight: 600;
-			color: var(--g-theme-color-content-default, #333);
+			color: var(--g-color-content-default, #333);
 			font-size: 1rem;
 		}
 
 		.theme-hint {
 			margin: 0.5rem 0 0 0;
-			color: var(--g-theme-color-content-subtle, #666);
+			color: var(--g-color-content-subtle, #666);
 			font-size: 0.875rem;
 		}
 
@@ -48,14 +48,14 @@ class TokenList extends LitElement {
 			margin: 0 0 1rem 0;
 			font-weight: 600;
 			font-size: 1.5rem;
-			color: var(--g-theme-color-content-default, #333);
+			color: var(--g-color-content-default, #333);
 			padding-bottom: 0.5rem;
-			border-bottom: 2px solid var(--g-theme-color-border-default, #ccc);
+			border-bottom: 2px solid var(--g-color-border-default, #ccc);
 		}
 
 		.token-count {
 			margin: 0.5rem 0 1rem 0;
-			color: var(--g-theme-color-content-subtle, #666);
+			color: var(--g-color-content-subtle, #666);
 			font-size: 0.875rem;
 		}
 
@@ -68,32 +68,32 @@ class TokenList extends LitElement {
 		.token-table th {
 			text-align: left;
 			padding: 0.75rem;
-			background: var(--g-theme-color-background-subtle, #f5f5f5);
-			border-bottom: 2px solid var(--g-theme-color-border-default, #ccc);
+			background: var(--g-color-background-subtle, #f5f5f5);
+			border-bottom: 2px solid var(--g-color-border-default, #ccc);
 			font-weight: 600;
 			font-size: 0.875rem;
-			color: var(--g-theme-color-content-default, #333);
+			color: var(--g-color-content-default, #333);
 		}
 
 		.token-table td {
 			padding: 0.75rem;
-			border-bottom: 1px solid var(--g-theme-color-border-default, #e0e0e0);
+			border-bottom: 1px solid var(--g-color-border-default, #e0e0e0);
 			font-size: 0.875rem;
 		}
 
 		.token-table tr:hover {
-			background: var(--g-theme-color-background-subtle, #f9f9f9);
+			background: var(--g-color-background-subtle, #f9f9f9);
 		}
 
 		.token-name {
 			font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-			color: var(--g-theme-color-content-default, #333);
+			color: var(--g-color-content-default, #333);
 			font-weight: 500;
 		}
 
 		.token-value {
 			font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-			color: var(--g-theme-color-content-subtle, #666);
+			color: var(--g-color-content-subtle, #666);
 			word-break: break-all;
 		}
 	`;
