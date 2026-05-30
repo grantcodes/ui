@@ -146,5 +146,5 @@
 
 :host(.is-clickable:active) .card {
 	transform: translateY(-1px);
-	border-color: var(--g-color-border-active);
+	border-color: var(--g-color-border-primary);
 }
