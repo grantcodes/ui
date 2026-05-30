@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.2](https://github.com/grantcodes/ui/compare/astro-v0.2.1...astro-v0.2.2) (2026-05-30)
+
+
+### Bug Fixes
+
+* **astro:** update style-dictionary token imports ([86e7ccf](https://github.com/grantcodes/ui/commit/86e7ccfbbb31f7ace185d6d510907ea6bcf9074d))
+
 ## [0.2.1](https://github.com/grantcodes/ui/compare/astro-v0.2.0...astro-v0.2.1) (2026-05-14)
 
 
