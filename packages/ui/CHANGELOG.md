@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.13.0](https://github.com/grantcodes/ui/compare/ui-v2.12.1...ui-v2.13.0) (2026-05-30)
+
+
+### Features
+
+* **style-dictionary:** simplify token structure ([e996706](https://github.com/grantcodes/ui/commit/e996706de23efc848d64eb42a271bd96fa914345))
+
+
+### Bug Fixes
+
+* **style-dictionary:** trim semantic color tokens ([68a2383](https://github.com/grantcodes/ui/commit/68a2383aef3ce7bcec3ca7bc6f6cbd5198a45fed))
+
 ## [2.12.1](https://github.com/grantcodes/ui/compare/ui-v2.12.0...ui-v2.12.1) (2026-05-08)
 
 

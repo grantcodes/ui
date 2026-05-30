@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.7.0](https://github.com/grantcodes/ui/compare/style-dictionary-v1.6.1...style-dictionary-v1.7.0) (2026-05-30)
+
+
+### Features
+
+* **style-dictionary:** simplify token structure ([e996706](https://github.com/grantcodes/ui/commit/e996706de23efc848d64eb42a271bd96fa914345))
+
+
+### Bug Fixes
+
+* **style-dictionary:** clean up spacing tokens ([abd08c8](https://github.com/grantcodes/ui/commit/abd08c8465d81712d9eaa9dfac3baa79d494eaef))
+* **style-dictionary:** stabilize semantic color ramps ([69098ca](https://github.com/grantcodes/ui/commit/69098ca8c539410afd87e4fa0e3a7bb8a4fded7c))
+* **style-dictionary:** trim semantic color tokens ([68a2383](https://github.com/grantcodes/ui/commit/68a2383aef3ce7bcec3ca7bc6f6cbd5198a45fed))
+
 ## [1.6.1](https://github.com/grantcodes/ui/compare/style-dictionary-v1.6.0...style-dictionary-v1.6.1) (2026-05-14)
 
 
