@@ -4,55 +4,14 @@
 			"default": {
 				"value": "light-dark({ref.color.neutral.300}, {ref.color.neutral.600})"
 			},
-			"default-hover": {
-				"value": "light-dark({ref.color.neutral.500}, {ref.color.neutral.400})"
-			},
 			"subtle": {
 				"value": "light-dark({ref.color.neutral.200}, {ref.color.neutral.700})"
-			},
-			"strong": {
-				"value": "light-dark({ref.color.neutral.900}, {ref.color.neutral.100})"
-			},
-			"knockout": {
-				"value": "light-dark({ref.color.neutral.400}, {ref.color.neutral.500})"
 			},
 			"primary": {
 				"value": "light-dark({color.primary.700}, {color.primary.400})"
 			},
 			"secondary": {
 				"value": "light-dark({color.secondary.700}, {color.secondary.300})"
-			},
-			"tertiary": {
-				"value": "light-dark({color.tertiary.700}, {color.tertiary.300})"
-			},
-			"utility": {
-				"error": {
-					"value": "light-dark({ref.color.red.700}, {ref.color.red.400})"
-				},
-				"error-hover": {
-					"value": "light-dark({ref.color.red.800}, {ref.color.red.200})"
-				},
-				"warning": {
-					"value": "light-dark({ref.color.yellow.700}, {ref.color.yellow.400})"
-				},
-				"warning-hover": {
-					"value": "light-dark({ref.color.yellow.800}, {ref.color.yellow.200})"
-				},
-				"success": {
-					"value": "light-dark({ref.color.green.700}, {ref.color.green.400})"
-				},
-				"success-hover": {
-					"value": "light-dark({ref.color.green.800}, {ref.color.green.200})"
-				},
-				"info": {
-					"value": "light-dark({ref.color.blue.700}, {ref.color.blue.300})"
-				},
-				"info-hover": {
-					"value": "light-dark({ref.color.blue.800}, {ref.color.blue.200})"
-				}
-			},
-			"disabled": {
-				"value": "light-dark({ref.color.neutral.200}, {ref.color.neutral.700})"
 			}
 		}
 	}

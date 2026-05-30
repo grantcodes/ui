@@ -4,17 +4,11 @@
 			"default": {
 				"value": "light-dark({ref.color.neutral.white}, {ref.color.neutral.900})"
 			},
-			"default-hover": {
-				"value": "light-dark({ref.color.neutral.100}, {ref.color.neutral.700})"
-			},
 			"subtle": {
 				"value": "light-dark({ref.color.neutral.100}, {ref.color.neutral.800})"
 			},
 			"subtle-hover": {
 				"value": "light-dark({ref.color.neutral.200}, {ref.color.neutral.700})"
-			},
-			"knockout": {
-				"value": "light-dark({ref.color.neutral.black}, {ref.color.neutral.white})"
 			},
 			"primary": {
 				"value": "light-dark({color.primary.100}, {color.primary.800})"
@@ -22,105 +16,28 @@
 			"primary-hover": {
 				"value": "light-dark({color.primary.200}, {color.primary.700})"
 			},
-			"primary-disabled": {
-				"value": "light-dark({ref.color.neutral.200}, {ref.color.neutral.700})"
-			},
 			"primary-knockout": {
 				"value": "light-dark({ref.color.neutral.800}, {ref.color.neutral.700})"
 			},
-			"primary-knockout-hover": {
-				"value": "light-dark({ref.color.neutral.700}, {ref.color.neutral.600})"
-			},
-			"secondary": {
-				"value": "light-dark({color.secondary.100}, {color.secondary.900})"
-			},
-			"secondary-hover": {
-				"value": "light-dark({color.secondary.200}, {color.secondary.800})"
-			},
-			"secondary-disabled": {
+			"primary-disabled": {
 				"value": "light-dark({ref.color.neutral.200}, {ref.color.neutral.700})"
 			},
-			"secondary-knockout": {
-				"value": "light-dark({color.secondary.800}, {color.secondary.500})"
-			},
-			"secondary-knockout-hover": {
-				"value": "light-dark({color.secondary.700}, {color.secondary.600})"
-			},
-			"tertiary": {
-				"value": "light-dark({color.tertiary.100}, {color.tertiary.900})"
-			},
-			"tertiary-hover": {
-				"value": "light-dark({color.tertiary.200}, {color.tertiary.800})"
-			},
-			"tertiary-disabled": {
-				"value": "light-dark({ref.color.neutral.200}, {ref.color.neutral.700})"
-			},
-			"tertiary-knockout": {
-				"value": "light-dark({color.tertiary.800}, {color.tertiary.500})"
-			},
-			"tertiary-knockout-hover": {
-				"value": "light-dark({color.tertiary.700}, {color.tertiary.600})"
+			"knockout": {
+				"value": "light-dark({ref.color.neutral.black}, {ref.color.neutral.white})"
 			},
 			"utility": {
 				"error": {
 					"value": "light-dark({ref.color.red.100}, {ref.color.red.900})"
 				},
-				"error-knockout": {
-					"value": "light-dark({ref.color.red.600}, {ref.color.red.400})"
-				},
-				"error-hover": {
-					"value": "light-dark({ref.color.red.200}, {ref.color.red.800})"
-				},
 				"warning": {
 					"value": "light-dark({ref.color.yellow.100}, {ref.color.yellow.900})"
-				},
-				"warning-knockout": {
-					"value": "light-dark({ref.color.yellow.600}, {ref.color.yellow.400})"
-				},
-				"warning-hover": {
-					"value": "light-dark({ref.color.yellow.200}, {ref.color.yellow.800})"
 				},
 				"success": {
 					"value": "light-dark({ref.color.green.100}, {ref.color.green.900})"
 				},
-				"success-knockout": {
-					"value": "light-dark({ref.color.green.600}, {ref.color.green.400})"
-				},
-				"success-hover": {
-					"value": "light-dark({ref.color.green.200}, {ref.color.green.800})"
-				},
 				"info": {
 					"value": "light-dark({ref.color.blue.100}, {ref.color.blue.900})"
-				},
-				"info-knockout": {
-					"value": "light-dark({ref.color.blue.600}, {ref.color.blue.300})"
-				},
-				"info-hover": {
-					"value": "light-dark({ref.color.blue.200}, {ref.color.blue.800})"
 				}
-			},
-			"dataviz": {
-				"primary": {
-					"value": "light-dark({color.primary.600}, {color.primary.400})"
-				},
-				"primary-subtle": {
-					"value": "oklch(from var(--g-color-background-dataviz-primary) l c h / 0.25)"
-				},
-				"secondary": {
-					"value": "light-dark({ref.color.neutral.200}, {ref.color.neutral.700})"
-				},
-				"tertiary": {
-					"value": "light-dark({ref.color.neutral.400}, {ref.color.neutral.500})"
-				}
-			},
-			"disabled": {
-				"value": "light-dark({ref.color.neutral.200}, {ref.color.neutral.700})"
-			},
-			"transparent": {
-				"value": "oklch(from var(--g-color-background-default) l c h / 0.25)"
-			},
-			"transparent-strong": {
-				"value": "oklch(from var(--g-color-background-default) l c h / 0.9)"
 			}
 		}
 	}
