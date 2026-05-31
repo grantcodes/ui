@@ -5,10 +5,10 @@
 				"value": "light-dark({ref.color.neutral.white}, {ref.color.neutral.900})"
 			},
 			"subtle": {
-				"value": "light-dark({ref.color.neutral.100}, {ref.color.neutral.800})"
+				"value": "light-dark({ref.color.neutral.100}, {ref.color.neutral.850})"
 			},
 			"subtle-hover": {
-				"value": "light-dark({ref.color.neutral.200}, {ref.color.neutral.700})"
+				"value": "light-dark({ref.color.neutral.200}, {ref.color.neutral.800})"
 			},
 			"primary": {
 				"value": "{ref.color.purple.200}"

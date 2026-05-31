@@ -21,7 +21,7 @@ const getLightnessScale = (min = 26, max = 97, steps = 9) => {
  * Hue is preserved exactly across all shades.
  *
  * @param {string} baseColorStr - An oklch color string, e.g. "oklch(65% 0.22 279.42)"
- * @returns {Record<string, string>} Object with keys "100"-"900" plus "850" and oklch string values
+ * @returns {Record<string, string>} Object with keys "100"-"900" and oklch string values
  */
 const generateOklchScale = (baseColorStr) => {
 	const base = new Color(baseColorStr);
@@ -36,9 +36,8 @@ const generateOklchScale = (baseColorStr) => {
 
 	// Build lightness array: 100-400 evenly from MAX_L to just above baseL,
 	// 500 = baseL, 600-900 evenly from just below baseL to MIN_L.
-	// Keep an extra 850 stop between 800 and 900 for finer dark-range control.
 	const lighterShades = [100, 200, 300, 400];
-	const darkerShades = [600, 700, 800, 850, 900];
+	const darkerShades = [600, 700, 800, 900];
 	const lighterCount = lighterShades.length;
 	const darkerCount = darkerShades.length;
 	const lighterStep = (MAX_L - baseL) / lighterCount;
@@ -51,7 +50,7 @@ const generateOklchScale = (baseColorStr) => {
 	}
 	// 500: anchor
 	lightnessMap[500] = baseL;
-	// 600-900: darker shades, including 850
+	// 600-900: darker shades, including
 	for (const [i, shade] of darkerShades.entries()) {
 		lightnessMap[shade] = baseL - (i + 1) * darkerStep;
 	}
