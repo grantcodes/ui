@@ -21,6 +21,7 @@ export * from "./components/media-text/index.js";
 export * from "./components/newsletter/index.js";
 export * from "./components/notice/index.js";
 export * from "./components/pagination/index.js";
+export * from "./components/person/index.js";
 export * from "./components/pricing/index.js";
 export * from "./components/stats/index.js";
 export * from "./components/tabs/index.js";

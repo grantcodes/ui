@@ -11,10 +11,10 @@ describe("getLightnessScale", () => {
 });
 
 describe("generateOklchScale", () => {
-	it("should return object with keys 100-900", () => {
+	it("should return object with keys 100-900 plus 850", () => {
 		const scale = generateOklchScale("oklch(65% 0.22 279.42)");
 		const keys = Object.keys(scale);
-		const expected = ["100", "200", "300", "400", "500", "600", "700", "800", "900"];
+		const expected = ["100", "200", "300", "400", "500", "600", "700", "800", "850", "900"];
 		assert.deepStrictEqual(keys, expected);
 	});
 
@@ -32,7 +32,7 @@ describe("generateOklchScale", () => {
 
 	it("should have lightness decreasing from 100 to 900", () => {
 		const scale = generateOklchScale("oklch(65% 0.22 279.42)");
-		const shades = ["100", "200", "300", "400", "500", "600", "700", "800", "900"];
+		const shades = ["100", "200", "300", "400", "500", "600", "700", "800", "850", "900"];
 		for (let i = 0; i < shades.length - 1; i++) {
 			const currentL = parseFloat(scale[shades[i]].match(/oklch\((\d+(\.\d+)?)%/)[1]);
 			const nextL = parseFloat(scale[shades[i + 1]].match(/oklch\((\d+(\.\d+)?)%/)[1]);
@@ -57,7 +57,7 @@ describe("generateOklchScale", () => {
 
 	it("should have evenly spaced lightness steps (perceptual uniformity)", () => {
 		const scale = generateOklchScale("oklch(65% 0.22 279.42)");
-		const shades = ["100", "200", "300", "400", "500", "600", "700", "800", "900"];
+		const shades = ["100", "200", "300", "400", "500", "600", "700", "800", "850", "900"];
 		const lightnesses = shades.map((s) =>
 			parseFloat(scale[s].match(/oklch\((\d+(\.\d+)?)%/)[1]),
 		);
@@ -92,7 +92,7 @@ describe("generateOklchScale", () => {
 	it("should handle achromatic input with chroma 0", () => {
 		const scale = generateOklchScale("oklch(60% 0 0)");
 		const keys = Object.keys(scale);
-		const expected = ["100", "200", "300", "400", "500", "600", "700", "800", "900"];
+		const expected = ["100", "200", "300", "400", "500", "600", "700", "800", "850", "900"];
 		assert.deepStrictEqual(keys, expected);
 
 		// All shades should have chroma 0 (or very close)

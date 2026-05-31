@@ -31,10 +31,10 @@ export class GrantCodesTabs extends LitElement {
 		}
 	}
 
-	/** @type {GrantCodesTab[]} */
+	/** @type {import("./tab.component.js").GrantCodesTab[]} */
 	tabs = [];
 
-	/** @type {GrantCodesTabsButton[]} */
+	/** @type {import("./internal/tabs-button.component.js").GrantCodesTabsButton[]} */
 	tabButtons = [];
 
 	get activeTab() {
@@ -130,3 +130,5 @@ export class GrantCodesTabs extends LitElement {
 		`;
 	}
 }
+
+export { GrantCodesTab, GrantCodesTabsButton };

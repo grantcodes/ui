@@ -34,6 +34,7 @@ export { MediaText } from "./components/media-text/media-text.react.js";
 export { Newsletter } from "./components/newsletter/newsletter.react.js";
 export { Notice } from "./components/notice/notice.react.js";
 export { Pagination } from "./components/pagination/pagination.react.js";
+export { Person } from "./components/person/person.react.js";
 export { Pricing } from "./components/pricing/pricing.react.js";
 export { Sidebar } from "./components/sidebar/sidebar.react.js";
 export { Stats } from "./components/stats/stats.react.js";
