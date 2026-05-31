@@ -17,6 +17,7 @@
 	z-index: 100;
 }
 
+:host([sticky]),
 .app-bar--sticky {
 	position: sticky;
 	inset-block-start: 0;
