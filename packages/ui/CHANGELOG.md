@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.14.1](https://github.com/grantcodes/ui/compare/ui-v2.14.0...ui-v2.14.1) (2026-05-31)
+
+
+### Bug Fixes
+
+* **ui:** sticky app bar ([c7fbb6e](https://github.com/grantcodes/ui/commit/c7fbb6e5cc5a569d41a7c7e23221dfde6ef56b7f))
+
 ## [2.14.0](https://github.com/grantcodes/ui/compare/ui-v2.13.0...ui-v2.14.0) (2026-05-31)
 
 

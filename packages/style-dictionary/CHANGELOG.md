@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.0](https://github.com/grantcodes/ui/compare/style-dictionary-v1.8.0...style-dictionary-v1.9.0) (2026-05-31)
+
+
+### Features
+
+* **style-dictionary:** remove 850 color and add to neutral ([7f0b00f](https://github.com/grantcodes/ui/commit/7f0b00fa1b2b050562f330f35c173662029d5b27))
+
 ## [1.8.0](https://github.com/grantcodes/ui/compare/style-dictionary-v1.7.0...style-dictionary-v1.8.0) (2026-05-31)
 
 
