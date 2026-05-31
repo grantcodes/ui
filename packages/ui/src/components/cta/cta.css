@@ -29,9 +29,9 @@
 
 .cta__eyebrow {
 	margin: 0 0 var(--g-spacing-sm);
-	font: var(--g-typography-body-sm-font)
+	font: var(--g-typography-body-sm-font);
 	text-transform: uppercase;
-	color: var(--g-color-content-primary, #7c3aed);
+	color: var(--g-color-content-primary);
 }
 
 .cta__title {
@@ -60,5 +60,5 @@
 }
 
 .cta__secondary-link:hover {
-	color: var(--g-color-content-primary, #7c3aed);
+	color: var(--g-color-content-primary);
 }
