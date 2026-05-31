@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.8.0](https://github.com/grantcodes/ui/compare/style-dictionary-v1.7.0...style-dictionary-v1.8.0) (2026-05-31)
+
+
+### Features
+
+* **style-dictionary, ui:** add button styles and simplfy tokens ([f5d66b7](https://github.com/grantcodes/ui/commit/f5d66b7953c424e5ae2125495dc555a0f44aacbe))
+* **ui:** add person component and polish styles ([2b6ac36](https://github.com/grantcodes/ui/commit/2b6ac361a87920fc1be8209e572f871c9d199df8))
+
 ## [1.7.0](https://github.com/grantcodes/ui/compare/style-dictionary-v1.6.1...style-dictionary-v1.7.0) (2026-05-30)
 
 
