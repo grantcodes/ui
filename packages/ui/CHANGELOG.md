@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.14.0](https://github.com/grantcodes/ui/compare/ui-v2.13.0...ui-v2.14.0) (2026-05-31)
+
+
+### Features
+
+* **style-dictionary, ui:** add button styles and simplfy tokens ([f5d66b7](https://github.com/grantcodes/ui/commit/f5d66b7953c424e5ae2125495dc555a0f44aacbe))
+* **ui:** add person component and polish styles ([2b6ac36](https://github.com/grantcodes/ui/commit/2b6ac361a87920fc1be8209e572f871c9d199df8))
+
+
+### Bug Fixes
+
+* **ui:** color-contrast lint ([29eedf9](https://github.com/grantcodes/ui/commit/29eedf9181448767a6bcbdb0e8b8cddeb3fd2aad))
+* **ui:** css formatting ([ae3a039](https://github.com/grantcodes/ui/commit/ae3a03954acb80b102dd8238521b963502b76c42))
+
 ## [2.13.0](https://github.com/grantcodes/ui/compare/ui-v2.12.1...ui-v2.13.0) (2026-05-30)
 
 
