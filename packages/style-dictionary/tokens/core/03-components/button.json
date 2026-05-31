@@ -1,93 +1,41 @@
 {
 	"button": {
 		"color": {
-			"background": {
-				"default": {
-					"value": "{color.background.primary}"
-				},
-				"hover": {
-					"value": "{color.background.primary-hover}"
-				},
-				"active": {
-					"value": "{color.background.primary-hover}"
-				},
-				"disabled": {
-					"value": "{color.background.default}"
-				}
-			},
-			"content": {
-				"default": {
-					"value": "{color.content.primary}"
-				},
-				"hover": {
-					"value": "{color.content.primary-hover}"
-				},
-				"active": {
-					"value": "{color.content.primary-hover}"
-				},
-				"disabled": {
-					"value": "{color.content.disabled}"
-				}
+		  "background": {
+			  "value": "{color.primary.500}"
 			},
 			"border": {
-				"default": {
-					"value": "{color.border.default}"
-				},
-				"hover": {
-					"value": "{color.border.primary}"
-				},
-				"active": {
-					"value": "{color.border.primary}"
-				},
-				"disabled": {
-					"value": "{color.border.default}"
-				}
+				"value": "{button.color.background}"
 			}
 		},
-		"primary": {
+		"secondary": {
 			"color": {
-				"background": {
-					"default": {
-						"value": "{color.primary.500}"
-					},
-					"hover": {
-						"value": "{color.primary.400}"
-					},
-					"active": {
-						"value": "{color.primary.400}"
-					},
-					"disabled": {
-						"value": "{color.background.primary-disabled}"
-					}
-				},
-				"content": {
-					"default": {
-						"value": "{ref.color.neutral.white}"
-					},
-					"hover": {
-						"value": "{ref.color.neutral.white}"
-					},
-					"active": {
-						"value": "{ref.color.neutral.white}"
-					},
-					"disabled": {
-						"value": "{color.content.disabled}"
-					}
-				},
-				"border": {
-					"default": {
-						"value": "{color.primary.500}"
-					},
-					"hover": {
-						"value": "{color.primary.400}"
-					},
-					"active": {
-						"value": "{color.primary.400}"
-					},
-					"disabled": {
-						"value": "{color.border.default}"
-					}
-				}
+  			"background": {
+  			  "value": "{color.secondary.500}"
+  			},
+  			"border": {
+  				"value": "{button.secondary.color.background}"
+  			}
+			}
+		},
+		"neutral": {
+			"color": {
+			  "background": {
+  			  "value": "{color.content.subtle}"
+  			},
+  			"border": {
+  				"value": "{button.neutral.color.background}"
+  			}
+			}
+		},
+		"danger": {
+			"color": {
+  			"background": {
+  			  "value": "{color.utility.error}"
+  			},
+  			"border": {
+  				"value": "{button.danger.color.background}"
+  			}
 			}
 		}
 	}

@@ -129,14 +129,13 @@
 }
 
 .toast__title {
-	font-weight: var(--g-typography-label-font-weight);
-	font-size: var(--g-typography-body-font-size);
+	font: var(--g-typography-h6-font);
 	margin-block-end: 0.25rem;
 	color: var(--g-color-content-default);
 }
 
 .toast__message {
-	font-size: var(--g-typography-body-sm-font-size);
+	font: var(--g-typography-body-sm-font);
 	color: var(--g-color-content-subtle);
 	line-height: 1.5;
 }

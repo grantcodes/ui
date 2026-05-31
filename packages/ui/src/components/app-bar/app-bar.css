@@ -244,8 +244,7 @@
 ::slotted(a[slot="logo"]) {
 	color: var(--g-color-content-default) !important;
 	text-decoration: none !important;
-	font-family: var(--g-typography-label-font-family);
-	font-weight: var(--g-typography-label-font-weight);
+	font: var(--g-typography-body-sm-font);
 }
 
 ::slotted(ul),

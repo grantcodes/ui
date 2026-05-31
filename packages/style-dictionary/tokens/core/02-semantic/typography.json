@@ -1,0 +1,54 @@
+{
+		"typography": {
+  		"font-family": {
+				"heading": { "value": "{ref.typography.font-family.system}" },
+				"body": { "value": "{ref.typography.font-family.system}" },
+				"mono": { "value": "{ref.typography.font-family.system-mono}" }
+  		},
+      "font-weight": {
+        "light": { "value": 200 },
+        "normal": { "value": 400 },
+        "bold": { "value": 700 },
+        "heavy": { "value": 900 }
+      },
+      "font-scale": {
+				"comment": "The factor by which font sizes are scaled. In this case we set a default value, but it is replaced via media query with the sm or lg value.",
+				"sm": {
+					"value": 1.333
+				},
+				"lg": {
+					"value": 1.5
+				},
+				"default": {
+					"value": "{typography.font-scale.sm}"
+				}
+			},
+			"font-size": {
+				"root": {
+					"comment": "The value applied to the :root element",
+					"value": "clamp(1.2rem, 0.986rem + 0.571vw, 1.5rem)"
+				},
+				"2xs": {
+					"value": "calc(1rem * pow({typography.font-scale.default}, -1))"
+				},
+				"xs": {
+					"value": "calc(1rem * pow({typography.font-scale.default}, -0.25))"
+				},
+				"sm": {
+					"value": "calc(1rem * pow({typography.font-scale.default}, -0.125))"
+				},
+				"md": {
+					"value": "1rem"
+				},
+				"lg": {
+					"value": "calc(1rem * pow({typography.font-scale.default}, 2))"
+				},
+				"xl": {
+					"value": "calc(1rem * pow({typography.font-scale.default}, 3))"
+				},
+				"2xl": {
+					"value": "calc(1rem * pow({typography.font-scale.default}, 4))"
+				}
+			}
+		}
+	}

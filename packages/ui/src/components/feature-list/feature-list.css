@@ -20,14 +20,14 @@
 
 .feature-list__title {
 	margin: 0 0 var(--g-spacing-sm);
-	font: var(--g-typography-h4-font);
+	font: var(--g-typography-h3-font);
 	text-align: center;
 	color: var(--g-color-content-default);
 }
 
 .feature-list__subtitle {
 	margin: 0 auto var(--g-spacing-2xl);
-	font-size: var(--g-typography-body-lg-font-size);
+	font: var(--g-typography-body-lg-font);
 	text-align: center;
 	color: var(--g-color-content-subtle);
 	max-width: 55ch;

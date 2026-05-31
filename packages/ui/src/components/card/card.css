@@ -105,7 +105,7 @@
 	margin: 0;
 	padding-inline: var(--g-spacing-md);
 	padding-block: 1em;
-	font-size: var(--g-typography-meta-sm-font-size);
+	font-size: var(--g-typography-font-size-xs);
 	/* Use color-mix() for modern color manipulation */
 	background-color: color-mix(
 		in srgb,

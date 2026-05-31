@@ -1,12 +1,12 @@
 :root {
 	font: var(--g-typography-body-font);
-	font-size: var(--g-ref-typography-font-size-root);
+	font-size: var(--g-typography-font-size-root);
 }
 @media (min-width: 40em) {
 	:root {
 		/* TODO: Would like to get rid of important */
-		--g-ref-typography-font-scale-default: var(
-			--g-ref-typography-font-scale-lg
+		--g-typography-font-scale-default: var(
+			--g-typography-font-scale-lg
 		) !important;
 	}
 }

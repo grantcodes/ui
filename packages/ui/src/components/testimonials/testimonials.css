@@ -20,8 +20,7 @@
 
 .testimonials__title {
 	margin: 0 0 var(--g-spacing-2xl);
-	font-size: var(--g-typography-h4-font-size);
-	font-weight: var(--g-typography-h4-font-weight);
+	font: var(--g-typography-h3-font);
 	text-align: center;
 	color: var(--g-color-content-default);
 }
@@ -73,12 +72,12 @@
 }
 
 .testimonials__name {
-	font: var(--g-typography-label-default);
+	font: var(--g-typography-body-sm-font);
 	font-style: normal;
 	color: var(--g-color-content-default);
 }
 
 .testimonials__role {
-	font-size: var(--g-typography-body-sm-font-size);
+    font: var(--g-typography-body-sm-font);
 	color: var(--g-color-content-subtle);
 }

@@ -29,9 +29,7 @@
 
 .cta__eyebrow {
 	margin: 0 0 var(--g-spacing-sm);
-	font-size: var(--g-typography-meta-default-font-size);
-	font-weight: var(--g-typography-meta-default-font-weight);
-	letter-spacing: var(--g-typography-meta-default-letter-spacing);
+	font: var(--g-typography-body-sm-font)
 	text-transform: uppercase;
 	color: var(--g-color-content-primary, #7c3aed);
 }

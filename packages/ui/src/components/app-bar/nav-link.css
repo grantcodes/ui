@@ -44,8 +44,7 @@
 	opacity: 1 !important;
 	padding-block: var(--g-spacing-xs, 0.25rem);
 	padding-inline: var(--g-spacing-sm);
-	font-family: var(--g-typography-label-font-family);
-	font-weight: var(--g-typography-label-font-weight);
+	font: var(--g-typography-body-sm-font);
 	white-space: nowrap;
 }
 

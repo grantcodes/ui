@@ -11,7 +11,7 @@
 .newsletter {
 	padding-block: var(--g-spacing-3xl);
 	padding-inline: var(--g-spacing-md);
-	background: var(--g-color-background-primary-knockout, #7c3aed);
+	background: var(--g-color-background-primary-knockout);
 	text-align: center;
 }
 
@@ -22,14 +22,14 @@
 
 .newsletter__title {
 	margin: 0 0 var(--g-spacing-sm);
-	font: var(--g-typography-h4-font);
-	color: var(--g-color-content-primary-knockout, #ffffff);
+	font: var(--g-typography-h3-font);
+	color: var(--g-color-content-primary-knockout);
 }
 
 .newsletter__text {
 	margin: 0 0 var(--g-spacing-xl);
 	font: var(--g-typography-body-lg);
-	color: var(--g-color-content-primary-knockout, #ffffff);
+	color: var(--g-color-content-primary-knockout);
 	opacity: 0.9;
 }
 
@@ -80,7 +80,7 @@
 .newsletter__disclaimer {
 	margin: var(--g-spacing-md) 0 0;
 	font: var(--g-typography-body-sm);
-	color: var(--g-color-content-primary-knockout, #ffffff);
+	color: var(--g-color-content-primary-knockout);
 	opacity: 0.75;
 }
 
