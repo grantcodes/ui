@@ -9,10 +9,9 @@
 }
 
 ::slotted(h3) {
-	font-size: var(--g-typography-body-font-size);
+	font: var(--g-typography-h6-font);
 	color: var(--g-color-content-default);
 	margin: 0 0 var(--g-spacing-sm) 0;
-	font-weight: var(--g-typography-label-font-weight);
 }
 
 ::slotted(ul) {

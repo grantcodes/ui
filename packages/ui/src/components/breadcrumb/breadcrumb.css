@@ -42,7 +42,6 @@
 
 /* Current page styling */
 .breadcrumb__item[data-current] {
-	font-weight: var(--g-typography-label-font-weight);
 	color: var(--color-base-primary-900);
 }
 

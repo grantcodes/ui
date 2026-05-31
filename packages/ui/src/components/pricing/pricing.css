@@ -20,15 +20,14 @@
 
 .pricing__title {
 	margin: 0 0 var(--g-spacing-sm);
-	font-size: var(--g-typography-h4-font-size);
-	font-weight: var(--g-typography-h4-font-weight);
+	font: var(--g-typography-h3-font);
 	text-align: center;
 	color: var(--g-color-content-default);
 }
 
 .pricing__subtitle {
 	margin: 0 auto var(--g-spacing-2xl);
-	font-size: var(--g-typography-body-lg-font-size);
+	font: var(--g-typography-body-lg-font);
 	text-align: center;
 	color: var(--g-color-content-subtle);
 	max-width: 55ch;
@@ -55,7 +54,7 @@
 }
 
 .pricing__tier--highlighted {
-	border-color: var(--g-color-border-primary, #7c3aed);
+	border-color: var(--g-color-border-primary);
 	background: var(--g-color-background-subtle);
 	box-shadow: var(--g-box-shadow-lg);
 }
@@ -68,8 +67,7 @@
 
 .pricing__tier-name {
 	margin: 0;
-	font-size: var(--g-typography-body-lg-font-size);
-	font-weight: var(--g-typography-label-lg-font-weight);
+	font: var(--g-typography-body-lg-font);
 	color: var(--g-color-content-default);
 }
 
@@ -120,7 +118,7 @@
 
 .pricing__feature-icon {
 	font: var(--g-typography-body-sm);
-	color: var(--g-color-content-primary, #7c3aed);
+	color: var(--g-color-content-primary);
 	flex-shrink: 0;
 }
 

@@ -1,0 +1,9 @@
+{
+	"button": {
+		"color": {
+ 			"background": {
+ 			  "value": "{color.primary.600}"
+ 			}
+		}
+	}
+}

@@ -40,7 +40,6 @@
 		var(--g-color-border-default);
 	border-radius: calc(var(--g-border-radius-md) * 2);
 	z-index: 11;
-	font-weight: var(--g-typography-label-font-weight);
 	color: inherit;
 }
 

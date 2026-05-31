@@ -138,12 +138,12 @@ export const Default = {
             ></grantcodes-avatar>
             <div>
               <p
-                style="margin: 0; font-weight: var(--g-typography-label-font-weight); color: var(--g-color-content-default); font-size: var(--g-typography-label-font-size);"
+                style="margin: 0; font: var(--g-typography-body-sm-font); color: var(--g-color-content-default);"
               >
                 Sam Torres
               </p>
               <p
-                style="margin: 0; color: var(--g-color-content-subtle); font-size: var(--g-typography-meta-font-size);"
+                style="margin: 0; color: var(--g-color-content-subtle); font-size: var(--g-typography-font-size-xs);"
               >
                 March 12, 2025 · 8 min read
               </p>
@@ -258,11 +258,11 @@ export const Default = {
           ></grantcodes-avatar>
           <div>
             <p
-              style="margin: 0; font-weight: var(--g-typography-label-font-weight); color: var(--g-color-content-default);"
+              style="margin: 0; font: var(--g-typography-h6-font); color: var(--g-color-content-default);"
             >
               Sam Torres
             </p>
-            <p style="font: var(--g-typography-meta);">
+            <p style="font: var(--g-typography-body-sm-font);">
               CTO at Flowbase. Writes about engineering culture, distributed
               teams, and systems thinking.
             </p>
@@ -284,7 +284,7 @@ export const Default = {
                   style="display: flex; align-items: center; justify-content: space-between;"
                 >
                   <grantcodes-badge variant="neutral">${post.category}</grantcodes-badge>
-                  <span style="font: var(--g-typography-meta);">${post.date}</span>
+                  <span style="font: var(--g-typography-body-sm-font);">${post.date}</span>
                 </div>
                 <div
                   style="display: flex; flex-direction: column; gap: var(--g-spacing-sm); flex: 1;"
@@ -312,7 +312,7 @@ export const Default = {
                     size="small"
                   ></grantcodes-avatar>
                   <span
-                    style="font: var(--g-typography-meta);"
+                    style="font: var(--g-typography-body-sm-font);"
                     >${post.author.name}</span
                   >
                 </div>

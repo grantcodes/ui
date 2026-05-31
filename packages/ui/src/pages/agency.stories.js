@@ -1,5 +1,6 @@
 import { html } from "lit";
 import "../components/app-bar/app-bar.js";
+import "../components/app-bar/nav-link.js"
 import "../components/button/button.js";
 import "../components/hero/hero.js";
 import "../components/media-text/media-text.js";
@@ -54,9 +55,9 @@ export const Default = {
 				Studio North
 			</a>
 			<div slot="nav" style="display: flex; gap: 0.5rem;">
-				<a href="/work">Work</a>
-				<a href="/services">Services</a>
-				<a href="/about">About</a>
+				<grantcodes-nav-link><a href="/work">Work</a></grantcodes-nav-link>
+				<grantcodes-nav-link><a href="/services">Services</a></grantcodes-nav-link>
+				<grantcodes-nav-link><a href="/about">About</a></grantcodes-nav-link>
 			</div>
 			<div slot="actions">
 				<grantcodes-button>Get in touch</grantcodes-button>

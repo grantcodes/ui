@@ -22,9 +22,7 @@
 
 .logo-cloud__title {
 	margin: 0 0 var(--g-spacing-xl);
-	font-size: var(--g-typography-meta-default-font-size);
-	font-weight: var(--g-typography-meta-default-font-weight);
-	letter-spacing: var(--g-typography-meta-default-letter-spacing);
+	font: var(--g-typography-body-sm-font);
 	text-transform: uppercase;
 	text-align: center;
 	color: var(--g-color-content-subtle);

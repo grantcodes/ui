@@ -1,5 +1,6 @@
 import { html } from "lit";
 import "../components/app-bar/app-bar.js";
+import "../components/app-bar/nav-link.js";
 import "../components/button/button.js";
 import "../components/hero/hero.js";
 import "../components/logo-cloud/logo-cloud.js";
@@ -20,10 +21,10 @@ const meta = {
 export default meta;
 
 const navLinks = html`
-	<a href="/">Home</a>
-	<a href="/features">Features</a>
-	<a href="/pricing">Pricing</a>
-	<a href="/about">About</a>
+	<grantcodes-nav-link><a href="/">Home</a></grantcodes-nav-link>
+	<grantcodes-nav-link><a href="/features">Features</a></grantcodes-nav-link>
+	<grantcodes-nav-link><a href="/pricing">Pricing</a></grantcodes-nav-link>
+	<grantcodes-nav-link><a href="/about">About</a></grantcodes-nav-link>
 `;
 
 const footerContent = html`
@@ -252,7 +253,7 @@ export const Default = {
 				{
 					name: "Team",
 					price: "$49",
-					period: "/ month",
+					period: "month",
 					description: "For growing teams that need to move fast.",
 					features: [
 						{ text: "Up to 20 team members", included: true },
@@ -268,7 +269,7 @@ export const Default = {
 				{
 					name: "Enterprise",
 					price: "$149",
-					period: "/ month",
+					period: "month",
 					description: "For large teams with advanced security needs.",
 					features: [
 						{ text: "Unlimited team members", included: true },

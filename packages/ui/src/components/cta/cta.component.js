@@ -90,10 +90,10 @@ export class GrantCodesCta extends LitElement {
 									}
 									${
 										secondary
-											? html`<a
+                      ? html`<grantcodes-button
+											  variant="ghost"
 												href=${secondary.href}
-												class="cta__secondary-link"
-												>${secondary.label}</a
+												>${secondary.label}</grantcodes-button
 											>`
 											: null
 									}

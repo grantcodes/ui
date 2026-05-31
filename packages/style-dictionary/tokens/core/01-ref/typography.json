@@ -3,74 +3,10 @@
 		"typography": {
 			"font-family": {
 				"system": {
-					"value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif"
-				}
-			},
-			"font-scale": {
-				"comment": "The factor by which font sizes are scaled. In this case we set a default value, but it is replaced via media query with the sm or lg value.",
-				"sm": {
-					"value": 1.333
+					"value": "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif"
 				},
-				"lg": {
-					"value": 1.5
-				},
-				"default": {
-					"value": "{ref.typography.font-scale.sm}"
-				}
-			},
-			"font-size": {
-				"root": {
-					"comment": "The value applied to the :root element",
-					"value": "clamp(1.2rem, 0.986rem + 0.571vw, 1.5rem)"
-				},
-				"xs": {
-					"value": "calc(1rem * pow({ref.typography.font-scale.default}, -0.25))"
-				},
-				"sm": {
-					"value": "calc(1rem * pow({ref.typography.font-scale.default}, -0.125))"
-				},
-				"md": {
-					"value": "1rem"
-				},
-				"lg": {
-					"value": "calc(1rem * pow({ref.typography.font-scale.default}, 2))"
-				},
-				"xl": {
-					"value": "calc(1rem * pow({ref.typography.font-scale.default}, 3))"
-				},
-				"2xl": {
-					"value": "calc(1rem * pow({ref.typography.font-scale.default}, 4))"
-				}
-			},
-			"font-weight": {
-				"400": {
-					"value": "400"
-				},
-				"500": {
-					"value": "500"
-				},
-				"600": {
-					"value": "600"
-				},
-				"700": {
-					"value": "700"
-				},
-				"800": {
-					"value": "800"
-				},
-				"900": {
-					"value": "900"
-				}
-			},
-			"letter-spacing": {
-				"none": {
-					"value": "0px"
-				},
-				"sm": {
-					"value": "0.5px"
-				},
-				"lg": {
-					"value": "2px"
+				"system-mono": {
+					"value": "ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono', 'Roboto Mono', 'Oxygen Mono', 'Ubuntu Mono', 'Source Code Pro', 'Fira Mono', 'Droid Sans Mono', 'Consolas', 'Courier New', monospace"
 				}
 			}
 		}

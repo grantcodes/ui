@@ -20,8 +20,7 @@
 	background-color: var(--g-color-primary-200);
 	color: var(--g-color-primary-900);
 	text-align: center;
-	font-size: var(--g-typography-h6-font-size);
-	font-weight: var(--g-typography-label-default-font-weight);
+	font: var(--g-typography-h6-font)
 }
 
 .avatar__image {
