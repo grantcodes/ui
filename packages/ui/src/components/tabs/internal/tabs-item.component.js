@@ -1,6 +1,11 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
 
+/**
+ * Internal shared base class for tabs primitives.
+ * @internal
+ * @tag grantcodes-tabs-item
+ */
 export class GrantCodesTabsItem extends LitElement {
 	static properties = {
 		active: { type: Boolean },

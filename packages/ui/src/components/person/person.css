@@ -1,0 +1,33 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+:host {
+	display: block;
+}
+
+.person {
+	display: flex;
+	align-items: center;
+	gap: var(--g-spacing-sm);
+}
+
+.person__meta {
+	display: flex;
+	flex-direction: column;
+	gap: var(--g-spacing-xs);
+	min-inline-size: 0;
+}
+
+.person__name {
+	font: var(--g-typography-body-sm-font);
+	font-style: normal;
+	color: var(--g-color-content-default);
+}
+
+.person__details {
+	font: var(--g-typography-body-sm-font);
+	color: var(--g-color-content-subtle);
+}

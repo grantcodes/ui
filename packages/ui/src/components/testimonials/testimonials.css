@@ -55,29 +55,11 @@
 .testimonials__text {
 	margin: 0;
 	font: var(--g-typography-body-default);
+	font-style: italic;
 	color: var(--g-color-content-default);
 	flex: 1;
 }
 
 .testimonials__attribution {
-	display: flex;
-	align-items: center;
-	gap: var(--g-spacing-sm);
-}
-
-.testimonials__meta {
-	display: flex;
-	flex-direction: column;
-	gap: var(--g-spacing-xs);
-}
-
-.testimonials__name {
-	font: var(--g-typography-body-sm-font);
-	font-style: normal;
-	color: var(--g-color-content-default);
-}
-
-.testimonials__role {
-    font: var(--g-typography-body-sm-font);
-	color: var(--g-color-content-subtle);
+	margin-top: auto;
 }
