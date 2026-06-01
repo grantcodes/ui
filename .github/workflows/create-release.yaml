@@ -8,8 +8,9 @@ on:
 jobs:
   release-please:
     permissions:
-      contents: read
+      contents: write
       id-token: write
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -48,13 +49,19 @@ jobs:
         if: ${{ steps.release.outputs['packages/ui--release_created'] }}
         working-directory: packages/ui
         run: pnpm publish  --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ""
 
       - name: Publish @grantcodes/style-dictionary
         if: ${{ steps.release.outputs['packages/style-dictionary--release_created'] }}
         working-directory: packages/style-dictionary
         run: pnpm publish  --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ""
 
       - name: Publish @grantcodes/astro
         if: ${{ steps.release.outputs['packages/astro--release_created'] }}
         working-directory: packages/astro
         run: pnpm publish  --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ""
