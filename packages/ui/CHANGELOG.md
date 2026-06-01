@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.15.0](https://github.com/grantcodes/ui/compare/ui-v2.14.1...ui-v2.15.0) (2026-06-01)
+
+
+### Features
+
+* **ui, style-dictionary:** expand person usage ([73cc1ca](https://github.com/grantcodes/ui/commit/73cc1cac2b2f84c9663e64d50636b56a7244730b))
+
 ## [2.14.1](https://github.com/grantcodes/ui/compare/ui-v2.14.0...ui-v2.14.1) (2026-05-31)
 
 
