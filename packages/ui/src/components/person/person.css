@@ -22,7 +22,7 @@
 }
 
 .person__name {
-	font: var(--g-typography-body-sm-font);
+	font: var(--g-typography-body-font);
 	font-style: normal;
 	color: var(--g-color-content-default);
 }
@@ -30,4 +30,10 @@
 .person__details {
 	font: var(--g-typography-body-sm-font);
 	color: var(--g-color-content-subtle);
+}
+
+::slotted([slot="description"]) {
+	font: var(--g-typography-body-sm-font);
+	color: var(--g-color-content-subtle);
+	margin-block-start: var(--g-spacing-xs);
 }
