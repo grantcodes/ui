@@ -32,10 +32,10 @@
 					"value": "calc(1rem * pow({typography.font-scale.default}, -1))"
 				},
 				"xs": {
-					"value": "calc(1rem * pow({typography.font-scale.default}, -0.25))"
+					"value": "calc(1rem * pow({typography.font-scale.default}, -0.5))"
 				},
 				"sm": {
-					"value": "calc(1rem * pow({typography.font-scale.default}, -0.125))"
+					"value": "calc(1rem * pow({typography.font-scale.default}, -0.25))"
 				},
 				"md": {
 					"value": "1rem"

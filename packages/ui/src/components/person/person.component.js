@@ -43,6 +43,7 @@ export class GrantCodesPerson extends LitElement {
 				<div class="person__meta">
 					<cite class="person__name">${this.name}</cite>
 					${meta ? html`<span class="person__details">${meta}</span>` : null}
+					<slot name="description" class="person__description"></slot>
 				</div>
 			</div>
 		`;

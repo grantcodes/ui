@@ -1,3 +1,4 @@
+import { html } from "lit";
 import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
 const { events, args, argTypes, template } =
 	getStorybookHelpers("grantcodes-person");
@@ -31,4 +32,28 @@ export const Initials = {
 	args: {
 		avatar: undefined,
 	},
+};
+
+export const WithDescription = {
+	args: {
+		name: "Sam Torres",
+		role: "CTO",
+		company: "Flowbase",
+		avatar: "https://i.pravatar.cc/80?img=12",
+		size: "medium",
+	},
+	render: (storyArgs) => html`
+		<grantcodes-person
+			name="${storyArgs.name}"
+			role="${storyArgs.role}"
+			company="${storyArgs.company}"
+			avatar="${storyArgs.avatar}"
+			size="${storyArgs.size}"
+		>
+			<span slot="description"
+				>Writes about engineering culture, distributed teams, and systems
+				thinking.</span
+			>
+		</grantcodes-person>
+	`,
 };

@@ -5,7 +5,7 @@ import "../components/button/button.js";
 import "../components/breadcrumb/breadcrumb.js";
 import "../components/container/container.js";
 import "../components/badge/badge.js";
-import "../components/avatar/avatar.js";
+import "../components/person/person.js";
 import "../components/card/card.js";
 import "../components/cta/cta.js";
 import "../components/footer/footer.js";
@@ -80,7 +80,7 @@ const footerContent = html`
 /**
  * A full blog post page. Demonstrates a reading-focused layout using the
  * container component for column width control, breadcrumb for navigation
- * context, badge for category tagging, avatar for the author byline, and
+ * context, badge for category tagging, person for the author byline, and
  * cards for related posts at the bottom.
  */
 export const Default = {
@@ -131,23 +131,16 @@ export const Default = {
           <div
             style="display: flex; align-items: center; gap: var(--g-spacing-sm); padding-block: var(--g-spacing-md); border-block: 1px solid var(--g-color-border-default);"
           >
-            <grantcodes-avatar
-              src="https://i.pravatar.cc/80?img=12"
+            <grantcodes-person
               name="Sam Torres"
+              avatar="https://i.pravatar.cc/80?img=12"
               size="small"
-            ></grantcodes-avatar>
-            <div>
-              <p
-                style="margin: 0; font: var(--g-typography-body-sm-font); color: var(--g-color-content-default);"
-              >
-                Sam Torres
-              </p>
-              <p
-                style="margin: 0; color: var(--g-color-content-subtle); font-size: var(--g-typography-font-size-xs);"
-              >
-                March 12, 2025 · 8 min read
-              </p>
-            </div>
+            ></grantcodes-person>
+            <span
+              style="color: var(--g-color-content-subtle); font-size: var(--g-typography-font-size-xs);"
+            >
+              March 12, 2025 · 8 min read
+            </span>
           </div>
         </div>
       </div>
@@ -249,24 +242,18 @@ export const Default = {
         </p>
 
         <div
-          style="margin-block-start: var(--g-spacing-xl); padding: var(--g-spacing-md); background: var(--g-color-background-subtle); border-radius: var(--g-border-radius-md); display: flex; align-items: center; gap: var(--g-spacing-md);"
+          style="margin-block-start: var(--g-spacing-xl); padding: var(--g-spacing-md); background: var(--g-color-background-subtle); border-radius: var(--g-border-radius-md);"
         >
-          <grantcodes-avatar
-            src="https://i.pravatar.cc/80?img=12"
+          <grantcodes-person
             name="Sam Torres"
+            avatar="https://i.pravatar.cc/80?img=12"
             size="medium"
-          ></grantcodes-avatar>
-          <div>
-            <p
-              style="margin: 0; font: var(--g-typography-h6-font); color: var(--g-color-content-default);"
+          >
+            <span slot="description"
+              >CTO at Flowbase. Writes about engineering culture, distributed
+              teams, and systems thinking.</span
             >
-              Sam Torres
-            </p>
-            <p style="font: var(--g-typography-body-sm-font);">
-              CTO at Flowbase. Writes about engineering culture, distributed
-              teams, and systems thinking.
-            </p>
-          </div>
+          </grantcodes-person>
         </div>
       </article>
     </grantcodes-container>
@@ -306,15 +293,11 @@ export const Default = {
                   slot="footer"
                   style="display: flex; align-items: center; gap: var(--g-spacing-sm);"
                 >
-                  <grantcodes-avatar
-                    src="${post.author.avatar}"
+                  <grantcodes-person
                     name="${post.author.name}"
+                    avatar="${post.author.avatar}"
                     size="small"
-                  ></grantcodes-avatar>
-                  <span
-                    style="font: var(--g-typography-body-sm-font);"
-                    >${post.author.name}</span
-                  >
+                  ></grantcodes-person>
                 </div>
               </grantcodes-card>
             `,
