@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.0](https://github.com/grantcodes/ui/compare/style-dictionary-v1.9.0...style-dictionary-v1.10.0) (2026-06-01)
+
+
+### Features
+
+* **ui, style-dictionary:** expand person usage ([73cc1ca](https://github.com/grantcodes/ui/commit/73cc1cac2b2f84c9663e64d50636b56a7244730b))
+
 ## [1.9.0](https://github.com/grantcodes/ui/compare/style-dictionary-v1.8.0...style-dictionary-v1.9.0) (2026-05-31)
 
 
