@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.1](https://github.com/grantcodes/ui/compare/style-dictionary-v1.10.0...style-dictionary-v1.10.1) (2026-06-07)
+
+
+### Bug Fixes
+
+* refresh package readmes ([8c4c1e5](https://github.com/grantcodes/ui/commit/8c4c1e5c795ed38321a9bb5fe5537e34926769ef))
+
 ## [1.10.0](https://github.com/grantcodes/ui/compare/style-dictionary-v1.9.0...style-dictionary-v1.10.0) (2026-06-01)
 
 
