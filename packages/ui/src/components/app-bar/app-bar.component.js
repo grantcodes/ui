@@ -10,8 +10,8 @@ export class GrantCodesAppBar extends LitElement {
 	static styles = [focusRingStyles, appBarStyles];
 
 	static properties = {
-		sticky: { type: Boolean },
-		transparent: { type: Boolean },
+		sticky: { type: Boolean, reflect: true },
+		transparent: { type: Boolean, reflect: true },
 		_mobileMenuOpen: { type: Boolean, state: true },
 	};
 

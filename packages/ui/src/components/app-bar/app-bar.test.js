@@ -55,6 +55,14 @@ describe("App Bar Component", () => {
 		assert.ok(appBar, "Should have sticky class");
 	});
 
+	it("should reflect sticky to the host attribute", async () => {
+		element = await fixture("grantcodes-app-bar", {
+			sticky: true,
+		});
+
+		assert.ok(element.hasAttribute("sticky"), "Should reflect sticky attribute");
+	});
+
 	it("should apply transparent class when transparent", async () => {
 		element = await fixture("grantcodes-app-bar", {
 			transparent: true,
@@ -62,6 +70,17 @@ describe("App Bar Component", () => {
 
 		const appBar = element.shadowRoot.querySelector(".app-bar--transparent");
 		assert.ok(appBar, "Should have transparent class");
+	});
+
+	it("should reflect transparent to the host attribute", async () => {
+		element = await fixture("grantcodes-app-bar", {
+			transparent: true,
+		});
+
+		assert.ok(
+			element.hasAttribute("transparent"),
+			"Should reflect transparent attribute",
+		);
 	});
 
 	it("should have logo slot", async () => {
