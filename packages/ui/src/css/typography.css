@@ -11,15 +11,15 @@
 	}
 }
 
-:where(h1, h1, h3, h4, h5, h6, p) {
+:where(h1, h2, h3, h4, h5, h6, p) {
 	margin-block-end: 1rem;
 }
 
-:where(h1, h1, h3, h4, h5, h6, p):first-child {
+:where(h1, h2, h3, h4, h5, h6, p):first-child {
 	margin-block-start: 0;
 }
 
-:where(h1, h1, h3, h4, h5, h6, p):last-child {
+:where(h1, h2, h3, h4, h5, h6, p):last-child {
 	margin-block-end: 0;
 }
 
