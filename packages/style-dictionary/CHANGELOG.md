@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.2](https://github.com/grantcodes/ui/compare/style-dictionary-v1.10.1...style-dictionary-v1.10.2) (2026-06-07)
+
+
+### Bug Fixes
+
+* align package metadata for trusted publishing ([5ae9181](https://github.com/grantcodes/ui/commit/5ae9181da289c6fdfae3a2aa23c88601256b003d))
+
 ## [1.10.1](https://github.com/grantcodes/ui/compare/style-dictionary-v1.10.0...style-dictionary-v1.10.1) (2026-06-07)
 
 
