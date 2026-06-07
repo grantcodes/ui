@@ -3,6 +3,7 @@ import {
   GrantCodesAccordion,
   GrantCodesAccordionItem,
 } from '@grantcodes/ui/components/accordion/index.js'
+import { GrantCodesContainer } from '@grantcodes/ui/components/container/index.js'
 
 interface AccordionItem {
   title: string
@@ -18,7 +19,7 @@ const { items } = Astro.props
 ---
 
 <div class="accordion">
-  <div class="container">
+  <GrantCodesContainer align="prose">
     <GrantCodesAccordion client:visible>
       {items.map((item) => (
         <GrantCodesAccordionItem title={item.title}>
@@ -28,18 +29,12 @@ const { items } = Astro.props
         </GrantCodesAccordionItem>
       ))}
     </GrantCodesAccordion>
-  </div>
+  </GrantCodesContainer>
 </div>
 
 <style>
   .accordion {
-    padding: 2rem 0;
-  }
-
-  .container {
-    width: 100%;
-    max-width: 65ch;
-    margin: 0 auto;
-    padding: 0 1rem;
+    padding-block: var(--g-spacing-2xl);
+    font: var(--g-typography-body-font);
   }
 </style>
