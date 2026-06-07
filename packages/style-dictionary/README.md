@@ -86,6 +86,8 @@ Supported CSS entrypoints:
 @import "@grantcodes/style-dictionary/grantina/css";
 ```
 
+Import exactly one theme stylesheet per surface unless you are intentionally comparing themes side by side.
+
 ## Exports
 
 ```js
