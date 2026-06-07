@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.15.6](https://github.com/grantcodes/ui/compare/ui-v2.15.5...ui-v2.15.6) (2026-06-07)
+
+
+### Bug Fixes
+
+* **ui:** raise sticky app bar layer ([8675995](https://github.com/grantcodes/ui/commit/8675995bcc8eb07596fa741a9e86f1ca1f7b0986))
+
 ## [2.15.5](https://github.com/grantcodes/ui/compare/ui-v2.15.4...ui-v2.15.5) (2026-06-07)
 
 
