@@ -234,7 +234,8 @@
               },
               "description": "Whether the app bar is sticky",
               "default": "false",
-              "attribute": "sticky"
+              "attribute": "sticky",
+              "reflects": true
             },
             {
               "kind": "field",
@@ -245,7 +246,8 @@
               },
               "description": "Whether the app bar has transparent background",
               "default": "false",
-              "attribute": "transparent"
+              "attribute": "transparent",
+              "reflects": true
             }
           ],
           "events": [
