@@ -19,7 +19,7 @@ const { title, subtitle, button, href, size, center } = Astro.props
   button={button}
   href={href}
   size={size}
-  center={center || undefined}
+  center={center ? true : undefined}
 >
   <slot />
 </GrantCodesHero>
