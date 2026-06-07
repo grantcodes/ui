@@ -214,6 +214,35 @@
 		align-items: center;
 		gap: var(--g-spacing-xs, 0.25rem);
 		flex: 1;
+		min-inline-size: 0;
+		overflow-x: auto;
+		flex-wrap: nowrap;
+		-webkit-overflow-scrolling: touch;
+		-webkit-mask-image: linear-gradient(
+			to right,
+			black calc(100% - 1.5rem),
+			transparent
+		);
+		mask-image: linear-gradient(
+			to right,
+			black calc(100% - 1.5rem),
+			transparent
+		);
+		scrollbar-width: thin;
+		scrollbar-color: var(--g-color-border-default) transparent;
+	}
+
+	.app-bar__nav::-webkit-scrollbar {
+		height: 4px;
+	}
+
+	.app-bar__nav::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	.app-bar__nav::-webkit-scrollbar-thumb {
+		background: var(--g-color-border-default);
+		border-radius: 2px;
 	}
 
 	/* Reset mobile-open styles at desktop — nav is always inline */
@@ -225,10 +254,22 @@
 		box-shadow: none;
 		animation: none;
 		flex-direction: row;
+		overflow-x: auto;
+		-webkit-mask-image: linear-gradient(
+			to right,
+			black calc(100% - 1.5rem),
+			transparent
+		);
+		mask-image: linear-gradient(
+			to right,
+			black calc(100% - 1.5rem),
+			transparent
+		);
 	}
 
 	.app-bar__actions {
 		order: 3;
+		flex-shrink: 0;
 	}
 
 	.app-bar__menu-button {
@@ -238,6 +279,11 @@
 	/* Overlay is never visible on desktop */
 	.app-bar__overlay--visible {
 		display: none;
+	}
+
+	::slotted(ul),
+	::slotted(div[slot="nav"]) {
+		flex-shrink: 0;
 	}
 }
 
