@@ -7,6 +7,14 @@
   "module": "src/main.js",
   "types": "src/types.d.ts",
   "author": "grantcodes",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grantcodes/ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/grantcodes/ui/issues"
+  },
+  "homepage": "https://github.com/grantcodes/ui#readme",
   "exports": {
     ".": {
       "types": "./src/types.d.ts",

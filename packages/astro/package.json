@@ -28,6 +28,14 @@
     "name": "Grant Richmond",
     "url": "https://grant.codes"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grantcodes/ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/grantcodes/ui/issues"
+  },
+  "homepage": "https://github.com/grantcodes/ui#readme",
   "license": "MIT",
   "dependencies": {
     "@grantcodes/style-dictionary": "^1.5.1",
