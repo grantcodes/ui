@@ -20,6 +20,6 @@ const { title, text, media, reverse = false, cta } = Astro.props
   title={title}
   text={text}
   media={JSON.stringify(media)}
-  reverse={reverse || undefined}
+  reverse={reverse ? true : undefined}
   cta={cta ? JSON.stringify(cta) : undefined}
 ></GrantCodesMediaText>
