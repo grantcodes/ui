@@ -67,6 +67,8 @@ Components render on the server by default. Choose a `client:*` directive only w
 
 > Most components work fine without any directive. `client:only="lit"` is a safe fallback when you want predictable browser-only rendering during or after migration.
 
+In most cases, start with no directive and only add a `client:*` directive when the component truly needs it.
+
 #### Directive decision matrix
 
 | Directive | Preserves SSR? | When to use it | Tradeoff |
