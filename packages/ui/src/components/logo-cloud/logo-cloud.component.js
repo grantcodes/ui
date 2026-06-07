@@ -1,5 +1,6 @@
 import { LitElement, html } from "lit";
 import logoCloudStyles from "./logo-cloud.css" with { type: "css" };
+import "../container/container.js";
 
 export class GrantCodesLogoCloud extends LitElement {
 	static styles = [logoCloudStyles];
@@ -35,7 +36,7 @@ export class GrantCodesLogoCloud extends LitElement {
 		const logos = this._logos;
 		return html`
 			<section class="logo-cloud">
-				<div class="logo-cloud__container">
+				<grantcodes-container>
 					${
 						this.title
 							? html`<p class="logo-cloud__title">${this.title}</p>`
@@ -74,7 +75,7 @@ export class GrantCodesLogoCloud extends LitElement {
 							`,
 						)}
 					</ul>
-				</div>
+				</grantcodes-container>
 			</section>
 		`;
 	}

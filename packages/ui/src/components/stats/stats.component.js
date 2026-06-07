@@ -1,5 +1,6 @@
 import { LitElement, html } from "lit";
 import statsStyles from "./stats.css" with { type: "css" };
+import "../container/container.js";
 
 export class GrantCodesStats extends LitElement {
 	static styles = [statsStyles];
@@ -41,7 +42,7 @@ export class GrantCodesStats extends LitElement {
 		const items = this._items;
 		return html`
 			<section class="stats">
-				<div class="stats__container">
+				<grantcodes-container>
 					${
 						this.title
 							? html`<h2 class="stats__title">${this.title}</h2>`
@@ -66,7 +67,7 @@ export class GrantCodesStats extends LitElement {
 							`,
 						)}
 					</ul>
-				</div>
+				</grantcodes-container>
 			</section>
 		`;
 	}

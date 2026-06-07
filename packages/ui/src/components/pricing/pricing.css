@@ -10,12 +10,6 @@
 
 .pricing {
 	padding-block: var(--g-spacing-3xl);
-	padding-inline: var(--g-spacing-md);
-}
-
-.pricing__container {
-	max-width: 1200px;
-	margin: 0 auto;
 }
 
 .pricing__title {

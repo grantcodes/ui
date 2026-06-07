@@ -3,6 +3,7 @@ import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import * as icons from "lucide-static";
 import featureListStyles from "./feature-list.css" with { type: "css" };
 import "../icon/icon.js";
+import "../container/container.js";
 
 export class GrantCodesFeatureList extends LitElement {
 	static styles = [featureListStyles];
@@ -67,7 +68,7 @@ export class GrantCodesFeatureList extends LitElement {
 		const items = this._items;
 		return html`
 			<section class="feature-list">
-				<div class="feature-list__container">
+				<grantcodes-container>
 					${
 						this.title
 							? html`<h2 class="feature-list__title">${this.title}</h2>`
@@ -123,7 +124,7 @@ export class GrantCodesFeatureList extends LitElement {
 							`,
 						)}
 					</ul>
-				</div>
+				</grantcodes-container>
 			</section>
 		`;
 	}

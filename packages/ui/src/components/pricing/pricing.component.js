@@ -1,6 +1,7 @@
 import { LitElement, html } from "lit";
 import pricingStyles from "./pricing.css" with { type: "css" };
 import "../button/button.js";
+import "../container/container.js";
 
 export class GrantCodesPricing extends LitElement {
 	static styles = [pricingStyles];
@@ -43,7 +44,7 @@ export class GrantCodesPricing extends LitElement {
 		const tiers = this._tiers;
 		return html`
 			<section class="pricing">
-				<div class="pricing__container">
+				<grantcodes-container>
 					${
 						this.title
 							? html`<h2 class="pricing__title">${this.title}</h2>`
@@ -112,7 +113,7 @@ export class GrantCodesPricing extends LitElement {
 							`,
 						)}
 					</ul>
-				</div>
+				</grantcodes-container>
 			</section>
 		`;
 	}

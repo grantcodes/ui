@@ -12,15 +12,9 @@
 
 .footer {
 	margin-block-start: auto;
+	padding-block: var(--g-spacing-2xl) var(--g-spacing-xl);
 	border-block-start: 1px solid var(--g-color-border-subtle);
 	background-color: var(--g-color-background-subtle);
-}
-
-.footer__container {
-	padding-block: var(--g-spacing-2xl) var(--g-spacing-xl);
-	padding-inline: var(--g-spacing-md);
-	max-inline-size: 1400px;
-	margin-inline: auto;
 }
 
 .footer__columns {
