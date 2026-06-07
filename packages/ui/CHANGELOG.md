@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.15.1](https://github.com/grantcodes/ui/compare/ui-v2.15.0...ui-v2.15.1) (2026-06-07)
+
+
+### Bug Fixes
+
+* refresh package readmes ([8c4c1e5](https://github.com/grantcodes/ui/commit/8c4c1e5c795ed38321a9bb5fe5537e34926769ef))
+
 ## [2.15.0](https://github.com/grantcodes/ui/compare/ui-v2.14.1...ui-v2.15.0) (2026-06-01)
 
 

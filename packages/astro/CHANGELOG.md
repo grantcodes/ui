@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.3](https://github.com/grantcodes/ui/compare/astro-v0.2.2...astro-v0.2.3) (2026-06-07)
+
+
+### Bug Fixes
+
+* refresh package readmes ([8c4c1e5](https://github.com/grantcodes/ui/commit/8c4c1e5c795ed38321a9bb5fe5537e34926769ef))
+
 ## [0.2.2](https://github.com/grantcodes/ui/compare/astro-v0.2.1...astro-v0.2.2) (2026-05-30)
 
 
