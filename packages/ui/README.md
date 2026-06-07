@@ -6,7 +6,9 @@ Components are built with Lit web components using CSS modules for styles with t
 
 ## Installing
 
-In the future it should be something like `npm install @grantcodes/ui`.
+```bash
+npm install @grantcodes/ui
+```
 
 ## Usage
 
@@ -21,6 +23,8 @@ Components can be used directly in HTML or imported as ES modules.
 ```javascript
 import { GrantCodesButton } from '@grantcodes/ui/components/button';
 ```
+
+For Astro projects, pair this package with `@grantcodes/astro` for the lowest-friction setup.
 
 ## Creating a new component
 
