@@ -14,7 +14,7 @@
 	background-color: var(--g-color-background-default);
 	border-block-end: 1px solid var(--g-color-border-default);
 	position: relative;
-	z-index: 100;
+ 	z-index: 1000;
 }
 
 :host([sticky]),
