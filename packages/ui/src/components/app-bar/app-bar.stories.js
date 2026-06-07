@@ -101,6 +101,43 @@ export const Transparent = {
 };
 
 /**
+ * Many nav items demonstrating horizontal scroll overflow on desktop.
+ * When the viewport is wide enough for desktop mode but too narrow for all
+ * items, the nav becomes horizontally scrollable with a subtle fade affordance
+ * at the right edge and styled thin scrollbars.
+ */
+export const ManyNavItems = {
+	render: () => html`
+		<grantcodes-app-bar>
+			<a slot="logo" href="/">MyApp</a>
+			<div slot="nav">
+				<grantcodes-nav-link><a href="/">Home</a></grantcodes-nav-link>
+				<grantcodes-nav-link><a href="/about">About</a></grantcodes-nav-link>
+				<grantcodes-nav-link><a href="/features">Features</a></grantcodes-nav-link>
+				<grantcodes-nav-link><a href="/pricing">Pricing</a></grantcodes-nav-link>
+				<grantcodes-nav-link><a href="/docs">Docs</a></grantcodes-nav-link>
+				<grantcodes-nav-link><a href="/blog">Blog</a></grantcodes-nav-link>
+				<grantcodes-nav-link><a href="/changelog">Changelog</a></grantcodes-nav-link>
+				<grantcodes-nav-link><a href="/api">API</a></grantcodes-nav-link>
+				<grantcodes-nav-link><a href="/support">Support</a></grantcodes-nav-link>
+				<grantcodes-nav-link><a href="/status">Status</a></grantcodes-nav-link>
+			</div>
+			<div slot="actions">
+				<grantcodes-button>Sign In</grantcodes-button>
+			</div>
+		</grantcodes-app-bar>
+	`,
+	parameters: {
+		docs: {
+			description: {
+				story:
+					"Resize the viewport to see the nav items become horizontally scrollable on desktop with a right-edge fade affordance and thin scrollbar.",
+			},
+		},
+	},
+};
+
+/**
  * App bar with multiple action buttons.
  */
 export const WithMultipleActions = {
