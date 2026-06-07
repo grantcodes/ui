@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.5](https://github.com/grantcodes/ui/compare/astro-v0.2.4...astro-v0.2.5) (2026-06-07)
+
+
+### Bug Fixes
+
+* **astro:** tighten block card and prop handling ([5463c64](https://github.com/grantcodes/ui/commit/5463c6447c808ccc57de1bd0bb42a4f50496bfa3))
+
 ## [0.2.4](https://github.com/grantcodes/ui/compare/astro-v0.2.3...astro-v0.2.4) (2026-06-07)
 
 
