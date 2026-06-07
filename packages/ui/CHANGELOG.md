@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.15.3](https://github.com/grantcodes/ui/compare/ui-v2.15.2...ui-v2.15.3) (2026-06-07)
+
+
+### Bug Fixes
+
+* **ui:** h2 margins ([2dac517](https://github.com/grantcodes/ui/commit/2dac517a704817f55f2d46df2fe92340a8c5fb94))
+
 ## [2.15.2](https://github.com/grantcodes/ui/compare/ui-v2.15.1...ui-v2.15.2) (2026-06-07)
 
 
