@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.15.4](https://github.com/grantcodes/ui/compare/ui-v2.15.3...ui-v2.15.4) (2026-06-07)
+
+
+### Bug Fixes
+
+* **ui:** reflect app bar boolean attrs ([10f0685](https://github.com/grantcodes/ui/commit/10f06854563526201031734318a01bc042bfdb8a))
+
 ## [2.15.3](https://github.com/grantcodes/ui/compare/ui-v2.15.2...ui-v2.15.3) (2026-06-07)
 
 
