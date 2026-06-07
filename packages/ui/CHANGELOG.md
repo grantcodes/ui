@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.15.5](https://github.com/grantcodes/ui/compare/ui-v2.15.4...ui-v2.15.5) (2026-06-07)
+
+
+### Bug Fixes
+
+* **ui:** handle app bar nav overflow ([592f8b0](https://github.com/grantcodes/ui/commit/592f8b0a29bd08a49b536dd8691ae9050cb009db))
+
 ## [2.15.4](https://github.com/grantcodes/ui/compare/ui-v2.15.3...ui-v2.15.4) (2026-06-07)
 
 
