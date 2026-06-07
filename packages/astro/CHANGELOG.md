@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.4](https://github.com/grantcodes/ui/compare/astro-v0.2.3...astro-v0.2.4) (2026-06-07)
+
+
+### Bug Fixes
+
+* align package metadata for trusted publishing ([5ae9181](https://github.com/grantcodes/ui/commit/5ae9181da289c6fdfae3a2aa23c88601256b003d))
+
 ## [0.2.3](https://github.com/grantcodes/ui/compare/astro-v0.2.2...astro-v0.2.3) (2026-06-07)
 
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.15.2](https://github.com/grantcodes/ui/compare/ui-v2.15.1...ui-v2.15.2) (2026-06-07)
+
+
+### Bug Fixes
+
+* align package metadata for trusted publishing ([5ae9181](https://github.com/grantcodes/ui/commit/5ae9181da289c6fdfae3a2aa23c88601256b003d))
+
 ## [2.15.1](https://github.com/grantcodes/ui/compare/ui-v2.15.0...ui-v2.15.1) (2026-06-07)
 
 
