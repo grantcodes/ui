@@ -1,6 +1,7 @@
 import { LitElement, html } from "lit";
 import ctaStyles from "./cta.css" with { type: "css" };
 import "../button/button.js";
+import "../container/container.js";
 
 export class GrantCodesCta extends LitElement {
 	static styles = [ctaStyles];
@@ -69,7 +70,7 @@ export class GrantCodesCta extends LitElement {
 		const secondary = this._secondaryAction;
 		return html`
 			<section class="cta">
-				<div class="cta__container">
+				<grantcodes-container align="prose">
 					${
 						this.eyebrow
 							? html`<p class="cta__eyebrow">${this.eyebrow}</p>`
@@ -101,7 +102,7 @@ export class GrantCodesCta extends LitElement {
 							`
 							: null
 					}
-				</div>
+				</grantcodes-container>
 			</section>
 		`;
 	}

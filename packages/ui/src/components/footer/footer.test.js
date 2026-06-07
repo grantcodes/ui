@@ -86,7 +86,7 @@ describe("Footer Component", () => {
 
 	it("should have footer container", async () => {
 		element = await fixture("grantcodes-footer");
-		const container = element.shadowRoot.querySelector(".footer__container");
+		const container = element.shadowRoot.querySelector("grantcodes-container");
 		assert.ok(container, "Footer container should exist");
 	});
 

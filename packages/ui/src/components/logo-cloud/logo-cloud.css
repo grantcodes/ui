@@ -10,14 +10,8 @@
 
 .logo-cloud {
 	padding-block: var(--g-spacing-2xl);
-	padding-inline: var(--g-spacing-md);
 	border-top: 1px solid var(--g-color-border-default);
 	border-bottom: 1px solid var(--g-color-border-default);
-}
-
-.logo-cloud__container {
-	max-width: 1200px;
-	margin: 0 auto;
 }
 
 .logo-cloud__title {

@@ -2,6 +2,7 @@ import { LitElement, html } from "lit";
 import testimonialsStyles from "./testimonials.css" with { type: "css" };
 import "../card/card.js";
 import "../person/person.js";
+import "../container/container.js";
 
 export class GrantCodesTestimonials extends LitElement {
 	static styles = [testimonialsStyles];
@@ -43,7 +44,7 @@ export class GrantCodesTestimonials extends LitElement {
 		const items = this._items;
 		return html`
 			<section class="testimonials">
-				<div class="testimonials__container">
+				<grantcodes-container>
 					${
 						this.title
 							? html`<h2 class="testimonials__title">${this.title}</h2>`
@@ -76,7 +77,7 @@ export class GrantCodesTestimonials extends LitElement {
 							`,
 						)}
 					</ul>
-				</div>
+				</grantcodes-container>
 			</section>
 		`;
 	}

@@ -10,13 +10,7 @@
 
 .stats {
 	padding-block: var(--g-spacing-3xl);
-	padding-inline: var(--g-spacing-md);
 	background: var(--g-color-background-subtle);
-}
-
-.stats__container {
-	max-width: 1200px;
-	margin: 0 auto;
 }
 
 .stats__title {

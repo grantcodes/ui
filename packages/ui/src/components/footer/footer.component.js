@@ -1,6 +1,7 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
 import footerStyles from "./footer.css" with { type: "css" };
+import "../container/container.js";
 
 export class GrantCodesFooter extends LitElement {
 	static styles = [footerStyles];
@@ -22,7 +23,7 @@ export class GrantCodesFooter extends LitElement {
 	render() {
 		return html`
 			<footer class="footer">
-				<div class="footer__container">
+				<grantcodes-container align="wide">
 					<div class="footer__columns" style="--footer-columns: ${this.columns}">
 						<slot></slot>
 					</div>
@@ -31,7 +32,7 @@ export class GrantCodesFooter extends LitElement {
 					<div class="footer__bottom">
 						<slot name="bottom"></slot>
 					</div>
-				</div>
+				</grantcodes-container>
 			</footer>
 		`;
 	}

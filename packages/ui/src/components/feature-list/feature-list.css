@@ -10,12 +10,6 @@
 
 .feature-list {
 	padding-block: var(--g-spacing-3xl);
-	padding-inline: var(--g-spacing-md);
-}
-
-.feature-list__container {
-	max-width: 1200px;
-	margin: 0 auto;
 }
 
 .feature-list__title {
