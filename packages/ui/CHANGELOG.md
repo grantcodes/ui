@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.15.7](https://github.com/grantcodes/ui/compare/ui-v2.15.6...ui-v2.15.7) (2026-06-09)
+
+
+### Bug Fixes
+
+* adjust app bar layer and clickable cards ([7ff8635](https://github.com/grantcodes/ui/commit/7ff8635e947dfe0621c5a44d5cbb0195817b6507))
+
 ## [2.15.6](https://github.com/grantcodes/ui/compare/ui-v2.15.5...ui-v2.15.6) (2026-06-07)
 
 
