@@ -22,7 +22,7 @@ const { cards } = Astro.props
       {cards.map((card) => (
         card.href ? (
           <a href={card.href} class="card-link">
-            <GrantCodesCard>
+            <GrantCodesCard class="is-clickable">
               {card.image && <img slot="header" src={card.image} alt="" loading="lazy" class="card__image" />}
               <h3 class="card__title">{card.title}</h3>
               {card.description && <p class="card__description">{card.description}</p>}

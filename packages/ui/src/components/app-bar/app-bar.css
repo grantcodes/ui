@@ -8,13 +8,13 @@
 	display: block;
 	container-type: inline-size;
 	container-name: app-bar;
+	z-index: 1000;
 }
 
 .app-bar {
 	background-color: var(--g-color-background-default);
 	border-block-end: 1px solid var(--g-color-border-default);
 	position: relative;
- 	z-index: 1000;
 }
 
 :host([sticky]),
