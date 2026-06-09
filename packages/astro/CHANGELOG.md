@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.6](https://github.com/grantcodes/ui/compare/astro-v0.2.5...astro-v0.2.6) (2026-06-09)
+
+
+### Bug Fixes
+
+* adjust app bar layer and clickable cards ([7ff8635](https://github.com/grantcodes/ui/commit/7ff8635e947dfe0621c5a44d5cbb0195817b6507))
+
 ## [0.2.5](https://github.com/grantcodes/ui/compare/astro-v0.2.4...astro-v0.2.5) (2026-06-07)
 
 

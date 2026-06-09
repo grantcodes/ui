@@ -1,5 +1,5 @@
 {
-	"packages/ui": "2.15.6",
+	"packages/ui": "2.15.7",
 	"packages/style-dictionary": "1.10.2",
-	"packages/astro": "0.2.5"
+	"packages/astro": "0.2.6"
 }
