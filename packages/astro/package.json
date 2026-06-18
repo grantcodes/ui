@@ -13,7 +13,9 @@
   "scripts": {
     "build": "echo 'No build step required — source-based imports'",
     "fix": "echo 'No lint configured'",
-    "test": "tsx --test test/smoke.test.js test/ssr-constructor-diagnostics.test.js test/og-images.test.js"
+    "gen:props": "tsx scripts/generate-astro-typings-from-cem.ts",
+    "pretest": "tsx scripts/generate-astro-typings-from-cem.ts",
+    "test": "tsx --test test/smoke.test.js test/ssr-constructor-diagnostics.test.js test/og-images.test.js test/astro-check-typings.test.js"
   },
   "keywords": [
     "astro",
