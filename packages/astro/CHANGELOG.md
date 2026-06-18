@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.7](https://github.com/grantcodes/ui/compare/astro-v0.2.6...astro-v0.2.7) (2026-06-18)
+
+
+### Bug Fixes
+
+* **astro:** generate CEM-based constructor typings ([ed0d074](https://github.com/grantcodes/ui/commit/ed0d074c7c24d717971d3a0c674f22ac3278f3a7))
+
 ## [0.2.6](https://github.com/grantcodes/ui/compare/astro-v0.2.5...astro-v0.2.6) (2026-06-09)
 
 
