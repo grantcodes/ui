@@ -1,20 +1,20 @@
-import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
-import { html } from "lit/static-html.js";
-import "./button.js";
-const { events, args, argTypes, template } =
-	getStorybookHelpers("grantcodes-button");
+import { getStorybookHelpers } from '@wc-toolkit/storybook-helpers';
+import { html } from 'lit/static-html.js';
+import './button.js';
+
+const { events, args, argTypes, template } = getStorybookHelpers('grantcodes-button');
 
 const meta = {
-	title: "Components/Button",
-	component: "grantcodes-button",
-	args,
-	argTypes,
-	render: (args) => template(args, html`Button label`),
-	parameters: {
-		actions: {
-			handles: events,
-		},
-	},
+  title: 'Components/Button',
+  component: 'grantcodes-button',
+  args,
+  argTypes,
+  render: (args) => template(args, html`Button label`),
+  parameters: {
+    actions: {
+      handles: events,
+    },
+  },
 };
 
 export default meta;
@@ -28,7 +28,7 @@ export const Button = {};
  * Different button styles
  */
 export const ButtonStyles = {
-	render: () => html`
+  render: () => html`
 		<div style="display: flex; gap: 1rem;">
   		<div>
         <h4>Default</h4>
@@ -66,9 +66,9 @@ export const ButtonStyles = {
  * The button will not respond to clicks when disabled.
  */
 export const Disabled = {
-	args: {
-		disabled: true,
-	},
+  args: {
+    disabled: true,
+  },
 };
 
 /**
@@ -76,10 +76,10 @@ export const Disabled = {
  * Useful for navigation actions that look like buttons.
  */
 export const AsLink = {
-	args: {
-		href: "https://example.com",
-	},
-	render: (args) => template(args, html`Link Button`),
+  args: {
+    href: 'https://example.com',
+  },
+  render: (args) => template(args, html`Link Button`),
 };
 
 /**
@@ -89,7 +89,7 @@ export const AsLink = {
  * - reset: Resets form fields
  */
 export const ButtonTypes = {
-	render: () => html`
+  render: () => html`
 		<div style="display: flex; gap: 1rem;">
 			<grantcodes-button type="button">Button</grantcodes-button>
 			<grantcodes-button type="submit">Submit</grantcodes-button>
@@ -102,7 +102,7 @@ export const ButtonTypes = {
  * Various button states for different contexts.
  */
 export const AllStates = {
-	render: () => html`
+  render: () => html`
 		<div style="display: flex; flex-direction: column; gap: 1rem; max-width: 300px;">
 			<grantcodes-button>Normal Button</grantcodes-button>
 			<grantcodes-button disabled>Disabled Button</grantcodes-button>

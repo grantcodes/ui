@@ -1,9 +1,9 @@
-import { html } from "lit";
-import "./breadcrumb.js";
+import { html } from 'lit';
+import './breadcrumb.js';
 
 const meta = {
-	title: "Components/Breadcrumb",
-	component: "grantcodes-breadcrumb",
+  title: 'Components/Breadcrumb',
+  component: 'grantcodes-breadcrumb',
 };
 
 export default meta;
@@ -12,7 +12,7 @@ export default meta;
  * Basic breadcrumb navigation showing the current page hierarchy
  */
 export const Breadcrumb = {
-	render: () => html`
+  render: () => html`
 		<grantcodes-breadcrumb>
 			<grantcodes-breadcrumb-item href="/">Home</grantcodes-breadcrumb-item>
 			<grantcodes-breadcrumb-item href="/products">Products</grantcodes-breadcrumb-item>

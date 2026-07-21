@@ -1,11 +1,11 @@
 {
-	"ref": {
-		"border": {
-			"radius": {
-				"pill": {
-					"value": "624.9375rem"
-				}
-			}
-		}
-	}
+  "ref": {
+    "border": {
+      "radius": {
+        "pill": {
+          "value": "624.9375rem"
+        }
+      }
+    }
+  }
 }

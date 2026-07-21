@@ -1,26 +1,26 @@
 {
-	"typography": {
-		"font-family": {
-			"heading": { "value": "{ref.typography.font-family.vidaloka}" },
-			"body": { "value": "{ref.typography.font-family.albert}" }
-		},
-		"h1": {
-			"font-weight": { "value": "{typography.font-weight.light}" }
-		},
-		"h2": {
-			"font-weight": { "value": "{typography.font-weight.light}" }
-		},
-		"h3": {
-			"font-weight": { "value": "{typography.font-weight.light}" }
-		},
-		"h4": {
-			"font-weight": { "value": "{typography.font-weight.light}" }
-		},
-		"h5": {
-			"font-weight": { "value": "{typography.font-weight.light}" }
-		},
-		"h6": {
-			"font-weight": { "value": "{typography.font-weight.light}" }
-		}
-	}
+  "typography": {
+    "font-family": {
+      "heading": { "value": "{ref.typography.font-family.vidaloka}" },
+      "body": { "value": "{ref.typography.font-family.albert}" }
+    },
+    "h1": {
+      "font-weight": { "value": "{typography.font-weight.light}" }
+    },
+    "h2": {
+      "font-weight": { "value": "{typography.font-weight.light}" }
+    },
+    "h3": {
+      "font-weight": { "value": "{typography.font-weight.light}" }
+    },
+    "h4": {
+      "font-weight": { "value": "{typography.font-weight.light}" }
+    },
+    "h5": {
+      "font-weight": { "value": "{typography.font-weight.light}" }
+    },
+    "h6": {
+      "font-weight": { "value": "{typography.font-weight.light}" }
+    }
+  }
 }

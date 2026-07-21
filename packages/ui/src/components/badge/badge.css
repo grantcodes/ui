@@ -1,84 +1,68 @@
 *,
 *::before,
 *::after {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 :host {
-	display: inline-flex;
+  display: inline-flex;
 }
 
 .badge {
-	display: inline-flex;
-	align-items: center;
-	gap: var(--g-spacing-xs);
-	padding-inline: 0.625em;
-	padding-block: 0.375em;
-	border-radius: var(--g-border-radius-md);
-	font: var(--g-typography-body-sm-font);
-	font-size: var(--g-typography-font-size-2xs);
-	line-height: 1;
-	white-space: nowrap;
-	border-width: 1px;
-	border-style: solid;
-	transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--g-spacing-xs);
+  padding-inline: 0.625em;
+  padding-block: 0.375em;
+  border-radius: var(--g-border-radius-md);
+  font: var(--g-typography-body-sm-font);
+  font-size: var(--g-typography-font-size-2xs);
+  line-height: 1;
+  white-space: nowrap;
+  border-width: 1px;
+  border-style: solid;
+  transition: all 0.2s ease;
 }
 
 /* Soft style variants */
 .badge--primary {
-	background-color: var(--g-color-primary-200);
-	color: var(--g-color-primary-600);
-	border-color: transparent;
+  background-color: var(--g-color-primary-200);
+  color: var(--g-color-primary-600);
+  border-color: transparent;
 }
 
 .badge--success {
-	background-color: color-mix(
-		in srgb,
-		var(--g-color-utility-success) 15%,
-		transparent
-	);
-	color: var(--g-color-content-utility-success);
-	border-color: transparent;
+  background-color: color-mix(in srgb, var(--g-color-utility-success) 15%, transparent);
+  color: var(--g-color-content-utility-success);
+  border-color: transparent;
 }
 
 .badge--warning {
-	background-color: color-mix(
-		in srgb,
-		var(--g-color-utility-warning) 15%,
-		transparent
-	);
-	color: var(--g-color-content-utility-warning);
-	border-color: transparent;
+  background-color: color-mix(in srgb, var(--g-color-utility-warning) 15%, transparent);
+  color: var(--g-color-content-utility-warning);
+  border-color: transparent;
 }
 
 .badge--error {
-	background-color: color-mix(
-		in srgb,
-		var(--g-color-utility-error) 15%,
-		transparent
-	);
-	color: var(--g-color-content-utility-error);
-	border-color: transparent;
+  background-color: color-mix(in srgb, var(--g-color-utility-error) 15%, transparent);
+  color: var(--g-color-content-utility-error);
+  border-color: transparent;
 }
 
 .badge--info {
-	background-color: color-mix(
-		in srgb,
-		var(--g-color-utility-info) 15%,
-		transparent
-	);
-	color: var(--g-color-content-utility-info);
-	border-color: transparent;
+  background-color: color-mix(in srgb, var(--g-color-utility-info) 15%, transparent);
+  color: var(--g-color-content-utility-info);
+  border-color: transparent;
 }
 
 .badge--neutral {
-	background-color: var(--g-color-background-subtle);
-	color: var(--g-color-content-default);
-	border-color: transparent;
+  background-color: var(--g-color-background-subtle);
+  color: var(--g-color-content-default);
+  border-color: transparent;
 }
 
 .badge__content {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.25em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
 }

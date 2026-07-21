@@ -1,9 +1,9 @@
-import { html } from "lit/static-html.js";
-import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
-const { events, args, argTypes, template } = getStorybookHelpers(
-	"grantcodes-code-preview",
-);
-import "./code-preview.js";
+import { getStorybookHelpers } from '@wc-toolkit/storybook-helpers';
+import { html } from 'lit/static-html.js';
+
+const { events, args, argTypes, template } = getStorybookHelpers('grantcodes-code-preview');
+
+import './code-preview.js';
 
 const jsCode = `
 import { thing } from "module";
@@ -31,21 +31,21 @@ body {
 `;
 
 const meta = {
-	title: "Components/CodePreview",
-	component: "grantcodes-code-preview",
-	args: {
-		...args,
-		language: "javascript",
-		theme: "aurora-x",
-		code: jsCode,
-	},
-	argTypes,
-	render: (args) => template(args, html`${args.code}`),
-	parameters: {
-		actions: {
-			handles: events,
-		},
-	},
+  title: 'Components/CodePreview',
+  component: 'grantcodes-code-preview',
+  args: {
+    ...args,
+    language: 'javascript',
+    theme: 'aurora-x',
+    code: jsCode,
+  },
+  argTypes,
+  render: (args) => template(args, html`${args.code}`),
+  parameters: {
+    actions: {
+      handles: events,
+    },
+  },
 };
 
 export default meta;
@@ -53,15 +53,15 @@ export default meta;
 export const CodePreview = {};
 
 export const HTMLCodePreview = {
-	args: {
-		language: "html",
-		code: htmlCode,
-	},
+  args: {
+    language: 'html',
+    code: htmlCode,
+  },
 };
 
 export const CSSCodePreview = {
-	args: {
-		language: "css",
-		code: cssCode,
-	},
+  args: {
+    language: 'css',
+    code: cssCode,
+  },
 };

@@ -1,108 +1,96 @@
-import { LitElement, html } from "lit";
-import pricingStyles from "./pricing.css" with { type: "css" };
-import "../button/button.js";
-import "../container/container.js";
+import { html, LitElement } from 'lit';
+import pricingStyles from './pricing.css' with { type: 'css' };
+import '../button/button.js';
+import '../container/container.js';
 
 export class GrantCodesPricing extends LitElement {
-	static styles = [pricingStyles];
+  static styles = [pricingStyles];
 
-	static properties = {
-		/**
-		 * Optional section heading.
-		 * @type {string}
-		 */
-		title: { type: String },
-		/**
-		 * Optional supporting text below the heading.
-		 * @type {string}
-		 */
-		subtitle: { type: String },
-		/**
-		 * Pricing tiers as a JSON string array.
-		 * Each tier: `{"name":"...","price":"...","period":"...","description":"...","features":[{"text":"...","included":true}],"cta":{"label":"...","href":"..."},"highlighted":false}`.
-		 * @type {string}
-		 */
-		tiers: { type: String },
-	};
+  static properties = {
+    /**
+     * Optional section heading.
+     * @type {string}
+     */
+    title: { type: String },
+    /**
+     * Optional supporting text below the heading.
+     * @type {string}
+     */
+    subtitle: { type: String },
+    /**
+     * Pricing tiers as a JSON string array.
+     * Each tier: `{"name":"...","price":"...","period":"...","description":"...","features":[{"text":"...","included":true}],"cta":{"label":"...","href":"..."},"highlighted":false}`.
+     * @type {string}
+     */
+    tiers: { type: String },
+  };
 
-	constructor() {
-		super();
-		this.title = "";
-		this.subtitle = "";
-		this.tiers = "[]";
-	}
+  constructor() {
+    super();
+    this.title = '';
+    this.subtitle = '';
+    this.tiers = '[]';
+  }
 
-	get _tiers() {
-		try {
-			return JSON.parse(this.tiers);
-		} catch {
-			return [];
-		}
-	}
+  get _tiers() {
+    try {
+      return JSON.parse(this.tiers);
+    } catch {
+      return [];
+    }
+  }
 
-	render() {
-		const tiers = this._tiers;
-		return html`
+  render() {
+    const tiers = this._tiers;
+    return html`
 			<section class="pricing">
 				<grantcodes-container>
-					${
-						this.title
-							? html`<h2 class="pricing__title">${this.title}</h2>`
-							: null
-					}
-					${
-						this.subtitle
-							? html`<p class="pricing__subtitle">${this.subtitle}</p>`
-							: null
-					}
+					${this.title ? html`<h2 class="pricing__title">${this.title}</h2>` : null}
+					${this.subtitle ? html`<p class="pricing__subtitle">${this.subtitle}</p>` : null}
 					<ul class="pricing__grid" role="list">
 						${tiers.map(
-							(tier) => html`
+              (tier) => html`
 								<li
-									class="pricing__tier${
-										tier.highlighted ? " pricing__tier--highlighted" : ""
-									}"
+									class="pricing__tier${tier.highlighted ? ' pricing__tier--highlighted' : ''}"
 								>
 									<div class="pricing__tier-header">
 										<h3 class="pricing__tier-name">${tier.name}</h3>
 										<div class="pricing__price-wrap">
 											<span class="pricing__price">${tier.price}</span>
 											${
-												tier.period
-													? html`<span class="pricing__period"
+                        tier.period
+                          ? html`<span class="pricing__period"
 														>/${tier.period}</span
 													>`
-													: null
-											}
+                          : null
+                      }
 										</div>
 										${
-											tier.description
-												? html`<p class="pricing__tier-desc">
+                      tier.description
+                        ? html`<p class="pricing__tier-desc">
 													${tier.description}
 												</p>`
-												: null
-										}
+                        : null
+                    }
 									</div>
 									<ul class="pricing__features" role="list">
 										${(tier.features ?? []).map(
-											(feature) => html`
+                      (feature) => html`
 												<li
 													class="pricing__feature${
-														feature.included
-															? ""
-															: " pricing__feature--excluded"
-													}"
+                            feature.included ? '' : ' pricing__feature--excluded'
+                          }"
 												>
 													<span
 														class="pricing__feature-icon"
 														aria-hidden="true"
 													>
-														${feature.included ? "✓" : "✗"}
+														${feature.included ? '✓' : '✗'}
 													</span>
 													${feature.text}
 												</li>
 											`,
-										)}
+                    )}
 									</ul>
 									<div class="pricing__cta">
 										<grantcodes-button href=${tier.cta.href}
@@ -111,10 +99,10 @@ export class GrantCodesPricing extends LitElement {
 									</div>
 								</li>
 							`,
-						)}
+            )}
 					</ul>
 				</grantcodes-container>
 			</section>
 		`;
-	}
+  }
 }

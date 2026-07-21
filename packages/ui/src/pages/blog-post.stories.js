@@ -1,55 +1,55 @@
-import { html } from "lit";
-import "../components/app-bar/app-bar.js";
-import "../components/app-bar/nav-link.js";
-import "../components/button/button.js";
-import "../components/breadcrumb/breadcrumb.js";
-import "../components/container/container.js";
-import "../components/badge/badge.js";
-import "../components/person/person.js";
-import "../components/card/card.js";
-import "../components/cta/cta.js";
-import "../components/footer/footer.js";
+import { html } from 'lit';
+import '../components/app-bar/app-bar.js';
+import '../components/app-bar/nav-link.js';
+import '../components/button/button.js';
+import '../components/breadcrumb/breadcrumb.js';
+import '../components/container/container.js';
+import '../components/badge/badge.js';
+import '../components/person/person.js';
+import '../components/card/card.js';
+import '../components/cta/cta.js';
+import '../components/footer/footer.js';
 
 const meta = {
-	title: "Pages/Blog Post",
-	parameters: {
-		layout: "fullscreen",
-	},
+  title: 'Pages/Blog Post',
+  parameters: {
+    layout: 'fullscreen',
+  },
 };
 
 export default meta;
 
 const relatedPosts = [
-	{
-		category: "Engineering",
-		title: "How we cut our build times by 60% with better caching",
-		excerpt:
-			"A deep dive into the caching strategies we adopted across our CI pipeline and how they compound over time.",
-		author: { name: "Priya Nair", avatar: "https://i.pravatar.cc/80?img=32" },
-		date: "Feb 28, 2025",
-		href: "/blog/build-cache",
-	},
-	{
-		category: "Design",
-		title: "Writing design tokens that scale across themes",
-		excerpt:
-			"Tokens are only as good as the naming conventions behind them. Here's what we learned from three rewrites.",
-		author: { name: "Leo Hartmann", avatar: "https://i.pravatar.cc/80?img=53" },
-		date: "Feb 14, 2025",
-		href: "/blog/design-tokens",
-	},
-	{
-		category: "Culture",
-		title: "Small teams ship better software — here's why",
-		excerpt:
-			"Coordination cost grows faster than headcount. We explore the research and what it means for how we hire.",
-		author: {
-			name: "Chloe Bergstrom",
-			avatar: "https://i.pravatar.cc/80?img=25",
-		},
-		date: "Jan 30, 2025",
-		href: "/blog/small-teams",
-	},
+  {
+    category: 'Engineering',
+    title: 'How we cut our build times by 60% with better caching',
+    excerpt:
+      'A deep dive into the caching strategies we adopted across our CI pipeline and how they compound over time.',
+    author: { name: 'Priya Nair', avatar: 'https://i.pravatar.cc/80?img=32' },
+    date: 'Feb 28, 2025',
+    href: '/blog/build-cache',
+  },
+  {
+    category: 'Design',
+    title: 'Writing design tokens that scale across themes',
+    excerpt:
+      "Tokens are only as good as the naming conventions behind them. Here's what we learned from three rewrites.",
+    author: { name: 'Leo Hartmann', avatar: 'https://i.pravatar.cc/80?img=53' },
+    date: 'Feb 14, 2025',
+    href: '/blog/design-tokens',
+  },
+  {
+    category: 'Culture',
+    title: "Small teams ship better software — here's why",
+    excerpt:
+      'Coordination cost grows faster than headcount. We explore the research and what it means for how we hire.',
+    author: {
+      name: 'Chloe Bergstrom',
+      avatar: 'https://i.pravatar.cc/80?img=25',
+    },
+    date: 'Jan 30, 2025',
+    href: '/blog/small-teams',
+  },
 ];
 
 const footerContent = html`
@@ -84,7 +84,7 @@ const footerContent = html`
  * cards for related posts at the bottom.
  */
 export const Default = {
-	render: () => html`
+  render: () => html`
     <grantcodes-app-bar sticky>
       <a
         slot="logo"
@@ -264,7 +264,7 @@ export const Default = {
         <h2>More from the blog</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); gap: var(--g-spacing-lg);">
           ${relatedPosts.map(
-						(post) => html`
+            (post) => html`
               <grantcodes-card>
                 <div
                   slot="header"
@@ -301,7 +301,7 @@ export const Default = {
                 </div>
               </grantcodes-card>
             `,
-					)}
+          )}
         </div>
       </grantcodes-container>
     </div>

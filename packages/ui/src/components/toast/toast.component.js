@@ -1,120 +1,120 @@
-import { html, LitElement } from "lit";
-import { unsafeHTML } from "lit/directives/unsafe-html.js";
-import { classMap } from "lit/directives/class-map.js";
-import focusRingStyles from "../../lib/styles/focus-ring.css" with { type: "css" };
-import toastStyles from "./toast.css" with { type: "css" };
-import { GrantCodesIcon } from "../icon/icon.component.js";
-import { AlertCircle, Info, CheckCircle2, XCircle, X } from "../../icons.js";
+import { html, LitElement } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
+import { AlertCircle, CheckCircle2, Info, X, XCircle } from '../../icons.js';
+import focusRingStyles from '../../lib/styles/focus-ring.css' with { type: 'css' };
+import { GrantCodesIcon } from '../icon/icon.component.js';
+import toastStyles from './toast.css' with { type: 'css' };
 
 const ICONS = {
-	info: Info,
-	success: CheckCircle2,
-	warning: AlertCircle,
-	error: XCircle,
+  info: Info,
+  success: CheckCircle2,
+  warning: AlertCircle,
+  error: XCircle,
 };
 
 export class GrantCodesToast extends LitElement {
-	static dependencies = { "grancodes-icon": GrantCodesIcon };
-	static styles = [focusRingStyles, toastStyles];
+  static dependencies = { 'grancodes-icon': GrantCodesIcon };
+  static styles = [focusRingStyles, toastStyles];
 
-	static properties = {
-		variant: { type: String },
-		title: { type: String },
-		duration: { type: Number },
-		position: { type: String },
-		dismissible: { type: Boolean },
-		_visible: { type: Boolean, state: true },
-	};
+  static properties = {
+    variant: { type: String },
+    title: { type: String },
+    duration: { type: Number },
+    position: { type: String },
+    dismissible: { type: Boolean },
+    _visible: { type: Boolean, state: true },
+  };
 
-	constructor() {
-		super();
+  constructor() {
+    super();
 
-		/**
-		 * Visual variant
-		 * @type {'info' | 'success' | 'warning' | 'error'}
-		 */
-		this.variant = "info";
+    /**
+     * Visual variant
+     * @type {'info' | 'success' | 'warning' | 'error'}
+     */
+    this.variant = 'info';
 
-		/**
-		 * Toast title
-		 * @type {string}
-		 */
-		this.title = "";
+    /**
+     * Toast title
+     * @type {string}
+     */
+    this.title = '';
 
-		/**
-		 * Auto-dismiss duration in milliseconds (0 = no auto-dismiss)
-		 * @type {number}
-		 */
-		this.duration = 5000;
+    /**
+     * Auto-dismiss duration in milliseconds (0 = no auto-dismiss)
+     * @type {number}
+     */
+    this.duration = 5000;
 
-		/**
-		 * Toast position
-		 * @type {'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right'}
-		 */
-		this.position = "top-right";
+    /**
+     * Toast position
+     * @type {'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right'}
+     */
+    this.position = 'top-right';
 
-		/**
-		 * Whether toast can be manually dismissed
-		 * @type {boolean}
-		 */
-		this.dismissible = true;
+    /**
+     * Whether toast can be manually dismissed
+     * @type {boolean}
+     */
+    this.dismissible = true;
 
-		/**
-		 * Internal visibility state
-		 * @type {boolean}
-		 */
-		this._visible = false;
+    /**
+     * Internal visibility state
+     * @type {boolean}
+     */
+    this._visible = false;
 
-		/**
-		 * Timeout ID for auto-dismiss
-		 * @type {number | null}
-		 */
-		this._dismissTimeout = null;
-	}
+    /**
+     * Timeout ID for auto-dismiss
+     * @type {number | null}
+     */
+    this._dismissTimeout = null;
+  }
 
-	connectedCallback() {
-		super.connectedCallback();
-		// Show toast after a brief delay for animation
-		requestAnimationFrame(() => {
-			this._visible = true;
-		});
+  connectedCallback() {
+    super.connectedCallback();
+    // Show toast after a brief delay for animation
+    requestAnimationFrame(() => {
+      this._visible = true;
+    });
 
-		// Set up auto-dismiss
-		if (this.duration > 0) {
-			this._dismissTimeout = setTimeout(() => {
-				this._handleDismiss();
-			}, this.duration);
-		}
-	}
+    // Set up auto-dismiss
+    if (this.duration > 0) {
+      this._dismissTimeout = setTimeout(() => {
+        this._handleDismiss();
+      }, this.duration);
+    }
+  }
 
-	disconnectedCallback() {
-		if (this._dismissTimeout) {
-			clearTimeout(this._dismissTimeout);
-		}
-		super.disconnectedCallback();
-	}
+  disconnectedCallback() {
+    if (this._dismissTimeout) {
+      clearTimeout(this._dismissTimeout);
+    }
+    super.disconnectedCallback();
+  }
 
-	_handleDismiss() {
-		this._visible = false;
+  _handleDismiss() {
+    this._visible = false;
 
-		// Remove element after animation completes
-		setTimeout(() => {
-			this.dispatchEvent(
-				new CustomEvent("dismiss", {
-					bubbles: true,
-					composed: true,
-				}),
-			);
-			this.remove();
-		}, 300); // Match animation duration
-	}
+    // Remove element after animation completes
+    setTimeout(() => {
+      this.dispatchEvent(
+        new CustomEvent('dismiss', {
+          bubbles: true,
+          composed: true,
+        }),
+      );
+      this.remove();
+    }, 300); // Match animation duration
+  }
 
-	_renderDismissButton() {
-		if (!this.dismissible) {
-			return html``;
-		}
+  _renderDismissButton() {
+    if (!this.dismissible) {
+      return html``;
+    }
 
-		return html`
+    return html`
 			<button
 				type="button"
 				class="toast__close focus-ring"
@@ -124,23 +124,23 @@ export class GrantCodesToast extends LitElement {
 				<grantcodes-icon>${unsafeHTML(X)}</grantcodes-icon>
 			</button>
 		`;
-	}
+  }
 
-	render() {
-		const icon = ICONS[this.variant];
-		const classes = classMap({
-			toast: true,
-			[`toast--${this.variant}`]: true,
-			[`toast--${this.position}`]: true,
-			"toast--visible": this._visible,
-		});
+  render() {
+    const icon = ICONS[this.variant];
+    const classes = classMap({
+      toast: true,
+      [`toast--${this.variant}`]: true,
+      [`toast--${this.position}`]: true,
+      'toast--visible': this._visible,
+    });
 
-		return html`
+    return html`
 			<div class=${classes} role="status" aria-live="polite">
 				<grantcodes-icon class="toast__icon">${unsafeHTML(icon)}</grantcodes-icon>
 
 				<div class="toast__content">
-					${this.title ? html`<div class="toast__title">${this.title}</div>` : ""}
+					${this.title ? html`<div class="toast__title">${this.title}</div>` : ''}
 					<div class="toast__message">
 						<slot></slot>
 					</div>
@@ -149,39 +149,39 @@ export class GrantCodesToast extends LitElement {
 				${this._renderDismissButton()}
 			</div>
 		`;
-	}
+  }
 }
 
 /**
  * Toast container for managing multiple toasts
  */
 export class GrantCodesToastContainer extends LitElement {
-	static styles = [focusRingStyles, toastStyles];
+  static styles = [focusRingStyles, toastStyles];
 
-	static properties = {
-		position: { type: String },
-	};
+  static properties = {
+    position: { type: String },
+  };
 
-	constructor() {
-		super();
+  constructor() {
+    super();
 
-		/**
-		 * Position of the toast container
-		 * @type {'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right'}
-		 */
-		this.position = "top-right";
-	}
+    /**
+     * Position of the toast container
+     * @type {'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right'}
+     */
+    this.position = 'top-right';
+  }
 
-	render() {
-		const classes = classMap({
-			"toast-container": true,
-			[`toast-container--${this.position}`]: true,
-		});
+  render() {
+    const classes = classMap({
+      'toast-container': true,
+      [`toast-container--${this.position}`]: true,
+    });
 
-		return html`
+    return html`
 			<div class=${classes}>
 				<slot></slot>
 			</div>
 		`;
-	}
+  }
 }

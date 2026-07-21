@@ -1,9 +1,9 @@
-import { html } from "lit";
-import "./footer.js";
+import { html } from 'lit';
+import './footer.js';
 
 const meta = {
-	title: "Components/Footer",
-	component: "grantcodes-footer",
+  title: 'Components/Footer',
+  component: 'grantcodes-footer',
 };
 
 export default meta;
@@ -44,7 +44,7 @@ const columns = html`
  * Basic footer with three columns
  */
 export const Footer = {
-	render: () => html`
+  render: () => html`
 		<grantcodes-footer>
 			${columns}
 
@@ -59,7 +59,7 @@ export const Footer = {
  * Footer with four columns
  */
 export const FourColumns = {
-	render: () => html`
+  render: () => html`
 		<grantcodes-footer columns="4">
 			${columns}
 
@@ -79,7 +79,7 @@ export const FourColumns = {
  * Footer with social links in bottom section
  */
 export const WithSocialLinks = {
-	render: () => html`
+  render: () => html`
 		<grantcodes-footer>
 			${columns}
 
@@ -105,7 +105,7 @@ export const WithSocialLinks = {
  * Simple footer with minimal content
  */
 export const Minimal = {
-	render: () => html`
+  render: () => html`
 		<grantcodes-footer columns="1">
 			<grantcodes-footer-column>
 				<p style="text-align: center;">&copy; 2024 MyCompany. All rights reserved.</p>
@@ -123,7 +123,7 @@ export const Minimal = {
  * Footer with rich content including description
  */
 export const WithDescription = {
-	render: () => html`
+  render: () => html`
 		<grantcodes-footer>
 			<grantcodes-footer-column>
 				<h3>MyCompany</h3>

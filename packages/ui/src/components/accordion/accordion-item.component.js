@@ -1,24 +1,24 @@
-import { LitElement } from "lit";
-import { html } from "lit/static-html.js";
-import focusRingStyles from "../../lib/styles/focus-ring.css" with { type: "css" };
-import accordionItemStyles from "./accordion-item.css" with { type: "css" };
+import { LitElement } from 'lit';
+import { html } from 'lit/static-html.js';
+import focusRingStyles from '../../lib/styles/focus-ring.css' with { type: 'css' };
+import accordionItemStyles from './accordion-item.css' with { type: 'css' };
 
 export class GrantCodesAccordionItem extends LitElement {
-	static styles = [focusRingStyles, accordionItemStyles];
+  static styles = [focusRingStyles, accordionItemStyles];
 
-	static properties = {
-		title: { type: String },
-		open: { type: Boolean, reflect: true },
-	};
+  static properties = {
+    title: { type: String },
+    open: { type: Boolean, reflect: true },
+  };
 
-	constructor() {
-		super();
-		this.title = "";
-		this.open = false;
-	}
+  constructor() {
+    super();
+    this.title = '';
+    this.open = false;
+  }
 
-	render() {
-		return html`
+  render() {
+    return html`
 			<details class="accordion__item" ?open=${this.open}>
 				<summary class="accordion__summary focus-ring">
 					<span>${this.title}</span>
@@ -31,5 +31,5 @@ export class GrantCodesAccordionItem extends LitElement {
 				</div>
 			</details>
 		`;
-	}
+  }
 }

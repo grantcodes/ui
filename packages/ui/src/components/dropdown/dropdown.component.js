@@ -1,165 +1,163 @@
-import { html, LitElement } from "lit";
-import { generateId } from "../../lib/generate-id.js";
-import dropdownStyles from "./dropdown.css" with { type: "css" };
+import { html, LitElement } from 'lit';
+import { generateId } from '../../lib/generate-id.js';
+import dropdownStyles from './dropdown.css' with { type: 'css' };
 
 export class GrantCodesDropdown extends LitElement {
-	static styles = [dropdownStyles];
+  static styles = [dropdownStyles];
 
-	static properties = {
-		open: { type: Boolean, reflect: true },
-		placement: { type: String },
-		_triggerElement: { type: Object, state: true },
-	};
+  static properties = {
+    open: { type: Boolean, reflect: true },
+    placement: { type: String },
+    _triggerElement: { type: Object, state: true },
+  };
 
-	constructor() {
-		super();
+  constructor() {
+    super();
 
-		/**
-		 * Whether the dropdown is open
-		 * @type {boolean}
-		 */
-		this.open = false;
+    /**
+     * Whether the dropdown is open
+     * @type {boolean}
+     */
+    this.open = false;
 
-		/**
-		 * Placement of the dropdown menu
-		 * @type {string}
-		 */
-		this.placement = "bottom-start";
+    /**
+     * Placement of the dropdown menu
+     * @type {string}
+     */
+    this.placement = 'bottom-start';
 
-		/**
-		 * Reference to the trigger element
-		 * @type {HTMLElement | null}
-		 */
-		this._triggerElement = null;
+    /**
+     * Reference to the trigger element
+     * @type {HTMLElement | null}
+     */
+    this._triggerElement = null;
 
-		if (!this.id) {
-			this.id = generateId("dropdown");
-		}
+    if (!this.id) {
+      this.id = generateId('dropdown');
+    }
 
-		this._handleDocumentClick = this._handleDocumentClick.bind(this);
-		this._handleEscape = this._handleEscape.bind(this);
-	}
+    this._handleDocumentClick = this._handleDocumentClick.bind(this);
+    this._handleEscape = this._handleEscape.bind(this);
+  }
 
-	get menuId() {
-		return `${this.id}-menu`;
-	}
+  get menuId() {
+    return `${this.id}-menu`;
+  }
 
-	connectedCallback() {
-		super.connectedCallback();
-		if (typeof document === "undefined") return;
-		document.addEventListener("click", this._handleDocumentClick);
-		document.addEventListener("keydown", this._handleEscape);
-	}
+  connectedCallback() {
+    super.connectedCallback();
+    if (typeof document === 'undefined') return;
+    document.addEventListener('click', this._handleDocumentClick);
+    document.addEventListener('keydown', this._handleEscape);
+  }
 
-	disconnectedCallback() {
-		document.removeEventListener("click", this._handleDocumentClick);
-		document.removeEventListener("keydown", this._handleEscape);
-		super.disconnectedCallback();
-	}
+  disconnectedCallback() {
+    document.removeEventListener('click', this._handleDocumentClick);
+    document.removeEventListener('keydown', this._handleEscape);
+    super.disconnectedCallback();
+  }
 
-	firstUpdated() {
-		// Set up menu items roles
-		const menuSlot = this.renderRoot.querySelector('slot[name="menu"]');
-		if (menuSlot) {
-			const menuItems = menuSlot.assignedElements();
-			menuItems.forEach((item) => {
-				if (item.tagName === "GRANTCODES-DROPDOWN-ITEM") {
-					item.setAttribute("role", "menuitem");
-					item.setAttribute("tabindex", "-1");
-				}
-			});
-		}
-	}
+  firstUpdated() {
+    // Set up menu items roles
+    const menuSlot = this.renderRoot.querySelector('slot[name="menu"]');
+    if (menuSlot) {
+      const menuItems = menuSlot.assignedElements();
+      menuItems.forEach((item) => {
+        if (item.tagName === 'GRANTCODES-DROPDOWN-ITEM') {
+          item.setAttribute('role', 'menuitem');
+          item.setAttribute('tabindex', '-1');
+        }
+      });
+    }
+  }
 
-	updated(changedProperties) {
-		console.log({ changedProperties });
-		if (changedProperties.has("open")) {
-			// Update aria-expanded on trigger
-			const triggerSlot = this.renderRoot.querySelector('slot[name="trigger"]');
-			if (triggerSlot) {
-				const assignedElements = triggerSlot.assignedElements();
-				if (assignedElements.length > 0) {
-					assignedElements[0].setAttribute("aria-expanded", this.open);
-				}
-			}
+  updated(changedProperties) {
+    console.log({ changedProperties });
+    if (changedProperties.has('open')) {
+      // Update aria-expanded on trigger
+      const triggerSlot = this.renderRoot.querySelector('slot[name="trigger"]');
+      if (triggerSlot) {
+        const assignedElements = triggerSlot.assignedElements();
+        if (assignedElements.length > 0) {
+          assignedElements[0].setAttribute('aria-expanded', this.open);
+        }
+      }
 
-			if (this.open) {
-				// Focus first menu item when opened
-				requestAnimationFrame(() => {
-					const menu = this.renderRoot.querySelector(".dropdown__menu");
-					const firstItem = menu?.querySelector('[role="menuitem"]');
-					if (firstItem) {
-						firstItem.focus();
-					}
-				});
-			}
-		}
-	}
+      if (this.open) {
+        // Focus first menu item when opened
+        requestAnimationFrame(() => {
+          const menu = this.renderRoot.querySelector('.dropdown__menu');
+          const firstItem = menu?.querySelector('[role="menuitem"]');
+          if (firstItem) {
+            firstItem.focus();
+          }
+        });
+      }
+    }
+  }
 
-	_handleDocumentClick(e) {
-		// Close dropdown if clicking outside
-		const path = e.composedPath();
-		if (!path.includes(this)) {
-			this.open = false;
-			this.requestUpdate();
-		}
-	}
+  _handleDocumentClick(e) {
+    // Close dropdown if clicking outside
+    const path = e.composedPath();
+    if (!path.includes(this)) {
+      this.open = false;
+      this.requestUpdate();
+    }
+  }
 
-	_handleEscape(e) {
-		if (e.key === "Escape" && this.open) {
-			this.open = false;
-			this._triggerElement?.focus();
-		}
-	}
+  _handleEscape(e) {
+    if (e.key === 'Escape' && this.open) {
+      this.open = false;
+      this._triggerElement?.focus();
+    }
+  }
 
-	_handleTriggerClick(_e) {
-		this.open = !this.open;
-		this.requestUpdate();
+  _handleTriggerClick(_e) {
+    this.open = !this.open;
+    this.requestUpdate();
 
-		this.dispatchEvent(
-			new CustomEvent("toggle", {
-				detail: { open: this.open },
-				bubbles: true,
-				composed: true,
-			}),
-		);
-	}
+    this.dispatchEvent(
+      new CustomEvent('toggle', {
+        detail: { open: this.open },
+        bubbles: true,
+        composed: true,
+      }),
+    );
+  }
 
-	_handleMenuKeydown(e) {
-		const menu = this.renderRoot.querySelector(".dropdown__menu");
-		const items = Array.from(menu?.querySelectorAll('[role="menuitem"]') || []);
-		const currentIndex = items.indexOf(e.target);
+  _handleMenuKeydown(e) {
+    const menu = this.renderRoot.querySelector('.dropdown__menu');
+    const items = Array.from(menu?.querySelectorAll('[role="menuitem"]') || []);
+    const currentIndex = items.indexOf(e.target);
 
-		switch (e.key) {
-			case "ArrowDown": {
-				e.preventDefault();
-				const nextIndex = (currentIndex + 1) % items.length;
-				items[nextIndex]?.focus();
-				break;
-			}
-			case "ArrowUp": {
-				e.preventDefault();
-				const prevIndex = (currentIndex - 1 + items.length) % items.length;
-				items[prevIndex]?.focus();
-				break;
-			}
-			case "Home":
-				e.preventDefault();
-				items[0]?.focus();
-				break;
-			case "End":
-				e.preventDefault();
-				items[items.length - 1]?.focus();
-				break;
-		}
-	}
+    switch (e.key) {
+      case 'ArrowDown': {
+        e.preventDefault();
+        const nextIndex = (currentIndex + 1) % items.length;
+        items[nextIndex]?.focus();
+        break;
+      }
+      case 'ArrowUp': {
+        e.preventDefault();
+        const prevIndex = (currentIndex - 1 + items.length) % items.length;
+        items[prevIndex]?.focus();
+        break;
+      }
+      case 'Home':
+        e.preventDefault();
+        items[0]?.focus();
+        break;
+      case 'End':
+        e.preventDefault();
+        items[items.length - 1]?.focus();
+        break;
+    }
+  }
 
-	render() {
-		const placementClass = this.placement
-			? `dropdown__menu--${this.placement}`
-			: "";
-		const openClass = this.open ? "dropdown__menu--open" : "";
-		return html`
+  render() {
+    const placementClass = this.placement ? `dropdown__menu--${this.placement}` : '';
+    const openClass = this.open ? 'dropdown__menu--open' : '';
+    return html`
       <div class="dropdown">
         <div class="dropdown__trigger" @click=${this._handleTriggerClick}>
           <slot name="trigger"></slot>
@@ -174,54 +172,54 @@ export class GrantCodesDropdown extends LitElement {
         </div>
       </div>
     `;
-	}
+  }
 }
 
 export class GrantCodesDropdownItem extends LitElement {
-	static styles = [dropdownStyles];
+  static styles = [dropdownStyles];
 
-	static properties = {
-		disabled: { type: Boolean },
-	};
+  static properties = {
+    disabled: { type: Boolean },
+  };
 
-	constructor() {
-		super();
+  constructor() {
+    super();
 
-		/**
-		 * Whether the item is disabled
-		 * @type {boolean}
-		 */
-		this.disabled = false;
-	}
+    /**
+     * Whether the item is disabled
+     * @type {boolean}
+     */
+    this.disabled = false;
+  }
 
-	_handleClick(e) {
-		if (this.disabled) {
-			e.preventDefault();
-			return;
-		}
+  _handleClick(e) {
+    if (this.disabled) {
+      e.preventDefault();
+      return;
+    }
 
-		this.dispatchEvent(
-			new CustomEvent("select", {
-				bubbles: true,
-				composed: true,
-			}),
-		);
+    this.dispatchEvent(
+      new CustomEvent('select', {
+        bubbles: true,
+        composed: true,
+      }),
+    );
 
-		// Close the dropdown
-		const dropdown = this.closest("grantcodes-dropdown");
-		if (dropdown) {
-			dropdown.open = false;
-		}
-	}
+    // Close the dropdown
+    const dropdown = this.closest('grantcodes-dropdown');
+    if (dropdown) {
+      dropdown.open = false;
+    }
+  }
 
-	render() {
-		return html`
+  render() {
+    return html`
       <div
-        class="dropdown-item ${this.disabled ? "dropdown-item--disabled" : ""}"
+        class="dropdown-item ${this.disabled ? 'dropdown-item--disabled' : ''}"
         @click=${this._handleClick}
       >
         <slot></slot>
       </div>
     `;
-	}
+  }
 }

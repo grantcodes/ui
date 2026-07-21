@@ -1,27 +1,23 @@
 *,
 *::before,
 *::after {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 :host {
-	display: inline-flex;
+  display: inline-flex;
 }
 
 .nav-link {
-	display: inline-flex;
-	align-items: center;
-	border-radius: var(--g-border-radius-md);
-	background-color: transparent;
-	transition: background-color 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--g-border-radius-md);
+  background-color: transparent;
+  transition: background-color 0.15s ease;
 }
 
 .nav-link:hover {
-	background-color: color-mix(
-		in srgb,
-		var(--g-color-content-default) 8%,
-		transparent
-	);
+  background-color: color-mix(in srgb, var(--g-color-content-default) 8%, transparent);
 }
 
 /*
@@ -37,26 +33,25 @@
 ::slotted(a:hover),
 ::slotted(a:active),
 ::slotted(a:focus-visible) {
-	display: inline-flex;
-	align-items: center;
-	color: var(--g-color-content-default) !important;
-	text-decoration: none !important;
-	opacity: 1 !important;
-	padding-block: var(--g-spacing-xs, 0.25rem);
-	padding-inline: var(--g-spacing-sm);
-	font: var(--g-typography-body-sm-font);
-	white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  color: var(--g-color-content-default) !important;
+  text-decoration: none !important;
+  opacity: 1 !important;
+  padding-block: var(--g-spacing-xs, 0.25rem);
+  padding-inline: var(--g-spacing-sm);
+  font: var(--g-typography-body-sm-font);
+  white-space: nowrap;
 }
 
 ::slotted(a:focus-visible) {
-	outline: var(--g-focus-ring-width-default) solid
-		var(--g-focus-ring-color-default);
-	outline-offset: var(--g-focus-ring-offset-default);
-	border-radius: var(--g-border-radius-md);
+  outline: var(--g-focus-ring-width-default) solid var(--g-focus-ring-color-default);
+  outline-offset: var(--g-focus-ring-offset-default);
+  border-radius: var(--g-border-radius-md);
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.nav-link {
-		transition: none;
-	}
+  .nav-link {
+    transition: none;
+  }
 }

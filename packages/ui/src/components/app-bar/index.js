@@ -1,1 +1,1 @@
-export * from "./app-bar.js";
+export * from './app-bar.js';

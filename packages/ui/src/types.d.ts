@@ -9,10 +9,10 @@
  */
 
 // Component deep imports
-declare module "@grantcodes/ui/components/*";
+declare module '@grantcodes/ui/components/*';
 
 // Style imports
-declare module "@grantcodes/ui/styles/*";
+declare module '@grantcodes/ui/styles/*';
 
 // Font imports
-declare module "@grantcodes/ui/fonts/*";
+declare module '@grantcodes/ui/fonts/*';

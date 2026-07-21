@@ -1,39 +1,39 @@
-import { LitElement, html } from "lit";
-import { classMap } from "lit/directives/class-map.js";
-import containerStyles from "./container.css" with { type: "css" };
+import { html, LitElement } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
+import containerStyles from './container.css' with { type: 'css' };
 
 export class GrantCodesContainer extends LitElement {
-	// Styles are scoped to this element: they won't conflict with styles
-	// on the main page or in other components. Styling API can be exposed
-	// via CSS custom properties.
-	static styles = [containerStyles];
+  // Styles are scoped to this element: they won't conflict with styles
+  // on the main page or in other components. Styling API can be exposed
+  // via CSS custom properties.
+  static styles = [containerStyles];
 
-	static properties = {
-		align: { type: String },
-		nopad: { type: Boolean },
-	};
+  static properties = {
+    align: { type: String },
+    nopad: { type: Boolean },
+  };
 
-	constructor() {
-		super();
+  constructor() {
+    super();
 
-		this.align = "default";
-		this.nopad = false;
-	}
+    this.align = 'default';
+    this.nopad = false;
+  }
 
-	render() {
-		const classes = classMap({
-			container: true,
-			"container--wide": this.align === "wide",
-			"container--full": this.align === "full",
-			"container--prose": this.align === "prose",
-			"container--viewport": this.align === "viewport",
-			"container--nopad": this.nopad,
-		});
+  render() {
+    const classes = classMap({
+      container: true,
+      'container--wide': this.align === 'wide',
+      'container--full': this.align === 'full',
+      'container--prose': this.align === 'prose',
+      'container--viewport': this.align === 'viewport',
+      'container--nopad': this.nopad,
+    });
 
-		return html`
+    return html`
       <div class=${classes}>
         <slot></slot>
       </div>
     `;
-	}
+  }
 }

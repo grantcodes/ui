@@ -1,44 +1,44 @@
 *,
 *::before,
 *::after {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .container {
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: stretch;
-	inline-size: 1200px;
-	max-inline-size: 100%;
-	padding-inline: var(--g-spacing-md);
-	margin-inline: auto;
-	background-color: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  inline-size: 1200px;
+  max-inline-size: 100%;
+  padding-inline: var(--g-spacing-md);
+  margin-inline: auto;
+  background-color: inherit;
 }
 
 .container--prose {
-	inline-size: 100%;
-	max-inline-size: 65ch;
+  inline-size: 100%;
+  max-inline-size: 65ch;
 }
 
 .container--wide {
-	inline-size: 1400px;
+  inline-size: 1400px;
 }
 
 .container--full {
-	inline-size: 100%;
+  inline-size: 100%;
 }
 
 .container--viewport {
-	inset-inline-start: 50%;
-	position: relative;
-	inset-inline-end: 50%;
-	margin-inline-start: -50dvw;
-	margin-inline-end: -50dvw;
-	max-inline-size: 100dvw;
-	inline-size: 100dvw;
+  inset-inline-start: 50%;
+  position: relative;
+  inset-inline-end: 50%;
+  margin-inline-start: -50dvw;
+  margin-inline-end: -50dvw;
+  max-inline-size: 100dvw;
+  inline-size: 100dvw;
 }
 
 .container--nopad {
-	padding-inline: 0;
+  padding-inline: 0;
 }

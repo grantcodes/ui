@@ -1,26 +1,26 @@
 {
-	"ref": {
-		"typography": {
-			"font-family": {
-				"system-serif": {
-					"value": "Georgia, 'Times New Roman', Times, serif"
-				},
-				"system-sans": {
-					"value": "{ref.typography.font-family.system}"
-				},
-				"system-script": {
-					"value": "'Brush Script MT', 'Segoe Script', cursive"
-				},
-				"vidaloka": {
-					"value": "Vidaloka, {ref.typography.font-family.system-serif}"
-				},
-				"albert": {
-					"value": "'Albert Sans', {ref.typography.font-family.system-sans}"
-				},
-				"pinyon-script": {
-					"value": "'Pinyon Script', {ref.typography.font-family.system-script}"
-				}
-			}
-		}
-	}
+  "ref": {
+    "typography": {
+      "font-family": {
+        "system-serif": {
+          "value": "Georgia, 'Times New Roman', Times, serif"
+        },
+        "system-sans": {
+          "value": "{ref.typography.font-family.system}"
+        },
+        "system-script": {
+          "value": "'Brush Script MT', 'Segoe Script', cursive"
+        },
+        "vidaloka": {
+          "value": "Vidaloka, {ref.typography.font-family.system-serif}"
+        },
+        "albert": {
+          "value": "'Albert Sans', {ref.typography.font-family.system-sans}"
+        },
+        "pinyon-script": {
+          "value": "'Pinyon Script', {ref.typography.font-family.system-script}"
+        }
+      }
+    }
+  }
 }

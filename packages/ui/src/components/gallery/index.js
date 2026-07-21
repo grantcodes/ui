@@ -1,2 +1,2 @@
-export * from "./gallery.js";
-export * from "./gallery-image.js";
+export * from './gallery.js';
+export * from './gallery-image.js';

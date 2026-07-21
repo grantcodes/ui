@@ -1,1 +1,1 @@
-export * from "./logo-cloud.js";
+export * from './logo-cloud.js';

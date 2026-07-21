@@ -1,1 +1,1 @@
-export * from "./code-preview.js";
+export * from './code-preview.js';

@@ -1,143 +1,142 @@
-import { LitElement } from "lit";
-import { html } from "lit/static-html.js";
-import { classMap } from "lit/directives/class-map.js";
-import formFieldStyles from "./form-field.css" with { type: "css" };
-import { generateId } from "../../lib/generate-id.js";
+import { LitElement } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
+import { html } from 'lit/static-html.js';
+import { generateId } from '../../lib/generate-id.js';
+import formFieldStyles from './form-field.css' with { type: 'css' };
 
 export class GrantCodesFormField extends LitElement {
-	static formAssociated = true;
-	static styles = [formFieldStyles];
+  static formAssociated = true;
+  static styles = [formFieldStyles];
 
-	static properties = {
+  static properties = {
     label: { type: String, reflect: true },
-		direction: { type: String },
-		error: { type: String },
-		help: { type: String },
-	};
+    direction: { type: String },
+    error: { type: String },
+    help: { type: String },
+  };
 
-	constructor() {
-		super();
+  constructor() {
+    super();
 
-		this.label = "";
-		this.error = undefined;
-		this.help = undefined;
+    this.label = '';
+    this.error = undefined;
+    this.help = undefined;
 
     this.groupInput = false;
 
     /**
-		 * Direction of the field. Generally want horizontal for checkboxes and radios.
-		 * @type {'vertical' | 'horizontal'}
-		 */
-		this.direction = "vertical";
+     * Direction of the field. Generally want horizontal for checkboxes and radios.
+     * @type {'vertical' | 'horizontal'}
+     */
+    this.direction = 'vertical';
 
-		/** @type {NodeListOf<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>} */
-		this.inputElements;
+    /** @type {NodeListOf<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>} */
+    this.inputElements;
 
-		/** @type {NodeListOf<GrantCodesFormField>} */
-		this.nestedFields;
+    /** @type {NodeListOf<GrantCodesFormField>} */
+    this.nestedFields;
 
-		if (!this.id) {
-			this.id = generateId("form-field");
-		}
-	}
+    if (!this.id) {
+      this.id = generateId('form-field');
+    }
+  }
 
-	get errorId() {
-		return `${this.id}-error`;
-	}
+  get errorId() {
+    return `${this.id}-error`;
+  }
 
-	get helpId() {
-		return `${this.id}-help`;
-	}
+  get helpId() {
+    return `${this.id}-help`;
+  }
 
-	get ariaDescribedBy() {
-		const ids = [];
-		if (this.error) {
-			ids.push(this.errorId);
-		}
-		if (this.help) {
-			ids.push(this.helpId);
-		}
-		return ids.join(" ");
-	}
+  get ariaDescribedBy() {
+    const ids = [];
+    if (this.error) {
+      ids.push(this.errorId);
+    }
+    if (this.help) {
+      ids.push(this.helpId);
+    }
+    return ids.join(' ');
+  }
 
-	firstUpdated() {
-		// Initialize inputs and nested fields if not already set
-		if (!this.inputElements) {
-			this.inputElements = this.querySelectorAll("input, select, textarea");
-		}
-		if (!this.nestedFields) {
-			this.nestedFields = this.querySelectorAll("grantcodes-form-field");
-		}
+  firstUpdated() {
+    // Initialize inputs and nested fields if not already set
+    if (!this.inputElements) {
+      this.inputElements = this.querySelectorAll('input, select, textarea');
+    }
+    if (!this.nestedFields) {
+      this.nestedFields = this.querySelectorAll('grantcodes-form-field');
+    }
 
-		const input = this.inputElements[0];
+    const input = this.inputElements[0];
 
-		if (this.nestedFields.length > 0) {
-			this.groupInput = true;
-			this.requestUpdate();
-		}
+    if (this.nestedFields.length > 0) {
+      this.groupInput = true;
+      this.requestUpdate();
+    }
 
-		if (!input) {
-			return;
-		}
+    if (!input) {
+      return;
+    }
 
-		input.id = this.id;
-		input.setAttribute("aria-describedby", this.ariaDescribedBy);
+    input.id = this.id;
+    input.setAttribute('aria-describedby', this.ariaDescribedBy);
+  }
 
-	}
+  handleLabelClick() {
+    const input = this.inputElements[0];
+    if (input) {
+      input.focus();
+      if (
+        input instanceof HTMLInputElement &&
+        (input.type === 'checkbox' || input.type === 'radio')
+      ) {
+        input.checked = !input.checked;
+      }
+    }
+  }
 
-	handleLabelClick() {
-		const input = this.inputElements[0];
-		if (input) {
-			input.focus();
-			if (
-				input instanceof HTMLInputElement &&
-				(input.type === "checkbox" || input.type === "radio")
-			) {
-				input.checked = !input.checked;
-			}
-		}
-	}
+  // handleError() {
+  //   if (this.error) {
+  //     const input = this.inputElements[0]
+  //     if (input) {
+  //       if (this.help) {
+  //         input.setAttribute('aria-describedby', `${this.errorId} ${this.helpId}`)
+  //       } else {
+  //         input.setAttribute('aria-describedby', this.errorId)
+  //       }
+  //     }
+  //   }
+  // }
 
-	// handleError() {
-	//   if (this.error) {
-	//     const input = this.inputElements[0]
-	//     if (input) {
-	//       if (this.help) {
-	//         input.setAttribute('aria-describedby', `${this.errorId} ${this.helpId}`)
-	//       } else {
-	//         input.setAttribute('aria-describedby', this.errorId)
-	//       }
-	//     }
-	//   }
-	// }
+  errorTemplate() {
+    if (!this.error) {
+      return html``;
+    }
 
-	errorTemplate() {
-		if (!this.error) {
-			return html``;
-		}
-
-		return html`
+    return html`
       <p class="form-field__error" id=${this.errorId}>Error: ${this.error}</p>
     `;
-	}
+  }
 
-	helpTemplate() {
-		if (!this.help) {
-			return html``;
-		}
+  helpTemplate() {
+    if (!this.help) {
+      return html``;
+    }
 
-		return html`
+    return html`
       <span class="form-field__help" id=${this.helpId}>${this.help}</span>
     `;
-	}
+  }
 
   render() {
     const wrapperClass = classMap({
       'form-field': true,
-      'form-field--horizontal': this.direction === 'horizontal'
-    })
-		if (this.groupInput) {
-			return html`
+      'form-field--horizontal': this.direction === 'horizontal',
+    });
+    if (this.groupInput) {
+      return html`
       <fieldset class=${wrapperClass}>
         <legend class="form-field__label">${this.label}</legend>
         <slot></slot>
@@ -146,7 +145,7 @@ export class GrantCodesFormField extends LitElement {
     `;
     }
 
-		return html`
+    return html`
       <div class=${wrapperClass}>
         <label>
           <span class="form-field__label" @click=${this.handleLabelClick}
@@ -158,5 +157,5 @@ export class GrantCodesFormField extends LitElement {
         ${this.errorTemplate()}
       </div>
     `;
-	}
+  }
 }

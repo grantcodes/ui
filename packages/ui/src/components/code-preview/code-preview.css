@@ -1,18 +1,18 @@
 *,
 *::before,
 *::after {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .code-preview > pre {
-	display: block;
-	font-family: var(--g-typography-font-family-code);
-	line-height: 1.2;
-	width: 100%;
-	overflow: auto;
-	border-radius: var(--g-border-radius-md);
-	box-shadow: var(--g-box-shadow-sm);
-	font-size: var(--g-typography-body-sm-font-size);
-	font-weight: var(--g-typography-body-lg-font-weight);
-	padding: var(--g-spacing-md);
+  display: block;
+  font-family: var(--g-typography-font-family-code);
+  line-height: 1.2;
+  width: 100%;
+  overflow: auto;
+  border-radius: var(--g-border-radius-md);
+  box-shadow: var(--g-box-shadow-sm);
+  font-size: var(--g-typography-body-sm-font-size);
+  font-weight: var(--g-typography-body-lg-font-weight);
+  padding: var(--g-spacing-md);
 }

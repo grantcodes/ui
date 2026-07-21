@@ -1,124 +1,124 @@
 *,
 *::before,
 *::after {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 :host {
-	display: block;
-	container-type: inline-size;
-	container-name: app-bar;
-	z-index: 1000;
+  display: block;
+  container-type: inline-size;
+  container-name: app-bar;
+  z-index: 1000;
 }
 
 .app-bar {
-	background-color: var(--g-color-background-default);
-	border-block-end: 1px solid var(--g-color-border-default);
-	position: relative;
+  background-color: var(--g-color-background-default);
+  border-block-end: 1px solid var(--g-color-border-default);
+  position: relative;
 }
 
 :host([sticky]),
 .app-bar--sticky {
-	position: sticky;
-	inset-block-start: 0;
+  position: sticky;
+  inset-block-start: 0;
 }
 
 .app-bar--transparent {
-	background-color: transparent;
-	border-block-end-color: transparent;
-	box-shadow: none;
+  background-color: transparent;
+  border-block-end-color: transparent;
+  box-shadow: none;
 }
 
 /* Top bar row — always visible */
 .app-bar__bar {
-	display: flex;
-	align-items: center;
-	gap: var(--g-spacing-lg);
-	padding-inline: var(--g-spacing-md);
-	padding-block: var(--g-spacing-md);
-	max-inline-size: 1400px;
-	margin-inline: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--g-spacing-lg);
+  padding-inline: var(--g-spacing-md);
+  padding-block: var(--g-spacing-md);
+  max-inline-size: 1400px;
+  margin-inline: auto;
 }
 
 /* Logo */
 .app-bar__logo {
-	display: flex;
-	align-items: center;
-	flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 /* Navigation — hidden on mobile, shown on desktop */
 .app-bar__nav {
-	display: none;
+  display: none;
 }
 
 /* Actions */
 .app-bar__actions {
-	display: flex;
-	align-items: center;
-	gap: var(--g-spacing-sm);
-	margin-inline-start: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--g-spacing-sm);
+  margin-inline-start: auto;
 }
 
 /* Mobile Menu Button */
 .app-bar__menu-button {
-	all: unset;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	inline-size: 2.75rem;
-	block-size: 2.75rem;
-	padding: var(--g-spacing-sm);
-	border-radius: var(--g-border-radius-md);
-	cursor: pointer;
-	color: var(--g-color-content-default);
-	transition: background-color 0.2s ease;
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 2.75rem;
+  block-size: 2.75rem;
+  padding: var(--g-spacing-sm);
+  border-radius: var(--g-border-radius-md);
+  cursor: pointer;
+  color: var(--g-color-content-default);
+  transition: background-color 0.2s ease;
 }
 
 .app-bar__menu-button:hover {
-	background-color: var(--g-color-background-subtle-hover);
+  background-color: var(--g-color-background-subtle-hover);
 }
 
 /* Hamburger Icon */
 .app-bar__menu-icon {
-	display: block;
-	inline-size: 1.25rem;
-	block-size: 1rem;
-	position: relative;
+  display: block;
+  inline-size: 1.25rem;
+  block-size: 1rem;
+  position: relative;
 }
 
 .app-bar__menu-icon::before,
 .app-bar__menu-icon::after {
-	content: "";
-	position: absolute;
-	inline-size: 100%;
-	block-size: 2px;
-	inset-inline-start: 0;
-	background-color: currentColor;
-	transition:
-		transform 0.2s ease,
-		inset 0.2s ease;
+  content: "";
+  position: absolute;
+  inline-size: 100%;
+  block-size: 2px;
+  inset-inline-start: 0;
+  background-color: currentColor;
+  transition:
+    transform 0.2s ease,
+    inset 0.2s ease;
 }
 
 .app-bar__menu-icon::before {
-	inset-block-start: 0;
-	box-shadow: 0 0.4375rem 0 currentColor;
+  inset-block-start: 0;
+  box-shadow: 0 0.4375rem 0 currentColor;
 }
 
 .app-bar__menu-icon::after {
-	inset-block-end: 0;
+  inset-block-end: 0;
 }
 
 /* Animated hamburger to X */
 .app-bar__menu-button[aria-expanded="true"] .app-bar__menu-icon::before {
-	inset-block-start: calc(50% - 1px);
-	transform: rotate(45deg);
-	box-shadow: none;
+  inset-block-start: calc(50% - 1px);
+  transform: rotate(45deg);
+  box-shadow: none;
 }
 
 .app-bar__menu-button[aria-expanded="true"] .app-bar__menu-icon::after {
-	inset-block-end: calc(50% - 1px);
-	transform: rotate(-45deg);
+  inset-block-end: calc(50% - 1px);
+  transform: rotate(-45deg);
 }
 
 /*
@@ -126,180 +126,164 @@
    * Uses clip-path for a clean slide-down reveal animation.
    */
 .app-bar__nav--open {
-	display: flex;
-	flex-direction: column;
-	gap: var(--g-spacing-xs, 0.25rem);
-	position: absolute;
-	inset-inline: 0;
-	inset-block-start: 100%;
-	z-index: 99;
-	background-color: var(--g-color-background-default);
-	border-block-end: 1px solid var(--g-color-border-default);
-	padding-block: var(--g-spacing-md);
-	padding-inline: var(--g-spacing-md);
-	box-shadow: var(--g-box-shadow-lg, 0 8px 24px rgba(0, 0, 0, 0.12));
-	animation: menu-open 0.25s ease-out;
+  display: flex;
+  flex-direction: column;
+  gap: var(--g-spacing-xs, 0.25rem);
+  position: absolute;
+  inset-inline: 0;
+  inset-block-start: 100%;
+  z-index: 99;
+  background-color: var(--g-color-background-default);
+  border-block-end: 1px solid var(--g-color-border-default);
+  padding-block: var(--g-spacing-md);
+  padding-inline: var(--g-spacing-md);
+  box-shadow: var(--g-box-shadow-lg, 0 8px 24px rgba(0, 0, 0, 0.12));
+  animation: menu-open 0.25s ease-out;
 }
 
 @keyframes menu-open {
-	from {
-		opacity: 0;
-		transform: translateY(-0.5rem);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Slotted nav content stacks vertically in mobile menu */
 .app-bar__nav--open ::slotted(ul),
 .app-bar__nav--open ::slotted(div[slot="nav"]) {
-	display: flex;
-	flex-direction: column;
-	gap: var(--g-spacing-xs, 0.25rem);
-	margin: 0;
-	padding: 0;
-	list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--g-spacing-xs, 0.25rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 /* Backdrop overlay — covers viewport below app bar when menu is open */
 .app-bar__overlay {
-	display: none;
+  display: none;
 }
 
 .app-bar__overlay--visible {
-	display: block;
-	position: fixed;
-	inset: 0;
-	z-index: 98;
-	background-color: rgba(0, 0, 0, 0.2);
-	animation: overlay-fade 0.2s ease-out;
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: 98;
+  background-color: rgba(0, 0, 0, 0.2);
+  animation: overlay-fade 0.2s ease-out;
 }
 
 @keyframes overlay-fade {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
-	.app-bar__menu-icon::before,
-	.app-bar__menu-icon::after {
-		transition: none;
-	}
+  .app-bar__menu-icon::before,
+  .app-bar__menu-icon::after {
+    transition: none;
+  }
 
-	.app-bar__menu-button {
-		transition: none;
-	}
+  .app-bar__menu-button {
+    transition: none;
+  }
 
-	.app-bar__nav--open {
-		animation: none;
-	}
+  .app-bar__nav--open {
+    animation: none;
+  }
 
-	.app-bar__overlay--visible {
-		animation: none;
-	}
+  .app-bar__overlay--visible {
+    animation: none;
+  }
 }
 
 /* Desktop: show nav inline, hide hamburger */
 @container app-bar (min-width: 768px) {
-	.app-bar__nav {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		gap: var(--g-spacing-xs, 0.25rem);
-		flex: 1;
-		min-inline-size: 0;
-		overflow-x: auto;
-		flex-wrap: nowrap;
-		-webkit-overflow-scrolling: touch;
-		-webkit-mask-image: linear-gradient(
-			to right,
-			black calc(100% - 1.5rem),
-			transparent
-		);
-		mask-image: linear-gradient(
-			to right,
-			black calc(100% - 1.5rem),
-			transparent
-		);
-		scrollbar-width: thin;
-		scrollbar-color: var(--g-color-border-default) transparent;
-	}
+  .app-bar__nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--g-spacing-xs, 0.25rem);
+    flex: 1;
+    min-inline-size: 0;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    -webkit-mask-image: linear-gradient(to right, black calc(100% - 1.5rem), transparent);
+    mask-image: linear-gradient(to right, black calc(100% - 1.5rem), transparent);
+    scrollbar-width: thin;
+    scrollbar-color: var(--g-color-border-default) transparent;
+  }
 
-	.app-bar__nav::-webkit-scrollbar {
-		height: 4px;
-	}
+  .app-bar__nav::-webkit-scrollbar {
+    height: 4px;
+  }
 
-	.app-bar__nav::-webkit-scrollbar-track {
-		background: transparent;
-	}
+  .app-bar__nav::-webkit-scrollbar-track {
+    background: transparent;
+  }
 
-	.app-bar__nav::-webkit-scrollbar-thumb {
-		background: var(--g-color-border-default);
-		border-radius: 2px;
-	}
+  .app-bar__nav::-webkit-scrollbar-thumb {
+    background: var(--g-color-border-default);
+    border-radius: 2px;
+  }
 
-	/* Reset mobile-open styles at desktop — nav is always inline */
-	.app-bar__nav--open {
-		position: static;
-		background-color: transparent;
-		border: 0;
-		padding: 0;
-		box-shadow: none;
-		animation: none;
-		flex-direction: row;
-		overflow-x: auto;
-		-webkit-mask-image: linear-gradient(
-			to right,
-			black calc(100% - 1.5rem),
-			transparent
-		);
-		mask-image: linear-gradient(
-			to right,
-			black calc(100% - 1.5rem),
-			transparent
-		);
-	}
+  /* Reset mobile-open styles at desktop — nav is always inline */
+  .app-bar__nav--open {
+    position: static;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    box-shadow: none;
+    animation: none;
+    flex-direction: row;
+    overflow-x: auto;
+    -webkit-mask-image: linear-gradient(to right, black calc(100% - 1.5rem), transparent);
+    mask-image: linear-gradient(to right, black calc(100% - 1.5rem), transparent);
+  }
 
-	.app-bar__actions {
-		order: 3;
-		flex-shrink: 0;
-	}
+  .app-bar__actions {
+    order: 3;
+    flex-shrink: 0;
+  }
 
-	.app-bar__menu-button {
-		display: none;
-	}
+  .app-bar__menu-button {
+    display: none;
+  }
 
-	/* Overlay is never visible on desktop */
-	.app-bar__overlay--visible {
-		display: none;
-	}
+  /* Overlay is never visible on desktop */
+  .app-bar__overlay--visible {
+    display: none;
+  }
 
-	::slotted(ul),
-	::slotted(div[slot="nav"]) {
-		flex-shrink: 0;
-	}
+  ::slotted(ul),
+  ::slotted(div[slot="nav"]) {
+    flex-shrink: 0;
+  }
 }
 
 /* Slotted content styling */
 ::slotted(a[slot="logo"]) {
-	color: var(--g-color-content-default) !important;
-	text-decoration: none !important;
-	font: var(--g-typography-body-sm-font);
+  color: var(--g-color-content-default) !important;
+  text-decoration: none !important;
+  font: var(--g-typography-body-sm-font);
 }
 
 ::slotted(ul),
 ::slotted(div[slot="nav"]) {
-	display: flex;
-	flex-direction: row;
-	gap: var(--g-spacing-xs, 0.25rem);
-	margin: 0;
-	padding: 0;
-	list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: var(--g-spacing-xs, 0.25rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }

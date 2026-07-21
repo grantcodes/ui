@@ -1,29 +1,29 @@
 {
-	"border": {
-		"radius": {
-			"none": {
-				"value": "{ref.border.radius.0}"
-			},
-			"sm": {
-				"value": "{ref.border.radius.0}"
-			},
-			"md": {
-				"value": "{ref.border.radius.0}"
-			},
-			"lg": {
-				"value": "{ref.border.radius.0}"
-			}
-		},
-		"width": {
-			"sm": {
-				"value": "{ref.border.width.1}"
-			},
-			"md": {
-				"value": "{ref.border.width.2}"
-			},
-			"lg": {
-				"value": "{ref.border.width.4}"
-			}
-		}
-	}
+  "border": {
+    "radius": {
+      "none": {
+        "value": "{ref.border.radius.0}"
+      },
+      "sm": {
+        "value": "{ref.border.radius.0}"
+      },
+      "md": {
+        "value": "{ref.border.radius.0}"
+      },
+      "lg": {
+        "value": "{ref.border.radius.0}"
+      }
+    },
+    "width": {
+      "sm": {
+        "value": "{ref.border.width.1}"
+      },
+      "md": {
+        "value": "{ref.border.width.2}"
+      },
+      "lg": {
+        "value": "{ref.border.width.4}"
+      }
+    }
+  }
 }

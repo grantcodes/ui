@@ -1,1 +1,1 @@
-export * from "./countdown.js";
+export * from './countdown.js';

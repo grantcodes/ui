@@ -1,9 +1,9 @@
-import React from "react";
-import { createComponent } from "@lit/react";
-import { GrantCodesGalleryImage } from "./gallery-image.js";
+import { createComponent } from '@lit/react';
+import React from 'react';
+import { GrantCodesGalleryImage } from './gallery-image.js';
 
 export const GalleryImage = createComponent({
-	tagName: "grantcodes-gallery-image",
-	elementClass: GrantCodesGalleryImage,
-	react: React,
+  tagName: 'grantcodes-gallery-image',
+  elementClass: GrantCodesGalleryImage,
+  react: React,
 });

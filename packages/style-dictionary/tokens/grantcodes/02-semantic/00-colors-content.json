@@ -1,41 +1,41 @@
 {
-	"color": {
-		"content": {
-			"default": {
-				"value": "light-dark({ref.color.neutral.900}, {ref.color.neutral.100})"
-			},
-			"subtle": {
-				"value": "light-dark({ref.color.neutral.700}, {ref.color.neutral.400})"
-			},
-			"primary": {
-				"value": "light-dark({color.primary.600}, {color.primary.300})"
-			},
-			"primary-hover": {
-				"value": "light-dark({color.primary.900}, {color.primary.100})"
-			},
-			"primary-knockout": {
-				"value": "light-dark({ref.color.neutral.white}, {ref.color.neutral.white})"
-			},
-			"knockout": {
-				"value": "light-dark({ref.color.neutral.white}, {ref.color.neutral.900})"
-			},
-			"disabled": {
-				"value": "light-dark({ref.color.neutral.600}, {ref.color.neutral.500})"
-			},
-			"utility": {
-				"error": {
-					"value": "light-dark({ref.color.red.600}, {ref.color.red.400})"
-				},
-				"warning": {
-					"value": "light-dark({ref.color.yellow.600}, {ref.color.yellow.400})"
-				},
-				"success": {
-					"value": "light-dark({ref.color.green.600}, {ref.color.green.400})"
-				},
-				"info": {
-					"value": "light-dark({ref.color.blue.600}, {ref.color.blue.300})"
-				}
-			}
-		}
-	}
+  "color": {
+    "content": {
+      "default": {
+        "value": "light-dark({ref.color.neutral.900}, {ref.color.neutral.100})"
+      },
+      "subtle": {
+        "value": "light-dark({ref.color.neutral.700}, {ref.color.neutral.400})"
+      },
+      "primary": {
+        "value": "light-dark({color.primary.600}, {color.primary.300})"
+      },
+      "primary-hover": {
+        "value": "light-dark({color.primary.900}, {color.primary.100})"
+      },
+      "primary-knockout": {
+        "value": "light-dark({ref.color.neutral.white}, {ref.color.neutral.white})"
+      },
+      "knockout": {
+        "value": "light-dark({ref.color.neutral.white}, {ref.color.neutral.900})"
+      },
+      "disabled": {
+        "value": "light-dark({ref.color.neutral.600}, {ref.color.neutral.500})"
+      },
+      "utility": {
+        "error": {
+          "value": "light-dark({ref.color.red.600}, {ref.color.red.400})"
+        },
+        "warning": {
+          "value": "light-dark({ref.color.yellow.600}, {ref.color.yellow.400})"
+        },
+        "success": {
+          "value": "light-dark({ref.color.green.600}, {ref.color.green.400})"
+        },
+        "info": {
+          "value": "light-dark({ref.color.blue.600}, {ref.color.blue.300})"
+        }
+      }
+    }
+  }
 }

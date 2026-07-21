@@ -10,13 +10,13 @@
  * @returns {boolean} Returns true if the event was not cancelled
  */
 export function dispatchEvent(element, eventName, detail = {}) {
-	const event = new CustomEvent(eventName, {
-		detail,
-		bubbles: true,
-		composed: true,
-		cancelable: true,
-	});
-	return element.dispatchEvent(event);
+  const event = new CustomEvent(eventName, {
+    detail,
+    bubbles: true,
+    composed: true,
+    cancelable: true,
+  });
+  return element.dispatchEvent(event);
 }
 
 /**
@@ -27,22 +27,20 @@ export function dispatchEvent(element, eventName, detail = {}) {
  * @returns {Promise<Event>} Resolves with the event object
  */
 export function waitForEvent(element, eventName, timeout = 3000) {
-	return new Promise((resolve, reject) => {
-		const timeoutId = setTimeout(() => {
-			element.removeEventListener(eventName, handler);
-			reject(
-				new Error(`Event "${eventName}" did not fire within ${timeout}ms`),
-			);
-		}, timeout);
+  return new Promise((resolve, reject) => {
+    const timeoutId = setTimeout(() => {
+      element.removeEventListener(eventName, handler);
+      reject(new Error(`Event "${eventName}" did not fire within ${timeout}ms`));
+    }, timeout);
 
-		const handler = (event) => {
-			clearTimeout(timeoutId);
-			element.removeEventListener(eventName, handler);
-			resolve(event);
-		};
+    const handler = (event) => {
+      clearTimeout(timeoutId);
+      element.removeEventListener(eventName, handler);
+      resolve(event);
+    };
 
-		element.addEventListener(eventName, handler);
-	});
+    element.addEventListener(eventName, handler);
+  });
 }
 
 /**
@@ -50,7 +48,7 @@ export function waitForEvent(element, eventName, timeout = 3000) {
  * @param {HTMLElement} element - The element to click
  */
 export function click(element) {
-	element.click();
+  element.click();
 }
 
 /**
@@ -59,14 +57,14 @@ export function click(element) {
  * @param {string} key - The key to press (e.g., 'Enter', 'Escape')
  * @param {string} type - The event type ('keydown', 'keyup', 'keypress')
  */
-export function keyboard(element, key, type = "keydown") {
-	const event = new KeyboardEvent(type, {
-		key,
-		bubbles: true,
-		composed: true,
-		cancelable: true,
-	});
-	element.dispatchEvent(event);
+export function keyboard(element, key, type = 'keydown') {
+  const event = new KeyboardEvent(type, {
+    key,
+    bubbles: true,
+    composed: true,
+    cancelable: true,
+  });
+  element.dispatchEvent(event);
 }
 
 /**
@@ -74,8 +72,8 @@ export function keyboard(element, key, type = "keydown") {
  * @param {HTMLElement} element - The element to focus
  */
 export function focus(element) {
-	element.focus();
-	element.dispatchEvent(new FocusEvent("focus", { bubbles: true }));
+  element.focus();
+  element.dispatchEvent(new FocusEvent('focus', { bubbles: true }));
 }
 
 /**
@@ -83,6 +81,6 @@ export function focus(element) {
  * @param {HTMLElement} element - The element to blur
  */
 export function blur(element) {
-	element.blur();
-	element.dispatchEvent(new FocusEvent("blur", { bubbles: true }));
+  element.blur();
+  element.dispatchEvent(new FocusEvent('blur', { bubbles: true }));
 }

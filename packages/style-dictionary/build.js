@@ -7,4 +7,4 @@
 // This file can be kept for backwards compatibility or removed
 // Run: node config.js or node build.js (which runs config.js)
 
-import "./config.js";
+import './config.js';

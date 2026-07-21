@@ -1,1 +1,1 @@
-export * from "./notice.js";
+export * from './notice.js';

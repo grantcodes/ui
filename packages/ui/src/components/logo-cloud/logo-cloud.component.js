@@ -1,54 +1,50 @@
-import { LitElement, html } from "lit";
-import logoCloudStyles from "./logo-cloud.css" with { type: "css" };
-import "../container/container.js";
+import { html, LitElement } from 'lit';
+import logoCloudStyles from './logo-cloud.css' with { type: 'css' };
+import '../container/container.js';
 
 export class GrantCodesLogoCloud extends LitElement {
-	static styles = [logoCloudStyles];
+  static styles = [logoCloudStyles];
 
-	static properties = {
-		/**
-		 * Optional label shown above the logos.
-		 * @type {string}
-		 */
-		title: { type: String },
-		/**
-		 * Logo items as a JSON string array: `[{"name":"...","src":"...","alt":"...","href":"..."}]`.
-		 * @type {string}
-		 */
-		logos: { type: String },
-	};
+  static properties = {
+    /**
+     * Optional label shown above the logos.
+     * @type {string}
+     */
+    title: { type: String },
+    /**
+     * Logo items as a JSON string array: `[{"name":"...","src":"...","alt":"...","href":"..."}]`.
+     * @type {string}
+     */
+    logos: { type: String },
+  };
 
-	constructor() {
-		super();
-		this.title = "";
-		this.logos = "[]";
-	}
+  constructor() {
+    super();
+    this.title = '';
+    this.logos = '[]';
+  }
 
-	get _logos() {
-		try {
-			return JSON.parse(this.logos);
-		} catch {
-			return [];
-		}
-	}
+  get _logos() {
+    try {
+      return JSON.parse(this.logos);
+    } catch {
+      return [];
+    }
+  }
 
-	render() {
-		const logos = this._logos;
-		return html`
+  render() {
+    const logos = this._logos;
+    return html`
 			<section class="logo-cloud">
 				<grantcodes-container>
-					${
-						this.title
-							? html`<p class="logo-cloud__title">${this.title}</p>`
-							: null
-					}
+					${this.title ? html`<p class="logo-cloud__title">${this.title}</p>` : null}
 					<ul class="logo-cloud__grid" role="list">
 						${logos.map(
-							(logo) => html`
+              (logo) => html`
 								<li class="logo-cloud__item">
 									${
-										logo.href
-											? html`
+                    logo.href
+                      ? html`
 												<a
 													href=${logo.href}
 													class="logo-cloud__link"
@@ -62,7 +58,7 @@ export class GrantCodesLogoCloud extends LitElement {
 													/>
 												</a>
 											`
-											: html`
+                      : html`
 												<img
 													src=${logo.src}
 													alt=${logo.alt ?? logo.name}
@@ -70,13 +66,13 @@ export class GrantCodesLogoCloud extends LitElement {
 													loading="lazy"
 												/>
 											`
-									}
+                  }
 								</li>
 							`,
-						)}
+            )}
 					</ul>
 				</grantcodes-container>
 			</section>
 		`;
-	}
+  }
 }

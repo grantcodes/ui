@@ -1,31 +1,32 @@
-import { html } from "lit/static-html.js";
-import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
-const { events, args, argTypes, template } =
-	getStorybookHelpers("grantcodes-notice");
-import "./notice.js";
+import { getStorybookHelpers } from '@wc-toolkit/storybook-helpers';
+import { html } from 'lit/static-html.js';
+
+const { events, args, argTypes, template } = getStorybookHelpers('grantcodes-notice');
+
+import './notice.js';
 
 const meta = {
-	title: "Components/Notice",
-	component: "grantcodes-notice",
-	args: {
-		...args,
-		text: "This is the notice content",
-		title: "Notice title",
-		variant: "info",
-		dismissable: false,
-	},
-	argTypes: {
-		...argTypes,
-		variant: {
-			type: "string",
-		},
-	},
-	render: (args) => template(args, html`${args.text}`),
-	parameters: {
-		actions: {
-			handles: events,
-		},
-	},
+  title: 'Components/Notice',
+  component: 'grantcodes-notice',
+  args: {
+    ...args,
+    text: 'This is the notice content',
+    title: 'Notice title',
+    variant: 'info',
+    dismissable: false,
+  },
+  argTypes: {
+    ...argTypes,
+    variant: {
+      type: 'string',
+    },
+  },
+  render: (args) => template(args, html`${args.text}`),
+  parameters: {
+    actions: {
+      handles: events,
+    },
+  },
 };
 
 export default meta;
@@ -41,11 +42,11 @@ export const InfoNotice = {};
  * Use after successful form submissions, saves, or completions.
  */
 export const SuccessNotice = {
-	args: {
-		variant: "success",
-		title: "Success",
-		text: "Your changes have been saved successfully.",
-	},
+  args: {
+    variant: 'success',
+    title: 'Success',
+    text: 'Your changes have been saved successfully.',
+  },
 };
 
 /**
@@ -53,11 +54,11 @@ export const SuccessNotice = {
  * Use to alert users about potential problems that don't block their workflow.
  */
 export const WarningNotice = {
-	args: {
-		variant: "warning",
-		title: "Warning",
-		text: "Your session will expire in 5 minutes.",
-	},
+  args: {
+    variant: 'warning',
+    title: 'Warning',
+    text: 'Your session will expire in 5 minutes.',
+  },
 };
 
 /**
@@ -65,11 +66,11 @@ export const WarningNotice = {
  * Use when an operation fails or there's a blocking error.
  */
 export const ErrorNotice = {
-	args: {
-		variant: "error",
-		title: "Error",
-		text: "Failed to save changes. Please try again.",
-	},
+  args: {
+    variant: 'error',
+    title: 'Error',
+    text: 'Failed to save changes. Please try again.',
+  },
 };
 
 /**
@@ -77,30 +78,30 @@ export const ErrorNotice = {
  * The notice will be removed from the DOM when dismissed.
  */
 export const Dismissable = {
-	args: {
-		variant: "info",
-		title: "Dismissable Notice",
-		text: "You can close this notice by clicking the X button.",
-		dismissable: true,
-	},
+  args: {
+    variant: 'info',
+    title: 'Dismissable Notice',
+    text: 'You can close this notice by clicking the X button.',
+    dismissable: true,
+  },
 };
 
 /**
  * Notice without a title, showing only the message.
  */
 export const NoTitle = {
-	args: {
-		variant: "info",
-		title: "",
-		text: "This is a notice without a title, just the content message.",
-	},
+  args: {
+    variant: 'info',
+    title: '',
+    text: 'This is a notice without a title, just the content message.',
+  },
 };
 
 /**
  * All notice variants displayed together for comparison.
  */
 export const AllVariants = {
-	render: () => html`
+  render: () => html`
 		<div style="display: flex; flex-direction: column; gap: 1rem;">
 			<grantcodes-notice variant="info" title="Information">
 				This is an informational message for general updates.
