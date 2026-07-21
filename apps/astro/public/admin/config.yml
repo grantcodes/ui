@@ -83,6 +83,166 @@ collections:
               - { label: Success Message, name: successMessage, widget: string, default: "Thank you for your message!" }
               - { label: Notify Email, name: notifyEmail, widget: string }
 
+          # --- 10 New blocks ---
+          - label: CTA
+            name: cta
+            widget: object
+            fields:
+              - { label: Eyebrow, name: eyebrow, widget: string, required: false }
+              - { label: Title, name: title, widget: string }
+              - { label: Text, name: text, widget: text, required: false }
+              - label: Primary Action
+                name: primaryAction
+                widget: object
+                required: false
+                fields:
+                  - { label: Label, name: label, widget: string }
+                  - { label: URL, name: href, widget: string }
+              - label: Secondary Action
+                name: secondaryAction
+                widget: object
+                required: false
+                fields:
+                  - { label: Label, name: label, widget: string }
+                  - { label: URL, name: href, widget: string }
+              - { label: Align, name: align, widget: select, options: [left, center], default: center }
+          - label: Feature List
+            name: feature-list
+            widget: object
+            fields:
+              - { label: Title, name: title, widget: string, required: false }
+              - { label: Subtitle, name: subtitle, widget: text, required: false }
+              - label: Items
+                name: items
+                widget: list
+                fields:
+                  - { label: Title, name: title, widget: string }
+                  - { label: Description, name: description, widget: text, required: false }
+                  - { label: Icon, name: icon, widget: string, required: false }
+                  - { label: Link, name: href, widget: string, required: false }
+              - { label: Columns, name: columns, widget: number, min: 1, max: 4, default: 3 }
+          - label: Stats
+            name: stats
+            widget: object
+            fields:
+              - { label: Title, name: title, widget: string, required: false }
+              - label: Items
+                name: items
+                widget: list
+                fields:
+                  - { label: Label, name: label, widget: string }
+                  - { label: Value, name: value, widget: string }
+                  - { label: Context, name: context, widget: string, required: false }
+              - { label: Columns, name: columns, widget: number, min: 1, max: 6, default: 4 }
+          - label: Logo Cloud
+            name: logo-cloud
+            widget: object
+            fields:
+              - { label: Title, name: title, widget: string, required: false }
+              - label: Logos
+                name: logos
+                widget: list
+                fields:
+                  - { label: Name, name: name, widget: string }
+                  - { label: Image, name: src, widget: image }
+                  - { label: Alt Text, name: alt, widget: string, required: false }
+                  - { label: Link, name: href, widget: string, required: false }
+          - label: Testimonials
+            name: testimonials
+            widget: object
+            fields:
+              - { label: Title, name: title, widget: string, required: false }
+              - label: Items
+                name: items
+                widget: list
+                fields:
+                  - { label: Quote, name: quote, widget: text }
+                  - { label: Name, name: name, widget: string }
+                  - { label: Role, name: role, widget: string, required: false }
+                  - { label: Company, name: company, widget: string, required: false }
+                  - { label: Avatar, name: avatar, widget: image, required: false }
+              - { label: Layout, name: layout, widget: select, options: [cards, list], default: cards }
+          - label: Pricing
+            name: pricing
+            widget: object
+            fields:
+              - { label: Title, name: title, widget: string, required: false }
+              - { label: Subtitle, name: subtitle, widget: text, required: false }
+              - label: Tiers
+                name: tiers
+                widget: list
+                fields:
+                  - { label: Name, name: name, widget: string }
+                  - { label: Price, name: price, widget: string }
+                  - { label: Period, name: period, widget: string, required: false }
+                  - { label: Description, name: description, widget: text, required: false }
+                  - label: Features
+                    name: features
+                    widget: list
+                    fields:
+                      - { label: Text, name: text, widget: string }
+                      - { label: Included, name: included, widget: boolean, default: true }
+                  - label: CTA
+                    name: cta
+                    widget: object
+                    fields:
+                      - { label: Label, name: label, widget: string }
+                      - { label: URL, name: href, widget: string }
+                  - { label: Highlighted, name: highlighted, widget: boolean, default: false }
+          - label: Newsletter
+            name: newsletter
+            widget: object
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Text, name: text, widget: text, required: false }
+              - { label: Action URL, name: action, widget: string }
+              - { label: Method, name: method, widget: select, options: [get, post], default: post }
+              - { label: Placeholder, name: placeholder, widget: string, default: "Your email address" }
+              - { label: Button Label, name: buttonLabel, widget: string, default: Subscribe }
+              - { label: Disclaimer, name: disclaimer, widget: text, required: false }
+          - label: Media + Text
+            name: media-text
+            widget: object
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Text, name: text, widget: markdown }
+              - label: Media
+                name: media
+                widget: object
+                fields:
+                  - { label: Source URL, name: src, widget: image }
+                  - { label: Alt Text, name: alt, widget: string, required: false }
+                  - { label: Kind, name: kind, widget: select, options: [image, video], default: image }
+              - { label: Reverse Layout, name: reverse, widget: boolean, default: false }
+              - label: CTA
+                name: cta
+                widget: object
+                required: false
+                fields:
+                  - { label: Label, name: label, widget: string }
+                  - { label: URL, name: href, widget: string }
+          - label: Map
+            name: map
+            widget: object
+            fields:
+              - { label: Latitude, name: lat, widget: string }
+              - { label: Longitude, name: lng, widget: string }
+              - { label: Zoom, name: zoom, widget: number, min: 1, max: 18, default: 14 }
+              - { label: Label, name: label, widget: string, required: false }
+              - { label: Directions URL, name: directionsUrl, widget: string, required: false }
+              - { label: Height, name: height, widget: string, required: false }
+          - label: Countdown
+            name: countdown
+            widget: object
+            fields:
+              - { label: Target Date/Time, name: target, widget: datetime }
+              - { label: Days Label, name: daysLabel, widget: string, default: days }
+              - { label: Hours Label, name: hoursLabel, widget: string, default: hours }
+              - { label: Minutes Label, name: minutesLabel, widget: string, default: minutes }
+              - { label: Seconds Label, name: secondsLabel, widget: string, default: seconds }
+              - { label: Past Message, name: pastMessage, widget: string, default: "The event has started!" }
+              - { label: Show Seconds, name: showSeconds, widget: boolean, default: false }
+
   - name: blog
     label: Blog
     label_singular: Post

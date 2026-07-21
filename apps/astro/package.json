@@ -10,16 +10,17 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/rss": "^4.0.18",
-    "@astrojs/sitemap": "^3.7.2",
-    "@astrojs/starlight": "^0.38.4",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/starlight": "^0.41.3",
     "@grantcodes/astro": "workspace:*",
-    "@grantcodes/ui": "workspace:*",
     "@grantcodes/style-dictionary": "workspace:*",
-    "astro": "^6.2.1",
+    "@grantcodes/ui": "workspace:*",
+    "@sveltia/cms": "^0.170.9",
+    "astro": "^7.0.9",
     "astro-seo": "^1.1.0",
-    "lit": "^3.2.1",
-    "marked": "^17.0.4"
+    "lit": "^3.3.3",
+    "marked": "^18.0.6"
   },
   "devDependencies": {
     "@grantcodes/commit": "^2.0.0"

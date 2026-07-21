@@ -3,7 +3,7 @@ packages:
   - "apps/*"
 
 overrides:
-  lit: "^3.3.1"
+  lit: "^3.3.3"
 
 allowBuilds:
   esbuild: true
