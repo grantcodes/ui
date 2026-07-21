@@ -57,18 +57,18 @@
 	"homepage": "https://github.com/grantcodes/ui#readme",
 	"license": "MIT",
 	"devDependencies": {
-		"@biomejs/biome": "2.1.1",
+		"@biomejs/biome": "2.3.8",
 		"@grantcodes/commit": "^2.0.0",
 		"minimist": "^1.2.8",
 		"npm-run-all": "^4.1.5",
-		"style-dictionary": "^5.0.1"
+		"style-dictionary": "^5.5.0"
 	},
 	"dependencies": {
 		"@fontsource-variable/albert-sans": "^5.2.8",
 		"@fontsource/albert-sans": "^5.2.8",
 		"@fontsource/pinyon-script": "^5.2.8",
 		"@fontsource/vidaloka": "^5.2.7",
-		"colorjs.io": "^0.5.2"
+		"colorjs.io": "^0.7.0"
 	},
 	"files": [
 		"dist/**/*",

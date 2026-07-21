@@ -84,12 +84,12 @@ export default defineConfig({
       sidebar: [
         {
           label: 'Getting started',
-          autogenerate: { directory: 'docs/getting-started' },
+          items: [{ autogenerate: { directory: 'docs/getting-started' } }],
         },
-        { label: 'Extending', autogenerate: { directory: 'docs/extending' } },
+        { label: 'Extending', items: [{ autogenerate: { directory: 'docs/extending' } }] },
         {
           label: 'Recommendations',
-          autogenerate: { directory: 'docs/recommendations' },
+          items: [{ autogenerate: { directory: 'docs/recommendations' } }],
         },
         { label: 'Tech choices', link: '/docs/tech-choices/' },
       ],

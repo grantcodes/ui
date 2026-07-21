@@ -1,0 +1,13 @@
+---
+// CmsInit.astro — CMS initialization.
+// Imports Sveltia CMS directly from npm and calls CMS.init()
+// to auto-discover config.yml at /admin/config.yml.
+---
+
+<script>
+import CMS from '@sveltia/cms'
+
+// ── Init Sveltia CMS ──────────────────────────────────────────────
+// CMS.init() auto-discovers config.yml at /admin/config.yml.
+CMS.init()
+</script>
