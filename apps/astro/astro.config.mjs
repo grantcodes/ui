@@ -13,6 +13,13 @@ export default defineConfig({
     server: {
       allowedHosts: ['.munchkin-beaver.ts.net'],
     },
+    // OXC JSX classic mode: compiles JSX to h(tag, props, ...children)
+    // calls (Sveltia's window.h / React.createElement alias) instead of
+    // React.createElement.  Per-file /** @jsx h */ pragmas are also set
+    // in every .jsx file as belt-and-suspenders.
+    oxc: {
+      jsx: { runtime: 'classic', pragma: 'h', pragmaFrag: 'Fragment' },
+    },
     resolve: {
       alias: {
         '@layouts': fileURLToPath(new URL('./src/layouts', import.meta.url)),

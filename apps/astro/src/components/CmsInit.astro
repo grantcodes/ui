@@ -1,11 +1,24 @@
 ---
-// CmsInit.astro — CMS initialization.
-// Imports Sveltia CMS directly from npm and calls CMS.init()
-// to auto-discover config.yml at /admin/config.yml.
+// CmsInit.astro — CMS initialization script.
+// Imports Sveltia CMS directly from npm, registers preview styles
+// and templates, then calls CMS.init() to auto-discover config.yml.
 ---
 
 <script>
 import CMS from '@sveltia/cms'
+import themeCss from '@grantcodes/style-dictionary/grantcodes/css?raw'
+import previewStyles from '../lib/cms/preview-styles.css?raw'
+import { PagePreview } from '../lib/cms/preview-templates'
+
+// ── Inject preview styles ─────────────────────────────────────────
+// These use raw CSS strings (imported via ?raw) so they work in the
+// preview iframe's blob: URL context without path resolution issues.
+CMS.registerPreviewStyle(':root{color-scheme:light dark}', { raw: true })
+CMS.registerPreviewStyle(themeCss, { raw: true })
+CMS.registerPreviewStyle(previewStyles, { raw: true })
+
+// ── Register preview template ─────────────────────────────────────
+CMS.registerPreviewTemplate('pages', PagePreview)
 
 // ── Init Sveltia CMS ──────────────────────────────────────────────
 // CMS.init() auto-discovers config.yml at /admin/config.yml.

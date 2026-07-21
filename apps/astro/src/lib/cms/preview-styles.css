@@ -1,0 +1,157 @@
+/* Preview template styles — uses CSS custom properties from grantcodes theme
+   These variables are injected into the preview iframe via registerPreviewStyle()
+   from @grantcodes/style-dictionary/grantcodes/css (tokens.css).
+   Fallbacks use the grantcodes theme values for standalone rendering. */
+
+.scms-preview {
+  padding: calc(var(--g-spacing-lg, 24px) * 1);
+  font-family: var(--g-typography-font-family-body, system-ui, -apple-system, sans-serif);
+  color: var(--g-color-content-default, #1a1a2e);
+}
+
+.scms-preview h1 {
+  font-size: var(--g-typography-h1-font-size, 1.75rem);
+  font-weight: var(--g-typography-h1-font-weight, 700);
+  line-height: var(--g-typography-h1-line-height, 1.2);
+  margin: 0 0 var(--g-spacing-xs, 0.5rem);
+  color: var(--g-color-content-heading, inherit);
+}
+
+.scms-preview h2 {
+  font-size: var(--g-typography-h2-font-size, 1.35rem);
+  font-weight: var(--g-typography-h2-font-weight, 600);
+  line-height: var(--g-typography-h2-line-height, 1.3);
+  margin: 0 0 var(--g-spacing-sm, 1rem);
+  color: var(--g-color-content-heading, #333);
+}
+
+.scms-preview p {
+  margin: 0 0 var(--g-spacing-xs, 0.75rem);
+  line-height: var(--g-typography-body-line-height, 1.5);
+  color: var(--g-color-content-muted, #555);
+}
+
+/* Block wrapper */
+.scms-block {
+  border: 1px solid var(--g-color-border-default, #e0e0e0);
+  border-radius: var(--g-border-radius-md, 8px);
+  padding: var(--g-spacing-md, 16px);
+  margin-bottom: var(--g-spacing-sm, 12px);
+  background: var(--g-color-background-card, #fff);
+}
+
+.scms-block-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--g-color-content-muted, #999);
+  margin-bottom: var(--g-spacing-xs, 8px);
+}
+
+/* Grid layouts */
+.scms-grid {
+  display: grid;
+  gap: var(--g-spacing-sm, 12px);
+}
+
+.scms-grid-2 { grid-template-columns: 1fr 1fr; }
+.scms-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+.scms-grid-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+.scms-grid-5 { grid-template-columns: 1fr 1fr 1fr 1fr 1fr; }
+.scms-grid-6 { grid-template-columns: repeat(6, 1fr); }
+
+/* Card styling */
+.scms-card {
+  background: var(--g-color-background-subtle, #f9f9fb);
+  border-radius: var(--g-border-radius-sm, 6px);
+  padding: var(--g-spacing-sm, 12px);
+  border: 1px solid var(--g-color-border-subtle, #eee);
+}
+
+.scms-card-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--g-color-content-default, inherit);
+}
+
+.scms-card-desc {
+  font-size: 0.85rem;
+  color: var(--g-color-content-muted, #666);
+}
+
+/* Image placeholder */
+.scms-img-placeholder {
+  background: linear-gradient(135deg,
+    var(--g-color-background-subtle, #e0e0e0),
+    var(--g-color-background-card, #f0f0f0));
+  border-radius: var(--g-border-radius-sm, 4px);
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--g-color-content-muted, #999);
+  font-size: 0.8rem;
+  margin-bottom: var(--g-spacing-xs, 8px);
+}
+
+/* Badge / tag */
+.scms-badge {
+  display: inline-block;
+  background: var(--g-color-utility-primary, #6366f1);
+  color: var(--g-color-content-on-primary, #fff);
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: var(--g-border-radius-sm, 4px);
+}
+
+/* Row layout */
+.scms-row {
+  display: flex;
+  gap: var(--g-spacing-sm, 12px);
+  align-items: center;
+}
+
+/* Buttons */
+.scms-btn {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: var(--g-border-radius-sm, 6px);
+  background: var(--g-color-utility-primary, #6366f1);
+  color: var(--g-color-content-on-primary, #fff);
+  font-size: 0.85rem;
+  text-decoration: none;
+  cursor: default;
+}
+
+.scms-btn-outline {
+  background: transparent;
+  border: 1px solid var(--g-color-utility-primary, #6366f1);
+  color: var(--g-color-utility-primary, #6366f1);
+}
+
+/* Stat value emphasis */
+.scms-stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--g-color-utility-primary, #6366f1);
+}
+
+/* Accent border for testimonials */
+.scms-accent-border {
+  border-left: 3px solid var(--g-color-utility-primary, #6366f1);
+}
+
+/* Empty state */
+.scms-empty {
+  color: var(--g-color-content-muted, #999);
+  font-style: italic;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Hero */
+.preview-hero { --preview-align: left; }
+.preview-hero__title { text-align: var(--preview-align); }
+.preview-hero__subtitle { text-align: var(--preview-align); color: var(--g-color-content-muted); }
+.preview-hero__image { min-height: 120px; }
+.preview-hero__btn-wrap { text-align: var(--preview-align); margin-top: var(--g-spacing-sm); }
