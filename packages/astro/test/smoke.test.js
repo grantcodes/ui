@@ -81,7 +81,7 @@ describe("@grantcodes/astro smoke test", () => {
             name: "astro-smoke-test",
             type: "module",
             dependencies: {
-              astro: "^6.0.0",
+              astro: "^7.0.0",
               "@grantcodes/astro": `file:${astroPkg}`,
               "@grantcodes/ui": `file:${uiPkg}`,
               lit: "^3.2.0",

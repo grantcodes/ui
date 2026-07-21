@@ -94,7 +94,7 @@ describe("@grantcodes/astro astro check typings", () => {
             name: "astro-check-typings",
             type: "module",
             dependencies: {
-              astro: "^6.0.0",
+              astro: "^7.0.0",
               "@grantcodes/astro": `file:${astroPkg}`,
               "@grantcodes/ui": `file:${uiPkg}`,
               "@astrojs/check": "^0.9.0",
