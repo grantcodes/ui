@@ -1,9 +1,9 @@
-import { html } from "lit";
-import "./accordion.js";
+import { html } from 'lit';
+import './accordion.js';
 
 const meta = {
-	title: "Components/Accordion",
-	component: "grantcodes-accordion",
+  title: 'Components/Accordion',
+  component: 'grantcodes-accordion',
 };
 
 export default meta;
@@ -12,7 +12,7 @@ export default meta;
  * Default accordion with multiple items.
  */
 export const Accordion = {
-	render: () => html`
+  render: () => html`
 		<grantcodes-accordion>
 			<grantcodes-accordion-item title="What is this?">
 				This is an accordion component that allows you to collapse and expand content sections.
@@ -31,7 +31,7 @@ export const Accordion = {
  * Single item accordion.
  */
 export const SingleItem = {
-	render: () => html`
+  render: () => html`
 		<grantcodes-accordion>
 			<grantcodes-accordion-item title="Click to expand">
 				This is the content that appears when you expand this accordion item.
@@ -44,7 +44,7 @@ export const SingleItem = {
  * Accordion with multiple items, first one expanded by default.
  */
 export const MultipleItems = {
-	render: () => html`
+  render: () => html`
 		<grantcodes-accordion>
 			<grantcodes-accordion-item title="First Section" open>
 				Content for the first section.
@@ -66,7 +66,7 @@ export const MultipleItems = {
  * Text content in slots is plain text — HTML-looking strings display literally.
  */
 export const EscapedPlainTextContent = {
-	render: () => html`
+  render: () => html`
 		<grantcodes-accordion>
 			<grantcodes-accordion-item title="HTML-looking plain text">
 				&lt;strong&gt;This stays text&lt;/strong&gt;
@@ -79,7 +79,7 @@ export const EscapedPlainTextContent = {
  * Slotted HTML content renders naturally — consumers compose their own markup.
  */
 export const TrustedHtmlContent = {
-	render: () => html`
+  render: () => html`
 		<grantcodes-accordion>
 			<grantcodes-accordion-item title="Trusted rich content">
 				<p>This renders <strong>trusted HTML</strong>.</p>
@@ -96,7 +96,7 @@ export const TrustedHtmlContent = {
  * Items can slot any HTML — paragraphs, lists, images, or plain text.
  */
 export const MixedContent = {
-	render: () => html`
+  render: () => html`
 		<grantcodes-accordion>
 			<grantcodes-accordion-item title="Rich markup">
 				<p>This panel uses <em>multiple</em> HTML elements:</p>

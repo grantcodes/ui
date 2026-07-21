@@ -1,25 +1,25 @@
 {
-	"focus-ring": {
-		"color": {
-			"default": {
-				"value": "oklch(from var(--g-color-primary-500) l c h / 0.4)"
-			},
-			"contrast": {
-				"value": "{color.primary.200}"
-			},
-			"contrast-shadow": {
-				"value": "light-dark({color.primary.800}, {color.primary.200})"
-			}
-		},
-		"width": {
-			"default": {
-				"value": "0.2rem"
-			}
-		},
-		"offset": {
-			"default": {
-				"value": "0px"
-			}
-		}
-	}
+  "focus-ring": {
+    "color": {
+      "default": {
+        "value": "oklch(from var(--g-color-primary-500) l c h / 0.4)"
+      },
+      "contrast": {
+        "value": "{color.primary.200}"
+      },
+      "contrast-shadow": {
+        "value": "light-dark({color.primary.800}, {color.primary.200})"
+      }
+    },
+    "width": {
+      "default": {
+        "value": "0.2rem"
+      }
+    },
+    "offset": {
+      "default": {
+        "value": "0px"
+      }
+    }
+  }
 }

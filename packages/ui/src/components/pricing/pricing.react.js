@@ -1,9 +1,9 @@
-import React from "react";
-import { createComponent } from "@lit/react";
-import { GrantCodesPricing } from "./pricing.js";
+import { createComponent } from '@lit/react';
+import React from 'react';
+import { GrantCodesPricing } from './pricing.js';
 
 export const Pricing = createComponent({
-	tagName: "grantcodes-pricing",
-	elementClass: GrantCodesPricing,
-	react: React,
+  tagName: 'grantcodes-pricing',
+  elementClass: GrantCodesPricing,
+  react: React,
 });

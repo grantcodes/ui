@@ -1,14 +1,14 @@
 {
-	"ref": {
-		"typography": {
-			"font-family": {
-				"system": {
-					"value": "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif"
-				},
-				"system-mono": {
-					"value": "ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono', 'Roboto Mono', 'Oxygen Mono', 'Ubuntu Mono', 'Source Code Pro', 'Fira Mono', 'Droid Sans Mono', 'Consolas', 'Courier New', monospace"
-				}
-			}
-		}
-	}
+  "ref": {
+    "typography": {
+      "font-family": {
+        "system": {
+          "value": "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif"
+        },
+        "system-mono": {
+          "value": "ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono', 'Roboto Mono', 'Oxygen Mono', 'Ubuntu Mono', 'Source Code Pro', 'Fira Mono', 'Droid Sans Mono', 'Consolas', 'Courier New', monospace"
+        }
+      }
+    }
+  }
 }

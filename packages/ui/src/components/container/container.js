@@ -1,6 +1,6 @@
-import { GrantCodesContainer } from "./container.component.js";
+import { GrantCodesContainer } from './container.component.js';
 
-export * from "./container.component.js";
+export * from './container.component.js';
 export default GrantCodesContainer;
 
-customElements.define("grantcodes-container", GrantCodesContainer);
+customElements.define('grantcodes-container', GrantCodesContainer);

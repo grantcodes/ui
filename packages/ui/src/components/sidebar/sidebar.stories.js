@@ -1,9 +1,9 @@
-import { html } from "lit";
-import "./sidebar.js";
+import { html } from 'lit';
+import './sidebar.js';
 
 const meta = {
-	title: "Components/Sidebar",
-	component: "grantcodes-sidebar",
+  title: 'Components/Sidebar',
+  component: 'grantcodes-sidebar',
 };
 
 export default meta;
@@ -12,7 +12,7 @@ export default meta;
  * Basic sidebar with navigation
  */
 export const Sidebar = {
-	render: () => html`
+  render: () => html`
 		<div style="display: flex; height: 500px; border: 1px solid #ccc;">
 			<grantcodes-sidebar>
 				<h3 style="margin-top: 0;">Navigation</h3>
@@ -37,7 +37,7 @@ export const Sidebar = {
  * Right-positioned sidebar
  */
 export const RightSidebar = {
-	render: () => html`
+  render: () => html`
 		<div style="display: flex; height: 500px; border: 1px solid #ccc;">
 			<div style="flex: 1; padding: 2rem;">
 				<h1>Main Content</h1>
@@ -57,7 +57,7 @@ export const RightSidebar = {
  * Collapsible sidebar that can be expanded/collapsed
  */
 export const Collapsible = {
-	render: () => html`
+  render: () => html`
 		<div style="display: flex; height: 500px; border: 1px solid #ccc;">
 			<grantcodes-sidebar collapsible>
 				<h3 style="margin-top: 0;">Menu</h3>
@@ -82,7 +82,7 @@ export const Collapsible = {
  * Initially collapsed sidebar
  */
 export const InitiallyCollapsed = {
-	render: () => html`
+  render: () => html`
 		<div style="display: flex; height: 500px; border: 1px solid #ccc;">
 			<grantcodes-sidebar collapsed>
 				<nav>
@@ -106,7 +106,7 @@ export const InitiallyCollapsed = {
  * Custom width sidebar
  */
 export const CustomWidth = {
-	render: () => html`
+  render: () => html`
 		<div style="display: flex; height: 500px; border: 1px solid #ccc;">
 			<grantcodes-sidebar width="350px">
 				<h3 style="margin-top: 0;">Wide Sidebar</h3>
@@ -125,7 +125,7 @@ export const CustomWidth = {
  * Mobile-responsive demo - shows drawer behavior on small screens
  */
 export const MobileResponsive = {
-	render: () => html`
+  render: () => html`
 		<div style="max-width: 600px; border: 1px solid #ccc;">
 			<div style="display: flex; min-height: 400px;">
 				<grantcodes-sidebar>

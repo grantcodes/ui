@@ -1,62 +1,62 @@
 *,
 *::before,
 *::after {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 :host {
-	display: block;
+  display: block;
 }
 
 .logo-cloud {
-	padding-block: var(--g-spacing-2xl);
-	border-top: 1px solid var(--g-color-border-default);
-	border-bottom: 1px solid var(--g-color-border-default);
+  padding-block: var(--g-spacing-2xl);
+  border-top: 1px solid var(--g-color-border-default);
+  border-bottom: 1px solid var(--g-color-border-default);
 }
 
 .logo-cloud__title {
-	margin: 0 0 var(--g-spacing-xl);
-	font: var(--g-typography-body-sm-font);
-	text-transform: uppercase;
-	text-align: center;
-	color: var(--g-color-content-subtle);
+  margin: 0 0 var(--g-spacing-xl);
+  font: var(--g-typography-body-sm-font);
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--g-color-content-subtle);
 }
 
 .logo-cloud__grid {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: center;
-	gap: var(--g-spacing-lg) var(--g-spacing-2xl);
-	padding: 0;
-	margin: 0;
-	list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--g-spacing-lg) var(--g-spacing-2xl);
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
 .logo-cloud__link {
-	display: block;
-	opacity: 0.7;
-	transition: opacity 0.2s;
+  display: block;
+  opacity: 0.7;
+  transition: opacity 0.2s;
 }
 
 .logo-cloud__link:hover {
-	opacity: 1;
+  opacity: 1;
 }
 
 .logo-cloud__logo {
-	display: block;
-	block-size: var(--g-spacing-xl);
-	inline-size: auto;
-	max-inline-size: 140px;
-	object-fit: contain;
-	filter: grayscale(1);
-	transition: filter 0.2s;
+  display: block;
+  block-size: var(--g-spacing-xl);
+  inline-size: auto;
+  max-inline-size: 140px;
+  object-fit: contain;
+  filter: grayscale(1);
+  transition: filter 0.2s;
 }
 
 .logo-cloud__link:hover .logo-cloud__logo {
-	filter: none;
+  filter: none;
 }
 
 .logo-cloud__item:not(:has(.logo-cloud__link)) .logo-cloud__logo {
-	filter: none;
+  filter: none;
 }

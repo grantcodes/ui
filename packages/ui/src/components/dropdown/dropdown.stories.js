@@ -1,10 +1,10 @@
-import { html } from "lit";
-import "./dropdown.js";
-import "../button/button.js";
+import { html } from 'lit';
+import './dropdown.js';
+import '../button/button.js';
 
 const meta = {
-	title: "Components/Dropdown",
-	component: "grantcodes-dropdown",
+  title: 'Components/Dropdown',
+  component: 'grantcodes-dropdown',
 };
 
 export default meta;
@@ -13,7 +13,7 @@ export default meta;
  * Basic dropdown menu with trigger button
  */
 export const Dropdown = {
-	render: () => html`
+  render: () => html`
 		<grantcodes-dropdown>
 			<grantcodes-button slot="trigger">Open Menu</grantcodes-button>
 			<div slot="menu">
@@ -29,7 +29,7 @@ export const Dropdown = {
  * Dropdown with disabled items
  */
 export const WithDisabledItems = {
-	render: () => html`
+  render: () => html`
 		<grantcodes-dropdown>
 			<grantcodes-button slot="trigger">Actions</grantcodes-button>
 			<div slot="menu">
@@ -46,7 +46,7 @@ export const WithDisabledItems = {
  * Auto try flip
  */
 export const AutoTryFlip = {
-	render: () => html`
+  render: () => html`
 		<div style="height: 100vh; overflow: hidden; display: flex; justify-content: flex-end; align-items: flex-end;">
 			<grantcodes-dropdown placement="bottom-start">
 				<grantcodes-button slot="trigger">Bottom Start</grantcodes-button>
@@ -64,7 +64,7 @@ export const AutoTryFlip = {
  * Dropdown with custom trigger content
  */
 export const CustomTrigger = {
-	render: () => html`
+  render: () => html`
 		<grantcodes-dropdown>
 			<div slot="trigger" style="padding: 0.5rem 1rem; border: 1px solid #ccc; border-radius: 0.25rem; cursor: pointer;">
 				<span style="font-weight: 600;">User Menu</span>
@@ -84,7 +84,7 @@ export const CustomTrigger = {
  * Dropdown with many items showing keyboard navigation
  */
 export const ManyItems = {
-	render: () => html`
+  render: () => html`
 		<grantcodes-dropdown>
 			<grantcodes-button slot="trigger">Select Country</grantcodes-button>
 			<div slot="menu">

@@ -1,18 +1,20 @@
-import { html } from "lit/static-html.js";
-import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
-const { events, args, argTypes } = getStorybookHelpers("grantcodes-pagination");
-import "./pagination.js";
+import { getStorybookHelpers } from '@wc-toolkit/storybook-helpers';
+import { html } from 'lit/static-html.js';
+
+const { events, args, argTypes } = getStorybookHelpers('grantcodes-pagination');
+
+import './pagination.js';
 
 const meta = {
-	title: "Components/Pagination",
-	component: "grantcodes-pagination",
-	args: {
-		...args,
-		previousHref: "#1",
-		nextHref: "#3",
-	},
-	argTypes,
-	render: (args) => html`
+  title: 'Components/Pagination',
+  component: 'grantcodes-pagination',
+  args: {
+    ...args,
+    previousHref: '#1',
+    nextHref: '#3',
+  },
+  argTypes,
+  render: (args) => html`
 			<grantcodes-pagination
 				.previousHref=${args.previousHref}
 				.nextHref=${args.nextHref}
@@ -20,11 +22,11 @@ const meta = {
 				.pages=${args.pages ?? 1}
 			></grantcodes-pagination>
 		`,
-	parameters: {
-		actions: {
-			handles: events,
-		},
-	},
+  parameters: {
+    actions: {
+      handles: events,
+    },
+  },
 };
 
 export default meta;

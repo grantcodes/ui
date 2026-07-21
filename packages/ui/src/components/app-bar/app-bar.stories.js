@@ -1,11 +1,11 @@
-import { html } from "lit";
-import "./app-bar.js";
-import "./nav-link.js";
-import "../button/button.js";
+import { html } from 'lit';
+import './app-bar.js';
+import './nav-link.js';
+import '../button/button.js';
 
 const meta = {
-	title: "Components/App Bar",
-	component: "grantcodes-app-bar",
+  title: 'Components/App Bar',
+  component: 'grantcodes-app-bar',
 };
 
 export default meta;
@@ -15,7 +15,7 @@ export default meta;
  * Nav links use <grantcodes-nav-link> for consistent ghost button styling.
  */
 export const Default = {
-	render: () => html`
+  render: () => html`
 		<grantcodes-app-bar>
 			<a slot="logo" href="/">MyApp</a>
 			<div slot="nav">
@@ -36,7 +36,7 @@ export const Default = {
  * Each <li> wraps a <grantcodes-nav-link> so styling works through the shadow boundary.
  */
 export const WithListNav = {
-	render: () => html`
+  render: () => html`
 		<grantcodes-app-bar>
 			<a slot="logo" href="/">MyApp</a>
 			<ul slot="nav">
@@ -55,7 +55,7 @@ export const WithListNav = {
  * Sticky app bar that stays at the top of the viewport when scrolling.
  */
 export const Sticky = {
-	render: () => html`
+  render: () => html`
 		<div style="min-height: 200vh;">
 			<grantcodes-app-bar sticky>
 				<a slot="logo" href="/">MyApp</a>
@@ -83,7 +83,7 @@ export const Sticky = {
  * Transparent app bar for use over hero sections or colored backgrounds.
  */
 export const Transparent = {
-	render: () => html`
+  render: () => html`
 		<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 400px;">
 			<grantcodes-app-bar transparent>
 				<a slot="logo" href="/">MyApp</a>
@@ -107,7 +107,7 @@ export const Transparent = {
  * at the right edge and styled thin scrollbars.
  */
 export const ManyNavItems = {
-	render: () => html`
+  render: () => html`
 		<grantcodes-app-bar>
 			<a slot="logo" href="/">MyApp</a>
 			<div slot="nav">
@@ -127,21 +127,21 @@ export const ManyNavItems = {
 			</div>
 		</grantcodes-app-bar>
 	`,
-	parameters: {
-		docs: {
-			description: {
-				story:
-					"Resize the viewport to see the nav items become horizontally scrollable on desktop with a right-edge fade affordance and thin scrollbar.",
-			},
-		},
-	},
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Resize the viewport to see the nav items become horizontally scrollable on desktop with a right-edge fade affordance and thin scrollbar.',
+      },
+    },
+  },
 };
 
 /**
  * App bar with multiple action buttons.
  */
 export const WithMultipleActions = {
-	render: () => html`
+  render: () => html`
 		<grantcodes-app-bar>
 			<a slot="logo" href="/">Dashboard</a>
 			<div slot="nav">

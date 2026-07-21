@@ -1,126 +1,126 @@
 *,
 *::before,
 *::after {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 :host,
 .dropdown {
-	display: inline-block;
+  display: inline-block;
 }
 
 .dropdown__trigger {
-	display: inline-block;
-	cursor: pointer;
+  display: inline-block;
+  cursor: pointer;
 }
 
 .dropdown__menu {
-	display: none;
-	position: fixed;
-	anchor-name: --dropdown-trigger;
-	z-index: 1000;
-	min-inline-size: 12rem;
-	margin-block: var(--g-spacing-xs);
-	padding-block: var(--g-spacing-sm);
-	background-color: var(--g-color-background-default);
-	border: 1px solid var(--g-color-border-default);
-	border-radius: var(--g-border-radius-md);
-	animation: dropdown-fade-in 0.15s ease-out;
+  display: none;
+  position: fixed;
+  anchor-name: --dropdown-trigger;
+  z-index: 1000;
+  min-inline-size: 12rem;
+  margin-block: var(--g-spacing-xs);
+  padding-block: var(--g-spacing-sm);
+  background-color: var(--g-color-background-default);
+  border: 1px solid var(--g-color-border-default);
+  border-radius: var(--g-border-radius-md);
+  animation: dropdown-fade-in 0.15s ease-out;
 }
 
 .dropdown__menu--open {
-	display: block;
+  display: block;
 }
 
 /* Position using anchor positioning when available */
 @supports (anchor-name: --dropdown-trigger) {
-	.dropdown__menu--open {
-		position-area: bottom span-right;
-		position-try:
-			block-end,
-			block-start span-inline-start;
-	}
+  .dropdown__menu--open {
+    position-area: bottom span-right;
+    position-try:
+      block-end,
+      block-start span-inline-start;
+  }
 }
 
 .dropdown__menu ::slotted(*) {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Dropdown item */
 .dropdown-item {
-	display: flex;
-	width: 100%;
-	align-items: center;
-	gap: var(--g-spacing-sm);
-	padding-block: var(--g-spacing-sm);
-	padding-inline: var(--g-spacing-md);
-	font-size: var(--g-typography-body-font-size);
-	color: var(--g-color-content-default);
-	cursor: pointer;
-	transition: background-color 0.15s ease;
-	user-select: none;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: var(--g-spacing-sm);
+  padding-block: var(--g-spacing-sm);
+  padding-inline: var(--g-spacing-md);
+  font-size: var(--g-typography-body-font-size);
+  color: var(--g-color-content-default);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  user-select: none;
 }
 
 .dropdown-item:hover {
-	background-color: var(--g-color-background-subtle-hover);
+  background-color: var(--g-color-background-subtle-hover);
 }
 
 .dropdown-item:focus {
-	outline: none;
-	background-color: var(--g-color-background-subtle-hover);
+  outline: none;
+  background-color: var(--g-color-background-subtle-hover);
 }
 
 .dropdown-item:active {
-	background-color: var(--g-color-background-subtle);
+  background-color: var(--g-color-background-subtle);
 }
 
 .dropdown-item--disabled {
-	color: var(--g-color-content-disabled);
-	cursor: not-allowed;
-	opacity: 0.6;
+  color: var(--g-color-content-disabled);
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 .dropdown-item--disabled:hover,
 .dropdown-item--disabled:focus,
 .dropdown-item--disabled:active {
-	background-color: transparent;
+  background-color: transparent;
 }
 
 /* Animation */
 @keyframes dropdown-fade-in {
-	from {
-		opacity: 0;
-		transform: translateY(-0.5rem);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* For top placement, reverse animation */
 .dropdown__menu--top-start,
 .dropdown__menu--top-end {
-	animation: dropdown-fade-in-top 0.15s ease-out;
+  animation: dropdown-fade-in-top 0.15s ease-out;
 }
 
 @keyframes dropdown-fade-in-top {
-	from {
-		opacity: 0;
-		transform: translateY(0.5rem);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* View transitions support */
 @media (prefers-reduced-motion: no-preference) {
-	@supports (view-transition-name: auto) {
-		.dropdown__menu {
-			view-transition-name: dropdown-menu;
-		}
-	}
+  @supports (view-transition-name: auto) {
+    .dropdown__menu {
+      view-transition-name: dropdown-menu;
+    }
+  }
 }

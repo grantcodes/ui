@@ -1,9 +1,9 @@
-import { html } from "lit";
-import "./toast.js";
+import { html } from 'lit';
+import './toast.js';
 
 const meta = {
-	title: "Components/Toast",
-	component: "grantcodes-toast",
+  title: 'Components/Toast',
+  component: 'grantcodes-toast',
 };
 
 export default meta;
@@ -12,7 +12,7 @@ export default meta;
  * Basic toast notification that auto-dismisses after 5 seconds
  */
 export const Toast = {
-	render: () => html`
+  render: () => html`
 		<grantcodes-toast-container position="top-right">
 			<grantcodes-toast variant="info" title="Information">
 				This is an informational toast message.
@@ -25,7 +25,7 @@ export const Toast = {
  * All toast variants
  */
 export const AllVariants = {
-	render: () => html`
+  render: () => html`
 		<grantcodes-toast-container position="top-right">
 			<grantcodes-toast variant="info" title="Info" duration="0">
 				This is an info toast message.
@@ -47,7 +47,7 @@ export const AllVariants = {
  * Toast without title
  */
 export const WithoutTitle = {
-	render: () => html`
+  render: () => html`
 		<grantcodes-toast-container position="top-right">
 			<grantcodes-toast variant="success" duration="0">
 				This toast has no title, just the message content.
@@ -60,7 +60,7 @@ export const WithoutTitle = {
  * Non-dismissible toast (no close button)
  */
 export const NonDismissible = {
-	render: () => html`
+  render: () => html`
 		<grantcodes-toast-container position="top-right">
 			<grantcodes-toast variant="info" title="Loading" ?dismissible=${false} duration="0">
 				Please wait while we process your request...
@@ -73,7 +73,7 @@ export const NonDismissible = {
  * Different positions for toast container
  */
 export const Positions = {
-	render: () => html`
+  render: () => html`
 		<div style="position: relative; height: 400px; border: 1px solid #ccc;">
 			<grantcodes-toast-container position="top-left">
 				<grantcodes-toast variant="info" title="Top Left" duration="0">
@@ -118,7 +118,7 @@ export const Positions = {
  * Stacked toasts showing multiple notifications
  */
 export const Stacked = {
-	render: () => html`
+  render: () => html`
 		<grantcodes-toast-container position="top-right">
 			<grantcodes-toast variant="info" title="First notification" duration="0">
 				This is the first toast message.
@@ -137,34 +137,28 @@ export const Stacked = {
  * Interactive demo with button to trigger toasts
  */
 export const Interactive = {
-	render: () => html`
+  render: () => html`
 		<div>
 			<button
 				@click=${() => {
-					const container = document.querySelector(
-						"grantcodes-toast-container",
-					);
-					if (!container) {
-						const newContainer = document.createElement(
-							"grantcodes-toast-container",
-						);
-						newContainer.position = "top-right";
-						document.body.appendChild(newContainer);
-					}
+          const container = document.querySelector('grantcodes-toast-container');
+          if (!container) {
+            const newContainer = document.createElement('grantcodes-toast-container');
+            newContainer.position = 'top-right';
+            document.body.appendChild(newContainer);
+          }
 
-					const toast = document.createElement("grantcodes-toast");
-					toast.variant = "success";
-					toast.title = "Toast Created!";
-					toast.textContent = "This toast was created dynamically.";
-					toast.duration = 3000;
+          const toast = document.createElement('grantcodes-toast');
+          toast.variant = 'success';
+          toast.title = 'Toast Created!';
+          toast.textContent = 'This toast was created dynamically.';
+          toast.duration = 3000;
 
-					const finalContainer =
-						document.querySelector("grantcodes-toast-container") ||
-						document.body.appendChild(
-							document.createElement("grantcodes-toast-container"),
-						);
-					finalContainer.appendChild(toast);
-				}}
+          const finalContainer =
+            document.querySelector('grantcodes-toast-container') ||
+            document.body.appendChild(document.createElement('grantcodes-toast-container'));
+          finalContainer.appendChild(toast);
+        }}
 			>
 				Show Toast
 			</button>

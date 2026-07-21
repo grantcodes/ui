@@ -1,71 +1,71 @@
-import { LitElement } from "lit";
-import { html } from "lit/static-html.js";
-import { unsafeHTML } from "lit/directives/unsafe-html.js";
-import { classMap } from "lit/directives/class-map.js";
-import noticeStyles from "./notice.css" with { type: "css" };
-import { GrantCodesIcon } from "../icon/icon.component.js";
-import { AlertCircle, Info, CheckCircle2, XCircle, X } from "../../icons.js";
+import { LitElement } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
+import { html } from 'lit/static-html.js';
+import { AlertCircle, CheckCircle2, Info, X, XCircle } from '../../icons.js';
+import { GrantCodesIcon } from '../icon/icon.component.js';
+import noticeStyles from './notice.css' with { type: 'css' };
 
 const ICONS = {
-	info: Info,
-	success: CheckCircle2,
-	warning: AlertCircle,
-	error: XCircle,
+  info: Info,
+  success: CheckCircle2,
+  warning: AlertCircle,
+  error: XCircle,
 };
 
 export class GrantCodesNotice extends LitElement {
-	static dependencies = { "grancodes-icon": GrantCodesIcon };
-	// Styles are scoped to this element: they won't conflict with styles
-	// on the main page or in other components. Styling API can be exposed
-	// via CSS custom properties.
-	static styles = [noticeStyles];
+  static dependencies = { 'grancodes-icon': GrantCodesIcon };
+  // Styles are scoped to this element: they won't conflict with styles
+  // on the main page or in other components. Styling API can be exposed
+  // via CSS custom properties.
+  static styles = [noticeStyles];
 
-	// Define reactive properties--updating a reactive property causes
-	// the component to update.
-	// @property() label = 'Button Label'
-	static properties = {
-		variant: { type: String },
-		title: { type: String },
-		dismissable: { type: Boolean },
-	};
+  // Define reactive properties--updating a reactive property causes
+  // the component to update.
+  // @property() label = 'Button Label'
+  static properties = {
+    variant: { type: String },
+    title: { type: String },
+    dismissable: { type: Boolean },
+  };
 
-	constructor() {
-		super();
+  constructor() {
+    super();
 
-		this.variant = "info";
-		this.title = "";
-		this.dismissable = false;
-	}
+    this.variant = 'info';
+    this.title = '';
+    this.dismissable = false;
+  }
 
-	onDismiss(_e) {
-		if (document.startViewTransition) {
-			document.startViewTransition(() => {
-				this.remove();
-			});
-		} else {
-			this.remove();
-		}
-	}
+  onDismiss(_e) {
+    if (document.startViewTransition) {
+      document.startViewTransition(() => {
+        this.remove();
+      });
+    } else {
+      this.remove();
+    }
+  }
 
-	renderDismiss() {
-		if (this.dismissable) {
-			return html`
+  renderDismiss() {
+    if (this.dismissable) {
+      return html`
 				<button class="notice__close" @click=${this.onDismiss}>
 					<grantcodes-icon title="Close Notice">${unsafeHTML(X)}</grantcodes-icon>
 				</button>
 			`;
-		}
-		return html``;
-	}
+    }
+    return html``;
+  }
 
-	render() {
-		const icon = ICONS[this.variant];
-		const classes = classMap({
-			notice: true,
-			[`notice--${this.variant}`]: true,
-		});
+  render() {
+    const icon = ICONS[this.variant];
+    const classes = classMap({
+      notice: true,
+      [`notice--${this.variant}`]: true,
+    });
 
-		return html`
+    return html`
 			<aside class=${classes}>
 				<grantcodes-icon class="notice__icon">${unsafeHTML(icon)}</grantcodes-icon>
 
@@ -77,5 +77,5 @@ export class GrantCodesNotice extends LitElement {
 				${this.renderDismiss()}
 			</aside>
 		`;
-	}
+  }
 }

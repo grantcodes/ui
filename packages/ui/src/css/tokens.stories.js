@@ -1,17 +1,17 @@
-import grantcodes from "@grantcodes/style-dictionary/grantcodes/json";
-import wireframe from "@grantcodes/style-dictionary/wireframe/json";
-import todomap from "@grantcodes/style-dictionary/todomap/json";
-import { LitElement, html, css } from "lit";
+import grantcodes from '@grantcodes/style-dictionary/grantcodes/json';
+import todomap from '@grantcodes/style-dictionary/todomap/json';
+import wireframe from '@grantcodes/style-dictionary/wireframe/json';
+import { css, html, LitElement } from 'lit';
 
 const allTokens = {
-	grantcodes,
-	wireframe,
-	todomap,
+  grantcodes,
+  wireframe,
+  todomap,
 };
 
 // Token List Component
 class TokenList extends LitElement {
-	static styles = css`
+  static styles = css`
 		:host {
 			display: block;
 			padding: 2rem;
@@ -98,34 +98,31 @@ class TokenList extends LitElement {
 		}
 	`;
 
-	static properties = {
-		theme: { type: String },
-	};
+  static properties = {
+    theme: { type: String },
+  };
 
-	constructor() {
-		super();
-		this.theme = "grantcodes";
-	}
+  constructor() {
+    super();
+    this.theme = 'grantcodes';
+  }
 
-	formatValue(value) {
-		if (value === null || value === undefined) {
-			return String(value);
-		}
-		if (typeof value === "object") {
-			return JSON.stringify(value, null, 2);
-		}
-		return String(value);
-	}
+  formatValue(value) {
+    if (value === null || value === undefined) {
+      return String(value);
+    }
+    if (typeof value === 'object') {
+      return JSON.stringify(value, null, 2);
+    }
+    return String(value);
+  }
 
-	render() {
-		const currentThemeTokens = allTokens[this.theme] || allTokens.grantcodes;
-		const tokenEntries = Object.entries(currentThemeTokens).sort(([a], [b]) =>
-			a.localeCompare(b),
-		);
-		const themeDisplay =
-			this.theme.charAt(0).toUpperCase() + this.theme.slice(1);
+  render() {
+    const currentThemeTokens = allTokens[this.theme] || allTokens.grantcodes;
+    const tokenEntries = Object.entries(currentThemeTokens).sort(([a], [b]) => a.localeCompare(b));
+    const themeDisplay = this.theme.charAt(0).toUpperCase() + this.theme.slice(1);
 
-		return html`
+    return html`
 			<div class="banner">
 				<p class="theme-title">
 					<strong>Current Theme:</strong> ${themeDisplay}
@@ -147,42 +144,42 @@ class TokenList extends LitElement {
 					</thead>
 					<tbody>
 						${tokenEntries.map(
-							([tokenName, value]) => html`
+              ([tokenName, value]) => html`
 							<tr>
 								<td class="token-name">--${tokenName}</td>
 								<td class="token-value">${this.formatValue(value)}</td>
 								<td style="background-color: var(--${tokenName});"></td>
 							</tr>
 						`,
-						)}
+            )}
 					</tbody>
 				</table>
 			</div>
 		`;
-	}
+  }
 }
 
-customElements.define("token-list", TokenList);
+customElements.define('token-list', TokenList);
 
 // This default export determines where your story goes in the story list
 const meta = {
-	title: "Styles/Tokens",
-	parameters: {
-		docs: {
-			description: {
-				component:
-					"Complete list of design tokens. Tokens update based on the selected theme in the Storybook toolbar.",
-			},
-		},
-	},
+  title: 'Styles/Tokens',
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Complete list of design tokens. Tokens update based on the selected theme in the Storybook toolbar.',
+      },
+    },
+  },
 };
 
 export default meta;
 
 // Main tokens story that responds to theme changes
 export const AllTokens = {
-	render: (args, context) => {
-		const theme = context.globals?.theme || "grantcodes";
-		return html`<token-list .theme=${theme}></token-list>`;
-	},
+  render: (args, context) => {
+    const theme = context.globals?.theme || 'grantcodes';
+    return html`<token-list .theme=${theme}></token-list>`;
+  },
 };

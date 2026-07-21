@@ -1,9 +1,9 @@
-import React from "react";
-import { createComponent } from "@lit/react";
-import { GrantCodesMap } from "./map.js";
+import { createComponent } from '@lit/react';
+import React from 'react';
+import { GrantCodesMap } from './map.js';
 
 export const MapEmbed = createComponent({
-	tagName: "grantcodes-map",
-	elementClass: GrantCodesMap,
-	react: React,
+  tagName: 'grantcodes-map',
+  elementClass: GrantCodesMap,
+  react: React,
 });

@@ -1,6 +1,6 @@
-import { GrantCodesAvatar } from "./avatar.component.js";
+import { GrantCodesAvatar } from './avatar.component.js';
 
-export * from "./avatar.component.js";
+export * from './avatar.component.js';
 export default GrantCodesAvatar;
 
-customElements.define("grantcodes-avatar", GrantCodesAvatar);
+customElements.define('grantcodes-avatar', GrantCodesAvatar);

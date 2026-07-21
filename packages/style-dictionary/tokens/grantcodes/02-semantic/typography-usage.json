@@ -1,8 +1,8 @@
 {
-	"typography": {
-		"font-family": {
-			"heading": { "value": "{ref.typography.font-family.greycliff}" },
-			"body": { "value": "{ref.typography.font-family.greycliff}" }
-		}
-	}
+  "typography": {
+    "font-family": {
+      "heading": { "value": "{ref.typography.font-family.greycliff}" },
+      "body": { "value": "{ref.typography.font-family.greycliff}" }
+    }
+  }
 }

@@ -1,37 +1,37 @@
-import { LitElement } from "lit";
-import { html } from "lit/static-html.js";
-import { classMap } from "lit/directives/class-map.js";
-import badgeStyles from "./badge.css" with { type: "css" };
+import { LitElement } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
+import { html } from 'lit/static-html.js';
+import badgeStyles from './badge.css' with { type: 'css' };
 
 export class GrantCodesBadge extends LitElement {
-	static styles = [badgeStyles];
+  static styles = [badgeStyles];
 
-	static properties = {
-		variant: { type: String },
-	};
+  static properties = {
+    variant: { type: String },
+  };
 
-	constructor() {
-		super();
+  constructor() {
+    super();
 
-		/**
-		 * Visual variant of the badge
-		 * @type {'primary' | 'success' | 'warning' | 'error' | 'info' | 'neutral'}
-		 */
-		this.variant = "neutral";
-	}
+    /**
+     * Visual variant of the badge
+     * @type {'primary' | 'success' | 'warning' | 'error' | 'info' | 'neutral'}
+     */
+    this.variant = 'neutral';
+  }
 
-	render() {
-		const classes = classMap({
-			badge: true,
-			[`badge--${this.variant}`]: Boolean(this.variant),
-		});
+  render() {
+    const classes = classMap({
+      badge: true,
+      [`badge--${this.variant}`]: Boolean(this.variant),
+    });
 
-		return html`
+    return html`
 			<span class=${classes}>
 				<span class="badge__content">
 					<slot></slot>
 				</span>
 			</span>
 		`;
-	}
+  }
 }

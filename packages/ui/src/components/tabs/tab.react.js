@@ -1,9 +1,9 @@
-import React from "react";
-import { createComponent } from "@lit/react";
-import { GrantCodesTab } from "./tab.js";
+import { createComponent } from '@lit/react';
+import React from 'react';
+import { GrantCodesTab } from './tab.js';
 
 export const Tab = createComponent({
-	tagName: "grantcodes-tab",
-	elementClass: GrantCodesTab,
-	react: React,
+  tagName: 'grantcodes-tab',
+  elementClass: GrantCodesTab,
+  react: React,
 });

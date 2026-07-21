@@ -1,6 +1,6 @@
-import StyleDictionary from "style-dictionary";
-import minimist from "minimist";
-import { generateOklchScale } from "./lib/color-generator.js";
+import minimist from 'minimist';
+import StyleDictionary from 'style-dictionary';
+import { generateOklchScale } from './lib/color-generator.js';
 
 /**
  * Auto-palette preprocessor
@@ -8,49 +8,49 @@ import { generateOklchScale } from "./lib/color-generator.js";
  * Replaces them with a generated 100-900 oklch scale.
  */
 StyleDictionary.registerPreprocessor({
-	name: "auto-palette",
-	preprocessor: (dictionary) => {
-		const walkTokens = (obj) => {
-			if (!obj || typeof obj !== "object") return;
+  name: 'auto-palette',
+  preprocessor: (dictionary) => {
+    const walkTokens = (obj) => {
+      if (!obj || typeof obj !== 'object') return;
 
-			for (const [key, child] of Object.entries(obj)) {
-				if (key === "value" || key === "autoPalette") continue;
+      for (const [key, child] of Object.entries(obj)) {
+        if (key === 'value' || key === 'autoPalette') continue;
 
-				// Check if this child node has autoPalette: true and a base value
-				if (
-					child &&
-					typeof child === "object" &&
-					child.autoPalette === true &&
-					child.base &&
-					child.base.value
-				) {
-					const baseValue = child.base.value;
-					const scale = generateOklchScale(baseValue);
+        // Check if this child node has autoPalette: true and a base value
+        if (
+          child &&
+          typeof child === 'object' &&
+          child.autoPalette === true &&
+          child.base &&
+          child.base.value
+        ) {
+          const baseValue = child.base.value;
+          const scale = generateOklchScale(baseValue);
 
-					// Remove autoPalette flag and base token
-					delete child.autoPalette;
-					delete child.base;
+          // Remove autoPalette flag and base token
+          delete child.autoPalette;
+          delete child.base;
 
-					// Add generated shade tokens
-					for (const [shade, value] of Object.entries(scale)) {
-						child[shade] = { value };
-					}
-				}
+          // Add generated shade tokens
+          for (const [shade, value] of Object.entries(scale)) {
+            child[shade] = { value };
+          }
+        }
 
-				walkTokens(child);
-			}
-		};
+        walkTokens(child);
+      }
+    };
 
-		walkTokens(dictionary);
-		return dictionary;
-	},
+    walkTokens(dictionary);
+    return dictionary;
+  },
 });
 
 /**
  * List of themes to build
  * 1) Add your new theme here in order to have it show up in the dropdown
  */
-const AVAILABLE_THEMES = ["wireframe", "grantcodes", "todomap", "grantina"];
+const AVAILABLE_THEMES = ['wireframe', 'grantcodes', 'todomap', 'grantina'];
 
 /**
  * Look for args passed on the command line
@@ -66,10 +66,9 @@ const theme = args.theme;
  * 1) Used to determine if the token should be included in the theme tokens to apply `theme` prefix
  */
 const isHigherTierToken = (filePath) => {
-	if (!filePath) return false;
-	const isHigherTier =
-		filePath.includes("02-semantic") || filePath.includes("03-components");
-	return isHigherTier;
+  if (!filePath) return false;
+  const isHigherTier = filePath.includes('02-semantic') || filePath.includes('03-components');
+  return isHigherTier;
 };
 
 /**
@@ -77,20 +76,23 @@ const isHigherTierToken = (filePath) => {
  * 1) Used to transform the individual shadow tokens into a single box-shadow-sm, box-shadow-md, etc. with x, y, blur, spread, and color concatenated
  */
 const transformTypographyTokens = (dictionary, themeTokens) => {
-  const typographyGroups = dictionary.allTokens.filter(
-    (p) =>
-      isHigherTierToken(p.filePath) &&
-      p.path[0] === 'typography'
-  ).reduce((groups, token) => {
-    const style = token.path[1]; // extract typography.{style}
-    if (!groups[style]) groups[style] = {};
-    groups[style][token.path[2]] = token.value;
-    return groups;
-  }, {});
+  const typographyGroups = dictionary.allTokens
+    .filter((p) => isHigherTierToken(p.filePath) && p.path[0] === 'typography')
+    .reduce((groups, token) => {
+      const style = token.path[1]; // extract typography.{style}
+      if (!groups[style]) groups[style] = {};
+      groups[style][token.path[2]] = token.value;
+      return groups;
+    }, {});
 
   Object.keys(typographyGroups).forEach((style) => {
     const group = typographyGroups[style];
-    if (group['font-family'] && group['font-weight'] && group['font-size'] && group['line-height']) {
+    if (
+      group['font-family'] &&
+      group['font-weight'] &&
+      group['font-size'] &&
+      group['line-height']
+    ) {
       const shorthand = `${group['font-weight']} ${group['font-size']}/${group['line-height']} ${group['font-family']}`;
       themeTokens.push(`  --g-typography-${style}: ${shorthand};`);
     }
@@ -98,112 +100,92 @@ const transformTypographyTokens = (dictionary, themeTokens) => {
 };
 
 const transformShadowTokens = (dictionary, size, themeTokens) => {
-	const shadowProps = dictionary.allTokens.filter(
-		(p) =>
-			isHigherTierToken(p.filePath) &&
-			p.path[0] === "box-shadow" &&
-			p.path[1] === size,
-	);
+  const shadowProps = dictionary.allTokens.filter(
+    (p) => isHigherTierToken(p.filePath) && p.path[0] === 'box-shadow' && p.path[1] === size,
+  );
 
-	const x = shadowProps.find((p) => p.path[2] === "x")?.value || "0px";
-	const y = shadowProps.find((p) => p.path[2] === "y")?.value || "0px";
-	const blur = shadowProps.find((p) => p.path[2] === "blur")?.value || "0px";
-	const spread =
-		shadowProps.find((p) => p.path[2] === "spread")?.value || "0px";
-	const color =
-		shadowProps.find((p) => p.path[2] === "color")?.value || "transparent";
+  const x = shadowProps.find((p) => p.path[2] === 'x')?.value || '0px';
+  const y = shadowProps.find((p) => p.path[2] === 'y')?.value || '0px';
+  const blur = shadowProps.find((p) => p.path[2] === 'blur')?.value || '0px';
+  const spread = shadowProps.find((p) => p.path[2] === 'spread')?.value || '0px';
+  const color = shadowProps.find((p) => p.path[2] === 'color')?.value || 'transparent';
 
-	/* 1 */
-	themeTokens.push(
-		`  --g-box-shadow-${size}: ${x} ${y} ${blur} ${spread} ${color};`,
-	);
+  /* 1 */
+  themeTokens.push(`  --g-box-shadow-${size}: ${x} ${y} ${blur} ${spread} ${color};`);
 };
 
 /**
  * Transform line height tokens
  * 1) Used to transform the line height tokens to a unitless value for CSS by dividing the line height by the font size
  */
-const transformLineHeight = (
-	dictionary,
-	prop,
-	outputArray,
-	formatTokenName,
-) => {
-	const cleanPath = prop.path
-		.map((segment) =>
-			segment.startsWith("@") ? segment.substring(1) : segment,
-		)
-		.filter((segment) => segment !== "")
-		.join("-");
+const transformLineHeight = (dictionary, prop, outputArray, formatTokenName) => {
+  const cleanPath = prop.path
+    .map((segment) => (segment.startsWith('@') ? segment.substring(1) : segment))
+    .filter((segment) => segment !== '')
+    .join('-');
 
-	// For tier-1 tokens (typography.line-height.16), find matching font-size (typography.font-size.16)
-	// For tier-2/3 tokens (typography.headline-lg.line-height), find matching font-size (typography.headline-lg.font-size)
-	const isTier1 =
-		prop.path.length === 3 &&
-		prop.path[0] === "typography" &&
-		prop.path[1] === "line-height";
-	let fontSizePath;
-	if (isTier1) {
-		// Tier-1: typography.line-height.16 -> typography.font-size.16
-		fontSizePath = ["typography", "font-size", prop.path[2]];
-	} else {
-		// Tier-2/3: typography.headline-lg.line-height -> typography.headline-lg.font-size
-		fontSizePath = [...prop.path.slice(0, -1), "font-size"];
-	}
+  // For tier-1 tokens (typography.line-height.16), find matching font-size (typography.font-size.16)
+  // For tier-2/3 tokens (typography.headline-lg.line-height), find matching font-size (typography.headline-lg.font-size)
+  const isTier1 =
+    prop.path.length === 3 && prop.path[0] === 'typography' && prop.path[1] === 'line-height';
+  let fontSizePath;
+  if (isTier1) {
+    // Tier-1: typography.line-height.16 -> typography.font-size.16
+    fontSizePath = ['typography', 'font-size', prop.path[2]];
+  } else {
+    // Tier-2/3: typography.headline-lg.line-height -> typography.headline-lg.font-size
+    fontSizePath = [...prop.path.slice(0, -1), 'font-size'];
+  }
 
-	const fontSizeProp = dictionary.allTokens.find(
-		(p) => p.path.join(".") === fontSizePath.join("."),
-	);
+  const fontSizeProp = dictionary.allTokens.find(
+    (p) => p.path.join('.') === fontSizePath.join('.'),
+  );
 
-	const hasUnit = prop.value.endsWith("px") || prop.value.endsWith("rem");
-	const numericValue = parseFloat(prop.value);
+  const hasUnit = prop.value.endsWith('px') || prop.value.endsWith('rem');
+  const numericValue = parseFloat(prop.value);
 
-	// If already unitless (no px/rem suffix), pass through as-is — it's already the intended ratio
-	if (!hasUnit && !isNaN(numericValue)) {
-		outputArray.push(`  ${formatTokenName(cleanPath, prop)}: ${prop.value};`);
-		return;
-	}
+  // If already unitless (no px/rem suffix), pass through as-is — it's already the intended ratio
+  if (!hasUnit && !isNaN(numericValue)) {
+    outputArray.push(`  ${formatTokenName(cleanPath, prop)}: ${prop.value};`);
+    return;
+  }
 
-	// Parse line-height value to pixels for ratio calculation
-	let lineHeightPx;
-	if (prop.value.endsWith("px")) {
-		lineHeightPx = parseFloat(prop.value.replace("px", ""));
-	} else if (prop.value.endsWith("rem")) {
-		lineHeightPx = parseFloat(prop.value.replace("rem", "")) * 16;
-	} else {
-		lineHeightPx = parseFloat(prop.value);
-	}
+  // Parse line-height value to pixels for ratio calculation
+  let lineHeightPx;
+  if (prop.value.endsWith('px')) {
+    lineHeightPx = parseFloat(prop.value.replace('px', ''));
+  } else if (prop.value.endsWith('rem')) {
+    lineHeightPx = parseFloat(prop.value.replace('rem', '')) * 16;
+  } else {
+    lineHeightPx = parseFloat(prop.value);
+  }
 
-	if (fontSizeProp) {
-		// Found matching font-size - use it for calculation
-		let fontSizePx;
-		if (fontSizeProp.value.endsWith("px")) {
-			fontSizePx = parseFloat(fontSizeProp.value.replace("px", ""));
-		} else if (fontSizeProp.value.endsWith("rem")) {
-			fontSizePx = parseFloat(fontSizeProp.value.replace("rem", "")) * 16;
-		} else {
-			fontSizePx = parseFloat(fontSizeProp.value);
-		}
+  if (fontSizeProp) {
+    // Found matching font-size - use it for calculation
+    let fontSizePx;
+    if (fontSizeProp.value.endsWith('px')) {
+      fontSizePx = parseFloat(fontSizeProp.value.replace('px', ''));
+    } else if (fontSizeProp.value.endsWith('rem')) {
+      fontSizePx = parseFloat(fontSizeProp.value.replace('rem', '')) * 16;
+    } else {
+      fontSizePx = parseFloat(fontSizeProp.value);
+    }
 
-		if (fontSizePx > 0) {
-			const unitlessValue = (lineHeightPx / fontSizePx).toFixed(2);
-			outputArray.push(
-				`  ${formatTokenName(cleanPath, prop)}: ${unitlessValue};`,
-			);
-			return;
-		}
-	} else if (isTier1 && lineHeightPx > 0) {
-		// For tier-1 tokens without matching font-size, use 16px as base font-size
-		const BASE_FONT_SIZE = 16;
-		const unitlessValue = (lineHeightPx / BASE_FONT_SIZE).toFixed(2);
-		outputArray.push(
-			`  ${formatTokenName(cleanPath, prop)}: ${unitlessValue};`,
-		);
-		return;
-	}
+    if (fontSizePx > 0) {
+      const unitlessValue = (lineHeightPx / fontSizePx).toFixed(2);
+      outputArray.push(`  ${formatTokenName(cleanPath, prop)}: ${unitlessValue};`);
+      return;
+    }
+  } else if (isTier1 && lineHeightPx > 0) {
+    // For tier-1 tokens without matching font-size, use 16px as base font-size
+    const BASE_FONT_SIZE = 16;
+    const unitlessValue = (lineHeightPx / BASE_FONT_SIZE).toFixed(2);
+    outputArray.push(`  ${formatTokenName(cleanPath, prop)}: ${unitlessValue};`);
+    return;
+  }
 
-	// Fallback: output as-is if we can't calculate
-	outputArray.push(`  ${formatTokenName(cleanPath, prop)}: ${prop.value};`);
+  // Fallback: output as-is if we can't calculate
+  outputArray.push(`  ${formatTokenName(cleanPath, prop)}: ${prop.value};`);
 };
 
 /**
@@ -211,98 +193,89 @@ const transformLineHeight = (
  * 1) Used to format the inner contents of the :root or .[theme-name] ruleset
  */
 const formatVariables = (dictionary) => {
-	const processedShadows = new Set();
-	const tier1Tokens = [];
-	const themeTokens = [];
+  const processedShadows = new Set();
+  const tier1Tokens = [];
+  const themeTokens = [];
 
-	/**
-	 * Format token global prefix and tier 2/3 identifier
-	 * 1) If the token is from tier-2 or tier-3, prefix it with `g-theme-`
-	 * 2) Otherwise, prefix it with `g-`
-	 */
-	const formatTokenName = (cleanPath, _prop) => {
-	return `--g-${cleanPath}`;
-};
+  /**
+   * Format token global prefix and tier 2/3 identifier
+   * 1) If the token is from tier-2 or tier-3, prefix it with `g-theme-`
+   * 2) Otherwise, prefix it with `g-`
+   */
+  const formatTokenName = (cleanPath, _prop) => {
+    return `--g-${cleanPath}`;
+  };
 
-	/**
-	 * Get all box-shadow values from tier 2/3
-	 * 1) Used to determine which box-shadow values to transform into a single box-shadow-sm, box-shadow-md, etc.
-	 */
-	const shadowSizes = dictionary.tokens.shadow
-		? Object.keys(dictionary.tokens.shadow)
-				.map((key) => key.split("-")[0])
-				.filter((value, index, self) => self.indexOf(value) === index) // Get unique sizes
-		: [];
+  /**
+   * Get all box-shadow values from tier 2/3
+   * 1) Used to determine which box-shadow values to transform into a single box-shadow-sm, box-shadow-md, etc.
+   */
+  const shadowSizes = dictionary.tokens.shadow
+    ? Object.keys(dictionary.tokens.shadow)
+        .map((key) => key.split('-')[0])
+        .filter((value, index, self) => self.indexOf(value) === index) // Get unique sizes
+    : [];
 
-	/**
-	 * Iterate over all tokens and format them
-	 *
-	 */
+  /**
+   * Iterate over all tokens and format them
+   *
+   */
 
-    transformTypographyTokens(dictionary, themeTokens);
+  transformTypographyTokens(dictionary, themeTokens);
 
-    dictionary.allTokens.forEach((prop) => {
-		/**
-		 * 1) Always include z-index and size tokens from core
-		 */
-		if (prop.path[0] === "z-index" || (prop.path[0] === "ref" && prop.path[1] === "z-index")) {
-			const cleanPath = prop.path
-				.map((segment) =>
-					segment.startsWith("@") ? segment.substring(1) : segment,
-				)
-				.filter((segment) => segment !== "")
-				.join("-");
-			tier1Tokens.push(`  ${formatTokenName(cleanPath, prop)}: ${prop.value};`);
-			return;
-		}
+  dictionary.allTokens.forEach((prop) => {
+    /**
+     * 1) Always include z-index and size tokens from core
+     */
+    if (prop.path[0] === 'z-index' || (prop.path[0] === 'ref' && prop.path[1] === 'z-index')) {
+      const cleanPath = prop.path
+        .map((segment) => (segment.startsWith('@') ? segment.substring(1) : segment))
+        .filter((segment) => segment !== '')
+        .join('-');
+      tier1Tokens.push(`  ${formatTokenName(cleanPath, prop)}: ${prop.value};`);
+      return;
+    }
 
-		/**
-		 * Handle box-shadow token transformations
-		 * If the token is from tier-2 or tier-3 and is a box-shadow, transform it into a single box-shadow-sm, box-shadow-md, etc.
-		 */
-		if (
-			isHigherTierToken(prop.filePath) &&
-			prop.path[0] === "box-shadow" &&
-			shadowSizes.includes(prop.path[1])
-		) {
-			const size = prop.path[1];
-			if (processedShadows.has(size)) return;
-			processedShadows.add(size);
-			transformShadowTokens(dictionary, size, themeTokens);
-		} else if (
-			prop.path[0] === "typography" &&
-			prop.path.includes("line-height")
-		) {
-			/**
-			 * Handle line heights in typography (both tier-1 and tier-2/3)
-			 * 1) Transform line-height tokens to unitless values by dividing by font-size
-			 */
-			const outputArray = isHigherTierToken(prop.filePath)
-				? themeTokens
-				: tier1Tokens;
-			transformLineHeight(dictionary, prop, outputArray, formatTokenName);
-		} else if (!prop.path.includes("box-shadow") || prop.path.length > 3) {
-			/**
-			 * Handle all other properties
-			 * 1) If the token is not a box-shadow or typography token, format it as a normal token
-			 */
-			const cleanPath = prop.path
-				.map((segment) =>
-					segment.startsWith("@") ? segment.substring(1) : segment,
-				)
-				.filter((segment) => segment !== "")
-				.join("-");
+    /**
+     * Handle box-shadow token transformations
+     * If the token is from tier-2 or tier-3 and is a box-shadow, transform it into a single box-shadow-sm, box-shadow-md, etc.
+     */
+    if (
+      isHigherTierToken(prop.filePath) &&
+      prop.path[0] === 'box-shadow' &&
+      shadowSizes.includes(prop.path[1])
+    ) {
+      const size = prop.path[1];
+      if (processedShadows.has(size)) return;
+      processedShadows.add(size);
+      transformShadowTokens(dictionary, size, themeTokens);
+    } else if (prop.path[0] === 'typography' && prop.path.includes('line-height')) {
+      /**
+       * Handle line heights in typography (both tier-1 and tier-2/3)
+       * 1) Transform line-height tokens to unitless values by dividing by font-size
+       */
+      const outputArray = isHigherTierToken(prop.filePath) ? themeTokens : tier1Tokens;
+      transformLineHeight(dictionary, prop, outputArray, formatTokenName);
+    } else if (!prop.path.includes('box-shadow') || prop.path.length > 3) {
+      /**
+       * Handle all other properties
+       * 1) If the token is not a box-shadow or typography token, format it as a normal token
+       */
+      const cleanPath = prop.path
+        .map((segment) => (segment.startsWith('@') ? segment.substring(1) : segment))
+        .filter((segment) => segment !== '')
+        .join('-');
 
-			const token = `  ${formatTokenName(cleanPath, prop)}: ${prop.value};`;
-			if (isHigherTierToken(prop.filePath)) {
-				themeTokens.push(token);
-			} else {
-				tier1Tokens.push(token);
-			}
-		}
-	});
+      const token = `  ${formatTokenName(cleanPath, prop)}: ${prop.value};`;
+      if (isHigherTierToken(prop.filePath)) {
+        themeTokens.push(token);
+      } else {
+        tier1Tokens.push(token);
+      }
+    }
+  });
 
-	return [...new Set([...tier1Tokens, ...themeTokens])].join("\n");
+  return [...new Set([...tier1Tokens, ...themeTokens])].join('\n');
 };
 
 /**
@@ -310,22 +283,17 @@ const formatVariables = (dictionary) => {
  * Combines individual shadow properties into a single value
  */
 const transformShadowTokensJSON = (dictionary, size) => {
-	const shadowProps = dictionary.allTokens.filter(
-		(p) =>
-			isHigherTierToken(p.filePath) &&
-			p.path[0] === "box-shadow" &&
-			p.path[1] === size,
-	);
+  const shadowProps = dictionary.allTokens.filter(
+    (p) => isHigherTierToken(p.filePath) && p.path[0] === 'box-shadow' && p.path[1] === size,
+  );
 
-	const x = shadowProps.find((p) => p.path[2] === "x")?.value || "0px";
-	const y = shadowProps.find((p) => p.path[2] === "y")?.value || "0px";
-	const blur = shadowProps.find((p) => p.path[2] === "blur")?.value || "0px";
-	const spread =
-		shadowProps.find((p) => p.path[2] === "spread")?.value || "0px";
-	const color =
-		shadowProps.find((p) => p.path[2] === "color")?.value || "transparent";
+  const x = shadowProps.find((p) => p.path[2] === 'x')?.value || '0px';
+  const y = shadowProps.find((p) => p.path[2] === 'y')?.value || '0px';
+  const blur = shadowProps.find((p) => p.path[2] === 'blur')?.value || '0px';
+  const spread = shadowProps.find((p) => p.path[2] === 'spread')?.value || '0px';
+  const color = shadowProps.find((p) => p.path[2] === 'color')?.value || 'transparent';
 
-	return `${x} ${y} ${blur} ${spread} ${color}`;
+  return `${x} ${y} ${blur} ${spread} ${color}`;
 };
 
 /**
@@ -335,199 +303,192 @@ const transformShadowTokensJSON = (dictionary, size) => {
  * @param {string} theme
  */
 const getStyleDictionaryConfig = (theme) => {
-	/**
-	 * Register a name transform that produces css-variable-ready names with
-	 * g-theme- prefix for tier-2/3 tokens and g- for tier-1/core tokens.
-	 * Hardcodes the "g" prefix (the project-wide CSS variable prefix).
-	 */
-	StyleDictionary.registerTransform({
-		name: "name/css-theme-prefix",
-		type: "name",
-		transform: function (token) {
-			const cleanPath = token.path
-				.map((segment) =>
-					segment.startsWith("@") ? segment.substring(1) : segment,
-				)
-				.filter((segment) => segment !== "")
-				.join("-");
-			return `g-${cleanPath}`;
-		},
-	});
+  /**
+   * Register a name transform that produces css-variable-ready names with
+   * g-theme- prefix for tier-2/3 tokens and g- for tier-1/core tokens.
+   * Hardcodes the "g" prefix (the project-wide CSS variable prefix).
+   */
+  StyleDictionary.registerTransform({
+    name: 'name/css-theme-prefix',
+    type: 'name',
+    transform: (token) => {
+      const cleanPath = token.path
+        .map((segment) => (segment.startsWith('@') ? segment.substring(1) : segment))
+        .filter((segment) => segment !== '')
+        .join('-');
+      return `g-${cleanPath}`;
+    },
+  });
 
-	/**
-	 * Register the custom/css-tokens transform group.
-	 * Uses the same transforms as the built-in css group, but replaces name/kebab
-	 * with name/css-theme-prefix so tier-2/3 tokens get --g-theme-* CSS variable names.
-	 */
-	StyleDictionary.registerTransformGroup({
-		name: "custom/css-tokens",
-		transforms: [
-			"attribute/cti",
-			"name/css-theme-prefix",
-			"time/seconds",
-			"html/icon",
-			"size/rem",
-			"color/css",
-			"asset/url",
-			"fontFamily/css",
-			"cubicBezier/css",
-			"strokeStyle/css/shorthand",
-			"border/css/shorthand",
-			"typography/css/shorthand",
-			"transition/css/shorthand",
-			"shadow/css/shorthand",
-		],
-	});
+  /**
+   * Register the custom/css-tokens transform group.
+   * Uses the same transforms as the built-in css group, but replaces name/kebab
+   * with name/css-theme-prefix so tier-2/3 tokens get --g-theme-* CSS variable names.
+   */
+  StyleDictionary.registerTransformGroup({
+    name: 'custom/css-tokens',
+    transforms: [
+      'attribute/cti',
+      'name/css-theme-prefix',
+      'time/seconds',
+      'html/icon',
+      'size/rem',
+      'color/css',
+      'asset/url',
+      'fontFamily/css',
+      'cubicBezier/css',
+      'strokeStyle/css/shorthand',
+      'border/css/shorthand',
+      'typography/css/shorthand',
+      'transition/css/shorthand',
+      'shadow/css/shorthand',
+    ],
+  });
 
-	// Register the JSON formatter
-	StyleDictionary.registerFormat({
-		name: "json/flat/custom",
-		format: function (dictionary) {
-			const transformedTokens = {};
+  // Register the JSON formatter
+  StyleDictionary.registerFormat({
+    name: 'json/flat/custom',
+    format: (dictionary) => {
+      const transformedTokens = {};
 
-			/**
-			 * Get all box-shadow values from tier 2/3
-			 * 1) Used to determine which box-shadow values to transform into a single box-shadow-sm, box-shadow-md, etc.
-			 */
-			const shadowSizes = dictionary.tokens.shadow
-				? Object.keys(dictionary.tokens.shadow)
-						.map((key) => key.split("-")[0])
-						.filter((value, index, self) => self.indexOf(value) === index) // Get unique sizes
-				: [];
+      /**
+       * Get all box-shadow values from tier 2/3
+       * 1) Used to determine which box-shadow values to transform into a single box-shadow-sm, box-shadow-md, etc.
+       */
+      const shadowSizes = dictionary.tokens.shadow
+        ? Object.keys(dictionary.tokens.shadow)
+            .map((key) => key.split('-')[0])
+            .filter((value, index, self) => self.indexOf(value) === index) // Get unique sizes
+        : [];
 
-			// Process regular tokens
-			dictionary.allTokens.forEach((token) => {
-			if (token.path[0] === "box-shadow" && token.path.length > 2) return;
-			transformedTokens[`g-${token.path.join("-")}`] = token.value;
-			});
+      // Process regular tokens
+      dictionary.allTokens.forEach((token) => {
+        if (token.path[0] === 'box-shadow' && token.path.length > 2) return;
+        transformedTokens[`g-${token.path.join('-')}`] = token.value;
+      });
 
-			// Process shadow tokens
-			shadowSizes.forEach((size) => {
-				transformedTokens[`g-box-shadow-${size}`] =
-					transformShadowTokensJSON(dictionary, size);
-			});
+      // Process shadow tokens
+      shadowSizes.forEach((size) => {
+        transformedTokens[`g-box-shadow-${size}`] = transformShadowTokensJSON(dictionary, size);
+      });
 
-			return JSON.stringify(transformedTokens, null, 2);
-		},
-	});
+      return JSON.stringify(transformedTokens, null, 2);
+    },
+  });
 
-	/**
-	 * Register the name/theme-prefix transform
-	 * 1) Used to prefix the token name with the theme name
-	 * 2) If the token is from tier-2 or tier-3, prefix it with `GTheme` for JS
-	 * 3) Otherwise, prefix it with `G` for JS
-	 */
-	StyleDictionary.registerTransform({
-		name: "name/theme-prefix",
-		type: "name",
-		transform: function (token) {
-			const cleanPath = token.path
-				.map((segment) =>
-					segment.startsWith("@") ? segment.substring(1) : segment,
-				)
-				.filter((segment) => segment !== "")
-				.join("-");
+  /**
+   * Register the name/theme-prefix transform
+   * 1) Used to prefix the token name with the theme name
+   * 2) If the token is from tier-2 or tier-3, prefix it with `GTheme` for JS
+   * 3) Otherwise, prefix it with `G` for JS
+   */
+  StyleDictionary.registerTransform({
+    name: 'name/theme-prefix',
+    type: 'name',
+    transform: (token) => {
+      const cleanPath = token.path
+        .map((segment) => (segment.startsWith('@') ? segment.substring(1) : segment))
+        .filter((segment) => segment !== '')
+        .join('-');
 
-			return `G${cleanPath
-				.split("-")
-				.map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-				.join("")}`;
-		},
-	});
+      return `G${cleanPath
+        .split('-')
+        .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+        .join('')}`;
+    },
+  });
 
-	/**
-	 * Register the custom/js transform group
-	 */
-	StyleDictionary.registerTransformGroup({
-		name: "custom/js",
-		transforms: ["attribute/cti", "name/theme-prefix"]
-	});
+  /**
+   * Register the custom/js transform group
+   */
+  StyleDictionary.registerTransformGroup({
+    name: 'custom/js',
+    transforms: ['attribute/cti', 'name/theme-prefix'],
+  });
 
-	/**
-	 * Define the config
-	 * 1) Used to define the platforms, prefixes, etc. to build the tokens with/for
-	 */
-	const config = {
-        preprocessors: [
-            "auto-palette",
+  /**
+   * Define the config
+   * 1) Used to define the platforms, prefixes, etc. to build the tokens with/for
+   */
+  const config = {
+    preprocessors: ['auto-palette'],
+    source: [
+      `./tokens/core/01-ref/**/*.json`,
+      `./tokens/${theme}/01-ref/**/*.json`,
+      `./tokens/core/02-semantic/**/*.json`,
+      `./tokens/${theme}/02-semantic/**/*.json`,
+      `./tokens/core/03-components/**/*.json`,
+      `./tokens/${theme}/03-components/**/*.json`,
+    ],
+    log: {
+      // Set the log level to show errors, warnings, and info messages
+      verbosity: 'verbose',
+    },
+    platforms: {
+      ts: {
+        transformGroup: 'custom/js',
+        prefix: 'G',
+        buildPath: `./dist/js/${theme}/`,
+        filter: {
+          attributes: {
+            category: 'theme',
+          },
+        },
+        files: [
+          {
+            destination: 'style-dictionary.js',
+            format: 'javascript/es6',
+          },
+          {
+            destination: 'style-dictionary.d.ts',
+            format: 'typescript/es6-declarations',
+          },
         ],
-		source: [
-			`./tokens/core/01-ref/**/*.json`,
-			`./tokens/${theme}/01-ref/**/*.json`,
-			`./tokens/core/02-semantic/**/*.json`,
-			`./tokens/${theme}/02-semantic/**/*.json`,
-			`./tokens/core/03-components/**/*.json`,
-			`./tokens/${theme}/03-components/**/*.json`,
-		],
-		log: {
-			// Set the log level to show errors, warnings, and info messages
-			verbosity: "verbose",
-		},
-		platforms: {
-			ts: {
-				transformGroup: "custom/js",
-				prefix: "G",
-				buildPath: `./dist/js/${theme}/`,
-				filter: {
-					attributes: {
-						category: "theme",
-					},
-				},
-				files: [
-					{
-						destination: "style-dictionary.js",
-						format: "javascript/es6",
-					},
-					{
-						destination: "style-dictionary.d.ts",
-						format: "typescript/es6-declarations",
-					},
-				],
-			},
-			css: {
-				transformGroup: "css",
-				prefix: "g",
-				buildPath: `./dist/css/${theme}/`,
-				files: [
-					{
-						destination: `${theme}.css`,
-						format: "css/variables",
-						options: {
-						  selector: `:root, .${theme}`,
-							outputReferences: true,
+      },
+      css: {
+        transformGroup: 'css',
+        prefix: 'g',
+        buildPath: `./dist/css/${theme}/`,
+        files: [
+          {
+            destination: `${theme}.css`,
+            format: 'css/variables',
+            options: {
+              selector: `:root, .${theme}`,
+              outputReferences: true,
             },
-					},
-				],
-			},
-			"css-tokens": {
-				transformGroup: "custom/css-tokens",
-				buildPath: `./dist/css/${theme}/`,
-				files: [
-					{
-						destination: "tokens.css",
-						format: "css/variables",
-						options: {
-							selector: `:root, .${theme}`,
-							outputReferences: true,
-						},
-					},
-				],
-			},
-			json: {
-				transformGroup: "css",
-				prefix: "g",
-				buildPath: `./dist/json/${theme}/`,
-				files: [
-					{
-						destination: "tokens.json",
-						format: "json/flat/custom",
-					},
-				],
-			},
-		},
-	};
+          },
+        ],
+      },
+      'css-tokens': {
+        transformGroup: 'custom/css-tokens',
+        buildPath: `./dist/css/${theme}/`,
+        files: [
+          {
+            destination: 'tokens.css',
+            format: 'css/variables',
+            options: {
+              selector: `:root, .${theme}`,
+              outputReferences: true,
+            },
+          },
+        ],
+      },
+      json: {
+        transformGroup: 'css',
+        prefix: 'g',
+        buildPath: `./dist/json/${theme}/`,
+        files: [
+          {
+            destination: 'tokens.json',
+            format: 'json/flat/custom',
+          },
+        ],
+      },
+    },
+  };
 
-	return config;
+  return config;
 };
 
 /**
@@ -536,17 +497,17 @@ const getStyleDictionaryConfig = (theme) => {
  * 2) Otherwise, build the specified theme
  */
 const buildTheme = async (themeName) => {
-	console.log(`\n🏗️ Building ${themeName.toUpperCase()} theme`);
-	const themeConfig = getStyleDictionaryConfig(themeName);
-	const StyleDictionaryExtended = new StyleDictionary(themeConfig);
-	await StyleDictionaryExtended.buildAllPlatforms();
+  console.log(`\n🏗️ Building ${themeName.toUpperCase()} theme`);
+  const themeConfig = getStyleDictionaryConfig(themeName);
+  const StyleDictionaryExtended = new StyleDictionary(themeConfig);
+  await StyleDictionaryExtended.buildAllPlatforms();
 };
 
 if (!theme) {
-	console.log("🚧 No theme specified, building all themes...");
-	for (const themeName of AVAILABLE_THEMES) {
-		await buildTheme(themeName);
-	}
+  console.log('🚧 No theme specified, building all themes...');
+  for (const themeName of AVAILABLE_THEMES) {
+    await buildTheme(themeName);
+  }
 } else {
-	await buildTheme(theme);
+  await buildTheme(theme);
 }

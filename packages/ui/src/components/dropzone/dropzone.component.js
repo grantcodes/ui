@@ -1,133 +1,130 @@
-import { LitElement } from "lit";
-import { html } from "lit/static-html.js";
-import { classMap } from "lit/directives/class-map.js";
-import dropzoneStyles from "./dropzone.css" with { type: "css" };
+import { LitElement } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
+import { html } from 'lit/static-html.js';
+import dropzoneStyles from './dropzone.css' with { type: 'css' };
 
 export class GrantCodesDropzone extends LitElement {
-	static styles = [dropzoneStyles];
+  static styles = [dropzoneStyles];
 
-	static properties = {
-		fullscreenOnDrag: { type: Boolean, reflect: true },
-	};
+  static properties = {
+    fullscreenOnDrag: { type: Boolean, reflect: true },
+  };
 
-	constructor() {
-		super();
+  constructor() {
+    super();
 
-		this.fullscreenOnDrag = false;
+    this.fullscreenOnDrag = false;
 
-		/** @type {HTMLInputElement[]} */
-		this._input = [];
+    /** @type {HTMLInputElement[]} */
+    this._input = [];
 
-		this._fullscreen = false;
+    this._fullscreen = false;
 
-		/** @type {string} */
-		this._placeholder = "";
+    /** @type {string} */
+    this._placeholder = '';
 
-		/** @type {number} */
-		this._dragDepth = 0;
+    /** @type {number} */
+    this._dragDepth = 0;
 
-		/** @type {number | null} */
-		this._fullscreenTimeout = null;
-	}
+    /** @type {number | null} */
+    this._fullscreenTimeout = null;
+  }
 
-	_enableFullscreen = () => {
-		if (this.fullscreenOnDrag) {
-			this._dragDepth++;
-			this._fullscreen = true;
-			this._clearFullscreenTimeout();
-			// Fallback: disable fullscreen after 3 seconds of no activity
-			this._fullscreenTimeout = setTimeout(() => {
-				this._forceDisableFullscreen();
-			}, 3000);
-		}
-	};
+  _enableFullscreen = () => {
+    if (this.fullscreenOnDrag) {
+      this._dragDepth++;
+      this._fullscreen = true;
+      this._clearFullscreenTimeout();
+      // Fallback: disable fullscreen after 3 seconds of no activity
+      this._fullscreenTimeout = setTimeout(() => {
+        this._forceDisableFullscreen();
+      }, 3000);
+    }
+  };
 
-	_disableFullscreen = () => {
-		if (this.fullscreenOnDrag) {
-			this._dragDepth--;
-			// Only disable if we've left all drag boundaries
-			if (this._dragDepth <= 0) {
-				this._forceDisableFullscreen();
-			}
-		}
-	};
+  _disableFullscreen = () => {
+    if (this.fullscreenOnDrag) {
+      this._dragDepth--;
+      // Only disable if we've left all drag boundaries
+      if (this._dragDepth <= 0) {
+        this._forceDisableFullscreen();
+      }
+    }
+  };
 
-	_forceDisableFullscreen = () => {
-		this._fullscreen = false;
-		this._dragDepth = 0;
-		this._clearFullscreenTimeout();
-	};
+  _forceDisableFullscreen = () => {
+    this._fullscreen = false;
+    this._dragDepth = 0;
+    this._clearFullscreenTimeout();
+  };
 
-	_clearFullscreenTimeout = () => {
-		if (this._fullscreenTimeout !== null) {
-			clearTimeout(this._fullscreenTimeout);
-			this._fullscreenTimeout = null;
-		}
-	};
+  _clearFullscreenTimeout = () => {
+    if (this._fullscreenTimeout !== null) {
+      clearTimeout(this._fullscreenTimeout);
+      this._fullscreenTimeout = null;
+    }
+  };
 
-	_handleDrop = () => {
-		this._forceDisableFullscreen();
-	};
+  _handleDrop = () => {
+    this._forceDisableFullscreen();
+  };
 
-	_handleDragOver = (e) => {
-		e.preventDefault();
-		// Reset timeout on drag activity
-		if (this._fullscreen && this._fullscreenTimeout) {
-			this._clearFullscreenTimeout();
-			this._fullscreenTimeout = setTimeout(() => {
-				this._forceDisableFullscreen();
-			}, 3000);
-		}
-	};
+  _handleDragOver = (e) => {
+    e.preventDefault();
+    // Reset timeout on drag activity
+    if (this._fullscreen && this._fullscreenTimeout) {
+      this._clearFullscreenTimeout();
+      this._fullscreenTimeout = setTimeout(() => {
+        this._forceDisableFullscreen();
+      }, 3000);
+    }
+  };
 
-	connectedCallback() {
-		super.connectedCallback();
-		if (typeof document === "undefined") return;
-		document.addEventListener("dragenter", this._enableFullscreen);
-		document.addEventListener("dragend", this._disableFullscreen);
-		document.addEventListener("dragleave", this._disableFullscreen);
-		document.addEventListener("drop", this._handleDrop);
-	}
+  connectedCallback() {
+    super.connectedCallback();
+    if (typeof document === 'undefined') return;
+    document.addEventListener('dragenter', this._enableFullscreen);
+    document.addEventListener('dragend', this._disableFullscreen);
+    document.addEventListener('dragleave', this._disableFullscreen);
+    document.addEventListener('drop', this._handleDrop);
+  }
 
-	disconnectedCallback() {
-		document.removeEventListener("dragenter", this._enableFullscreen);
-		document.removeEventListener("dragend", this._disableFullscreen);
-		document.removeEventListener("dragleave", this._disableFullscreen);
-		document.removeEventListener("drop", this._handleDrop);
-		this._clearFullscreenTimeout();
-		super.disconnectedCallback();
-	}
+  disconnectedCallback() {
+    document.removeEventListener('dragenter', this._enableFullscreen);
+    document.removeEventListener('dragend', this._disableFullscreen);
+    document.removeEventListener('dragleave', this._disableFullscreen);
+    document.removeEventListener('drop', this._handleDrop);
+    this._clearFullscreenTimeout();
+    super.disconnectedCallback();
+  }
 
-	firstUpdated() {
-		// Find input elements in the slot
-		const slot = this.renderRoot.querySelector("slot");
-		if (slot) {
-			const assignedElements = slot.assignedElements();
-			this._input = assignedElements.filter(
-				(el) => el.tagName === "INPUT" && el.type === "file",
-			);
-		}
+  firstUpdated() {
+    // Find input elements in the slot
+    const slot = this.renderRoot.querySelector('slot');
+    if (slot) {
+      const assignedElements = slot.assignedElements();
+      this._input = assignedElements.filter((el) => el.tagName === 'INPUT' && el.type === 'file');
+    }
 
-		if (this._input.length === 0) {
-			// In unit tests, allow rendering without an input to reduce friction
-			const isTestEnv =
-				typeof process !== "undefined" && process?.env?.NODE_ENV === "test";
-			if (!isTestEnv) {
-				throw new Error("No file input found");
-			}
-			this._placeholder = "";
-			return;
-		}
-		this._placeholder = this._input[0].placeholder;
-	}
+    if (this._input.length === 0) {
+      // In unit tests, allow rendering without an input to reduce friction
+      const isTestEnv = typeof process !== 'undefined' && process?.env?.NODE_ENV === 'test';
+      if (!isTestEnv) {
+        throw new Error('No file input found');
+      }
+      this._placeholder = '';
+      return;
+    }
+    this._placeholder = this._input[0].placeholder;
+  }
 
-	render() {
-		const classes = classMap({
-			dropzone: true,
-			"dropzone--fullscreen": this._fullscreen,
-		});
+  render() {
+    const classes = classMap({
+      dropzone: true,
+      'dropzone--fullscreen': this._fullscreen,
+    });
 
-		return html`
+    return html`
 			<div
 				class=${classes}
 				@mouseleave=${this._forceDisableFullscreen}
@@ -140,5 +137,5 @@ export class GrantCodesDropzone extends LitElement {
 				<span class="dropzone__placeholder">${this._placeholder}</span>
 			</div>
 		`;
-	}
+  }
 }

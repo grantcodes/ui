@@ -1,89 +1,78 @@
-import { describe, it, afterEach } from "node:test";
-import { strict as assert } from "node:assert";
-import { fixture, cleanup } from "../../test-utils/index.js";
-import "./gallery.js";
-import "./gallery-image.js";
+import { strict as assert } from 'node:assert';
+import { afterEach, describe, it } from 'node:test';
+import { cleanup, fixture } from '../../test-utils/index.js';
+import './gallery.js';
+import './gallery-image.js';
 
-describe("Gallery Component", () => {
-	let element;
+describe('Gallery Component', () => {
+  let element;
 
-	afterEach(() => {
-		cleanup(element);
-	});
+  afterEach(() => {
+    cleanup(element);
+  });
 
-	it("should render with default properties", async () => {
-		element = await fixture("grantcodes-gallery");
-		assert.ok(element, "Element should be created");
-		assert.ok(element.shadowRoot, "Element should have shadow root");
-	});
+  it('should render with default properties', async () => {
+    element = await fixture('grantcodes-gallery');
+    assert.ok(element, 'Element should be created');
+    assert.ok(element.shadowRoot, 'Element should have shadow root');
+  });
 
-	it("should render gallery wrapper", async () => {
-		element = await fixture("grantcodes-gallery");
-		const gallery = element.shadowRoot.querySelector(".gallery");
-		assert.ok(gallery, "Gallery element should exist");
-	});
+  it('should render gallery wrapper', async () => {
+    element = await fixture('grantcodes-gallery');
+    const gallery = element.shadowRoot.querySelector('.gallery');
+    assert.ok(gallery, 'Gallery element should exist');
+  });
 
-	it("should have slot for gallery items", async () => {
-		element = await fixture("grantcodes-gallery");
-		const slot = element.shadowRoot.querySelector("slot");
-		assert.ok(slot, "Slot should exist");
-		assert.ok(
-			slot.classList.contains("gallery__slot"),
-			"Slot should have gallery__slot class",
-		);
-	});
+  it('should have slot for gallery items', async () => {
+    element = await fixture('grantcodes-gallery');
+    const slot = element.shadowRoot.querySelector('slot');
+    assert.ok(slot, 'Slot should exist');
+    assert.ok(slot.classList.contains('gallery__slot'), 'Slot should have gallery__slot class');
+  });
 
-	it("should support multiple image slots", async () => {
-		element = await fixture("grantcodes-gallery");
+  it('should support multiple image slots', async () => {
+    element = await fixture('grantcodes-gallery');
 
-		const img1 = document.createElement("img");
-		img1.src = "image1.jpg";
-		const img2 = document.createElement("img");
-		img2.src = "image2.jpg";
+    const img1 = document.createElement('img');
+    img1.src = 'image1.jpg';
+    const img2 = document.createElement('img');
+    img2.src = 'image2.jpg';
 
-		element.appendChild(img1);
-		element.appendChild(img2);
+    element.appendChild(img1);
+    element.appendChild(img2);
 
-		await element.updateComplete;
+    await element.updateComplete;
 
-		assert.strictEqual(element.children.length, 2, "Should have two images");
-	});
+    assert.strictEqual(element.children.length, 2, 'Should have two images');
+  });
 
-	it("should initialize images array", async () => {
-		element = await fixture("grantcodes-gallery");
-		assert.ok(Array.isArray(element.images), "Images should be an array");
-		assert.strictEqual(
-			element.images.length,
-			0,
-			"Images array should be empty initially",
-		);
-	});
+  it('should initialize images array', async () => {
+    element = await fixture('grantcodes-gallery');
+    assert.ok(Array.isArray(element.images), 'Images should be an array');
+    assert.strictEqual(element.images.length, 0, 'Images array should be empty initially');
+  });
 
-	describe("Gallery filmstrip variant", () => {
-		let element;
+  describe('Gallery filmstrip variant', () => {
+    let element;
 
-		afterEach(() => {
-			cleanup(element);
-		});
+    afterEach(() => {
+      cleanup(element);
+    });
 
-		it("should have variant property default to 'default'", async () => {
-			element = await fixture("grantcodes-gallery");
-			assert.strictEqual(
-				element.variant,
-				"default",
-				"variant should default to 'default'",
-			);
-		});
+    it("should have variant property default to 'default'", async () => {
+      element = await fixture('grantcodes-gallery');
+      assert.strictEqual(element.variant, 'default', "variant should default to 'default'");
+    });
 
-		it("should reflect variant attribute when property is set", async () => {
-			element = await fixture("grantcodes-gallery");
-			element.variant = "filmstrip";
-			await element.updateComplete;
-			assert.strictEqual(
-				element.getAttribute("variant"),
-				"filmstrip",
-				"variant attribute should be reflected",
-			);
-		});
-	});
+    it('should reflect variant attribute when property is set', async () => {
+      element = await fixture('grantcodes-gallery');
+      element.variant = 'filmstrip';
+      await element.updateComplete;
+      assert.strictEqual(
+        element.getAttribute('variant'),
+        'filmstrip',
+        'variant attribute should be reflected',
+      );
+    });
+  });
 });

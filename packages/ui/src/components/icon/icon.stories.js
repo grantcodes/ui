@@ -1,22 +1,21 @@
-import { html } from "lit/static-html.js";
-import { unsafeHTML } from "lit/directives/unsafe-html.js";
-import "./icon.js";
-import { ArrowRight, Heart, Star, CheckCircle2 } from "../../icons.js";
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
+import { html } from 'lit/static-html.js';
+import './icon.js';
+import { ArrowRight, CheckCircle2, Heart, Star } from '../../icons.js';
 
 const meta = {
-	title: "Components/Icon",
-	component: "grantcodes-icon",
+  title: 'Components/Icon',
+  component: 'grantcodes-icon',
 };
 
 export default meta;
 
 export const Icon = {
-	render: () =>
-		html`<grantcodes-icon>${unsafeHTML(ArrowRight)}</grantcodes-icon>`,
+  render: () => html`<grantcodes-icon>${unsafeHTML(ArrowRight)}</grantcodes-icon>`,
 };
 
 export const MultipleIcons = {
-	render: () => html`
+  render: () => html`
 		<div style="display: flex; gap: 1rem;">
 			<grantcodes-icon>${unsafeHTML(Heart)}</grantcodes-icon>
 			<grantcodes-icon>${unsafeHTML(Star)}</grantcodes-icon>

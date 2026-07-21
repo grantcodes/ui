@@ -1,27 +1,27 @@
-import { LitElement } from "lit";
-import { html } from "lit/static-html.js";
-import footerStyles from "./footer.css" with { type: "css" };
-import "../container/container.js";
+import { LitElement } from 'lit';
+import { html } from 'lit/static-html.js';
+import footerStyles from './footer.css' with { type: 'css' };
+import '../container/container.js';
 
 export class GrantCodesFooter extends LitElement {
-	static styles = [footerStyles];
+  static styles = [footerStyles];
 
-	static properties = {
-		columns: { type: Number },
-	};
+  static properties = {
+    columns: { type: Number },
+  };
 
-	constructor() {
-		super();
+  constructor() {
+    super();
 
-		/**
-		 * Number of columns in the footer
-		 * @type {number}
-		 */
-		this.columns = 3;
-	}
+    /**
+     * Number of columns in the footer
+     * @type {number}
+     */
+    this.columns = 3;
+  }
 
-	render() {
-		return html`
+  render() {
+    return html`
 			<footer class="footer">
 				<grantcodes-container align="wide">
 					<div class="footer__columns" style="--footer-columns: ${this.columns}">
@@ -35,5 +35,5 @@ export class GrantCodesFooter extends LitElement {
 				</grantcodes-container>
 			</footer>
 		`;
-	}
+  }
 }

@@ -71,7 +71,7 @@
   },
   "devDependencies": {
     "@arcmantle/vite-plugin-import-css-sheet": "^1.0.14",
-    "@biomejs/biome": "2.3.8",
+    "@biomejs/biome": "2.5.5",
     "@custom-elements-manifest/analyzer": "^0.11.0",
     "@grantcodes/commit": "^2.0.0",
     "@lit-labs/ssr-dom-shim": "^1.6.0",

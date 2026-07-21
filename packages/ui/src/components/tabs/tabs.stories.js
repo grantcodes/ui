@@ -1,21 +1,22 @@
-import { html } from "lit/static-html.js";
-import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
-const { events, args, argTypes, template } =
-	getStorybookHelpers("grantcodes-tabs");
-import "./tabs.js";
-import "./tab.js";
+import { getStorybookHelpers } from '@wc-toolkit/storybook-helpers';
+import { html } from 'lit/static-html.js';
+
+const { events, args, argTypes, template } = getStorybookHelpers('grantcodes-tabs');
+
+import './tabs.js';
+import './tab.js';
 
 const meta = {
-	title: "Components/Tabs",
-	component: "grantcodes-tabs",
-	args: {
-		...args,
-	},
-	argTypes,
-	render: (args) =>
-		template(
-			args,
-			html`
+  title: 'Components/Tabs',
+  component: 'grantcodes-tabs',
+  args: {
+    ...args,
+  },
+  argTypes,
+  render: (args) =>
+    template(
+      args,
+      html`
 				<grantcodes-tab label="Tab 1">
 					<p>This is the content of the first tab.</p>
 				</grantcodes-tab>
@@ -26,12 +27,12 @@ const meta = {
 					<p>This is the content of the third tab.</p>
 				</grantcodes-tab>
 			`,
-		),
-	parameters: {
-		actions: {
-			handles: events,
-		},
-	},
+    ),
+  parameters: {
+    actions: {
+      handles: events,
+    },
+  },
 };
 
 export default meta;

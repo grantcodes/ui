@@ -1,13 +1,13 @@
-import { html } from "lit";
+import { html } from 'lit';
 
 const meta = {
-	title: "Styles/CSS Layers",
+  title: 'Styles/CSS Layers',
 };
 
 export default meta;
 
 export const LayerOrder = {
-	render: () => html`
+  render: () => html`
 		<div style="max-width: 40rem;">
 			<h2>CSS Layers</h2>
 			<p>Styles are organized into CSS cascade layers, from lowest to highest priority:</p>
@@ -25,7 +25,7 @@ export const LayerOrder = {
 };
 
 export const LayerOverrideDemo = {
-	render: () => html`
+  render: () => html`
 		<style>
 			/* This override is unlayered, so it beats all layers */
 			.layer-demo-override {
@@ -62,7 +62,7 @@ export const LayerOverrideDemo = {
 };
 
 export const AllLayers = {
-	render: () => html`
+  render: () => html`
 		<style>
 			.layers-grid {
 				display: grid;

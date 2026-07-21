@@ -1,11 +1,11 @@
 {
-	"ref": {
-		"typography": {
-			"font-family": {
-				"quicksand": {
-					"value": "Quicksand, {ref.typography.font-family.system}"
-				}
-			}
-		}
-	}
+  "ref": {
+    "typography": {
+      "font-family": {
+        "quicksand": {
+          "value": "Quicksand, {ref.typography.font-family.system}"
+        }
+      }
+    }
+  }
 }

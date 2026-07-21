@@ -1,14 +1,14 @@
 {
-	"ref": {
-		"border": {
-			"style": {
-				"solid": {
-					"value": "solid"
-				},
-				"none": {
-					"value": "none"
-				}
-			}
-		}
-	}
+  "ref": {
+    "border": {
+      "style": {
+        "solid": {
+          "value": "solid"
+        },
+        "none": {
+          "value": "none"
+        }
+      }
+    }
+  }
 }
