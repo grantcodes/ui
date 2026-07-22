@@ -29,7 +29,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "attribute": "title"
             }
           ],
@@ -47,7 +47,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "title"
             }
           ],
@@ -432,7 +432,7 @@
                 "text": "string"
               },
               "description": "Alt attribute text",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "alt"
             },
             {
@@ -466,7 +466,7 @@
                 "text": "string"
               },
               "description": "Optional initials, used when there is no src set",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "initials"
             },
             {
@@ -477,7 +477,7 @@
                 "text": "string"
               },
               "description": "The full name of the person",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "name"
             },
             {
@@ -488,7 +488,7 @@
                 "text": "string"
               },
               "description": "Size variant: 'small', 'medium', or 'large'",
-              "default": "\"medium\"",
+              "default": "'medium'",
               "attribute": "size"
             },
             {
@@ -499,7 +499,7 @@
                 "text": "string"
               },
               "description": "Image source for the avatar",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "src"
             }
           ],
@@ -510,7 +510,7 @@
                 "text": "string"
               },
               "description": "Alt attribute text",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "alt"
             },
             {
@@ -519,7 +519,7 @@
                 "text": "string"
               },
               "description": "Optional initials, used when there is no src set",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "initials"
             },
             {
@@ -528,7 +528,7 @@
                 "text": "string"
               },
               "description": "The full name of the person",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "name"
             },
             {
@@ -537,7 +537,7 @@
                 "text": "string"
               },
               "description": "Size variant: 'small', 'medium', or 'large'",
-              "default": "\"medium\"",
+              "default": "'medium'",
               "fieldName": "size"
             },
             {
@@ -546,7 +546,7 @@
                 "text": "string"
               },
               "description": "Image source for the avatar",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "src"
             }
           ],
@@ -634,7 +634,7 @@
                 "text": "'primary' | 'success' | 'warning' | 'error' | 'info' | 'neutral'"
               },
               "description": "Visual variant of the badge",
-              "default": "\"neutral\"",
+              "default": "'neutral'",
               "attribute": "variant"
             }
           ],
@@ -645,7 +645,7 @@
                 "text": "'primary' | 'success' | 'warning' | 'error' | 'info' | 'neutral'"
               },
               "description": "Visual variant of the badge",
-              "default": "\"neutral\"",
+              "default": "'neutral'",
               "fieldName": "variant"
             }
           ],
@@ -737,7 +737,7 @@
                 "text": "string"
               },
               "description": "Custom separator between breadcrumb items",
-              "default": "\"/\"",
+              "default": "'/'",
               "attribute": "separator"
             }
           ],
@@ -748,7 +748,7 @@
                 "text": "string"
               },
               "description": "Custom separator between breadcrumb items",
-              "default": "\"/\"",
+              "default": "'/'",
               "fieldName": "separator"
             }
           ],
@@ -785,7 +785,7 @@
                 "text": "string"
               },
               "description": "URL for the breadcrumb item",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "href"
             }
           ],
@@ -805,7 +805,7 @@
                 "text": "string"
               },
               "description": "URL for the breadcrumb item",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "href"
             }
           ],
@@ -1044,7 +1044,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "attribute": "href"
             },
             {
@@ -1054,7 +1054,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "attribute": "name"
             },
             {
@@ -1064,7 +1064,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"button\"",
+              "default": "'button'",
               "attribute": "type"
             },
             {
@@ -1074,7 +1074,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "attribute": "value"
             }
           ],
@@ -1099,7 +1099,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "href"
             },
             {
@@ -1107,7 +1107,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "name"
             },
             {
@@ -1115,7 +1115,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"button\"",
+              "default": "'button'",
               "fieldName": "type"
             },
             {
@@ -1123,7 +1123,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "value"
             }
           ],
@@ -1343,7 +1343,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"html\"",
+              "default": "'html'",
               "attribute": "language"
             },
             {
@@ -1353,7 +1353,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"aurora-x\"",
+              "default": "'aurora-x'",
               "attribute": "theme"
             }
           ],
@@ -1363,7 +1363,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"html\"",
+              "default": "'html'",
               "fieldName": "language"
             },
             {
@@ -1371,7 +1371,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"aurora-x\"",
+              "default": "'aurora-x'",
               "fieldName": "theme"
             }
           ],
@@ -1458,7 +1458,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"default\"",
+              "default": "'default'",
               "attribute": "align"
             },
             {
@@ -1478,7 +1478,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"default\"",
+              "default": "'default'",
               "fieldName": "align"
             },
             {
@@ -1591,7 +1591,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"---\"",
+              "default": "'---'",
               "attribute": "_days"
             },
             {
@@ -1601,7 +1601,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"--\"",
+              "default": "'--'",
               "attribute": "_hours"
             },
             {
@@ -1619,7 +1619,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"--\"",
+              "default": "'--'",
               "attribute": "_minutes"
             },
             {
@@ -1639,7 +1639,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"--\"",
+              "default": "'--'",
               "attribute": "_seconds"
             },
             {
@@ -1656,7 +1656,7 @@
             },
             {
               "kind": "field",
-              "name": "\"days-label\"",
+              "name": "'days-label'",
               "privacy": "public",
               "type": {
                 "text": "string"
@@ -1666,7 +1666,7 @@
             },
             {
               "kind": "field",
-              "name": "\"hours-label\"",
+              "name": "'hours-label'",
               "privacy": "public",
               "type": {
                 "text": "string"
@@ -1676,7 +1676,7 @@
             },
             {
               "kind": "field",
-              "name": "\"minutes-label\"",
+              "name": "'minutes-label'",
               "privacy": "public",
               "type": {
                 "text": "string"
@@ -1686,7 +1686,7 @@
             },
             {
               "kind": "field",
-              "name": "\"past-message\"",
+              "name": "'past-message'",
               "privacy": "public",
               "type": {
                 "text": "string"
@@ -1696,7 +1696,7 @@
             },
             {
               "kind": "field",
-              "name": "\"seconds-label\"",
+              "name": "'seconds-label'",
               "privacy": "public",
               "type": {
                 "text": "string"
@@ -1706,7 +1706,7 @@
             },
             {
               "kind": "field",
-              "name": "\"show-seconds\"",
+              "name": "'show-seconds'",
               "privacy": "public",
               "type": {
                 "text": "boolean"
@@ -1722,7 +1722,7 @@
                 "text": "string"
               },
               "description": "ISO 8601 datetime string for the countdown target.",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "target"
             }
           ],
@@ -1732,7 +1732,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"---\"",
+              "default": "'---'",
               "fieldName": "_days"
             },
             {
@@ -1740,7 +1740,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"--\"",
+              "default": "'--'",
               "fieldName": "_hours"
             },
             {
@@ -1748,7 +1748,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"--\"",
+              "default": "'--'",
               "fieldName": "_minutes"
             },
             {
@@ -1764,7 +1764,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"--\"",
+              "default": "'--'",
               "fieldName": "_seconds"
             },
             {
@@ -1773,7 +1773,7 @@
                 "text": "string"
               },
               "description": "Label for the days unit.",
-              "fieldName": "\"days-label\""
+              "fieldName": "'days-label'"
             },
             {
               "name": "hours-label",
@@ -1781,7 +1781,7 @@
                 "text": "string"
               },
               "description": "Label for the hours unit.",
-              "fieldName": "\"hours-label\""
+              "fieldName": "'hours-label'"
             },
             {
               "name": "minutes-label",
@@ -1789,7 +1789,7 @@
                 "text": "string"
               },
               "description": "Label for the minutes unit.",
-              "fieldName": "\"minutes-label\""
+              "fieldName": "'minutes-label'"
             },
             {
               "name": "past-message",
@@ -1797,7 +1797,7 @@
                 "text": "string"
               },
               "description": "Message displayed when the target date has passed.",
-              "fieldName": "\"past-message\""
+              "fieldName": "'past-message'"
             },
             {
               "name": "seconds-label",
@@ -1805,7 +1805,7 @@
                 "text": "string"
               },
               "description": "Label for the seconds unit (only shown when show-seconds is true).",
-              "fieldName": "\"seconds-label\""
+              "fieldName": "'seconds-label'"
             },
             {
               "name": "show-seconds",
@@ -1813,7 +1813,7 @@
                 "text": "boolean"
               },
               "description": "Whether to show a seconds unit.",
-              "fieldName": "\"show-seconds\""
+              "fieldName": "'show-seconds'"
             },
             {
               "name": "target",
@@ -1821,7 +1821,7 @@
                 "text": "string"
               },
               "description": "ISO 8601 datetime string for the countdown target.",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "target"
             }
           ],
@@ -1919,7 +1919,7 @@
                 "text": "string"
               },
               "description": "Text alignment of the block.",
-              "default": "\"center\"",
+              "default": "'center'",
               "attribute": "align",
               "reflects": true
             },
@@ -1931,7 +1931,7 @@
                 "text": "string"
               },
               "description": "Small label shown above the title.",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "eyebrow"
             },
             {
@@ -1942,7 +1942,7 @@
                 "text": "string"
               },
               "description": "Primary CTA as a JSON string: `{\"label\":\"...\",\"href\":\"...\"}`.",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "primary-action"
             },
             {
@@ -1953,7 +1953,7 @@
                 "text": "string"
               },
               "description": "Secondary CTA as a JSON string: `{\"label\":\"...\",\"href\":\"...\"}`.",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "secondary-action"
             },
             {
@@ -1964,7 +1964,7 @@
                 "text": "string"
               },
               "description": "Supporting paragraph text.",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "text"
             },
             {
@@ -1975,7 +1975,7 @@
                 "text": "string"
               },
               "description": "Main heading text.",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "title"
             }
           ],
@@ -1986,7 +1986,7 @@
                 "text": "string"
               },
               "description": "Text alignment of the block.",
-              "default": "\"center\"",
+              "default": "'center'",
               "fieldName": "align"
             },
             {
@@ -1995,7 +1995,7 @@
                 "text": "string"
               },
               "description": "Small label shown above the title.",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "eyebrow"
             },
             {
@@ -2004,7 +2004,7 @@
                 "text": "string"
               },
               "description": "Primary CTA as a JSON string: `{\"label\":\"...\",\"href\":\"...\"}`.",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "primaryAction"
             },
             {
@@ -2013,7 +2013,7 @@
                 "text": "string"
               },
               "description": "Secondary CTA as a JSON string: `{\"label\":\"...\",\"href\":\"...\"}`.",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "secondaryAction"
             },
             {
@@ -2022,7 +2022,7 @@
                 "text": "string"
               },
               "description": "Supporting paragraph text.",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "text"
             },
             {
@@ -2031,7 +2031,7 @@
                 "text": "string"
               },
               "description": "Main heading text.",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "title"
             }
           ],
@@ -2307,7 +2307,7 @@
                 "text": "string"
               },
               "description": "Placement of the dropdown menu",
-              "default": "\"bottom-start\"",
+              "default": "'bottom-start'",
               "attribute": "placement"
             }
           ],
@@ -2344,7 +2344,7 @@
                 "text": "string"
               },
               "description": "Placement of the dropdown menu",
-              "default": "\"bottom-start\"",
+              "default": "'bottom-start'",
               "fieldName": "placement"
             }
           ],
@@ -2556,7 +2556,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\""
+              "default": "''"
             },
             {
               "kind": "field",
@@ -2698,7 +2698,7 @@
                 "text": "string"
               },
               "description": "Feature items as a JSON string array: `[{\"title\":\"...\",\"description\":\"...\",\"icon\":\"...\",\"href\":\"...\"}]`.",
-              "default": "\"[]\"",
+              "default": "'[]'",
               "attribute": "items"
             },
             {
@@ -2709,7 +2709,7 @@
                 "text": "string"
               },
               "description": "Optional supporting text below the heading.",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "subtitle"
             },
             {
@@ -2720,7 +2720,7 @@
                 "text": "string"
               },
               "description": "Optional section heading.",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "title"
             }
           ],
@@ -2740,7 +2740,7 @@
                 "text": "string"
               },
               "description": "Feature items as a JSON string array: `[{\"title\":\"...\",\"description\":\"...\",\"icon\":\"...\",\"href\":\"...\"}]`.",
-              "default": "\"[]\"",
+              "default": "'[]'",
               "fieldName": "items"
             },
             {
@@ -2749,7 +2749,7 @@
                 "text": "string"
               },
               "description": "Optional supporting text below the heading.",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "subtitle"
             },
             {
@@ -2758,7 +2758,7 @@
                 "text": "string"
               },
               "description": "Optional section heading.",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "title"
             }
           ],
@@ -3004,7 +3004,7 @@
                 "text": "'vertical' | 'horizontal'"
               },
               "description": "Direction of the field. Generally want horizontal for checkboxes and radios.",
-              "default": "\"vertical\"",
+              "default": "'vertical'",
               "attribute": "direction"
             },
             {
@@ -3073,7 +3073,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "attribute": "label",
               "reflects": true
             }
@@ -3085,7 +3085,7 @@
                 "text": "'vertical' | 'horizontal'"
               },
               "description": "Direction of the field. Generally want horizontal for checkboxes and radios.",
-              "default": "\"vertical\"",
+              "default": "'vertical'",
               "fieldName": "direction"
             },
             {
@@ -3109,7 +3109,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "label"
             }
           ],
@@ -3196,7 +3196,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "attribute": "alt"
             },
             {
@@ -3206,7 +3206,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "attribute": "caption"
             },
             {
@@ -3230,7 +3230,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "attribute": "src"
             },
             {
@@ -3240,7 +3240,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "attribute": "thumbnail"
             },
             {
@@ -3260,7 +3260,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "alt"
             },
             {
@@ -3268,7 +3268,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "caption"
             },
             {
@@ -3284,7 +3284,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "src"
             },
             {
@@ -3292,7 +3292,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "thumbnail"
             },
             {
@@ -3380,7 +3380,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"default\"",
+              "default": "'default'",
               "attribute": "variant",
               "reflects": true
             }
@@ -3391,7 +3391,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"default\"",
+              "default": "'default'",
               "fieldName": "variant"
             }
           ],
@@ -3487,7 +3487,7 @@
                 "text": "string"
               },
               "description": "Label for the CTA button. Only rendered when `href` is also set.",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "button"
             },
             {
@@ -3510,7 +3510,7 @@
                 "text": "string"
               },
               "description": "URL the CTA button links to.",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "href"
             },
             {
@@ -3521,7 +3521,7 @@
                 "text": "string"
               },
               "description": "Controls the vertical height of the hero section.",
-              "default": "\"md\"",
+              "default": "'md'",
               "attribute": "size",
               "reflects": true
             },
@@ -3533,7 +3533,7 @@
                 "text": "string"
               },
               "description": "Supporting paragraph text shown below the title.",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "subtitle"
             },
             {
@@ -3544,7 +3544,7 @@
                 "text": "string"
               },
               "description": "Main heading text.",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "title"
             }
           ],
@@ -3555,7 +3555,7 @@
                 "text": "string"
               },
               "description": "Label for the CTA button. Only rendered when `href` is also set.",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "button"
             },
             {
@@ -3573,7 +3573,7 @@
                 "text": "string"
               },
               "description": "URL the CTA button links to.",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "href"
             },
             {
@@ -3582,7 +3582,7 @@
                 "text": "string"
               },
               "description": "Controls the vertical height of the hero section.",
-              "default": "\"md\"",
+              "default": "'md'",
               "fieldName": "size"
             },
             {
@@ -3591,7 +3591,7 @@
                 "text": "string"
               },
               "description": "Supporting paragraph text shown below the title.",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "subtitle"
             },
             {
@@ -3600,7 +3600,7 @@
                 "text": "string"
               },
               "description": "Main heading text.",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "title"
             }
           ],
@@ -3860,7 +3860,7 @@
                 "text": "string"
               },
               "description": "Logo items as a JSON string array: `[{\"name\":\"...\",\"src\":\"...\",\"alt\":\"...\",\"href\":\"...\"}]`.",
-              "default": "\"[]\"",
+              "default": "'[]'",
               "attribute": "logos"
             },
             {
@@ -3871,7 +3871,7 @@
                 "text": "string"
               },
               "description": "Optional label shown above the logos.",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "title"
             }
           ],
@@ -3882,7 +3882,7 @@
                 "text": "string"
               },
               "description": "Logo items as a JSON string array: `[{\"name\":\"...\",\"src\":\"...\",\"alt\":\"...\",\"href\":\"...\"}]`.",
-              "default": "\"[]\"",
+              "default": "'[]'",
               "fieldName": "logos"
             },
             {
@@ -3891,7 +3891,7 @@
                 "text": "string"
               },
               "description": "Optional label shown above the logos.",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "title"
             }
           ],
@@ -3977,7 +3977,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\""
+              "default": "''"
             },
             {
               "kind": "field",
@@ -4022,7 +4022,7 @@
             },
             {
               "kind": "field",
-              "name": "\"directions-url\"",
+              "name": "'directions-url'",
               "privacy": "public",
               "type": {
                 "text": "string"
@@ -4038,7 +4038,7 @@
                 "text": "string"
               },
               "description": "Height of the map. Accepts any CSS length value.",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "height"
             },
             {
@@ -4049,7 +4049,7 @@
                 "text": "string"
               },
               "description": "Accessible label for the map iframe.",
-              "default": "\"Map\"",
+              "default": "'Map'",
               "attribute": "label"
             },
             {
@@ -4060,7 +4060,7 @@
                 "text": "string"
               },
               "description": "Latitude coordinate.",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "lat"
             },
             {
@@ -4071,7 +4071,7 @@
                 "text": "string"
               },
               "description": "Longitude coordinate.",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "lng"
             },
             {
@@ -4093,7 +4093,7 @@
                 "text": "string"
               },
               "description": "URL for a \"Get directions\" link below the map.",
-              "fieldName": "\"directions-url\""
+              "fieldName": "'directions-url'"
             },
             {
               "name": "height",
@@ -4101,7 +4101,7 @@
                 "text": "string"
               },
               "description": "Height of the map. Accepts any CSS length value.",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "height"
             },
             {
@@ -4110,7 +4110,7 @@
                 "text": "string"
               },
               "description": "Accessible label for the map iframe.",
-              "default": "\"Map\"",
+              "default": "'Map'",
               "fieldName": "label"
             },
             {
@@ -4119,7 +4119,7 @@
                 "text": "string"
               },
               "description": "Latitude coordinate.",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "lat"
             },
             {
@@ -4128,7 +4128,7 @@
                 "text": "string"
               },
               "description": "Longitude coordinate.",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "lng"
             },
             {
@@ -4235,7 +4235,7 @@
                 "text": "string"
               },
               "description": "Optional CTA as a JSON string: `{\"label\":\"...\",\"href\":\"...\"}`.",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "cta"
             },
             {
@@ -4246,7 +4246,7 @@
                 "text": "string"
               },
               "description": "Media object as a JSON string: `{\"src\":\"...\",\"alt\":\"...\",\"kind\":\"image|video\"}`.",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "media"
             },
             {
@@ -4269,7 +4269,7 @@
                 "text": "string"
               },
               "description": "Body text paragraph.",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "text"
             },
             {
@@ -4280,7 +4280,7 @@
                 "text": "string"
               },
               "description": "Section heading.",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "title"
             }
           ],
@@ -4291,7 +4291,7 @@
                 "text": "string"
               },
               "description": "Optional CTA as a JSON string: `{\"label\":\"...\",\"href\":\"...\"}`.",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "cta"
             },
             {
@@ -4300,7 +4300,7 @@
                 "text": "string"
               },
               "description": "Media object as a JSON string: `{\"src\":\"...\",\"alt\":\"...\",\"kind\":\"image|video\"}`.",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "media"
             },
             {
@@ -4318,7 +4318,7 @@
                 "text": "string"
               },
               "description": "Body text paragraph.",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "text"
             },
             {
@@ -4327,7 +4327,7 @@
                 "text": "string"
               },
               "description": "Section heading.",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "title"
             }
           ],
@@ -4415,7 +4415,7 @@
                 "text": "string"
               },
               "description": "Form action URL.",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "action"
             },
             {
@@ -4426,7 +4426,7 @@
                 "text": "string"
               },
               "description": "Submit button label.",
-              "default": "\"Subscribe\"",
+              "default": "'Subscribe'",
               "attribute": "button-label"
             },
             {
@@ -4437,7 +4437,7 @@
                 "text": "string"
               },
               "description": "Optional small disclaimer text below the form.",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "disclaimer"
             },
             {
@@ -4448,7 +4448,7 @@
                 "text": "string"
               },
               "description": "Form submission method.",
-              "default": "\"post\"",
+              "default": "'post'",
               "attribute": "method"
             },
             {
@@ -4459,7 +4459,7 @@
                 "text": "string"
               },
               "description": "Email input placeholder.",
-              "default": "\"Your email address\"",
+              "default": "'Your email address'",
               "attribute": "placeholder"
             },
             {
@@ -4470,7 +4470,7 @@
                 "text": "string"
               },
               "description": "Optional supporting paragraph.",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "text"
             },
             {
@@ -4481,7 +4481,7 @@
                 "text": "string"
               },
               "description": "Section heading.",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "title"
             }
           ],
@@ -4492,7 +4492,7 @@
                 "text": "string"
               },
               "description": "Form action URL.",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "action"
             },
             {
@@ -4501,7 +4501,7 @@
                 "text": "string"
               },
               "description": "Submit button label.",
-              "default": "\"Subscribe\"",
+              "default": "'Subscribe'",
               "fieldName": "buttonLabel"
             },
             {
@@ -4510,7 +4510,7 @@
                 "text": "string"
               },
               "description": "Optional small disclaimer text below the form.",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "disclaimer"
             },
             {
@@ -4519,7 +4519,7 @@
                 "text": "string"
               },
               "description": "Form submission method.",
-              "default": "\"post\"",
+              "default": "'post'",
               "fieldName": "method"
             },
             {
@@ -4528,7 +4528,7 @@
                 "text": "string"
               },
               "description": "Email input placeholder.",
-              "default": "\"Your email address\"",
+              "default": "'Your email address'",
               "fieldName": "placeholder"
             },
             {
@@ -4537,7 +4537,7 @@
                 "text": "string"
               },
               "description": "Optional supporting paragraph.",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "text"
             },
             {
@@ -4546,7 +4546,7 @@
                 "text": "string"
               },
               "description": "Section heading.",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "title"
             }
           ],
@@ -4633,7 +4633,7 @@
                 "text": "object"
               },
               "static": true,
-              "default": "{ \"grancodes-icon\": GrantCodesIcon }"
+              "default": "{ 'grancodes-icon': GrantCodesIcon }"
             },
             {
               "kind": "field",
@@ -4665,7 +4665,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "attribute": "title"
             },
             {
@@ -4675,7 +4675,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"info\"",
+              "default": "'info'",
               "attribute": "variant"
             }
           ],
@@ -4693,7 +4693,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "title"
             },
             {
@@ -4701,7 +4701,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"info\"",
+              "default": "'info'",
               "fieldName": "variant"
             }
           ],
@@ -4788,7 +4788,7 @@
                 "text": "object"
               },
               "static": true,
-              "default": "{ \"grantcodes-button\": GrantCodesButton }"
+              "default": "{ 'grantcodes-button': GrantCodesButton }"
             },
             {
               "kind": "field",
@@ -4797,7 +4797,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "attribute": "next-href"
             },
             {
@@ -4831,7 +4831,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "attribute": "previous-href"
             },
             {
@@ -4845,7 +4845,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "nextHref"
             },
             {
@@ -4869,7 +4869,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "previousHref"
             }
           ],
@@ -4956,7 +4956,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "attribute": "alt"
             },
             {
@@ -4966,7 +4966,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "attribute": "avatar"
             },
             {
@@ -4976,7 +4976,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "attribute": "company"
             },
             {
@@ -4991,7 +4991,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "attribute": "name"
             },
             {
@@ -5001,7 +5001,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "attribute": "role"
             },
             {
@@ -5011,7 +5011,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"medium\"",
+              "default": "'medium'",
               "attribute": "size"
             }
           ],
@@ -5021,7 +5021,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "alt"
             },
             {
@@ -5029,7 +5029,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "avatar"
             },
             {
@@ -5037,7 +5037,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "company"
             },
             {
@@ -5045,7 +5045,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "name"
             },
             {
@@ -5053,7 +5053,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "role"
             },
             {
@@ -5061,7 +5061,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"medium\"",
+              "default": "'medium'",
               "fieldName": "size"
             }
           ],
@@ -5154,7 +5154,7 @@
                 "text": "string"
               },
               "description": "Optional supporting text below the heading.",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "subtitle"
             },
             {
@@ -5165,7 +5165,7 @@
                 "text": "string"
               },
               "description": "Pricing tiers as a JSON string array.\nEach tier: `{\"name\":\"...\",\"price\":\"...\",\"period\":\"...\",\"description\":\"...\",\"features\":[{\"text\":\"...\",\"included\":true}],\"cta\":{\"label\":\"...\",\"href\":\"...\"},\"highlighted\":false}`.",
-              "default": "\"[]\"",
+              "default": "'[]'",
               "attribute": "tiers"
             },
             {
@@ -5176,7 +5176,7 @@
                 "text": "string"
               },
               "description": "Optional section heading.",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "title"
             }
           ],
@@ -5187,7 +5187,7 @@
                 "text": "string"
               },
               "description": "Optional supporting text below the heading.",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "subtitle"
             },
             {
@@ -5196,7 +5196,7 @@
                 "text": "string"
               },
               "description": "Pricing tiers as a JSON string array.\nEach tier: `{\"name\":\"...\",\"price\":\"...\",\"period\":\"...\",\"description\":\"...\",\"features\":[{\"text\":\"...\",\"included\":true}],\"cta\":{\"label\":\"...\",\"href\":\"...\"},\"highlighted\":false}`.",
-              "default": "\"[]\"",
+              "default": "'[]'",
               "fieldName": "tiers"
             },
             {
@@ -5205,7 +5205,7 @@
                 "text": "string"
               },
               "description": "Optional section heading.",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "title"
             }
           ],
@@ -5353,7 +5353,7 @@
                 "text": "'left' | 'right'"
               },
               "description": "Position of the sidebar",
-              "default": "\"left\"",
+              "default": "'left'",
               "attribute": "position"
             },
             {
@@ -5364,7 +5364,7 @@
                 "text": "string"
               },
               "description": "Custom width of the sidebar",
-              "default": "\"280px\"",
+              "default": "'280px'",
               "attribute": "width"
             }
           ],
@@ -5416,7 +5416,7 @@
                 "text": "'left' | 'right'"
               },
               "description": "Position of the sidebar",
-              "default": "\"left\"",
+              "default": "'left'",
               "fieldName": "position"
             },
             {
@@ -5425,7 +5425,7 @@
                 "text": "string"
               },
               "description": "Custom width of the sidebar",
-              "default": "\"280px\"",
+              "default": "'280px'",
               "fieldName": "width"
             }
           ],
@@ -5529,7 +5529,7 @@
                 "text": "string"
               },
               "description": "Stat items as a JSON string array: `[{\"label\":\"...\",\"value\":\"...\",\"context\":\"...\"}]`.",
-              "default": "\"[]\"",
+              "default": "'[]'",
               "attribute": "items"
             },
             {
@@ -5540,7 +5540,7 @@
                 "text": "string"
               },
               "description": "Optional section heading.",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "title"
             }
           ],
@@ -5560,7 +5560,7 @@
                 "text": "string"
               },
               "description": "Stat items as a JSON string array: `[{\"label\":\"...\",\"value\":\"...\",\"context\":\"...\"}]`.",
-              "default": "\"[]\"",
+              "default": "'[]'",
               "fieldName": "items"
             },
             {
@@ -5569,7 +5569,7 @@
                 "text": "string"
               },
               "description": "Optional section heading.",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "title"
             }
           ],
@@ -5635,7 +5635,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/tabs/tabs.js"
+            "module": "src/components/tabs/tab.js"
           }
         },
         {
@@ -5643,7 +5643,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/tabs/tab.js"
+            "module": "src/components/tabs/tabs.js"
           }
         }
       ]
@@ -5693,7 +5693,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "attribute": "containerId",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
@@ -5735,7 +5735,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "attribute": "label",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
@@ -5802,7 +5802,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "containerId",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
@@ -5838,7 +5838,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "label",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
@@ -5955,7 +5955,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "attribute": "containerId",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
@@ -5997,7 +5997,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "attribute": "label",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
@@ -6055,7 +6055,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "containerId",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
@@ -6091,7 +6091,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "label",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
@@ -6200,7 +6200,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "attribute": "label"
             },
             {
@@ -6238,7 +6238,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "label"
             }
           ],
@@ -6347,7 +6347,7 @@
                 "text": "string"
               },
               "description": "Testimonial items as a JSON string array: `[{\"quote\":\"...\",\"name\":\"...\",\"role\":\"...\",\"company\":\"...\",\"avatar\":\"...\"}]`.",
-              "default": "\"[]\"",
+              "default": "'[]'",
               "attribute": "items"
             },
             {
@@ -6358,7 +6358,7 @@
                 "text": "string"
               },
               "description": "Display layout of the testimonials.",
-              "default": "\"cards\"",
+              "default": "'cards'",
               "attribute": "layout",
               "reflects": true
             },
@@ -6370,7 +6370,7 @@
                 "text": "string"
               },
               "description": "Optional section heading.",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "title"
             }
           ],
@@ -6381,7 +6381,7 @@
                 "text": "string"
               },
               "description": "Testimonial items as a JSON string array: `[{\"quote\":\"...\",\"name\":\"...\",\"role\":\"...\",\"company\":\"...\",\"avatar\":\"...\"}]`.",
-              "default": "\"[]\"",
+              "default": "'[]'",
               "fieldName": "items"
             },
             {
@@ -6390,7 +6390,7 @@
                 "text": "string"
               },
               "description": "Display layout of the testimonials.",
-              "default": "\"cards\"",
+              "default": "'cards'",
               "fieldName": "layout"
             },
             {
@@ -6399,7 +6399,7 @@
                 "text": "string"
               },
               "description": "Optional section heading.",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "title"
             }
           ],
@@ -6514,7 +6514,7 @@
                 "text": "object"
               },
               "static": true,
-              "default": "{ \"grancodes-icon\": GrantCodesIcon }"
+              "default": "{ 'grancodes-icon': GrantCodesIcon }"
             },
             {
               "kind": "field",
@@ -6546,7 +6546,7 @@
                 "text": "'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right'"
               },
               "description": "Toast position",
-              "default": "\"top-right\"",
+              "default": "'top-right'",
               "attribute": "position"
             },
             {
@@ -6557,7 +6557,7 @@
                 "text": "string"
               },
               "description": "Toast title",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "title"
             },
             {
@@ -6568,7 +6568,7 @@
                 "text": "'info' | 'success' | 'warning' | 'error'"
               },
               "description": "Visual variant",
-              "default": "\"info\"",
+              "default": "'info'",
               "attribute": "variant"
             }
           ],
@@ -6614,7 +6614,7 @@
                 "text": "'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right'"
               },
               "description": "Toast position",
-              "default": "\"top-right\"",
+              "default": "'top-right'",
               "fieldName": "position"
             },
             {
@@ -6623,7 +6623,7 @@
                 "text": "string"
               },
               "description": "Toast title",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "title"
             },
             {
@@ -6632,7 +6632,7 @@
                 "text": "'info' | 'success' | 'warning' | 'error'"
               },
               "description": "Visual variant",
-              "default": "\"info\"",
+              "default": "'info'",
               "fieldName": "variant"
             }
           ],
@@ -6658,7 +6658,7 @@
                 "text": "'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right'"
               },
               "description": "Position of the toast container",
-              "default": "\"top-right\"",
+              "default": "'top-right'",
               "attribute": "position"
             }
           ],
@@ -6669,7 +6669,7 @@
                 "text": "'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right'"
               },
               "description": "Position of the toast container",
-              "default": "\"top-right\"",
+              "default": "'top-right'",
               "fieldName": "position"
             }
           ],
@@ -6773,7 +6773,7 @@
                 "text": "string"
               },
               "description": "Description for the tooltip, used when the tooltip is additional descriptive text for the item.",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "description"
             },
             {
@@ -6788,7 +6788,7 @@
                 "text": "string"
               },
               "description": "Label for the tooltip, used when the tooltip is the main label for the item.",
-              "default": "\"\"",
+              "default": "''",
               "attribute": "label"
             },
             {
@@ -6807,7 +6807,7 @@
                 "text": "string"
               },
               "description": "Description for the tooltip, used when the tooltip is additional descriptive text for the item.",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "description"
             },
             {
@@ -6816,7 +6816,7 @@
                 "text": "string"
               },
               "description": "Label for the tooltip, used when the tooltip is the main label for the item.",
-              "default": "\"\"",
+              "default": "''",
               "fieldName": "label"
             }
           ],
