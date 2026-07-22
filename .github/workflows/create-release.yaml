@@ -43,7 +43,17 @@ jobs:
         if: ${{ steps.release.outputs.releases_created }}
 
       - run: pnpm build
-        name: Run build
+        name: Run build (includes CEM regeneration for @grantcodes/ui)
+        if: ${{ steps.release.outputs.releases_created }}
+
+      # Regenerate derived artifacts from the just-built CEM, then verify
+      # the working tree is clean — any diff aborts the publish.
+      - name: Regenerate Astro component typings from CEM
+        run: pnpm --filter @grantcodes/astro gen:props
+        if: ${{ steps.release.outputs.releases_created }}
+
+      - name: Check for dirty working tree (generated artifact drift)
+        run: git diff --exit-code
         if: ${{ steps.release.outputs.releases_created }}
 
       - name: Publish @grantcodes/ui
