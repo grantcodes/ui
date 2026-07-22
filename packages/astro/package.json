@@ -40,23 +40,23 @@
   "homepage": "https://github.com/grantcodes/ui#readme",
   "license": "MIT",
   "dependencies": {
-    "@grantcodes/style-dictionary": "^1.5.1",
-    "@grantcodes/ui": "^2.12.0",
-    "@lit-labs/ssr": "^3.3.1",
+    "@grantcodes/style-dictionary": "^1.10.2",
+    "@grantcodes/ui": "^2.15.7",
+    "@lit-labs/ssr": "^4.1.0",
     "@lit-labs/ssr-client": "^1.1.8",
     "@lit-labs/ssr-dom-shim": "^1.6.0",
     "@resvg/resvg-js": "^2.6.2",
     "colorjs.io": "^0.7.0",
-    "marked": "^18.0.6",
+    "marked": "^18.0.7",
     "parse5": "^8.0.1",
-    "satori": "^0.28.0"
+    "satori": "^0.28.1"
   },
   "peerDependencies": {
     "astro": "^7.0.0",
     "lit": "^3.2.0"
   },
   "devDependencies": {
-    "astro": "^7.0.9",
+    "astro": "^7.1.3",
     "tsx": "^4.23.1"
   }
 }

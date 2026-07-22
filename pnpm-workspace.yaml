@@ -5,6 +5,8 @@ packages:
 overrides:
   lit: "^3.3.3"
 
+minimumReleaseAge: 0
+
 allowBuilds:
   esbuild: true
   rs-module-lexer: true

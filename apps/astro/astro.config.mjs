@@ -8,6 +8,7 @@ import { envDefaults } from './integrations/env-defaults.ts';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://grant.codes',
+  compressHTML: true,
   output: 'static',
   vite: {
     server: {

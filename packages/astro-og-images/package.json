@@ -25,14 +25,14 @@
   },
   "license": "MIT",
   "dependencies": {
-    "colorjs.io": "^0.5.2"
+    "colorjs.io": "^0.7.0",
+    "satori": "^0.28.1"
   },
   "peerDependencies": {
     "astro": "^7.0.0"
   },
   "devDependencies": {
-    "astro": "^7.0.9",
     "@resvg/resvg-js": "^2.6.2",
-    "satori": "^0.12.1"
+    "astro": "^7.1.3"
   }
 }
