@@ -37,6 +37,8 @@ pnpm test:style-dictionary
 
 - Do not manually update package version numbers in `package.json` files.
 - Versions are managed by the release process.
+- Release-please creates releases only from user-facing conventional commits: use `feat(<scope>):` for new shipped behavior and `fix(<scope>):` for shipped corrections.
+- `chore:`, `docs:`, and `test:` commits do not trigger a release. Split releasable product changes from maintenance work, or give the user-facing change its own `feat:`/`fix:` commit.
 
 ## Git Guidelines
 
