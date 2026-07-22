@@ -11,6 +11,7 @@
  */
 
 import { LitElementRenderer } from '@lit-labs/ssr/lib/lit-element-renderer.js';
+import { collectResultSync } from '@lit-labs/ssr/lib/render-result.js';
 import * as parse5 from 'parse5';
 import { getSsrConstructorDiagnostic } from './constructor-diagnostics.js';
 
@@ -104,7 +105,10 @@ function* render(
 		// match web platform behavior.
 		const delegatesfocusAttr = delegatesFocus ? ' shadowrootdelegatesfocus' : '';
 		yield `<template shadowroot="${mode}" shadowrootmode="${mode}"${delegatesfocusAttr}>`;
-		yield* shadowContents;
+		// In @lit-labs/ssr v4+, renderShadow() returns a ThunkedRenderResult
+		// (Array<string | Thunk>) instead of a RenderResult (Iterable<string | Promise>).
+		// collectResultSync resolves thunks synchronously for Lit template rendering.
+		yield collectResultSync(shadowContents);
 		yield '</template>';
 	}
 
