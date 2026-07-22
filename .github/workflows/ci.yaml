@@ -66,7 +66,13 @@ jobs:
         run: rm -rf .turbo
 
       - run: pnpm build --force
-        name: Build
+        name: Build (includes CEM regeneration for @grantcodes/ui)
+
+      # Regenerate derived artifacts from the just-built CEM, then verify
+      # the working tree is clean — any diff means a stale generated file
+      # was committed or a regeneration step is broken.
+      - name: Regenerate Astro component typings from CEM
+        run: pnpm --filter @grantcodes/astro gen:props
 
       - name: Check for dirty working tree (generated artifact drift)
         run: git diff --exit-code
