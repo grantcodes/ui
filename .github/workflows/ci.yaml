@@ -67,3 +67,6 @@ jobs:
 
       - run: pnpm build --force
         name: Build
+
+      - name: Check for dirty working tree (generated artifact drift)
+        run: git diff --exit-code
