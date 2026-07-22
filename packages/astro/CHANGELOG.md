@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.9](https://github.com/grantcodes/ui/compare/astro-v0.2.8...astro-v0.2.9) (2026-07-22)
+
+
+### Bug Fixes
+
+* **astro:** normalize generated CEM member names ([4f054ce](https://github.com/grantcodes/ui/commit/4f054ce32b5aabf4b3f1eeb37b7f3f14171b834b))
+
 ## [0.2.8](https://github.com/grantcodes/ui/compare/astro-v0.2.7...astro-v0.2.8) (2026-07-22)
 
 
