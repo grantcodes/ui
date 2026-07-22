@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.8](https://github.com/grantcodes/ui/compare/astro-v0.2.7...astro-v0.2.8) (2026-07-22)
+
+
+### Bug Fixes
+
+* **astro:** support Lit SSR 4 render results ([66c0786](https://github.com/grantcodes/ui/commit/66c0786a48d358d4a631c30713e886ef6e091475))
+
 ## [0.2.7](https://github.com/grantcodes/ui/compare/astro-v0.2.6...astro-v0.2.7) (2026-06-18)
 
 
