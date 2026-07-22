@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.15.8](https://github.com/grantcodes/ui/compare/ui-v2.15.7...ui-v2.15.8) (2026-07-22)
+
+
+### Bug Fixes
+
+* **ui:** regenerate custom elements manifest ([f568a17](https://github.com/grantcodes/ui/commit/f568a174d608fde297163defaa629eb7d541b2de))
+
 ## [2.15.7](https://github.com/grantcodes/ui/compare/ui-v2.15.6...ui-v2.15.7) (2026-06-09)
 
 
