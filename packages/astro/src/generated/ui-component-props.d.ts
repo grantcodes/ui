@@ -592,12 +592,6 @@ declare module "@grantcodes/ui/components/stats/index.js" {
 
 declare module "@grantcodes/ui/components/tabs/index.js" {
 
-  export interface TabsProps {
-    label?: string;
-  }
-
-  export function GrantCodesTabs(props: TabsProps & import("astro").AstroBuiltinAttributes): any;
-
   export interface TabProps {
     active?: boolean;
     buttonId?: string;
@@ -609,6 +603,12 @@ declare module "@grantcodes/ui/components/tabs/index.js" {
   }
 
   export function GrantCodesTab(props: TabProps & import("astro").AstroBuiltinAttributes): any;
+
+  export interface TabsProps {
+    label?: string;
+  }
+
+  export function GrantCodesTabs(props: TabsProps & import("astro").AstroBuiltinAttributes): any;
 
   export interface TabsButtonProps {
     active?: boolean;
@@ -622,8 +622,8 @@ declare module "@grantcodes/ui/components/tabs/index.js" {
 
   export function GrantCodesTabsButton(props: TabsButtonProps & import("astro").AstroBuiltinAttributes): any;
 
-  export { GrantCodesTabs };
   export { GrantCodesTab };
+  export { GrantCodesTabs };
   export { GrantCodesTabsButton };
 }
 

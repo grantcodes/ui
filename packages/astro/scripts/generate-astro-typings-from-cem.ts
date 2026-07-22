@@ -113,11 +113,19 @@ function cemTypeToTs(typeText: string | undefined): string {
   return "unknown";
 }
 
-// Clean a CEM member name: strip surrounding double quotes that Lit uses for
-// hyphenated property names (e.g. `"days-label"` → `days-label`).
+// Clean a CEM member name: strip surrounding single or double quote wrappers.
+//
+// The CEM analyzer wraps hyphenated property names in quotes (single or
+// double) so they remain valid JSON string values (e.g. `"'days-label'"` or
+// `'"days-label"'`).  We must strip those before using the name in TS prop
+// declarations.
 function cleanMemberName(raw: string): string {
   let s = raw.trim();
-  if (s.startsWith('"') && s.endsWith('"')) s = s.slice(1, -1);
+  const first = s[0];
+  const last = s[s.length - 1];
+  if ((first === '"' && last === '"') || (first === "'" && last === "'")) {
+    s = s.slice(1, -1);
+  }
   return s;
 }
 
