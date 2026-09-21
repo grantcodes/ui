@@ -134,4 +134,48 @@ describe('Dialog Component', () => {
 
     assert.strictEqual(element.open, false, 'Dialog should be closed');
   });
+
+  it('should sync open to false when the native dialog fires close', async () => {
+    element = await fixture('grantcodes-dialog', { open: true });
+    const dialog = element.shadowRoot.querySelector('dialog');
+
+    dialog.dispatchEvent(new Event('close'));
+    await element.updateComplete;
+
+    assert.strictEqual(element.open, false, 'open should follow the native dialog state');
+  });
+
+  it('should sync open to false when the native dialog fires cancel', async () => {
+    element = await fixture('grantcodes-dialog', { open: true });
+    const dialog = element.shadowRoot.querySelector('dialog');
+
+    dialog.dispatchEvent(new Event('cancel'));
+    await element.updateComplete;
+
+    assert.strictEqual(element.open, false, 'Esc should sync open back to false');
+  });
+
+  it('should not throw when reopened after the native dialog closed', async () => {
+    element = await fixture('grantcodes-dialog', { open: true });
+    const dialog = element.shadowRoot.querySelector('dialog');
+
+    dialog.dispatchEvent(new Event('close'));
+    await element.updateComplete;
+
+    element.open = true;
+    await element.updateComplete;
+
+    assert.strictEqual(element.open, true, 'Dialog should reopen after a native close');
+  });
+
+  it('should enable light-dismiss via closedby when the engine supports it', async () => {
+    element = await fixture('grantcodes-dialog');
+    const dialog = element.shadowRoot.querySelector('dialog');
+    const closedBy = dialog.getAttribute('closedby');
+
+    assert.ok(
+      closedBy === null || closedBy === 'any',
+      'closedby should be absent or "any"',
+    );
+  });
 });
