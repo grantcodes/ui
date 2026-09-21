@@ -39,6 +39,27 @@ export class GrantCodesFormField extends LitElement {
     if (!this.id) {
       this.id = generateId('form-field');
     }
+
+    this._revalidate = this._revalidate.bind(this);
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.addEventListener('input', this._revalidate);
+    // blur/invalid do not bubble, so they are caught on the way down.
+    this.addEventListener('blur', this._revalidate, true);
+    this.addEventListener('invalid', this._revalidate, true);
+  }
+
+  disconnectedCallback() {
+    this.removeEventListener('input', this._revalidate);
+    this.removeEventListener('blur', this._revalidate, true);
+    this.removeEventListener('invalid', this._revalidate, true);
+    super.disconnectedCallback();
+  }
+
+  _revalidate() {
+    this.requestUpdate();
   }
 
   get errorId() {
@@ -58,6 +79,14 @@ export class GrantCodesFormField extends LitElement {
       ids.push(this.helpId);
     }
     return ids.join(' ');
+  }
+
+  /** Errors stay hidden until the control reports :user-invalid. */
+  get showError() {
+    if (!this.error) return false;
+    const controls = this.querySelectorAll('input, select, textarea');
+    if (controls.length === 0) return true;
+    return Array.from(controls).some((control) => control.matches(':user-invalid'));
   }
 
   firstUpdated() {
@@ -80,17 +109,17 @@ export class GrantCodesFormField extends LitElement {
       return;
     }
 
-    this.syncDescribedBy();
+    this.syncControlAria();
   }
 
   updated(changedProperties) {
     if (changedProperties.has('error') || changedProperties.has('help')) {
-      this.syncDescribedBy();
+      this.syncControlAria();
     }
   }
 
-  /** Mirrors the current error/help ids onto the first control. */
-  syncDescribedBy() {
+  /** Mirrors the current error/help state onto the first control. */
+  syncControlAria() {
     const input = this.inputElements?.[0];
     if (!input) return;
 
@@ -98,6 +127,12 @@ export class GrantCodesFormField extends LitElement {
       input.setAttribute('aria-describedby', this.ariaDescribedBy);
     } else {
       input.removeAttribute('aria-describedby');
+    }
+
+    if (this.error) {
+      input.setAttribute('aria-invalid', 'true');
+    } else {
+      input.removeAttribute('aria-invalid');
     }
   }
 
@@ -112,7 +147,7 @@ export class GrantCodesFormField extends LitElement {
     }
 
     return html`
-      <p class="form-field__error" id=${this.errorId}>Error: ${this.error}</p>
+      <p class="form-field__error" id=${this.errorId} ?hidden=${!this.showError}>${this.error}</p>
     `;
   }
 
@@ -135,7 +170,7 @@ export class GrantCodesFormField extends LitElement {
       return html`
       <fieldset class=${wrapperClass}>
         <legend class="form-field__label">${this.label}</legend>
-        <slot></slot>
+        <slot @slotchange=${this._revalidate}></slot>
         ${this.errorTemplate()}
       </fieldset>
     `;
@@ -148,7 +183,7 @@ export class GrantCodesFormField extends LitElement {
             >${this.label}</span
           >
           ${this.helpTemplate()}
-          <slot></slot>
+          <slot @slotchange=${this._revalidate}></slot>
         </label>
         ${this.errorTemplate()}
       </div>

@@ -180,6 +180,62 @@ describe('Form Field Component', () => {
       'Description should be removed when error and help are cleared',
     );
   });
+
+  it('should keep aria-invalid in sync with the error state', async () => {
+    element = document.createElement('grantcodes-form-field');
+    element.label = 'Email';
+    element.innerHTML = '<input type="email" />';
+    document.body.appendChild(element);
+    await element.updateComplete;
+
+    const input = element.querySelector('input');
+    assert.strictEqual(input.hasAttribute('aria-invalid'), false, 'No error, no aria-invalid');
+
+    element.error = 'Invalid email';
+    await element.updateComplete;
+    assert.strictEqual(input.getAttribute('aria-invalid'), 'true', 'Error sets aria-invalid');
+
+    element.error = undefined;
+    await element.updateComplete;
+    assert.strictEqual(input.hasAttribute('aria-invalid'), false, 'Clearing clears aria-invalid');
+  });
+
+  it('should hold the error message until the control is user-invalid', async () => {
+    element = document.createElement('grantcodes-form-field');
+    element.label = 'Email';
+    element.error = 'Invalid email';
+    element.innerHTML = '<input type="email" />';
+    document.body.appendChild(element);
+    await element.updateComplete;
+
+    const error = element.shadowRoot.querySelector('.form-field__error');
+    assert.ok(error, 'Error text should be rendered');
+    assert.strictEqual(error.textContent.trim(), 'Invalid email', 'The "Error: " prefix is gone');
+    assert.ok(error.hasAttribute('hidden'), 'Untouched control must not show the error yet');
+
+    // happy-dom cannot put a control into :user-invalid, so the state is stubbed.
+    const input = element.querySelector('input');
+    input.matches = (selector) => selector === ':user-invalid';
+    input.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
+    await element.updateComplete;
+
+    assert.strictEqual(
+      element.shadowRoot.querySelector('.form-field__error').hasAttribute('hidden'),
+      false,
+      'Error should appear once the control is user-invalid',
+    );
+  });
+
+  it('should show the error when there is no control to validate', async () => {
+    element = await fixture('grantcodes-form-field', {
+      label: 'Email',
+      error: 'Invalid email',
+    });
+
+    const error = element.shadowRoot.querySelector('.form-field__error');
+    assert.ok(error, 'Error should render without a control');
+    assert.strictEqual(error.hasAttribute('hidden'), false, 'Nothing to validate, so show it');
+  });
   it('should leave checkbox activation to the wrapping label (single toggle)', async () => {
     // The shim omits the HTMLInputElement global and does not forward label clicks
     // to slotted controls; restore the global and emulate that activation click.
