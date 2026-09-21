@@ -39,8 +39,6 @@
   user-select: none;
   text-align: center;
   opacity: 0;
-  transition: opacity 0.2s;
-  transition-behavior: allow-discrete;
 
   /* Modern CSS Anchor Positioning API */
   /* This positions the tooltip relative to its anchor (the slot) */
@@ -67,13 +65,4 @@
 .tooltip__slot:focus-within + .tooltip__content {
   display: block;
   opacity: 1;
-}
-
-/* Optional: Position tooltip above when near bottom of viewport */
-@media (prefers-reduced-motion: no-preference) {
-  .tooltip__content {
-    @starting-style {
-      opacity: 0;
-    }
-  }
 }
