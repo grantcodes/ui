@@ -106,19 +106,6 @@ export class GrantCodesFormField extends LitElement {
     this.inputElements?.[0]?.focus();
   }
 
-  // handleError() {
-  //   if (this.error) {
-  //     const input = this.inputElements[0]
-  //     if (input) {
-  //       if (this.help) {
-  //         input.setAttribute('aria-describedby', `${this.errorId} ${this.helpId}`)
-  //       } else {
-  //         input.setAttribute('aria-describedby', this.errorId)
-  //       }
-  //     }
-  //   }
-  // }
-
   errorTemplate() {
     if (!this.error) {
       return html``;

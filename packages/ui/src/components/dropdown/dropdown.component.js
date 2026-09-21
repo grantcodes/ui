@@ -75,7 +75,6 @@ export class GrantCodesDropdown extends LitElement {
   }
 
   updated(changedProperties) {
-    console.log({ changedProperties });
     if (changedProperties.has('open')) {
       // Update aria-expanded on trigger
       const triggerSlot = this.renderRoot.querySelector('slot[name="trigger"]');

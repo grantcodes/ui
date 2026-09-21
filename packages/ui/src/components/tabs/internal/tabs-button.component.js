@@ -14,15 +14,6 @@ export class GrantCodesTabsButton extends GrantCodesTabsItem {
   static styles = [focusRingStyles, tabsStyles];
 
   render() {
-    console.log('GrantCodesTabsButton', this, {
-      active: this.active,
-      label: this.label,
-      index: this.index,
-      containerId: this.containerId,
-      buttonId: this.buttonId,
-      panelId: this.panelId,
-      content: this.content,
-    });
     return html`
 			<button
 				id="${this.buttonId}"
