@@ -56,9 +56,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-accordion-item",
-          "customElement": true,
-          "modulePath": "src/components/accordion/accordion-item.component.js",
-          "definitionPath": "src/components/accordion/index.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -86,9 +84,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-accordion",
-          "customElement": true,
-          "modulePath": "src/components/accordion/accordion.component.js",
-          "definitionPath": "src/components/accordion/index.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -292,9 +288,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-app-bar",
-          "customElement": true,
-          "modulePath": "src/components/app-bar/app-bar.component.js",
-          "definitionPath": "src/components/app-bar/app-bar.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -368,9 +362,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-nav-link",
-          "customElement": true,
-          "modulePath": "src/components/app-bar/nav-link.component.js",
-          "definitionPath": "src/components/app-bar/nav-link.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -555,9 +547,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-avatar",
-          "customElement": true,
-          "modulePath": "src/components/avatar/avatar.component.js",
-          "definitionPath": "src/components/avatar/avatar.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -654,9 +644,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-badge",
-          "customElement": true,
-          "modulePath": "src/components/badge/badge.component.js",
-          "definitionPath": "src/components/badge/badge.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -757,9 +745,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-breadcrumb",
-          "customElement": true,
-          "modulePath": "src/components/breadcrumb/breadcrumb.component.js",
-          "definitionPath": "src/components/breadcrumb/breadcrumb.js"
+          "customElement": true
         },
         {
           "kind": "class",
@@ -814,9 +800,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-breadcrumb-item",
-          "customElement": true,
-          "modulePath": "src/components/breadcrumb/breadcrumb.component.js",
-          "definitionPath": "src/components/breadcrumb/breadcrumb.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -906,9 +890,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-button-group",
-          "customElement": true,
-          "modulePath": "src/components/button-group/button-group.component.js",
-          "definitionPath": "src/components/button-group/button-group.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -1132,9 +1114,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-button",
-          "customElement": true,
-          "modulePath": "src/components/button/button.component.js",
-          "definitionPath": "src/components/button/button.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -1253,9 +1233,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-card",
-          "customElement": true,
-          "modulePath": "src/components/card/card.component.js",
-          "definitionPath": "src/components/card/card.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -1380,9 +1358,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-code-preview",
-          "customElement": true,
-          "modulePath": "src/components/code-preview/code-preview.component.js",
-          "definitionPath": "src/components/code-preview/code-preview.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -1495,9 +1471,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-container",
-          "customElement": true,
-          "modulePath": "src/components/container/container.component.js",
-          "definitionPath": "src/components/container/container.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -1830,9 +1804,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-countdown",
-          "customElement": true,
-          "modulePath": "src/components/countdown/countdown.component.js",
-          "definitionPath": "src/components/countdown/countdown.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -2040,9 +2012,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-cta",
-          "customElement": true,
-          "modulePath": "src/components/cta/cta.component.js",
-          "definitionPath": "src/components/cta/cta.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -2164,9 +2134,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-dialog",
-          "customElement": true,
-          "modulePath": "src/components/dialog/dialog.component.js",
-          "definitionPath": "src/components/dialog/dialog.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -2353,9 +2321,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-dropdown",
-          "customElement": true,
-          "modulePath": "src/components/dropdown/dropdown.component.js",
-          "definitionPath": "src/components/dropdown/dropdown.js"
+          "customElement": true
         },
         {
           "kind": "class",
@@ -2407,9 +2373,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-dropdown-item",
-          "customElement": true,
-          "modulePath": "src/components/dropdown/dropdown.component.js",
-          "definitionPath": "src/components/dropdown/dropdown.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -2585,9 +2549,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-dropzone",
-          "customElement": true,
-          "modulePath": "src/components/dropzone/dropzone.component.js",
-          "definitionPath": "src/components/dropzone/dropzone.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -2767,9 +2729,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-feature-list",
-          "customElement": true,
-          "modulePath": "src/components/feature-list/feature-list.component.js",
-          "definitionPath": "src/components/feature-list/feature-list.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -2843,9 +2803,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-footer-column",
-          "customElement": true,
-          "modulePath": "src/components/footer/footer-column.component.js",
-          "definitionPath": "src/components/footer/footer.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -2896,9 +2854,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-footer",
-          "customElement": true,
-          "modulePath": "src/components/footer/footer.component.js",
-          "definitionPath": "src/components/footer/footer.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -3118,9 +3074,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-form-field",
-          "customElement": true,
-          "modulePath": "src/components/form-field/form-field.component.js",
-          "definitionPath": "src/components/form-field/form-field.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -3309,9 +3263,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-gallery-image",
-          "customElement": true,
-          "modulePath": "src/components/gallery/gallery-image.component.js",
-          "definitionPath": "src/components/gallery/gallery-image.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -3400,9 +3352,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-gallery",
-          "customElement": true,
-          "modulePath": "src/components/gallery/gallery.component.js",
-          "definitionPath": "src/components/gallery/gallery.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -3609,9 +3559,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-hero",
-          "customElement": true,
-          "modulePath": "src/components/hero/hero.component.js",
-          "definitionPath": "src/components/hero/hero.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -3685,9 +3633,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-icon",
-          "customElement": true,
-          "modulePath": "src/components/icon/icon.component.js",
-          "definitionPath": "src/components/icon/icon.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -3776,9 +3722,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-loading",
-          "customElement": true,
-          "modulePath": "src/components/loading/loading.component.js",
-          "definitionPath": "src/components/loading/loading.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -3900,9 +3844,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-logo-cloud",
-          "customElement": true,
-          "modulePath": "src/components/logo-cloud/logo-cloud.component.js",
-          "definitionPath": "src/components/logo-cloud/logo-cloud.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -4146,9 +4088,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-map",
-          "customElement": true,
-          "modulePath": "src/components/map/map.component.js",
-          "definitionPath": "src/components/map/map.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -4336,9 +4276,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-media-text",
-          "customElement": true,
-          "modulePath": "src/components/media-text/media-text.component.js",
-          "definitionPath": "src/components/media-text/media-text.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -4555,9 +4493,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-newsletter",
-          "customElement": true,
-          "modulePath": "src/components/newsletter/newsletter.component.js",
-          "definitionPath": "src/components/newsletter/newsletter.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -4710,9 +4646,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-notice",
-          "customElement": true,
-          "modulePath": "src/components/notice/notice.component.js",
-          "definitionPath": "src/components/notice/notice.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -4878,9 +4812,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-pagination",
-          "customElement": true,
-          "modulePath": "src/components/pagination/pagination.component.js",
-          "definitionPath": "src/components/pagination/pagination.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -5070,9 +5002,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-person",
-          "customElement": true,
-          "modulePath": "src/components/person/person.component.js",
-          "definitionPath": "src/components/person/person.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -5214,9 +5144,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-pricing",
-          "customElement": true,
-          "modulePath": "src/components/pricing/pricing.component.js",
-          "definitionPath": "src/components/pricing/pricing.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -5434,9 +5362,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-sidebar",
-          "customElement": true,
-          "modulePath": "src/components/sidebar/sidebar.component.js",
-          "definitionPath": "src/components/sidebar/sidebar.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -5578,9 +5504,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-stats",
-          "customElement": true,
-          "modulePath": "src/components/stats/stats.component.js",
-          "definitionPath": "src/components/stats/stats.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -5857,9 +5781,7 @@
                 "module": "src/components/tabs/internal/tabs-item.component.js"
               }
             }
-          ],
-          "modulePath": "src/components/tabs/internal/tabs-button.component.js",
-          "definitionPath": "src/components/tabs/internal/tabs-button.js"
+          ]
         }
       ],
       "exports": [
@@ -6110,9 +6032,7 @@
                 "module": "src/components/tabs/internal/tabs-item.component.js"
               }
             }
-          ],
-          "modulePath": "src/components/tabs/tab.component.js",
-          "definitionPath": "src/components/tabs/tab.js"
+          ]
         }
       ],
       "exports": [
@@ -6247,9 +6167,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-tabs",
-          "customElement": true,
-          "modulePath": "src/components/tabs/tabs.component.js",
-          "definitionPath": "src/components/tabs/tabs.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -6408,9 +6326,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-testimonials",
-          "customElement": true,
-          "modulePath": "src/components/testimonials/testimonials.component.js",
-          "definitionPath": "src/components/testimonials/testimonials.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -6641,9 +6557,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-toast",
-          "customElement": true,
-          "modulePath": "src/components/toast/toast.component.js",
-          "definitionPath": "src/components/toast/toast.js"
+          "customElement": true
         },
         {
           "kind": "class",
@@ -6678,9 +6592,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-toast-container",
-          "customElement": true,
-          "modulePath": "src/components/toast/toast.component.js",
-          "definitionPath": "src/components/toast/toast.js"
+          "customElement": true
         }
       ],
       "exports": [
@@ -6825,9 +6737,7 @@
             "package": "lit"
           },
           "tagName": "grantcodes-tooltip",
-          "customElement": true,
-          "modulePath": "src/components/tooltip/tooltip.component.js",
-          "definitionPath": "src/components/tooltip/tooltip.js"
+          "customElement": true
         }
       ],
       "exports": [
