@@ -80,7 +80,25 @@ export class GrantCodesFormField extends LitElement {
       return;
     }
 
-    input.setAttribute('aria-describedby', this.ariaDescribedBy);
+    this.syncDescribedBy();
+  }
+
+  updated(changedProperties) {
+    if (changedProperties.has('error') || changedProperties.has('help')) {
+      this.syncDescribedBy();
+    }
+  }
+
+  /** Mirrors the current error/help ids onto the first control. */
+  syncDescribedBy() {
+    const input = this.inputElements?.[0];
+    if (!input) return;
+
+    if (this.ariaDescribedBy) {
+      input.setAttribute('aria-describedby', this.ariaDescribedBy);
+    } else {
+      input.removeAttribute('aria-describedby');
+    }
   }
 
   handleLabelClick() {

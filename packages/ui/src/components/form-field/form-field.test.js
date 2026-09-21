@@ -141,6 +141,45 @@ describe('Form Field Component', () => {
     assert.ok(slot, 'Slot should exist for input elements');
   });
 
+  it('should follow later error and help changes with aria-describedby', async () => {
+    element = document.createElement('grantcodes-form-field');
+    element.label = 'Email';
+    element.innerHTML = '<input type="text" />';
+    document.body.appendChild(element);
+    await element.updateComplete;
+
+    const input = element.querySelector('input');
+    assert.ok(!input.getAttribute('aria-describedby'), 'No description before error/help');
+
+    element.error = 'Invalid email';
+    element.help = 'Use your work email';
+    await element.updateComplete;
+
+    const describedBy = input.getAttribute('aria-describedby');
+    assert.ok(describedBy.includes(`${element.id}-error`), 'Error id should be described');
+    assert.ok(describedBy.includes(`${element.id}-help`), 'Help id should be described');
+  });
+
+  it('should drop aria-describedby when error and help are cleared', async () => {
+    element = document.createElement('grantcodes-form-field');
+    element.label = 'Email';
+    element.error = 'Invalid email';
+    element.innerHTML = '<input type="text" />';
+    document.body.appendChild(element);
+    await element.updateComplete;
+
+    const input = element.querySelector('input');
+    assert.ok(input.getAttribute('aria-describedby'), 'Error should be described initially');
+
+    element.error = undefined;
+    await element.updateComplete;
+
+    assert.strictEqual(
+      input.hasAttribute('aria-describedby'),
+      false,
+      'Description should be removed when error and help are cleared',
+    );
+  });
   it('should leave checkbox activation to the wrapping label (single toggle)', async () => {
     // The shim omits the HTMLInputElement global and does not forward label clicks
     // to slotted controls; restore the global and emulate that activation click.
