@@ -188,12 +188,3 @@
     inline-size: 100%;
   }
 }
-
-/* View transitions */
-@media (prefers-reduced-motion: no-preference) {
-  @supports (view-transition-name: auto) {
-    .toast {
-      view-transition-name: toast;
-    }
-  }
-}

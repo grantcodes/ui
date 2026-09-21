@@ -167,12 +167,3 @@
   padding-block: var(--g-spacing-md);
   padding-inline: var(--g-spacing-md);
 }
-
-/* View transitions */
-@media (prefers-reduced-motion: no-preference) {
-  @supports (view-transition-name: auto) {
-    .sidebar {
-      view-transition-name: sidebar;
-    }
-  }
-}
