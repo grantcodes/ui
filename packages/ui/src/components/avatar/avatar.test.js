@@ -69,4 +69,49 @@ describe('Avatar Component', () => {
       cleanup(element);
     }
   });
+
+  it('should defer the avatar image and reserve its square box', async () => {
+    element = await fixture('grantcodes-avatar', {
+      src: 'https://example.com/avatar.jpg',
+      name: 'John Doe',
+    });
+
+    const img = element.shadowRoot.querySelector('img');
+    assert.strictEqual(img.getAttribute('loading'), 'lazy', 'Avatars are off the critical path');
+    assert.strictEqual(img.getAttribute('decoding'), 'async');
+    assert.ok(Number(img.getAttribute('width')) > 0, 'Width should be set to avoid CLS');
+    assert.strictEqual(
+      img.getAttribute('width'),
+      img.getAttribute('height'),
+      'Avatar images are square',
+    );
+  });
+
+  it('should not invent alt text when nothing is known about the avatar', async () => {
+    element = await fixture('grantcodes-avatar', { src: 'https://example.com/avatar.jpg' });
+
+    const img = element.shadowRoot.querySelector('img');
+    assert.strictEqual(img.getAttribute('alt'), '', 'An unknown avatar is decorative');
+  });
+
+  it('should use the name as alt text without an " avatar" suffix', async () => {
+    element = await fixture('grantcodes-avatar', {
+      src: 'https://example.com/avatar.jpg',
+      name: 'John Doe',
+    });
+
+    const img = element.shadowRoot.querySelector('img');
+    assert.strictEqual(img.getAttribute('alt'), 'John Doe');
+  });
+
+  it('should prefer an explicit alt over the name', async () => {
+    element = await fixture('grantcodes-avatar', {
+      src: 'https://example.com/avatar.jpg',
+      name: 'John Doe',
+      alt: 'Custom alt',
+    });
+
+    const img = element.shadowRoot.querySelector('img');
+    assert.strictEqual(img.getAttribute('alt'), 'Custom alt');
+  });
 });

@@ -2,6 +2,9 @@ import { LitElement } from 'lit';
 import { html } from 'lit/static-html.js';
 import avatarStyles from './avatar.css' with { type: 'css' };
 
+// Mirrors the 3rem square in avatar.css (--g-spacing-2xl); the image fills that box.
+const AVATAR_SIZE = 48;
+
 export class GrantCodesAvatar extends LitElement {
   static properties = {
     src: { type: String },
@@ -56,13 +59,20 @@ export class GrantCodesAvatar extends LitElement {
 
   getAlt() {
     if (this.alt) return this.alt;
-    return `${this.name || this.initials} avatar`;
+    return this.name || this.initials || '';
   }
 
   /** @returns {import('lit').TemplateResult} */
   getImg() {
     if (this.src) {
-      return html`<img src=${this.src} alt=${this.getAlt()} />`;
+      return html`<img
+        src=${this.src}
+        alt=${this.getAlt()}
+        width=${AVATAR_SIZE}
+        height=${AVATAR_SIZE}
+        loading="lazy"
+        decoding="async"
+      />`;
     }
     return html``;
   }
