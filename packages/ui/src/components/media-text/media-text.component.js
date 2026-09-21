@@ -1,4 +1,5 @@
 import { html, LitElement } from 'lit';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import mediaTextStyles from './media-text.css' with { type: 'css' };
 import '../button/button.js';
 
@@ -17,7 +18,7 @@ export class GrantCodesMediaText extends LitElement {
      */
     text: { type: String },
     /**
-     * Media object as a JSON string: `{"src":"...","alt":"...","kind":"image|video"}`.
+     * Media object as a JSON string: `{"src","alt","kind":"image|video","width","height","poster","loading"}`.
      * @type {string}
      */
     media: { type: String },
@@ -70,6 +71,9 @@ export class GrantCodesMediaText extends LitElement {
                 ? html`<video
 									src=${media.src}
 									class="media-text__video"
+									poster=${ifDefined(media.poster)}
+									width=${ifDefined(media.width)}
+									height=${ifDefined(media.height)}
 									controls
 									preload="metadata"
 									aria-label=${media.alt ?? ''}
@@ -78,7 +82,9 @@ export class GrantCodesMediaText extends LitElement {
 									src=${media?.src ?? ''}
 									alt=${media?.alt ?? ''}
 									class="media-text__image"
-									loading="lazy"
+									width=${ifDefined(media?.width)}
+									height=${ifDefined(media?.height)}
+									loading=${media?.loading ?? 'eager'}
 								/>`
             }
 					</div>
