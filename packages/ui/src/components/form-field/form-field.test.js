@@ -95,6 +95,21 @@ describe('Form Field Component', () => {
     cleanup(element2);
   });
 
+  it('should not copy the host id onto the inner control', async () => {
+    element = document.createElement('grantcodes-form-field');
+    element.label = 'Username';
+    element.innerHTML = '<input type="text" />';
+    document.body.appendChild(element);
+    await element.updateComplete;
+
+    const input = element.querySelector('input');
+    assert.notStrictEqual(
+      input.id,
+      element.id,
+      'Inner control must not duplicate the host id',
+    );
+  });
+
   it('should have label element', async () => {
     element = await fixture('grantcodes-form-field', {
       label: 'Test Field',
