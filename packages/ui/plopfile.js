@@ -13,44 +13,38 @@ export default (plop) => {
 			// Export file
 			{
 				type: "add",
-				path: "src/components/{{kebabCase name}}/index.ts",
-				templateFile: "plop-templates/web-component/index.ts.hbs",
+				path: "src/components/{{kebabCase name}}/index.js",
+				templateFile: "plop-templates/web-component/index.js.hbs",
 			},
 			// Main component file
 			{
 				type: "add",
-				path: "src/components/{{kebabCase name}}/{{kebabCase name}}.component.ts",
-				templateFile: "plop-templates/web-component/component.component.ts.hbs",
+				path: "src/components/{{kebabCase name}}/{{kebabCase name}}.component.js",
+				templateFile: "plop-templates/web-component/component.component.js.hbs",
 			},
-			// Web component loader
+			// Custom element registration
 			{
 				type: "add",
-				path: "src/components/{{kebabCase name}}/{{kebabCase name}}.ts",
-				templateFile: "plop-templates/web-component/component.ts.hbs",
-			},
-			// Types
-			{
-				type: "add",
-				path: "src/components/{{kebabCase name}}/{{kebabCase name}}.scss",
-				templateFile: "plop-templates/web-component/component.scss.hbs",
+				path: "src/components/{{kebabCase name}}/{{kebabCase name}}.js",
+				templateFile: "plop-templates/web-component/component.js.hbs",
 			},
 			// Styles
 			{
 				type: "add",
-				path: "src/components/{{kebabCase name}}/{{kebabCase name}}.types.ts",
-				templateFile: "plop-templates/web-component/component.types.ts.hbs",
+				path: "src/components/{{kebabCase name}}/{{kebabCase name}}.css",
+				templateFile: "plop-templates/web-component/component.css.hbs",
 			},
 			// Tests
 			{
 				type: "add",
-				path: "src/components/{{kebabCase name}}/{{kebabCase name}}.test.ts",
-				templateFile: "plop-templates/web-component/component.test.ts.hbs",
+				path: "src/components/{{kebabCase name}}/{{kebabCase name}}.test.js",
+				templateFile: "plop-templates/web-component/component.test.js.hbs",
 			},
 			// Stories
 			{
 				type: "add",
-				path: "src/components/{{kebabCase name}}/{{kebabCase name}}.stories.ts",
-				templateFile: "plop-templates/web-component/component.stories.ts.hbs",
+				path: "src/components/{{kebabCase name}}/{{kebabCase name}}.stories.js",
+				templateFile: "plop-templates/web-component/component.stories.js.hbs",
 			},
 		],
 	});

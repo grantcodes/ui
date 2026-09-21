@@ -1,23 +1,22 @@
-import { LitElement, html, unsafeCSS } from 'lit'
-import { customElement, property } from 'lit/decorators.js'
-import {{camelCase name}}Styles from './{{kebabCase name}}.scss?inline'
+import { LitElement } from 'lit';
+import { html } from 'lit/static-html.js';
+import {{camelCase name}}Styles from './{{kebabCase name}}.css' with { type: 'css' };
 
-@customElement('grantcodes-{{kebabCase name}}')
 export class GrantCodes{{pascalCase name}} extends LitElement {
   // Styles are scoped to this element: they won't conflict with styles
   // on the main page or in other components. Styling API can be exposed
   // via CSS custom properties.
-  static styles = [unsafeCSS({{camelCase name}}Styles)]
+  static styles = [{{camelCase name}}Styles];
 
   // Define reactive properties--updating a reactive property causes
   // the component to update.
-  // @property() label = 'Button Label'
+  static properties = {};
 
   render() {
     return html`
-      <div>
+      <div class="{{kebabCase name}}">
         <slot></slot>
       </div>
-    `
+    `;
   }
 }
