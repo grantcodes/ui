@@ -70,6 +70,12 @@ export class GrantCodesToast extends LitElement {
      * @type {number | null}
      */
     this._dismissTimeout = null;
+
+    /**
+     * Timeout ID for removing the toast after its exit animation
+     * @type {number | null}
+     */
+    this._removeTimeout = null;
   }
 
   connectedCallback() {
@@ -79,34 +85,49 @@ export class GrantCodesToast extends LitElement {
       this._visible = true;
     });
 
-    // Set up auto-dismiss
-    if (this.duration > 0) {
-      this._dismissTimeout = setTimeout(() => {
-        this._handleDismiss();
-      }, this.duration);
-    }
+    this._startDismissTimer();
   }
 
   disconnectedCallback() {
-    if (this._dismissTimeout) {
-      clearTimeout(this._dismissTimeout);
-    }
+    clearTimeout(this._dismissTimeout);
+    clearTimeout(this._removeTimeout);
     super.disconnectedCallback();
   }
 
+  _startDismissTimer() {
+    if (this.duration <= 0) return;
+    clearTimeout(this._dismissTimeout);
+    this._dismissTimeout = setTimeout(() => this._handleDismiss(), this.duration);
+  }
+
+  // Hover or focus holds the toast open; leaving restarts the full duration.
+  _pauseDismiss() {
+    clearTimeout(this._dismissTimeout);
+    this._dismissTimeout = null;
+  }
+
+  _resumeDismiss() {
+    if (!this._visible || this._dismissTimeout !== null) return;
+    this._startDismissTimer();
+  }
+
   _handleDismiss() {
+    this._pauseDismiss();
     this._visible = false;
 
-    // Remove element after animation completes
-    setTimeout(() => {
-      this.dispatchEvent(
-        new CustomEvent('dismiss', {
-          bubbles: true,
-          composed: true,
-        }),
-      );
-      this.remove();
-    }, 300); // Match animation duration
+    const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    clearTimeout(this._removeTimeout);
+    this._removeTimeout = setTimeout(() => this._remove(), reducedMotion ? 0 : 300);
+  }
+
+  _remove() {
+    this.dispatchEvent(
+      new CustomEvent('dismiss', {
+        bubbles: true,
+        composed: true,
+      }),
+    );
+    this.remove();
   }
 
   _renderDismissButton() {
@@ -136,7 +157,15 @@ export class GrantCodesToast extends LitElement {
     });
 
     return html`
-			<div class=${classes} role="status" aria-live="polite">
+			<div
+				class=${classes}
+				role=${this.variant === 'error' ? 'alert' : 'status'}
+				aria-live=${this.variant === 'error' ? 'assertive' : 'polite'}
+				@mouseenter=${this._pauseDismiss}
+				@mouseleave=${this._resumeDismiss}
+				@focusin=${this._pauseDismiss}
+				@focusout=${this._resumeDismiss}
+			>
 				<grantcodes-icon class="toast__icon">${unsafeHTML(icon)}</grantcodes-icon>
 
 				<div class="toast__content">
