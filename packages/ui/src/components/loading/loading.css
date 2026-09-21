@@ -41,3 +41,9 @@
     background-position-x: var(--ending-position);
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .loading {
+    animation: none;
+  }
+}

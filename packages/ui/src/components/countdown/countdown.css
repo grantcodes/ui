@@ -31,6 +31,12 @@
   font-variant-numeric: tabular-nums;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .countdown__value--flip {
+    animation: none;
+  }
+}
+
 .countdown__value--flip {
   animation: countdown-flip 0.35s ease-out;
 }

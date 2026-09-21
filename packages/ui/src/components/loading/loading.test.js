@@ -48,4 +48,31 @@ describe('Loading Component', () => {
     const customSpinner = element.querySelector('.custom-spinner');
     assert.ok(customSpinner, 'Custom spinner should be slotted');
   });
+
+  it('should expose status semantics', async () => {
+    element = await fixture('grantcodes-loading');
+
+    const span = element.shadowRoot.querySelector('.loading');
+    assert.strictEqual(span.getAttribute('role'), 'status', 'Loading should be a status region');
+    assert.strictEqual(
+      span.getAttribute('aria-label'),
+      'Loading',
+      'Status region needs a fallback name',
+    );
+    assert.strictEqual(element.getAttribute('aria-busy'), 'true', 'Host should be marked busy');
+  });
+
+  it('should let slotted text name the status region', async () => {
+    element = document.createElement('grantcodes-loading');
+    element.textContent = 'Loading images';
+    document.body.appendChild(element);
+    await element.updateComplete;
+
+    const span = element.shadowRoot.querySelector('.loading');
+    assert.strictEqual(
+      span.hasAttribute('aria-label'),
+      false,
+      'Slotted text already names the status region',
+    );
+  });
 });
