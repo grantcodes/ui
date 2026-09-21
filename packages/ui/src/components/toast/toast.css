@@ -144,8 +144,12 @@
 .toast__close {
   all: unset;
   flex-shrink: 0;
-  inline-size: 1.5rem;
-  block-size: 1.5rem;
+  /* 44px target; the negative margins keep the original 2rem layout footprint. */
+  inline-size: 2.75rem;
+  block-size: 2.75rem;
+  margin-block: -0.625rem;
+  margin-inline-start: -0.125rem;
+  margin-inline-end: -0.625rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -155,7 +159,6 @@
   transition:
     background-color 0.2s ease,
     color 0.2s ease;
-  margin-inline-start: 0.5rem;
 }
 
 .toast__close:hover {
