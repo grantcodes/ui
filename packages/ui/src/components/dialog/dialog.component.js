@@ -1,5 +1,6 @@
 import { LitElement } from 'lit';
 import { html } from 'lit/static-html.js';
+import { SlotPresenceController } from '../../lib/slot-presence-controller.js';
 import dialogStyles from './dialog.css' with { type: 'css' };
 
 export class GrantCodesDialog extends LitElement {
@@ -11,6 +12,8 @@ export class GrantCodesDialog extends LitElement {
   static properties = {
     open: { type: Boolean, reflect: true },
     dismissible: { type: Boolean },
+    _hasHeader: { state: true },
+    _hasFooter: { state: true },
   };
 
   constructor() {
@@ -20,6 +23,20 @@ export class GrantCodesDialog extends LitElement {
 
     this.open = false;
     this.dismissible = true;
+    this._hasHeader = false;
+    this._hasFooter = false;
+
+    this._headerPresence = new SlotPresenceController(this, 'header', (present) => {
+      this._hasHeader = present;
+    });
+    this._footerPresence = new SlotPresenceController(this, 'footer', (present) => {
+      this._hasFooter = present;
+    });
+  }
+
+  _handleSlotChange() {
+    this._headerPresence.refresh();
+    this._footerPresence.refresh();
   }
 
   firstUpdated() {
@@ -64,14 +81,14 @@ export class GrantCodesDialog extends LitElement {
 	      <dialog class="dialog" ?open=${this.open}>
         ${this.dismissTemplate()}
 
-        <header class="dialog__header">
-          <slot name="header"></slot>
+        <header class="dialog__header" ?hidden=${!this._hasHeader}>
+          <slot name="header" @slotchange=${this._handleSlotChange}></slot>
         </header>
 
         <slot class="dialog__content"></slot>
 
-        <footer class="dialog__footer">
-          <slot name="footer"> </slot>
+        <footer class="dialog__footer" ?hidden=${!this._hasFooter}>
+          <slot name="footer" @slotchange=${this._handleSlotChange}></slot>
         </footer>
       </dialog>
     `;

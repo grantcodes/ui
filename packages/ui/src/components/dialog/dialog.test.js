@@ -79,6 +79,48 @@ describe('Dialog Component', () => {
     assert.ok(slot, 'Content slot should exist');
   });
 
+  it('should hide the header when nothing is slotted into it', async () => {
+    element = await fixture('grantcodes-dialog');
+    const header = element.shadowRoot.querySelector('.dialog__header');
+    assert.ok(header, 'Header element should exist');
+    assert.ok(header.hasAttribute('hidden'), 'Header should be hidden without slotted content');
+  });
+
+  it('should render the header when content is slotted into it', async () => {
+    element = document.createElement('grantcodes-dialog');
+    element.innerHTML = '<h2 slot="header">Dialog Header</h2>';
+    document.body.appendChild(element);
+    await element.updateComplete;
+
+    const header = element.shadowRoot.querySelector('.dialog__header');
+    assert.ok(header, 'Header element should exist');
+    assert.ok(
+      !header.hasAttribute('hidden'),
+      'Header should be visible when content is slotted into it',
+    );
+  });
+
+  it('should hide the footer when nothing is slotted into it', async () => {
+    element = await fixture('grantcodes-dialog');
+    const footer = element.shadowRoot.querySelector('.dialog__footer');
+    assert.ok(footer, 'Footer element should exist');
+    assert.ok(footer.hasAttribute('hidden'), 'Footer should be hidden without slotted content');
+  });
+
+  it('should render the footer when content is slotted into it', async () => {
+    element = document.createElement('grantcodes-dialog');
+    element.innerHTML = '<div slot="footer">Actions</div>';
+    document.body.appendChild(element);
+    await element.updateComplete;
+
+    const footer = element.shadowRoot.querySelector('.dialog__footer');
+    assert.ok(footer, 'Footer element should exist');
+    assert.ok(
+      !footer.hasAttribute('hidden'),
+      'Footer should be visible when content is slotted into it',
+    );
+  });
+
   it('should close when dismiss button is clicked', async () => {
     element = await fixture('grantcodes-dialog', {
       open: true,
