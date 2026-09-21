@@ -51,12 +51,9 @@
   padding: var(--g-spacing-md);
 }
 
-.dialog__header,
-.dialog__footer {
-  &:empty,
-  &:has(slot:empty) {
-    display: none;
-  }
+.dialog__header[hidden],
+.dialog__footer[hidden] {
+  display: none;
 }
 
 .dialog__header {
