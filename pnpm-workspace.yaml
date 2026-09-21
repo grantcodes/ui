@@ -2,10 +2,9 @@ packages:
   - "packages/*"
   - "apps/*"
 
-overrides:
-  lit: "^3.3.3"
-
-minimumReleaseAge: 0
+minimumReleaseAge: 1440
+blockExoticSubdeps: true
+trustPolicy: no-downgrade
 
 allowBuilds:
   esbuild: true

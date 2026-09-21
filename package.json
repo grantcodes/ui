@@ -33,14 +33,14 @@
   "license": "MIT",
   "devDependencies": {
     "@grantcodes/commit": "^2.0.0",
-    "@storybook/html-vite": "^10.5.3",
-    "turbo": "^2.10.5"
+    "@storybook/html-vite": "^10.6.0",
+    "turbo": "^2.11.2"
   },
   "engines": {
     "node": ">=24.0.0",
     "pnpm": ">=11.0.0"
   },
-  "packageManager": "pnpm@11.15.1",
+  "packageManager": "pnpm@11.27.1",
   "workspaces": [
     "packages/*",
     "apps/*"
