@@ -141,4 +141,62 @@ describe('Notice Component', () => {
     // Give time for the dismiss handler to execute
     await new Promise((resolve) => setTimeout(resolve, 10));
   });
+
+  it('should give the dismiss button a type that cannot submit forms', async () => {
+    element = await fixture('grantcodes-notice', { dismissable: true });
+
+    const closeButton = element.shadowRoot.querySelector('.notice__close');
+    assert.strictEqual(closeButton.getAttribute('type'), 'button');
+  });
+
+  it('should give the dismiss button an accessible name', async () => {
+    element = await fixture('grantcodes-notice', { dismissable: true });
+
+    const closeButton = element.shadowRoot.querySelector('.notice__close');
+    assert.ok(
+      closeButton.getAttribute('aria-label')?.trim(),
+      'Dismiss button needs an accessible name',
+    );
+  });
+
+  it('should remove the notice without a view transition when reduced motion is preferred', async () => {
+    element = await fixture('grantcodes-notice', { dismissable: true });
+
+    const originalMatchMedia = globalThis.window.matchMedia;
+    let transitions = 0;
+    globalThis.window.matchMedia = () => ({ matches: true });
+    globalThis.document.startViewTransition = () => {
+      transitions++;
+      return { finished: Promise.resolve() };
+    };
+
+    click(element.shadowRoot.querySelector('.notice__close'));
+
+    globalThis.window.matchMedia = originalMatchMedia;
+    globalThis.document.startViewTransition = undefined;
+
+    assert.strictEqual(transitions, 0, 'Reduced motion must skip the view transition');
+    assert.strictEqual(element.parentNode, null, 'Notice should still be removed');
+  });
+
+  it('should dismiss through a view transition when motion is allowed', async () => {
+    element = await fixture('grantcodes-notice', { dismissable: true });
+
+    const originalMatchMedia = globalThis.window.matchMedia;
+    let transitions = 0;
+    globalThis.window.matchMedia = () => ({ matches: false });
+    globalThis.document.startViewTransition = (callback) => {
+      transitions++;
+      callback();
+      return { finished: Promise.resolve() };
+    };
+
+    click(element.shadowRoot.querySelector('.notice__close'));
+
+    globalThis.window.matchMedia = originalMatchMedia;
+    globalThis.document.startViewTransition = undefined;
+
+    assert.strictEqual(transitions, 1, 'Dismissal should animate when motion is allowed');
+    assert.strictEqual(element.parentNode, null, 'Notice should be removed');
+  });
 });
