@@ -31,13 +31,14 @@
   font-size: var(--g-typography-h4-font-size);
   cursor: pointer;
   background: transparent;
-  inset-block-start: var(--g-spacing-md);
-  inset-inline-end: var(--g-spacing-md);
+  inset-block-start: calc(var(--g-spacing-md) - 0.375rem);
+  inset-inline-end: calc(var(--g-spacing-md) - 0.375rem);
   margin-block-start: -0.25rem;
   margin-inline-end: -0.25rem;
   border-radius: 50%;
-  width: 2rem;
-  height: 2rem;
+  /* 44px target: the insets above keep the glyph where the 2rem box had it. */
+  width: 2.75rem;
+  height: 2.75rem;
   padding: var(--g-spacing-xs);
   justify-content: center;
   align-items: center;
