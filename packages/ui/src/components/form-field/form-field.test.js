@@ -1,6 +1,6 @@
 import { strict as assert } from 'node:assert';
 import { afterEach, describe, it } from 'node:test';
-import { cleanup, fixture } from '../../test-utils/index.js';
+import { cleanup, click, fixture } from '../../test-utils/index.js';
 import './form-field.js';
 
 describe('Form Field Component', () => {
@@ -124,5 +124,23 @@ describe('Form Field Component', () => {
 
     const slot = element.shadowRoot.querySelector('slot');
     assert.ok(slot, 'Slot should exist for input elements');
+  });
+
+  it('should leave checkbox activation to the wrapping label (single toggle)', async () => {
+    // The shim omits the HTMLInputElement global and does not forward label clicks
+    // to slotted controls; restore the global and emulate that activation click.
+    globalThis.HTMLInputElement = globalThis.window.HTMLInputElement;
+
+    element = document.createElement('grantcodes-form-field');
+    element.label = 'Accept terms';
+    element.innerHTML = '<input type="checkbox" />';
+    document.body.appendChild(element);
+    await element.updateComplete;
+
+    const input = element.querySelector('input');
+    click(element.shadowRoot.querySelector('.form-field__label'));
+    click(input);
+
+    assert.strictEqual(input.checked, true, 'A label click must toggle the checkbox exactly once');
   });
 });

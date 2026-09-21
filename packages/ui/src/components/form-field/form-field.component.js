@@ -85,16 +85,8 @@ export class GrantCodesFormField extends LitElement {
   }
 
   handleLabelClick() {
-    const input = this.inputElements[0];
-    if (input) {
-      input.focus();
-      if (
-        input instanceof HTMLInputElement &&
-        (input.type === 'checkbox' || input.type === 'radio')
-      ) {
-        input.checked = !input.checked;
-      }
-    }
+    // The wrapping <label> owns activation and focus; toggling here double-toggles.
+    this.inputElements?.[0]?.focus();
   }
 
   // handleError() {
