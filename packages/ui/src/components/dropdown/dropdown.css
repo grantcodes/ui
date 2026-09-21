@@ -127,12 +127,3 @@
     transform: translateY(0);
   }
 }
-
-/* View transitions support */
-@media (prefers-reduced-motion: no-preference) {
-  @supports (view-transition-name: auto) {
-    .dropdown__menu {
-      view-transition-name: dropdown-menu;
-    }
-  }
-}
