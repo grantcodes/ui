@@ -69,6 +69,9 @@ export class GrantCodesDropdown extends LitElement {
         }
       });
     }
+
+    // Anchor name is per instance so multiple dropdowns cannot anchor to each other.
+    this.style.setProperty('--dropdown-anchor', `--dropdown-anchor-${this.id}`);
   }
 
   updated(changedProperties) {
