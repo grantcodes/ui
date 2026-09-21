@@ -80,7 +80,6 @@ export class GrantCodesFormField extends LitElement {
       return;
     }
 
-    input.id = this.id;
     input.setAttribute('aria-describedby', this.ariaDescribedBy);
   }
 
