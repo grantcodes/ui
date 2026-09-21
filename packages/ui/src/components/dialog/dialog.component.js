@@ -1,7 +1,11 @@
-import { LitElement } from 'lit';
+import { LitElement, nothing } from 'lit';
 import { html } from 'lit/static-html.js';
 import { SlotPresenceController } from '../../lib/slot-presence-controller.js';
 import dialogStyles from './dialog.css' with { type: 'css' };
+
+// Safari does not implement closedby; the attribute is only added when supported.
+const supportsClosedBy =
+  typeof HTMLDialogElement !== 'undefined' && 'closedBy' in HTMLDialogElement.prototype;
 
 export class GrantCodesDialog extends LitElement {
   // Styles are scoped to this element: they won't conflict with styles
@@ -52,10 +56,21 @@ export class GrantCodesDialog extends LitElement {
   _handleOpenChange() {
     if (!this.dialog) return;
     if (this.open) {
-      this.dialog.showModal();
-    } else {
+      if (!this.dialog.open) {
+        this.dialog.showModal();
+      }
+    } else if (this.dialog.open) {
       this.dialog.close();
     }
+  }
+
+  // Esc and light-dismiss close the native dialog without touching `open`.
+  _handleNativeClose() {
+    this.open = false;
+  }
+
+  _handleNativeCancel() {
+    this.open = false;
   }
 
   dismissTemplate() {
@@ -78,7 +93,13 @@ export class GrantCodesDialog extends LitElement {
 
   render() {
     return html`
-	      <dialog class="dialog" ?open=${this.open}>
+	      <dialog
+        class="dialog"
+        ?open=${this.open}
+        closedby=${supportsClosedBy ? 'any' : nothing}
+        @close=${this._handleNativeClose}
+        @cancel=${this._handleNativeCancel}
+      >
         ${this.dismissTemplate()}
 
         <header class="dialog__header" ?hidden=${!this._hasHeader}>
