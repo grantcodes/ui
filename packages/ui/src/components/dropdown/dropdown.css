@@ -12,12 +12,12 @@
 .dropdown__trigger {
   display: inline-block;
   cursor: pointer;
+  anchor-name: var(--dropdown-anchor, none);
 }
 
 .dropdown__menu {
   display: none;
   position: fixed;
-  anchor-name: --dropdown-trigger;
   z-index: 1000;
   min-inline-size: 12rem;
   margin-block: var(--g-spacing-xs);
@@ -26,19 +26,31 @@
   border: 1px solid var(--g-color-border-default);
   border-radius: var(--g-border-radius-md);
   animation: dropdown-fade-in 0.15s ease-out;
+  position-anchor: var(--dropdown-anchor, none);
 }
 
 .dropdown__menu--open {
   display: block;
 }
 
-/* Position using anchor positioning when available */
-@supports (anchor-name: --dropdown-trigger) {
+/* Placement maps to position-area; the fallbacks flip the panel when the
+   preferred area does not fit. Bottom start is the default above. */
+@supports (position-anchor: --dropdown-anchor) {
   .dropdown__menu--open {
     position-area: bottom span-right;
-    position-try:
-      block-end,
-      block-start span-inline-start;
+    position-try-fallbacks: flip-block, flip-inline;
+  }
+
+  .dropdown__menu--bottom-end {
+    position-area: bottom span-left;
+  }
+
+  .dropdown__menu--top-start {
+    position-area: top span-right;
+  }
+
+  .dropdown__menu--top-end {
+    position-area: top span-left;
   }
 }
 

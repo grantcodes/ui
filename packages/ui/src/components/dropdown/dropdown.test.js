@@ -72,6 +72,22 @@ describe('Dropdown Component', () => {
     cleanup(element1);
     cleanup(element2);
   });
+
+  it('should expose a unique anchor name for the trigger', async () => {
+    const element1 = await fixture('grantcodes-dropdown');
+    const element2 = await fixture('grantcodes-dropdown');
+
+    const anchorName = element1.style.getPropertyValue('--dropdown-anchor');
+    assert.match(anchorName, /^--/, 'Anchor name should be a dashed ident');
+    assert.notStrictEqual(
+      anchorName,
+      element2.style.getPropertyValue('--dropdown-anchor'),
+      'Anchor name should be unique per instance',
+    );
+
+    cleanup(element1);
+    cleanup(element2);
+  });
 });
 
 describe('Dropdown Item Component', () => {
