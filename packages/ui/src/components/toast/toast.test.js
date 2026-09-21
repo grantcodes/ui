@@ -133,6 +133,59 @@ describe('Toast Component', () => {
       cleanup(element);
     }
   });
+
+  it('should announce errors assertively and other variants politely', async () => {
+    element = await fixture('grantcodes-toast', { variant: 'error' });
+
+    const errorToast = element.shadowRoot.querySelector('.toast--error');
+    assert.strictEqual(errorToast.getAttribute('role'), 'alert', 'Errors should interrupt');
+    assert.strictEqual(errorToast.getAttribute('aria-live'), 'assertive');
+
+    const info = await fixture('grantcodes-toast', { variant: 'info' });
+    const infoToast = info.shadowRoot.querySelector('.toast--info');
+    assert.strictEqual(infoToast.getAttribute('role'), 'status', 'Other variants should wait');
+    assert.strictEqual(infoToast.getAttribute('aria-live'), 'polite');
+    cleanup(info);
+  });
+
+  it('should hold the toast open while it is hovered', async () => {
+    element = await fixture('grantcodes-toast', { duration: 60 });
+
+    const toast = element.shadowRoot.querySelector('.toast');
+    toast.dispatchEvent(new Event('mouseenter'));
+    await new Promise((resolve) => setTimeout(resolve, 120));
+
+    assert.ok(element.isConnected, 'A hovered toast must not auto-dismiss');
+  });
+
+  it('should restart the auto-dismiss timer when the pointer leaves', async () => {
+    element = await fixture('grantcodes-toast', { duration: 60 });
+
+    const toast = element.shadowRoot.querySelector('.toast');
+    toast.dispatchEvent(new Event('mouseenter'));
+    await new Promise((resolve) => setTimeout(resolve, 40));
+    toast.dispatchEvent(new Event('mouseleave'));
+    await new Promise((resolve) => setTimeout(resolve, 400));
+
+    assert.strictEqual(
+      element.isConnected,
+      false,
+      'Toast should dismiss once the pointer leaves',
+    );
+  });
+
+  it('should skip the exit animation when reduced motion is preferred', async () => {
+    element = await fixture('grantcodes-toast', { duration: 0 });
+
+    const originalMatchMedia = globalThis.window.matchMedia;
+    globalThis.window.matchMedia = () => ({ matches: true });
+
+    click(element.shadowRoot.querySelector('.toast__close'));
+    await new Promise((resolve) => setTimeout(resolve, 20));
+    globalThis.window.matchMedia = originalMatchMedia;
+
+    assert.strictEqual(element.isConnected, false, 'No exit animation to wait for');
+  });
 });
 
 describe('Toast Container Component', () => {
