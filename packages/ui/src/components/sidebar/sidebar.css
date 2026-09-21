@@ -58,7 +58,7 @@
   border-radius: var(--g-border-radius-md);
   cursor: pointer;
   font-size: var(--g-typography-h5-font-size);
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease;
 }
 
 .sidebar__mobile-toggle:hover {
@@ -137,7 +137,7 @@
   border-radius: var(--g-border-radius-md);
   cursor: pointer;
   font-size: var(--g-typography-body-sm-font-size);
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease;
   z-index: 10;
 }
 

@@ -152,7 +152,9 @@
   border-radius: var(--g-border-radius-md);
   color: var(--g-color-content-subtle);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
   margin-inline-start: 0.5rem;
 }
 
