@@ -38,19 +38,26 @@ export class GrantCodesNotice extends LitElement {
   }
 
   onDismiss(_e) {
-    if (document.startViewTransition) {
-      document.startViewTransition(() => {
-        this.remove();
-      });
-    } else {
+    const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    if (reducedMotion || !document.startViewTransition) {
       this.remove();
+      return;
     }
+
+    document.startViewTransition(() => {
+      this.remove();
+    });
   }
 
   renderDismiss() {
     if (this.dismissable) {
       return html`
-				<button class="notice__close" @click=${this.onDismiss}>
+				<button
+					class="notice__close"
+					type="button"
+					aria-label="Dismiss notice"
+					@click=${this.onDismiss}
+				>
 					<grantcodes-icon title="Close Notice">${unsafeHTML(X)}</grantcodes-icon>
 				</button>
 			`;
