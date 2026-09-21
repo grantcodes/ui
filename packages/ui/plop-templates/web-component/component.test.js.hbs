@@ -1,0 +1,18 @@
+import { strict as assert } from 'node:assert';
+import { afterEach, describe, it } from 'node:test';
+import { cleanup, fixture } from '../../test-utils/index.js';
+import './{{kebabCase name}}.js';
+
+describe('{{pascalCase name}} Component', () => {
+  let element;
+
+  afterEach(() => {
+    cleanup(element);
+  });
+
+  it('should render with default properties', async () => {
+    element = await fixture('grantcodes-{{kebabCase name}}');
+    assert.ok(element, 'Element should be created');
+    assert.ok(element.shadowRoot, 'Element should have shadow root');
+  });
+});

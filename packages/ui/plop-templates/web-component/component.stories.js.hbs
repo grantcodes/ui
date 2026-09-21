@@ -1,0 +1,24 @@
+import { getStorybookHelpers } from '@wc-toolkit/storybook-helpers';
+import { html } from 'lit/static-html.js';
+
+const { events, args, argTypes, template } = getStorybookHelpers('grantcodes-{{kebabCase name}}');
+
+import './{{kebabCase name}}.js';
+
+const meta = {
+  title: 'Components/{{pascalCase name}}',
+  component: 'grantcodes-{{kebabCase name}}',
+  args: {
+    ...args,
+    slot: html`Text`,
+  },
+  argTypes,
+  render: (args) => template(args, args.slot),
+  parameters: {
+    actions: { handles: events },
+  },
+};
+
+export default meta;
+
+export const {{pascalCase name}} = {};
