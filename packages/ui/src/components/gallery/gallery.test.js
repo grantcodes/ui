@@ -74,5 +74,23 @@ describe('Gallery Component', () => {
         'variant attribute should be reflected',
       );
     });
+
+    it('should make the filmstrip scroller keyboard reachable and named', async () => {
+      element = await fixture('grantcodes-gallery', { variant: 'filmstrip' });
+
+      const slot = element.shadowRoot.querySelector('.gallery__slot');
+      assert.strictEqual(slot.getAttribute('tabindex'), '0', 'Scroller should be focusable');
+      assert.strictEqual(slot.getAttribute('role'), 'region', 'Scroller should be a region');
+      assert.strictEqual(slot.getAttribute('aria-label'), 'Gallery', 'Region should be named');
+    });
+
+    it('should not add a tab stop to the non-scrolling grid', async () => {
+      element = await fixture('grantcodes-gallery');
+
+      const slot = element.shadowRoot.querySelector('.gallery__slot');
+      assert.strictEqual(slot.hasAttribute('tabindex'), false, 'Grid should not be a tab stop');
+      assert.strictEqual(slot.hasAttribute('role'), false, 'Grid should not be a region');
+      assert.strictEqual(slot.hasAttribute('aria-label'), false, 'Grid needs no label');
+    });
   });
 });
