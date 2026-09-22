@@ -68,6 +68,7 @@ export class GrantCodesAvatar extends LitElement {
       return html`<img
         src=${this.src}
         alt=${this.getAlt()}
+        class="avatar__image"
         width=${AVATAR_SIZE}
         height=${AVATAR_SIZE}
         loading="lazy"

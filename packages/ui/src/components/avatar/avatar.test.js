@@ -70,6 +70,18 @@ describe('Avatar Component', () => {
     }
   });
 
+  it('should fill the avatar box with the image', async () => {
+    element = await fixture('grantcodes-avatar', {
+      src: 'https://example.com/avatar.jpg',
+    });
+
+    const img = element.shadowRoot.querySelector('img');
+    assert.ok(
+      img.classList.contains('avatar__image'),
+      'Image must carry the class that sizes it to 100% of the avatar box',
+    );
+  });
+
   it('should defer the avatar image and reserve its square box', async () => {
     element = await fixture('grantcodes-avatar', {
       src: 'https://example.com/avatar.jpg',
