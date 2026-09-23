@@ -41,6 +41,7 @@ export class GrantCodesFormField extends LitElement {
     }
 
     this._revalidate = this._revalidate.bind(this);
+    this._touched = false;
   }
 
   connectedCallback() {
@@ -58,7 +59,11 @@ export class GrantCodesFormField extends LitElement {
     super.disconnectedCallback();
   }
 
-  _revalidate() {
+  _revalidate(event) {
+    // A consumer-set error should appear once the field has been interacted with.
+    if (event?.target?.matches?.('input, select, textarea')) {
+      this._touched = true;
+    }
     this.requestUpdate();
   }
 
@@ -81,11 +86,12 @@ export class GrantCodesFormField extends LitElement {
     return ids.join(' ');
   }
 
-  /** Errors stay hidden until the control reports :user-invalid. */
+  /** Errors stay hidden until the field is interacted with or reports :user-invalid. */
   get showError() {
     if (!this.error) return false;
     const controls = this.querySelectorAll('input, select, textarea');
     if (controls.length === 0) return true;
+    if (this._touched) return true;
     return Array.from(controls).some((control) => control.matches(':user-invalid'));
   }
 
@@ -136,9 +142,15 @@ export class GrantCodesFormField extends LitElement {
     }
   }
 
-  handleLabelClick() {
-    // The wrapping <label> owns activation and focus; toggling here double-toggles.
-    this.inputElements?.[0]?.focus();
+  handleLabelClick(event) {
+    const input = this.inputElements?.[0];
+    if (!input) return;
+
+    // The slotted control is not a DOM descendant of the shadow <label>, so the
+    // platform does not forward the click; do it here and suppress a duplicate.
+    event.preventDefault();
+    input.focus();
+    input.click();
   }
 
   errorTemplate() {
