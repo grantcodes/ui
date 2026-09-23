@@ -2,7 +2,9 @@
  * Tracks whether a slot has slotted content.
  *
  * CSS cannot do this: `:has(slot:empty)` always matches because the `<slot>`
- * element itself is always empty in the shadow tree.
+ * element itself is always empty in the shadow tree. `:host(:has([slot=x]))`
+ * does not help either — a `:has()` inside a shadow root cannot match light-DOM
+ * children (checked in Chromium 153), so the check has to happen in JS.
  */
 export class SlotPresenceController {
   /**
