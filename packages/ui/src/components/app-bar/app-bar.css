@@ -66,8 +66,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  inline-size: 2.75rem;
-  block-size: 2.75rem;
+  inline-size: var(--g-size-touch-target);
+  block-size: var(--g-size-touch-target);
   padding: var(--g-spacing-sm);
   border-radius: var(--g-border-radius-md);
   cursor: pointer;
