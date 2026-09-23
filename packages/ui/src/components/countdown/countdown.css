@@ -31,14 +31,15 @@
   font-variant-numeric: tabular-nums;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .countdown__value--flip {
-    animation: none;
-  }
-}
-
 .countdown__value--flip {
   animation: countdown-flip 0.35s ease-out;
+}
+
+/* Only the movement is dropped; the fade stays for everyone. */
+@media (prefers-reduced-motion: reduce) {
+  .countdown__value--flip {
+    animation-name: countdown-fade;
+  }
 }
 
 .countdown__label {
@@ -64,5 +65,14 @@
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes countdown-fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
