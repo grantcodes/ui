@@ -32,6 +32,15 @@ export const FormField = {};
 export const FormFieldWithError = {
   args: {
     error: 'This is an error',
+    slot: html`<input type="text" placeholder="Type, then blur" required />`,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'The error stays hidden until the field is interacted with or reports :user-invalid — type and blur to reveal it.',
+      },
+    },
   },
 };
 

@@ -14,7 +14,7 @@ const meta = {
     ...args,
     content: html`<p>This is the content of the dialog</p>`,
     open: true,
-    dismissable: true,
+    dismissible: true,
   },
   argTypes,
   decorators: [(story) => html`<div style="min-height: 300px">${story()}</div>`],
@@ -40,3 +40,13 @@ const meta = {
 export default meta;
 
 export const Dialog = {};
+
+/**
+ * Body content only: an empty header or footer slot renders no bar at all.
+ */
+export const ContentOnly = {
+  args: {
+    content: html`<p>No header or footer content, so neither bar is drawn.</p>`,
+  },
+  render: (args) => template(args, args.content),
+};
