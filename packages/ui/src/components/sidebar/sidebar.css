@@ -49,8 +49,8 @@
   inset-block-start: var(--g-spacing-md);
   inset-inline-start: var(--g-spacing-md);
   z-index: 1001;
-  inline-size: 2.5rem;
-  block-size: 2.5rem;
+  inline-size: var(--g-size-touch-target);
+  block-size: var(--g-size-touch-target);
   align-items: center;
   justify-content: center;
   background-color: var(--g-color-background-default);
@@ -127,8 +127,8 @@
   position: absolute;
   inset-block-start: var(--g-spacing-md);
   inset-inline-end: var(--g-spacing-sm);
-  inline-size: 1.5rem;
-  block-size: 1.5rem;
+  inline-size: var(--g-size-touch-target);
+  block-size: var(--g-size-touch-target);
   display: flex;
   align-items: center;
   justify-content: center;
