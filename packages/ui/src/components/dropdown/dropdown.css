@@ -38,7 +38,8 @@
 @supports (position-anchor: --dropdown-anchor) {
   .dropdown__menu--open {
     position-area: bottom span-right;
-    position-try-fallbacks: flip-block, flip-inline;
+    /* The combined tactic is the one that actually fits a panel wider than the gap. */
+    position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;
   }
 
   .dropdown__menu--bottom-end {
