@@ -4,6 +4,47 @@ import './toast.js';
 const meta = {
   title: 'Components/Toast',
   component: 'grantcodes-toast',
+  args: {
+    variant: 'info',
+    title: 'Information',
+    text: 'This is an informational toast message.',
+    duration: 5000,
+    position: 'top-right',
+    dismissible: true,
+  },
+  argTypes: {
+    variant: {
+      control: 'select',
+      options: ['info', 'success', 'warning', 'error'],
+    },
+    position: {
+      control: 'select',
+      options: [
+        'top-left',
+        'top-center',
+        'top-right',
+        'bottom-left',
+        'bottom-center',
+        'bottom-right',
+      ],
+    },
+    title: { control: 'text' },
+    text: { control: 'text' },
+    duration: { control: 'number' },
+    dismissible: { control: 'boolean' },
+  },
+  render: (args) => html`
+		<grantcodes-toast-container position=${args.position}>
+			<grantcodes-toast
+				variant=${args.variant}
+				title=${args.title}
+				duration=${args.duration}
+				.dismissible=${args.dismissible}
+			>
+				${args.text}
+			</grantcodes-toast>
+		</grantcodes-toast-container>
+	`,
 };
 
 export default meta;
@@ -11,15 +52,7 @@ export default meta;
 /**
  * Basic toast notification that auto-dismisses after 5 seconds
  */
-export const Toast = {
-  render: () => html`
-		<grantcodes-toast-container position="top-right">
-			<grantcodes-toast variant="info" title="Information">
-				This is an informational toast message.
-			</grantcodes-toast>
-		</grantcodes-toast-container>
-	`,
-};
+export const Toast = {};
 
 /**
  * All toast variants
@@ -60,13 +93,11 @@ export const WithoutTitle = {
  * Non-dismissible toast (no close button)
  */
 export const NonDismissible = {
-  render: () => html`
-		<grantcodes-toast-container position="top-right">
-			<grantcodes-toast variant="info" title="Loading" ?dismissible=${false} duration="0">
-				Please wait while we process your request...
-			</grantcodes-toast>
-		</grantcodes-toast-container>
-	`,
+  args: {
+    dismissible: false,
+    title: 'Loading',
+    text: 'Please wait while we process your request...',
+  },
 };
 
 /**
