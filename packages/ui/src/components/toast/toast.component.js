@@ -2,7 +2,13 @@ import { html, LitElement } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { AlertCircle, CheckCircle2, Info, X, XCircle } from '../../icons.js';
+import { generateId } from '../../lib/generate-id.js';
 import focusRingStyles from '../../lib/styles/focus-ring.css' with { type: 'css' };
+import {
+  canViewTransition,
+  prefersReducedMotion,
+  startViewTransition,
+} from '../../lib/view-transition.js';
 import { GrantCodesIcon } from '../icon/icon.component.js';
 import toastStyles from './toast.css' with { type: 'css' };
 
@@ -76,14 +82,34 @@ export class GrantCodesToast extends LitElement {
      * @type {number | null}
      */
     this._removeTimeout = null;
+
+    /**
+     * Guards against dismissing twice (close click plus auto-dismiss)
+     * @type {boolean}
+     */
+    this._removing = false;
+
+    // A view transition drives the enter and exit where it is available.
+    this._useViewTransition = canViewTransition();
+    // Per-instance, so two toasts cannot abort each other's view transition.
+    this._viewTransitionName = generateId('toast-vt');
   }
 
   connectedCallback() {
     super.connectedCallback();
-    // Show toast after a brief delay for animation
-    requestAnimationFrame(() => {
-      this._visible = true;
-    });
+    this.style.setProperty('--toast-vt-name', this._viewTransitionName);
+
+    if (this._useViewTransition) {
+      startViewTransition(() => {
+        this._visible = true;
+        return this.updateComplete;
+      });
+    } else {
+      // Let the first paint land at opacity 0 so the CSS transition has somewhere to go.
+      requestAnimationFrame(() => {
+        this._visible = true;
+      });
+    }
 
     this._startDismissTimer();
   }
@@ -113,11 +139,26 @@ export class GrantCodesToast extends LitElement {
 
   _handleDismiss() {
     this._pauseDismiss();
-    this._visible = false;
+    if (this._removing) return;
+    this._removing = true;
 
-    const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    if (this._useViewTransition) {
+      const transition = startViewTransition(() => {
+        this._visible = false;
+        return this.updateComplete;
+      });
+      if (transition) {
+        transition.finished.then(
+          () => this._remove(),
+          () => this._remove(),
+        );
+        return;
+      }
+    }
+
+    this._visible = false;
     clearTimeout(this._removeTimeout);
-    this._removeTimeout = setTimeout(() => this._remove(), reducedMotion ? 0 : 300);
+    this._removeTimeout = setTimeout(() => this._remove(), prefersReducedMotion() ? 0 : 300);
   }
 
   _remove() {

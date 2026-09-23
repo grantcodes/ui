@@ -186,6 +186,28 @@ describe('Toast Component', () => {
 
     assert.strictEqual(element.isConnected, false, 'No exit animation to wait for');
   });
+
+  it('should dismiss through a view transition when motion is allowed', async () => {
+    const originalMatchMedia = globalThis.window.matchMedia;
+    const originalStartViewTransition = globalThis.document.startViewTransition;
+    let transitions = 0;
+    globalThis.window.matchMedia = () => ({ matches: false });
+    globalThis.document.startViewTransition = (callback) => {
+      transitions++;
+      callback();
+      return { finished: Promise.resolve() };
+    };
+
+    element = await fixture('grantcodes-toast', { dismissible: true, duration: 0 });
+    click(element.shadowRoot.querySelector('.toast__close'));
+    await new Promise((resolve) => setTimeout(resolve, 20));
+
+    globalThis.window.matchMedia = originalMatchMedia;
+    globalThis.document.startViewTransition = originalStartViewTransition;
+
+    assert.strictEqual(transitions, 2, 'Enter and exit should both animate');
+    assert.strictEqual(element.isConnected, false, 'Toast should be removed');
+  });
 });
 
 describe('Toast Container Component', () => {
