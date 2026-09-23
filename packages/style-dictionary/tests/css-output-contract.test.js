@@ -7,10 +7,12 @@ import { fileURLToPath } from "node:url";
 
 const THEMES = ["grantcodes", "wireframe", "todomap", "grantina"];
 const REQUIRED_KEYS = [
-	"--g-theme-color-background-default:",
-	"--g-color-neutral-100:",
-	"--g-theme-typography-body-font-size:",
-	"--g-theme-spacing-md:",
+	"--g-color-background-default:",
+	"--g-ref-color-neutral-100:",
+	"--g-typography-body-font-size:",
+	"--g-spacing-md:",
+	"--g-size-touch-target:",
+	"--g-spacing-2xs:",
 ];
 
 const __filename = fileURLToPath(import.meta.url);
