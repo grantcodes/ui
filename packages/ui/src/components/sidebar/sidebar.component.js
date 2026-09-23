@@ -1,6 +1,8 @@
 import { html, LitElement } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
+import { generateId } from '../../lib/generate-id.js';
 import focusRingStyles from '../../lib/styles/focus-ring.css' with { type: 'css' };
+import { startViewTransition } from '../../lib/view-transition.js';
 import sidebarStyles from './sidebar.css' with { type: 'css' };
 
 export class GrantCodesSidebar extends LitElement {
@@ -47,12 +49,16 @@ export class GrantCodesSidebar extends LitElement {
      */
     this._drawerOpen = false;
 
+    // Per-instance, so two sidebars cannot abort each other's view transition.
+    this._viewTransitionName = generateId('sidebar-vt');
+
     this._handleDocumentClick = this._handleDocumentClick.bind(this);
     this._handleEscape = this._handleEscape.bind(this);
   }
 
   connectedCallback() {
     super.connectedCallback();
+    this.style.setProperty('--sidebar-vt-name', this._viewTransitionName);
     if (typeof document === 'undefined') return;
     document.addEventListener('click', this._handleDocumentClick);
     document.addEventListener('keydown', this._handleEscape);
@@ -69,39 +75,54 @@ export class GrantCodesSidebar extends LitElement {
     if (this._drawerOpen) {
       const path = e.composedPath();
       if (!path.includes(this)) {
-        this._drawerOpen = false;
+        this._closeDrawer();
       }
     }
   }
 
   _handleEscape(e) {
     if (e.key === 'Escape' && this._drawerOpen) {
-      this._drawerOpen = false;
+      this._closeDrawer();
     }
+  }
+
+  _closeDrawer() {
+    startViewTransition(() => {
+      this._drawerOpen = false;
+      return this.updateComplete;
+    });
   }
 
   _toggleCollapsed() {
     if (!this.collapsible) return;
 
-    this.collapsed = !this.collapsed;
-    this.dispatchEvent(
-      new CustomEvent('toggle', {
-        detail: { collapsed: this.collapsed },
-        bubbles: true,
-        composed: true,
-      }),
-    );
+    const collapsed = !this.collapsed;
+    startViewTransition(() => {
+      this.collapsed = collapsed;
+      this.dispatchEvent(
+        new CustomEvent('toggle', {
+          detail: { collapsed },
+          bubbles: true,
+          composed: true,
+        }),
+      );
+      return this.updateComplete;
+    });
   }
 
   _toggleDrawer() {
-    this._drawerOpen = !this._drawerOpen;
-    this.dispatchEvent(
-      new CustomEvent('drawer-toggle', {
-        detail: { open: this._drawerOpen },
-        bubbles: true,
-        composed: true,
-      }),
-    );
+    const open = !this._drawerOpen;
+    startViewTransition(() => {
+      this._drawerOpen = open;
+      this.dispatchEvent(
+        new CustomEvent('drawer-toggle', {
+          detail: { open },
+          bubbles: true,
+          composed: true,
+        }),
+      );
+      return this.updateComplete;
+    });
   }
 
   render() {
@@ -129,9 +150,7 @@ export class GrantCodesSidebar extends LitElement {
           ? html`
 					<div
 						class="sidebar__overlay"
-						@click=${() => {
-              this._drawerOpen = false;
-            }}
+						@click=${this._closeDrawer}
 					></div>
 				`
           : ''

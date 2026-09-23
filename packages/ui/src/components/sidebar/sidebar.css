@@ -15,7 +15,13 @@
   background-color: var(--g-color-background-default);
   border-inline-end: 1px solid var(--g-color-border-default);
   overflow-y: auto;
-  transition: inline-size 0.3s ease;
+  view-transition-name: var(--sidebar-vt-name, none);
+  /* Fallback for browsers without view transitions, which drive the collapse instead. */
+  @supports not (view-transition-name: none) {
+    @media (prefers-reduced-motion: no-preference) {
+      transition: inline-size 0.3s ease;
+    }
+  }
   flex-shrink: 0;
 }
 
@@ -77,13 +83,21 @@
     inset-block-end: 0;
     inset-inline-start: -100%;
     z-index: 1000;
-    transition: inset-inline-start 0.3s ease;
+    @supports not (view-transition-name: none) {
+      @media (prefers-reduced-motion: no-preference) {
+        transition: inset-inline-start 0.3s ease;
+      }
+    }
   }
 
   .sidebar--right {
     inset-inline-start: auto;
     inset-inline-end: -100%;
-    transition: inset-inline-end 0.3s ease;
+    @supports not (view-transition-name: none) {
+      @media (prefers-reduced-motion: no-preference) {
+        transition: inset-inline-end 0.3s ease;
+      }
+    }
   }
 
   .sidebar--drawer-open {
