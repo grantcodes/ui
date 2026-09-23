@@ -236,11 +236,7 @@ describe('Form Field Component', () => {
     assert.ok(error, 'Error should render without a control');
     assert.strictEqual(error.hasAttribute('hidden'), false, 'Nothing to validate, so show it');
   });
-  it('should leave checkbox activation to the wrapping label (single toggle)', async () => {
-    // The shim omits the HTMLInputElement global and does not forward label clicks
-    // to slotted controls; restore the global and emulate that activation click.
-    globalThis.HTMLInputElement = globalThis.window.HTMLInputElement;
-
+  it('should toggle a wrapped checkbox from the label text', async () => {
     element = document.createElement('grantcodes-form-field');
     element.label = 'Accept terms';
     element.innerHTML = '<input type="checkbox" />';
@@ -248,9 +244,38 @@ describe('Form Field Component', () => {
     await element.updateComplete;
 
     const input = element.querySelector('input');
-    click(element.shadowRoot.querySelector('.form-field__label'));
-    click(input);
+    let changes = 0;
+    input.addEventListener('change', () => {
+      changes += 1;
+    });
 
-    assert.strictEqual(input.checked, true, 'A label click must toggle the checkbox exactly once');
+    click(element.shadowRoot.querySelector('.form-field__label'));
+
+    assert.strictEqual(input.checked, true, 'A label click must toggle the checkbox');
+    assert.strictEqual(changes, 1, 'It must behave like a real click and emit change');
+  });
+
+  it('should reveal a consumer-set error once the field is touched', async () => {
+    element = document.createElement('grantcodes-form-field');
+    element.label = 'Email';
+    element.error = 'Invalid email';
+    element.innerHTML = '<input type="text" />';
+    document.body.appendChild(element);
+    await element.updateComplete;
+
+    assert.ok(
+      element.shadowRoot.querySelector('.form-field__error').hasAttribute('hidden'),
+      'Untouched field keeps the error hidden',
+    );
+
+    const input = element.querySelector('input');
+    input.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
+    await element.updateComplete;
+
+    assert.strictEqual(
+      element.shadowRoot.querySelector('.form-field__error').hasAttribute('hidden'),
+      false,
+      'Touching the field reveals a consumer-set error without native invalidity',
+    );
   });
 });
