@@ -11,7 +11,7 @@
   gap: var(--g-spacing-md);
   padding: var(--g-spacing-md);
   border-radius: var(--g-border-radius-sm, 0.25rem);
-  view-transition-name: notice;
+  view-transition-name: var(--notice-vt-name, none);
   transition: opacity 0.5s;
 }
 

@@ -3,6 +3,8 @@ import { classMap } from 'lit/directives/class-map.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { html } from 'lit/static-html.js';
 import { AlertCircle, CheckCircle2, Info, X, XCircle } from '../../icons.js';
+import { generateId } from '../../lib/generate-id.js';
+import { startViewTransition } from '../../lib/view-transition.js';
 import { GrantCodesIcon } from '../icon/icon.component.js';
 import noticeStyles from './notice.css' with { type: 'css' };
 
@@ -35,16 +37,18 @@ export class GrantCodesNotice extends LitElement {
     this.variant = 'info';
     this.title = '';
     this.dismissable = false;
+
+    // Per-instance, so two notices cannot abort each other's view transition.
+    this._viewTransitionName = generateId('notice-vt');
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.style.setProperty('--notice-vt-name', this._viewTransitionName);
   }
 
   onDismiss(_e) {
-    const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-    if (reducedMotion || !document.startViewTransition) {
-      this.remove();
-      return;
-    }
-
-    document.startViewTransition(() => {
+    startViewTransition(() => {
       this.remove();
     });
   }
