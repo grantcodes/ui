@@ -112,6 +112,12 @@
   display: none;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  :host([variant="filmstrip"]) .gallery__slot {
+    scroll-behavior: smooth;
+  }
+}
+
 :host([variant="filmstrip"]) .gallery__slot::slotted(*) {
   flex: 0 0 auto;
   block-size: 100%;
