@@ -191,4 +191,26 @@ describe('Sidebar Component', () => {
     const overlay = element.shadowRoot.querySelector('.sidebar__overlay');
     assert.ok(!overlay, 'Overlay should not exist when drawer is closed');
   });
+
+  it('should run the collapse inside a view transition when motion is allowed', async () => {
+    element = await fixture('grantcodes-sidebar', { collapsible: true });
+
+    const originalMatchMedia = globalThis.window.matchMedia;
+    let transitions = 0;
+    globalThis.window.matchMedia = () => ({ matches: false });
+    globalThis.document.startViewTransition = (callback) => {
+      transitions++;
+      callback();
+      return { finished: Promise.resolve() };
+    };
+
+    click(element.shadowRoot.querySelector('.sidebar__toggle'));
+    await element.updateComplete;
+
+    globalThis.window.matchMedia = originalMatchMedia;
+    globalThis.document.startViewTransition = undefined;
+
+    assert.strictEqual(transitions, 1, 'The collapse should animate');
+    assert.strictEqual(element.collapsed, true, 'The collapse should still apply');
+  });
 });
