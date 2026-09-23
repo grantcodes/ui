@@ -59,7 +59,7 @@
     "fix:lint": "npx @biomejs/biome format --write src",
     "test": "run-s lint test:unit",
     "lint": "npx @biomejs/biome lint src",
-    "test:unit": "NODE_ENV=test node --import @lit-labs/ssr-dom-shim/register-css-hook.js --test --test-concurrency=1 src/**/*.test.js"
+    "test:unit": "NODE_ENV=test node --import @lit-labs/ssr-dom-shim/register-css-hook.js --test --test-concurrency=1 'src/**/*.test.js'"
   },
   "license": "MIT",
   "dependencies": {
