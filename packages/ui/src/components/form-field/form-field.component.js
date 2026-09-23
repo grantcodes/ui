@@ -36,16 +36,16 @@ export class GrantCodesFormField extends LitElement {
     /** @type {NodeListOf<GrantCodesFormField>} */
     this.nestedFields;
 
-    if (!this.id) {
-      this.id = generateId('form-field');
-    }
-
     this._revalidate = this._revalidate.bind(this);
     this._touched = false;
   }
 
   connectedCallback() {
     super.connectedCallback();
+    // Not in the constructor: a custom element that gains an attribute there is never upgraded.
+    if (!this.id) {
+      this.id = generateId('form-field');
+    }
     this.addEventListener('input', this._revalidate);
     // blur/invalid do not bubble, so they are caught on the way down.
     this.addEventListener('blur', this._revalidate, true);

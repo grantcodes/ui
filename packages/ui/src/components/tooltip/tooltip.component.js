@@ -17,9 +17,6 @@ export class GrantCodesTooltip extends LitElement {
   constructor() {
     super();
 
-    if (!this.id) {
-      this.id = generateId('tooltip');
-    }
     /**
      * Label for the tooltip, used when the tooltip is the main label for the item.
      */
@@ -33,6 +30,14 @@ export class GrantCodesTooltip extends LitElement {
 
   /** @type {Element[]} */
   slotted = [];
+
+  connectedCallback() {
+    super.connectedCallback();
+    // Not in the constructor: a custom element that gains an attribute there is never upgraded.
+    if (!this.id) {
+      this.id = generateId('tooltip');
+    }
+  }
 
   firstUpdated() {
     const slot = this.renderRoot.querySelector('slot');

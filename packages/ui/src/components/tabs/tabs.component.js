@@ -23,7 +23,11 @@ export class GrantCodesTabs extends LitElement {
 
     this.label = '';
     this._focusedTabIndex = -1;
+  }
 
+  connectedCallback() {
+    super.connectedCallback();
+    // Not in the constructor: a custom element that gains an attribute there is never upgraded.
     if (!this.id) {
       this.id = generateId('tabs');
     }

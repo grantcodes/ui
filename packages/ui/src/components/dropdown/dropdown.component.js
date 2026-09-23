@@ -33,10 +33,6 @@ export class GrantCodesDropdown extends LitElement {
      */
     this._triggerElement = null;
 
-    if (!this.id) {
-      this.id = generateId('dropdown');
-    }
-
     // Per-instance, so two dropdowns cannot abort each other's view transition.
     this._viewTransitionName = generateId('dropdown-vt');
 
@@ -50,6 +46,10 @@ export class GrantCodesDropdown extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
+    // Not in the constructor: a custom element that gains an attribute there is never upgraded.
+    if (!this.id) {
+      this.id = generateId('dropdown');
+    }
     if (typeof document === 'undefined') return;
     document.addEventListener('click', this._handleDocumentClick);
     document.addEventListener('keydown', this._handleEscape);
