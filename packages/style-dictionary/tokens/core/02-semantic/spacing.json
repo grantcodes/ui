@@ -1,5 +1,8 @@
 {
   "spacing": {
+    "2xs": {
+      "value": "{ref.spacing.2}"
+    },
     "xs": {
       "value": "{ref.spacing.4}"
     },

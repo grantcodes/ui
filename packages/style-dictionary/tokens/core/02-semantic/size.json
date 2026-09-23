@@ -1,0 +1,7 @@
+{
+  "size": {
+    "touch-target": {
+      "value": "{ref.size.touch-target}"
+    }
+  }
+}
