@@ -31,14 +31,12 @@
   font-size: var(--g-typography-h4-font-size);
   cursor: pointer;
   background: transparent;
-  inset-block-start: calc(var(--g-spacing-md) - 0.375rem);
-  inset-inline-end: calc(var(--g-spacing-md) - 0.375rem);
-  margin-block-start: -0.25rem;
-  margin-inline-end: -0.25rem;
+  inset-block-start: calc(var(--g-spacing-xs) + var(--g-spacing-2xs));
+  inset-inline-end: calc(var(--g-spacing-xs) + var(--g-spacing-2xs));
   border-radius: 50%;
-  /* 44px target: the insets above keep the glyph where the 2rem box had it. */
-  width: 2.75rem;
-  height: 2.75rem;
+  /* Touch target; the inset keeps the glyph where the 2rem box had it. */
+  inline-size: var(--g-size-touch-target);
+  block-size: var(--g-size-touch-target);
   padding: var(--g-spacing-xs);
   justify-content: center;
   align-items: center;
@@ -52,6 +50,7 @@
   padding: var(--g-spacing-md);
 }
 
+/* Needed because the display rules below are author-origin and outrank the UA [hidden] rule. */
 .dialog__header[hidden],
 .dialog__footer[hidden] {
   display: none;
