@@ -159,6 +159,14 @@ describe('Notice Component', () => {
     );
   });
 
+  it('should hide the decorative close icon from assistive tech', async () => {
+    element = await fixture('grantcodes-notice', { dismissable: true });
+
+    const icon = element.shadowRoot.querySelector('.notice__close grantcodes-icon');
+    assert.strictEqual(icon.getAttribute('title'), null, 'An icon title cannot name the button');
+    assert.strictEqual(icon.getAttribute('aria-hidden'), 'true');
+  });
+
   it('should remove the notice without a view transition when reduced motion is preferred', async () => {
     element = await fixture('grantcodes-notice', { dismissable: true });
 

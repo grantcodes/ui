@@ -58,7 +58,7 @@ export class GrantCodesNotice extends LitElement {
 					aria-label="Dismiss notice"
 					@click=${this.onDismiss}
 				>
-					<grantcodes-icon title="Close Notice">${unsafeHTML(X)}</grantcodes-icon>
+					<grantcodes-icon aria-hidden="true">${unsafeHTML(X)}</grantcodes-icon>
 				</button>
 			`;
     }
