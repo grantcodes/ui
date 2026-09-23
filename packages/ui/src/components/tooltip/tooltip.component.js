@@ -17,7 +17,9 @@ export class GrantCodesTooltip extends LitElement {
   constructor() {
     super();
 
-    this.id = generateId('tooltip');
+    if (!this.id) {
+      this.id = generateId('tooltip');
+    }
     /**
      * Label for the tooltip, used when the tooltip is the main label for the item.
      */

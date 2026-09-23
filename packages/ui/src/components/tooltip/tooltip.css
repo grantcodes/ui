@@ -39,6 +39,11 @@
   user-select: none;
   text-align: center;
   opacity: 0;
+  /* allow-discrete keeps the box rendered while it fades out. */
+  transition:
+    opacity 0.2s ease,
+    display 0.2s;
+  transition-behavior: allow-discrete;
 
   /* Modern CSS Anchor Positioning API */
   /* This positions the tooltip relative to its anchor (the slot) */
@@ -65,4 +70,21 @@
 .tooltip__slot:focus-within + .tooltip__content {
   display: block;
   opacity: 1;
+}
+
+/* Entry state for the fade, only while motion is welcome. */
+@media (prefers-reduced-motion: no-preference) {
+  @starting-style {
+    .tooltip__slot:hover + .tooltip__content,
+    .tooltip__slot:focus + .tooltip__content,
+    .tooltip__slot:focus-within + .tooltip__content {
+      opacity: 0;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tooltip__content {
+    transition: none;
+  }
 }
