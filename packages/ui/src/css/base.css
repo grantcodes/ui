@@ -5,3 +5,4 @@
 @import "./elements.css" layer(base);
 @import "./util/index.css" layer(utilities);
 @import "./helpers.css" layer(utilities);
+@import "./view-transitions.css";

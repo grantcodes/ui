@@ -1,0 +1,16 @@
+/* View transitions are an enhancement: without support the per-component
+   view-transition-name declarations are ignored and their own transitions apply. */
+@supports (view-transition-name: none) {
+  @media (prefers-reduced-motion: no-preference) {
+    ::view-transition-group(*) {
+      animation-duration: var(--g-animation-move-quick);
+      animation-timing-function: var(--g-animation-ease);
+    }
+
+    /* Only the named elements animate; the page would otherwise cross-fade around them. */
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation: none;
+    }
+  }
+}
