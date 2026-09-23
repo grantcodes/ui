@@ -79,7 +79,6 @@
   background-color: var(--g-color-background-subtle-hover);
 }
 
-/* Focus sits on the item host (tabindex=-1), so the ring is painted from there. */
 :host(:focus-visible) .dropdown-item {
   outline: var(--g-focus-ring-width-default) solid var(--g-focus-ring-color-default);
   outline-offset: var(--g-focus-ring-offset-default);
