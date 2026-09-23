@@ -1,5 +1,6 @@
 import { html, LitElement } from 'lit';
 import { generateId } from '../../lib/generate-id.js';
+import { startViewTransition } from '../../lib/view-transition.js';
 import dropdownStyles from './dropdown.css' with { type: 'css' };
 
 export class GrantCodesDropdown extends LitElement {
@@ -35,6 +36,9 @@ export class GrantCodesDropdown extends LitElement {
     if (!this.id) {
       this.id = generateId('dropdown');
     }
+
+    // Per-instance, so two dropdowns cannot abort each other's view transition.
+    this._viewTransitionName = generateId('dropdown-vt');
 
     this._handleDocumentClick = this._handleDocumentClick.bind(this);
     this._handleEscape = this._handleEscape.bind(this);
@@ -72,6 +76,7 @@ export class GrantCodesDropdown extends LitElement {
 
     // Anchor name is per instance so multiple dropdowns cannot anchor to each other.
     this.style.setProperty('--dropdown-anchor', `--dropdown-anchor-${this.id}`);
+    this.style.setProperty('--dropdown-vt-name', this._viewTransitionName);
   }
 
   updated(changedProperties) {
@@ -102,29 +107,38 @@ export class GrantCodesDropdown extends LitElement {
     // Close dropdown if clicking outside
     const path = e.composedPath();
     if (!path.includes(this)) {
-      this.open = false;
-      this.requestUpdate();
+      this._setOpen(false);
     }
   }
 
   _handleEscape(e) {
     if (e.key === 'Escape' && this.open) {
-      this.open = false;
+      this._setOpen(false);
       this._triggerElement?.focus();
     }
   }
 
-  _handleTriggerClick(_e) {
-    this.open = !this.open;
-    this.requestUpdate();
+  _setOpen(open) {
+    if (this.open === open) return;
+    startViewTransition(() => {
+      this.open = open;
+      return this.updateComplete;
+    });
+  }
 
-    this.dispatchEvent(
-      new CustomEvent('toggle', {
-        detail: { open: this.open },
-        bubbles: true,
-        composed: true,
-      }),
-    );
+  _handleTriggerClick(_e) {
+    const open = !this.open;
+    startViewTransition(() => {
+      this.open = open;
+      this.dispatchEvent(
+        new CustomEvent('toggle', {
+          detail: { open },
+          bubbles: true,
+          composed: true,
+        }),
+      );
+      return this.updateComplete;
+    });
   }
 
   _handleMenuKeydown(e) {
