@@ -88,6 +88,28 @@ describe('Dropdown Component', () => {
     cleanup(element1);
     cleanup(element2);
   });
+
+  it('should open through a view transition when motion is allowed', async () => {
+    element = await fixture('grantcodes-dropdown');
+
+    const originalMatchMedia = globalThis.window.matchMedia;
+    let transitions = 0;
+    globalThis.window.matchMedia = () => ({ matches: false });
+    globalThis.document.startViewTransition = (callback) => {
+      transitions++;
+      callback();
+      return { finished: Promise.resolve() };
+    };
+
+    element._handleTriggerClick();
+    await element.updateComplete;
+
+    globalThis.window.matchMedia = originalMatchMedia;
+    globalThis.document.startViewTransition = undefined;
+
+    assert.strictEqual(transitions, 1, 'Opening should animate');
+    assert.strictEqual(element.open, true, 'The dropdown should still open');
+  });
 });
 
 describe('Dropdown Item Component', () => {
