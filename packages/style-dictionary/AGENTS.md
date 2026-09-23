@@ -68,6 +68,7 @@ Generated CSS variable names follow a flat, clean naming scheme:
 | Spacing | `--g-ref-spacing-{name}` | `--g-ref-spacing-md` |
 | Border | `--g-ref-border-radius-{name}` | `--g-ref-border-radius-500` |
 | Shadow | `--g-ref-shadow-{size}-{prop}` | `--g-ref-shadow-sm-x` |
+| Size | `--g-ref-size-{name}` | `--g-ref-size-touch-target` |
 | Animation | `--g-ref-animation-{type}-{name}` | `--g-ref-animation-duration-20` |
 
 ### Semantic/component token examples
@@ -80,6 +81,8 @@ Generated CSS variable names follow a flat, clean naming scheme:
 | Component focus-ring | `--g-focus-ring-width-default` | `--g-theme-focus-ring-width-default` |
 | Component form | `--g-form-color-border-default` | `--g-theme-form-color-border-default` |
 | Utility role (500 shade) | `--g-color-utility-success` | *(new)* |
+| Touch target size | `--g-size-touch-target` | *(new)* |
+| Spacing step | `--g-spacing-2xs` | *(new)* |
 | Background shimmer | `--g-color-background-shimmer` | *(new)* |
 | Code font family | `--g-typography-font-family-code` | *(new)* |
 
