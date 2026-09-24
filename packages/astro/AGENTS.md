@@ -25,7 +25,7 @@ test/               # node:test smoke / SSR / typings / OG tests
 - Component classes, styles and tokens — those are `@grantcodes/ui` and `@grantcodes/style-dictionary`.
 - App pages, content and `astro.config.mjs` — those are `apps/astro`.
 - `src/generated/*`: change `scripts/generate-astro-typings-from-cem.ts` and regenerate instead.
-- The retired standalone `@grantcodes/astro-blocks` package — see `packages/astro-blocks/AGENTS.md`.
+- The retired standalone `@grantcodes/astro-blocks` package — `MIGRATION.md` explains what replaced it.
 
 ## Where to look next
 
