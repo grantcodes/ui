@@ -1,8 +1,8 @@
 # Durable agent lessons
 
-Confirmed lessons for this monorepo, distilled from `.planning/AGENT_NOTES.md` (ephemeral, gitignored working notes) and from review findings. Read this before non-trivial work in an area you have not touched before.
+Confirmed lessons for this monorepo. Read this before non-trivial work in an area you have not touched before.
 
-Promote a lesson here once it has held across two separate tasks or a code review; keep single observations in `.planning/AGENT_NOTES.md`.
+Add a lesson once it has held across two separate tasks or a code review.
 
 ## Lit components
 
@@ -41,7 +41,3 @@ Promote a lesson here once it has held across two separate tasks or a code revie
 - `lucide-static` is a runtime dependency of `@grantcodes/ui` (imported by the icon and feature-list components) — it belongs in `dependencies`.
 - `marked` v18 `parse()` is async by default; the sync API needs `{ async: false }`.
 - Biome's `migrate --write` renames rules mechanically, but promoted nursery rules need a lint-baseline comparison afterwards.
-
-## Where ephemeral notes live
-
-Plans, research, working notes and overnight reports belong in `.planning/`, which is gitignored and must never be committed. Promote what is durable into this file; keep the rest ephemeral.
