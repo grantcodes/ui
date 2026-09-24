@@ -99,10 +99,10 @@ export class GrantCodesTabs extends LitElement {
     return this.tabs.map(
       (tab, i) => html`
 				<grantcodes-tabs-button
-					index=${i + 1}
+					index=${i}
 					label="${tab.label}"
 					containerId="${this.id}"
-					active=${tab.active}
+					.active=${tab.active}
 					@click=${() => {
             this.activeTab = tab;
           }}

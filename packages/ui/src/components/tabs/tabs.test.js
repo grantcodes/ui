@@ -133,4 +133,70 @@ describe('Tabs Component', () => {
     // Tab buttons are rendered via renderTabButtons method
     // In a real browser, these would be visible in the shadow DOM
   });
+
+  const mountTabs = async (labels) => {
+    element = document.createElement('grantcodes-tabs');
+    element.innerHTML = labels
+      .map((label) => `<grantcodes-tab label="${label}"><p>${label}</p></grantcodes-tab>`)
+      .join('');
+    document.body.appendChild(element);
+    await element.updateComplete;
+    await element.updateComplete;
+    return {
+      buttons: Array.from(element.shadowRoot.querySelectorAll('grantcodes-tabs-button')),
+      panels: Array.from(element.querySelectorAll('grantcodes-tab')).map((tab) =>
+        tab.shadowRoot.querySelector('.tabs__panel'),
+      ),
+    };
+  };
+
+  it('should mark exactly one tab button active', async () => {
+    const { buttons } = await mountTabs(['One', 'Two', 'Three']);
+
+    assert.strictEqual(buttons.length, 3, 'One button per tab');
+    assert.strictEqual(
+      buttons.filter((button) => button.active).length,
+      1,
+      'Exactly one tab may be active',
+    );
+    assert.strictEqual(buttons[0].active, true, 'The first tab is active by default');
+
+    const highlighted = buttons.filter((button) =>
+      button.shadowRoot.querySelector('button').classList.contains('is-active'),
+    );
+    assert.strictEqual(highlighted.length, 1, 'Exactly one tab button carries the highlight');
+  });
+
+  it('should pair each tab button with its own panel', async () => {
+    const { buttons, panels } = await mountTabs(['One', 'Two']);
+
+    buttons.forEach((button, index) => {
+      const inner = button.shadowRoot.querySelector('button');
+      assert.strictEqual(
+        inner.getAttribute('aria-controls'),
+        panels[index].id,
+        `Button ${index} must control its own panel`,
+      );
+      assert.strictEqual(
+        panels[index].getAttribute('aria-labelledby'),
+        inner.id,
+        `Panel ${index} must be labelled by its own button`,
+      );
+    });
+  });
+
+  it('should switch panels when another tab button is clicked', async () => {
+    const { buttons, panels } = await mountTabs(['One', 'Two']);
+
+    buttons[1].click();
+    await element.updateComplete;
+
+    assert.deepStrictEqual(
+      panels.map((panel) => panel.classList.contains('is-active')),
+      [false, true],
+      'Only the clicked panel stays visible',
+    );
+    assert.strictEqual(buttons[1].active, true, 'Clicked button is active');
+    assert.strictEqual(buttons[0].active, false, 'Other button is no longer active');
+  });
 });
