@@ -26,12 +26,6 @@
   border: 1px solid var(--g-color-border-default);
   border-radius: var(--g-border-radius-md);
   view-transition-name: var(--dropdown-vt-name, none);
-  /* Fallback for browsers without view transitions, which drive the reveal instead. */
-  @supports not (view-transition-name: none) {
-    @media (prefers-reduced-motion: no-preference) {
-      animation: dropdown-fade-in 0.15s ease-out;
-    }
-  }
   position-anchor: var(--dropdown-anchor, none);
 }
 
@@ -105,37 +99,4 @@
 .dropdown-item--disabled:focus,
 .dropdown-item--disabled:active {
   background-color: transparent;
-}
-
-/* Animation */
-@keyframes dropdown-fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(-0.5rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* For top placement, reverse animation */
-@supports not (view-transition-name: none) {
-  @media (prefers-reduced-motion: no-preference) {
-    .dropdown__menu--top-start,
-    .dropdown__menu--top-end {
-      animation: dropdown-fade-in-top 0.15s ease-out;
-    }
-  }
-}
-
-@keyframes dropdown-fade-in-top {
-  from {
-    opacity: 0;
-    transform: translateY(0.5rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
