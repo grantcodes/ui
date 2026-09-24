@@ -34,7 +34,6 @@
   inset-block-start: calc(var(--g-spacing-xs) + var(--g-spacing-2xs));
   inset-inline-end: calc(var(--g-spacing-xs) + var(--g-spacing-2xs));
   border-radius: 50%;
-  /* Touch target; the inset keeps the glyph where the 2rem box had it. */
   inline-size: var(--g-size-touch-target);
   block-size: var(--g-size-touch-target);
   padding: var(--g-spacing-xs);

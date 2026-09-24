@@ -73,14 +73,6 @@
   opacity: 0;
   transform: translateY(-1rem);
   view-transition-name: var(--toast-vt-name, none);
-  /* Fallback for browsers without view transitions, which drive the reveal instead. */
-  @supports not (view-transition-name: none) {
-    @media (prefers-reduced-motion: no-preference) {
-      transition:
-        opacity 0.3s ease,
-        transform 0.3s ease;
-    }
-  }
 }
 
 .toast--visible {
