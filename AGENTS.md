@@ -8,7 +8,6 @@ Monorepo for UI packages using pnpm workspaces and Turbo.
 - `@grantcodes/style-dictionary` - Design tokens and theming - [See AGENTS.md](packages/style-dictionary/AGENTS.md)
 - `@grantcodes/astro` - Astro integration (includes reusable Astro content blocks) - [See AGENTS.md](packages/astro/AGENTS.md)
 - `@grantcodes/astro-og-images` - Standalone OpenGraph image integration - [See AGENTS.md](packages/astro-og-images/AGENTS.md)
-- `@grantcodes/astro-blocks` - Retired, changelog only - [See AGENTS.md](packages/astro-blocks/AGENTS.md)
 - `@grantcodes/astro-starter` - Personal website - [See AGENTS.md](apps/astro/AGENTS.md)
 
 ## Commands
@@ -49,5 +48,4 @@ pnpm test:style-dictionary
 ## Agent Guidance
 
 - Read [AGENT_LESSONS.md](AGENT_LESSONS.md) before non-trivial work in an area you have not touched, and the `AGENTS.md` of the unit you are changing (structure, what does not belong there, where to look next).
-- Ephemeral agent material — plans, research, working notes, `AGENT_NOTES.md`, overnight reports — lives in `.planning/`, which is gitignored and never committed. Promote a lesson into `AGENT_LESSONS.md` when it holds across two tasks.
 - `packages/ui/AGENTS.md` owns the component contract and the library's terminology; use its terms and not the banned synonyms.
