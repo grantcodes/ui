@@ -4,6 +4,10 @@ Confirmed lessons for this monorepo, distilled from `.planning/AGENT_NOTES.md` (
 
 Promote a lesson here once it has held across two separate tasks or a code review; keep single observations in `.planning/AGENT_NOTES.md`.
 
+## Lit components
+
+- `active=${value}` writes the attribute even when the value is `false`, and for a `{type: Boolean}` property the attribute's *presence* means true — so a component default of `true` also survives `?attr=${false}` (removing an absent attribute fires no change). Set booleans from a parent with `.prop=${value}`, and use `?attr=${value}` only when the default is `false`. Cost of ignoring it: every tab button reported `active`, and a "non-dismissible" toast still had its close button.
+
 ## Tokens and theming
 
 - Token layers are strict: `01-ref` holds every raw value, and `02-semantic`/`03-components` may only reference `{ref.*}` or their own layer. Adding a raw colour anywhere else breaks the boundary (`packages/style-dictionary/AGENTS.md` has the details).
