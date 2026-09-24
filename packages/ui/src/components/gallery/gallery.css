@@ -106,15 +106,16 @@
   scroll-snap-type: x mandatory;
   overscroll-behavior-x: contain;
   scrollbar-width: none;
+  scroll-behavior: smooth;
 }
 
 :host([variant="filmstrip"]) .gallery__slot::-webkit-scrollbar {
   display: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
+@media (prefers-reduced-motion: reduce) {
   :host([variant="filmstrip"]) .gallery__slot {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
 }
 
