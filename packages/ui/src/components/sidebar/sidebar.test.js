@@ -192,6 +192,41 @@ describe('Sidebar Component', () => {
     assert.ok(!overlay, 'Overlay should not exist when drawer is closed');
   });
 
+  it('should preserve rapid collapse and drawer toggles before the transition update', async () => {
+    element = await fixture('grantcodes-sidebar');
+    const matchMedia = window.matchMedia;
+    const startViewTransition = document.startViewTransition;
+    const callbacks = [];
+    const collapsedStates = [];
+    const drawerStates = [];
+    element.addEventListener('toggle', (event) => collapsedStates.push(event.detail.collapsed));
+    element.addEventListener('drawer-toggle', (event) => drawerStates.push(event.detail.open));
+    window.matchMedia = () => ({ matches: false });
+    document.startViewTransition = (callback) => {
+      callbacks.push(callback);
+      return { finished: Promise.resolve() };
+    };
+
+    try {
+      const collapse = element.shadowRoot.querySelector('.sidebar__toggle');
+      const drawer = element.shadowRoot.querySelector('.sidebar__mobile-toggle');
+      click(collapse);
+      click(collapse);
+      click(drawer);
+      click(drawer);
+      for (const callback of callbacks) await callback();
+      await element.updateComplete;
+
+      assert.strictEqual(element.collapsed, false, 'Two clicks should return to expanded');
+      assert.strictEqual(element._drawerOpen, false, 'Two clicks should return to closed');
+      assert.deepStrictEqual(collapsedStates, [true, false]);
+      assert.deepStrictEqual(drawerStates, [true, false]);
+    } finally {
+      window.matchMedia = matchMedia;
+      document.startViewTransition = startViewTransition;
+    }
+  });
+
   it('should run the collapse inside a view transition when motion is allowed', async () => {
     element = await fixture('grantcodes-sidebar', { collapsible: true });
 

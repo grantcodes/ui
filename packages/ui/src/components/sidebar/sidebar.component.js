@@ -51,6 +51,8 @@ export class GrantCodesSidebar extends LitElement {
 
     // Per-instance, so two sidebars cannot abort each other's view transition.
     this._viewTransitionName = generateId('sidebar-vt');
+    this._pendingState = {};
+    this._transitionScheduled = false;
 
     this._handleDocumentClick = this._handleDocumentClick.bind(this);
     this._handleEscape = this._handleEscape.bind(this);
@@ -72,7 +74,7 @@ export class GrantCodesSidebar extends LitElement {
 
   _handleDocumentClick(e) {
     // Close mobile drawer if clicking outside
-    if (this._drawerOpen) {
+    if (this._pendingState._drawerOpen ?? this._drawerOpen) {
       const path = e.composedPath();
       if (!path.includes(this)) {
         this._closeDrawer();
@@ -81,48 +83,56 @@ export class GrantCodesSidebar extends LitElement {
   }
 
   _handleEscape(e) {
-    if (e.key === 'Escape' && this._drawerOpen) {
+    if (e.key === 'Escape' && (this._pendingState._drawerOpen ?? this._drawerOpen)) {
       this._closeDrawer();
     }
   }
 
-  _closeDrawer() {
+  _scheduleTransition() {
+    if (this._transitionScheduled) return;
+    this._transitionScheduled = true;
     startViewTransition(() => {
-      this._drawerOpen = false;
+      const pending = this._pendingState;
+      this._pendingState = {};
+      this._transitionScheduled = false;
+      if ('collapsed' in pending) this.collapsed = pending.collapsed;
+      if ('_drawerOpen' in pending) this._drawerOpen = pending._drawerOpen;
       return this.updateComplete;
     });
+  }
+
+  _closeDrawer() {
+    if (!(this._pendingState._drawerOpen ?? this._drawerOpen)) return;
+    this._pendingState._drawerOpen = false;
+    this._scheduleTransition();
   }
 
   _toggleCollapsed() {
     if (!this.collapsible) return;
 
-    const collapsed = !this.collapsed;
-    startViewTransition(() => {
-      this.collapsed = collapsed;
-      this.dispatchEvent(
-        new CustomEvent('toggle', {
-          detail: { collapsed },
-          bubbles: true,
-          composed: true,
-        }),
-      );
-      return this.updateComplete;
-    });
+    const collapsed = !(this._pendingState.collapsed ?? this.collapsed);
+    this._pendingState.collapsed = collapsed;
+    this._scheduleTransition();
+    this.dispatchEvent(
+      new CustomEvent('toggle', {
+        detail: { collapsed },
+        bubbles: true,
+        composed: true,
+      }),
+    );
   }
 
   _toggleDrawer() {
-    const open = !this._drawerOpen;
-    startViewTransition(() => {
-      this._drawerOpen = open;
-      this.dispatchEvent(
-        new CustomEvent('drawer-toggle', {
-          detail: { open },
-          bubbles: true,
-          composed: true,
-        }),
-      );
-      return this.updateComplete;
-    });
+    const open = !(this._pendingState._drawerOpen ?? this._drawerOpen);
+    this._pendingState._drawerOpen = open;
+    this._scheduleTransition();
+    this.dispatchEvent(
+      new CustomEvent('drawer-toggle', {
+        detail: { open },
+        bubbles: true,
+        composed: true,
+      }),
+    );
   }
 
   render() {
