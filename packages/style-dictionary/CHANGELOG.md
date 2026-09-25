@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.11.0](https://github.com/grantcodes/ui/compare/style-dictionary-v1.10.2...style-dictionary-v1.11.0) (2026-09-25)
+
+
+### Features
+
+* **style-dictionary:** add the touch-target size token ([9a1e184](https://github.com/grantcodes/ui/commit/9a1e1840ed507bc0d067694ddc065e682a45aac6))
+
 ## [1.10.2](https://github.com/grantcodes/ui/compare/style-dictionary-v1.10.1...style-dictionary-v1.10.2) (2026-06-07)
 
 
