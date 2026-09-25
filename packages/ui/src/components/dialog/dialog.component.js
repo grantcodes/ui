@@ -95,8 +95,7 @@ export class GrantCodesDialog extends LitElement {
     return html`
 	      <dialog
         class="dialog"
-        ?open=${this.open}
-        closedby=${supportsClosedBy ? 'any' : nothing}
+        closedby=${supportsClosedBy && this.dismissible ? 'any' : nothing}
         @close=${this._handleNativeClose}
         @cancel=${this._handleNativeCancel}
       >
