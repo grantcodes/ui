@@ -1,5 +1,6 @@
 import { LitElement } from 'lit';
 import { html } from 'lit/static-html.js';
+import linkStyles from '../../css/elements/a.css' with { type: 'css' };
 import focusRingStyles from '../../lib/styles/focus-ring.css' with { type: 'css' };
 import breadcrumbStyles from './breadcrumb.css' with { type: 'css' };
 
@@ -72,7 +73,7 @@ export class GrantCodesBreadcrumb extends LitElement {
 }
 
 export class GrantCodesBreadcrumbItem extends LitElement {
-  static styles = [focusRingStyles, breadcrumbStyles];
+  static styles = [linkStyles, focusRingStyles, breadcrumbStyles];
 
   static properties = {
     href: { type: String },

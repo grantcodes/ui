@@ -34,7 +34,7 @@
 :host([data-has-separator]) .breadcrumb__item::after {
   content: var(--component-breadcrumb-separator, "/");
   display: inline-block;
-  color: var(--g-color-primary-400);
+  color: var(--g-color-content-subtle);
   font-weight: var(--g-typography-body-lg-font-weight);
   user-select: none;
   pointer-events: none;
@@ -42,7 +42,7 @@
 
 /* Current page styling */
 .breadcrumb__item[data-current] {
-  color: var(--color-base-primary-900);
+  color: var(--g-color-content-default);
 }
 
 .breadcrumb__item[data-current]::after {
@@ -50,9 +50,7 @@
 }
 
 .breadcrumb__link {
-  color: var(--g-color-primary-600);
   text-decoration: none;
-  transition: color 0.2s ease;
   border-radius: var(--g-border-radius-md, 0.25rem);
   padding-inline: 0.25em;
   padding-block: 0.125em;
@@ -60,9 +58,9 @@
   margin-block: -0.125em;
 }
 
-.breadcrumb__link:hover {
-  color: var(--g-color-primary-700);
-  text-decoration: underline;
+.breadcrumb__link:hover,
+.breadcrumb__link:focus-visible {
+  text-decoration: underline wavy;
 }
 
 .breadcrumb__text {
@@ -79,6 +77,6 @@
     content: "...";
     display: inline-block;
     margin-inline-end: 0.5rem;
-    color: var(--g-color-primary-400);
+    color: var(--g-color-content-subtle);
   }
 }
