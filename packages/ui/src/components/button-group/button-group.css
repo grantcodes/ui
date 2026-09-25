@@ -21,16 +21,16 @@
 }
 
 .button-group ::slotted(grantcodes-button) {
-  --button-border-radius-start: 0;
-  --button-border-radius-end: 0;
+  --_button-border-radius-start: 0;
+  --_button-border-radius-end: 0;
 }
 
 .button-group ::slotted(grantcodes-button:first-child) {
-  --button-border-radius-start: var(--g-border-radius-md);
+  --_button-border-radius-start: var(--g-border-radius-md);
 }
 
 .button-group ::slotted(grantcodes-button:last-child) {
-  --button-border-radius-end: var(--g-border-radius-md);
+  --_button-border-radius-end: var(--g-border-radius-md);
 }
 
 .button-group ::slotted(grantcodes-button:focus-visible) {
