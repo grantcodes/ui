@@ -98,6 +98,7 @@ export class GrantCodesToast extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.style.setProperty('--toast-vt-name', this._viewTransitionName);
+    this.toggleAttribute('data-view-transition', this._useViewTransition);
 
     if (this._useViewTransition) {
       startViewTransition(() => {

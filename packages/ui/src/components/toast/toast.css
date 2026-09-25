@@ -75,6 +75,14 @@
   view-transition-name: var(--toast-vt-name, none);
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  :host(:not([data-view-transition])) .toast {
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+}
+
 .toast--visible {
   opacity: 1;
   transform: translateY(0);

@@ -95,6 +95,7 @@ export const WithoutTitle = {
 export const NonDismissible = {
   args: {
     dismissible: false,
+    duration: 0,
     title: 'Loading',
     text: 'Please wait while we process your request...',
   },
