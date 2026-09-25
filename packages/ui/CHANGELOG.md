@@ -1,5 +1,58 @@
 # Changelog
 
+## [2.16.0](https://github.com/grantcodes/ui/compare/ui-v2.15.8...ui-v2.16.0) (2026-09-25)
+
+
+### Features
+
+* **ui:** add a reduced-motion-safe view transition helper ([b94028c](https://github.com/grantcodes/ui/commit/b94028c2454afa62805be18d90f3f90cbcaac8c8))
+* **ui:** animate the dropdown panel with a view transition ([d344e4e](https://github.com/grantcodes/ui/commit/d344e4e09ddbd75aeb05ce194732d7504edf575c))
+* **ui:** animate the sidebar with a view transition ([f097680](https://github.com/grantcodes/ui/commit/f097680017bac359f5fbf0d3a2e722ee38bee35d))
+* **ui:** animate the toast with a view transition ([6c53ed5](https://github.com/grantcodes/ui/commit/6c53ed5b5ee95fa88fa4b7917bf0cee386beac86))
+* **ui:** give the view transitions their shared timing ([56810f2](https://github.com/grantcodes/ui/commit/56810f24c1f4ab524820648e0436c55d8409aa05))
+
+
+### Bug Fixes
+
+* **breadcrumb:** adopt the shared link styles ([728e159](https://github.com/grantcodes/ui/commit/728e159d9b738a91336132aff3d808f097a193ac))
+* **dialog:** only enable light-dismiss when dismissible ([ec72b6c](https://github.com/grantcodes/ui/commit/ec72b6cb2059b92759f87f902031d60fcccec9e4))
+* **dropdown:** coalesce rapid toggles before the transition ([ff71193](https://github.com/grantcodes/ui/commit/ff71193824c2f19f81853d81c2c35f25e046018a))
+* **sidebar:** coalesce rapid toggles before the transition ([5b41a1c](https://github.com/grantcodes/ui/commit/5b41a1c43997240c03fc33d7e9e8296b704e5ffc))
+* **toast:** keep the fallback fade when view transitions are unavailable ([e86550c](https://github.com/grantcodes/ui/commit/e86550cb106dae6f34d8aabcf190aaf15bc323c8))
+* **ui:** add loading status semantics and reduced-motion guards ([f5dfa45](https://github.com/grantcodes/ui/commit/f5dfa45612445a9fd547828afb683d3f16b6225f))
+* **ui:** anchor the dropdown panel to its trigger ([9ea77c1](https://github.com/grantcodes/ui/commit/9ea77c13137924313a314ced2828d62f3f63182e))
+* **ui:** drive the notice dismissal through the shared helper ([c742b42](https://github.com/grantcodes/ui/commit/c742b424ca6599363d3a4940eed018b2330d1a5a))
+* **ui:** drop the tooltip transition that never ran ([ea5076e](https://github.com/grantcodes/ui/commit/ea5076e9019423f82ec84bc05e5abff8af2a8599))
+* **ui:** enlarge the dialog and toast close targets to 44px ([6e9aca6](https://github.com/grantcodes/ui/commit/6e9aca6440207da1363fccc6077cc62e9184e524))
+* **ui:** fill the avatar box with the image ([b50ed4a](https://github.com/grantcodes/ui/commit/b50ed4ae96cddc75b1d9e3631b2dbf8a3560e628))
+* **ui:** flatten the button-group corners again ([da23348](https://github.com/grantcodes/ui/commit/da23348b5fe175a916b61ce2a0017d86eba553e0))
+* **ui:** flip the dropdown when the panel does not fit ([d0c3012](https://github.com/grantcodes/ui/commit/d0c3012ed390041a51eb63d0553d6a4a33259a63))
+* **ui:** give dropdown items a visible focus ring ([77f5092](https://github.com/grantcodes/ui/commit/77f50927788156d256ad17cac060b0fa467af9e1))
+* **ui:** give media-text media real dimensions and no forced lazy loading ([71b04ac](https://github.com/grantcodes/ui/commit/71b04ac4550a517bd2b058c5d6c270ca6e220d4d))
+* **ui:** highlight only the active tab ([9d8cff9](https://github.com/grantcodes/ui/commit/9d8cff9eff97049875fec2b4d573367a69a2d46c))
+* **ui:** keep a visible loading cue under reduced motion ([02a70f6](https://github.com/grantcodes/ui/commit/02a70f6525d6cbfcc8df3fdba13bd2cde0211c3f))
+* **ui:** keep form-field aria-describedby in sync ([752012f](https://github.com/grantcodes/ui/commit/752012f4e365d21eefea7698701e6932ec894402))
+* **ui:** keep the countdown fade under reduced motion ([613bfa4](https://github.com/grantcodes/ui/commit/613bfa4611dff4c85625c6a383c20e3029c9db46))
+* **ui:** key form-field error reveal and aria-invalid to the CONTROL ([1946647](https://github.com/grantcodes/ui/commit/194664786a710877f1e2a62ddeac6753e9d7df39))
+* **ui:** make the gallery filmstrip keyboard reachable ([67833d0](https://github.com/grantcodes/ui/commit/67833d0278d6197e34bef56cb74b51f0f839b55c))
+* **ui:** make the generator emit the library's js/css convention ([62e37ca](https://github.com/grantcodes/ui/commit/62e37ca46577aa2d35faa93222c585bab893d859))
+* **ui:** make the notice dismiss button accessible ([62238bc](https://github.com/grantcodes/ui/commit/62238bc3f80c726890404b3de6c0ce504daac5e9))
+* **ui:** make toast urgency, timing and dismissal accessible ([0e170be](https://github.com/grantcodes/ui/commit/0e170be075b8b797a1a0ebce3a34cf38644981b9))
+* **ui:** quote the test glob so node expands it ([149cc78](https://github.com/grantcodes/ui/commit/149cc784a13212856cae8e6899285c9a182f8bac))
+* **ui:** raise the sidebar toggles to the touch target ([9fb7be4](https://github.com/grantcodes/ui/commit/9fb7be4ffcbe7da53a8fd606d64c853a2a86fd5f))
+* **ui:** render dialog header and footer from slot presence ([f0cc82e](https://github.com/grantcodes/ui/commit/f0cc82e8c5ea53247141022947fad6001f070021))
+* **ui:** restore the tooltip fade and keep a provided id ([f2e7c89](https://github.com/grantcodes/ui/commit/f2e7c89c95673f87c5cddbf068dad2ba9e15c0b3))
+* **ui:** set the generated id after connection, not during construction ([8ebe366](https://github.com/grantcodes/ui/commit/8ebe3662946d1949444a6af71bca0271a4690457))
+* **ui:** size, defer and describe avatar images ([4cc171f](https://github.com/grantcodes/ui/commit/4cc171f8848745d05063cd36ff895ebb4de47907))
+* **ui:** smooth-scroll the filmstrip by default ([e4c3529](https://github.com/grantcodes/ui/commit/e4c3529bc2670793a7700ab37168f8678a3de59a))
+* **ui:** smooth-scroll the gallery filmstrip ([1b3fc74](https://github.com/grantcodes/ui/commit/1b3fc74445e206b732d184304b03b479dd2b2419))
+* **ui:** stop double-toggling form-field checkboxes ([2ef6567](https://github.com/grantcodes/ui/commit/2ef6567d7b7232fbd01a756c297a7792e51e82db))
+* **ui:** stop duplicating the host id on the form-field control ([04f8c30](https://github.com/grantcodes/ui/commit/04f8c3071e20d527b67043dfa27c6ca248d69a51))
+* **ui:** stop the notice icon from shadowing its button label ([f1de349](https://github.com/grantcodes/ui/commit/f1de349711936c444fcba0a62f103d8cf2de856b))
+* **ui:** sync dialog open with the native dialog ([7710114](https://github.com/grantcodes/ui/commit/7710114bf9d12802c969f6eb784944dd48b02028))
+* **ui:** toggle the form-field control from its label, reveal errors on touch ([d37447c](https://github.com/grantcodes/ui/commit/d37447cfadb60fe891e0b01b43a50d62676c8c5a))
+* **ui:** use the touch-target token for the icon buttons ([005722b](https://github.com/grantcodes/ui/commit/005722bfa8ad4c175f392f96bb3b3fbfadf5eb2a))
+
 ## [2.15.8](https://github.com/grantcodes/ui/compare/ui-v2.15.7...ui-v2.15.8) (2026-07-22)
 
 
