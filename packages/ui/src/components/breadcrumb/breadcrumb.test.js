@@ -1,6 +1,8 @@
 import { strict as assert } from 'node:assert';
 import { afterEach, describe, it } from 'node:test';
+import linkStyles from '../../css/elements/a.css' with { type: 'css' };
 import { cleanup, fixture } from '../../test-utils/index.js';
+import { GrantCodesBreadcrumbItem } from './breadcrumb.component.js';
 import './breadcrumb.js';
 
 describe('Breadcrumb Component', () => {
@@ -129,5 +131,12 @@ describe('Breadcrumb Item Component', () => {
   it('should have empty href by default', async () => {
     element = await fixture('grantcodes-breadcrumb-item');
     assert.strictEqual(element.href, '', 'Href should be empty by default');
+  });
+
+  it('adopts the shared default link styles', () => {
+    assert.ok(
+      GrantCodesBreadcrumbItem.styles.includes(linkStyles),
+      'Breadcrumb item should adopt css/elements/a.css',
+    );
   });
 });
