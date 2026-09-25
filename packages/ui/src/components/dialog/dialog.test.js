@@ -27,15 +27,28 @@ describe('Dialog Component', () => {
     assert.ok(dialog, 'Dialog element should exist');
   });
 
-  it('should open when open property is set to true', async () => {
-    element = await fixture('grantcodes-dialog', {
-      open: true,
-    });
+  it('should open modally and close through the native dialog methods', async () => {
+    element = await fixture('grantcodes-dialog');
+    const dialog = element.shadowRoot.querySelector('dialog');
+    let modalOpens = 0;
+    let closes = 0;
+    dialog.showModal = () => {
+      assert.strictEqual(dialog.open, false, 'The open attribute must not precede showModal');
+      modalOpens++;
+      dialog.setAttribute('open', '');
+    };
+    dialog.close = () => {
+      closes++;
+      dialog.removeAttribute('open');
+    };
 
+    element.open = true;
     await element.updateComplete;
+    assert.strictEqual(modalOpens, 1, 'Opening must call showModal');
 
-    // Note: In tests, showModal() might not work as expected without a browser environment
-    assert.strictEqual(element.open, true, 'Open property should be true');
+    element.open = false;
+    await element.updateComplete;
+    assert.strictEqual(closes, 1, 'Closing must call close');
   });
 
   it('should be dismissible by default', async () => {
@@ -168,14 +181,9 @@ describe('Dialog Component', () => {
     assert.strictEqual(element.open, true, 'Dialog should reopen after a native close');
   });
 
-  it('should enable light-dismiss via closedby when the engine supports it', async () => {
-    element = await fixture('grantcodes-dialog');
+  it('should not enable light-dismiss when not dismissible', async () => {
+    element = await fixture('grantcodes-dialog', { dismissible: false });
     const dialog = element.shadowRoot.querySelector('dialog');
-    const closedBy = dialog.getAttribute('closedby');
-
-    assert.ok(
-      closedBy === null || closedBy === 'any',
-      'closedby should be absent or "any"',
-    );
+    assert.notStrictEqual(dialog.getAttribute('closedby'), 'any');
   });
 });
