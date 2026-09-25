@@ -35,6 +35,8 @@ export class GrantCodesDropdown extends LitElement {
 
     // Per-instance, so two dropdowns cannot abort each other's view transition.
     this._viewTransitionName = generateId('dropdown-vt');
+    this._pendingOpen = null;
+    this._openScheduled = false;
 
     this._handleDocumentClick = this._handleDocumentClick.bind(this);
     this._handleEscape = this._handleEscape.bind(this);
@@ -112,33 +114,36 @@ export class GrantCodesDropdown extends LitElement {
   }
 
   _handleEscape(e) {
-    if (e.key === 'Escape' && this.open) {
+    if (e.key === 'Escape' && (this._pendingOpen ?? this.open)) {
       this._setOpen(false);
       this._triggerElement?.focus();
     }
   }
 
   _setOpen(open) {
-    if (this.open === open) return;
+    if ((this._pendingOpen ?? this.open) === open) return;
+    this._pendingOpen = open;
+    if (this._openScheduled) return;
+
+    this._openScheduled = true;
     startViewTransition(() => {
-      this.open = open;
+      this.open = this._pendingOpen;
+      this._pendingOpen = null;
+      this._openScheduled = false;
       return this.updateComplete;
     });
   }
 
   _handleTriggerClick(_e) {
-    const open = !this.open;
-    startViewTransition(() => {
-      this.open = open;
-      this.dispatchEvent(
-        new CustomEvent('toggle', {
-          detail: { open },
-          bubbles: true,
-          composed: true,
-        }),
-      );
-      return this.updateComplete;
-    });
+    const open = !(this._pendingOpen ?? this.open);
+    this._setOpen(open);
+    this.dispatchEvent(
+      new CustomEvent('toggle', {
+        detail: { open },
+        bubbles: true,
+        composed: true,
+      }),
+    );
   }
 
   _handleMenuKeydown(e) {

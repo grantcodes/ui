@@ -89,6 +89,34 @@ describe('Dropdown Component', () => {
     cleanup(element2);
   });
 
+  it('should preserve two rapid trigger clicks before the transition update', async () => {
+    element = await fixture('grantcodes-dropdown');
+    const matchMedia = window.matchMedia;
+    const startViewTransition = document.startViewTransition;
+    const callbacks = [];
+    const states = [];
+    element.addEventListener('toggle', (event) => states.push(event.detail.open));
+    window.matchMedia = () => ({ matches: false });
+    document.startViewTransition = (callback) => {
+      callbacks.push(callback);
+      return { finished: Promise.resolve() };
+    };
+
+    try {
+      const trigger = element.shadowRoot.querySelector('.dropdown__trigger');
+      click(trigger);
+      click(trigger);
+      for (const callback of callbacks) await callback();
+      await element.updateComplete;
+
+      assert.strictEqual(element.open, false, 'Two clicks should return to closed');
+      assert.deepStrictEqual(states, [true, false], 'Each click should report its intended state');
+    } finally {
+      window.matchMedia = matchMedia;
+      document.startViewTransition = startViewTransition;
+    }
+  });
+
   it('should open through a view transition when motion is allowed', async () => {
     element = await fixture('grantcodes-dropdown');
 
