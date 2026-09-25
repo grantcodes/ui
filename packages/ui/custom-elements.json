@@ -2082,8 +2082,50 @@
           "name": "GrantCodesDialog",
           "members": [
             {
+              "kind": "field",
+              "name": "_footerPresence",
+              "default": "new SlotPresenceController(this, 'footer', (present) => { this._hasFooter = present; })"
+            },
+            {
+              "kind": "method",
+              "name": "_handleNativeCancel"
+            },
+            {
+              "kind": "method",
+              "name": "_handleNativeClose"
+            },
+            {
               "kind": "method",
               "name": "_handleOpenChange"
+            },
+            {
+              "kind": "method",
+              "name": "_handleSlotChange"
+            },
+            {
+              "kind": "field",
+              "name": "_hasFooter",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_hasFooter"
+            },
+            {
+              "kind": "field",
+              "name": "_hasHeader",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_hasHeader"
+            },
+            {
+              "kind": "field",
+              "name": "_headerPresence",
+              "default": "new SlotPresenceController(this, 'header', (present) => { this._hasHeader = present; })"
             },
             {
               "kind": "field",
@@ -2112,6 +2154,22 @@
             }
           ],
           "attributes": [
+            {
+              "name": "_hasFooter",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_hasFooter"
+            },
+            {
+              "name": "_hasHeader",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_hasHeader"
+            },
             {
               "name": "dismissible",
               "type": {
@@ -2241,6 +2299,31 @@
             },
             {
               "kind": "field",
+              "name": "_openScheduled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_pendingOpen",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "method",
+              "name": "_setOpen",
+              "parameters": [
+                {
+                  "name": "open"
+                }
+              ]
+            },
+            {
+              "kind": "field",
               "name": "_triggerElement",
               "privacy": "public",
               "type": {
@@ -2249,6 +2332,10 @@
               "description": "Reference to the trigger element",
               "default": "null",
               "attribute": "_triggerElement"
+            },
+            {
+              "kind": "field",
+              "name": "_viewTransitionName"
             },
             {
               "kind": "field",
@@ -2948,6 +3035,23 @@
           "name": "GrantCodesFormField",
           "members": [
             {
+              "kind": "method",
+              "name": "_revalidate",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "_touched",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
               "kind": "field",
               "name": "ariaDescribedBy",
               "readonly": true
@@ -3001,7 +3105,12 @@
             },
             {
               "kind": "method",
-              "name": "handleLabelClick"
+              "name": "handleLabelClick",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
             },
             {
               "kind": "field",
@@ -3032,6 +3141,17 @@
               "default": "''",
               "attribute": "label",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "showError",
+              "description": "Errors stay hidden until the field is interacted with or reports :user-invalid.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "syncControlAria",
+              "description": "Mirrors the current error/help state onto the first control."
             }
           ],
           "attributes": [
@@ -3716,7 +3836,37 @@
           "kind": "class",
           "description": "",
           "name": "GrantCodesLoading",
-          "members": [],
+          "members": [
+            {
+              "kind": "method",
+              "name": "_handleSlotChange"
+            },
+            {
+              "kind": "field",
+              "name": "_hasLabel",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_hasLabel"
+            },
+            {
+              "kind": "field",
+              "name": "_labelPresence",
+              "default": "new SlotPresenceController(this, '', (present) => { this._hasLabel = present; })"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "_hasLabel",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_hasLabel"
+            }
+          ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
@@ -4185,7 +4335,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Media object as a JSON string: `{\"src\":\"...\",\"alt\":\"...\",\"kind\":\"image|video\"}`.",
+              "description": "Media object as a JSON string: `{\"src\",\"alt\",\"kind\":\"image|video\",\"width\",\"height\",\"poster\",\"loading\"}`.",
               "default": "''",
               "attribute": "media"
             },
@@ -4239,7 +4389,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Media object as a JSON string: `{\"src\":\"...\",\"alt\":\"...\",\"kind\":\"image|video\"}`.",
+              "description": "Media object as a JSON string: `{\"src\",\"alt\",\"kind\":\"image|video\",\"width\",\"height\",\"poster\",\"loading\"}`.",
               "default": "''",
               "fieldName": "media"
             },
@@ -4562,6 +4712,10 @@
           "description": "",
           "name": "GrantCodesNotice",
           "members": [
+            {
+              "kind": "field",
+              "name": "_viewTransitionName"
+            },
             {
               "kind": "field",
               "name": "dependencies",
@@ -5214,6 +5368,10 @@
           "name": "GrantCodesSidebar",
           "members": [
             {
+              "kind": "method",
+              "name": "_closeDrawer"
+            },
+            {
               "kind": "field",
               "name": "_drawerOpen",
               "privacy": "public",
@@ -5243,12 +5401,36 @@
               ]
             },
             {
+              "kind": "field",
+              "name": "_pendingState",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}"
+            },
+            {
+              "kind": "method",
+              "name": "_scheduleTransition"
+            },
+            {
               "kind": "method",
               "name": "_toggleCollapsed"
             },
             {
               "kind": "method",
               "name": "_toggleDrawer"
+            },
+            {
+              "kind": "field",
+              "name": "_transitionScheduled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_viewTransitionName"
             },
             {
               "kind": "field",
@@ -6410,7 +6592,49 @@
             },
             {
               "kind": "method",
+              "name": "_pauseDismiss"
+            },
+            {
+              "kind": "method",
+              "name": "_remove"
+            },
+            {
+              "kind": "field",
+              "name": "_removeTimeout",
+              "type": {
+                "text": "number | null"
+              },
+              "description": "Timeout ID for removing the toast after its exit animation",
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "_removing",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Guards against dismissing twice (close click plus auto-dismiss)",
+              "default": "false"
+            },
+            {
+              "kind": "method",
               "name": "_renderDismissButton"
+            },
+            {
+              "kind": "method",
+              "name": "_resumeDismiss"
+            },
+            {
+              "kind": "method",
+              "name": "_startDismissTimer"
+            },
+            {
+              "kind": "field",
+              "name": "_useViewTransition"
+            },
+            {
+              "kind": "field",
+              "name": "_viewTransitionName"
             },
             {
               "kind": "field",
@@ -6687,10 +6911,6 @@
               "description": "Description for the tooltip, used when the tooltip is additional descriptive text for the item.",
               "default": "''",
               "attribute": "description"
-            },
-            {
-              "kind": "field",
-              "name": "id"
             },
             {
               "kind": "field",
