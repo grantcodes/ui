@@ -15,7 +15,8 @@
     "fix": "echo 'No lint configured'",
     "gen:props": "tsx scripts/generate-astro-typings-from-cem.ts",
     "pretest": "tsx scripts/generate-astro-typings-from-cem.ts",
-    "test": "tsx --test test/smoke.test.js test/ssr-constructor-diagnostics.test.js test/og-images.test.js test/astro-check-typings.test.js"
+    "test:package": "tsx --test test/package.test.js",
+    "test": "tsx --test test/package.test.js test/smoke.test.js test/ssr-constructor-diagnostics.test.js test/og-images.test.js test/astro-check-typings.test.js"
   },
   "keywords": [
     "astro",
@@ -39,6 +40,17 @@
   },
   "homepage": "https://github.com/grantcodes/ui#readme",
   "license": "MIT",
+  "files": [
+    "src/**/*",
+    "client/**/*",
+    "shims/**/*",
+    "tsconfig.json",
+    "README.md",
+    "CHANGELOG.md",
+    "MIGRATION.md",
+    "COMPATIBILITY.md",
+    "CHECKLIST.md"
+  ],
   "dependencies": {
     "@grantcodes/style-dictionary": "^1.10.2",
     "@grantcodes/ui": "^2.15.7",

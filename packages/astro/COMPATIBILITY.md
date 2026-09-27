@@ -1,29 +1,21 @@
 # @grantcodes/astro — Compatibility Notes
 
-## @lit-labs/ssr Version Compatibility
+## Verified versions
 
-The `@grantcodes/astro` integration depends on `@lit-labs/ssr` for server-side rendering of Lit components. Because `@lit-labs/ssr` is experimental and may introduce API changes between versions, this document tracks which versions have been verified.
+| Dependency | Version | Result |
+| --- | --- | --- |
+| Astro | 7.0.0 | Packed external consumer build passes |
+| Astro | 7.3.5 | Packed external consumer build passes |
+| `@lit-labs/ssr` | 4.1.0 | SSR diagnostics and Declarative Shadow DOM tests pass |
 
-### Tested Versions
+Verification uses Node 24 and pnpm 11.27.1. The Astro 7.3.5 endpoint is a tested endpoint, not a maximum supported version.
 
-| Version | Date Tested | Result | Notes |
-|---------|-------------|--------|-------|
-| 3.3.1   | —           | —      | Current dependency; run checklist to verify |
-| 3.2.2   | —           | —      | Previous minor; run checklist to verify |
+## Package availability
 
-### Test Procedure
+Version 0.2.9 declares Astro 7 support but omits `src/` from its published tarball, so it is not usable as an external consumer dependency. Use the next release containing the package-content fix.
 
-See [CHECKLIST.md](./CHECKLIST.md) section 3 "Multi-Version Compatibility" for the exact test steps.
+The package test checks the `pnpm pack --dry-run --json` inventory for every runtime source file, export target, generated UI typings, and `tsconfig.json`; it also rejects tests, scripts, logs, `AGENTS.md`, and `.turbo/`.
 
-### Known Limitations
+## Reporting issues
 
-- `@lit-labs/ssr` 4.0.0+ has not been tested. It may contain breaking API changes that require updates to `src/ssr/lit-renderer.ts`.
-- Only the `check` and `renderToStaticMarkup` functions from `@lit-labs/ssr/lib/lit-element-renderer.js` are used. Changes to other APIs do not affect this integration.
-
-### Reporting Issues
-
-If you encounter compatibility issues with a specific `@lit-labs/ssr` version:
-
-1. Note the exact version in your `package-lock.json` or `pnpm-lock.yaml`
-2. Run the smoke test: `cd packages/astro && pnpm test`
-3. If the smoke test fails, check `src/ssr/lit-renderer.ts` for API mismatches
+Include the installed Astro and `@lit-labs/ssr` versions plus the result of `pnpm --filter @grantcodes/astro test`.

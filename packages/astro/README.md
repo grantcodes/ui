@@ -21,7 +21,7 @@ npm install @grantcodes/astro
 
 Peer dependencies (must be installed separately):
 
-- `astro` `^6.0.0`
+- `astro` `^7.0.0`
 - `lit` `^3.2.0`
 
 ## Quick Start

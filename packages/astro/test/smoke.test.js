@@ -1,138 +1,137 @@
-import { describe, it } from "node:test";
-import assert from "node:assert";
-import fs from "node:fs";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import { execSync } from "node:child_process";
+import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { describe, it } from 'node:test';
+import { fileURLToPath } from 'node:url';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const packageRoot = path.resolve(__dirname, "..");
-const monorepoPackages = path.resolve(packageRoot, "..");
-const monorepoRoot = path.resolve(monorepoPackages, "..");
+const packageRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const monorepoRoot = path.resolve(packageRoot, '..', '..');
+const packagePaths = {
+  astro: packageRoot,
+  ui: path.join(monorepoRoot, 'packages', 'ui'),
+  styleDictionary: path.join(monorepoRoot, 'packages', 'style-dictionary'),
+};
 
-function findCommand(cmd) {
+function packPackages(tarballDirectory) {
+  return Object.fromEntries(
+    Object.entries(packagePaths).map(([key, packagePath]) => {
+      const packageJson = JSON.parse(fs.readFileSync(path.join(packagePath, 'package.json'), 'utf8'));
+      execFileSync('pnpm', ['pack', '--pack-destination', tarballDirectory], {
+        cwd: packagePath,
+        stdio: 'pipe',
+      });
+      const filename = `${packageJson.name.replace('@', '').replace('/', '-')}-${packageJson.version}.tgz`;
+      return [key, path.join(tarballDirectory, filename)];
+    }),
+  );
+}
+
+function findInjectedTypes(directory) {
+  for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+    const entryPath = path.join(directory, entry.name);
+    if (entry.isDirectory() && findInjectedTypes(entryPath)) return true;
+    if (
+      entry.isFile() &&
+      entry.name.endsWith('.d.ts') &&
+      fs.readFileSync(entryPath, 'utf8').includes('grantcodes-ui-component-props')
+    ) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function buildConsumer(astroVersion) {
+  const tempDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'astro-smoke-test-'));
+
   try {
-    execSync(`command -v ${cmd}`, { stdio: "pipe" });
-    return cmd;
-  } catch {
-    return null;
-  }
-}
+    const tarballDirectory = path.join(tempDirectory, 'tarballs');
+    fs.mkdirSync(tarballDirectory);
+    const tarballs = packPackages(tarballDirectory);
+    fs.mkdirSync(path.join(tempDirectory, 'src', 'pages'), { recursive: true });
 
-function copyDirSync(src, dest) {
-  fs.mkdirSync(dest, { recursive: true });
-  for (const entry of fs.readdirSync(src, { withFileTypes: true })) {
-    if (entry.name === "node_modules") continue;
-    const srcPath = path.join(src, entry.name);
-    const destPath = path.join(dest, entry.name);
-    if (entry.isDirectory()) {
-      copyDirSync(srcPath, destPath);
-    } else {
-      fs.copyFileSync(srcPath, destPath);
-    }
-  }
-}
-
-function sanitizePkg(pkgPath, overrides) {
-  const pkgJsonPath = path.join(pkgPath, "package.json");
-  const pkg = JSON.parse(fs.readFileSync(pkgJsonPath, "utf8"));
-  if (pkg.dependencies) {
-    for (const [dep, replacement] of Object.entries(overrides)) {
-      if (pkg.dependencies[dep]) {
-        pkg.dependencies[dep] = replacement;
-      }
-    }
-  }
-  fs.writeFileSync(pkgJsonPath, JSON.stringify(pkg, null, 2));
-}
-
-describe("@grantcodes/astro smoke test", () => {
-  it("builds a minimal Astro project with DSD output", () => {
-    const tempDir = path.join("/tmp", `astro-smoke-test-${Date.now()}`);
-    let html = "";
-
-    try {
-      const localPkgs = path.join(tempDir, ".local-packages");
-      const astroPkg = path.join(localPkgs, "astro");
-      const uiPkg = path.join(localPkgs, "ui");
-      const styleDictPkg = path.join(localPkgs, "style-dictionary");
-
-      copyDirSync(packageRoot, astroPkg);
-      copyDirSync(path.resolve(monorepoRoot, "packages", "ui"), uiPkg);
-      copyDirSync(
-        path.resolve(monorepoRoot, "packages", "style-dictionary"),
-        styleDictPkg
-      );
-
-      sanitizePkg(astroPkg, {
-        "@grantcodes/ui": `file:${uiPkg}`,
-        "@grantcodes/style-dictionary": `file:${styleDictPkg}`,
-      });
-      sanitizePkg(uiPkg, {
-        "@grantcodes/style-dictionary": `file:${styleDictPkg}`,
-      });
-
-      fs.mkdirSync(path.join(tempDir, "src", "pages"), { recursive: true });
-
-      fs.writeFileSync(
-        path.join(tempDir, "package.json"),
-        JSON.stringify(
-          {
-            name: "astro-smoke-test",
-            type: "module",
-            dependencies: {
-              astro: "^7.0.0",
-              "@grantcodes/astro": `file:${astroPkg}`,
-              "@grantcodes/ui": `file:${uiPkg}`,
-              lit: "^3.2.0",
-            },
+    const localDependencies = {
+      '@grantcodes/astro': `file:${tarballs.astro}`,
+      '@grantcodes/ui': `file:${tarballs.ui}`,
+      '@grantcodes/style-dictionary': `file:${tarballs.styleDictionary}`,
+    };
+    fs.writeFileSync(
+      path.join(tempDirectory, 'package.json'),
+      JSON.stringify(
+        {
+          name: 'astro-smoke-test',
+          private: true,
+          type: 'module',
+          dependencies: {
+            ...localDependencies,
+            astro: astroVersion,
+            lit: '^3.2.0',
           },
-          null,
-          2
-        )
-      );
+          overrides: localDependencies,
+        },
+        null,
+        2,
+      ),
+    );
+    fs.writeFileSync(
+      path.join(tempDirectory, 'astro.config.mjs'),
+      [
+        "import { defineConfig } from 'astro/config';",
+        "import ui from '@grantcodes/astro';",
+        'export default defineConfig({ integrations: [ui()] });',
+      ].join('\n'),
+    );
+    fs.mkdirSync(path.join(tempDirectory, 'src', 'components'));
+    fs.writeFileSync(
+      path.join(tempDirectory, 'src', 'components', 'smoke-button.js'),
+      [
+        "import { LitElement, html } from 'lit';",
+        'export class SmokeButton extends LitElement {',
+        '  render() {',
+        '    return html`<button><slot></slot></button>`;',
+        '  }',
+        '}',
+        "customElements.define('smoke-button', SmokeButton);",
+        '',
+      ].join('\n'),
+    );
+    fs.writeFileSync(
+      path.join(tempDirectory, 'src', 'pages', 'index.astro'),
+      [
+        '---',
+        "import type { Hero } from '@grantcodes/astro/blocks';",
+        "import { SmokeButton } from '../components/smoke-button.js';",
+        '---',
+        '<html>',
+        '  <body>',
+        '    <SmokeButton client:load>Smoke Test</SmokeButton>',
+        '  </body>',
+        '</html>',
+        '',
+      ].join('\n'),
+    );
 
-      fs.writeFileSync(
-        path.join(tempDir, "astro.config.mjs"),
-        `import { defineConfig } from 'astro/config';\n` +
-          `import ui from '@grantcodes/astro';\n` +
-          `export default defineConfig({\n` +
-          `  integrations: [ui()],\n` +
-          `});\n`
-      );
+    execFileSync('npm', ['install'], { cwd: tempDirectory, stdio: 'pipe', timeout: 300000 });
+    execFileSync(path.join(tempDirectory, 'node_modules', '.bin', 'astro'), ['build'], {
+      cwd: tempDirectory,
+      stdio: 'pipe',
+      timeout: 300000,
+    });
 
-      fs.writeFileSync(
-        path.join(tempDir, "src", "pages", "index.astro"),
-        `---\n` +
-          `import { GrantCodesButton } from '@grantcodes/ui/components/button/index.js';\n` +
-          `---\n` +
-          `<html>\n` +
-          `  <body>\n` +
-          `    <GrantCodesButton>Smoke Test</GrantCodesButton>\n` +
-          `  </body>\n` +
-          `</html>\n`
-      );
+    const html = fs.readFileSync(path.join(tempDirectory, 'dist', 'index.html'), 'utf8');
+    assert.match(html, /<template shadowroot="open" shadowrootmode="open">/);
+    assert.ok(findInjectedTypes(path.join(tempDirectory, '.astro')));
+  } finally {
+    fs.rmSync(tempDirectory, { recursive: true, force: true });
+  }
+}
 
-      const pkgManager = "npm";
-
-      execSync(`${pkgManager} install`, {
-        cwd: tempDir,
-        stdio: "pipe",
-        encoding: "utf8",
-        timeout: 300000,
-      });
-
-      execSync("npx astro build", {
-        cwd: tempDir,
-        stdio: "pipe",
-        encoding: "utf8",
-        timeout: 300000,
-      });
-
-      html = fs.readFileSync(path.join(tempDir, "dist", "index.html"), "utf8");
-      assert.match(html, /<template shadowroot="open" shadowrootmode="open">/);
-    } finally {
-      fs.rmSync(tempDir, { recursive: true, force: true });
-    }
-  });
+describe('@grantcodes/astro tarball smoke test', () => {
+  for (const astroVersion of ['7.0.0', '7.3.5']) {
+    it(`builds an external consumer with Astro ${astroVersion}`, () => {
+      buildConsumer(astroVersion);
+    });
+  }
 });
