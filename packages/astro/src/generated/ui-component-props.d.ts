@@ -92,6 +92,7 @@ declare namespace astroHTML.JSX {
     "secondary-action"?: string;
     secondaryAction?: string;
     "seconds-label"?: string;
+    segments?: unknown;
     separator?: string;
     "show-seconds"?: boolean;
     size?: string;
@@ -575,6 +576,17 @@ declare module "@grantcodes/ui/components/sidebar/index.js" {
   export function GrantCodesSidebar(props: SidebarProps & import("astro").AstroBuiltinAttributes): any;
 
   export { GrantCodesSidebar };
+}
+
+declare module "@grantcodes/ui/components/split-bar/index.js" {
+
+  export interface SplitBarProps {
+    segments?: unknown;
+  }
+
+  export function GrantCodesSplitBar(props: SplitBarProps & import("astro").AstroBuiltinAttributes): any;
+
+  export { GrantCodesSplitBar };
 }
 
 declare module "@grantcodes/ui/components/stats/index.js" {
