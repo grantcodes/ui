@@ -21,6 +21,7 @@ Add a lesson once it has held across two separate tasks or a code review.
 - Starlight's sidebar `autogenerate` must be wrapped as `items: [{ autogenerate: {…} }]`.
 - `@lit-labs/ssr` v4 `renderShadow()` returns a `ThunkedRenderResult` (strings and thunks); resolve it with `collectResultSync` from `@lit-labs/ssr/lib/render-result.js`.
 - `@lit-labs/ssr-dom-shim` still calls the deprecated `module.register()` (Node 24 DEP0205) — upstream, harmless.
+- Changing `packages/ui/custom-elements.json` requires `pnpm --filter @grantcodes/astro gen:props` and committing `packages/astro/src/generated/ui-component-props.d.ts`; the PR build checks for generated artifact drift.
 
 ## OG images (Satori)
 
