@@ -52,6 +52,10 @@ jobs:
         run: pnpm --filter @grantcodes/astro gen:props
         if: ${{ steps.release.outputs.releases_created }}
 
+      - name: Verify Astro package contents
+        run: pnpm --filter @grantcodes/astro test:package
+        if: ${{ steps.release.outputs.releases_created }}
+
       - name: Check for dirty working tree (generated artifact drift)
         run: git diff --exit-code
         if: ${{ steps.release.outputs.releases_created }}
@@ -62,7 +66,12 @@ jobs:
         run: pnpm publish  --provenance --access public
 
       - name: Publish @grantcodes/style-dictionary
-        if: ${{ steps.release.outputs['packages/style-dictionary--release_created'] }}
+        if: >-
+          ${{
+            steps.release.outputs[
+              'packages/style-dictionary--release_created'
+            ]
+          }}
         working-directory: packages/style-dictionary
         run: pnpm publish  --provenance --access public
 

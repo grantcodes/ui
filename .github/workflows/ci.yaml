@@ -74,5 +74,8 @@ jobs:
       - name: Regenerate Astro component typings from CEM
         run: pnpm --filter @grantcodes/astro gen:props
 
+      - name: Verify Astro package contents
+        run: pnpm --filter @grantcodes/astro test:package
+
       - name: Check for dirty working tree (generated artifact drift)
         run: git diff --exit-code
