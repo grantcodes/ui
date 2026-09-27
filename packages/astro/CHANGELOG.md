@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.10](https://github.com/grantcodes/ui/compare/astro-v0.2.9...astro-v0.2.10) (2026-09-27)
+
+
+### Bug Fixes
+
+* **astro:** correct OG image rendering ([b39cb6b](https://github.com/grantcodes/ui/commit/b39cb6bc25340a7713091b30c29b1328544906c0))
+* **astro:** include source files in published package ([7d8c507](https://github.com/grantcodes/ui/commit/7d8c507dceedd224ccd899051a817fe22c681f38))
+
 ## [0.2.9](https://github.com/grantcodes/ui/compare/astro-v0.2.8...astro-v0.2.9) (2026-07-22)
 
 

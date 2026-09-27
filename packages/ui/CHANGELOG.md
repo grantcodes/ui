@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.17.0](https://github.com/grantcodes/ui/compare/ui-v2.16.0...ui-v2.17.0) (2026-09-27)
+
+
+### Features
+
+* **ui:** add split bar component ([cfbde94](https://github.com/grantcodes/ui/commit/cfbde94217f16e96f02c62d8999d5862e9918da4))
+
 ## [2.16.0](https://github.com/grantcodes/ui/compare/ui-v2.15.8...ui-v2.16.0) (2026-09-25)
 
 
