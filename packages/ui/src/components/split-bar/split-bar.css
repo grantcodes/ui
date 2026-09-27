@@ -1,0 +1,64 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:host {
+  display: block;
+}
+
+.split-bar__bar {
+  display: flex;
+  overflow: hidden;
+  block-size: 0.75rem;
+  border-radius: var(--g-border-radius-md);
+  background: var(--g-color-background-subtle);
+}
+
+.split-bar__segment {
+  flex: 0 0 var(--split-bar-segment-share);
+  background: var(--split-bar-segment-color);
+}
+
+.split-bar__legend {
+  display: flex;
+  flex-wrap: wrap;
+  container-type: inline-size;
+  gap: var(--g-spacing-sm) var(--g-spacing-lg);
+  padding: 0;
+  margin: var(--g-spacing-sm) 0 0;
+  list-style: none;
+}
+
+.split-bar__legend-item {
+  display: flex;
+  align-items: baseline;
+  gap: var(--g-spacing-xs);
+  min-inline-size: 0;
+  font: var(--g-typography-body-sm-font);
+  color: var(--g-color-content-default);
+}
+
+.split-bar__swatch {
+  flex: 0 0 auto;
+  inline-size: 0.75rem;
+  block-size: 0.75rem;
+  border-radius: 50%;
+  background: var(--split-bar-segment-color);
+}
+
+.split-bar__label {
+  overflow-wrap: anywhere;
+}
+
+.split-bar__percentage {
+  flex: 0 0 auto;
+  color: var(--g-color-content-secondary);
+}
+
+@container (min-width: 30rem) {
+  .split-bar__legend-item:nth-child(2):last-child {
+    margin-inline-start: auto;
+  }
+}
