@@ -143,9 +143,25 @@ export default defineConfig({
 });
 ```
 
-- Set `ogImages: false` to disable bundled OG generation entirely.
-- OG images use the resolved site favicon as their default mark.
-- Theme OG defaults always match the selected theme colors. Grantina now uses package-managed local Albert Sans + Vidaloka assets for OG generation, while other themes keep their existing local font defaults.
+Set `ogImages: false`, or omit `ogImages`, to disable generation completely; the integration registers no OG build hooks or reads no OG assets.
+
+Use a dedicated local logo when the favicon is not the desired mark:
+
+```javascript
+ui({
+  theme: 'grantina',
+  ogImages: {
+    logo: './public/brand-mark.svg',
+    titleTemplate: '%s | grant.codes',
+  },
+});
+```
+
+Logo selection is `logo`, then an explicit `favicon`, then `public/favicon.svg` or `public/favicon.png`. Local SVG, PNG, and JPEG assets are supported; ICO files are not. Relative paths resolve from the working directory, while absolute paths work unchanged. Explicit missing, invalid, or unsupported assets fail the build with the asset path. If no default favicon exists, generation continues without a mark.
+
+SVG marks are rasterized before rendering. Their root receives the resolved foreground as its default `color`, so `currentColor` fills and strokes follow the theme while explicitly coloured SVG content remains unchanged. Marks occupy a 60×60 area and retain their aspect ratio.
+
+Theme OG defaults match the selected theme colors. Grantina uses package-managed local Vidaloka (400) for titles and Albert Sans (500) for body copy. For fonts, per-role overrides (`titleFontName`/`titleFontFile`, `bodyFontName`/`bodyFontFile`) take priority over shared `fontName`/`fontFile`; shared overrides take priority over theme defaults.
 
 ## Blocks
 

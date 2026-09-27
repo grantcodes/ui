@@ -9,8 +9,6 @@ import {
 import {
   GColorBackgroundDefault as GColorBackgroundDefaultGrantina,
   GColorContentDefault as GColorContentDefaultGrantina,
-  GTypographyBodyFontWeight as GTypographyBodyFontWeightGrantina,
-  GTypographyH1FontWeight as GTypographyH1FontWeightGrantina,
   GRefTypographyFontFamilyAlbert,
   GRefTypographyFontFamilyVidaloka,
 } from '@grantcodes/style-dictionary/grantina/js'
@@ -84,8 +82,8 @@ const THEME_DEFINITIONS: Record<UiThemeName, ThemeDefinition> = {
     bodyFontName: firstFontFamily(GRefTypographyFontFamilyAlbert),
     titleFontFile: grantinaTitleFontPath,
     bodyFontFile: grantinaBodyFontPath,
-    titleFontWeight: GTypographyH1FontWeightGrantina,
-    bodyFontWeight: GTypographyBodyFontWeightGrantina,
+    titleFontWeight: '400',
+    bodyFontWeight: '500',
     foregroundColor: GColorContentDefaultGrantina,
     backgroundColor: GColorBackgroundDefaultGrantina,
   },
