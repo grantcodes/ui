@@ -5591,6 +5591,129 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/split-bar/index.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/split-bar/split-bar.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/split-bar/split-bar.calculations.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "calculateSegments",
+          "parameters": [
+            {
+              "name": "segments"
+            }
+          ],
+          "description": "Returns sanitized segments with unrounded shares and independently rounded display percentages."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "calculateSegments",
+          "declaration": {
+            "name": "calculateSegments",
+            "module": "src/components/split-bar/split-bar.calculations.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/split-bar/split-bar.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "GrantCodesSplitBar",
+          "members": [
+            {
+              "kind": "field",
+              "name": "segments",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "Relative segment weights as an array or JSON attribute.",
+              "default": "[]",
+              "attribute": "segments"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "segments",
+              "type": {
+                "text": "array"
+              },
+              "description": "Relative segment weights as an array or JSON attribute.",
+              "default": "[]",
+              "fieldName": "segments"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "grantcodes-split-bar",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GrantCodesSplitBar",
+          "declaration": {
+            "name": "GrantCodesSplitBar",
+            "module": "src/components/split-bar/split-bar.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/split-bar/split-bar.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/split-bar/split-bar.component.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "GrantCodesSplitBar",
+            "module": "src/components/split-bar/split-bar.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-split-bar",
+          "declaration": {
+            "name": "GrantCodesSplitBar",
+            "module": "/src/components/split-bar/split-bar.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/stats/index.js",
       "declarations": [],
       "exports": [
