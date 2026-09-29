@@ -3031,7 +3031,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "",
+          "description": "Wraps a native `input`, `select` or `textarea` with a label, optional help text and optional\nerror message, and mirrors the error/help state onto the control's ARIA attributes.\n\n```html\n<grantcodes-form-field label=\"Email\" help=\"We only use this for receipts.\">\n  <input type=\"email\" name=\"email\" required />\n</grantcodes-form-field>\n```\n\nAdd `direction=\"horizontal\"` for checkboxes and radios, and nest fields to group them — the\nparent then renders a `<fieldset>` with its `label` as the `<legend>`.\n\n```html\n<grantcodes-form-field label=\"Contact preference\" error=\"Choose one option.\">\n  <grantcodes-form-field label=\"Email\" direction=\"horizontal\">\n    <input type=\"radio\" name=\"contact\" value=\"email\" />\n  </grantcodes-form-field>\n  <grantcodes-form-field label=\"Phone\" direction=\"horizontal\">\n    <input type=\"radio\" name=\"contact\" value=\"phone\" />\n  </grantcodes-form-field>\n</grantcodes-form-field>\n```\n\nSee README.md in this directory for every variant.",
           "name": "GrantCodesFormField",
           "members": [
             {
@@ -3074,6 +3074,7 @@
               "type": {
                 "text": "string"
               },
+              "description": "Error message. Stays hidden until the field is touched, then appears and sets\n`aria-describedby` and `aria-invalid` on the first control.",
               "default": "undefined",
               "attribute": "error"
             },
@@ -3119,6 +3120,7 @@
               "type": {
                 "text": "string"
               },
+              "description": "Help text rendered with the label and referenced from the first control's `aria-describedby`.",
               "default": "undefined",
               "attribute": "help"
             },
@@ -3138,6 +3140,7 @@
               "type": {
                 "text": "string"
               },
+              "description": "Label text, rendered in a `<label>` or, for a grouped field, a `<legend>`.",
               "default": "''",
               "attribute": "label",
               "reflects": true
@@ -3169,6 +3172,7 @@
               "type": {
                 "text": "string"
               },
+              "description": "Error message. Stays hidden until the field is touched, then appears and sets\n`aria-describedby` and `aria-invalid` on the first control.",
               "default": "undefined",
               "fieldName": "error"
             },
@@ -3177,6 +3181,7 @@
               "type": {
                 "text": "string"
               },
+              "description": "Help text rendered with the label and referenced from the first control's `aria-describedby`.",
               "default": "undefined",
               "fieldName": "help"
             },
@@ -3185,6 +3190,7 @@
               "type": {
                 "text": "string"
               },
+              "description": "Label text, rendered in a `<label>` or, for a grouped field, a `<legend>`.",
               "default": "''",
               "fieldName": "label"
             }
