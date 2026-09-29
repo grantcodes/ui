@@ -4,6 +4,32 @@ import { html } from 'lit/static-html.js';
 import { generateId } from '../../lib/generate-id.js';
 import formFieldStyles from './form-field.css' with { type: 'css' };
 
+/**
+ * Wraps a native `input`, `select` or `textarea` with a label, optional help text and optional
+ * error message, and mirrors the error/help state onto the control's ARIA attributes.
+ *
+ * ```html
+ * <grantcodes-form-field label="Email" help="We only use this for receipts.">
+ *   <input type="email" name="email" required />
+ * </grantcodes-form-field>
+ * ```
+ *
+ * Add `direction="horizontal"` for checkboxes and radios, and nest fields to group them — the
+ * parent then renders a `<fieldset>` with its `label` as the `<legend>`.
+ *
+ * ```html
+ * <grantcodes-form-field label="Contact preference" error="Choose one option.">
+ *   <grantcodes-form-field label="Email" direction="horizontal">
+ *     <input type="radio" name="contact" value="email" />
+ *   </grantcodes-form-field>
+ *   <grantcodes-form-field label="Phone" direction="horizontal">
+ *     <input type="radio" name="contact" value="phone" />
+ *   </grantcodes-form-field>
+ * </grantcodes-form-field>
+ * ```
+ *
+ * See README.md in this directory for every variant.
+ */
 export class GrantCodesFormField extends LitElement {
   static formAssociated = true;
   static styles = [formFieldStyles];
@@ -18,8 +44,16 @@ export class GrantCodesFormField extends LitElement {
   constructor() {
     super();
 
+    /** Label text, rendered in a `<label>` or, for a grouped field, a `<legend>`. */
     this.label = '';
+
+    /**
+     * Error message. Stays hidden until the field is touched, then appears and sets
+     * `aria-describedby` and `aria-invalid` on the first control.
+     */
     this.error = undefined;
+
+    /** Help text rendered with the label and referenced from the first control's `aria-describedby`. */
     this.help = undefined;
 
     this.groupInput = false;
