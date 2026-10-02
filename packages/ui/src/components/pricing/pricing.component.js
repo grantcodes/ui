@@ -87,7 +87,8 @@ export class GrantCodesPricing extends LitElement {
 													>
 														${feature.included ? '✓' : '✗'}
 													</span>
-													${feature.text}
+												${feature.text}
+												${feature.included ? null : html`<span class="pricing__feature-status">Not included</span>`}
 												</li>
 											`,
                     )}
