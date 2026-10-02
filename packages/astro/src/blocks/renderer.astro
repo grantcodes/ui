@@ -47,8 +47,10 @@ const { block } = Astro.props
     case 'hero':
       return (
         <Hero
+          id={block.id as string | undefined}
           title={block.title as string}
           subtitle={block.subtitle as string | undefined}
+          image={block.image as string | undefined}
           button={block.button as string | undefined}
           href={block.href as string | undefined}
           size={block.size as 'sm' | 'md' | 'lg' | undefined}
@@ -58,7 +60,12 @@ const { block } = Astro.props
     case 'text':
       return <Text content={block.content as string} />
     case 'gallery':
-      return <Gallery images={block.images as { src: string; alt?: string; caption?: string }[]} />
+      return (
+        <Gallery
+          images={block.images as { src: string; alt?: string; caption?: string }[]}
+          filmstrip={block.filmstrip as boolean | undefined}
+        />
+      )
     case 'accordion':
       return <Accordion items={block.items as { title: string; content?: string; htmlContent?: string }[]} />
     case 'cards':

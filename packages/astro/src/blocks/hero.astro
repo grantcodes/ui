@@ -4,16 +4,19 @@ import { GrantCodesHero } from '@grantcodes/ui/components/hero/index.js'
 interface Props {
   title: string
   subtitle?: string
+  image?: string
+  id?: string
   button?: string
   href?: string
   size?: 'sm' | 'md' | 'lg'
   center?: boolean
 }
 
-const { title, subtitle, button, href, size, center } = Astro.props
+const { title, subtitle, image, id, button, href, size, center } = Astro.props
 ---
 
 <GrantCodesHero
+  id={id}
   title={title}
   subtitle={subtitle}
   button={button}
@@ -21,5 +24,14 @@ const { title, subtitle, button, href, size, center } = Astro.props
   size={size}
   center={center ? true : undefined}
 >
+  {image && <img src={image} alt="" loading="lazy" class="hero__image" />}
   <slot />
 </GrantCodesHero>
+
+<style>
+  .hero__image {
+    display: block;
+    max-inline-size: 100%;
+    block-size: auto;
+  }
+</style>

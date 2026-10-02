@@ -20,16 +20,16 @@ const { images, filmstrip = false, marquee = false } = Astro.props
 
 <div class:list={['gallery', { 'gallery--filmstrip': filmstrip }]}>
   {filmstrip ? (
-    <GrantCodesGallery filmstrip={true} marquee={marquee}>
+    <GrantCodesGallery variant="filmstrip" marquee={marquee}>
       {images.map((image) => (
-        <GrantCodesGalleryImage src={image.src} alt={image.alt || ''} />
+        <GrantCodesGalleryImage src={image.src} alt={image.alt || ''} caption={image.caption} />
       ))}
     </GrantCodesGallery>
   ) : (
     <GrantCodesContainer align="wide">
       <GrantCodesGallery>
         {images.map((image) => (
-          <GrantCodesGalleryImage src={image.src} alt={image.alt || ''} />
+          <GrantCodesGalleryImage src={image.src} alt={image.alt || ''} caption={image.caption} />
         ))}
       </GrantCodesGallery>
     </GrantCodesContainer>
