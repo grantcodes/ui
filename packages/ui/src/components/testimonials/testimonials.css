@@ -48,7 +48,7 @@
 
 .testimonials__text {
   margin: 0;
-  font: var(--g-typography-body-default);
+  font: var(--g-typography-body-default-font);
   font-style: italic;
   color: var(--g-color-content-default);
   flex: 1;
