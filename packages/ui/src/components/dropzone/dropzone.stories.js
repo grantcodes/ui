@@ -21,7 +21,9 @@ const meta = {
   render: (args) =>
     template(
       args,
-      html`<input
+      html`<label for="dropzone-file-input">Upload files</label>
+			<input
+				id="dropzone-file-input"
 				type="file"
 				placeholder="${args.placeholder}"
 				accept="*"

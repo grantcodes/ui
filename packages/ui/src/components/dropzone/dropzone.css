@@ -20,6 +20,20 @@
   background-color: var(--g-color-background-subtle);
 }
 
+:host(:focus-within) .dropzone {
+  outline: var(--g-focus-ring-width-default) solid var(--g-focus-ring-color-default);
+  outline-offset: var(--g-focus-ring-offset-default);
+}
+
+@media (prefers-contrast: more) {
+  :host(:focus-within) .dropzone {
+    outline-color: var(--g-focus-ring-color-contrast);
+    box-shadow: 0 0 0
+      calc((var(--g-focus-ring-width-default) + var(--g-focus-ring-offset-default)) * 1.5)
+      var(--g-focus-ring-color-contrast-shadow);
+  }
+}
+
 .dropzone--fullscreen {
   position: fixed;
   inset: 0;

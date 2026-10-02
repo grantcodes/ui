@@ -34,6 +34,7 @@ export class GrantCodesDropzone extends LitElement {
     if (this.fullscreenOnDrag) {
       this._dragDepth++;
       this._fullscreen = true;
+      this.requestUpdate();
       this._clearFullscreenTimeout();
       // Fallback: disable fullscreen after 3 seconds of no activity
       this._fullscreenTimeout = setTimeout(() => {
@@ -54,6 +55,7 @@ export class GrantCodesDropzone extends LitElement {
 
   _forceDisableFullscreen = () => {
     this._fullscreen = false;
+    this.requestUpdate();
     this._dragDepth = 0;
     this._clearFullscreenTimeout();
   };
@@ -113,9 +115,11 @@ export class GrantCodesDropzone extends LitElement {
         throw new Error('No file input found');
       }
       this._placeholder = '';
+      this.requestUpdate();
       return;
     }
     this._placeholder = this._input[0].placeholder;
+    this.requestUpdate();
   }
 
   render() {
