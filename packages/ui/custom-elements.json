@@ -234,6 +234,23 @@
           "name": "GrantCodesAppBar",
           "members": [
             {
+              "kind": "method",
+              "name": "_closeMobileMenu"
+            },
+            {
+              "kind": "method",
+              "name": "_dispatchMenuToggle"
+            },
+            {
+              "kind": "method",
+              "name": "_handleEscape",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
               "kind": "field",
               "name": "_mobileMenuOpen",
               "privacy": "public",
@@ -6129,12 +6146,49 @@
               ]
             },
             {
+              "kind": "method",
+              "name": "_handleMobileChange",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "MediaQueryList | MediaQueryListEvent | undefined"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "_isMobile",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_isMobile"
+            },
+            {
+              "kind": "field",
+              "name": "_mobileMediaQuery",
+              "type": {
+                "text": "MediaQueryList | undefined"
+              }
+            },
+            {
               "kind": "field",
               "name": "_pendingState",
               "type": {
                 "text": "{ collapsed?: boolean; _drawerOpen?: boolean }"
               },
               "default": "{}"
+            },
+            {
+              "kind": "field",
+              "name": "_restoreFocusOnClose",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
             },
             {
               "kind": "method",
@@ -6232,6 +6286,14 @@
               "description": "Whether mobile drawer is open",
               "default": "false",
               "fieldName": "_drawerOpen"
+            },
+            {
+              "name": "_isMobile",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_isMobile"
             },
             {
               "name": "collapsed",

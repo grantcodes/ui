@@ -7,7 +7,10 @@ import sidebarStyles from './sidebar.css' with { type: 'css' };
 
 export class GrantCodesSidebar extends LitElement {
   declare _drawerOpen: boolean;
+  declare _isMobile: boolean;
+  declare _mobileMediaQuery: MediaQueryList | undefined;
   declare _pendingState: { collapsed?: boolean; _drawerOpen?: boolean };
+  declare _restoreFocusOnClose: boolean;
   declare _transitionScheduled: boolean;
   declare _viewTransitionName: string;
   declare collapsed: boolean;
@@ -23,6 +26,7 @@ export class GrantCodesSidebar extends LitElement {
     collapsible: { type: Boolean },
     width: { type: String },
     _drawerOpen: { type: Boolean, state: true },
+    _isMobile: { type: Boolean, state: true },
   };
 
   constructor() {
@@ -57,6 +61,8 @@ export class GrantCodesSidebar extends LitElement {
      * @type {boolean}
      */
     this._drawerOpen = false;
+    this._isMobile = false;
+    this._restoreFocusOnClose = false;
 
     // Per-instance, so two sidebars cannot abort each other's view transition.
     this._viewTransitionName = generateId('sidebar-vt');
@@ -65,20 +71,37 @@ export class GrantCodesSidebar extends LitElement {
 
     this._handleDocumentClick = this._handleDocumentClick.bind(this);
     this._handleEscape = this._handleEscape.bind(this);
+    this._handleMobileChange = this._handleMobileChange.bind(this);
   }
 
   connectedCallback() {
     super.connectedCallback();
     this.style.setProperty('--sidebar-vt-name', this._viewTransitionName);
     if (typeof document === 'undefined') return;
+    this._mobileMediaQuery = window.matchMedia?.('(max-width: 768px)');
+    this._handleMobileChange(this._mobileMediaQuery);
+    this._mobileMediaQuery?.addEventListener('change', this._handleMobileChange);
     document.addEventListener('click', this._handleDocumentClick);
     document.addEventListener('keydown', this._handleEscape);
   }
 
   disconnectedCallback() {
+    this._mobileMediaQuery?.removeEventListener('change', this._handleMobileChange);
     document.removeEventListener('click', this._handleDocumentClick);
     document.removeEventListener('keydown', this._handleEscape);
     super.disconnectedCallback();
+  }
+
+  updated(changed: Map<string, unknown>) {
+    if (changed.has('_drawerOpen') && !this._drawerOpen && this._restoreFocusOnClose) {
+      this._restoreFocusOnClose = false;
+      this.shadowRoot?.querySelector<HTMLButtonElement>('.sidebar__mobile-toggle')?.focus();
+    }
+  }
+
+  _handleMobileChange(event: MediaQueryList | MediaQueryListEvent | undefined) {
+    this._isMobile = Boolean(event?.matches);
+    if (!this._isMobile) this._drawerOpen = false;
   }
 
   _handleDocumentClick(e: Event) {
@@ -112,6 +135,7 @@ export class GrantCodesSidebar extends LitElement {
 
   _closeDrawer() {
     if (!(this._pendingState._drawerOpen ?? this._drawerOpen)) return;
+    this._restoreFocusOnClose = true;
     this._pendingState._drawerOpen = false;
     this._scheduleTransition();
   }
@@ -159,6 +183,7 @@ export class GrantCodesSidebar extends LitElement {
 				class="sidebar__mobile-toggle focus-ring"
 				@click=${this._toggleDrawer}
 				aria-label="${this._drawerOpen ? 'Close sidebar' : 'Open sidebar'}"
+				aria-expanded="${this._drawerOpen}"
 			>
 				☰
 			</button>
@@ -179,6 +204,7 @@ export class GrantCodesSidebar extends LitElement {
 			<aside
 				class=${sidebarClasses}
 				style="--sidebar-width: ${this.width}"
+				?inert=${this._isMobile && !this._drawerOpen}
 			>
 				<!-- Collapse Toggle (Desktop) -->
 				${

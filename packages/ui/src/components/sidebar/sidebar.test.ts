@@ -192,6 +192,35 @@ describe('Sidebar Component', () => {
     assert.ok(!overlay, 'Overlay should not exist when drawer is closed');
   });
 
+  it('should make a closed mobile drawer inert and restore focus after Escape', async () => {
+    const matchMedia = window.matchMedia;
+    window.matchMedia = () => ({
+      matches: true,
+      addEventListener() {},
+      removeEventListener() {},
+    });
+
+    try {
+      element = await fixture('grantcodes-sidebar');
+      const mobileToggle = element.shadowRoot.querySelector('.sidebar__mobile-toggle');
+      const sidebar = element.shadowRoot.querySelector('aside');
+
+      assert.strictEqual(sidebar.inert, true, 'Closed drawer should not expose its contents');
+
+      click(mobileToggle);
+      await element.updateComplete;
+      assert.strictEqual(sidebar.inert, false, 'Open drawer should expose its contents');
+
+      document.dispatchEvent(new window.KeyboardEvent('keydown', { key: 'Escape' }));
+      await element.updateComplete;
+
+      assert.strictEqual(sidebar.inert, true, 'Closed drawer should become inert again');
+      assert.strictEqual(element.shadowRoot.activeElement, mobileToggle, 'Focus should return to trigger');
+    } finally {
+      window.matchMedia = matchMedia;
+    }
+  });
+
   it('should preserve rapid collapse and drawer toggles before the transition update', async () => {
     element = await fixture('grantcodes-sidebar');
     const matchMedia = window.matchMedia;
