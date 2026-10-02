@@ -31,6 +31,7 @@ export const galleryBlock = baseBlockFields.extend({
       }),
     )
     .default([]),
+  filmstrip: z.boolean().default(false),
 });
 
 export const accordionItem = z
