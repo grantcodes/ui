@@ -40,6 +40,9 @@ export class GrantCodesDropdown extends LitElement {
 
     this._handleDocumentClick = this._handleDocumentClick.bind(this);
     this._handleEscape = this._handleEscape.bind(this);
+    this._handleMenuKeydown = this._handleMenuKeydown.bind(this);
+    this._handleMenuSlotChange = this._handleMenuSlotChange.bind(this);
+    this._menuObserver = null;
   }
 
   get menuId() {
@@ -55,53 +58,83 @@ export class GrantCodesDropdown extends LitElement {
     if (typeof document === 'undefined') return;
     document.addEventListener('click', this._handleDocumentClick);
     document.addEventListener('keydown', this._handleEscape);
+    this.addEventListener('keydown', this._handleMenuKeydown);
   }
 
   disconnectedCallback() {
     document.removeEventListener('click', this._handleDocumentClick);
     document.removeEventListener('keydown', this._handleEscape);
+    this.removeEventListener('keydown', this._handleMenuKeydown);
+    this._menuObserver?.disconnect();
     super.disconnectedCallback();
   }
 
   firstUpdated() {
-    // Set up menu items roles
-    const menuSlot = this.renderRoot.querySelector('slot[name="menu"]');
-    if (menuSlot) {
-      const menuItems = menuSlot.assignedElements();
-      menuItems.forEach((item) => {
-        if (item.tagName === 'GRANTCODES-DROPDOWN-ITEM') {
-          item.setAttribute('role', 'menuitem');
-          item.setAttribute('tabindex', '-1');
-        }
-      });
-    }
-
-    // Anchor name is per instance so multiple dropdowns cannot anchor to each other.
+    this._handleMenuSlotChange();
+    this._syncTrigger();
     this.style.setProperty('--dropdown-anchor', `--dropdown-anchor-${this.id}`);
     this.style.setProperty('--dropdown-vt-name', this._viewTransitionName);
   }
 
-  updated(changedProperties) {
-    if (changedProperties.has('open')) {
-      // Update aria-expanded on trigger
-      const triggerSlot = this.renderRoot.querySelector('slot[name="trigger"]');
-      if (triggerSlot) {
-        const assignedElements = triggerSlot.assignedElements();
-        if (assignedElements.length > 0) {
-          assignedElements[0].setAttribute('aria-expanded', this.open);
-        }
-      }
+  _getMenuItems() {
+    const menuSlot = this.renderRoot.querySelector('slot[name="menu"]');
+    const items = menuSlot
+      ?.assignedElements({ flatten: true })
+      .flatMap((element) => [
+        ...(element.matches('grantcodes-dropdown-item') ? [element] : []),
+        ...element.querySelectorAll('grantcodes-dropdown-item'),
+      ]);
+    return [...new Set(items ?? [])];
+  }
 
-      if (this.open) {
-        // Focus first menu item when opened
-        requestAnimationFrame(() => {
-          const menu = this.renderRoot.querySelector('.dropdown__menu');
-          const firstItem = menu?.querySelector('[role="menuitem"]');
-          if (firstItem) {
-            firstItem.focus();
-          }
-        });
-      }
+  _getEnabledMenuItems() {
+    return this._getMenuItems().filter((item) => !item.disabled && !item.hasAttribute('disabled'));
+  }
+
+  _handleMenuSlotChange() {
+    const menuSlot = this.renderRoot.querySelector('slot[name="menu"]');
+    const assignedElements = menuSlot?.assignedElements({ flatten: true }) ?? [];
+    this._menuObserver?.disconnect();
+    const MenuMutationObserver = globalThis.MutationObserver ?? window.MutationObserver;
+    this._menuObserver = new MenuMutationObserver(() => this._syncMenuItems());
+    assignedElements.forEach((element) => {
+      this._menuObserver.observe(element, { childList: true, subtree: true });
+    });
+    this._syncMenuItems();
+  }
+
+  _syncMenuItems() {
+    this._getMenuItems().forEach((item) => {
+      const disabled = item.disabled || item.hasAttribute('disabled');
+      item.setAttribute('role', 'menuitem');
+      item.setAttribute('tabindex', '-1');
+      item.setAttribute('aria-disabled', String(disabled));
+    });
+  }
+
+  _getTriggerElement() {
+    const triggerSlot = this.renderRoot.querySelector('slot[name="trigger"]');
+    const trigger = triggerSlot?.assignedElements({ flatten: true })[0];
+    return trigger?.shadowRoot?.querySelector('button, a, input, select, textarea') ?? trigger ?? null;
+  }
+
+  _syncTrigger() {
+    const trigger = this._getTriggerElement();
+    if (!trigger) return;
+    this._triggerElement = trigger;
+    if (!trigger.matches('button, a, input, select, textarea')) {
+      trigger.setAttribute('role', 'button');
+      trigger.tabIndex = 0;
+    }
+    trigger.setAttribute('aria-controls', this.menuId);
+    trigger.setAttribute('aria-expanded', String(this.open));
+    trigger.setAttribute('aria-haspopup', 'menu');
+  }
+
+  updated(changedProperties) {
+    this._syncTrigger();
+    if (changedProperties.has('open') && this.open) {
+      requestAnimationFrame(() => this._getEnabledMenuItems()[0]?.focus());
     }
   }
 
@@ -135,6 +168,7 @@ export class GrantCodesDropdown extends LitElement {
   }
 
   _handleTriggerClick(_e) {
+    this._syncTrigger();
     const open = !(this._pendingOpen ?? this.open);
     this._setOpen(open);
     this.dispatchEvent(
@@ -146,10 +180,29 @@ export class GrantCodesDropdown extends LitElement {
     );
   }
 
+  _handleTriggerKeydown(e) {
+    if (!e.composedPath().includes(this._triggerElement)) return;
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      this._setOpen(true);
+      requestAnimationFrame(() => {
+        const items = this._getEnabledMenuItems();
+        (e.key === 'ArrowDown' ? items[0] : items.at(-1))?.focus();
+      });
+    } else if (
+      !this._triggerElement.matches('button, a, input, select, textarea') &&
+      (e.key === 'Enter' || e.key === ' ')
+    ) {
+      e.preventDefault();
+      this._handleTriggerClick(e);
+    }
+  }
+
   _handleMenuKeydown(e) {
-    const menu = this.renderRoot.querySelector('.dropdown__menu');
-    const items = Array.from(menu?.querySelectorAll('[role="menuitem"]') || []);
-    const currentIndex = items.indexOf(e.target);
+    const items = this._getEnabledMenuItems();
+    const currentItem = e.composedPath().find((node) => node?.tagName === 'GRANTCODES-DROPDOWN-ITEM');
+    if (!currentItem) return;
+    const currentIndex = items.indexOf(currentItem);
 
     switch (e.key) {
       case 'ArrowDown': {
@@ -170,7 +223,7 @@ export class GrantCodesDropdown extends LitElement {
         break;
       case 'End':
         e.preventDefault();
-        items[items.length - 1]?.focus();
+        items.at(-1)?.focus();
         break;
     }
   }
@@ -180,16 +233,19 @@ export class GrantCodesDropdown extends LitElement {
     const openClass = this.open ? 'dropdown__menu--open' : '';
     return html`
       <div class="dropdown">
-        <div class="dropdown__trigger" @click=${this._handleTriggerClick}>
-          <slot name="trigger"></slot>
+        <div
+          class="dropdown__trigger"
+          @click=${this._handleTriggerClick}
+          @keydown=${this._handleTriggerKeydown}
+        >
+          <slot name="trigger" @slotchange=${() => this._syncTrigger()}></slot>
         </div>
         <div
           id="${this.menuId}"
           class="dropdown__menu ${placementClass} ${openClass}"
           role="menu"
-          @keydown=${this._handleMenuKeydown}
         >
-          <slot name="menu"></slot>
+          <slot name="menu" @slotchange=${this._handleMenuSlotChange}></slot>
         </div>
       </div>
     `;
@@ -200,7 +256,7 @@ export class GrantCodesDropdownItem extends LitElement {
   static styles = [dropdownStyles];
 
   static properties = {
-    disabled: { type: Boolean },
+    disabled: { type: Boolean, reflect: true },
   };
 
   constructor() {
@@ -213,9 +269,9 @@ export class GrantCodesDropdownItem extends LitElement {
     this.disabled = false;
   }
 
-  _handleClick(e) {
+  _activate(e) {
     if (this.disabled) {
-      e.preventDefault();
+      e?.preventDefault();
       return;
     }
 
@@ -226,10 +282,35 @@ export class GrantCodesDropdownItem extends LitElement {
       }),
     );
 
-    // Close the dropdown
     const dropdown = this.closest('grantcodes-dropdown');
-    if (dropdown) {
-      dropdown.open = false;
+    dropdown?._setOpen(false);
+    dropdown?._triggerElement?.focus();
+  }
+
+  _handleClick(e) {
+    this._activate(e);
+  }
+
+  _handleKeydown(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      this._activate(e);
+    }
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.addEventListener('keydown', this._handleKeydown);
+  }
+
+  disconnectedCallback() {
+    this.removeEventListener('keydown', this._handleKeydown);
+    super.disconnectedCallback();
+  }
+
+  updated(changedProperties) {
+    if (changedProperties.has('disabled')) {
+      this.setAttribute('aria-disabled', String(this.disabled));
     }
   }
 
