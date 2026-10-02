@@ -42,25 +42,42 @@ export class GrantCodesAppBar extends LitElement {
         ? new ResizeObserver((entries) => {
             for (const entry of entries) {
               if (entry.contentBoxSize[0].inlineSize >= 768 && this._mobileMenuOpen) {
-                this._mobileMenuOpen = false;
+                this._closeMobileMenu();
               }
             }
           })
         : null;
+    this._handleEscape = this._handleEscape.bind(this);
   }
 
   connectedCallback() {
     super.connectedCallback();
     this._resizeObserver?.observe(this);
+    document.addEventListener('keydown', this._handleEscape);
   }
 
   disconnectedCallback() {
-    super.disconnectedCallback();
+    document.removeEventListener('keydown', this._handleEscape);
     this._resizeObserver?.disconnect();
+    super.disconnectedCallback();
+  }
+
+  _handleEscape(event) {
+    if (event.key === 'Escape') this._closeMobileMenu();
+  }
+
+  _closeMobileMenu() {
+    if (!this._mobileMenuOpen) return;
+    this._mobileMenuOpen = false;
+    this._dispatchMenuToggle();
   }
 
   _toggleMobileMenu() {
     this._mobileMenuOpen = !this._mobileMenuOpen;
+    this._dispatchMenuToggle();
+  }
+
+  _dispatchMenuToggle() {
     this.dispatchEvent(
       new CustomEvent('menu-toggle', {
         detail: { open: this._mobileMenuOpen },
