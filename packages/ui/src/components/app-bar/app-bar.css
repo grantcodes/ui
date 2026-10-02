@@ -31,6 +31,8 @@
 
 /* Top bar row — always visible */
 .app-bar__bar {
+  position: relative;
+  z-index: 100;
   display: flex;
   align-items: center;
   gap: var(--g-spacing-lg);
