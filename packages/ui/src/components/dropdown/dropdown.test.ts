@@ -138,6 +138,66 @@ describe('Dropdown Component', () => {
     assert.strictEqual(transitions, 1, 'Opening should animate');
     assert.strictEqual(element.open, true, 'The dropdown should still open');
   });
+
+  it('should discover wrapped dynamic items and skip disabled items during keyboard navigation', async () => {
+    element = await fixture('grantcodes-dropdown');
+    element.innerHTML = `
+      <button slot="trigger">Actions</button>
+      <div slot="menu">
+        <grantcodes-dropdown-item>First</grantcodes-dropdown-item>
+        <grantcodes-dropdown-item disabled>Disabled</grantcodes-dropdown-item>
+      </div>
+    `;
+    await element.updateComplete;
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    const wrapper = element.querySelector('[slot="menu"]');
+    const [firstItem, disabledItem] = wrapper.children;
+    const lastItem = document.createElement('grantcodes-dropdown-item');
+    lastItem.textContent = 'Last';
+    wrapper.append(lastItem);
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    assert.strictEqual(firstItem.getAttribute('role'), 'menuitem');
+    assert.strictEqual(disabledItem.getAttribute('aria-disabled'), 'true');
+    assert.strictEqual(lastItem.getAttribute('role'), 'menuitem');
+
+    element.open = true;
+    await element.updateComplete;
+    lastItem.focus();
+    lastItem.dispatchEvent(new window.KeyboardEvent('keydown', { bubbles: true, key: 'ArrowDown' }));
+
+    assert.strictEqual(document.activeElement, firstItem, 'ArrowDown should wrap past disabled items');
+  });
+
+  it('should activate items with Enter and restore trigger focus on Escape', async () => {
+    element = await fixture('grantcodes-dropdown');
+    element.innerHTML = `
+      <button slot="trigger">Actions</button>
+      <div slot="menu"><grantcodes-dropdown-item>First</grantcodes-dropdown-item></div>
+    `;
+    await element.updateComplete;
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    const trigger = element.querySelector('[slot="trigger"]');
+    const item = element.querySelector('grantcodes-dropdown-item');
+    let selections = 0;
+    item.addEventListener('select', () => selections++);
+    element.open = true;
+    await element.updateComplete;
+
+    item.focus();
+    item.dispatchEvent(new window.KeyboardEvent('keydown', { bubbles: true, key: 'Enter' }));
+    assert.strictEqual(selections, 1, 'Enter should select the focused item');
+
+    element.open = true;
+    await element.updateComplete;
+    item.focus();
+    document.dispatchEvent(new window.KeyboardEvent('keydown', { key: 'Escape' }));
+
+    assert.strictEqual(element.open, false, 'Escape should close the menu');
+    assert.strictEqual(document.activeElement, trigger, 'Escape should restore trigger focus');
+  });
 });
 
 describe('Dropdown Item Component', () => {
