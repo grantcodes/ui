@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.17.1](https://github.com/grantcodes/ui/compare/ui-v2.17.0...ui-v2.17.1) (2026-10-02)
+
+
+### Bug Fixes
+
+* **ui:** render dropzone drag state and focus ([0385668](https://github.com/grantcodes/ui/commit/0385668282ce5388e1d75e91bacea4fb9d94487a))
+
 ## [2.17.0](https://github.com/grantcodes/ui/compare/ui-v2.16.0...ui-v2.17.0) (2026-09-27)
 
 
