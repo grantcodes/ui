@@ -150,6 +150,21 @@ describe('App Bar Component', () => {
     assert.strictEqual(toggledState, true, 'Toggle event should fire with open state');
   });
 
+  it('should close an open mobile menu with Escape', async () => {
+    element = await fixture('grantcodes-app-bar');
+    const toggledStates = [];
+    element.addEventListener('menu-toggle', (event) => toggledStates.push(event.detail.open));
+
+    click(element.shadowRoot.querySelector('.app-bar__menu-button'));
+    await element.updateComplete;
+
+    document.dispatchEvent(new window.KeyboardEvent('keydown', { key: 'Escape' }));
+    await element.updateComplete;
+
+    assert.strictEqual(element._mobileMenuOpen, false, 'Escape should close the mobile menu');
+    assert.deepStrictEqual(toggledStates, [true, false], 'Escape should report the closed state');
+  });
+
   it('should have aria-label on menu button', async () => {
     element = await fixture('grantcodes-app-bar');
     const menuButton = element.shadowRoot.querySelector('.app-bar__menu-button');
