@@ -83,7 +83,7 @@
 
 .pricing__tier-desc {
   margin: 0;
-  font: var(--g-typography-body-sm);
+  font: var(--g-typography-body-sm-font);
   color: var(--g-color-content-subtle);
 }
 
@@ -110,8 +110,17 @@
   text-decoration: line-through;
 }
 
+.pricing__feature-status {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 .pricing__feature-icon {
-  font: var(--g-typography-body-sm);
+  font: var(--g-typography-body-sm-font);
   color: var(--g-color-content-primary);
   flex-shrink: 0;
 }
