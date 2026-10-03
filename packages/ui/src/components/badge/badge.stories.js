@@ -1,4 +1,5 @@
 import { html } from 'lit';
+import { expect } from 'storybook/test';
 import './badge.js';
 
 const meta = {
@@ -18,6 +19,13 @@ const meta = {
 			Badge
 		</grantcodes-badge>
 	`,
+  play: async ({ canvasElement, args }) => {
+    const badge = canvasElement.querySelector('grantcodes-badge');
+    const inner = badge.shadowRoot.querySelector('.badge');
+
+    await expect(inner).toHaveClass(`badge--${args.variant}`);
+    await expect(badge).toHaveTextContent('Badge');
+  },
 };
 
 export default meta;

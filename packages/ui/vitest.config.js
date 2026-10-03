@@ -1,0 +1,33 @@
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
+import { playwright } from '@vitest/browser-playwright';
+import { defineConfig } from 'vitest/config';
+import { cssImportAttributes } from './vite-plugin-css-import-attributes.js';
+
+const dirname = path.dirname(fileURLToPath(import.meta.url));
+
+export default defineConfig({
+  test: {
+    projects: [
+      {
+        extends: true,
+        plugins: [
+          cssImportAttributes(),
+          storybookTest({ configDir: path.join(dirname, '.storybook') }),
+        ],
+        test: {
+          name: 'storybook',
+          deps: { optimizer: { web: { enabled: false } } },
+          browser: {
+            enabled: true,
+            headless: true,
+            provider: playwright({}),
+            instances: [{ browser: 'chromium' }],
+          },
+        },
+      },
+    ],
+  },
+});
