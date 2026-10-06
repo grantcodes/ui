@@ -8,10 +8,11 @@ export class GrantCodesTab extends GrantCodesTabsItem {
 
   render() {
     return html`
+			<span id="${this.panelId}-label" hidden>${this.label}</span>
 			<div
 				id="${this.panelId}"
 				role="tabpanel"
-				aria-labelledby="${this.buttonId}"
+				aria-labelledby="${this.panelId}-label"
 				class="tabs__panel ${this.active ? 'is-active' : ''}"
 			>
 				<slot></slot>
