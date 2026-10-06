@@ -3035,6 +3035,25 @@
           "name": "GrantCodesFormField",
           "members": [
             {
+              "kind": "field",
+              "name": "_controls",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_ensureControlAccessibility",
+              "parameters": [
+                {
+                  "name": "control"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "_labelId",
+              "readonly": true
+            },
+            {
               "kind": "method",
               "name": "_revalidate",
               "parameters": [
@@ -3042,6 +3061,10 @@
                   "name": "event"
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "_syncGroupState"
             },
             {
               "kind": "field",

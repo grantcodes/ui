@@ -64,13 +64,11 @@ export class GrantCodesFormField extends LitElement {
      */
     this.direction = 'vertical';
 
-    /** @type {NodeListOf<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>} */
-    this.inputElements;
-
     /** @type {NodeListOf<GrantCodesFormField>} */
     this.nestedFields;
 
     this._revalidate = this._revalidate.bind(this);
+    this._syncGroupState = this._syncGroupState.bind(this);
     this._touched = false;
   }
 
@@ -109,6 +107,16 @@ export class GrantCodesFormField extends LitElement {
     return `${this.id}-help`;
   }
 
+  get _labelId() {
+    return `${this.id}-label`;
+  }
+
+  get _controls() {
+    return Array.from(this.children).filter((child) =>
+      child.matches('input, select, textarea'),
+    );
+  }
+
   get ariaDescribedBy() {
     const ids = [];
     if (this.error) {
@@ -117,54 +125,99 @@ export class GrantCodesFormField extends LitElement {
     if (this.help) {
       ids.push(this.helpId);
     }
-    return ids.join(' ');
+    return ids;
   }
 
   /** Errors stay hidden until the field is interacted with or reports :user-invalid. */
   get showError() {
     if (!this.error) return false;
-    const controls = this.querySelectorAll('input, select, textarea');
+    const controls = this.groupInput
+      ? this.querySelectorAll('input, select, textarea')
+      : this._controls;
     if (controls.length === 0) return true;
     if (this._touched) return true;
     return Array.from(controls).some((control) => control.matches(':user-invalid'));
   }
 
   firstUpdated() {
-    // Initialize inputs and nested fields if not already set
-    if (!this.inputElements) {
-      this.inputElements = this.querySelectorAll('input, select, textarea');
-    }
-    if (!this.nestedFields) {
-      this.nestedFields = this.querySelectorAll('grantcodes-form-field');
-    }
-
-    const input = this.inputElements[0];
-
-    if (this.nestedFields.length > 0) {
-      this.groupInput = true;
-      this.requestUpdate();
-    }
-
-    if (!input) {
-      return;
-    }
-
+    this._syncGroupState();
     this.syncControlAria();
   }
 
   updated(changedProperties) {
-    if (changedProperties.has('error') || changedProperties.has('help')) {
+    if (
+      changedProperties.has('label') ||
+      changedProperties.has('error') ||
+      changedProperties.has('help')
+    ) {
       this.syncControlAria();
+    }
+  }
+
+  _syncGroupState() {
+    this.nestedFields = this.querySelectorAll(':scope > grantcodes-form-field');
+    const isGroup = this.nestedFields.length > 0;
+    if (this.groupInput !== isGroup) {
+      this.groupInput = isGroup;
+      this.requestUpdate();
+    }
+    if (!isGroup) {
+      this.syncControlAria();
+    }
+  }
+
+  _ensureControlAccessibility(control) {
+    if (!control.id) {
+      control.id = `${this.id}-control`;
+    }
+
+    const label =
+      Array.from(this.children).find((child) => child.id === this._labelId) ??
+      document.createElement('label');
+    label.id = this._labelId;
+    label.htmlFor = control.id;
+    label.textContent = this.label;
+    label.style.cssText =
+      'position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0';
+    if (control.nextElementSibling !== label) {
+      control.insertAdjacentElement('afterend', label);
+    }
+
+    let previous = label;
+    for (const [id, text] of [
+      [this.errorId, this.error],
+      [this.helpId, this.help],
+    ]) {
+      let description = Array.from(this.children).find((child) => child.id === id);
+      if (!text) {
+        description?.remove();
+        continue;
+      }
+      description ??= document.createElement('span');
+      description.id = id;
+      description.textContent = text;
+      description.style.cssText = label.style.cssText;
+      if (previous.nextElementSibling !== description) {
+        previous.insertAdjacentElement('afterend', description);
+      }
+      previous = description;
     }
   }
 
   /** Mirrors the current error/help state onto the first control. */
   syncControlAria() {
-    const input = this.inputElements?.[0];
+    const input = this._controls[0];
     if (!input) return;
 
-    if (this.ariaDescribedBy) {
-      input.setAttribute('aria-describedby', this.ariaDescribedBy);
+    this._ensureControlAccessibility(input);
+    const ownIds = [this.errorId, this.helpId];
+    const existingIds = (input.getAttribute('aria-describedby') ?? '')
+      .split(/\s+/)
+      .filter((id) => id && !ownIds.includes(id));
+    const describedBy = [...existingIds, ...this.ariaDescribedBy].join(' ');
+
+    if (describedBy) {
+      input.setAttribute('aria-describedby', describedBy);
     } else {
       input.removeAttribute('aria-describedby');
     }
@@ -177,7 +230,7 @@ export class GrantCodesFormField extends LitElement {
   }
 
   handleLabelClick(event) {
-    const input = this.inputElements?.[0];
+    const input = this._controls[0];
     if (!input) return;
 
     // The slotted control is not a DOM descendant of the shadow <label>, so the
@@ -216,7 +269,7 @@ export class GrantCodesFormField extends LitElement {
       return html`
       <fieldset class=${wrapperClass}>
         <legend class="form-field__label">${this.label}</legend>
-        <slot @slotchange=${this._revalidate}></slot>
+        <slot @slotchange=${this._syncGroupState}></slot>
         ${this.errorTemplate()}
       </fieldset>
     `;
@@ -229,7 +282,7 @@ export class GrantCodesFormField extends LitElement {
             >${this.label}</span
           >
           ${this.helpTemplate()}
-          <slot @slotchange=${this._revalidate}></slot>
+          <slot @slotchange=${this._syncGroupState}></slot>
         </label>
         ${this.errorTemplate()}
       </div>
