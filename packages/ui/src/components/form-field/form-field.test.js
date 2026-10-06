@@ -160,6 +160,62 @@ describe('Form Field Component', () => {
     assert.ok(describedBy.includes(`${element.id}-help`), 'Help id should be described');
   });
 
+  it('should create native control relationships without replacing consumer descriptions', async () => {
+    element = document.createElement('grantcodes-form-field');
+    element.label = 'Email';
+    element.help = 'Use your work email';
+    element.error = 'Invalid email';
+    element.innerHTML =
+      '<input type="email" aria-describedby="consumer-description" /><span id="consumer-description">Consumer description</span>';
+    document.body.appendChild(element);
+    await element.updateComplete;
+
+    const input = element.querySelector('input');
+    const label = element.querySelector(`#${element.id}-label`);
+    const descriptions = input.getAttribute('aria-describedby').split(' ');
+
+    assert.strictEqual(label.htmlFor, input.id, 'Native label must reference the control');
+    assert.ok(Array.from(input.labels).includes(label), 'The control must resolve its native label');
+    assert.deepStrictEqual(
+      descriptions,
+      ['consumer-description', element.errorId, element.helpId],
+      'Consumer and component descriptions must both be available to the control',
+    );
+    assert.strictEqual(
+      element.querySelector(`#${element.errorId}`).textContent,
+      'Invalid email',
+      'The error description must be in the control tree',
+    );
+    assert.strictEqual(
+      element.querySelector(`#${element.helpId}`).textContent,
+      'Use your work email',
+      'The help description must be in the control tree',
+    );
+  });
+
+  it('should not apply group descriptions to nested controls', async () => {
+    element = document.createElement('grantcodes-form-field');
+    element.label = 'Contact preference';
+    element.help = 'Choose one option';
+    element.innerHTML =
+      '<grantcodes-form-field label="Email"><input type="radio" name="contact" /></grantcodes-form-field>';
+    document.body.appendChild(element);
+    await element.updateComplete;
+    await element.updateComplete;
+
+    const nestedField = element.querySelector('grantcodes-form-field');
+    await nestedField.updateComplete;
+    const input = nestedField.querySelector('input');
+
+    assert.strictEqual(element.groupInput, true, 'Nested fields must render as a group');
+    assert.strictEqual(
+      input.getAttribute('aria-describedby'),
+      null,
+      'Parent descriptions must not overwrite nested controls',
+    );
+    assert.ok(input.labels.length > 0, 'Nested controls must retain their native labels');
+  });
+
   it('should drop aria-describedby when error and help are cleared', async () => {
     element = document.createElement('grantcodes-form-field');
     element.label = 'Email';
