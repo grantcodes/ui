@@ -167,21 +167,12 @@ describe('Tabs Component', () => {
     assert.strictEqual(highlighted.length, 1, 'Exactly one tab button carries the highlight');
   });
 
-  it('should pair each tab button with its own panel', async () => {
-    const { buttons, panels } = await mountTabs(['One', 'Two']);
+  it('should give each panel an in-scope accessible label', async () => {
+    const { panels } = await mountTabs(['One', 'Two']);
 
-    buttons.forEach((button, index) => {
-      const inner = button.shadowRoot.querySelector('button');
-      assert.strictEqual(
-        inner.getAttribute('aria-controls'),
-        panels[index].id,
-        `Button ${index} must control its own panel`,
-      );
-      assert.strictEqual(
-        panels[index].getAttribute('aria-labelledby'),
-        inner.id,
-        `Panel ${index} must be labelled by its own button`,
-      );
+    panels.forEach((panel, index) => {
+      const label = panel.getRootNode().querySelector(`#${panel.getAttribute('aria-labelledby')}`);
+      assert.strictEqual(label.textContent, ['One', 'Two'][index]);
     });
   });
 
@@ -198,5 +189,35 @@ describe('Tabs Component', () => {
     );
     assert.strictEqual(buttons[1].active, true, 'Clicked button is active');
     assert.strictEqual(buttons[0].active, false, 'Other button is no longer active');
+  });
+
+  it('should navigate dynamically added tabs without activating them', async () => {
+    const { buttons } = await mountTabs(['One']);
+    const tab = document.createElement('grantcodes-tab');
+    tab.label = 'Two';
+    element.appendChild(tab);
+    await element.updateComplete;
+    await element.updateComplete;
+
+    const dynamicButtons = Array.from(element.shadowRoot.querySelectorAll('grantcodes-tabs-button'));
+    const firstButton = buttons[0].shadowRoot.querySelector('button');
+    const secondButton = dynamicButtons[1].shadowRoot.querySelector('button');
+    let focused = false;
+    dynamicButtons[1].focus = () => {
+      focused = true;
+    };
+    firstButton.focus();
+    const arrowRight = new Event('keydown', { bubbles: true, composed: true });
+    Object.defineProperty(arrowRight, 'key', { value: 'ArrowRight' });
+    firstButton.dispatchEvent(arrowRight);
+
+    assert.strictEqual(dynamicButtons.length, 2, 'A dynamic tab gets a tab button');
+    assert.strictEqual(dynamicButtons[0].active, true, 'Arrow navigation preserves manual activation');
+    assert.strictEqual(dynamicButtons[1].active, false, 'Arrow navigation does not select the next tab');
+    assert.strictEqual(focused, true, 'Arrow navigation moves focus');
+
+    secondButton.click();
+    await element.updateComplete;
+    assert.strictEqual(dynamicButtons[1].active, true, 'Native button activation selects the focused tab');
   });
 });

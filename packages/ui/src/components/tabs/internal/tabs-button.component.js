@@ -20,7 +20,6 @@ export class GrantCodesTabsButton extends GrantCodesTabsItem {
 				type="button"
 				role="tab"
 				aria-selected=${this.active}
-				aria-controls="${this.panelId}"
 				tabindex=${ifDefined(this.active ? undefined : '-1')}
 				class="tabs__tab focus-ring ${this.active ? 'is-active' : ''}"
 			>

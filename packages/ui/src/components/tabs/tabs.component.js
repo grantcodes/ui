@@ -64,17 +64,21 @@ export class GrantCodesTabs extends LitElement {
     });
 
     // If no tab is active, default to the first tab.
-    if (this.activeTab == null) {
+    if (this.tabs.length > 0 && this.activeTab == null) {
       this._focusedTabIndex = 0;
       this.activeTab = this.tabs[0];
     }
+    this.requestUpdate();
   }
 
   firstUpdated() {
     const slot = this.renderRoot.querySelector('slot');
     this.tabs = slot ? slot.assignedElements().filter((el) => el.tagName === 'GRANTCODES-TAB') : [];
-    this.tabButtons = Array.from(this.renderRoot.querySelectorAll('grantcodes-tabs-button'));
     this.initializeTabs();
+  }
+
+  updated() {
+    this.tabButtons = Array.from(this.renderRoot.querySelectorAll('grantcodes-tabs-button'));
   }
 
   handleTabKeyDown(e) {
@@ -122,7 +126,12 @@ export class GrantCodesTabs extends LitElement {
 				</div>
 
 				<div class="tabs__panels">
-					<slot></slot>
+					<slot
+						@slotchange=${(e) => {
+              this.tabs = e.target.assignedElements().filter((el) => el.tagName === 'GRANTCODES-TAB');
+              this.initializeTabs();
+            }}
+					></slot>
 				</div>
 			</div>
 		`;
