@@ -2263,6 +2263,18 @@
           "members": [
             {
               "kind": "method",
+              "name": "_getEnabledMenuItems"
+            },
+            {
+              "kind": "method",
+              "name": "_getMenuItems"
+            },
+            {
+              "kind": "method",
+              "name": "_getTriggerElement"
+            },
+            {
+              "kind": "method",
               "name": "_handleDocumentClick",
               "parameters": [
                 {
@@ -2290,12 +2302,33 @@
             },
             {
               "kind": "method",
+              "name": "_handleMenuSlotChange"
+            },
+            {
+              "kind": "method",
               "name": "_handleTriggerClick",
               "parameters": [
                 {
                   "name": "_e"
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleTriggerKeydown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "_menuObserver",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
             },
             {
               "kind": "field",
@@ -2321,6 +2354,14 @@
                   "name": "open"
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "_syncMenuItems"
+            },
+            {
+              "kind": "method",
+              "name": "_syncTrigger"
             },
             {
               "kind": "field",
@@ -2417,7 +2458,25 @@
           "members": [
             {
               "kind": "method",
+              "name": "_activate",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "_handleClick",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleKeydown",
               "parameters": [
                 {
                   "name": "e"
@@ -2433,7 +2492,8 @@
               },
               "description": "Whether the item is disabled",
               "default": "false",
-              "attribute": "disabled"
+              "attribute": "disabled",
+              "reflects": true
             }
           ],
           "events": [
