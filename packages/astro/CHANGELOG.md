@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.11](https://github.com/grantcodes/ui/compare/astro-v0.2.10...astro-v0.2.11) (2026-10-07)
+
+
+### Bug Fixes
+
+* **astro:** forward gallery and hero block content ([3990307](https://github.com/grantcodes/ui/commit/39903073a1e9a36906de6ac6f03af7582da35d12))
+
 ## [0.2.10](https://github.com/grantcodes/ui/compare/astro-v0.2.9...astro-v0.2.10) (2026-09-27)
 
 

@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.17.1](https://github.com/grantcodes/ui/compare/ui-v2.17.0...ui-v2.17.1) (2026-10-07)
+
+
+### Bug Fixes
+
+* **ui:** render dropzone drag state and focus ([0385668](https://github.com/grantcodes/ui/commit/0385668282ce5388e1d75e91bacea4fb9d94487a))
+* **ui:** repair tabs keyboard and panel labels ([3b1c89b](https://github.com/grantcodes/ui/commit/3b1c89ba22110038eaf6eb5871131c58fb79b59c))
+* **ui:** restore form field accessibility relationships ([20eb66f](https://github.com/grantcodes/ui/commit/20eb66fcdcea586da8a1565db4c6f963f2181603))
+* **ui:** restore pricing status and typography ([3d55337](https://github.com/grantcodes/ui/commit/3d553376d2d22a0138b164914ef7e0887c181a4a))
+
 ## [2.17.0](https://github.com/grantcodes/ui/compare/ui-v2.16.0...ui-v2.17.0) (2026-09-27)
 
 
