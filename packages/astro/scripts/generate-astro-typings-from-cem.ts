@@ -199,11 +199,24 @@ function main(): void {
 
   // ---- Build lookup maps ----
 
-  // Map from module path -> module
+  // Map from module path -> module. The analyzer emits more than one entry for
+  // some paths (a class module plus a custom-element-definition module), so
+  // merge their exports and declarations instead of letting the last one win.
   const modByPath = new Map<string, CemModule>();
   for (const mod of cem.modules) {
     if (mod.kind === "javascript-module") {
-      modByPath.set(normPath(mod.path), mod);
+      const key = normPath(mod.path);
+      const existing = modByPath.get(key);
+      if (existing) {
+        existing.exports.push(...mod.exports);
+        existing.declarations.push(...mod.declarations);
+      } else {
+        modByPath.set(key, {
+          ...mod,
+          exports: [...mod.exports],
+          declarations: [...mod.declarations],
+        });
+      }
     }
   }
 
