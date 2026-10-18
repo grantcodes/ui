@@ -26,6 +26,22 @@ import { GrantCodesButton } from '@grantcodes/ui/components/button';
 
 For Astro projects, pair this package with `@grantcodes/astro` for the lowest-friction setup.
 
+### Vite CSS import attributes
+
+Add the typed Vite plugin when components import CSS with `{ type: 'css' }`:
+
+```javascript
+import { cssImportAttributes } from '@grantcodes/ui/vite-plugin';
+
+export default { plugins: [cssImportAttributes()] };
+```
+
+For TypeScript, opt in to the matching CSS declaration with:
+
+```ts
+import '@grantcodes/ui/css-import-attributes';
+```
+
 ## Creating a new component
 
 To create a new component run `npm run generate`. Uses plop.js for scaffolding.

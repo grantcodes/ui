@@ -223,6 +223,9 @@ importers:
       '@wc-toolkit/storybook-helpers':
         specifier: ^10.7.7
         version: 10.7.7(lit@3.3.3)(storybook@10.6.0(@types/react@19.3.0)(prettier@3.9.8)(react@19.3.0))
+      esbuild:
+        specifier: ^0.28.2
+        version: 0.28.2
       happy-dom:
         specifier: ^20.14.5
         version: 20.14.5
