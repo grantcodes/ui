@@ -72,6 +72,22 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/accordion/accordion-item.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-accordion-item",
+          "declaration": {
+            "name": "GrantCodesAccordionItem",
+            "module": "src/components/accordion/accordion-item.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/accordion/accordion.component.js",
       "declarations": [
         {
@@ -91,6 +107,22 @@
         {
           "kind": "js",
           "name": "GrantCodesAccordion",
+          "declaration": {
+            "name": "GrantCodesAccordion",
+            "module": "src/components/accordion/accordion.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/accordion/accordion.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-accordion",
           "declaration": {
             "name": "GrantCodesAccordion",
             "module": "src/components/accordion/accordion.component.js"
@@ -215,6 +247,9 @@
             {
               "kind": "field",
               "name": "_resizeObserver",
+              "type": {
+                "text": "null | ResizeObserver"
+              },
               "description": "Close mobile menu when the component crosses the desktop breakpoint.\nMatches the 768px container query in app-bar.css."
             },
             {
@@ -304,6 +339,22 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/app-bar/app-bar.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-app-bar",
+          "declaration": {
+            "name": "GrantCodesAppBar",
+            "module": "src/components/app-bar/app-bar.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/app-bar/app-bar.js",
       "declarations": [],
       "exports": [
@@ -369,6 +420,22 @@
         {
           "kind": "js",
           "name": "GrantCodesNavLink",
+          "declaration": {
+            "name": "GrantCodesNavLink",
+            "module": "src/components/app-bar/nav-link.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/app-bar/nav-link.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-nav-link",
           "declaration": {
             "name": "GrantCodesNavLink",
             "module": "src/components/app-bar/nav-link.component.js"
@@ -563,6 +630,22 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/avatar/avatar.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-avatar",
+          "declaration": {
+            "name": "GrantCodesAvatar",
+            "module": "src/components/avatar/avatar.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/avatar/avatar.js",
       "declarations": [],
       "exports": [
@@ -651,6 +734,22 @@
         {
           "kind": "js",
           "name": "GrantCodesBadge",
+          "declaration": {
+            "name": "GrantCodesBadge",
+            "module": "src/components/badge/badge.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/badge/badge.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-badge",
           "declaration": {
             "name": "GrantCodesBadge",
             "module": "src/components/badge/badge.component.js"
@@ -824,6 +923,38 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/breadcrumb/breadcrumb.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-breadcrumb",
+          "declaration": {
+            "name": "GrantCodesBreadcrumb",
+            "module": "src/components/breadcrumb/breadcrumb.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/breadcrumb/breadcrumb.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-breadcrumb-item",
+          "declaration": {
+            "name": "GrantCodesBreadcrumbItem",
+            "module": "src/components/breadcrumb/breadcrumb.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/breadcrumb/breadcrumb.js",
       "declarations": [],
       "exports": [
@@ -906,6 +1037,22 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/button-group/button-group.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-button-group",
+          "declaration": {
+            "name": "GrantCodesButtonGroup",
+            "module": "src/components/button-group/button-group.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/button-group/button-group.js",
       "declarations": [],
       "exports": [
@@ -972,7 +1119,10 @@
               "name": "_handleFormClick",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e",
+                  "type": {
+                    "text": "Event"
+                  }
                 }
               ]
             },
@@ -1011,7 +1161,10 @@
               "name": "formDisabledCallback",
               "parameters": [
                 {
-                  "name": "disabled"
+                  "name": "disabled",
+                  "type": {
+                    "text": "boolean"
+                  }
                 }
               ]
             },
@@ -1028,6 +1181,13 @@
               },
               "default": "''",
               "attribute": "href"
+            },
+            {
+              "kind": "field",
+              "name": "internals",
+              "type": {
+                "text": "ElementInternals | null"
+              }
             },
             {
               "kind": "field",
@@ -1121,6 +1281,22 @@
         {
           "kind": "js",
           "name": "GrantCodesButton",
+          "declaration": {
+            "name": "GrantCodesButton",
+            "module": "src/components/button/button.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/button/button.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-button",
           "declaration": {
             "name": "GrantCodesButton",
             "module": "src/components/button/button.component.js"
@@ -1249,6 +1425,22 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/card/card.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-card",
+          "declaration": {
+            "name": "GrantCodesCard",
+            "module": "src/components/card/card.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/card/card.js",
       "declarations": [],
       "exports": [
@@ -1306,7 +1498,7 @@
               "kind": "field",
               "name": "codePreview",
               "type": {
-                "text": "null"
+                "text": "HTMLElement | null"
               },
               "default": "null"
             },
@@ -1365,6 +1557,22 @@
         {
           "kind": "js",
           "name": "GrantCodesCodePreview",
+          "declaration": {
+            "name": "GrantCodesCodePreview",
+            "module": "src/components/code-preview/code-preview.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/code-preview/code-preview.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-code-preview",
           "declaration": {
             "name": "GrantCodesCodePreview",
             "module": "src/components/code-preview/code-preview.component.js"
@@ -1487,6 +1695,22 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/container/container.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-container",
+          "declaration": {
+            "name": "GrantCodesContainer",
+            "module": "src/components/container/container.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/container/container.js",
       "declarations": [],
       "exports": [
@@ -1542,18 +1766,21 @@
           "members": [
             {
               "kind": "field",
-              "name": "",
               "type": {
                 "text": "string"
               },
-              "default": "false"
+              "default": "false",
+              "name": ""
             },
             {
               "kind": "method",
               "name": "_animateChangedValues",
               "parameters": [
                 {
-                  "name": "changed"
+                  "name": "changed",
+                  "type": {
+                    "text": "PropertyValues"
+                  }
                 }
               ],
               "description": "Re-trigger the flip animation on value elements that changed."
@@ -1563,7 +1790,7 @@
               "name": "_days",
               "privacy": "public",
               "type": {
-                "text": "string"
+                "text": "string | number"
               },
               "default": "'---'",
               "attribute": "_days"
@@ -1582,7 +1809,7 @@
               "kind": "field",
               "name": "_intervalId",
               "type": {
-                "text": "null"
+                "text": "ReturnType<typeof setInterval> | null"
               },
               "default": "null"
             },
@@ -1704,7 +1931,7 @@
             {
               "name": "_days",
               "type": {
-                "text": "string"
+                "text": "string | number"
               },
               "default": "'---'",
               "fieldName": "_days"
@@ -1820,6 +2047,22 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/countdown/countdown.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-countdown",
+          "declaration": {
+            "name": "GrantCodesCountdown",
+            "module": "src/components/countdown/countdown.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/countdown/countdown.js",
       "declarations": [],
       "exports": [
@@ -1888,7 +2131,7 @@
               "name": "align",
               "privacy": "public",
               "type": {
-                "text": "string"
+                "text": "'left' | 'center'"
               },
               "description": "Text alignment of the block.",
               "default": "'center'",
@@ -1955,7 +2198,7 @@
             {
               "name": "align",
               "type": {
-                "text": "string"
+                "text": "'left' | 'center'"
               },
               "description": "Text alignment of the block.",
               "default": "'center'",
@@ -2028,6 +2271,22 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/cta/cta.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-cta",
+          "declaration": {
+            "name": "GrantCodesCta",
+            "module": "src/components/cta/cta.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/cta/cta.js",
       "declarations": [],
       "exports": [
@@ -2084,6 +2343,9 @@
             {
               "kind": "field",
               "name": "_footerPresence",
+              "type": {
+                "text": "SlotPresenceController"
+              },
               "default": "new SlotPresenceController(this, 'footer', (present) => { this._hasFooter = present; })"
             },
             {
@@ -2125,7 +2387,17 @@
             {
               "kind": "field",
               "name": "_headerPresence",
+              "type": {
+                "text": "SlotPresenceController"
+              },
               "default": "new SlotPresenceController(this, 'header', (present) => { this._hasHeader = present; })"
+            },
+            {
+              "kind": "field",
+              "name": "dialog",
+              "type": {
+                "text": "null | HTMLDialogElement"
+              }
             },
             {
               "kind": "field",
@@ -2208,6 +2480,22 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/dialog/dialog.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-dialog",
+          "declaration": {
+            "name": "GrantCodesDialog",
+            "module": "src/components/dialog/dialog.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/dialog/dialog.js",
       "declarations": [],
       "exports": [
@@ -2266,7 +2554,10 @@
               "name": "_handleDocumentClick",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
                 }
               ]
             },
@@ -2275,7 +2566,10 @@
               "name": "_handleEscape",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "e",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
                 }
               ]
             },
@@ -2284,7 +2578,10 @@
               "name": "_handleMenuKeydown",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "e",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
                 }
               ]
             },
@@ -2293,7 +2590,10 @@
               "name": "_handleTriggerClick",
               "parameters": [
                 {
-                  "name": "_e"
+                  "name": "_e",
+                  "type": {
+                    "text": "Event"
+                  }
                 }
               ]
             },
@@ -2309,7 +2609,7 @@
               "kind": "field",
               "name": "_pendingOpen",
               "type": {
-                "text": "null"
+                "text": "boolean | null"
               },
               "default": "null"
             },
@@ -2318,7 +2618,10 @@
               "name": "_setOpen",
               "parameters": [
                 {
-                  "name": "open"
+                  "name": "open",
+                  "type": {
+                    "text": "boolean"
+                  }
                 }
               ]
             },
@@ -2335,7 +2638,10 @@
             },
             {
               "kind": "field",
-              "name": "_viewTransitionName"
+              "name": "_viewTransitionName",
+              "type": {
+                "text": "string"
+              }
             },
             {
               "kind": "field",
@@ -2420,7 +2726,10 @@
               "name": "_handleClick",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
                 }
               ]
             },
@@ -2475,6 +2784,38 @@
         {
           "kind": "js",
           "name": "GrantCodesDropdownItem",
+          "declaration": {
+            "name": "GrantCodesDropdownItem",
+            "module": "src/components/dropdown/dropdown.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/dropdown/dropdown.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-dropdown",
+          "declaration": {
+            "name": "GrantCodesDropdown",
+            "module": "src/components/dropdown/dropdown.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/dropdown/dropdown.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-dropdown-item",
           "declaration": {
             "name": "GrantCodesDropdownItem",
             "module": "src/components/dropdown/dropdown.component.js"
@@ -2652,6 +2993,22 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/dropzone/dropzone.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-dropzone",
+          "declaration": {
+            "name": "GrantCodesDropzone",
+            "module": "src/components/dropzone/dropzone.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/dropzone/dropzone.js",
       "declarations": [],
       "exports": [
@@ -2710,13 +3067,20 @@
               "name": "_iconSvg",
               "parameters": [
                 {
-                  "name": "name"
+                  "name": "name",
+                  "optional": true,
+                  "type": {
+                    "text": "string"
+                  }
                 }
               ]
             },
             {
               "kind": "field",
               "name": "_items",
+              "type": {
+                "text": "FeatureItem[]"
+              },
               "readonly": true
             },
             {
@@ -2724,7 +3088,11 @@
               "name": "_renderIcon",
               "parameters": [
                 {
-                  "name": "name"
+                  "name": "name",
+                  "optional": true,
+                  "type": {
+                    "text": "string"
+                  }
                 }
               ]
             },
@@ -2832,6 +3200,22 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/feature-list/feature-list.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-feature-list",
+          "declaration": {
+            "name": "GrantCodesFeatureList",
+            "module": "src/components/feature-list/feature-list.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/feature-list/feature-list.js",
       "declarations": [],
       "exports": [
@@ -2906,6 +3290,22 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/footer/footer-column.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-footer-column",
+          "declaration": {
+            "name": "GrantCodesFooterColumn",
+            "module": "src/components/footer/footer-column.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/footer/footer.component.js",
       "declarations": [
         {
@@ -2948,6 +3348,22 @@
         {
           "kind": "js",
           "name": "GrantCodesFooter",
+          "declaration": {
+            "name": "GrantCodesFooter",
+            "module": "src/components/footer/footer.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/footer/footer.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-footer",
           "declaration": {
             "name": "GrantCodesFooter",
             "module": "src/components/footer/footer.component.js"
@@ -3037,6 +3453,9 @@
             {
               "kind": "field",
               "name": "_controls",
+              "type": {
+                "text": "HTMLElement[]"
+              },
               "readonly": true
             },
             {
@@ -3044,7 +3463,10 @@
               "name": "_ensureControlAccessibility",
               "parameters": [
                 {
-                  "name": "control"
+                  "name": "control",
+                  "type": {
+                    "text": "Element"
+                  }
                 }
               ]
             },
@@ -3058,7 +3480,10 @@
               "name": "_revalidate",
               "parameters": [
                 {
-                  "name": "event"
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
                 }
               ]
             },
@@ -3095,7 +3520,7 @@
               "name": "error",
               "privacy": "public",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               },
               "description": "Error message. Stays hidden until the field is touched, then appears and sets\n`aria-describedby` and `aria-invalid` on the first control.",
               "default": "undefined",
@@ -3132,7 +3557,10 @@
               "name": "handleLabelClick",
               "parameters": [
                 {
-                  "name": "event"
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
                 }
               ]
             },
@@ -3141,7 +3569,7 @@
               "name": "help",
               "privacy": "public",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               },
               "description": "Help text rendered with the label and referenced from the first control's `aria-describedby`.",
               "default": "undefined",
@@ -3170,6 +3598,13 @@
             },
             {
               "kind": "field",
+              "name": "nestedFields",
+              "type": {
+                "text": "NodeListOf<Element>"
+              }
+            },
+            {
+              "kind": "field",
               "name": "showError",
               "description": "Errors stay hidden until the field is interacted with or reports :user-invalid.",
               "readonly": true
@@ -3193,7 +3628,7 @@
             {
               "name": "error",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               },
               "description": "Error message. Stays hidden until the field is touched, then appears and sets\n`aria-describedby` and `aria-invalid` on the first control.",
               "default": "undefined",
@@ -3202,7 +3637,7 @@
             {
               "name": "help",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               },
               "description": "Help text rendered with the label and referenced from the first control's `aria-describedby`.",
               "default": "undefined",
@@ -3230,6 +3665,22 @@
         {
           "kind": "js",
           "name": "GrantCodesFormField",
+          "declaration": {
+            "name": "GrantCodesFormField",
+            "module": "src/components/form-field/form-field.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/form-field/form-field.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-form-field",
           "declaration": {
             "name": "GrantCodesFormField",
             "module": "src/components/form-field/form-field.component.js"
@@ -3428,6 +3879,22 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/gallery/gallery-image.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-gallery-image",
+          "declaration": {
+            "name": "GrantCodesGalleryImage",
+            "module": "src/components/gallery/gallery-image.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/gallery/gallery-image.js",
       "declarations": [],
       "exports": [
@@ -3508,6 +3975,22 @@
         {
           "kind": "js",
           "name": "GrantCodesGallery",
+          "declaration": {
+            "name": "GrantCodesGallery",
+            "module": "src/components/gallery/gallery.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/gallery/gallery.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-gallery",
           "declaration": {
             "name": "GrantCodesGallery",
             "module": "src/components/gallery/gallery.component.js"
@@ -3724,6 +4207,22 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/hero/hero.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-hero",
+          "declaration": {
+            "name": "GrantCodesHero",
+            "module": "src/components/hero/hero.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/hero/hero.js",
       "declarations": [],
       "exports": [
@@ -3789,6 +4288,22 @@
         {
           "kind": "js",
           "name": "GrantCodesIcon",
+          "declaration": {
+            "name": "GrantCodesIcon",
+            "module": "src/components/icon/icon.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/icon/icon.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-icon",
           "declaration": {
             "name": "GrantCodesIcon",
             "module": "src/components/icon/icon.component.js"
@@ -3883,6 +4398,9 @@
             {
               "kind": "field",
               "name": "_labelPresence",
+              "type": {
+                "text": "SlotPresenceController"
+              },
               "default": "new SlotPresenceController(this, '', (present) => { this._hasLabel = present; })"
             }
           ],
@@ -3908,6 +4426,22 @@
         {
           "kind": "js",
           "name": "GrantCodesLoading",
+          "declaration": {
+            "name": "GrantCodesLoading",
+            "module": "src/components/loading/loading.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/loading/loading.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-loading",
           "declaration": {
             "name": "GrantCodesLoading",
             "module": "src/components/loading/loading.component.js"
@@ -3973,6 +4507,9 @@
             {
               "kind": "field",
               "name": "_logos",
+              "type": {
+                "text": "LogoItem[]"
+              },
               "readonly": true
             },
             {
@@ -4039,6 +4576,22 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/logo-cloud/logo-cloud.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-logo-cloud",
+          "declaration": {
+            "name": "GrantCodesLogoCloud",
+            "module": "src/components/logo-cloud/logo-cloud.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/logo-cloud/logo-cloud.js",
       "declarations": [],
       "exports": [
@@ -4094,17 +4647,17 @@
           "members": [
             {
               "kind": "field",
-              "name": "",
               "type": {
                 "text": "string"
               },
-              "default": "''"
+              "default": "''",
+              "name": ""
             },
             {
               "kind": "field",
               "name": "_darkQuery",
               "type": {
-                "text": "null"
+                "text": "null | MediaQueryList"
               },
               "default": "null"
             },
@@ -4118,13 +4671,22 @@
               "name": "_getBoundingBox",
               "parameters": [
                 {
-                  "name": "lat"
+                  "name": "lat",
+                  "type": {
+                    "text": "number"
+                  }
                 },
                 {
-                  "name": "lng"
+                  "name": "lng",
+                  "type": {
+                    "text": "number"
+                  }
                 },
                 {
-                  "name": "zoom"
+                  "name": "zoom",
+                  "type": {
+                    "text": "number"
+                  }
                 }
               ],
               "description": "Calculate a bounding box around a point for the given zoom level."
@@ -4135,7 +4697,17 @@
             },
             {
               "kind": "field",
-              "name": "_onSchemeChange"
+              "name": "_observer",
+              "type": {
+                "text": "MutationObserver"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_onSchemeChange",
+              "type": {
+                "text": "() => void"
+              }
             },
             {
               "kind": "method",
@@ -4274,6 +4846,22 @@
         {
           "kind": "js",
           "name": "GrantCodesMap",
+          "declaration": {
+            "name": "GrantCodesMap",
+            "module": "src/components/map/map.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/map/map.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-map",
           "declaration": {
             "name": "GrantCodesMap",
             "module": "src/components/map/map.component.js"
@@ -4471,6 +5059,22 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/media-text/media-text.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-media-text",
+          "declaration": {
+            "name": "GrantCodesMediaText",
+            "module": "src/components/media-text/media-text.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/media-text/media-text.js",
       "declarations": [],
       "exports": [
@@ -4562,7 +5166,7 @@
               "name": "method",
               "privacy": "public",
               "type": {
-                "text": "string"
+                "text": "'get' | 'post'"
               },
               "description": "Form submission method.",
               "default": "'post'",
@@ -4633,7 +5237,7 @@
             {
               "name": "method",
               "type": {
-                "text": "string"
+                "text": "'get' | 'post'"
               },
               "description": "Form submission method.",
               "default": "'post'",
@@ -4679,6 +5283,22 @@
         {
           "kind": "js",
           "name": "GrantCodesNewsletter",
+          "declaration": {
+            "name": "GrantCodesNewsletter",
+            "module": "src/components/newsletter/newsletter.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/newsletter/newsletter.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-newsletter",
           "declaration": {
             "name": "GrantCodesNewsletter",
             "module": "src/components/newsletter/newsletter.component.js"
@@ -4743,7 +5363,10 @@
           "members": [
             {
               "kind": "field",
-              "name": "_viewTransitionName"
+              "name": "_viewTransitionName",
+              "type": {
+                "text": "string"
+              }
             },
             {
               "kind": "field",
@@ -4769,7 +5392,10 @@
               "name": "onDismiss",
               "parameters": [
                 {
-                  "name": "_e"
+                  "name": "_e",
+                  "type": {
+                    "text": "Event"
+                  }
                 }
               ]
             },
@@ -4836,6 +5462,22 @@
         {
           "kind": "js",
           "name": "GrantCodesNotice",
+          "declaration": {
+            "name": "GrantCodesNotice",
+            "module": "src/components/notice/notice.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/notice/notice.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-notice",
           "declaration": {
             "name": "GrantCodesNotice",
             "module": "src/components/notice/notice.component.js"
@@ -5002,6 +5644,22 @@
         {
           "kind": "js",
           "name": "GrantCodesPagination",
+          "declaration": {
+            "name": "GrantCodesPagination",
+            "module": "src/components/pagination/pagination.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pagination/pagination.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-pagination",
           "declaration": {
             "name": "GrantCodesPagination",
             "module": "src/components/pagination/pagination.component.js"
@@ -5201,6 +5859,22 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/person/person.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-person",
+          "declaration": {
+            "name": "GrantCodesPerson",
+            "module": "src/components/person/person.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/person/person.js",
       "declarations": [],
       "exports": [
@@ -5257,6 +5931,9 @@
             {
               "kind": "field",
               "name": "_tiers",
+              "type": {
+                "text": "PricingTier[]"
+              },
               "readonly": true
             },
             {
@@ -5343,6 +6020,22 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/pricing/pricing.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-pricing",
+          "declaration": {
+            "name": "GrantCodesPricing",
+            "module": "src/components/pricing/pricing.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/pricing/pricing.js",
       "declarations": [],
       "exports": [
@@ -5416,7 +6109,10 @@
               "name": "_handleDocumentClick",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
                 }
               ]
             },
@@ -5425,7 +6121,10 @@
               "name": "_handleEscape",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "e",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
                 }
               ]
             },
@@ -5433,7 +6132,7 @@
               "kind": "field",
               "name": "_pendingState",
               "type": {
-                "text": "object"
+                "text": "{ collapsed?: boolean; _drawerOpen?: boolean }"
               },
               "default": "{}"
             },
@@ -5459,7 +6158,10 @@
             },
             {
               "kind": "field",
-              "name": "_viewTransitionName"
+              "name": "_viewTransitionName",
+              "type": {
+                "text": "string"
+              }
             },
             {
               "kind": "field",
@@ -5589,6 +6291,22 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/sidebar/sidebar.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-sidebar",
+          "declaration": {
+            "name": "GrantCodesSidebar",
+            "module": "src/components/sidebar/sidebar.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/sidebar/sidebar.js",
       "declarations": [],
       "exports": [
@@ -5640,9 +6358,17 @@
         {
           "kind": "function",
           "name": "calculateSegments",
+          "return": {
+            "type": {
+              "text": "CalculatedSegment[]"
+            }
+          },
           "parameters": [
             {
-              "name": "segments"
+              "name": "segments",
+              "type": {
+                "text": "unknown"
+              }
             }
           ],
           "description": "Returns sanitized segments with unrounded shares and independently rounded display percentages."
@@ -5673,7 +6399,7 @@
               "name": "segments",
               "privacy": "public",
               "type": {
-                "text": "array"
+                "text": "unknown[]"
               },
               "description": "Relative segment weights as an array or JSON attribute.",
               "default": "[]",
@@ -5684,7 +6410,7 @@
             {
               "name": "segments",
               "type": {
-                "text": "array"
+                "text": "unknown[]"
               },
               "description": "Relative segment weights as an array or JSON attribute.",
               "default": "[]",
@@ -5703,6 +6429,22 @@
         {
           "kind": "js",
           "name": "GrantCodesSplitBar",
+          "declaration": {
+            "name": "GrantCodesSplitBar",
+            "module": "src/components/split-bar/split-bar.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/split-bar/split-bar.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-split-bar",
           "declaration": {
             "name": "GrantCodesSplitBar",
             "module": "src/components/split-bar/split-bar.component.js"
@@ -5768,6 +6510,9 @@
             {
               "kind": "field",
               "name": "_items",
+              "type": {
+                "text": "StatItem[]"
+              },
               "readonly": true
             },
             {
@@ -5845,6 +6590,22 @@
         {
           "kind": "js",
           "name": "GrantCodesStats",
+          "declaration": {
+            "name": "GrantCodesStats",
+            "module": "src/components/stats/stats.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/stats/stats.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-stats",
           "declaration": {
             "name": "GrantCodesStats",
             "module": "src/components/stats/stats.component.js"
@@ -6131,6 +6892,22 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/tabs/internal/tabs-button.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-tabs-button",
+          "declaration": {
+            "name": "GrantCodesTabsButton",
+            "module": "src/components/tabs/internal/tabs-button.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/tabs/internal/tabs-button.js",
       "declarations": [],
       "exports": [
@@ -6382,6 +7159,22 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/tabs/tab.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-tab",
+          "declaration": {
+            "name": "GrantCodesTab",
+            "module": "src/components/tabs/tab.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/tabs/tab.js",
       "declarations": [],
       "exports": [
@@ -6431,6 +7224,18 @@
               "attribute": "_focusedTabIndex"
             },
             {
+              "kind": "method",
+              "name": "_handleSlotChange",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
               "kind": "field",
               "name": "activeTab"
             },
@@ -6439,7 +7244,10 @@
               "name": "handleTabKeyDown",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "e",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
                 }
               ]
             },
@@ -6533,6 +7341,22 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/tabs/tabs.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-tabs",
+          "declaration": {
+            "name": "GrantCodesTabs",
+            "module": "src/components/tabs/tabs.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/tabs/tabs.js",
       "declarations": [],
       "exports": [
@@ -6589,6 +7413,9 @@
             {
               "kind": "field",
               "name": "_items",
+              "type": {
+                "text": "TestimonialItem[]"
+              },
               "readonly": true
             },
             {
@@ -6667,6 +7494,22 @@
         {
           "kind": "js",
           "name": "GrantCodesTestimonials",
+          "declaration": {
+            "name": "GrantCodesTestimonials",
+            "module": "src/components/testimonials/testimonials.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/testimonials/testimonials.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-testimonials",
           "declaration": {
             "name": "GrantCodesTestimonials",
             "module": "src/components/testimonials/testimonials.component.js"
@@ -6782,11 +7625,17 @@
             },
             {
               "kind": "field",
-              "name": "_useViewTransition"
+              "name": "_useViewTransition",
+              "type": {
+                "text": "boolean"
+              }
             },
             {
               "kind": "field",
-              "name": "_viewTransitionName"
+              "name": "_viewTransitionName",
+              "type": {
+                "text": "string"
+              }
             },
             {
               "kind": "field",
@@ -6992,6 +7841,38 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/toast/toast.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-toast",
+          "declaration": {
+            "name": "GrantCodesToast",
+            "module": "src/components/toast/toast.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/toast/toast.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-toast-container",
+          "declaration": {
+            "name": "GrantCodesToastContainer",
+            "module": "src/components/toast/toast.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/toast/toast.js",
       "declarations": [],
       "exports": [
@@ -7116,6 +7997,22 @@
         {
           "kind": "js",
           "name": "GrantCodesTooltip",
+          "declaration": {
+            "name": "GrantCodesTooltip",
+            "module": "src/components/tooltip/tooltip.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/tooltip/tooltip.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-tooltip",
           "declaration": {
             "name": "GrantCodesTooltip",
             "module": "src/components/tooltip/tooltip.component.js"
