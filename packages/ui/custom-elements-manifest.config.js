@@ -1,6 +1,7 @@
 import { cemValidatorPlugin } from '@wc-toolkit/cem-validator';
 import { cemSorterPlugin } from '@wc-toolkit/cem-sorter';
 import { cemInheritancePlugin } from '@wc-toolkit/cem-inheritance';
+import { modulePathResolverPlugin } from '@wc-toolkit/module-path-resolver';
 
 /** @type {import('@custom-elements-manifest/analyzer').AnalyzerConfig} */
 export default {
@@ -17,6 +18,11 @@ export default {
   ],
   litelement: true,
   plugins: [
+    modulePathResolverPlugin({
+      // Sources are .ts, but the published CEM references the compiled .js modules.
+      modulePathTemplate: (modulePath) => modulePath.replace(/\.ts$/, '.js'),
+      definitionPathTemplate: (modulePath) => modulePath.replace(/\.ts$/, '.js'),
+    }),
     cemInheritancePlugin(),
     cemSorterPlugin({
       deprecatedLast: true,

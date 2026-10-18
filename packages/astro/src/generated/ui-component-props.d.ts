@@ -36,7 +36,6 @@ declare namespace astroHTML.JSX {
     containerId?: string;
     content?: string;
     cta?: string;
-    current?: boolean;
     "days-label"?: string;
     description?: string;
     direction?: 'vertical' | 'horizontal';
@@ -46,14 +45,14 @@ declare namespace astroHTML.JSX {
     dismissable?: boolean;
     dismissible?: boolean;
     duration?: number;
-    error?: string;
+    error?: unknown;
     eyebrow?: string;
     form?: string;
     fullscreenOnDrag?: boolean;
     hasFooter?: boolean;
     hasHeader?: boolean;
     height?: number;
-    help?: string;
+    help?: unknown;
     hidden?: boolean | string;
     "hours-label"?: string;
     href?: string;
@@ -69,7 +68,7 @@ declare namespace astroHTML.JSX {
     lng?: string;
     logos?: string;
     media?: string;
-    method?: string;
+    method?: 'get' | 'post';
     "minutes-label"?: string;
     name?: string;
     "next-href"?: string;
@@ -92,7 +91,7 @@ declare namespace astroHTML.JSX {
     "secondary-action"?: string;
     secondaryAction?: string;
     "seconds-label"?: string;
-    segments?: unknown;
+    segments?: unknown[];
     separator?: string;
     "show-seconds"?: boolean;
     size?: string;
@@ -129,16 +128,8 @@ declare module "@grantcodes/ui/components/accordion/index.js" {
 
   export function GrantCodesAccordion(props: AccordionProps & import("astro").AstroBuiltinAttributes): any;
 
-  export interface AccordionItemProps {
-    open?: boolean;
-    title?: string;
-  }
-
-  export function GrantCodesAccordionItem(props: AccordionItemProps & import("astro").AstroBuiltinAttributes): any;
-
   export default GrantCodesAccordion;
   export { GrantCodesAccordion };
-  export { GrantCodesAccordionItem };
 }
 
 declare module "@grantcodes/ui/components/app-bar/index.js" {
@@ -187,15 +178,7 @@ declare module "@grantcodes/ui/components/breadcrumb/index.js" {
 
   export function GrantCodesBreadcrumb(props: BreadcrumbProps & import("astro").AstroBuiltinAttributes): any;
 
-  export interface BreadcrumbItemProps {
-    current?: boolean;
-    href?: string;
-  }
-
-  export function GrantCodesBreadcrumbItem(props: BreadcrumbItemProps & import("astro").AstroBuiltinAttributes): any;
-
   export { GrantCodesBreadcrumb };
-  export { GrantCodesBreadcrumbItem };
 }
 
 declare module "@grantcodes/ui/components/button-group/index.js" {
@@ -281,7 +264,7 @@ declare module "@grantcodes/ui/components/countdown/index.js" {
 declare module "@grantcodes/ui/components/cta/index.js" {
 
   export interface CtaProps {
-    align?: string;
+    align?: 'left' | 'center';
     eyebrow?: string;
     primaryAction?: string;
     "primary-action"?: string;
@@ -317,14 +300,7 @@ declare module "@grantcodes/ui/components/dropdown/index.js" {
 
   export function GrantCodesDropdown(props: DropdownProps & import("astro").AstroBuiltinAttributes): any;
 
-  export interface DropdownItemProps {
-    disabled?: boolean;
-  }
-
-  export function GrantCodesDropdownItem(props: DropdownItemProps & import("astro").AstroBuiltinAttributes): any;
-
   export { GrantCodesDropdown };
-  export { GrantCodesDropdownItem };
 }
 
 declare module "@grantcodes/ui/components/dropzone/index.js" {
@@ -374,8 +350,8 @@ declare module "@grantcodes/ui/components/form-field/index.js" {
 
   export interface FormFieldProps {
     direction?: 'vertical' | 'horizontal';
-    error?: string;
-    help?: string;
+    error?: unknown;
+    help?: unknown;
     label?: string;
   }
 
@@ -495,7 +471,7 @@ declare module "@grantcodes/ui/components/newsletter/index.js" {
     buttonLabel?: string;
     "button-label"?: string;
     disclaimer?: string;
-    method?: string;
+    method?: 'get' | 'post';
     placeholder?: string;
     text?: string;
     title?: string;
@@ -581,7 +557,7 @@ declare module "@grantcodes/ui/components/sidebar/index.js" {
 declare module "@grantcodes/ui/components/split-bar/index.js" {
 
   export interface SplitBarProps {
-    segments?: unknown;
+    segments?: unknown[];
   }
 
   export function GrantCodesSplitBar(props: SplitBarProps & import("astro").AstroBuiltinAttributes): any;
@@ -622,21 +598,8 @@ declare module "@grantcodes/ui/components/tabs/index.js" {
 
   export function GrantCodesTabs(props: TabsProps & import("astro").AstroBuiltinAttributes): any;
 
-  export interface TabsButtonProps {
-    active?: boolean;
-    buttonId?: string;
-    containerId?: string;
-    content?: string;
-    index?: number;
-    label?: string;
-    panelId?: string;
-  }
-
-  export function GrantCodesTabsButton(props: TabsButtonProps & import("astro").AstroBuiltinAttributes): any;
-
   export { GrantCodesTab };
   export { GrantCodesTabs };
-  export { GrantCodesTabsButton };
 }
 
 declare module "@grantcodes/ui/components/testimonials/index.js" {
@@ -664,14 +627,7 @@ declare module "@grantcodes/ui/components/toast/index.js" {
 
   export function GrantCodesToast(props: ToastProps & import("astro").AstroBuiltinAttributes): any;
 
-  export interface ToastContainerProps {
-    position?: 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
-  }
-
-  export function GrantCodesToastContainer(props: ToastContainerProps & import("astro").AstroBuiltinAttributes): any;
-
   export { GrantCodesToast };
-  export { GrantCodesToastContainer };
 }
 
 declare module "@grantcodes/ui/components/tooltip/index.js" {
