@@ -5,8 +5,16 @@ A personal web components library built with Lit, featuring a custom design syst
 ## Technology Stack
 
 - **Lit** - Web components framework
+- **TypeScript** - Source language, compiled to `dist/` with `tsc`
 - **Custom Style Dictionary** - Design tokens and theming
 - **Storybook** - Component development and documentation
+
+## TypeScript Build
+
+- Sources are TypeScript (`src/**/*.ts`). Relative imports keep the `.js` extension (`./dialog.js`) because `tsc` emits specifiers unchanged into `dist/`.
+- Published output is `dist/` - compiled JS, `.d.ts` files and copied CSS (`scripts/copy-assets.mjs`). `main`/`module` point at `dist/main.js`, `types` at `dist/main.d.ts`.
+- `pnpm build:lib` runs `cem` + `tsc` + `copy:assets`; `pnpm watch` runs `tsc --watch` and the asset copy watcher together.
+- Unit tests run as TypeScript via Node type stripping plus the `src/test-utils/register-js-to-ts.mjs` resolver hook: `NODE_ENV=test node --import ./src/test-utils/register-js-to-ts.mjs --import @lit-labs/ssr-dom-shim/register-css-hook.js --test --test-concurrency=1 'src/**/*.test.ts'`.
 
 ## Browser Support
 
@@ -44,9 +52,10 @@ packages/ui/
 │   │   ├── tabs/
 │   │   └── toast/
 │   ├── css/                 # Global styles and themes
-│   ├── icons.js             # Icon definitions
+│   ├── icons.ts             # Icon definitions
 │   ├── lib/                 # Utilities
 │   └── test-utils/          # Testing utilities
+├── dist/                    # Built output (JS + .d.ts + copied CSS)
 ├── custom-elements.json     # Web component manifest
 └── package.json
 ```
@@ -172,9 +181,11 @@ import { GrantCodesNavLink } from '@grantcodes/ui/components/app-bar/nav-link.co
 ## Development
 
 ```bash
-npm run dev        # Start Storybook
-npm run test       # Run tests
-npm run fix:lint   # Fix linting issues
+pnpm dev          # Start Storybook
+pnpm build:lib    # Build dist/ (CEM + tsc + CSS copy)
+pnpm watch        # Rebuild dist/ on change
+pnpm test         # Build, lint and run unit tests
+pnpm fix:lint     # Fix linting issues
 ```
 
 ## Design Tokens

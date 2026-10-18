@@ -29,7 +29,6 @@
 
 /* Style variants */
 :host {
-  /* biome-ignore lint/correctness/noUnknownFunction: contrast-color is new */
   --_button-color: contrast-color(var(--_button-base));
   --_button-background: var(--_button-base);
 }
