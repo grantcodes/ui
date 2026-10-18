@@ -1,8 +1,9 @@
-import { fileURLToPath } from "node:url";
-import { dirname } from "node:path";
+import { fileURLToPath } from 'node:url';
+import { dirname } from 'node:path';
+import { cssImportAttributes } from '../src/vite-plugin-css-import-attributes.ts';
 
 export default {
-  stories: ["../src/**/*.stories.@(js|jsx|ts|tsx|mdx)"],
+  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
 
   core: {
     disableTelemetry: true,
@@ -10,14 +11,21 @@ export default {
   },
 
   addons: [
-    getAbsolutePath("@storybook/addon-docs"),
-    getAbsolutePath("@storybook/addon-themes"),
-    getAbsolutePath("@storybook/addon-vitest"),
+    getAbsolutePath('@storybook/addon-docs'),
+    getAbsolutePath('@storybook/addon-themes'),
+    getAbsolutePath('@storybook/addon-vitest'),
   ],
 
   framework: {
-    name: getAbsolutePath("@storybook/web-components-vite"),
+    name: getAbsolutePath('@storybook/web-components-vite'),
     options: {},
+  },
+
+  async viteFinal(config) {
+    return {
+      ...config,
+      plugins: [...(config.plugins ?? []), cssImportAttributes()],
+    };
   },
 };
 

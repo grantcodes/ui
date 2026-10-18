@@ -1,0 +1,87 @@
+import { html, LitElement } from 'lit';
+import logoCloudStyles from './logo-cloud.css' with { type: 'css' };
+import '../container/container.js';
+
+interface LogoItem {
+  name?: string;
+  src?: string;
+  alt?: string;
+  href?: string;
+}
+
+export class GrantCodesLogoCloud extends LitElement {
+  declare logos: string;
+
+  static styles = [logoCloudStyles];
+
+  static properties = {
+    /**
+     * Optional label shown above the logos.
+     * @type {string}
+     */
+    title: { type: String },
+    /**
+     * Logo items as a JSON string array: `[{"name":"...","src":"...","alt":"...","href":"..."}]`.
+     * @type {string}
+     */
+    logos: { type: String },
+  };
+
+  constructor() {
+    super();
+    this.title = '';
+    this.logos = '[]';
+  }
+
+  get _logos(): LogoItem[] {
+    try {
+      return JSON.parse(this.logos) as LogoItem[];
+    } catch {
+      return [];
+    }
+  }
+
+  render() {
+    const logos = this._logos;
+    return html`
+			<section class="logo-cloud">
+				<grantcodes-container>
+					${this.title ? html`<p class="logo-cloud__title">${this.title}</p>` : null}
+					<ul class="logo-cloud__grid" role="list">
+						${logos.map(
+              (logo) => html`
+								<li class="logo-cloud__item">
+									${
+                    logo.href
+                      ? html`
+												<a
+													href=${logo.href}
+													class="logo-cloud__link"
+													aria-label=${logo.name}
+												>
+													<img
+														src=${logo.src}
+														alt=${logo.alt ?? logo.name}
+														class="logo-cloud__logo"
+														loading="lazy"
+													/>
+												</a>
+											`
+                      : html`
+												<img
+													src=${logo.src}
+													alt=${logo.alt ?? logo.name}
+													class="logo-cloud__logo"
+													loading="lazy"
+												/>
+											`
+                  }
+								</li>
+							`,
+            )}
+					</ul>
+				</grantcodes-container>
+			</section>
+		`;
+  }
+}
