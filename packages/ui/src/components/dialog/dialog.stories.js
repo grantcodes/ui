@@ -48,5 +48,16 @@ export const ContentOnly = {
   args: {
     content: html`<p>No header or footer content, so neither bar is drawn.</p>`,
   },
-  render: (args) => template(args, args.content),
+  render: (args) => html`
+    <grantcodes-dialog open aria-label="Dialog details">${args.content}</grantcodes-dialog>
+  `,
+};
+
+export const LongContent = {
+  args: {
+    content: html`${Array.from(
+      { length: 30 },
+      (_, index) => html`<p>Long dialog content paragraph ${index + 1}.</p>`,
+    )}`,
+  },
 };

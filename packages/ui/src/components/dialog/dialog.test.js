@@ -99,18 +99,30 @@ describe('Dialog Component', () => {
     assert.ok(header.hasAttribute('hidden'), 'Header should be hidden without slotted content');
   });
 
-  it('should render the header when content is slotted into it', async () => {
+  it('should render the header and use its text as the native dialog name', async () => {
     element = document.createElement('grantcodes-dialog');
     element.innerHTML = '<h2 slot="header">Dialog Header</h2>';
     document.body.appendChild(element);
     await element.updateComplete;
 
     const header = element.shadowRoot.querySelector('.dialog__header');
+    const dialog = element.shadowRoot.querySelector('dialog');
     assert.ok(header, 'Header element should exist');
     assert.ok(
       !header.hasAttribute('hidden'),
       'Header should be visible when content is slotted into it',
     );
+    assert.strictEqual(dialog.getAttribute('aria-label'), 'Dialog Header');
+  });
+
+  it('should prefer a consumer-provided accessible name without a header', async () => {
+    element = document.createElement('grantcodes-dialog');
+    element.setAttribute('aria-label', 'Confirm deletion');
+    document.body.appendChild(element);
+    await element.updateComplete;
+
+    const dialog = element.shadowRoot.querySelector('dialog');
+    assert.strictEqual(dialog.getAttribute('aria-label'), 'Confirm deletion');
   });
 
   it('should hide the footer when nothing is slotted into it', async () => {

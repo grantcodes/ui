@@ -41,6 +41,7 @@ export class GrantCodesDialog extends LitElement {
   _handleSlotChange() {
     this._headerPresence.refresh();
     this._footerPresence.refresh();
+    this.requestUpdate();
   }
 
   firstUpdated() {
@@ -92,9 +93,15 @@ export class GrantCodesDialog extends LitElement {
   }
 
   render() {
+    const headerLabel = [...this.querySelectorAll('[slot="header"]')]
+      .map((element) => element.textContent)
+      .join(' ')
+      .trim();
+
     return html`
 	      <dialog
         class="dialog"
+        aria-label=${this.getAttribute('aria-label') || headerLabel || nothing}
         closedby=${supportsClosedBy && this.dismissible ? 'any' : nothing}
         @close=${this._handleNativeClose}
         @cancel=${this._handleNativeCancel}

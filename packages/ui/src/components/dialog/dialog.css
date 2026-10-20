@@ -13,7 +13,9 @@
   border-width: var(--g-border-width-sm);
   border-color: var(--g-color-border-default);
   border-radius: var(--g-border-radius-md);
-  overflow: hidden;
+  max-block-size: calc(100dvh - var(--g-spacing-md, 1rem) - var(--g-spacing-md, 1rem));
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .dialog::backdrop {
