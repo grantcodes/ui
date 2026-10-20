@@ -22,8 +22,23 @@ export class GrantCodesDropdown extends LitElement {
 
   constructor() {
     super();
+
+    /**
+     * Whether the dropdown is open
+     * @type {boolean}
+     */
     this.open = false;
+
+    /**
+     * Placement of the dropdown menu
+     * @type {string}
+     */
     this.placement = 'bottom-start';
+
+    /**
+     * Reference to the trigger element
+     * @type {HTMLElement | null}
+     */
     this._triggerElement = null;
     this._viewTransitionName = generateId('dropdown-vt');
     this._pendingOpen = null;
@@ -238,6 +253,11 @@ export class GrantCodesDropdownItem extends LitElement {
 
   constructor() {
     super();
+
+    /**
+     * Whether the item is disabled
+     * @type {boolean}
+     */
     this.disabled = false;
   }
 
