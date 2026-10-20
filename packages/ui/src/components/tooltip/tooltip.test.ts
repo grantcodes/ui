@@ -119,6 +119,7 @@ describe('Tooltip Component', () => {
     element = await fixture('grantcodes-tooltip', { label: 'Button label' });
     const button = document.createElement('button');
     element.append(button);
+    element.shadowRoot.querySelector('slot')?.dispatchEvent(new Event('slotchange'));
 
     await element.updateComplete;
 
@@ -138,6 +139,7 @@ describe('Tooltip Component', () => {
     element.append(button);
 
     await button.updateComplete;
+    element.shadowRoot.querySelector('slot')?.dispatchEvent(new Event('slotchange'));
     await element.updateComplete;
 
     const control = button.shadowRoot?.querySelector('button');
@@ -155,10 +157,12 @@ describe('Tooltip Component', () => {
     const first = document.createElement('button');
     const second = document.createElement('button');
     element.append(first);
+    element.shadowRoot.querySelector('slot')?.dispatchEvent(new Event('slotchange'));
     await element.updateComplete;
 
     first.remove();
     element.append(second);
+    element.shadowRoot.querySelector('slot')?.dispatchEvent(new Event('slotchange'));
     await element.updateComplete;
 
     assert.strictEqual(first.hasAttribute('aria-labelledby'), false);
@@ -175,11 +179,13 @@ describe('Tooltip Component', () => {
     element.append(button);
     await element.updateComplete;
 
-    button.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+    button.dispatchEvent(
+      new window.KeyboardEvent('keydown', { key: 'Escape', bubbles: true, composed: true }),
+    );
     await element.updateComplete;
     assert.ok(element.shadowRoot?.querySelector('.tooltip--suppressed'));
 
-    button.dispatchEvent(new FocusEvent('focusout', { bubbles: true }));
+    button.dispatchEvent(new window.FocusEvent('focusout', { bubbles: true, composed: true }));
     await element.updateComplete;
     assert.strictEqual(element.shadowRoot.querySelector('.tooltip--suppressed'), null);
   });

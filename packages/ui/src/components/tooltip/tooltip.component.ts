@@ -34,9 +34,13 @@ export class GrantCodesTooltip extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     if (!this.id) this.id = generateId('tooltip');
+    this.addEventListener('keydown', this._handleKeydown);
+    this.addEventListener('focusout', this._handleExit);
   }
 
   disconnectedCallback() {
+    this.removeEventListener('keydown', this._handleKeydown);
+    this.removeEventListener('focusout', this._handleExit);
     this._clearRelationship();
     super.disconnectedCallback();
   }
@@ -105,7 +109,12 @@ export class GrantCodesTooltip extends LitElement {
     source.hidden = true;
     source.textContent = content;
     const root = control.getRootNode();
-    (root instanceof ShadowRoot ? root : this).append(source);
+    if (root === control.ownerDocument) {
+      source.slot = 'tooltip-text';
+      this.append(source);
+    } else {
+      (root as ShadowRoot).append(source);
+    }
 
     const ids = (control.getAttribute(attribute) || '').split(/\s+/).filter(Boolean);
     control.setAttribute(attribute, [...ids, source.id].join(' '));
@@ -120,9 +129,7 @@ export class GrantCodesTooltip extends LitElement {
     return html`
       <div
         class="tooltip ${this._suppressed ? 'tooltip--suppressed' : ''}"
-        @keydown=${this._handleKeydown}
         @mouseleave=${this._handleExit}
-        @focusout=${this._handleExit}
       >
         <div class="tooltip__slot">
           <slot @slotchange=${this._handleSlotChange}></slot>
