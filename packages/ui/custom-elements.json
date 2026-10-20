@@ -246,7 +246,10 @@
               "name": "_handleEscape",
               "parameters": [
                 {
-                  "name": "event"
+                  "name": "event",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
                 }
               ]
             },
