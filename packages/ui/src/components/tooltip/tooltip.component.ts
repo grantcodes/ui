@@ -1,63 +1,115 @@
-import { LitElement } from 'lit';
+import { LitElement, type PropertyValues } from 'lit';
 import { html } from 'lit/static-html.js';
 import { generateId } from '../../lib/generate-id.js';
 import tooltipStyles from './tooltip.css' with { type: 'css' };
 
+type Relationship = {
+  attribute: 'aria-describedby' | 'aria-labelledby';
+  source: HTMLSpanElement;
+  trigger: HTMLElement;
+};
+
 export class GrantCodesTooltip extends LitElement {
+  declare _relationship: Relationship | null;
+  declare _suppressed: boolean;
   declare description: string;
   declare label: string;
 
-  // Styles are scoped to this element: they won't conflict with styles
-  // on the main page or in other components. Styling API can be exposed
-  // via CSS custom properties.
   static styles = [tooltipStyles];
 
   static properties = {
     label: { type: String },
     description: { type: String },
+    _suppressed: { state: true },
   };
 
   constructor() {
     super();
-
-    /**
-     * Label for the tooltip, used when the tooltip is the main label for the item.
-     */
     this.label = '';
-
-    /**
-     * Description for the tooltip, used when the tooltip is additional descriptive text for the item.
-     */
     this.description = '';
+    this._suppressed = false;
+    this._relationship = null;
   }
-
-  slotted: Element[] = [];
 
   connectedCallback() {
     super.connectedCallback();
-    // Not in the constructor: a custom element that gains an attribute there is never upgraded.
-    if (!this.id) {
-      this.id = generateId('tooltip');
-    }
+    if (!this.id) this.id = generateId('tooltip');
+  }
+
+  disconnectedCallback() {
+    this._clearRelationship();
+    super.disconnectedCallback();
   }
 
   firstUpdated() {
-    const slot = this.renderRoot.querySelector<HTMLSlotElement>('slot');
-    this.slotted = slot ? slot.assignedElements() : [];
-    const labeledElement = this.slotted[0];
-    if (labeledElement) {
-      // Set up anchor name for CSS anchor positioning
-      const tooltipSlot = this.renderRoot.querySelector<HTMLElement>('.tooltip__slot');
-      if (tooltipSlot) {
-        tooltipSlot.style.setProperty('anchor-name', `--tooltip-${this.id}`);
-      }
+    const tooltipSlot = this.renderRoot.querySelector<HTMLElement>('.tooltip__slot');
+    tooltipSlot?.style.setProperty('anchor-name', `--tooltip-${this.id}`);
+    this.renderRoot
+      .querySelector<HTMLElement>('.tooltip')
+      ?.style.setProperty('--tooltip-anchor', `--tooltip-${this.id}`);
+    this._updateRelationship();
+  }
 
-      if (this.label) {
-        labeledElement.setAttribute('aria-labelledby', this.id);
-      } else if (this.description) {
-        labeledElement.setAttribute('aria-describedby', this.id);
-      }
+  updated(changedProperties: PropertyValues) {
+    if (changedProperties.has('label') || changedProperties.has('description')) {
+      this._updateRelationship();
     }
+  }
+
+  _handleSlotChange() {
+    this._clearRelationship();
+    this._suppressed = false;
+    this._updateRelationship();
+  }
+
+  _handleKeydown(event: KeyboardEvent) {
+    if (event.key === 'Escape') this._suppressed = true;
+  }
+
+  _handleExit() {
+    this._suppressed = false;
+  }
+
+  _clearRelationship() {
+    if (!this._relationship) return;
+
+    const { attribute, source, trigger } = this._relationship;
+    const ids = (trigger.getAttribute(attribute) || '')
+      .split(/\s+/)
+      .filter((id) => id && id !== source.id);
+    if (ids.length) {
+      trigger.setAttribute(attribute, ids.join(' '));
+    } else {
+      trigger.removeAttribute(attribute);
+    }
+    source.remove();
+    this._relationship = null;
+  }
+
+  _updateRelationship() {
+    this._clearRelationship();
+    const slot = this.renderRoot.querySelector<HTMLSlotElement>('slot');
+    const trigger = slot?.assignedElements()[0];
+    const content = this.label || this.description;
+    if (!trigger || !content) return;
+
+    const control =
+      trigger.shadowRoot?.querySelector<HTMLElement>(
+        'button, a, input, select, textarea, [tabindex]',
+      ) ?? (trigger instanceof HTMLElement ? trigger : null);
+    if (!control) return;
+
+    const source = document.createElement('span');
+    const attribute = this.label ? 'aria-labelledby' : 'aria-describedby';
+    source.id = `${this.id}-text`;
+    source.hidden = true;
+    source.textContent = content;
+    const root = control.getRootNode();
+    (root instanceof ShadowRoot ? root : this).append(source);
+
+    const ids = (control.getAttribute(attribute) || '').split(/\s+/).filter(Boolean);
+    control.setAttribute(attribute, [...ids, source.id].join(' '));
+    this._relationship = { attribute, source, trigger: control };
   }
 
   render() {
@@ -66,13 +118,16 @@ export class GrantCodesTooltip extends LitElement {
     }
 
     return html`
-      <div class="tooltip">
+      <div
+        class="tooltip ${this._suppressed ? 'tooltip--suppressed' : ''}"
+        @keydown=${this._handleKeydown}
+        @mouseleave=${this._handleExit}
+        @focusout=${this._handleExit}
+      >
         <div class="tooltip__slot">
-          <slot></slot>
+          <slot @slotchange=${this._handleSlotChange}></slot>
         </div>
-        <p id="${this.id}" class="tooltip__content" role="tooltip">
-          ${this.label || this.description}
-        </p>
+        <p class="tooltip__content" role="tooltip">${this.label || this.description}</p>
       </div>
     `;
   }

@@ -2,7 +2,9 @@ import { getStorybookHelpers } from '@wc-toolkit/storybook-helpers';
 import { html } from 'lit/static-html.js';
 
 const { events, args, argTypes, template } = getStorybookHelpers('grantcodes-tooltip');
+type StoryArgs = typeof args;
 
+import '../button/button.js';
 import './tooltip.js';
 
 const meta = {
@@ -14,7 +16,8 @@ const meta = {
     description: '',
   },
   argTypes,
-  render: (args: any) => template(args, html`<span>This has a tooltip</span>`),
+  render: (storyArgs: StoryArgs) =>
+    template(storyArgs, html`<button type="button">This has a tooltip</button>`),
   parameters: {
     actions: {
       handles: events,
@@ -25,6 +28,11 @@ const meta = {
 export default meta;
 
 export const Tooltip = {};
+
+export const CustomTrigger = {
+  render: (storyArgs: StoryArgs) =>
+    template(storyArgs, html`<grantcodes-button>Custom trigger</grantcodes-button>`),
+};
 
 export const Description = {
   args: {
