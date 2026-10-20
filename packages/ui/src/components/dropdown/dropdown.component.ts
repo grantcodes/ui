@@ -98,9 +98,11 @@ export class GrantCodesDropdown extends LitElement {
     const menuSlot = this.renderRoot.querySelector<HTMLSlotElement>('slot[name="menu"]');
     const assignedElements = menuSlot?.assignedElements({ flatten: true }) ?? [];
     this._menuObserver?.disconnect();
-    this._menuObserver = new MutationObserver(() => this._syncMenuItems());
+    const MenuMutationObserver = globalThis.MutationObserver ?? window.MutationObserver;
+    const observer = new MenuMutationObserver(() => this._syncMenuItems());
+    this._menuObserver = observer;
     assignedElements.forEach((element) => {
-      this._menuObserver?.observe(element, { childList: true, subtree: true });
+      observer.observe(element, { childList: true, subtree: true });
     });
     this._syncMenuItems();
   }
