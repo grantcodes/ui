@@ -4,7 +4,7 @@ import { cleanup, fixture } from '../../test-utils/index.js';
 import './avatar.js';
 
 describe('Avatar Component', () => {
-  let element: any;
+  let element: HTMLElement;
 
   afterEach(() => {
     cleanup(element);
@@ -56,16 +56,23 @@ describe('Avatar Component', () => {
     assert.ok(avatarElement.classList.contains('avatar--large'), 'Should have large size class');
   });
 
-  it('should support different sizes', async () => {
-    const sizes = ['small', 'medium', 'large'];
+  it('should reserve a distinct square image box for each size', async () => {
+    const sizes = {
+      small: '24',
+      medium: '48',
+      large: '64',
+    };
 
-    for (const size of sizes) {
-      element = await fixture('grantcodes-avatar', { size });
+    for (const [size, expectedSize] of Object.entries(sizes)) {
+      element = await fixture('grantcodes-avatar', {
+        size,
+        src: 'https://example.com/avatar.jpg',
+      });
       const avatarElement = element.shadowRoot.querySelector('.avatar');
-      assert.ok(
-        avatarElement.classList.contains(`avatar--${size}`),
-        `Should have ${size} size class`,
-      );
+      const image = element.shadowRoot.querySelector('img');
+      assert.ok(avatarElement.classList.contains(`avatar--${size}`));
+      assert.strictEqual(image.getAttribute('width'), expectedSize);
+      assert.strictEqual(image.getAttribute('height'), expectedSize);
       cleanup(element);
     }
   });

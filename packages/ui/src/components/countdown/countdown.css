@@ -10,6 +10,8 @@
 
 .countdown {
   display: flex;
+  container-type: inline-size;
+  flex-wrap: wrap;
   justify-content: center;
   gap: var(--g-spacing-lg, 2rem);
   padding: var(--g-spacing-lg, 2rem) var(--g-spacing-md, 1rem);
@@ -18,13 +20,15 @@
 
 .countdown__unit {
   display: flex;
+  flex: 0 1 auto;
   flex-direction: column;
   align-items: center;
+  min-inline-size: 0;
   gap: var(--g-spacing-xs, 0.25rem);
 }
 
 .countdown__value {
-  font-size: var(--g-typography-h1-font-size, 6.25rem);
+  font-size: min(var(--g-typography-h1-font-size, 6.25rem), 28cqi);
   font-weight: var(--g-typography-h1-font-weight, 900);
   line-height: var(--g-typography-h1-line-height, 1.1);
   color: var(--g-color-content-default);
@@ -43,6 +47,8 @@
 }
 
 .countdown__label {
+  max-inline-size: 100%;
+  overflow-wrap: anywhere;
   font-size: var(--g-typography-body-sm-font-size, 0.875rem);
   color: var(--g-color-content-subtle);
   text-transform: uppercase;
