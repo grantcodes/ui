@@ -2555,11 +2555,21 @@
             },
             {
               "kind": "method",
-              "name": "_getMenuItems"
+              "name": "_getMenuItems",
+              "return": {
+                "type": {
+                  "text": "GrantCodesDropdownItem[]"
+                }
+              }
             },
             {
               "kind": "method",
-              "name": "_getTriggerElement"
+              "name": "_getTriggerElement",
+              "return": {
+                "type": {
+                  "text": "HTMLElement | null"
+                }
+              }
             },
             {
               "kind": "method",
@@ -2618,7 +2628,10 @@
               "name": "_handleTriggerKeydown",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "e",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
                 }
               ]
             },
@@ -2626,7 +2639,7 @@
               "kind": "field",
               "name": "_menuObserver",
               "type": {
-                "text": "null"
+                "text": "MutationObserver | null"
               },
               "default": "null"
             },
@@ -2767,7 +2780,11 @@
               "name": "_activate",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "e",
+                  "optional": true,
+                  "type": {
+                    "text": "Event"
+                  }
                 }
               ]
             },
@@ -2788,7 +2805,10 @@
               "name": "_handleKeydown",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "e",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
                 }
               ]
             },
