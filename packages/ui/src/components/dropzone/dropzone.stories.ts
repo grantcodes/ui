@@ -1,0 +1,43 @@
+import { getStorybookHelpers } from '@wc-toolkit/storybook-helpers';
+import { html } from 'lit/static-html.js';
+
+const { events, args, argTypes, template } = getStorybookHelpers('grantcodes-dropzone');
+
+import './dropzone.js';
+
+const meta = {
+  title: 'Components/Dropzone',
+  component: 'grantcodes-dropzone',
+  args: {
+    ...args,
+    fullscreenOnDrag: true,
+    placeholder: 'Placeholder in the dropzone slot',
+    onChange: (e: any) => {
+      const target = e.target;
+      console.log('Received files:', target.files);
+    },
+  },
+  argTypes,
+  render: (args: any) =>
+    template(
+      args,
+      html`<label for="dropzone-file-input">Upload files</label>
+			<input
+				id="dropzone-file-input"
+				type="file"
+				placeholder="${args.placeholder}"
+				accept="*"
+				multiple
+				@change=${args.onChange}
+			/>`,
+    ),
+  parameters: {
+    actions: {
+      handles: events,
+    },
+  },
+};
+
+export default meta;
+
+export const Dropzone = {};

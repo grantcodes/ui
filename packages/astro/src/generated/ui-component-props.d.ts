@@ -46,14 +46,14 @@ declare namespace astroHTML.JSX {
     dismissable?: boolean;
     dismissible?: boolean;
     duration?: number;
-    error?: string;
+    error?: unknown;
     eyebrow?: string;
     form?: string;
     fullscreenOnDrag?: boolean;
     hasFooter?: boolean;
     hasHeader?: boolean;
     height?: number;
-    help?: string;
+    help?: unknown;
     hidden?: boolean | string;
     "hours-label"?: string;
     href?: string;
@@ -69,7 +69,7 @@ declare namespace astroHTML.JSX {
     lng?: string;
     logos?: string;
     media?: string;
-    method?: string;
+    method?: 'get' | 'post';
     "minutes-label"?: string;
     name?: string;
     "next-href"?: string;
@@ -92,7 +92,7 @@ declare namespace astroHTML.JSX {
     "secondary-action"?: string;
     secondaryAction?: string;
     "seconds-label"?: string;
-    segments?: unknown;
+    segments?: unknown[];
     separator?: string;
     "show-seconds"?: boolean;
     size?: string;
@@ -281,7 +281,7 @@ declare module "@grantcodes/ui/components/countdown/index.js" {
 declare module "@grantcodes/ui/components/cta/index.js" {
 
   export interface CtaProps {
-    align?: string;
+    align?: 'left' | 'center';
     eyebrow?: string;
     primaryAction?: string;
     "primary-action"?: string;
@@ -374,8 +374,8 @@ declare module "@grantcodes/ui/components/form-field/index.js" {
 
   export interface FormFieldProps {
     direction?: 'vertical' | 'horizontal';
-    error?: string;
-    help?: string;
+    error?: unknown;
+    help?: unknown;
     label?: string;
   }
 
@@ -495,7 +495,7 @@ declare module "@grantcodes/ui/components/newsletter/index.js" {
     buttonLabel?: string;
     "button-label"?: string;
     disclaimer?: string;
-    method?: string;
+    method?: 'get' | 'post';
     placeholder?: string;
     text?: string;
     title?: string;
@@ -581,7 +581,7 @@ declare module "@grantcodes/ui/components/sidebar/index.js" {
 declare module "@grantcodes/ui/components/split-bar/index.js" {
 
   export interface SplitBarProps {
-    segments?: unknown;
+    segments?: unknown[];
   }
 
   export function GrantCodesSplitBar(props: SplitBarProps & import("astro").AstroBuiltinAttributes): any;

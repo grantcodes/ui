@@ -148,3 +148,14 @@
   transform: translateY(-1px);
   border-color: var(--g-color-border-primary);
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+
+  :host(.is-clickable:hover) .card,
+  :host(.is-clickable:active) .card {
+    transform: none;
+  }
+}

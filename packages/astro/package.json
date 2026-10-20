@@ -16,7 +16,7 @@
     "gen:props": "tsx scripts/generate-astro-typings-from-cem.ts",
     "pretest": "tsx scripts/generate-astro-typings-from-cem.ts",
     "test:package": "tsx --test test/package.test.js",
-    "test": "tsx --test test/package.test.js test/smoke.test.js test/ssr-constructor-diagnostics.test.js test/og-images.test.js test/astro-check-typings.test.js"
+    "test": "tsx --test test/package.test.js test/smoke.test.js test/ssr-constructor-diagnostics.test.js test/og-images.test.js test/astro-check-typings.test.js test/blocks.test.js"
   },
   "keywords": [
     "astro",

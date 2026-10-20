@@ -3,9 +3,9 @@
   "version": "2.17.0",
   "description": "A personal component system built with Lit web components",
   "type": "module",
-  "main": "src/main.js",
-  "module": "src/main.js",
-  "types": "src/types.d.ts",
+  "main": "dist/main.js",
+  "module": "dist/main.js",
+  "types": "dist/main.d.ts",
   "author": "grantcodes",
   "repository": {
     "type": "git",
@@ -17,49 +17,60 @@
   "homepage": "https://github.com/grantcodes/ui#readme",
   "exports": {
     ".": {
-      "types": "./src/types.d.ts",
-      "import": "./src/main.js"
+      "types": "./dist/main.d.ts",
+      "import": "./dist/main.js"
     },
     "./icons": {
-      "types": "./src/types.d.ts",
-      "import": "./src/icons.js"
+      "types": "./dist/icons.d.ts",
+      "import": "./dist/icons.js"
+    },
+    "./react": {
+      "types": "./dist/react.d.ts",
+      "import": "./dist/react.js"
     },
     "./styles/base.css": {
-      "import": "./src/css/base.css",
-      "require": "./src/css/base.css"
+      "import": "./dist/css/base.css",
+      "require": "./dist/css/base.css"
     },
     "./styles/themes/*": {
-      "import": "./src/css/themes/*",
-      "require": "./src/css/themes/*"
+      "import": "./dist/css/themes/*",
+      "require": "./dist/css/themes/*"
     },
-    "./styles/focus-ring.css": "./src/lib/styles/focus-ring.css",
-    "./styles/all.css": "./src/lib/styles/all.css",
+    "./styles/focus-ring.css": "./dist/lib/styles/focus-ring.css",
+    "./styles/all.css": "./dist/lib/styles/all.css",
     "./components/*": {
-      "import": "./src/components/*",
-      "require": "./src/components/*"
-    },
-    "./fonts/*": "./src/fonts/*",
-    "./react": {
-      "import": "./src/react.js"
+      "types": "./dist/components/*",
+      "import": "./dist/components/*",
+      "require": "./dist/components/*"
     },
     "./css-import-attributes": {
       "types": "./css-import-attributes.d.ts"
     },
-    "./vite-plugin": "./vite-plugin-css-import-attributes.js"
+    "./vite-plugin": {
+      "types": "./dist/vite-plugin-css-import-attributes.d.ts",
+      "import": "./dist/vite-plugin-css-import-attributes.js"
+    }
   },
   "scripts": {
     "dev": "storybook dev -p 6006",
-    "watch": "vite build --watch",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build": "run-s cem build-storybook",
-    "generate": "plop",
     "cem": "cem analyze --config custom-elements-manifest.config.js --litelement",
+    "copy:assets": "node scripts/copy-assets.mjs",
+    "tsc": "tsc -p tsconfig.json",
+    "build:lib": "run-s cem tsc copy:assets",
+    "build": "run-s build:lib build-storybook",
+    "watch": "run-p watch:tsc watch:assets",
+    "watch:tsc": "tsc -p tsconfig.json --watch --preserveWatchOutput",
+    "watch:assets": "node scripts/copy-assets.mjs --watch",
+    "generate": "plop",
     "fix": "run-s fix:lint",
     "fix:lint": "npx @biomejs/biome format --write src",
-    "test": "run-s lint test:unit",
     "lint": "npx @biomejs/biome lint src",
-    "test:unit": "NODE_ENV=test node --import @lit-labs/ssr-dom-shim/register-css-hook.js --test --test-concurrency=1 'src/**/*.test.js'"
+    "test:unit": "NODE_ENV=test node --import ./src/test-utils/register-js-to-ts.mjs --import @lit-labs/ssr-dom-shim/register-css-hook.js --test --test-concurrency=1 'src/**/*.test.ts'",
+    "test:storybook": "vitest run --project=storybook src/components/badge src/components/dialog",
+    "test:types": "tsc -p test/types",
+    "test": "run-s build:lib lint test:types test:unit"
   },
   "license": "MIT",
   "dependencies": {
@@ -78,7 +89,12 @@
     "@playwright/test": "^1.63.0",
     "@storybook/addon-docs": "^10.6.0",
     "@storybook/addon-themes": "^10.6.0",
+    "@storybook/addon-vitest": "^10.6.0",
     "@storybook/web-components-vite": "^10.6.0",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@vitest/browser-playwright": "^4.1.11",
+    "esbuild": "^0.28.2",
     "@wc-toolkit/cem-inheritance": "^1.2.5",
     "@wc-toolkit/cem-sorter": "^1.0.1",
     "@wc-toolkit/cem-validator": "^1.3.0",
@@ -86,16 +102,18 @@
     "@wc-toolkit/storybook-helpers": "^10.7.7",
     "happy-dom": "^20.14.5",
     "npm-run-all2": "^9.0.3",
+    "playwright": "^1.63.0",
     "plop": "^4.0.5",
     "react": "^19.3.0",
     "storybook": "^10.6.0",
-    "vite": "^8.3.0"
+    "typescript": "5.9.3",
+    "vite": "^8.3.0",
+    "vitest": "^4.1.11"
   },
   "files": [
-    "src/**/*",
+    "dist/**/*",
     "custom-elements.json",
     "css-import-attributes.d.ts",
-    "vite-plugin-css-import-attributes.js",
     "CHANGELOG.md",
     "README.md",
     "LICENCE"

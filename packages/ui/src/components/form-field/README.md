@@ -117,10 +117,10 @@ const field = document.querySelector('grantcodes-form-field');
 field.error = 'Enter a valid email address.';
 ```
 
-The component writes the ARIA state onto the **first** control it finds:
+The component writes the ARIA state onto its direct control and preserves consumer-supplied descriptions:
 
-- `aria-describedby` lists `<id>-error` and/or `<id>-help` while those props are set, and is removed
-  when both are cleared.
+- A native label in the control's DOM tree names the control.
+- `aria-describedby` keeps consumer IDs and adds `<id>-error` and/or `<id>-help` while those props are set.
 - `aria-invalid="true"` is set as soon as `error` is set, and removed when it is cleared.
 
 The error message itself is not revealed immediately: it stays `hidden` until the control has been
@@ -130,13 +130,12 @@ away. In a grouped field the error appears once any nested control is touched.
 
 ## Label clicks
 
-The label lives in the component's shadow root, so it cannot use `for`/`id` to link to the slotted
-control. Clicks on the label text are forwarded to the first control instead — it is focused and
-clicked, which toggles checkboxes and selects radios from their label.
+The visible label lives in the component's shadow root, so clicks on its text are forwarded to the direct
+control — it is focused and clicked, which toggles checkboxes and selects radios from their label. The
+component also supplies a visually hidden native label in the control's DOM tree for its accessible name.
 
 ## Notes
 
-- One control per field is the supported shape. Only the first `input`, `select` or `textarea` receives
-  the label click and the ARIA state, and the control list is captured on first render — controls added
-  after that are not wired up.
+- One direct control per field is the supported shape. Nested fields form a group; parent descriptions do
+  not apply to their controls.
 - Storybook has a story per variant in `form-field.stories.js`.

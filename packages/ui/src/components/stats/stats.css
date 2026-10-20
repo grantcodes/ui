@@ -43,7 +43,7 @@
 }
 
 .stats__value {
-  font: var(--g-typography-h2);
+  font: var(--g-typography-h2-font);
   white-space: nowrap;
   line-height: 1;
   color: var(--g-color-content-primary, #7c3aed);

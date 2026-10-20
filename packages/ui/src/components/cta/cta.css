@@ -36,7 +36,7 @@
 
 .cta__text {
   margin: 0 0 var(--g-spacing-xl);
-  font: var(--g-typography-body-lg);
+  font: var(--g-typography-body-lg-font);
   color: var(--g-color-content-subtle);
 }
 
