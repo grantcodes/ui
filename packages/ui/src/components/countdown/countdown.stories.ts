@@ -53,6 +53,17 @@ export const SpanishLabels = {
   },
 };
 
+export const NarrowContent = {
+  args: {
+    target: '2050-01-01T00:00:00Z',
+    'show-seconds': true,
+    'days-label': 'long translated days label',
+    'hours-label': 'long translated hours label',
+    'minutes-label': 'long translated minutes label',
+    'seconds-label': 'long translated seconds label',
+  },
+};
+
 /**
  * Countdown that has already passed — shows the past message.
  */

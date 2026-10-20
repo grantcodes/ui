@@ -23,6 +23,16 @@
   font: var(--g-typography-h6-font);
 }
 
+.avatar--small {
+  inline-size: var(--g-spacing-lg);
+  block-size: var(--g-spacing-lg);
+}
+
+.avatar--large {
+  inline-size: var(--g-spacing-3xl);
+  block-size: var(--g-spacing-3xl);
+}
+
 .avatar__image {
   inline-size: 100%;
   block-size: 100%;

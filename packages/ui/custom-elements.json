@@ -2568,6 +2568,28 @@
           "members": [
             {
               "kind": "method",
+              "name": "_getEnabledMenuItems"
+            },
+            {
+              "kind": "method",
+              "name": "_getMenuItems",
+              "return": {
+                "type": {
+                  "text": "GrantCodesDropdownItem[]"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_getTriggerElement",
+              "return": {
+                "type": {
+                  "text": "HTMLElement | null"
+                }
+              }
+            },
+            {
+              "kind": "method",
               "name": "_handleDocumentClick",
               "parameters": [
                 {
@@ -2604,6 +2626,10 @@
             },
             {
               "kind": "method",
+              "name": "_handleMenuSlotChange"
+            },
+            {
+              "kind": "method",
               "name": "_handleTriggerClick",
               "parameters": [
                 {
@@ -2613,6 +2639,26 @@
                   }
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleTriggerKeydown",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "_menuObserver",
+              "type": {
+                "text": "MutationObserver | null"
+              },
+              "default": "null"
             },
             {
               "kind": "field",
@@ -2641,6 +2687,14 @@
                   }
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "_syncMenuItems"
+            },
+            {
+              "kind": "method",
+              "name": "_syncTrigger"
             },
             {
               "kind": "field",
@@ -2740,12 +2794,37 @@
           "members": [
             {
               "kind": "method",
+              "name": "_activate",
+              "parameters": [
+                {
+                  "name": "e",
+                  "optional": true,
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "_handleClick",
               "parameters": [
                 {
                   "name": "e",
                   "type": {
                     "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleKeydown",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "KeyboardEvent"
                   }
                 }
               ]
@@ -2759,7 +2838,8 @@
               },
               "description": "Whether the item is disabled",
               "default": "false",
-              "attribute": "disabled"
+              "attribute": "disabled",
+              "reflects": true
             }
           ],
           "events": [

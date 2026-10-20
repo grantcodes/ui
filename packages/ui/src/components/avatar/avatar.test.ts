@@ -4,7 +4,7 @@ import { cleanup, fixture } from '../../test-utils/index.js';
 import './avatar.js';
 
 describe('Avatar Component', () => {
-  let element: any;
+  let element: HTMLElement;
 
   afterEach(() => {
     cleanup(element);
