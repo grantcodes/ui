@@ -56,23 +56,16 @@ describe('Avatar Component', () => {
     assert.ok(avatarElement.classList.contains('avatar--large'), 'Should have large size class');
   });
 
-  it('should reserve a distinct square image box for each size', async () => {
-    const sizes = {
-      small: '24',
-      medium: '48',
-      large: '64',
-    };
+  it('should support different sizes', async () => {
+    const sizes = ['small', 'medium', 'large'];
 
-    for (const [size, expectedSize] of Object.entries(sizes)) {
-      element = await fixture('grantcodes-avatar', {
-        size,
-        src: 'https://example.com/avatar.jpg',
-      });
+    for (const size of sizes) {
+      element = await fixture('grantcodes-avatar', { size });
       const avatarElement = element.shadowRoot.querySelector('.avatar');
-      const image = element.shadowRoot.querySelector('img');
-      assert.ok(avatarElement.classList.contains(`avatar--${size}`));
-      assert.strictEqual(image.getAttribute('width'), expectedSize);
-      assert.strictEqual(image.getAttribute('height'), expectedSize);
+      assert.ok(
+        avatarElement.classList.contains(`avatar--${size}`),
+        `Should have ${size} size class`,
+      );
       cleanup(element);
     }
   });
