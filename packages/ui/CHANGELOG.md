@@ -1,5 +1,34 @@
 # Changelog
 
+## [2.18.0](https://github.com/grantcodes/ui/compare/ui-v2.17.0...ui-v2.18.0) (2026-10-21)
+
+
+### Features
+
+* **ui:** add an anchored popover ([#193](https://github.com/grantcodes/ui/issues/193)) ([099f435](https://github.com/grantcodes/ui/commit/099f435c5927bd393c2f8ffa3bd549b9e45c072c))
+* **ui:** publish typed React entry and document the CSS plugin ([aee27a2](https://github.com/grantcodes/ui/commit/aee27a29d5276ea0422c740be1116c544b36ac54))
+
+
+### Bug Fixes
+
+* **ui:** align dropdown with TypeScript migration ([7ae91db](https://github.com/grantcodes/ui/commit/7ae91db8dc3991fbe814994c591984a9b6bf47fb))
+* **ui:** honor avatar sizes and contain countdowns ([d99e3c8](https://github.com/grantcodes/ui/commit/d99e3c8fe36048bdaadad54ee21a55d5a968e686))
+* **ui:** improve notice status contrast ([#194](https://github.com/grantcodes/ui/issues/194)) ([344a1a1](https://github.com/grantcodes/ui/commit/344a1a152d3f08e064829e97862cdb81252abf11))
+* **ui:** improve tooltip accessibility ([#192](https://github.com/grantcodes/ui/issues/192)) ([1a4e20c](https://github.com/grantcodes/ui/commit/1a4e20c45487ed51e1962c92258b5c83414fce96))
+* **ui:** make dialogs scrollable and named ([#190](https://github.com/grantcodes/ui/issues/190)) ([8da6ddd](https://github.com/grantcodes/ui/commit/8da6dddc3aae7e728e7577f63e07749c3fbe6609))
+* **ui:** regenerate custom elements manifest ([7f4b533](https://github.com/grantcodes/ui/commit/7f4b533c0a1cfc9f4501b994a5df8bd0814d97fc))
+* **ui:** regenerate dropdown manifest ([19f4c80](https://github.com/grantcodes/ui/commit/19f4c808127067fb7bd7f76f234312b10114d70e))
+* **ui:** render dropzone drag state and focus ([0385668](https://github.com/grantcodes/ui/commit/0385668282ce5388e1d75e91bacea4fb9d94487a))
+* **ui:** repair tabs keyboard and panel labels ([3b1c89b](https://github.com/grantcodes/ui/commit/3b1c89ba22110038eaf6eb5871131c58fb79b59c))
+* **ui:** respect reduced motion in card and loading ([151303c](https://github.com/grantcodes/ui/commit/151303c0f47519b8f7cdd4c156c82a9025285fd2))
+* **ui:** restore avatar image dimensions ([06c022b](https://github.com/grantcodes/ui/commit/06c022b61a47d229da285eb88a6ed0358361688d))
+* **ui:** restore form field accessibility relationships ([20eb66f](https://github.com/grantcodes/ui/commit/20eb66fcdcea586da8a1565db4c6f963f2181603))
+* **ui:** restore mobile navigation access ([e82e11e](https://github.com/grantcodes/ui/commit/e82e11eb5c0660fc0b990b380acfa7b05b576494))
+* **ui:** restore native newsletter submission ([#195](https://github.com/grantcodes/ui/issues/195)) ([5f14383](https://github.com/grantcodes/ui/commit/5f14383b8bba80c6966a679588c1a9446a5d8673))
+* **ui:** restore pricing status and typography ([3d55337](https://github.com/grantcodes/ui/commit/3d553376d2d22a0138b164914ef7e0887c181a4a))
+* **ui:** support dropdown keyboard menus ([a59ae68](https://github.com/grantcodes/ui/commit/a59ae688317c4459644f00bef3e605cc2a44da6a))
+* **ui:** support dropdown test observer ([773e41e](https://github.com/grantcodes/ui/commit/773e41e56a1492c42c1fc3969796507fc9a21ed1))
+
 ## [2.17.0](https://github.com/grantcodes/ui/compare/ui-v2.16.0...ui-v2.17.0) (2026-09-27)
 
 

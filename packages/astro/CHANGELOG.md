@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.3.0](https://github.com/grantcodes/ui/compare/astro-v0.2.10...astro-v0.3.0) (2026-10-21)
+
+
+### Features
+
+* **ui:** add an anchored popover ([#193](https://github.com/grantcodes/ui/issues/193)) ([099f435](https://github.com/grantcodes/ui/commit/099f435c5927bd393c2f8ffa3bd549b9e45c072c))
+
+
+### Bug Fixes
+
+* **astro:** forward gallery and hero block content ([3990307](https://github.com/grantcodes/ui/commit/39903073a1e9a36906de6ac6f03af7582da35d12))
+* **ui:** restore native newsletter submission ([#195](https://github.com/grantcodes/ui/issues/195)) ([5f14383](https://github.com/grantcodes/ui/commit/5f14383b8bba80c6966a679588c1a9446a5d8673))
+
 ## [0.2.10](https://github.com/grantcodes/ui/compare/astro-v0.2.9...astro-v0.2.10) (2026-09-27)
 
 
