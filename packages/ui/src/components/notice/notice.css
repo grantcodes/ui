@@ -52,7 +52,7 @@
   background: none;
   color: inherit;
   opacity: 0.5;
-  transition: 0.2s;
+  transition: opacity 0.2s;
   font-size: calc(var(--g-typography-body-default-line-height) * 1em);
   line-height: 1;
   padding: var(--g-spacing-sm);

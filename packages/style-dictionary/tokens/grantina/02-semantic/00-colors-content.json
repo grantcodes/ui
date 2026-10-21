@@ -24,16 +24,16 @@
       },
       "utility": {
         "error": {
-          "value": "light-dark({ref.color.red.600}, {ref.color.red.400})"
+          "value": "light-dark({ref.color.red.900}, {ref.color.red.400})"
         },
         "warning": {
-          "value": "light-dark({ref.color.yellow.600}, {ref.color.yellow.400})"
+          "value": "light-dark({ref.color.yellow.900}, {ref.color.yellow.400})"
         },
         "success": {
-          "value": "light-dark({ref.color.green.600}, {ref.color.green.400})"
+          "value": "light-dark({ref.color.green.900}, {ref.color.green.400})"
         },
         "info": {
-          "value": "light-dark({ref.color.blue.600}, {ref.color.blue.300})"
+          "value": "light-dark({ref.color.blue.900}, {ref.color.blue.300})"
         }
       }
     }
