@@ -6006,6 +6006,404 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/popover/index.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/popover/popover.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/popover/popover.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "GrantCodesPopover",
+          "members": [
+            {
+              "kind": "method",
+              "name": "_commitOpen",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "Promise<void>"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_controlsIn",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "HTMLElement[]"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "element",
+                  "type": {
+                    "text": "Element"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_findControl",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "HTMLElement | null"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "element",
+                  "type": {
+                    "text": "Element | undefined"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_focusPanel",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_handleDocumentClick",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleKeydown",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleTriggerClick",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleTriggerSlotChange",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_isDisabled",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "element",
+                  "type": {
+                    "text": "HTMLElement"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_isFocusable",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "element",
+                  "type": {
+                    "text": "HTMLElement"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "_open",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_openScheduled",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_pendingFocusReturn",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_pendingOpen",
+              "type": {
+                "text": "boolean | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "method",
+              "name": "_requestOpen",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "open",
+                  "type": {
+                    "text": "boolean"
+                  }
+                },
+                {
+                  "name": "returnFocus",
+                  "default": "false"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_restoreTrigger",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_shouldRestoreFocus",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_syncTrigger",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "HTMLElement | null"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_triggerState",
+              "type": {
+                "text": "TriggerState | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "_viewTransitionName",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether the panel is visible.",
+              "attribute": "open",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "placement",
+              "privacy": "public",
+              "type": {
+                "text": "'bottom-start' | 'bottom-end' | 'top-start' | 'top-end'"
+              },
+              "default": "'bottom-start'",
+              "description": "Where the panel is positioned relative to its trigger.",
+              "attribute": "placement"
+            }
+          ],
+          "events": [
+            {
+              "name": "toggle",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether the panel is visible.",
+              "fieldName": "open"
+            },
+            {
+              "name": "placement",
+              "type": {
+                "text": "'bottom-start' | 'bottom-end' | 'top-start' | 'top-end'"
+              },
+              "default": "'bottom-start'",
+              "description": "Where the panel is positioned relative to its trigger.",
+              "fieldName": "placement"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "grantcodes-popover",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GrantCodesPopover",
+          "declaration": {
+            "name": "GrantCodesPopover",
+            "module": "src/components/popover/popover.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/popover/popover.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-popover",
+          "declaration": {
+            "name": "GrantCodesPopover",
+            "module": "src/components/popover/popover.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/popover/popover.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/popover/popover.component.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "GrantCodesPopover",
+            "module": "src/components/popover/popover.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-popover",
+          "declaration": {
+            "name": "GrantCodesPopover",
+            "module": "/src/components/popover/popover.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/pricing/index.js",
       "declarations": [],
       "exports": [
