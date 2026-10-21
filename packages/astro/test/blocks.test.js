@@ -34,12 +34,14 @@ function buildFixture() {
     path.join(directory, 'src', 'pages', 'index.astro'),
     `---
 import Gallery from '${fileUrl(directory, 'src', 'blocks', 'gallery.astro')}';
+import Newsletter from '${fileUrl(directory, 'src', 'blocks', 'newsletter.astro')}';
 import BlockRenderer from '${fileUrl(directory, 'src', 'blocks', 'renderer.astro')}';
 import { blockSchema } from '${fileUrl(directory, 'src', 'blocks', 'schemas', 'index.ts')}';
 const gallery = blockSchema.parse({ type: 'gallery', filmstrip: true, images: [{ src: '/renderer.jpg', alt: 'Renderer image', caption: 'Renderer caption' }] });
 const hero = blockSchema.parse({ type: 'hero', id: 'schema-hero', title: 'Schema hero', image: '/hero.jpg' });
 ---
 <Gallery filmstrip images={[{ src: '/direct.jpg', alt: 'Direct image', caption: 'Direct caption' }]} />
+<Newsletter title="Subscribe" action="/subscribe" />
 <BlockRenderer block={gallery} />
 <BlockRenderer block={hero} />
 `,
@@ -74,5 +76,12 @@ describe('@grantcodes/astro blocks', () => {
 
     assert.match(html, /<grantcodes-hero[^>]*id="schema-hero"/);
     assert.match(html, /<img[^>]*src="\/hero.jpg"[^>]*alt=""/);
+  });
+
+  it('renders a native newsletter submit button for SSR', () => {
+    const html = getFixtureHtml();
+
+    assert.match(html, /<form[^>]*class="newsletter__form"[^>]*>/);
+    assert.match(html, /<button[^>]*class="newsletter__submit"[^>]*type="submit"[^>]*>/);
   });
 });

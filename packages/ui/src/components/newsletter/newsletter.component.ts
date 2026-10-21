@@ -1,6 +1,5 @@
 import { html, LitElement } from 'lit';
 import newsletterStyles from './newsletter.css' with { type: 'css' };
-import '../button/button.js';
 
 export class GrantCodesNewsletter extends LitElement {
   declare action: string;
@@ -9,6 +8,7 @@ export class GrantCodesNewsletter extends LitElement {
   declare method: 'get' | 'post';
   declare placeholder: string;
   declare text: string;
+  declare title: string;
 
   static styles = [newsletterStyles];
 
@@ -86,9 +86,9 @@ export class GrantCodesNewsletter extends LitElement {
 									required
 									autocomplete="email"
 								/>
-							<grantcodes-button type="submit">
+							<button class="newsletter__submit" type="submit">
 								${this.buttonLabel}
-							</grantcodes-button>
+							</button>
 							</div>
 						</div>
 					</form>
