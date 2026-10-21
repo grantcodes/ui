@@ -50,7 +50,7 @@
   position: absolute;
 
   /* Try anchor positioning first (modern browsers) */
-  position-anchor: var(--tooltip-anchor, none);
+  position-anchor: var(--tooltip-anchor);
   position-area: block-end;
   margin-block-start: 0.5rem;
 
@@ -65,9 +65,8 @@
   }
 }
 
-.tooltip__slot:hover + .tooltip__content,
-.tooltip__slot:focus + .tooltip__content,
-.tooltip__slot:focus-within + .tooltip__content {
+.tooltip:not(.tooltip--suppressed):hover .tooltip__content,
+.tooltip:not(.tooltip--suppressed):focus-within .tooltip__content {
   display: block;
   opacity: 1;
 }
@@ -75,9 +74,8 @@
 /* Entry state for the fade, only while motion is welcome. */
 @media (prefers-reduced-motion: no-preference) {
   @starting-style {
-    .tooltip__slot:hover + .tooltip__content,
-    .tooltip__slot:focus + .tooltip__content,
-    .tooltip__slot:focus-within + .tooltip__content {
+    .tooltip:not(.tooltip--suppressed):hover .tooltip__content,
+    .tooltip:not(.tooltip--suppressed):focus-within .tooltip__content {
       opacity: 0;
     }
   }

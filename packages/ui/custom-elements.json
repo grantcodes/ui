@@ -8080,13 +8080,58 @@
           "name": "GrantCodesTooltip",
           "members": [
             {
+              "kind": "method",
+              "name": "_clearRelationship"
+            },
+            {
+              "kind": "method",
+              "name": "_handleExit"
+            },
+            {
+              "kind": "method",
+              "name": "_handleKeydown",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleSlotChange"
+            },
+            {
+              "kind": "field",
+              "name": "_relationship",
+              "type": {
+                "text": "Relationship | null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "_suppressed",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_suppressed"
+            },
+            {
+              "kind": "method",
+              "name": "_updateRelationship"
+            },
+            {
               "kind": "field",
               "name": "description",
               "privacy": "public",
               "type": {
                 "text": "string"
               },
-              "description": "Description for the tooltip, used when the tooltip is additional descriptive text for the item.",
               "default": "''",
               "attribute": "description"
             },
@@ -8097,26 +8142,24 @@
               "type": {
                 "text": "string"
               },
-              "description": "Label for the tooltip, used when the tooltip is the main label for the item.",
               "default": "''",
               "attribute": "label"
-            },
-            {
-              "kind": "field",
-              "name": "slotted",
-              "type": {
-                "text": "Element[]"
-              },
-              "default": "[]"
             }
           ],
           "attributes": [
+            {
+              "name": "_suppressed",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_suppressed"
+            },
             {
               "name": "description",
               "type": {
                 "text": "string"
               },
-              "description": "Description for the tooltip, used when the tooltip is additional descriptive text for the item.",
               "default": "''",
               "fieldName": "description"
             },
@@ -8125,7 +8168,6 @@
               "type": {
                 "text": "string"
               },
-              "description": "Label for the tooltip, used when the tooltip is the main label for the item.",
               "default": "''",
               "fieldName": "label"
             }
