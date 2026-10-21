@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.11.1](https://github.com/grantcodes/ui/compare/style-dictionary-v1.11.0...style-dictionary-v1.11.1) (2026-10-21)
+
+
+### Bug Fixes
+
+* **ui:** improve notice status contrast ([#194](https://github.com/grantcodes/ui/issues/194)) ([344a1a1](https://github.com/grantcodes/ui/commit/344a1a152d3f08e064829e97862cdb81252abf11))
+
 ## [1.11.0](https://github.com/grantcodes/ui/compare/style-dictionary-v1.10.2...style-dictionary-v1.11.0) (2026-09-25)
 
 
