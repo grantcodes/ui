@@ -551,6 +551,18 @@ declare module "@grantcodes/ui/components/person/index.js" {
   export { GrantCodesPerson };
 }
 
+declare module "@grantcodes/ui/components/popover/index.js" {
+
+  export interface PopoverProps {
+    open?: boolean;
+    placement?: 'bottom-start' | 'bottom-end' | 'top-start' | 'top-end';
+  }
+
+  export function GrantCodesPopover(props: PopoverProps & import("astro").AstroBuiltinAttributes): any;
+
+  export { GrantCodesPopover };
+}
+
 declare module "@grantcodes/ui/components/pricing/index.js" {
 
   export interface PricingProps {

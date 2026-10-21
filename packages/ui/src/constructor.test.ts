@@ -4,6 +4,7 @@ import { describe, it } from 'node:test';
 import './test-utils/index.js';
 import './components/dropdown/dropdown.js';
 import './components/form-field/form-field.js';
+import './components/popover/popover.js';
 import './components/tabs/tabs.js';
 import './components/tooltip/tooltip.js';
 
@@ -12,6 +13,7 @@ import './components/tooltip/tooltip.js';
 const TAGS = [
   'grantcodes-dropdown',
   'grantcodes-form-field',
+  'grantcodes-popover',
   'grantcodes-tabs',
   'grantcodes-tooltip',
 ];

@@ -24,7 +24,12 @@ export default {
   async viteFinal(config) {
     return {
       ...config,
+      root: fileURLToPath(new URL('../', import.meta.url)),
       plugins: [...(config.plugins ?? []), cssImportAttributes()],
+      server: {
+        ...config.server,
+        allowedHosts: ['ui.munchkin-beaver.ts.net'],
+      },
     };
   },
 };
