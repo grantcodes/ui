@@ -68,7 +68,7 @@
     "fix:lint": "npx @biomejs/biome format --write src",
     "lint": "npx @biomejs/biome lint src",
     "test:unit": "NODE_ENV=test node --import ./src/test-utils/register-js-to-ts.mjs --import @lit-labs/ssr-dom-shim/register-css-hook.js --test --test-concurrency=1 'src/**/*.test.ts'",
-    "test:storybook": "vitest run --project=storybook src/components/badge src/components/dialog src/components/popover",
+    "test:storybook": "vitest run --project=storybook src/components/badge src/components/dialog src/components/popover src/components/sidebar",
     "test:types": "tsc -p test/types",
     "test": "run-s build:lib lint test:types test:unit"
   },

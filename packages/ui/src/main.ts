@@ -25,6 +25,7 @@ export * from './components/popover/index.js';
 export * from './components/person/index.js';
 export * from './components/pricing/index.js';
 export * from './components/stats/index.js';
+export * from './components/sidebar/index.js';
 export * from './components/split-bar/index.js';
 export * from './components/tabs/index.js';
 export * from './components/testimonials/index.js';

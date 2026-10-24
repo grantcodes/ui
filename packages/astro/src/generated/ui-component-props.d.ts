@@ -29,12 +29,11 @@ declare namespace astroHTML.JSX {
     caption?: string;
     center?: boolean;
     class?: string;
-    collapsed?: boolean;
-    collapsible?: boolean;
     columns?: number;
     company?: string;
     containerId?: string;
     content?: string;
+    controlled?: boolean;
     cta?: string;
     current?: boolean;
     "days-label"?: string;
@@ -48,6 +47,7 @@ declare namespace astroHTML.JSX {
     duration?: number;
     error?: unknown;
     eyebrow?: string;
+    for?: string;
     form?: string;
     fullscreenOnDrag?: boolean;
     hasFooter?: boolean;
@@ -82,7 +82,7 @@ declare namespace astroHTML.JSX {
     "past-message"?: string;
     placeholder?: string;
     placement?: string;
-    position?: 'left' | 'right';
+    position?: 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
     "previous-href"?: string;
     previousHref?: string;
     "primary-action"?: string;
@@ -579,15 +579,20 @@ declare module "@grantcodes/ui/components/pricing/index.js" {
 declare module "@grantcodes/ui/components/sidebar/index.js" {
 
   export interface SidebarProps {
-    collapsed?: boolean;
-    collapsible?: boolean;
-    position?: 'left' | 'right';
-    width?: string;
+    controlled?: boolean;
+    open?: boolean;
   }
 
   export function GrantCodesSidebar(props: SidebarProps & import("astro").AstroBuiltinAttributes): any;
 
+  export interface SidebarToggleProps {
+    for?: string;
+  }
+
+  export function GrantCodesSidebarToggle(props: SidebarToggleProps & import("astro").AstroBuiltinAttributes): any;
+
   export { GrantCodesSidebar };
+  export { GrantCodesSidebarToggle };
 }
 
 declare module "@grantcodes/ui/components/split-bar/index.js" {

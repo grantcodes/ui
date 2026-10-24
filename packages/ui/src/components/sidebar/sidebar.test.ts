@@ -1,6 +1,6 @@
 import { strict as assert } from 'node:assert';
 import { afterEach, describe, it } from 'node:test';
-import { cleanup, click, fixture } from '../../test-utils/index.js';
+import { cleanup, fixture } from '../../test-utils/index.js';
 import './sidebar.js';
 
 describe('Sidebar Component', () => {
@@ -10,271 +10,112 @@ describe('Sidebar Component', () => {
     cleanup(element);
   });
 
-  it('should render with default properties', async () => {
+  it('defaults to a closed standalone drawer', async () => {
     element = await fixture('grantcodes-sidebar');
-    assert.ok(element, 'Element should be created');
-    assert.ok(element.shadowRoot, 'Element should have shadow root');
+    assert.strictEqual(element.open, false);
+    assert.strictEqual(element.controlled, false);
+    assert.strictEqual(element.hasAttribute('open'), false);
   });
 
-  it('should have left position by default', async () => {
+  it('only renders the three named slots', async () => {
     element = await fixture('grantcodes-sidebar');
-    assert.strictEqual(element.position, 'left', 'Should have left position by default');
+    const slots = [...element.shadowRoot.querySelectorAll('slot')].map((slot) => slot.name);
+    assert.deepStrictEqual(slots, ['header', 'content', 'footer']);
   });
 
-  it('should not be collapsed by default', async () => {
+  it('does not retain legacy properties', async () => {
     element = await fixture('grantcodes-sidebar');
-    assert.strictEqual(element.collapsed, false, 'Should not be collapsed by default');
+    assert.strictEqual(element.collapsed, undefined);
+    assert.strictEqual(element.collapsible, undefined);
+    assert.strictEqual(element.position, undefined);
+    assert.strictEqual(element.width, undefined);
   });
 
-  it('should be collapsible by default', async () => {
+  it('requests and applies standalone state changes', async () => {
     element = await fixture('grantcodes-sidebar');
-    assert.strictEqual(element.collapsible, true, 'Should be collapsible by default');
-  });
-
-  it('should have default width', async () => {
-    element = await fixture('grantcodes-sidebar');
-    assert.strictEqual(element.width, '280px', 'Should have default width');
-  });
-
-  it('should render aside element', async () => {
-    element = await fixture('grantcodes-sidebar');
-    const aside = element.shadowRoot.querySelector('aside');
-    assert.ok(aside, 'Aside element should exist');
-  });
-
-  it('should apply left position class', async () => {
-    element = await fixture('grantcodes-sidebar', {
-      position: 'left',
+    let detail: { open: boolean } | undefined;
+    element.addEventListener('drawer-toggle', (event: CustomEvent<{ open: boolean }>) => {
+      detail = event.detail;
     });
 
-    const sidebar = element.shadowRoot.querySelector('.sidebar--left');
-    assert.ok(sidebar, 'Should have left position class');
-  });
-
-  it('should apply right position class', async () => {
-    element = await fixture('grantcodes-sidebar', {
-      position: 'right',
-    });
-
-    const sidebar = element.shadowRoot.querySelector('.sidebar--right');
-    assert.ok(sidebar, 'Should have right position class');
-  });
-
-  it('should apply collapsed class when collapsed', async () => {
-    element = await fixture('grantcodes-sidebar', {
-      collapsed: true,
-    });
-
-    const sidebar = element.shadowRoot.querySelector('.sidebar--collapsed');
-    assert.ok(sidebar, 'Should have collapsed class');
-  });
-
-  it('should render toggle button when collapsible', async () => {
-    element = await fixture('grantcodes-sidebar', {
-      collapsible: true,
-    });
-
-    const toggle = element.shadowRoot.querySelector('.sidebar__toggle');
-    assert.ok(toggle, 'Toggle button should exist');
-  });
-
-  it('should not render toggle button when not collapsible', async () => {
-    element = await fixture('grantcodes-sidebar', {
-      collapsible: false,
-    });
-
-    const toggle = element.shadowRoot.querySelector('.sidebar__toggle');
-    assert.ok(!toggle, 'Toggle button should not exist');
-  });
-
-  it('should toggle collapsed state when button is clicked', async () => {
-    element = await fixture('grantcodes-sidebar', {
-      collapsible: true,
-    });
-
-    const toggle = element.shadowRoot.querySelector('.sidebar__toggle');
-
-    assert.strictEqual(element.collapsed, false, 'Should start not collapsed');
-
-    click(toggle);
+    element.requestOpen(true);
     await element.updateComplete;
 
-    assert.strictEqual(element.collapsed, true, 'Should be collapsed after click');
+    assert.deepStrictEqual(detail, { open: true });
+    assert.strictEqual(element.open, true);
   });
 
-  it('should emit toggle event when collapsed state changes', async () => {
-    element = await fixture('grantcodes-sidebar', {
-      collapsible: true,
-    });
+  it('keeps standalone state when a request is canceled', async () => {
+    element = await fixture('grantcodes-sidebar');
+    element.addEventListener('drawer-toggle', (event: Event) => event.preventDefault());
 
-    let toggledState = null;
-    element.addEventListener('toggle', (e) => {
-      toggledState = e.detail.collapsed;
-    });
-
-    const toggle = element.shadowRoot.querySelector('.sidebar__toggle');
-    click(toggle);
-
+    element.requestOpen(true);
     await element.updateComplete;
 
-    assert.strictEqual(toggledState, true, 'Toggle event should fire with collapsed state');
+    assert.strictEqual(element.open, false);
   });
 
-  it('should apply custom width', async () => {
-    element = await fixture('grantcodes-sidebar', {
-      width: '350px',
-    });
-
-    const aside = element.shadowRoot.querySelector('aside');
-    const style = aside.getAttribute('style');
-    assert.ok(style.includes('--sidebar-width: 350px'), 'Should set custom width');
-  });
-
-  it('should have mobile toggle button', async () => {
-    element = await fixture('grantcodes-sidebar');
-    const mobileToggle = element.shadowRoot.querySelector('.sidebar__mobile-toggle');
-    assert.ok(mobileToggle, 'Mobile toggle button should exist');
-  });
-
-  it('should have content container', async () => {
-    element = await fixture('grantcodes-sidebar');
-    const content = element.shadowRoot.querySelector('.sidebar__content');
-    assert.ok(content, 'Content container should exist');
-  });
-
-  it('should have slot for content', async () => {
-    element = await fixture('grantcodes-sidebar');
-    const slot = element.shadowRoot.querySelector('slot');
-    assert.ok(slot, 'Slot should exist for content');
-  });
-
-  it('should toggle mobile drawer when mobile toggle is clicked', async () => {
-    element = await fixture('grantcodes-sidebar');
-    const mobileToggle = element.shadowRoot.querySelector('.sidebar__mobile-toggle');
-
-    assert.strictEqual(element._drawerOpen, false, 'Drawer should start closed');
-
-    click(mobileToggle);
+  it('leaves controlled state to the application', async () => {
+    element = await fixture('grantcodes-sidebar', { controlled: true });
+    element.requestOpen(true);
     await element.updateComplete;
 
-    assert.strictEqual(element._drawerOpen, true, 'Drawer should be open after click');
+    assert.strictEqual(element.open, false);
   });
 
-  it('should emit drawer-toggle event', async () => {
+  it('does not request state changes from direct property updates', async () => {
     element = await fixture('grantcodes-sidebar');
+    let requests = 0;
+    element.addEventListener('drawer-toggle', () => requests++);
 
-    let drawerState = null;
-    element.addEventListener('drawer-toggle', (e) => {
-      drawerState = e.detail.open;
-    });
-
-    const mobileToggle = element.shadowRoot.querySelector('.sidebar__mobile-toggle');
-    click(mobileToggle);
-
+    element.open = true;
     await element.updateComplete;
 
-    assert.strictEqual(drawerState, true, 'Drawer toggle event should fire');
+    assert.strictEqual(requests, 0);
   });
 
-  it('should render overlay when drawer is open', async () => {
-    element = await fixture('grantcodes-sidebar');
-    element._drawerOpen = true;
-
+  it('uses header, content, and footer without reserving empty regions', async () => {
+    element = document.createElement('grantcodes-sidebar');
+    element.innerHTML = '<h2 slot="header">Together</h2><nav slot="content">Navigation</nav>';
+    document.body.append(element);
     await element.updateComplete;
 
-    const overlay = element.shadowRoot.querySelector('.sidebar__overlay');
-    assert.ok(overlay, 'Overlay should exist when drawer is open');
+    assert.strictEqual(element.shadowRoot.querySelector('[part="header"]').hidden, false);
+    assert.strictEqual(element.shadowRoot.querySelector('[part="content"]').hidden, false);
+    assert.strictEqual(element.shadowRoot.querySelector('[part="footer"]').hidden, true);
   });
 
-  it('should not render overlay when drawer is closed', async () => {
-    element = await fixture('grantcodes-sidebar');
-    const overlay = element.shadowRoot.querySelector('.sidebar__overlay');
-    assert.ok(!overlay, 'Overlay should not exist when drawer is closed');
+  it('shares committed state across toggles', async () => {
+    element = document.createElement('grantcodes-sidebar');
+    element.id = 'navigation';
+    const first = document.createElement('grantcodes-sidebar-toggle');
+    first.setAttribute('for', 'navigation');
+    first.innerHTML = '<button type="button">Open</button>';
+    const second = document.createElement('grantcodes-sidebar-toggle');
+    second.setAttribute('for', 'navigation');
+    second.innerHTML = '<button type="button">Open</button>';
+    document.body.append(element, first, second);
+    element._compact = true;
+    await Promise.all([element.updateComplete, first.updateComplete, second.updateComplete]);
+
+    first.querySelector('button')?.click();
+    await Promise.all([element.updateComplete, first.updateComplete, second.updateComplete]);
+
+    assert.strictEqual(element.open, true);
+    assert.strictEqual(first.querySelector('button')?.getAttribute('aria-expanded'), 'true');
+    assert.strictEqual(second.querySelector('button')?.getAttribute('aria-expanded'), 'true');
+    assert.strictEqual(first.querySelector('button')?.getAttribute('aria-controls'), 'navigation');
   });
 
-  it('should make a closed mobile drawer inert and restore focus after Escape', async () => {
-    const matchMedia = window.matchMedia;
-    window.matchMedia = () => ({
-      matches: true,
-      addEventListener() {},
-      removeEventListener() {},
-    });
-
-    try {
-      element = await fixture('grantcodes-sidebar');
-      const mobileToggle = element.shadowRoot.querySelector('.sidebar__mobile-toggle');
-      const sidebar = element.shadowRoot.querySelector('aside');
-
-      assert.strictEqual(sidebar.inert, true, 'Closed drawer should not expose its contents');
-
-      click(mobileToggle);
-      await element.updateComplete;
-      assert.strictEqual(sidebar.inert, false, 'Open drawer should expose its contents');
-
-      document.dispatchEvent(new window.KeyboardEvent('keydown', { key: 'Escape' }));
-      await element.updateComplete;
-
-      assert.strictEqual(sidebar.inert, true, 'Closed drawer should become inert again');
-      assert.strictEqual(element.shadowRoot.activeElement, mobileToggle, 'Focus should return to trigger');
-    } finally {
-      window.matchMedia = matchMedia;
-    }
-  });
-
-  it('should preserve rapid collapse and drawer toggles before the transition update', async () => {
-    element = await fixture('grantcodes-sidebar');
-    const matchMedia = window.matchMedia;
-    const startViewTransition = document.startViewTransition;
-    const callbacks = [];
-    const collapsedStates = [];
-    const drawerStates = [];
-    element.addEventListener('toggle', (event) => collapsedStates.push(event.detail.collapsed));
-    element.addEventListener('drawer-toggle', (event) => drawerStates.push(event.detail.open));
-    window.matchMedia = () => ({ matches: false });
-    document.startViewTransition = (callback) => {
-      callbacks.push(callback);
-      return { finished: Promise.resolve() };
-    };
-
-    try {
-      const collapse = element.shadowRoot.querySelector('.sidebar__toggle');
-      const drawer = element.shadowRoot.querySelector('.sidebar__mobile-toggle');
-      click(collapse);
-      click(collapse);
-      click(drawer);
-      click(drawer);
-      for (const callback of callbacks) await callback();
-      await element.updateComplete;
-
-      assert.strictEqual(element.collapsed, false, 'Two clicks should return to expanded');
-      assert.strictEqual(element._drawerOpen, false, 'Two clicks should return to closed');
-      assert.deepStrictEqual(collapsedStates, [true, false]);
-      assert.deepStrictEqual(drawerStates, [true, false]);
-    } finally {
-      window.matchMedia = matchMedia;
-      document.startViewTransition = startViewTransition;
-    }
-  });
-
-  it('should run the collapse inside a view transition when motion is allowed', async () => {
-    element = await fixture('grantcodes-sidebar', { collapsible: true });
-
-    const originalMatchMedia = globalThis.window.matchMedia;
-    let transitions = 0;
-    globalThis.window.matchMedia = () => ({ matches: false });
-    globalThis.document.startViewTransition = (callback) => {
-      transitions++;
-      callback();
-      return { finished: Promise.resolve() };
-    };
-
-    click(element.shadowRoot.querySelector('.sidebar__toggle'));
+  it('ignores disabled controls and missing targets', async () => {
+    element = document.createElement('grantcodes-sidebar-toggle');
+    element.setAttribute('for', 'missing');
+    element.innerHTML = '<button type="button" disabled>Open</button>';
+    document.body.append(element);
     await element.updateComplete;
 
-    globalThis.window.matchMedia = originalMatchMedia;
-    globalThis.document.startViewTransition = undefined;
-
-    assert.strictEqual(transitions, 1, 'The collapse should animate');
-    assert.strictEqual(element.collapsed, true, 'The collapse should still apply');
+    assert.strictEqual(element.hidden, true);
+    element.querySelector('button')?.click();
+    assert.strictEqual(element.querySelector('button')?.getAttribute('aria-expanded'), null);
   });
 });

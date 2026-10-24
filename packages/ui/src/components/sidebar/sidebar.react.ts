@@ -1,4 +1,4 @@
-import { createComponent } from '@lit/react';
+import { createComponent, type EventName } from '@lit/react';
 import React from 'react';
 import { GrantCodesSidebar } from './sidebar.js';
 
@@ -7,7 +7,6 @@ export const Sidebar = createComponent({
   elementClass: GrantCodesSidebar,
   react: React,
   events: {
-    onToggle: 'toggle',
-    onDrawerToggle: 'drawer-toggle',
+    onDrawerToggle: 'drawer-toggle' as EventName<CustomEvent<{ open: boolean }>>,
   },
 });

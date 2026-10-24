@@ -28,6 +28,7 @@ describe('React Wrappers', () => {
     assert.ok(react.Dropdown, 'Dropdown wrapper should be exported');
     assert.ok(react.DropdownItem, 'DropdownItem wrapper should be exported');
     assert.ok(react.Sidebar, 'Sidebar wrapper should be exported');
+    assert.ok(react.SidebarToggle, 'SidebarToggle wrapper should be exported');
     assert.ok(react.Toast, 'Toast wrapper should be exported');
   });
 

@@ -38,6 +38,7 @@ export { Popover } from './components/popover/popover.react.js';
 export { Person } from './components/person/person.react.js';
 export { Pricing } from './components/pricing/pricing.react.js';
 export { Sidebar } from './components/sidebar/sidebar.react.js';
+export { SidebarToggle } from './components/sidebar/sidebar-toggle.react.js';
 export { Stats } from './components/stats/stats.react.js';
 export { SplitBar } from './components/split-bar/split-bar.react.js';
 export { TabsButton } from './components/tabs/internal/tabs-button.react.js';
