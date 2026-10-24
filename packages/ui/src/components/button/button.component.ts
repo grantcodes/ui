@@ -10,12 +10,15 @@ const hasContent = (node: Node): boolean =>
 export class GrantCodesButton extends LitElement {
   declare _fieldsetDisabled: boolean;
   declare _contentObserver: MutationObserver | null;
+  declare color: 'primary' | 'secondary' | 'neutral' | 'danger';
   declare disabled: boolean;
   declare href: string;
   declare internals: ElementInternals | null;
   declare name: string;
+  declare size: 'sm' | 'md' | 'lg';
   declare type: string;
   declare value: string;
+  declare variant: 'solid' | 'outline' | 'ghost';
 
   // Styles are scoped to this element: they won't conflict with styles
   // on the main page or in other components. Styling API can be exposed
@@ -29,6 +32,9 @@ export class GrantCodesButton extends LitElement {
     type: { type: String },
     name: { type: String },
     value: { type: String },
+    color: { type: String, reflect: true },
+    size: { type: String, reflect: true },
+    variant: { type: String, reflect: true },
     disabled: { type: Boolean, reflect: true },
     form: { type: String, reflect: true },
   };
@@ -40,6 +46,12 @@ export class GrantCodesButton extends LitElement {
     this.type = 'button';
     this.name = '';
     this.value = '';
+    /** @type {'primary' | 'secondary' | 'neutral' | 'danger'} */
+    this.color = 'primary';
+    /** @type {'sm' | 'md' | 'lg'} */
+    this.size = 'md';
+    /** @type {'solid' | 'outline' | 'ghost'} */
+    this.variant = 'solid';
     // Do NOT set form="" — an empty form attribute overrides ancestor form association
     this._fieldsetDisabled = false;
     this._contentObserver = null;

@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import type { Plugin } from 'vite';
 import type { GrantCodesDialog, GrantCodesPopover, GrantCodesSidebar } from '@grantcodes/ui';
-import { Dialog, Dropdown, Popover, Sidebar, SidebarToggle } from '@grantcodes/ui/react';
+import { Button, Dialog, Dropdown, Popover, Sidebar, SidebarToggle } from '@grantcodes/ui/react';
 import { GrantCodesDialog as DeepGrantCodesDialog } from '@grantcodes/ui/components/dialog/index.js';
 import { GrantCodesPopover as DeepGrantCodesPopover } from '@grantcodes/ui/components/popover/index.js';
 import { cssImportAttributes } from '@grantcodes/ui/vite-plugin';
@@ -15,6 +15,13 @@ export function Consumer() {
 
   return (
     <>
+      <Button size="sm" color="danger" variant="ghost">
+        Delete
+      </Button>
+      {/* @ts-expect-error size is a closed union */}
+      <Button size="xl" />
+      {/* @ts-expect-error variant is a closed union */}
+      <Button variant="solid-ish" />
       <Dialog ref={dialogRef} dismissible>
         Dialog content
       </Dialog>
