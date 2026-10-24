@@ -50,8 +50,6 @@ export const ButtonGroup: Story = {
   },
 };
 
-
-
 export const GhostIcons: Story = {
   render: () => html`
     <grantcodes-button-group aria-label="Post actions" variant="spaced">
