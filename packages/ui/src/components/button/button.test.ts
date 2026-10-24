@@ -326,4 +326,74 @@ describe('FACE Infrastructure', () => {
     assert.ok(button, 'Internal button should exist');
     assert.strictEqual(button.type, 'button', "Default internal button type should be 'button'");
   });
+
+  describe('icon layout', () => {
+    const settle = () => new Promise((resolve) => setTimeout(resolve, 0));
+    const icon = () => document.createElement('grantcodes-icon');
+
+    afterEach(() => {
+      cleanup(element);
+    });
+
+    const flags = () =>
+      ['icon-only', 'icon-start', 'icon-end'].filter((name) => element.hasAttribute(name));
+
+    it('marks a button whose only content is an icon', async () => {
+      element = await fixture('grantcodes-button');
+      element.append(icon());
+      await settle();
+
+      assert.deepEqual(flags(), ['icon-only']);
+    });
+
+    it('marks a leading icon next to text', async () => {
+      element = await fixture('grantcodes-button');
+      element.append(icon(), ' Like');
+      await settle();
+
+      assert.deepEqual(flags(), ['icon-start']);
+    });
+
+    it('marks a trailing icon next to text', async () => {
+      element = await fixture('grantcodes-button');
+      element.append('Like ', icon());
+      await settle();
+
+      assert.deepEqual(flags(), ['icon-end']);
+    });
+
+    it('marks an icon on both sides', async () => {
+      element = await fixture('grantcodes-button');
+      element.append(icon(), ' Like ', icon());
+      await settle();
+
+      assert.deepEqual(flags(), ['icon-start', 'icon-end']);
+    });
+
+    it('marks nothing for text or whitespace', async () => {
+      element = await fixture('grantcodes-button');
+      element.append(' Like ');
+      await settle();
+      assert.deepEqual(flags(), []);
+
+      element.replaceChildren('   ');
+      await settle();
+      assert.deepEqual(flags(), []);
+    });
+
+    it('re-measures when the content changes', async () => {
+      element = await fixture('grantcodes-button');
+      element.append(icon());
+      await settle();
+      assert.deepEqual(flags(), ['icon-only']);
+
+      element.append(' Like');
+      await settle();
+      assert.deepEqual(flags(), ['icon-start']);
+
+      element.replaceChildren(icon());
+      await settle();
+      assert.deepEqual(flags(), ['icon-only']);
+    });
+  });
 });

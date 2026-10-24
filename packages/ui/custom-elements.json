@@ -1128,6 +1128,14 @@
           "members": [
             {
               "kind": "field",
+              "name": "_contentObserver",
+              "type": {
+                "text": "MutationObserver | null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
               "name": "_fieldsetDisabled",
               "type": {
                 "text": "boolean"
@@ -1145,6 +1153,10 @@
                   }
                 }
               ]
+            },
+            {
+              "kind": "field",
+              "name": "_syncIconLayout"
             },
             {
               "kind": "field",
