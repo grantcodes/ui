@@ -396,15 +396,12 @@ grantcodes-footer {
 
 ```css
 grantcodes-sidebar {
-  --component-sidebar-width: 280px;
-  --component-sidebar-background: white;
-  --component-sidebar-border: 1px solid var(--color-border-default);
-  --component-sidebar-collapsed-width: 60px;
-  
-  /* Mobile Drawer */
-  --component-sidebar-overlay-background: rgba(0, 0, 0, 0.5);
+  --sidebar-width: 17.5rem;
+  --sidebar-breakpoint: 900px;
 }
 ```
+
+`grantcodes-sidebar` is a persistent aside at and above `--sidebar-breakpoint`, and a modal drawer below it. Use only the named `header`, `content`, and `footer` slots; unslotted content is not rendered. `open` controls the compact drawer and `controlled` makes `drawer-toggle` requests application-owned. Pair it with `grantcodes-sidebar-toggle for="sidebar-id"` to supply one or more trigger buttons. Legacy `collapsed`, `collapsible`, `position`, and `width` properties are removed.
 
 ---
 

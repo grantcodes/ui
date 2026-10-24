@@ -6575,6 +6575,153 @@
             "name": "*",
             "module": "src/components/sidebar/sidebar.js"
           }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/sidebar/sidebar.react.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/sidebar/sidebar-toggle.react.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/sidebar/sidebar-toggle.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "GrantCodesSidebarToggle",
+          "members": [
+            {
+              "kind": "field",
+              "name": "_controlState",
+              "type": {
+                "text": "ControlState | null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "method",
+              "name": "_findControl"
+            },
+            {
+              "kind": "method",
+              "name": "_findSidebar"
+            },
+            {
+              "kind": "method",
+              "name": "_handleClick"
+            },
+            {
+              "kind": "method",
+              "name": "_handleSlotChange"
+            },
+            {
+              "kind": "field",
+              "name": "_observer",
+              "type": {
+                "text": "MutationObserver | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_onPresentationChange",
+              "type": {
+                "text": "() => void"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_restoreControl"
+            },
+            {
+              "kind": "field",
+              "name": "_rootObserver",
+              "type": {
+                "text": "MutationObserver | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_sidebar",
+              "type": {
+                "text": "GrantCodesSidebar | null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "method",
+              "name": "_syncControl"
+            },
+            {
+              "kind": "method",
+              "name": "_syncSidebar"
+            },
+            {
+              "kind": "field",
+              "name": "for",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "for",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "for",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "for"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "grantcodes-sidebar-toggle",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GrantCodesSidebarToggle",
+          "declaration": {
+            "name": "GrantCodesSidebarToggle",
+            "module": "src/components/sidebar/sidebar-toggle.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/sidebar/sidebar-toggle.component.js",
+      "deprecated": false,
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-sidebar-toggle",
+          "declaration": {
+            "name": "GrantCodesSidebarToggle",
+            "module": "src/components/sidebar/sidebar-toggle.component.js"
+          }
         }
       ]
     },
@@ -6589,25 +6736,76 @@
           "members": [
             {
               "kind": "method",
-              "name": "_closeDrawer"
+              "name": "_accessibleText",
+              "parameters": [
+                {
+                  "name": "attribute",
+                  "type": {
+                    "text": "'aria-labelledby' | 'aria-describedby'"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_aria"
+            },
+            {
+              "kind": "method",
+              "name": "_closeDialog",
+              "parameters": [
+                {
+                  "name": "restoreFocus",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ]
             },
             {
               "kind": "field",
-              "name": "_drawerOpen",
+              "name": "_compact",
               "privacy": "public",
               "type": {
                 "text": "boolean"
               },
-              "description": "Whether mobile drawer is open",
               "default": "false",
-              "attribute": "_drawerOpen"
+              "attribute": "_compact"
+            },
+            {
+              "kind": "field",
+              "name": "_contentPresence",
+              "type": {
+                "text": "SlotPresenceController"
+              },
+              "default": "new SlotPresenceController(this, 'content', (present) => { this._hasContent = present; })"
+            },
+            {
+              "kind": "field",
+              "name": "_footerPresence",
+              "type": {
+                "text": "SlotPresenceController"
+              },
+              "default": "new SlotPresenceController(this, 'footer', (present) => { this._hasFooter = present; })"
             },
             {
               "kind": "method",
-              "name": "_handleDocumentClick",
+              "name": "_handleDialogClick",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "event",
+                  "type": {
+                    "text": "MouseEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleNativeCancel",
+              "parameters": [
+                {
+                  "name": "event",
                   "type": {
                     "text": "Event"
                   }
@@ -6616,201 +6814,199 @@
             },
             {
               "kind": "method",
-              "name": "_handleEscape",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "KeyboardEvent"
-                  }
-                }
-              ]
+              "name": "_handleNativeClose"
             },
             {
               "kind": "method",
-              "name": "_handleMobileChange",
+              "name": "_handlePointerDown",
               "parameters": [
                 {
                   "name": "event",
                   "type": {
-                    "text": "MediaQueryList | MediaQueryListEvent | undefined"
+                    "text": "PointerEvent"
                   }
                 }
               ]
             },
             {
+              "kind": "method",
+              "name": "_handleSlotChange"
+            },
+            {
               "kind": "field",
-              "name": "_isMobile",
+              "name": "_hasContent",
               "privacy": "public",
               "type": {
                 "text": "boolean"
               },
               "default": "false",
-              "attribute": "_isMobile"
+              "attribute": "_hasContent"
             },
             {
               "kind": "field",
-              "name": "_mobileMediaQuery",
+              "name": "_hasFooter",
+              "privacy": "public",
               "type": {
-                "text": "MediaQueryList | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "_pendingState",
-              "type": {
-                "text": "{ collapsed?: boolean; _drawerOpen?: boolean }"
+                "text": "boolean"
               },
-              "default": "{}"
+              "default": "false",
+              "attribute": "_hasFooter"
             },
             {
               "kind": "field",
-              "name": "_restoreFocusOnClose",
+              "name": "_hasHeader",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_hasHeader"
+            },
+            {
+              "kind": "field",
+              "name": "_headerPresence",
+              "type": {
+                "text": "SlotPresenceController"
+              },
+              "default": "new SlotPresenceController(this, 'header', (present) => { this._hasHeader = present; })"
+            },
+            {
+              "kind": "method",
+              "name": "_observeBreakpoint"
+            },
+            {
+              "kind": "method",
+              "name": "_panelContent"
+            },
+            {
+              "kind": "field",
+              "name": "_pointerStartedInside",
               "type": {
                 "text": "boolean"
               },
               "default": "false"
             },
             {
-              "kind": "method",
-              "name": "_scheduleTransition"
-            },
-            {
-              "kind": "method",
-              "name": "_toggleCollapsed"
-            },
-            {
-              "kind": "method",
-              "name": "_toggleDrawer"
-            },
-            {
               "kind": "field",
-              "name": "_transitionScheduled",
+              "name": "_resizeObserver",
               "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "_viewTransitionName",
-              "type": {
-                "text": "string"
+                "text": "ResizeObserver | undefined"
               }
             },
             {
+              "kind": "method",
+              "name": "_restoreFocus"
+            },
+            {
               "kind": "field",
-              "name": "collapsed",
+              "name": "_restoreFocusTarget",
+              "type": {
+                "text": "HTMLElement | null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "method",
+              "name": "_syncDialog"
+            },
+            {
+              "kind": "field",
+              "name": "controlled",
               "privacy": "public",
               "type": {
                 "text": "boolean"
               },
-              "description": "Whether the sidebar is collapsed on desktop",
               "default": "false",
-              "attribute": "collapsed",
+              "attribute": "controlled",
               "reflects": true
             },
             {
               "kind": "field",
-              "name": "collapsible",
+              "name": "open",
               "privacy": "public",
               "type": {
                 "text": "boolean"
               },
-              "description": "Whether the sidebar can be collapsed",
-              "default": "true",
-              "attribute": "collapsible"
+              "default": "false",
+              "attribute": "open",
+              "reflects": true
             },
             {
-              "kind": "field",
-              "name": "position",
-              "privacy": "public",
-              "type": {
-                "text": "'left' | 'right'"
-              },
-              "description": "Position of the sidebar",
-              "default": "'left'",
-              "attribute": "position"
-            },
-            {
-              "kind": "field",
-              "name": "width",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "description": "Custom width of the sidebar",
-              "default": "'280px'",
-              "attribute": "width"
+              "kind": "method",
+              "name": "requestOpen",
+              "parameters": [
+                {
+                  "name": "open",
+                  "type": {
+                    "text": "boolean"
+                  }
+                },
+                {
+                  "name": "trigger",
+                  "optional": true,
+                  "type": {
+                    "text": "HTMLElement"
+                  }
+                }
+              ]
             }
           ],
           "events": [
             {
-              "name": "drawer-toggle",
+              "name": "sidebar-presentation-change",
               "type": {
-                "text": "CustomEvent"
-              }
-            },
-            {
-              "name": "toggle",
-              "type": {
-                "text": "CustomEvent"
+                "text": "Event"
               }
             }
           ],
           "attributes": [
             {
-              "name": "_drawerOpen",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Whether mobile drawer is open",
-              "default": "false",
-              "fieldName": "_drawerOpen"
-            },
-            {
-              "name": "_isMobile",
+              "name": "_compact",
               "type": {
                 "text": "boolean"
               },
               "default": "false",
-              "fieldName": "_isMobile"
+              "fieldName": "_compact"
             },
             {
-              "name": "collapsed",
+              "name": "_hasContent",
               "type": {
                 "text": "boolean"
               },
-              "description": "Whether the sidebar is collapsed on desktop",
               "default": "false",
-              "fieldName": "collapsed"
+              "fieldName": "_hasContent"
             },
             {
-              "name": "collapsible",
+              "name": "_hasFooter",
               "type": {
                 "text": "boolean"
               },
-              "description": "Whether the sidebar can be collapsed",
-              "default": "true",
-              "fieldName": "collapsible"
+              "default": "false",
+              "fieldName": "_hasFooter"
             },
             {
-              "name": "position",
+              "name": "_hasHeader",
               "type": {
-                "text": "'left' | 'right'"
+                "text": "boolean"
               },
-              "description": "Position of the sidebar",
-              "default": "'left'",
-              "fieldName": "position"
+              "default": "false",
+              "fieldName": "_hasHeader"
             },
             {
-              "name": "width",
+              "name": "controlled",
               "type": {
-                "text": "string"
+                "text": "boolean"
               },
-              "description": "Custom width of the sidebar",
-              "default": "'280px'",
-              "fieldName": "width"
+              "default": "false",
+              "fieldName": "controlled"
+            },
+            {
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "open"
             }
           ],
           "superclass": {
@@ -6863,6 +7059,14 @@
         },
         {
           "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/sidebar/sidebar-toggle.component.js"
+          }
+        },
+        {
+          "kind": "js",
           "name": "default",
           "declaration": {
             "name": "GrantCodesSidebar",
@@ -6875,6 +7079,14 @@
           "declaration": {
             "name": "GrantCodesSidebar",
             "module": "/src/components/sidebar/sidebar.component.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-sidebar-toggle",
+          "declaration": {
+            "name": "GrantCodesSidebarToggle",
+            "module": "/src/components/sidebar/sidebar-toggle.component.js"
           }
         }
       ]

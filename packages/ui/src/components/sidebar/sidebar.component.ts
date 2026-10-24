@@ -1,233 +1,223 @@
-import { html, LitElement } from 'lit';
-import { classMap } from 'lit/directives/class-map.js';
-import { generateId } from '../../lib/generate-id.js';
-import focusRingStyles from '../../lib/styles/focus-ring.css' with { type: 'css' };
-import { startViewTransition } from '../../lib/view-transition.js';
+import { html, LitElement, nothing, type PropertyValues } from 'lit';
+import { SlotPresenceController } from '../../lib/slot-presence-controller.js';
 import sidebarStyles from './sidebar.css' with { type: 'css' };
 
-export class GrantCodesSidebar extends LitElement {
-  declare _drawerOpen: boolean;
-  declare _isMobile: boolean;
-  declare _mobileMediaQuery: MediaQueryList | undefined;
-  declare _pendingState: { collapsed?: boolean; _drawerOpen?: boolean };
-  declare _restoreFocusOnClose: boolean;
-  declare _transitionScheduled: boolean;
-  declare _viewTransitionName: string;
-  declare collapsed: boolean;
-  declare collapsible: boolean;
-  declare position: string;
-  declare width: string;
+type DrawerToggleDetail = { open: boolean };
 
-  static styles = [focusRingStyles, sidebarStyles];
+export class GrantCodesSidebar extends LitElement {
+  declare _compact: boolean;
+  declare _contentPresence: SlotPresenceController;
+  declare _hasContent: boolean;
+  declare _hasFooter: boolean;
+  declare _hasHeader: boolean;
+  declare _footerPresence: SlotPresenceController;
+  declare _headerPresence: SlotPresenceController;
+  declare _pointerStartedInside: boolean;
+  declare _resizeObserver: ResizeObserver | undefined;
+  declare _restoreFocusTarget: HTMLElement | null;
+  declare controlled: boolean;
+  declare open: boolean;
+
+  static styles = [sidebarStyles];
 
   static properties = {
-    position: { type: String },
-    collapsed: { type: Boolean, reflect: true },
-    collapsible: { type: Boolean },
-    width: { type: String },
-    _drawerOpen: { type: Boolean, state: true },
-    _isMobile: { type: Boolean, state: true },
+    open: { type: Boolean, reflect: true },
+    controlled: { type: Boolean, reflect: true },
+    _compact: { state: true },
+    _hasHeader: { state: true },
+    _hasContent: { state: true },
+    _hasFooter: { state: true },
   };
 
   constructor() {
     super();
-
-    /**
-     * Position of the sidebar
-     * @type {'left' | 'right'}
-     */
-    this.position = 'left';
-
-    /**
-     * Whether the sidebar is collapsed on desktop
-     * @type {boolean}
-     */
-    this.collapsed = false;
-
-    /**
-     * Whether the sidebar can be collapsed
-     * @type {boolean}
-     */
-    this.collapsible = true;
-
-    /**
-     * Custom width of the sidebar
-     * @type {string}
-     */
-    this.width = '280px';
-
-    /**
-     * Whether mobile drawer is open
-     * @type {boolean}
-     */
-    this._drawerOpen = false;
-    this._isMobile = false;
-    this._restoreFocusOnClose = false;
-
-    // Per-instance, so two sidebars cannot abort each other's view transition.
-    this._viewTransitionName = generateId('sidebar-vt');
-    this._pendingState = {};
-    this._transitionScheduled = false;
-
-    this._handleDocumentClick = this._handleDocumentClick.bind(this);
-    this._handleEscape = this._handleEscape.bind(this);
-    this._handleMobileChange = this._handleMobileChange.bind(this);
+    this.open = false;
+    this.controlled = false;
+    this._compact = false;
+    this._hasHeader = false;
+    this._hasContent = false;
+    this._hasFooter = false;
+    this._pointerStartedInside = false;
+    this._restoreFocusTarget = null;
+    this._headerPresence = new SlotPresenceController(this, 'header', (present) => {
+      this._hasHeader = present;
+    });
+    this._contentPresence = new SlotPresenceController(this, 'content', (present) => {
+      this._hasContent = present;
+    });
+    this._footerPresence = new SlotPresenceController(this, 'footer', (present) => {
+      this._hasFooter = present;
+    });
   }
 
   connectedCallback() {
     super.connectedCallback();
-    this.style.setProperty('--sidebar-vt-name', this._viewTransitionName);
-    if (typeof document === 'undefined') return;
-    this._mobileMediaQuery = window.matchMedia?.('(max-width: 768px)');
-    this._handleMobileChange(this._mobileMediaQuery);
-    this._mobileMediaQuery?.addEventListener('change', this._handleMobileChange);
-    document.addEventListener('click', this._handleDocumentClick);
-    document.addEventListener('keydown', this._handleEscape);
+    this._observeBreakpoint();
   }
 
   disconnectedCallback() {
-    this._mobileMediaQuery?.removeEventListener('change', this._handleMobileChange);
-    document.removeEventListener('click', this._handleDocumentClick);
-    document.removeEventListener('keydown', this._handleEscape);
+    this._resizeObserver?.disconnect();
+    this._resizeObserver = undefined;
+    this._closeDialog(false);
     super.disconnectedCallback();
   }
 
-  updated(changed: Map<string, unknown>) {
-    if (changed.has('_drawerOpen') && !this._drawerOpen && this._restoreFocusOnClose) {
-      this._restoreFocusOnClose = false;
-      this.shadowRoot?.querySelector<HTMLButtonElement>('.sidebar__mobile-toggle')?.focus();
+  firstUpdated() {
+    this._observeBreakpoint();
+  }
+
+  willUpdate(changed: PropertyValues<this>) {
+    if (changed.has('_compact') && !this._compact) this._closeDialog(false);
+  }
+
+  updated(changed: PropertyValues<this>) {
+    if (changed.has('_compact')) {
+      this.toggleAttribute('data-compact', this._compact);
+      this.dispatchEvent(new Event('sidebar-presentation-change'));
     }
+    if (changed.has('open') || changed.has('_compact')) this._syncDialog();
   }
 
-  _handleMobileChange(event: MediaQueryList | MediaQueryListEvent | undefined) {
-    this._isMobile = Boolean(event?.matches);
-    if (!this._isMobile) this._drawerOpen = false;
-  }
-
-  _handleDocumentClick(e: Event) {
-    // Close mobile drawer if clicking outside
-    if (this._pendingState._drawerOpen ?? this._drawerOpen) {
-      const path = e.composedPath();
-      if (!path.includes(this)) {
-        this._closeDrawer();
-      }
-    }
-  }
-
-  _handleEscape(e: KeyboardEvent) {
-    if (e.key === 'Escape' && (this._pendingState._drawerOpen ?? this._drawerOpen)) {
-      this._closeDrawer();
-    }
-  }
-
-  _scheduleTransition() {
-    if (this._transitionScheduled) return;
-    this._transitionScheduled = true;
-    startViewTransition(() => {
-      const pending = this._pendingState;
-      this._pendingState = {};
-      this._transitionScheduled = false;
-      if ('collapsed' in pending) this.collapsed = pending.collapsed ?? this.collapsed;
-      if ('_drawerOpen' in pending) this._drawerOpen = pending._drawerOpen ?? this._drawerOpen;
-      return this.updateComplete;
+  requestOpen(open: boolean, trigger?: HTMLElement) {
+    if (open && trigger) this._restoreFocusTarget = trigger;
+    const event = new CustomEvent<DrawerToggleDetail>('drawer-toggle', {
+      detail: { open },
+      bubbles: true,
+      composed: true,
+      cancelable: true,
     });
+    if (!this.dispatchEvent(event)) {
+      if (open) this._restoreFocusTarget = null;
+      return;
+    }
+    if (this.controlled) return;
+    this.open = open;
   }
 
-  _closeDrawer() {
-    if (!(this._pendingState._drawerOpen ?? this._drawerOpen)) return;
-    this._restoreFocusOnClose = true;
-    this._pendingState._drawerOpen = false;
-    this._scheduleTransition();
+  _observeBreakpoint() {
+    if (
+      typeof ResizeObserver === 'undefined' ||
+      typeof HTMLDialogElement === 'undefined' ||
+      !('showModal' in HTMLDialogElement.prototype)
+    )
+      return;
+    const probe = this.renderRoot.querySelector<HTMLElement>('.sidebar__breakpoint');
+    if (!probe || this._resizeObserver) return;
+    this._resizeObserver = new ResizeObserver(([entry]) => {
+      this._compact = Math.round(entry.contentRect.width) >= window.innerWidth;
+    });
+    this._resizeObserver.observe(probe);
   }
 
-  _toggleCollapsed() {
-    if (!this.collapsible) return;
-
-    const collapsed = !(this._pendingState.collapsed ?? this.collapsed);
-    this._pendingState.collapsed = collapsed;
-    this._scheduleTransition();
-    this.dispatchEvent(
-      new CustomEvent('toggle', {
-        detail: { collapsed },
-        bubbles: true,
-        composed: true,
-      }),
-    );
+  _syncDialog() {
+    const dialog = this.renderRoot.querySelector<HTMLDialogElement>('dialog');
+    if (!dialog) return;
+    if (this._compact && this.open) {
+      if (!dialog.open && typeof dialog.showModal === 'function') dialog.showModal();
+      return;
+    }
+    if (dialog.open) this._closeDialog(true);
   }
 
-  _toggleDrawer() {
-    const open = !(this._pendingState._drawerOpen ?? this._drawerOpen);
-    this._pendingState._drawerOpen = open;
-    this._scheduleTransition();
-    this.dispatchEvent(
-      new CustomEvent('drawer-toggle', {
-        detail: { open },
-        bubbles: true,
-        composed: true,
-      }),
-    );
+  _closeDialog(restoreFocus: boolean) {
+    const dialog = this.renderRoot.querySelector<HTMLDialogElement>('dialog');
+    if (!dialog?.open) return;
+    if (!restoreFocus) this.focus({ preventScroll: true });
+    dialog.close();
+    if (restoreFocus) this._restoreFocus();
+  }
+
+  _restoreFocus() {
+    const target = this._restoreFocusTarget;
+    this._restoreFocusTarget = null;
+    if (!target?.isConnected || target.matches(':disabled, [hidden], [inert]')) return;
+    target.focus({ preventScroll: true });
+  }
+
+  _handleNativeCancel(event: Event) {
+    event.preventDefault();
+    this.requestOpen(false);
+  }
+
+  _handleNativeClose() {
+    if (this.open) this.requestOpen(false);
+  }
+
+  _handlePointerDown(event: PointerEvent) {
+    this._pointerStartedInside = event.target !== event.currentTarget;
+  }
+
+  _handleDialogClick(event: MouseEvent) {
+    if (event.target !== event.currentTarget || this._pointerStartedInside) return;
+    this.requestOpen(false);
+  }
+
+  _handleSlotChange() {
+    this._headerPresence.refresh();
+    this._contentPresence.refresh();
+    this._footerPresence.refresh();
+  }
+
+  _accessibleText(attribute: 'aria-labelledby' | 'aria-describedby') {
+    const ids = this.getAttribute(attribute)?.split(/\s+/).filter(Boolean) ?? [];
+    const root = this.getRootNode() as ParentNode;
+    return ids
+      .map((id) => root.querySelector?.(`#${CSS.escape(id)}`)?.textContent?.trim())
+      .filter(Boolean)
+      .join(' ');
+  }
+
+  _aria() {
+    const label = this.getAttribute('aria-label') || this._accessibleText('aria-labelledby');
+    const description = this._accessibleText('aria-describedby');
+    return { label: label || nothing, description: description || nothing };
+  }
+
+  _panelContent() {
+    return html`
+      <header part="header" class="sidebar__header" ?hidden=${!this._hasHeader}>
+        <slot name="header" @slotchange=${this._handleSlotChange}></slot>
+      </header>
+      <div part="content" class="sidebar__content" ?hidden=${!this._hasContent}>
+        <slot name="content" @slotchange=${this._handleSlotChange}></slot>
+      </div>
+      <footer part="footer" class="sidebar__footer" ?hidden=${!this._hasFooter}>
+        <slot name="footer" @slotchange=${this._handleSlotChange}></slot>
+      </footer>
+    `;
   }
 
   render() {
-    const sidebarClasses = classMap({
-      sidebar: true,
-      'sidebar--collapsed': this.collapsed,
-      [`sidebar--${this.position}`]: true,
-      'sidebar--drawer-open': this._drawerOpen,
-    });
-
+    const { label, description } = this._aria();
     return html`
-			<!-- Mobile Toggle Button -->
-			<button
-				type="button"
-				class="sidebar__mobile-toggle focus-ring"
-				@click=${this._toggleDrawer}
-				aria-label="${this._drawerOpen ? 'Close sidebar' : 'Open sidebar'}"
-				aria-expanded="${this._drawerOpen}"
-			>
-				☰
-			</button>
-
-			<!-- Overlay for mobile -->
-			${
-        this._drawerOpen
+      <div class="sidebar__breakpoint" aria-hidden="true"></div>
+      ${
+        this._compact
           ? html`
-					<div
-						class="sidebar__overlay"
-						@click=${this._closeDrawer}
-					></div>
-				`
-          : ''
+              <dialog
+                part="panel"
+                class="sidebar__panel"
+                aria-label=${label}
+                aria-description=${description}
+                @cancel=${this._handleNativeCancel}
+                @close=${this._handleNativeClose}
+                @pointerdown=${this._handlePointerDown}
+                @click=${this._handleDialogClick}
+              >
+                ${this._panelContent()}
+              </dialog>
+            `
+          : html`
+              <aside
+                part="panel"
+                class="sidebar__panel"
+                aria-label=${label}
+                aria-description=${description}
+              >
+                ${this._panelContent()}
+              </aside>
+            `
       }
-
-			<!-- Sidebar -->
-			<aside
-				class=${sidebarClasses}
-				style="--sidebar-width: ${this.width}"
-				?inert=${this._isMobile && !this._drawerOpen}
-			>
-				<!-- Collapse Toggle (Desktop) -->
-				${
-          this.collapsible
-            ? html`
-						<button
-							type="button"
-							class="sidebar__toggle focus-ring"
-							@click=${this._toggleCollapsed}
-							aria-label="${this.collapsed ? 'Expand sidebar' : 'Collapse sidebar'}"
-							aria-expanded="${!this.collapsed}"
-						>
-							${this.position === 'left' ? (this.collapsed ? '→' : '←') : this.collapsed ? '←' : '→'}
-						</button>
-					`
-            : ''
-        }
-
-				<!-- Content -->
-				<div class="sidebar__content">
-					<slot></slot>
-				</div>
-			</aside>
-		`;
+    `;
   }
 }

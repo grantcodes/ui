@@ -1,4 +1,7 @@
 import { html } from 'lit';
+import type { GrantCodesSidebar } from './sidebar.js';
+// Side-effect import: an import used only in type position is erased, which would also drop
+// `customElements.define()` and the component's shadow styles from the story bundle.
 import './sidebar.js';
 
 const meta = {
@@ -8,146 +11,92 @@ const meta = {
 
 export default meta;
 
-/**
- * Basic sidebar with navigation
- */
-export const Sidebar = {
+// The breakpoint is viewport-based, so the drawer stories override it to stay compact inside
+// Storybook's wide preview iframe; otherwise every toggle is hidden in persistent layout.
+const drawerBreakpoint = '--sidebar-breakpoint: 100000px;';
+
+const navigation = html`
+  <h2 slot="header" style="margin: 0">Together</h2>
+  <nav slot="content" aria-label="Primary navigation">
+    <ul style="margin: 0; padding: 0; list-style: none; display: grid; gap: 0.75rem">
+      <li><a href="/">Dashboard</a></li>
+      <li><a href="/projects">Projects</a></li>
+      <li><a href="/tasks">Tasks</a></li>
+      <li><a href="/settings">Settings</a></li>
+    </ul>
+  </nav>
+  <div slot="footer"><a href="/account">Account</a></div>
+`;
+
+export const Standalone = {
   render: () => html`
-		<div style="display: flex; height: 500px; border: 1px solid #ccc;">
-			<grantcodes-sidebar>
-				<h3 style="margin-top: 0;">Navigation</h3>
-				<nav>
-					<ul style="list-style: none; padding: 0;">
-						<li style="margin-bottom: 0.5rem;"><a href="/">Dashboard</a></li>
-						<li style="margin-bottom: 0.5rem;"><a href="/projects">Projects</a></li>
-						<li style="margin-bottom: 0.5rem;"><a href="/tasks">Tasks</a></li>
-						<li style="margin-bottom: 0.5rem;"><a href="/settings">Settings</a></li>
-					</ul>
-				</nav>
-			</grantcodes-sidebar>
-			<div style="flex: 1; padding: 2rem;">
-				<h1>Main Content</h1>
-				<p>This is the main content area.</p>
-			</div>
-		</div>
-	`,
+    <div style="display: flex; min-height: 32rem;">
+      <grantcodes-sidebar id="navigation" aria-label="Navigation" style=${drawerBreakpoint}>
+        ${navigation}
+      </grantcodes-sidebar>
+      <main style="flex: 1; padding: 2rem">
+        <p>
+          <grantcodes-sidebar-toggle for="navigation">
+            <button type="button" aria-label="Open navigation">Menu</button>
+          </grantcodes-sidebar-toggle>
+        </p>
+        <h1>Dashboard</h1>
+      </main>
+    </div>
+  `,
 };
 
-/**
- * Right-positioned sidebar
- */
-export const RightSidebar = {
+export const MultipleTriggers = {
   render: () => html`
-		<div style="display: flex; height: 500px; border: 1px solid #ccc;">
-			<div style="flex: 1; padding: 2rem;">
-				<h1>Main Content</h1>
-				<p>The sidebar is on the right side.</p>
-			</div>
-			<grantcodes-sidebar position="right">
-				<h3 style="margin-top: 0;">Details</h3>
-				<p style="font-size: 0.875rem;">
-					Additional information and tools appear here.
-				</p>
-			</grantcodes-sidebar>
-		</div>
-	`,
+    <div style="display: flex; min-height: 32rem;">
+      <grantcodes-sidebar id="shared-navigation" aria-label="Navigation" style=${drawerBreakpoint}>
+        ${navigation}
+      </grantcodes-sidebar>
+      <main style="flex: 1; padding: 2rem; display: grid; align-content: start; gap: 1rem;">
+        <grantcodes-sidebar-toggle for="shared-navigation">
+          <button type="button" aria-label="Open navigation">Open navigation</button>
+        </grantcodes-sidebar-toggle>
+        <grantcodes-sidebar-toggle for="shared-navigation">
+          <button type="button" aria-label="Open navigation from tools">Tools</button>
+        </grantcodes-sidebar-toggle>
+        <h1>Multiple triggers</h1>
+      </main>
+    </div>
+  `,
 };
 
-/**
- * Collapsible sidebar that can be expanded/collapsed
- */
-export const Collapsible = {
-  render: () => html`
-		<div style="display: flex; height: 500px; border: 1px solid #ccc;">
-			<grantcodes-sidebar collapsible>
-				<h3 style="margin-top: 0;">Menu</h3>
-				<nav>
-					<ul style="list-style: none; padding: 0;">
-						<li style="margin-bottom: 0.5rem;"><a href="/">🏠 Home</a></li>
-						<li style="margin-bottom: 0.5rem;"><a href="/profile">👤 Profile</a></li>
-						<li style="margin-bottom: 0.5rem;"><a href="/messages">💬 Messages</a></li>
-						<li style="margin-bottom: 0.5rem;"><a href="/settings">⚙️ Settings</a></li>
-					</ul>
-				</nav>
-			</grantcodes-sidebar>
-			<div style="flex: 1; padding: 2rem;">
-				<h1>Main Content</h1>
-				<p>Click the toggle button to collapse/expand the sidebar.</p>
-			</div>
-		</div>
-	`,
+export const Controlled = {
+  render: () => {
+    const sidebar = document.createElement('grantcodes-sidebar') as GrantCodesSidebar;
+    sidebar.id = 'controlled-navigation';
+    sidebar.controlled = true;
+    sidebar.setAttribute('aria-label', 'Navigation');
+    sidebar.style.cssText = drawerBreakpoint;
+    sidebar.innerHTML = '<h2 slot="header">Together</h2><nav slot="content">Navigation</nav>';
+    const toggle = document.createElement('grantcodes-sidebar-toggle');
+    toggle.setAttribute('for', 'controlled-navigation');
+    toggle.innerHTML = '<button type="button" aria-label="Open navigation">Menu</button>';
+    const wrapper = document.createElement('div');
+    wrapper.style.cssText = 'display:flex;min-height:32rem;gap:1rem';
+    wrapper.append(sidebar, toggle);
+    sidebar.addEventListener('drawer-toggle', (event: Event) => {
+      sidebar.open = (event as CustomEvent<{ open: boolean }>).detail.open;
+    });
+    return wrapper;
+  },
 };
 
-/**
- * Initially collapsed sidebar
- */
-export const InitiallyCollapsed = {
+export const LongContent = {
   render: () => html`
-		<div style="display: flex; height: 500px; border: 1px solid #ccc;">
-			<grantcodes-sidebar collapsed>
-				<nav>
-					<ul style="list-style: none; padding: 0;">
-						<li style="margin-bottom: 0.5rem;">🏠</li>
-						<li style="margin-bottom: 0.5rem;">👤</li>
-						<li style="margin-bottom: 0.5rem;">💬</li>
-						<li style="margin-bottom: 0.5rem;">⚙️</li>
-					</ul>
-				</nav>
-			</grantcodes-sidebar>
-			<div style="flex: 1; padding: 2rem;">
-				<h1>Main Content</h1>
-				<p>The sidebar starts collapsed. Click the toggle to expand it.</p>
-			</div>
-		</div>
-	`,
-};
-
-/**
- * Custom width sidebar
- */
-export const CustomWidth = {
-  render: () => html`
-		<div style="display: flex; height: 500px; border: 1px solid #ccc;">
-			<grantcodes-sidebar width="350px">
-				<h3 style="margin-top: 0;">Wide Sidebar</h3>
-				<p>This sidebar has a custom width of 350px.</p>
-				<p>You can set any width you need for your layout.</p>
-			</grantcodes-sidebar>
-			<div style="flex: 1; padding: 2rem;">
-				<h1>Main Content</h1>
-				<p>Main content adjusts to the sidebar width.</p>
-			</div>
-		</div>
-	`,
-};
-
-/**
- * Mobile-responsive demo - shows drawer behavior on small screens
- */
-export const MobileResponsive = {
-  render: () => html`
-		<div style="max-width: 600px; border: 1px solid #ccc;">
-			<div style="display: flex; min-height: 400px;">
-				<grantcodes-sidebar>
-					<h3 style="margin-top: 0;">Navigation</h3>
-					<nav>
-						<ul style="list-style: none; padding: 0;">
-							<li style="margin-bottom: 0.5rem;"><a href="/">Dashboard</a></li>
-							<li style="margin-bottom: 0.5rem;"><a href="/projects">Projects</a></li>
-							<li style="margin-bottom: 0.5rem;"><a href="/tasks">Tasks</a></li>
-							<li style="margin-bottom: 0.5rem;"><a href="/team">Team</a></li>
-							<li style="margin-bottom: 0.5rem;"><a href="/settings">Settings</a></li>
-						</ul>
-					</nav>
-				</grantcodes-sidebar>
-				<div style="flex: 1; padding: 2rem;">
-					<h1>Main Content</h1>
-					<p style="font-size: 0.875rem; color: #666;">
-						On mobile/narrow screens, the sidebar becomes a drawer.
-						Click the hamburger menu to open it.
-					</p>
-				</div>
-			</div>
-		</div>
-	`,
+    <div style="display: flex; height: 24rem;">
+      <grantcodes-sidebar aria-label="Navigation">
+        <h2 slot="header" style="margin: 0">Together</h2>
+        <nav slot="content">
+          ${Array.from({ length: 40 }, (_, index) => html`<p><a href="/#${index}">Navigation item ${index + 1}</a></p>`)}
+        </nav>
+        <div slot="footer"><button type="button">Sign out</button></div>
+      </grantcodes-sidebar>
+      <main style="padding: 2rem"><h1>Independent content scroll</h1></main>
+    </div>
+  `,
 };
