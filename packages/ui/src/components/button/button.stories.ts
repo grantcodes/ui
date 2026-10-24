@@ -52,7 +52,8 @@ const meta = {
     iconPosition: { control: 'radio', options: ['start', 'end'], description: 'Slotted icon side' },
   },
   render: ({ label, icon, iconPosition, ...buttonArgs }: StoryArgs) => {
-    const svg = ICONS[icon];    const iconTemplate = svg
+    const svg = ICONS[icon];
+    const iconTemplate = svg
       ? html`<grantcodes-icon role="img" aria-label=${label || 'Button'}
           >${unsafeHTML(svg)}</grantcodes-icon
         >`
@@ -60,10 +61,9 @@ const meta = {
 
     return template(
       buttonArgs,
-      html`${iconPosition === 'start' ? iconTemplate : nothing}${label}${iconPosition ===
-      'end'
-        ? iconTemplate
-        : nothing}`,
+      html`${iconPosition === 'start' ? iconTemplate : nothing}${label}${
+        iconPosition === 'end' ? iconTemplate : nothing
+      }`,
     );
   },
   parameters: {
@@ -103,7 +103,8 @@ export const IconStart = {
   args: { label: 'Like', icon: 'heart', iconPosition: 'start' },
   play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
     const button = getButton(canvasElement);
-    await button.updateComplete;    await expect(button).toHaveAttribute('icon-start');
+    await button.updateComplete;
+    await expect(button).toHaveAttribute('icon-start');
     await expect(button).not.toHaveAttribute('icon-only');
     const style = getComputedStyle(innerButton(button));
     const start = Number.parseFloat(style.paddingInlineStart);
