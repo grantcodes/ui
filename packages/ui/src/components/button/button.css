@@ -135,7 +135,7 @@
     (var(--_button-padding-inline) - var(--_button-padding-block)) /
     2
   );
-  --_button-icon-gap: var(--g-spacing-sm);
+  --_button-icon-gap: calc(var(--g-spacing-xs) + var(--g-spacing-2xs));
   padding-block: var(--_button-padding-block);
   padding-inline: var(--_button-padding-inline);
   /* Trimming the label removes the font leading, so the block size is held open
@@ -154,6 +154,7 @@
 
 :host([size="lg"]) .button {
   --_button-padding-inline: var(--g-spacing-lg);
+  --_button-icon-gap: var(--g-spacing-sm);
   font-size: var(--g-typography-font-size-md);
 }
 
