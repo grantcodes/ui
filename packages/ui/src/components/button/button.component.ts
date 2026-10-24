@@ -5,7 +5,7 @@ import buttonStyles from './button.css' with { type: 'css' };
 const isIcon = (node: Node): boolean =>
   node.nodeType === 1 && (node as Element).localName === 'grantcodes-icon';
 const hasContent = (node: Node): boolean =>
-  node.nodeType === 1 || (node.textContent ?? '').trim() !== '';
+  node.nodeType === 1 || (node.nodeType === 3 && (node.textContent ?? '').trim() !== '');
 
 export class GrantCodesButton extends LitElement {
   declare _fieldsetDisabled: boolean;
