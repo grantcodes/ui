@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0](https://github.com/grantcodes/ui/compare/ui-v2.18.0...ui-v3.0.0) (2026-10-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ui:** Sidebar drops `collapsed`, `collapsible`, `position`, `width`, the built-in toggle buttons, desktop collapsing and the `toggle` event. Only the `header`, `content` and `footer` slots render, so unslotted children must move to `slot="content"`. Width and breakpoint are configured with `--sidebar-width` and `--sidebar-breakpoint` instead of attributes.
+
+### Features
+
+* **ui:** replace Sidebar with a responsive drawer and add SidebarToggle ([#200](https://github.com/grantcodes/ui/issues/200)) ([0b8a3f0](https://github.com/grantcodes/ui/commit/0b8a3f0c1e2cb6cc7ec8d657b1225fdeeb6dd85c))
+
 ## [2.18.0](https://github.com/grantcodes/ui/compare/ui-v2.17.0...ui-v2.18.0) (2026-10-21)
 
 
