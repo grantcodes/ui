@@ -1,25 +1,38 @@
-import { LitElement } from 'lit';
+import { LitElement, type TemplateResult } from 'lit';
 import { html } from 'lit/static-html.js';
 import buttonGroupStyles from './button-group.css' with { type: 'css' };
 
+/**
+ * A labelled group with native Tab navigation, not a toolbar.
+ * @slot - Buttons and links, each with its own accessible name.
+ * @csspart base - Flex layout; override flex-wrap and overflow here when needed.
+ * @cssproperty [--g-button-group-gap=var(--g-spacing-sm)] - Spacing in the spaced variant.
+ */
 export class GrantCodesButtonGroup extends LitElement {
-  // Styles are scoped to this element: they won't conflict with styles
-  // on the main page or in other components. Styling API can be exposed
-  // via CSS custom properties.
+  declare variant: 'joined' | 'spaced';
+  declare orientation: 'horizontal' | 'vertical';
+
   static styles = [buttonGroupStyles];
 
-  // Define reactive properties--updating a reactive property causes
-  // the component to update.
-  // @property() label = 'Button Label'
+  static properties = {
+    variant: { type: String, reflect: true },
+    orientation: { type: String, reflect: true },
+  };
 
-  // The render() method is called any time reactive properties change.
-  // Return HTML in a string template literal tagged with the `html`
-  // tag function to describe the component's internal DOM.
-  // Expressions can set attribute values, property values, event handlers,
-  // and child nodes/text.
-  render() {
+  constructor() {
+    super();
+    this.variant = 'joined';
+    this.orientation = 'horizontal';
+  }
+
+  connectedCallback(): void {
+    super.connectedCallback();
+    if (!this.hasAttribute('role')) this.setAttribute('role', 'group');
+  }
+
+  render(): TemplateResult {
     return html`
-      <div class="button-group">
+      <div class="button-group" part="base">
         <slot></slot>
       </div>
     `;
