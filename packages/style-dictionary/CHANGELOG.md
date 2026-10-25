@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.12.0](https://github.com/grantcodes/ui/compare/style-dictionary-v1.11.1...style-dictionary-v1.12.0) (2026-10-25)
+
+
+### Features
+
+* **skills:** add installable design-system consumer skill ([5308028](https://github.com/grantcodes/ui/commit/5308028e767917fc3f37a3561c87ad221e012481))
+* **skills:** add installable design-system consumer skill ([927013b](https://github.com/grantcodes/ui/commit/927013baf6f6f284fe274e5aafd5e6859efa1c7e))
+
 ## [1.11.1](https://github.com/grantcodes/ui/compare/style-dictionary-v1.11.0...style-dictionary-v1.11.1) (2026-10-21)
 
 
