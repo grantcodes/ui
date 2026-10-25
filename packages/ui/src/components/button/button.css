@@ -134,18 +134,74 @@
 
 /* Size variants */
 :host .button {
-  padding-block: var(--g-spacing-sm);
-  padding-inline: var(--g-spacing-md);
+  --_button-padding-block: var(--g-spacing-sm);
+  --_button-padding-inline: var(--g-spacing-md);
+  --_button-icon-padding-inline: calc(
+    var(--_button-padding-block) +
+    (var(--_button-padding-inline) - var(--_button-padding-block)) /
+    2
+  );
+  --_button-icon-gap: calc(var(--g-spacing-sm) + var(--g-spacing-2xs));
+  padding-block: var(--_button-padding-block);
+  padding-inline: var(--_button-padding-inline);
+  /* Trimming the label removes the font leading, so the block size is held open
+     to an icon's height plus padding. Sizes stay visually equal and an icon-only
+     button matches its height with its width. */
+  min-block-size: calc(1em + 2 * var(--_button-padding-block) + 2 * var(--g-border-width-md));
   font-size: var(--g-typography-font-size-sm);
 }
 
 :host([size="sm"]) .button {
-  padding-block: var(--g-spacing-xs);
-  padding-inline: var(--g-spacing-sm);
+  --_button-padding-block: var(--g-spacing-xs);
+  --_button-padding-inline: var(--g-spacing-sm);
+  --_button-icon-gap: var(--g-spacing-xs);
   font-size: var(--g-typography-font-size-xs);
 }
 
 :host([size="lg"]) .button {
-  padding-inline: var(--g-spacing-lg);
+  --_button-padding-inline: var(--g-spacing-lg);
+  --_button-icon-gap: calc(var(--g-spacing-sm) + var(--g-spacing-xs));
   font-size: var(--g-typography-font-size-md);
+}
+
+/* An icon at an edge only needs the block padding, which leaves an icon-only
+   button exactly square. */
+:host([icon-only]) .button {
+  padding-inline: var(--_button-padding-block);
+}
+
+/* Without text there is no line box to size the label, so the icon alone
+   decides the height. */
+:host([icon-only]) .button > span {
+  line-height: 0;
+}
+
+/* An icon beside a label keeps some of the inline padding so it does not crowd
+   the edge. */
+:host([icon-start]) .button {
+  padding-inline-start: var(--_button-icon-padding-inline);
+}
+
+:host([icon-end]) .button {
+  padding-inline-end: var(--_button-icon-padding-inline);
+}
+
+.button > span ::slotted(grantcodes-icon) {
+  display: inline-block;
+  /* Centres the icon on the cap height of the trimmed label. */
+  vertical-align: calc(0.5cap - 0.5em);
+}
+
+:host([icon-start]) .button > span ::slotted(grantcodes-icon:first-child) {
+  margin-inline-end: var(--_button-icon-gap);
+}
+
+:host([icon-end]) .button > span ::slotted(grantcodes-icon:last-child) {
+  margin-inline-start: var(--_button-icon-gap);
+}
+
+/* Trimming to the text metrics centres labels optically, but it would clip an
+   icon-only label, which has no text to trim to. */
+:host(:not([icon-only])) .button > span {
+  text-box: trim-both cap alphabetic;
 }

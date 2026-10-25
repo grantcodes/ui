@@ -1188,6 +1188,14 @@
           "members": [
             {
               "kind": "field",
+              "name": "_contentObserver",
+              "type": {
+                "text": "MutationObserver | null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
               "name": "_fieldsetDisabled",
               "type": {
                 "text": "boolean"
@@ -1205,6 +1213,21 @@
                   }
                 }
               ]
+            },
+            {
+              "kind": "field",
+              "name": "_syncIconLayout"
+            },
+            {
+              "kind": "field",
+              "name": "color",
+              "privacy": "public",
+              "type": {
+                "text": "'primary' | 'secondary' | 'neutral' | 'danger'"
+              },
+              "default": "'primary'",
+              "attribute": "color",
+              "reflects": true
             },
             {
               "kind": "field",
@@ -1281,6 +1304,17 @@
             },
             {
               "kind": "field",
+              "name": "size",
+              "privacy": "public",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "attribute": "size",
+              "reflects": true
+            },
+            {
+              "kind": "field",
               "name": "type",
               "privacy": "public",
               "type": {
@@ -1298,9 +1332,28 @@
               },
               "default": "''",
               "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "privacy": "public",
+              "type": {
+                "text": "'solid' | 'outline' | 'ghost'"
+              },
+              "default": "'solid'",
+              "attribute": "variant",
+              "reflects": true
             }
           ],
           "attributes": [
+            {
+              "name": "color",
+              "type": {
+                "text": "'primary' | 'secondary' | 'neutral' | 'danger'"
+              },
+              "default": "'primary'",
+              "fieldName": "color"
+            },
             {
               "name": "disabled",
               "type": {
@@ -1333,6 +1386,14 @@
               "fieldName": "name"
             },
             {
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "fieldName": "size"
+            },
+            {
               "name": "type",
               "type": {
                 "text": "string"
@@ -1347,6 +1408,14 @@
               },
               "default": "''",
               "fieldName": "value"
+            },
+            {
+              "name": "variant",
+              "type": {
+                "text": "'solid' | 'outline' | 'ghost'"
+              },
+              "default": "'solid'",
+              "fieldName": "variant"
             }
           ],
           "superclass": {

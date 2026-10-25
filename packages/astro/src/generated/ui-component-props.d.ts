@@ -29,6 +29,7 @@ declare namespace astroHTML.JSX {
     caption?: string;
     center?: boolean;
     class?: string;
+    color?: 'primary' | 'secondary' | 'neutral' | 'danger';
     columns?: number;
     company?: string;
     containerId?: string;
@@ -214,12 +215,15 @@ declare module "@grantcodes/ui/components/button-group/index.js" {
 declare module "@grantcodes/ui/components/button/index.js" {
 
   export interface ButtonProps {
+    color?: 'primary' | 'secondary' | 'neutral' | 'danger';
     disabled?: boolean;
     form?: string;
     href?: string;
     name?: string;
+    size?: 'sm' | 'md' | 'lg';
     type?: string;
     value?: string;
+    variant?: 'solid' | 'outline' | 'ghost';
   }
 
   export function GrantCodesButton(props: ButtonProps & import("astro").AstroBuiltinAttributes): any;
