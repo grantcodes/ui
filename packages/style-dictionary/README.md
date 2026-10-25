@@ -2,6 +2,8 @@
 
 Personal design token system built with [Style Dictionary](https://github.com/amzn/style-dictionary).
 
+Consumer agent guidance (tokens, themes, integration with UI and Astro) is bundled in the [`grantcodes-design-system` skill](https://github.com/grantcodes/ui/tree/main/skills/grantcodes-design-system); install it with `npx skills add grantcodes/ui --skill grantcodes-design-system`.
+
 ## Token model
 
 Tokens are organized into three layers:

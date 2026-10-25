@@ -61,12 +61,23 @@ Lint all packages:
 pnpm lint
 ```
 
+## Agent skills
+
+The consumer-facing `grantcodes-design-system` skill lives in [`skills/grantcodes-design-system`](./skills/grantcodes-design-system). It covers tokens, themes, UI components, React wrappers, and Astro blocks. Install it with:
+
+```bash
+npx skills add grantcodes/ui --skill grantcodes-design-system
+```
+
+Validate bundled skills with `pnpm test:skills` (after a UI build has generated `packages/ui/custom-elements.json`).
+
 ## Package Structure
 
 ```
 packages/
   ├── ui/              # Web components
   └── style-dictionary/ # Design tokens
+skills/                # Consumer agent skills
 ```
 
 ## License

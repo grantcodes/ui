@@ -5,12 +5,14 @@
 
 Zero-config Astro integration for `@grantcodes/ui` Lit web components. Replaces four manual configuration blocks and an external dependency with a single `integrations: [ui()]` import.
 
+Consumer agent guidance is bundled in the [`grantcodes-design-system` skill](https://github.com/grantcodes/ui/tree/main/skills/grantcodes-design-system); install it with `npx skills add grantcodes/ui --skill grantcodes-design-system`.
+
 ## Features
 
 - **Lit SSR** with Declarative Shadow DOM (`<template shadowrootmode="open">`)
 - **Automatic Vite configuration** — CSS import attributes, `ssr.noExternal`, `optimizeDeps.exclude`
 - **Automatic hydration support** for `client:*` directives
-- **Built-in `@grantcodes/astro-blocks` re-exports**
+- **Content blocks and schemas exported from `@grantcodes/astro/blocks`**
 - **Config conflict detection and warnings**
 
 ## Installation
@@ -42,27 +44,27 @@ Passing `theme` auto-loads the matching `@grantcodes/ui` theme stylesheet for th
 
 ### Importing Components
 
-Import the component class to register the custom element. All components render server-side by default with Declarative Shadow DOM:
+Import a register file so the element is defined, then render the constructor identifier when you want renderer-managed SSR and hydration. All components render server-side by default with Declarative Shadow DOM:
 
 ```astro
 ---
-import { GrantCodesButton } from '@grantcodes/ui/components/button/index.js';
+import { GrantCodesButton } from '@grantcodes/ui/components/button/button.js';
 ---
 
-<grantcodes-button variant="primary">Click me</grantcodes-button>
+<GrantCodesButton variant="primary">Click me</GrantCodesButton>
 ```
 
 Components render on the server by default. Choose a `client:*` directive only when you want a different rendering or hydration tradeoff:
 
 ```astro
 <!-- Hydrate as soon as the page loads -->
-<grantcodes-button client:load>Click me</grantcodes-button>
+<GrantCodesButton client:load>Click me</GrantCodesButton>
 
 <!-- Hydrate when scrolled into view -->
-<grantcodes-button client:visible>Click me</grantcodes-button>
+<GrantCodesButton client:visible>Click me</GrantCodesButton>
 
 <!-- Skip SSR and render in the browser only -->
-<grantcodes-button client:only="lit">Click me</grantcodes-button>
+<GrantCodesButton client:only="lit">Click me</GrantCodesButton>
 ```
 
 > Most components work fine without any directive. `client:only="lit"` is a safe fallback when you want predictable browser-only rendering during or after migration.
@@ -165,7 +167,7 @@ Theme OG defaults match the selected theme colors. Grantina uses package-managed
 
 ## Blocks
 
-The integration re-exports all `@grantcodes/astro-blocks` components via the `./blocks` subpath:
+The integration re-exports the content blocks and schemas from its `./blocks` subpath:
 
 ```astro
 ---
@@ -173,7 +175,7 @@ import { Hero, Cards, Cta } from '@grantcodes/astro/blocks';
 ---
 
 <Hero title="Welcome" />
-<Cards items={[...]} />
+<Cards cards={[...]} />
 ```
 
 Available blocks: `accordion`, `cards`, `countdown`, `cta`, `feature-list`, `gallery`, `hero`, `logo-cloud`, `map`, `media-text`, `newsletter`, `pricing`, `stats`, `testimonials`, `text`

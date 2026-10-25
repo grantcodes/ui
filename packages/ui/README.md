@@ -1,6 +1,6 @@
 # grant.codes UI
 
-A personal component system.
+A personal component system. Consumer agent guidance lives in the [`grantcodes-design-system` skill](https://github.com/grantcodes/ui/tree/main/skills/grantcodes-design-system); install it with `npx skills add grantcodes/ui --skill grantcodes-design-system`.
 
 Components are built with Lit web components using CSS modules for styles with theming provided by my custom style dictionary.
 
@@ -21,7 +21,7 @@ Components can be used directly in HTML or imported as ES modules.
 ```
 
 ```javascript
-import { GrantCodesButton } from '@grantcodes/ui/components/button';
+import { GrantCodesButton } from '@grantcodes/ui/components/button/button.js';
 ```
 
 For Astro projects, pair this package with `@grantcodes/astro` for the lowest-friction setup.
