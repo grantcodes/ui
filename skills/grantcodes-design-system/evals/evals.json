@@ -1,0 +1,59 @@
+{
+  "skill_name": "grantcodes-design-system",
+  "evals": [
+    {
+      "id": 1,
+      "name": "tokens-only-branded-surface",
+      "prompt": "We're building a tiny static marketing page with plain HTML and a single CSS file (no framework, no JS components). I want it to look like Grantcodes: brand background and text, rounded pricing callout, brand font. How should I wire up the styles?",
+      "expected_output": "A tokens-only setup using @grantcodes/style-dictionary/grantcodes/css plus the Greycliff font entrypoint, semantic --g-* tokens in consumer CSS (background/content/border, spacing, radius, typography), and no @grantcodes/ui or @grantcodes/astro dependency.",
+      "assertions": [
+        "Imports @grantcodes/style-dictionary/grantcodes/css (and optionally the greycliff font entrypoint)",
+        "Uses semantic tokens such as --g-color-background-default, --g-color-content-default, --g-spacing-*, --g-border-radius-*",
+        "Does not introduce @grantcodes/ui, @grantcodes/astro, or React/Astro setup",
+        "Does not use obsolete --g-theme-* names or reference-tier --g-ref-* tokens in the consumer CSS",
+        "Does not claim automatic theme injection outside Astro"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "react-settings-panel",
+      "prompt": "In our React 19 app I need a settings panel: email field with help text, a couple of grouped notification checkboxes, an options popover with extra filters, a success message after save, and a confirmation dialog before resetting. We already use @grantcodes/ui/react. Show the component structure and how to hook up the interactions.",
+      "expected_output": "FormField wrapping native email/checkbox controls, Popover with onToggle, Notice or Toast with onDismiss, Dialog opened via open state, only real wrapper exports, real boolean props, and accessible names/labels.",
+      "assertions": [
+        "Imports FormField, Popover, Dialog, and a feedback component from @grantcodes/ui/react without inventing exports",
+        "Uses native input/checkbox controls with name, label/help, and no invented Switch/Checkbox component",
+        "Uses React boolean props (not string \"false\") for default-true properties such as Dialog dismissible or Toast dismissible",
+        "Uses Popover onToggle and/or Toast onDismiss correctly, without inventing Dialog close or Notice dismiss callbacks",
+        "Shows a dialog open state and/or trigger wiring rather than claiming a show()/hide() method",
+        "Maintains accessible control names and does not rely on colour-only feedback"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "astro-landing-page",
+      "prompt": "Build the landing page for our new community workshop in Astro 7. I want a hero, three feature cards, pricing, two testimonials, a newsletter signup, and an FAQ accordion. The FAQ answers come from our CMS as HTML. We already have @grantcodes/astro installed.",
+      "expected_output": "ui({ theme: 'grantcodes' }) in astro.config with manual base.css import, blocks from @grantcodes/astro/blocks with correct props (Cards uses cards, Accordion items with trusted htmlContent), and a justified hydration decision.",
+      "assertions": [
+        "Configures ui() with an explicit theme (and keeps base.css import manual) rather than claiming base/theme CSS is automatic",
+        "Imports the required blocks from @grantcodes/astro/blocks and uses Cards cards= (not items=)",
+        "Uses Accordion items with htmlContent for CMS HTML and flags/sanitizes it as trusted content",
+        "Uses Newsletter with a real action endpoint and Pricing with cta/included fields",
+        "Justifies hydration (or lack of it) rather than adding client:* directives to every block",
+        "Does not use the retired @grantcodes/astro-blocks package"
+      ]
+    }
+  ],
+  "trigger_cases": [
+    { "query": "How do I get the Grantcodes grantina theme colours and font into a plain Vite site without using the web components?", "should_trigger": true },
+    { "query": "Our Astro 7 site uses @grantcodes/astro. The FAQ accordion isn't rendering the CMS HTML answers - how should the block props look?", "should_trigger": true },
+    { "query": "In React, the grantcodes Dialog close button vanished but Escape still closes it. What property did we set wrong?", "should_trigger": true },
+    { "query": "Which Grantcodes block should I use for a row of customer logos and how do I pass the logo data?", "should_trigger": true },
+    { "query": "We're adding a settings page with form fields and a confirmation dialog. Should we use @grantcodes/ui components or native HTML?", "should_trigger": true },
+    { "query": "Can you style grantcodes-popover panel width and gap without touching internals?", "should_trigger": true },
+    { "query": "Build a generic dark-mode dashboard in React with Tailwind - no design system, just make it look clean.", "should_trigger": false },
+    { "query": "Add a new badge variant to packages/ui, regenerate the CEM, and update Storybook stories.", "should_trigger": false },
+    { "query": "Our marketing site uses Material UI. How do I theme MUI buttons and text fields to match our brand?", "should_trigger": false },
+    { "query": "Fix a Lit SSR hydration mismatch in a component we wrote ourselves, unrelated to any design system package.", "should_trigger": false },
+    { "query": "Update the pnpm lockfile and bump Astro to the latest major in this repository.", "should_trigger": false }
+  ]
+}

@@ -77,5 +77,8 @@ jobs:
       - name: Verify Astro package contents
         run: pnpm --filter @grantcodes/astro test:package
 
+      - name: Validate bundled skills against built inventories
+        run: pnpm test:skills
+
       - name: Check for dirty working tree (generated artifact drift)
         run: git diff --exit-code

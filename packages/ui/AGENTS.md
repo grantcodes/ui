@@ -83,8 +83,8 @@ packages/ui/
 ### Importing
 
 ```javascript
-import { GrantCodesButton } from '@grantcodes/ui/components/button';
-import { GrantCodesDropdown } from '@grantcodes/ui/components/dropdown';
+import { GrantCodesButton } from '@grantcodes/ui/components/button/button.js';
+import { GrantCodesDropdown } from '@grantcodes/ui/components/dropdown/dropdown.js';
 ```
 
 ### HTML Usage

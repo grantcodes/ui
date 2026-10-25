@@ -49,3 +49,4 @@ pnpm test:style-dictionary
 
 - Read [AGENT_LESSONS.md](AGENT_LESSONS.md) before non-trivial work in an area you have not touched, and the `AGENTS.md` of the unit you are changing (structure, what does not belong there, where to look next).
 - `packages/ui/AGENTS.md` owns the component contract and the library's terminology; use its terms and not the banned synonyms.
+- Changes to public components, content blocks, tokens, or integration behaviour must update `skills/grantcodes-design-system/` in the same change. Run `pnpm --filter @grantcodes/ui cem` then `pnpm test:skills` to check coverage against the CEM and Astro block exports.

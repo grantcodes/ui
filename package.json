@@ -19,6 +19,7 @@
     "test": "turbo run test",
     "test:ui": "pnpm --filter @grantcodes/ui test",
     "test:style-dictionary": "pnpm --filter @grantcodes/style-dictionary test",
+    "test:skills": "node scripts/validate-skills.mjs",
     "lint": "turbo run lint",
     "lint:ui": "pnpm --filter @grantcodes/ui test:lint",
     "lint:style-dictionary": "pnpm --filter @grantcodes/style-dictionary test:lint",
