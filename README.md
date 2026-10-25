@@ -61,6 +61,15 @@ Lint all packages:
 pnpm lint
 ```
 
+## Retrying a package publish
+
+In GitHub Actions, open **Create Release** → **Run workflow**, select `main`,
+and choose `style-dictionary`, `ui`, or `astro`. The workflow runs the existing
+checks and publishes only that package at its current version on `main`, with
+provenance. It does not create a release or bump versions; use it to recover a
+failed publish for a version that is not yet on npm. Runs on other branches are
+skipped.
+
 ## Agent skills
 
 The consumer-facing `grantcodes-design-system` skill lives in [`skills/grantcodes-design-system`](./skills/grantcodes-design-system). It covers tokens, themes, UI components, React wrappers, and Astro blocks. Install it with:

@@ -4,9 +4,25 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      package:
+        description: Package to publish at its current version on main
+        required: true
+        type: choice
+        default: style-dictionary
+        options:
+          - style-dictionary
+          - ui
+          - astro
+
+concurrency:
+  group: create-release
+  cancel-in-progress: false
 
 jobs:
   release-please:
+    if: ${{ github.ref == 'refs/heads/main' }}
     permissions:
       contents: write
       id-token: write
@@ -18,13 +34,18 @@ jobs:
 
       - uses: googleapis/release-please-action@v4
         name: Create release PR
+        if: ${{ github.event_name == 'push' }}
         id: release
         with:
           config-file: release-please-config.json
 
       - uses: pnpm/action-setup@v4
         name: Setup pnpm
-        if: ${{ steps.release.outputs.releases_created }}
+        if: >-
+          ${{
+            github.event_name == 'workflow_dispatch' ||
+            steps.release.outputs.releases_created
+          }}
 
       - uses: actions/setup-node@v6
         name: Setup node
@@ -32,36 +53,69 @@ jobs:
           node-version: 24
           registry-url: "https://registry.npmjs.org"
           package-manager-cache: false
-        if: ${{ steps.release.outputs.releases_created }}
+        if: >-
+          ${{
+            github.event_name == 'workflow_dispatch' ||
+            steps.release.outputs.releases_created
+          }}
 
       - run: pnpm install --frozen-lockfile
         name: Install dependencies
-        if: ${{ steps.release.outputs.releases_created }}
+        if: >-
+          ${{
+            github.event_name == 'workflow_dispatch' ||
+            steps.release.outputs.releases_created
+          }}
 
       - run: pnpm test
         name: Run tests
-        if: ${{ steps.release.outputs.releases_created }}
+        if: >-
+          ${{
+            github.event_name == 'workflow_dispatch' ||
+            steps.release.outputs.releases_created
+          }}
 
       - run: pnpm build
         name: Run build (includes CEM regeneration for @grantcodes/ui)
-        if: ${{ steps.release.outputs.releases_created }}
+        if: >-
+          ${{
+            github.event_name == 'workflow_dispatch' ||
+            steps.release.outputs.releases_created
+          }}
 
       # Regenerate derived artifacts from the just-built CEM, then verify
       # the working tree is clean — any diff aborts the publish.
       - name: Regenerate Astro component typings from CEM
         run: pnpm --filter @grantcodes/astro gen:props
-        if: ${{ steps.release.outputs.releases_created }}
+        if: >-
+          ${{
+            github.event_name == 'workflow_dispatch' ||
+            steps.release.outputs.releases_created
+          }}
 
       - name: Verify Astro package contents
         run: pnpm --filter @grantcodes/astro test:package
-        if: ${{ steps.release.outputs.releases_created }}
+        if: >-
+          ${{
+            github.event_name == 'workflow_dispatch' ||
+            steps.release.outputs.releases_created
+          }}
 
       - name: Check for dirty working tree (generated artifact drift)
         run: git diff --exit-code
-        if: ${{ steps.release.outputs.releases_created }}
+        if: >-
+          ${{
+            github.event_name == 'workflow_dispatch' ||
+            steps.release.outputs.releases_created
+          }}
 
       - name: Publish @grantcodes/ui
-        if: ${{ steps.release.outputs['packages/ui--release_created'] }}
+        if: >-
+          ${{
+            steps.release.outputs['packages/ui--release_created'] ||
+            (github.event_name == 'workflow_dispatch' &&
+              inputs.package == 'ui')
+          }}
         working-directory: packages/ui
         run: pnpm publish  --provenance --access public
 
@@ -70,12 +124,19 @@ jobs:
           ${{
             steps.release.outputs[
               'packages/style-dictionary--release_created'
-            ]
+            ] ||
+            (github.event_name == 'workflow_dispatch' &&
+              inputs.package == 'style-dictionary')
           }}
         working-directory: packages/style-dictionary
         run: pnpm publish  --provenance --access public
 
       - name: Publish @grantcodes/astro
-        if: ${{ steps.release.outputs['packages/astro--release_created'] }}
+        if: >-
+          ${{
+            steps.release.outputs['packages/astro--release_created'] ||
+            (github.event_name == 'workflow_dispatch' &&
+              inputs.package == 'astro')
+          }}
         working-directory: packages/astro
         run: pnpm publish  --provenance --access public
