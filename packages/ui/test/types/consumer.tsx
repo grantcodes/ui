@@ -1,12 +1,30 @@
 import { useRef } from 'react';
 import type { Plugin } from 'vite';
 import type { GrantCodesDialog, GrantCodesPopover, GrantCodesSidebar } from '@grantcodes/ui';
-import { Button, Dialog, Dropdown, Popover, Sidebar, SidebarToggle } from '@grantcodes/ui/react';
+import { ArrowRight as arrowRightSvg } from '@grantcodes/ui/icons';
+import { Reply, type LucideProps } from '@grantcodes/ui/icons/react';
+// @ts-expect-error unknown icon exports must be rejected
+import { NotAnIcon } from '@grantcodes/ui/icons/react';
+import {
+  Button,
+  ButtonGroup,
+  Dialog,
+  Dropdown,
+  Icon,
+  Popover,
+  Sidebar,
+  SidebarToggle,
+} from '@grantcodes/ui/react';
 import { GrantCodesDialog as DeepGrantCodesDialog } from '@grantcodes/ui/components/dialog/index.js';
 import { GrantCodesPopover as DeepGrantCodesPopover } from '@grantcodes/ui/components/popover/index.js';
 import { cssImportAttributes } from '@grantcodes/ui/vite-plugin';
 
 const plugin: Plugin = cssImportAttributes();
+const iconProps: LucideProps = { size: '1em', strokeWidth: 1.5 };
+const staticIcon: string = arrowRightSvg;
+
+void staticIcon;
+void NotAnIcon;
 
 export function Consumer() {
   const dialogRef = useRef<GrantCodesDialog>(null);
@@ -22,6 +40,13 @@ export function Consumer() {
       <Button size="xl" />
       {/* @ts-expect-error variant is a closed union */}
       <Button variant="solid-ish" />
+      <ButtonGroup variant="spaced" orientation="vertical" aria-label="Post actions">
+        <button type="button">Like</button>
+      </ButtonGroup>
+      {/* @ts-expect-error variant is a closed union */}
+      <ButtonGroup variant="toolbar" />
+      {/* @ts-expect-error orientation is a closed union */}
+      <ButtonGroup orientation="diagonal" />
       <Dialog ref={dialogRef} dismissible>
         Dialog content
       </Dialog>
@@ -49,6 +74,14 @@ export function Consumer() {
       <SidebarToggle for="navigation">
         <button type="button" aria-label="Open navigation" />
       </SidebarToggle>
+      <Icon>
+        <Reply {...iconProps} aria-hidden="true" />
+      </Icon>
+      <Reply size="1em" role="img" aria-label="Reply" />
+      {/* @ts-expect-error icon props retain Lucide types */}
+      <Reply strokeWidth={{ invalid: true }} />
+      {/* @ts-expect-error Icon remains a slot wrapper, not a name lookup */}
+      <Icon name="reply" />
       {/* Invalid dialog props must be rejected. */}
       {/* @ts-expect-error invalid is not a dialog property */}
       <Dialog invalid />

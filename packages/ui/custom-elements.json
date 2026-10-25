@@ -1033,9 +1033,69 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "",
+          "description": "A labelled group with native Tab navigation, not a toolbar.",
           "name": "GrantCodesButtonGroup",
-          "members": [],
+          "cssProperties": [
+            {
+              "description": "Spacing in the spaced variant.",
+              "name": "--g-button-group-gap",
+              "default": "var(--g-spacing-sm)"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "Flex layout; override flex-wrap and overflow here when needed.",
+              "name": "base"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Buttons and links, each with its own accessible name.",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "orientation",
+              "privacy": "public",
+              "type": {
+                "text": "'horizontal' | 'vertical'"
+              },
+              "default": "'horizontal'",
+              "attribute": "orientation",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "privacy": "public",
+              "type": {
+                "text": "'joined' | 'spaced'"
+              },
+              "default": "'joined'",
+              "attribute": "variant",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "orientation",
+              "type": {
+                "text": "'horizontal' | 'vertical'"
+              },
+              "default": "'horizontal'",
+              "fieldName": "orientation"
+            },
+            {
+              "name": "variant",
+              "type": {
+                "text": "'joined' | 'spaced'"
+              },
+              "default": "'joined'",
+              "fieldName": "variant"
+            }
+          ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"

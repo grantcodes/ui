@@ -47,6 +47,42 @@ describe('Button Group Component', () => {
     assert.strictEqual(element.children.length, 3, 'Should have three buttons');
   });
 
+  it('defaults to a joined horizontal group without adding a tab stop', async () => {
+    element = await fixture('grantcodes-button-group');
+    assert.equal(element.variant, 'joined');
+    assert.equal(element.orientation, 'horizontal');
+    assert.equal(element.getAttribute('role'), 'group');
+    assert.equal(element.hasAttribute('tabindex'), false);
+    assert.ok(element.shadowRoot.querySelector('[part="base"]'));
+  });
+
+  it('preserves author semantics and accessible naming', async () => {
+    element = document.createElement('grantcodes-button-group');
+    element.setAttribute('role', 'navigation');
+    element.setAttribute('aria-label', 'Reader navigation');
+    document.body.appendChild(element);
+    await element.updateComplete;
+    assert.equal(element.getAttribute('role'), 'navigation');
+    assert.equal(element.getAttribute('aria-label'), 'Reader navigation');
+    element.setAttribute('aria-labelledby', 'reader-heading');
+    await element.updateComplete;
+    assert.equal(element.getAttribute('aria-labelledby'), 'reader-heading');
+  });
+
+  it('reflects layout properties and responds to attribute changes', async () => {
+    element = await fixture('grantcodes-button-group', {
+      variant: 'spaced',
+      orientation: 'vertical',
+    });
+    assert.equal(element.getAttribute('variant'), 'spaced');
+    assert.equal(element.getAttribute('orientation'), 'vertical');
+    element.setAttribute('variant', 'joined');
+    element.setAttribute('orientation', 'horizontal');
+    await element.updateComplete;
+    assert.equal(element.variant, 'joined');
+    assert.equal(element.orientation, 'horizontal');
+  });
+
   it('should group buttons together visually', async () => {
     element = await fixture('grantcodes-button-group');
     const group = element.shadowRoot.querySelector('.button-group');

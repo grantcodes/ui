@@ -77,6 +77,7 @@ declare namespace astroHTML.JSX {
     nextHref?: string;
     nopad?: boolean;
     open?: boolean;
+    orientation?: 'horizontal' | 'vertical';
     page?: number;
     pages?: number;
     panelId?: string;
@@ -202,7 +203,8 @@ declare module "@grantcodes/ui/components/breadcrumb/index.js" {
 declare module "@grantcodes/ui/components/button-group/index.js" {
 
   export interface ButtonGroupProps {
-    [key: string]: unknown;
+    orientation?: 'horizontal' | 'vertical';
+    variant?: 'joined' | 'spaced';
   }
 
   export function GrantCodesButtonGroup(props: ButtonGroupProps & import("astro").AstroBuiltinAttributes): any;

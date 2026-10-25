@@ -91,10 +91,16 @@
   border-width: var(--g-border-width-md);
   border-style: solid;
   border-color: var(--_button-border);
-  border-start-start-radius: var(--_button-border-radius-start);
-  border-start-end-radius: var(--_button-border-radius-end);
-  border-end-start-radius: var(--_button-border-radius-start);
-  border-end-end-radius: var(--_button-border-radius-end);
+  border-start-start-radius: var(
+    --_button-border-radius-start-start,
+    var(--_button-border-radius-start)
+  );
+  border-start-end-radius: var(--_button-border-radius-start-end, var(--_button-border-radius-end));
+  border-end-start-radius: var(
+    --_button-border-radius-end-start,
+    var(--_button-border-radius-start)
+  );
+  border-end-end-radius: var(--_button-border-radius-end-end, var(--_button-border-radius-end));
   font: var(--g-typography-body-sm-font);
   text-decoration: none;
   text-align: center;
