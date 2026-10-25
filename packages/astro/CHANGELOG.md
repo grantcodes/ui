@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.0.0](https://github.com/grantcodes/ui/compare/astro-v0.3.0...astro-v1.0.0) (2026-10-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ui:** Sidebar drops `collapsed`, `collapsible`, `position`, `width`, the built-in toggle buttons, desktop collapsing and the `toggle` event. Only the `header`, `content` and `footer` slots render, so unslotted children must move to `slot="content"`. Width and breakpoint are configured with `--sidebar-width` and `--sidebar-breakpoint` instead of attributes.
+
+### Features
+
+* **skills:** add installable design-system consumer skill ([5308028](https://github.com/grantcodes/ui/commit/5308028e767917fc3f37a3561c87ad221e012481))
+* **skills:** add installable design-system consumer skill ([927013b](https://github.com/grantcodes/ui/commit/927013baf6f6f284fe274e5aafd5e6859efa1c7e))
+* **ui:** declare button size, color and variant as properties ([d48eb61](https://github.com/grantcodes/ui/commit/d48eb6113065c97726be47de55ce1fc7ddbc10ec))
+* **ui:** extend button group layouts and accessible grouping ([47204ae](https://github.com/grantcodes/ui/commit/47204aed45a4c8c88f7a3ebf16a98037986d6e99))
+* **ui:** replace Sidebar with a responsive drawer and add SidebarToggle ([#200](https://github.com/grantcodes/ui/issues/200)) ([0b8a3f0](https://github.com/grantcodes/ui/commit/0b8a3f0c1e2cb6cc7ec8d657b1225fdeeb6dd85c))
+* **ui:** size icon buttons automatically from their content ([d900c6e](https://github.com/grantcodes/ui/commit/d900c6ebf09d5eb684f36e5a927b9d3fc5159930))
+
 ## [0.3.0](https://github.com/grantcodes/ui/compare/astro-v0.2.10...astro-v0.3.0) (2026-10-21)
 
 
