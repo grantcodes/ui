@@ -52,8 +52,8 @@
     "CHECKLIST.md"
   ],
   "dependencies": {
-    "@grantcodes/style-dictionary": "^1.10.2",
-    "@grantcodes/ui": "^2.15.7",
+    "@grantcodes/style-dictionary": "workspace:^",
+    "@grantcodes/ui": "workspace:^",
     "@lit-labs/ssr": "^4.1.0",
     "@lit-labs/ssr-client": "^1.1.8",
     "@lit-labs/ssr-dom-shim": "^1.6.0",
