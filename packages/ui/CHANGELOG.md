@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.0.1](https://github.com/grantcodes/ui/compare/ui-v3.0.0...ui-v3.0.1) (2026-10-25)
+
+
+### Bug Fixes
+
+* **astro:** keep internal dependencies linked across releases ([0cd8cf8](https://github.com/grantcodes/ui/commit/0cd8cf8c405529df8cfe037fec27cf5b52b76ec4))
+* **astro:** keep internal dependencies linked across releases ([416a924](https://github.com/grantcodes/ui/commit/416a924208da197a76630d4d8b03245fd7a725be))
+
 ## [3.0.0](https://github.com/grantcodes/ui/compare/ui-v2.18.0...ui-v3.0.0) (2026-10-25)
 
 
