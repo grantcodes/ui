@@ -61,10 +61,10 @@ importers:
   packages/astro:
     dependencies:
       '@grantcodes/style-dictionary':
-        specifier: ^1.10.2
+        specifier: workspace:^
         version: link:../style-dictionary
       '@grantcodes/ui':
-        specifier: ^2.15.7
+        specifier: workspace:^
         version: link:../ui
       '@lit-labs/ssr':
         specifier: ^4.1.0
@@ -154,7 +154,7 @@ importers:
   packages/ui:
     dependencies:
       '@grantcodes/style-dictionary':
-        specifier: workspace:^1.10.2
+        specifier: workspace:^
         version: link:../style-dictionary
       '@lit/react':
         specifier: ^1.0.8
