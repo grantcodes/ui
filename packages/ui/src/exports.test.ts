@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { describe, it } from 'node:test';
 import { fileURLToPath } from 'node:url';
+import { build } from 'esbuild';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const pkgPath = path.resolve(__dirname, '..', 'package.json');
@@ -81,6 +82,59 @@ describe('package.json exports', () => {
       );
       const sourcePath = path.resolve(pkgRoot, 'src', 'lib', 'styles', 'focus-ring.css');
       assert.ok(fs.existsSync(sourcePath), `Source file does not exist: ${sourcePath}`);
+    });
+  });
+
+  describe('React icon exports', () => {
+    it('re-exports Lucide components without changing their identity', async () => {
+      const icons = await import('@grantcodes/ui/icons/react');
+      const lucide = await import('lucide-react');
+      assert.equal(icons.Reply, lucide.Reply);
+      assert.equal(icons.createLucideIcon, lucide.createLucideIcon);
+      assert.deepEqual(exports['./icons/react'], {
+        types: './dist/icons.react.d.ts',
+        import: './dist/icons.react.js',
+      });
+    });
+
+    it('only bundles the selected React icon and no web components', async () => {
+      const result = await build({
+        stdin: {
+          contents: "export { Reply } from '@grantcodes/ui/icons/react';",
+          resolveDir: pkgRoot,
+        },
+        bundle: true,
+        write: false,
+        metafile: true,
+        format: 'esm',
+        platform: 'browser',
+        external: ['react'],
+      });
+      const inputs = Object.values(result.metafile.outputs).flatMap((output) =>
+        Object.entries(output.inputs)
+          .filter(([, input]) => input.bytesInOutput > 0)
+          .map(([name]) => name),
+      );
+      const iconFiles = inputs.filter((name) => name.includes('lucide-react/dist/esm/icons/'));
+      assert.equal(iconFiles.length, 1);
+      assert.match(iconFiles[0], /\/reply\.mjs$/);
+      assert.ok(!inputs.some((name) => name.includes('lucide-static')));
+      assert.ok(!inputs.some((name) => name.includes('components/icon')));
+    });
+
+    it('keeps static icons independent of React', async () => {
+      const result = await build({
+        stdin: {
+          contents: "export { Reply } from '@grantcodes/ui/icons';",
+          resolveDir: pkgRoot,
+        },
+        bundle: true,
+        write: false,
+        metafile: true,
+        format: 'esm',
+        platform: 'browser',
+      });
+      assert.ok(!Object.keys(result.metafile.inputs).some((name) => name.includes('react')));
     });
   });
 

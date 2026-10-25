@@ -1,10 +1,15 @@
 import { useRef } from 'react';
 import type { Plugin } from 'vite';
 import type { GrantCodesDialog, GrantCodesPopover, GrantCodesSidebar } from '@grantcodes/ui';
+import { ArrowRight as arrowRightSvg } from '@grantcodes/ui/icons';
+import { Reply, type LucideProps } from '@grantcodes/ui/icons/react';
+// @ts-expect-error unknown icon exports must be rejected
+import { NotAnIcon } from '@grantcodes/ui/icons/react';
 import {
   ButtonGroup,
   Dialog,
   Dropdown,
+  Icon,
   Popover,
   Sidebar,
   SidebarToggle,
@@ -14,6 +19,11 @@ import { GrantCodesPopover as DeepGrantCodesPopover } from '@grantcodes/ui/compo
 import { cssImportAttributes } from '@grantcodes/ui/vite-plugin';
 
 const plugin: Plugin = cssImportAttributes();
+const iconProps: LucideProps = { size: '1em', strokeWidth: 1.5 };
+const staticIcon: string = arrowRightSvg;
+
+void staticIcon;
+void NotAnIcon;
 
 export function Consumer() {
   const dialogRef = useRef<GrantCodesDialog>(null);
@@ -56,6 +66,14 @@ export function Consumer() {
       <SidebarToggle for="navigation">
         <button type="button" aria-label="Open navigation" />
       </SidebarToggle>
+      <Icon>
+        <Reply {...iconProps} aria-hidden="true" />
+      </Icon>
+      <Reply size="1em" role="img" aria-label="Reply" />
+      {/* @ts-expect-error icon props retain Lucide types */}
+      <Reply strokeWidth={{ invalid: true }} />
+      {/* @ts-expect-error Icon remains a slot wrapper, not a name lookup */}
+      <Icon name="reply" />
       {/* Invalid dialog props must be rejected. */}
       {/* @ts-expect-error invalid is not a dialog property */}
       <Dialog invalid />
