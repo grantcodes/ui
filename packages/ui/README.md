@@ -76,6 +76,43 @@ grantcodes-button-group.scrolling::part(base) {
 The existing React `ButtonGroup` export accepts the same `variant`, `orientation`,
 and standard ARIA attributes.
 
+### Icons
+
+`grantcodes-icon` and its React `Icon` wrapper accept slotted SVG content; they do
+not look up icon names. Use any SVG, including your own.
+
+For Lit, `@grantcodes/ui/icons` re-exports Lucide SVG strings:
+
+```ts
+import { html } from 'lit';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
+import { Reply } from '@grantcodes/ui/icons';
+import '@grantcodes/ui/components/icon/icon.js';
+
+html`<grantcodes-icon aria-hidden="true">${unsafeHTML(Reply)}</grantcodes-icon>`;
+```
+
+For React, `@grantcodes/ui/icons/react` re-exports `lucide-react` components and types:
+
+```tsx
+import { Icon } from '@grantcodes/ui/react';
+import { Reply } from '@grantcodes/ui/icons/react';
+
+<Icon><Reply aria-hidden="true" /></Icon>;
+
+// The SVG components also work without the wrapper.
+<Reply size="1em" role="img" aria-label="Reply" />;
+```
+
+The wrapper sizes slotted SVGs to `1em`. Standalone Lucide components default to
+24px; pass `size="1em"` to follow surrounding text. Colour inherits `currentColor`.
+Hide decorative SVGs with `aria-hidden="true"`; give meaningful SVGs `role="img"`
+and `aria-label`. Icon-only buttons still need an accessible name on the button.
+
+Named imports from `@grantcodes/ui/icons/react` allow ESM bundlers to remove unused
+icons. This entry is separate from `@grantcodes/ui/react` to avoid name collisions
+such as `Icon`, `Menu`, and `Map`. The static SVG entry remains unchanged.
+
 ## Creating a new component
 
 To create a new component run `npm run generate`. Uses plop.js for scaffolding.
