@@ -6,6 +6,14 @@ import './app-bar.js';
 describe('App Bar Component', () => {
   let element: any;
 
+  async function mountWithNav() {
+    const el = document.createElement('grantcodes-app-bar');
+    el.innerHTML = '<div slot="nav"><a href="/about">About</a></div>';
+    document.body.append(el);
+    await el.updateComplete;
+    return el;
+  }
+
   afterEach(() => {
     cleanup(element);
   });
@@ -90,10 +98,47 @@ describe('App Bar Component', () => {
     assert.ok(actionsSlot, 'Actions slot should exist');
   });
 
-  it('should render mobile menu button', async () => {
+  it('should not render mobile menu button or overlay without nav content', async () => {
     element = await fixture('grantcodes-app-bar');
+    assert.strictEqual(element._hasNav, false, 'Should detect no nav content');
+    assert.ok(
+      !element.shadowRoot.querySelector('.app-bar__menu-button'),
+      'Mobile menu button should not exist',
+    );
+    assert.ok(!element.shadowRoot.querySelector('.app-bar__overlay'), 'Overlay should not exist');
+    assert.strictEqual(
+      element.shadowRoot.querySelector('nav').hidden,
+      true,
+      'Empty nav landmark should be hidden',
+    );
+  });
+
+  it('should render mobile menu button when nav content is provided', async () => {
+    element = await mountWithNav();
     const menuButton = element.shadowRoot.querySelector('.app-bar__menu-button');
     assert.ok(menuButton, 'Mobile menu button should exist');
+    assert.ok(element.shadowRoot.querySelector('.app-bar__overlay'), 'Overlay should exist');
+    assert.strictEqual(
+      element.shadowRoot.querySelector('nav').hidden,
+      false,
+      'Nav landmark should be visible',
+    );
+  });
+
+  it('should detect nav content added after render', async () => {
+    element = await fixture('grantcodes-app-bar');
+    const nav = document.createElement('div');
+    nav.setAttribute('slot', 'nav');
+    nav.textContent = 'About';
+    element.append(nav);
+    element._navPresence.refresh();
+    await element.updateComplete;
+
+    assert.strictEqual(element._hasNav, true, 'Should detect appended nav content');
+    assert.ok(
+      element.shadowRoot.querySelector('.app-bar__menu-button'),
+      'Mobile menu button should exist after nav content is added',
+    );
   });
 
   it('should have mobile menu closed by default', async () => {
@@ -118,7 +163,7 @@ describe('App Bar Component', () => {
   });
 
   it('should toggle mobile menu when button is clicked', async () => {
-    element = await fixture('grantcodes-app-bar');
+    element = await mountWithNav();
     const menuButton = element.shadowRoot.querySelector('.app-bar__menu-button');
 
     assert.strictEqual(element._mobileMenuOpen, false, 'Should start closed');
@@ -135,7 +180,7 @@ describe('App Bar Component', () => {
   });
 
   it('should emit menu-toggle event when menu is toggled', async () => {
-    element = await fixture('grantcodes-app-bar');
+    element = await mountWithNav();
 
     let toggledState = null;
     element.addEventListener('menu-toggle', (e) => {
@@ -151,7 +196,7 @@ describe('App Bar Component', () => {
   });
 
   it('should close an open mobile menu with Escape', async () => {
-    element = await fixture('grantcodes-app-bar');
+    element = await mountWithNav();
     const toggledStates = [];
     element.addEventListener('menu-toggle', (event) => toggledStates.push(event.detail.open));
 
@@ -166,19 +211,19 @@ describe('App Bar Component', () => {
   });
 
   it('should have aria-label on menu button', async () => {
-    element = await fixture('grantcodes-app-bar');
+    element = await mountWithNav();
     const menuButton = element.shadowRoot.querySelector('.app-bar__menu-button');
     assert.ok(menuButton.hasAttribute('aria-label'), 'Menu button should have aria-label');
   });
 
   it('should have aria-expanded on menu button', async () => {
-    element = await fixture('grantcodes-app-bar');
+    element = await mountWithNav();
     const menuButton = element.shadowRoot.querySelector('.app-bar__menu-button');
     assert.ok(menuButton.hasAttribute('aria-expanded'), 'Menu button should have aria-expanded');
   });
 
   it('should update aria-expanded when menu is toggled', async () => {
-    element = await fixture('grantcodes-app-bar');
+    element = await mountWithNav();
     const menuButton = element.shadowRoot.querySelector('.app-bar__menu-button');
 
     assert.strictEqual(

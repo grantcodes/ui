@@ -254,6 +254,21 @@
               ]
             },
             {
+              "kind": "method",
+              "name": "_handleSlotChange"
+            },
+            {
+              "kind": "field",
+              "name": "_hasNav",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether the nav slot has content; without it the menu button and\noverlay would drive an empty panel.",
+              "default": "false",
+              "attribute": "_hasNav"
+            },
+            {
               "kind": "field",
               "name": "_mobileMenuOpen",
               "privacy": "public",
@@ -263,6 +278,14 @@
               "description": "Mobile menu open state",
               "default": "false",
               "attribute": "_mobileMenuOpen"
+            },
+            {
+              "kind": "field",
+              "name": "_navPresence",
+              "type": {
+                "text": "SlotPresenceController"
+              },
+              "default": "new SlotPresenceController(this, 'nav', (present) => { this._hasNav = present; })"
             },
             {
               "kind": "field",
@@ -310,6 +333,15 @@
             }
           ],
           "attributes": [
+            {
+              "name": "_hasNav",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether the nav slot has content; without it the menu button and\noverlay would drive an empty panel.",
+              "default": "false",
+              "fieldName": "_hasNav"
+            },
             {
               "name": "_mobileMenuOpen",
               "type": {
