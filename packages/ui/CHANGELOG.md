@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.0.2](https://github.com/grantcodes/ui/compare/ui-v3.0.1...ui-v3.0.2) (2026-10-26)
+
+
+### Bug Fixes
+
+* **ui:** hide app bar menu button when no nav content ([619055e](https://github.com/grantcodes/ui/commit/619055e8fbf23e03d5183f5de6129138864be741))
+* **ui:** omit the app bar mobile menu button when there is no nav content ([0bb858e](https://github.com/grantcodes/ui/commit/0bb858ecc5487d348206d691a643cd9549a1232b))
+
 ## [3.0.1](https://github.com/grantcodes/ui/compare/ui-v3.0.0...ui-v3.0.1) (2026-10-25)
 
 
