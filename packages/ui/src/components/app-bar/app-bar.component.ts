@@ -1,10 +1,13 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, nothing } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
+import { SlotPresenceController } from '../../lib/slot-presence-controller.js';
 import focusRingStyles from '../../lib/styles/focus-ring.css' with { type: 'css' };
 import appBarStyles from './app-bar.css' with { type: 'css' };
 
 export class GrantCodesAppBar extends LitElement {
+  declare _hasNav: boolean;
   declare _mobileMenuOpen: boolean;
+  declare _navPresence: SlotPresenceController;
   declare _resizeObserver: null | ResizeObserver;
   declare sticky: boolean;
   declare transparent: boolean;
@@ -15,6 +18,7 @@ export class GrantCodesAppBar extends LitElement {
     sticky: { type: Boolean, reflect: true },
     transparent: { type: Boolean, reflect: true },
     _mobileMenuOpen: { type: Boolean, state: true },
+    _hasNav: { state: true },
   };
 
   constructor() {
@@ -39,6 +43,16 @@ export class GrantCodesAppBar extends LitElement {
     this._mobileMenuOpen = false;
 
     /**
+     * Whether the nav slot has content; without it the menu button and
+     * overlay would drive an empty panel.
+     * @type {boolean}
+     */
+    this._hasNav = false;
+    this._navPresence = new SlotPresenceController(this, 'nav', (present) => {
+      this._hasNav = present;
+    });
+
+    /**
      * Close mobile menu when the component crosses the desktop breakpoint.
      * Matches the 768px container query in app-bar.css.
      */
@@ -53,6 +67,11 @@ export class GrantCodesAppBar extends LitElement {
           })
         : null;
     this._handleEscape = this._handleEscape.bind(this);
+    this._handleSlotChange = this._handleSlotChange.bind(this);
+  }
+
+  _handleSlotChange() {
+    this._navPresence.refresh();
   }
 
   connectedCallback() {
@@ -116,8 +135,9 @@ export class GrantCodesAppBar extends LitElement {
 						part="nav"
 						class=${navClasses}
 						aria-label="Main navigation"
+						?hidden=${!this._hasNav}
 					>
-						<slot name="nav"></slot>
+						<slot name="nav" @slotchange=${this._handleSlotChange}></slot>
 					</nav>
 
 					<!-- Actions (right side) -->
@@ -125,23 +145,35 @@ export class GrantCodesAppBar extends LitElement {
 						<slot name="actions"></slot>
 					</div>
 
-					<!-- Mobile Menu Button -->
-					<button
-						type="button"
-						class="app-bar__menu-button focus-ring"
-						aria-label="${this._mobileMenuOpen ? 'Close menu' : 'Open menu'}"
-						aria-expanded="${this._mobileMenuOpen}"
-						@click=${this._toggleMobileMenu}
-					>
-						<span class="app-bar__menu-icon"></span>
-					</button>
+					${
+						this._hasNav
+							? html`
+								<!-- Mobile Menu Button -->
+								<button
+									type="button"
+									class="app-bar__menu-button focus-ring"
+									aria-label="${this._mobileMenuOpen ? 'Close menu' : 'Open menu'}"
+									aria-expanded="${this._mobileMenuOpen}"
+									@click=${this._toggleMobileMenu}
+								>
+									<span class="app-bar__menu-icon"></span>
+								</button>
+							`
+							: nothing
+					}
 				</div>
 
 				<!-- Mobile overlay backdrop -->
-				<div
-					class="app-bar__overlay ${this._mobileMenuOpen ? 'app-bar__overlay--visible' : ''}"
-					@click=${this._toggleMobileMenu}
-				></div>
+				${
+					this._hasNav
+						? html`
+								<div
+									class="app-bar__overlay ${this._mobileMenuOpen ? 'app-bar__overlay--visible' : ''}"
+									@click=${this._toggleMobileMenu}
+								></div>
+							`
+						: nothing
+				}
 			</header>
 		`;
   }

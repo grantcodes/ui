@@ -54,6 +54,10 @@
   display: none;
 }
 
+.app-bar__nav[hidden] {
+  display: none;
+}
+
 /* Actions */
 .app-bar__actions {
   display: flex;
