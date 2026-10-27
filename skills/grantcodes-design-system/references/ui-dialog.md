@@ -20,7 +20,7 @@ import '@grantcodes/ui/components/dialog/dialog.js';
 </script>
 ```
 
-Properties: `open` false; `dismissible` true. Slots: header, default content, footer. The internal native dialog opens modally, names itself from host aria-label or header text, and syncs open after native close/cancel. Provide a meaningful name and verify initial focus, Escape, and focus return.
+Properties: `open` false; `dismissible` true. Slots: `header` (accessible-name fallback), default (dialog content), `footer` (actions). These slots and property descriptions are documented in the published Custom Elements Manifest. The internal native dialog opens modally, names itself from host aria-label or header text, and syncs open after native close/cancel. Provide a meaningful name and verify initial focus, Escape, and focus return.
 
 `dismissible=false` hides the close button and disables supported light-dismiss; it does **not** prevent Escape. Set it as a property (Lit `.dismissible`, React boolean), not a false-looking HTML attribute.
 

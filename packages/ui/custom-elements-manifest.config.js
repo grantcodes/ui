@@ -19,9 +19,8 @@ export default {
   litelement: true,
   plugins: [
     modulePathResolverPlugin({
-      // Sources are .ts, but the published CEM references the compiled .js modules.
-      modulePathTemplate: (modulePath) => modulePath.replace(/\.ts$/, '.js'),
-      definitionPathTemplate: (modulePath) => modulePath.replace(/\.ts$/, '.js'),
+      modulePathTemplate: (modulePath) =>
+        modulePath.replace(/^\/?src\//, 'dist/').replace(/\.ts$/, '.js'),
     }),
     cemInheritancePlugin(),
     cemSorterPlugin({
@@ -30,8 +29,7 @@ export default {
     cemValidatorPlugin({
       rules: {
         packageJson: {
-          // NOTE: Not sure why, but throws an error if missing.
-          customElementsProperty: 'off',
+          customElementsProperty: 'error',
         },
         // TypeScript declarations reference imported types (e.g. lit's PropertyValues)
         // that a component module does not export, so this rule cannot pass post-migration.

@@ -15,11 +15,11 @@ export default defineConfig({
         plugins: [storybookTest({ configDir: path.join(dirname, '.storybook') })],
         test: {
           name: 'storybook',
-          deps: { optimizer: { web: { enabled: false } } },
+          deps: { optimizer: { client: { enabled: false } } },
           browser: {
             enabled: true,
             headless: true,
-            provider: playwright({}),
+            provider: playwright({ contextOptions: { reducedMotion: 'reduce' } }),
             instances: [{ browser: 'chromium' }],
           },
         },

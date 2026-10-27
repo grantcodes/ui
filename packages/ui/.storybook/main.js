@@ -1,5 +1,6 @@
 import { fileURLToPath } from 'node:url';
 import { dirname } from 'node:path';
+import { storybookHelpersReloader } from '@wc-toolkit/storybook-helpers';
 import { cssImportAttributes } from '../src/vite-plugin-css-import-attributes.ts';
 
 export default {
@@ -21,7 +22,8 @@ export default {
     options: {},
   },
 
-  async viteFinal(config) {
+  async viteFinal(config, options) {
+    config = await storybookHelpersReloader().viteFinal(config, options);
     return {
       ...config,
       root: fileURLToPath(new URL('../', import.meta.url)),

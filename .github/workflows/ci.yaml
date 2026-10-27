@@ -37,6 +37,14 @@ jobs:
       - run: pnpm test
         name: Test
 
+      - run: >-
+          pnpm --filter @grantcodes/ui exec playwright install
+          --with-deps chromium
+        name: Install browser for component tests
+
+      - run: pnpm --filter @grantcodes/ui test:storybook
+        name: Test component interactions in Chromium
+
   build:
     runs-on: ubuntu-latest
     steps:
