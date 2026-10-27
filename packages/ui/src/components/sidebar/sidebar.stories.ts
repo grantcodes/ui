@@ -1,4 +1,5 @@
 import { html } from 'lit';
+import { expect, userEvent, waitFor } from 'storybook/test';
 import type { GrantCodesSidebar } from './sidebar.js';
 // Side-effect import: an import used only in type position is erased, which would also drop
 // `customElements.define()` and the component's shadow styles from the story bundle.
@@ -29,6 +30,25 @@ const navigation = html`
 `;
 
 export const Standalone = {
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+    const sidebar = canvasElement.querySelector<GrantCodesSidebar>('grantcodes-sidebar')!;
+    const trigger = canvasElement.querySelector('grantcodes-sidebar-toggle')!;
+    const menu = trigger.shadowRoot!.querySelector('grantcodes-menu-toggle')!;
+    const button = menu.shadowRoot!.querySelector('button')!;
+    await waitFor(() => expect(trigger).toBeVisible());
+    await userEvent.tab();
+    await expect(menu.shadowRoot!.activeElement).toBe(button);
+    await userEvent.keyboard('{Enter}');
+    await waitFor(() => expect(sidebar.open).toBe(true));
+    await waitFor(() => expect(button).toHaveAttribute('aria-expanded', 'true'));
+    if ('ariaControlsElements' in button) {
+      await expect(button.ariaControlsElements).toEqual([sidebar]);
+    }
+    await userEvent.keyboard('{Escape}');
+    await waitFor(() => expect(sidebar.open).toBe(false));
+    await waitFor(() => expect(button).toHaveAttribute('aria-expanded', 'false'));
+    await waitFor(() => expect(menu.shadowRoot!.activeElement).toBe(button));
+  },
   render: () => html`
     <div style="display: flex; min-height: 32rem;">
       <grantcodes-sidebar id="navigation" aria-label="Navigation" style=${drawerBreakpoint}>
@@ -36,9 +56,7 @@ export const Standalone = {
       </grantcodes-sidebar>
       <main style="flex: 1; padding: 2rem">
         <p>
-          <grantcodes-sidebar-toggle for="navigation">
-            <button type="button" aria-label="Open navigation">Menu</button>
-          </grantcodes-sidebar-toggle>
+          <grantcodes-sidebar-toggle for="navigation"></grantcodes-sidebar-toggle>
         </p>
         <h1>Dashboard</h1>
       </main>

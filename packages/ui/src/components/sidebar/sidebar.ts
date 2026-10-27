@@ -1,3 +1,4 @@
+import '../menu-toggle/menu-toggle.js';
 import { GrantCodesSidebar } from './sidebar.component.js';
 import { GrantCodesSidebarToggle } from './sidebar-toggle.component.js';
 
