@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.12.1](https://github.com/grantcodes/ui/compare/style-dictionary-v1.12.0...style-dictionary-v1.12.1) (2026-10-27)
+
+
+### Bug Fixes
+
+* **ui:** improve CEM publishing and component tooling ([a182641](https://github.com/grantcodes/ui/commit/a1826418dd5be5e301d4bb4a8f63d16e59014d90))
+
 ## [1.12.0](https://github.com/grantcodes/ui/compare/style-dictionary-v1.11.1...style-dictionary-v1.12.0) (2026-10-25)
 
 
