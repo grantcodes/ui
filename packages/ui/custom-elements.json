@@ -4,7 +4,7 @@
   "modules": [
     {
       "kind": "javascript-module",
-      "path": "src/components/accordion/accordion-item.component.js",
+      "path": "dist/components/accordion/accordion-item.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -65,30 +65,14 @@
           "name": "GrantCodesAccordionItem",
           "declaration": {
             "name": "GrantCodesAccordionItem",
-            "module": "src/components/accordion/accordion-item.component.js"
+            "module": "dist/components/accordion/accordion-item.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/accordion/accordion-item.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-accordion-item",
-          "declaration": {
-            "name": "GrantCodesAccordionItem",
-            "module": "src/components/accordion/accordion-item.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/accordion/accordion.component.js",
+      "path": "dist/components/accordion/accordion.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -109,30 +93,14 @@
           "name": "GrantCodesAccordion",
           "declaration": {
             "name": "GrantCodesAccordion",
-            "module": "src/components/accordion/accordion.component.js"
+            "module": "dist/components/accordion/accordion.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/accordion/accordion.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-accordion",
-          "declaration": {
-            "name": "GrantCodesAccordion",
-            "module": "src/components/accordion/accordion.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/accordion/accordion.js",
+      "path": "dist/components/accordion/accordion.js",
       "declarations": [],
       "exports": [
         {
@@ -140,7 +108,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/accordion/accordion.component.js"
+            "module": "dist/components/accordion/accordion.component.js"
           }
         },
         {
@@ -148,7 +116,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/accordion/accordion-item.component.js"
+            "module": "dist/components/accordion/accordion-item.component.js"
           }
         },
         {
@@ -156,7 +124,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesAccordion",
-            "module": "src/components/accordion/accordion.js"
+            "module": "dist/components/accordion/accordion.js"
           }
         },
         {
@@ -164,7 +132,7 @@
           "name": "grantcodes-accordion",
           "declaration": {
             "name": "GrantCodesAccordion",
-            "module": "/src/components/accordion/accordion.component.js"
+            "module": "dist/components/accordion/accordion.component.js"
           }
         },
         {
@@ -172,14 +140,14 @@
           "name": "grantcodes-accordion-item",
           "declaration": {
             "name": "GrantCodesAccordionItem",
-            "module": "/src/components/accordion/accordion-item.component.js"
+            "module": "dist/components/accordion/accordion-item.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/accordion/index.js",
+      "path": "dist/components/accordion/index.js",
       "declarations": [],
       "exports": [
         {
@@ -187,7 +155,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/accordion/accordion.component.js"
+            "module": "dist/components/accordion/accordion.component.js"
           }
         },
         {
@@ -195,7 +163,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/accordion/accordion-item.component.js"
+            "module": "dist/components/accordion/accordion-item.component.js"
           }
         },
         {
@@ -203,7 +171,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesAccordion",
-            "module": "src/components/accordion/index.js"
+            "module": "dist/components/accordion/index.js"
           }
         },
         {
@@ -211,7 +179,7 @@
           "name": "grantcodes-accordion",
           "declaration": {
             "name": "GrantCodesAccordion",
-            "module": "/src/components/accordion/accordion.component.js"
+            "module": "dist/components/accordion/accordion.component.js"
           }
         },
         {
@@ -219,14 +187,14 @@
           "name": "grantcodes-accordion-item",
           "declaration": {
             "name": "GrantCodesAccordionItem",
-            "module": "/src/components/accordion/accordion-item.component.js"
+            "module": "dist/components/accordion/accordion-item.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/app-bar/app-bar.component.js",
+      "path": "dist/components/app-bar/app-bar.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -384,30 +352,14 @@
           "name": "GrantCodesAppBar",
           "declaration": {
             "name": "GrantCodesAppBar",
-            "module": "src/components/app-bar/app-bar.component.js"
+            "module": "dist/components/app-bar/app-bar.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/app-bar/app-bar.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-app-bar",
-          "declaration": {
-            "name": "GrantCodesAppBar",
-            "module": "src/components/app-bar/app-bar.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/app-bar/app-bar.js",
+      "path": "dist/components/app-bar/app-bar.js",
       "declarations": [],
       "exports": [
         {
@@ -415,7 +367,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/app-bar/app-bar.component.js"
+            "module": "dist/components/app-bar/app-bar.component.js"
           }
         },
         {
@@ -423,7 +375,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesAppBar",
-            "module": "src/components/app-bar/app-bar.js"
+            "module": "dist/components/app-bar/app-bar.js"
           }
         },
         {
@@ -431,14 +383,14 @@
           "name": "grantcodes-app-bar",
           "declaration": {
             "name": "GrantCodesAppBar",
-            "module": "/src/components/app-bar/app-bar.component.js"
+            "module": "dist/components/app-bar/app-bar.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/app-bar/index.js",
+      "path": "dist/components/app-bar/index.js",
       "declarations": [],
       "exports": [
         {
@@ -446,14 +398,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/app-bar/app-bar.js"
+            "module": "dist/components/app-bar/app-bar.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/app-bar/nav-link.component.js",
+      "path": "dist/components/app-bar/nav-link.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -474,30 +426,14 @@
           "name": "GrantCodesNavLink",
           "declaration": {
             "name": "GrantCodesNavLink",
-            "module": "src/components/app-bar/nav-link.component.js"
+            "module": "dist/components/app-bar/nav-link.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/app-bar/nav-link.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-nav-link",
-          "declaration": {
-            "name": "GrantCodesNavLink",
-            "module": "src/components/app-bar/nav-link.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/app-bar/nav-link.js",
+      "path": "dist/components/app-bar/nav-link.js",
       "declarations": [],
       "exports": [
         {
@@ -505,7 +441,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/app-bar/nav-link.component.js"
+            "module": "dist/components/app-bar/nav-link.component.js"
           }
         },
         {
@@ -513,7 +449,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesNavLink",
-            "module": "src/components/app-bar/nav-link.js"
+            "module": "dist/components/app-bar/nav-link.js"
           }
         },
         {
@@ -521,14 +457,14 @@
           "name": "grantcodes-nav-link",
           "declaration": {
             "name": "GrantCodesNavLink",
-            "module": "/src/components/app-bar/nav-link.component.js"
+            "module": "dist/components/app-bar/nav-link.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/avatar/avatar.component.js",
+      "path": "dist/components/avatar/avatar.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -675,30 +611,14 @@
           "name": "GrantCodesAvatar",
           "declaration": {
             "name": "GrantCodesAvatar",
-            "module": "src/components/avatar/avatar.component.js"
+            "module": "dist/components/avatar/avatar.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/avatar/avatar.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-avatar",
-          "declaration": {
-            "name": "GrantCodesAvatar",
-            "module": "src/components/avatar/avatar.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/avatar/avatar.js",
+      "path": "dist/components/avatar/avatar.js",
       "declarations": [],
       "exports": [
         {
@@ -706,7 +626,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/avatar/avatar.component.js"
+            "module": "dist/components/avatar/avatar.component.js"
           }
         },
         {
@@ -714,7 +634,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesAvatar",
-            "module": "src/components/avatar/avatar.js"
+            "module": "dist/components/avatar/avatar.js"
           }
         },
         {
@@ -722,14 +642,14 @@
           "name": "grantcodes-avatar",
           "declaration": {
             "name": "GrantCodesAvatar",
-            "module": "/src/components/avatar/avatar.component.js"
+            "module": "dist/components/avatar/avatar.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/avatar/index.js",
+      "path": "dist/components/avatar/index.js",
       "declarations": [],
       "exports": [
         {
@@ -737,14 +657,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/avatar/avatar.js"
+            "module": "dist/components/avatar/avatar.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/badge/badge.component.js",
+      "path": "dist/components/badge/badge.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -788,30 +708,14 @@
           "name": "GrantCodesBadge",
           "declaration": {
             "name": "GrantCodesBadge",
-            "module": "src/components/badge/badge.component.js"
+            "module": "dist/components/badge/badge.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/badge/badge.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-badge",
-          "declaration": {
-            "name": "GrantCodesBadge",
-            "module": "src/components/badge/badge.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/badge/badge.js",
+      "path": "dist/components/badge/badge.js",
       "declarations": [],
       "exports": [
         {
@@ -819,7 +723,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/badge/badge.component.js"
+            "module": "dist/components/badge/badge.component.js"
           }
         },
         {
@@ -827,7 +731,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesBadge",
-            "module": "src/components/badge/badge.js"
+            "module": "dist/components/badge/badge.js"
           }
         },
         {
@@ -835,14 +739,14 @@
           "name": "grantcodes-badge",
           "declaration": {
             "name": "GrantCodesBadge",
-            "module": "/src/components/badge/badge.component.js"
+            "module": "dist/components/badge/badge.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/badge/index.js",
+      "path": "dist/components/badge/index.js",
       "declarations": [],
       "exports": [
         {
@@ -850,14 +754,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/badge/badge.js"
+            "module": "dist/components/badge/badge.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/breadcrumb/breadcrumb.component.js",
+      "path": "dist/components/breadcrumb/breadcrumb.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -960,7 +864,7 @@
           "name": "GrantCodesBreadcrumb",
           "declaration": {
             "name": "GrantCodesBreadcrumb",
-            "module": "src/components/breadcrumb/breadcrumb.component.js"
+            "module": "dist/components/breadcrumb/breadcrumb.component.js"
           }
         },
         {
@@ -968,46 +872,14 @@
           "name": "GrantCodesBreadcrumbItem",
           "declaration": {
             "name": "GrantCodesBreadcrumbItem",
-            "module": "src/components/breadcrumb/breadcrumb.component.js"
+            "module": "dist/components/breadcrumb/breadcrumb.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/breadcrumb/breadcrumb.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-breadcrumb",
-          "declaration": {
-            "name": "GrantCodesBreadcrumb",
-            "module": "src/components/breadcrumb/breadcrumb.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/breadcrumb/breadcrumb.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-breadcrumb-item",
-          "declaration": {
-            "name": "GrantCodesBreadcrumbItem",
-            "module": "src/components/breadcrumb/breadcrumb.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/breadcrumb/breadcrumb.js",
+      "path": "dist/components/breadcrumb/breadcrumb.js",
       "declarations": [],
       "exports": [
         {
@@ -1015,7 +887,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/breadcrumb/breadcrumb.component.js"
+            "module": "dist/components/breadcrumb/breadcrumb.component.js"
           }
         },
         {
@@ -1023,7 +895,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesBreadcrumb",
-            "module": "src/components/breadcrumb/breadcrumb.js"
+            "module": "dist/components/breadcrumb/breadcrumb.js"
           }
         },
         {
@@ -1031,7 +903,7 @@
           "name": "grantcodes-breadcrumb",
           "declaration": {
             "name": "GrantCodesBreadcrumb",
-            "module": "/src/components/breadcrumb/breadcrumb.component.js"
+            "module": "dist/components/breadcrumb/breadcrumb.component.js"
           }
         },
         {
@@ -1039,14 +911,14 @@
           "name": "grantcodes-breadcrumb-item",
           "declaration": {
             "name": "GrantCodesBreadcrumbItem",
-            "module": "/src/components/breadcrumb/breadcrumb.component.js"
+            "module": "dist/components/breadcrumb/breadcrumb.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/breadcrumb/index.js",
+      "path": "dist/components/breadcrumb/index.js",
       "declarations": [],
       "exports": [
         {
@@ -1054,14 +926,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/breadcrumb/breadcrumb.js"
+            "module": "dist/components/breadcrumb/breadcrumb.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/button-group/button-group.component.js",
+      "path": "dist/components/button-group/button-group.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -1142,30 +1014,14 @@
           "name": "GrantCodesButtonGroup",
           "declaration": {
             "name": "GrantCodesButtonGroup",
-            "module": "src/components/button-group/button-group.component.js"
+            "module": "dist/components/button-group/button-group.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/button-group/button-group.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-button-group",
-          "declaration": {
-            "name": "GrantCodesButtonGroup",
-            "module": "src/components/button-group/button-group.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/button-group/button-group.js",
+      "path": "dist/components/button-group/button-group.js",
       "declarations": [],
       "exports": [
         {
@@ -1173,7 +1029,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/button-group/button-group.component.js"
+            "module": "dist/components/button-group/button-group.component.js"
           }
         },
         {
@@ -1181,7 +1037,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesButtonGroup",
-            "module": "src/components/button-group/button-group.js"
+            "module": "dist/components/button-group/button-group.js"
           }
         },
         {
@@ -1189,14 +1045,14 @@
           "name": "grantcodes-button-group",
           "declaration": {
             "name": "GrantCodesButtonGroup",
-            "module": "/src/components/button-group/button-group.component.js"
+            "module": "dist/components/button-group/button-group.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/button-group/index.js",
+      "path": "dist/components/button-group/index.js",
       "declarations": [],
       "exports": [
         {
@@ -1204,14 +1060,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/button-group/button-group.js"
+            "module": "dist/components/button-group/button-group.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/button/button.component.js",
+      "path": "dist/components/button/button.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -1464,30 +1320,14 @@
           "name": "GrantCodesButton",
           "declaration": {
             "name": "GrantCodesButton",
-            "module": "src/components/button/button.component.js"
+            "module": "dist/components/button/button.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/button/button.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-button",
-          "declaration": {
-            "name": "GrantCodesButton",
-            "module": "src/components/button/button.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/button/button.js",
+      "path": "dist/components/button/button.js",
       "declarations": [],
       "exports": [
         {
@@ -1495,7 +1335,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/button/button.component.js"
+            "module": "dist/components/button/button.component.js"
           }
         },
         {
@@ -1503,7 +1343,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesButton",
-            "module": "src/components/button/button.js"
+            "module": "dist/components/button/button.js"
           }
         },
         {
@@ -1511,14 +1351,14 @@
           "name": "grantcodes-button",
           "declaration": {
             "name": "GrantCodesButton",
-            "module": "/src/components/button/button.component.js"
+            "module": "dist/components/button/button.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/button/index.js",
+      "path": "dist/components/button/index.js",
       "declarations": [],
       "exports": [
         {
@@ -1526,14 +1366,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/button/button.js"
+            "module": "dist/components/button/button.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/card/card.component.js",
+      "path": "dist/components/card/card.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -1599,30 +1439,14 @@
           "name": "GrantCodesCard",
           "declaration": {
             "name": "GrantCodesCard",
-            "module": "src/components/card/card.component.js"
+            "module": "dist/components/card/card.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/card/card.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-card",
-          "declaration": {
-            "name": "GrantCodesCard",
-            "module": "src/components/card/card.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/card/card.js",
+      "path": "dist/components/card/card.js",
       "declarations": [],
       "exports": [
         {
@@ -1630,7 +1454,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/card/card.component.js"
+            "module": "dist/components/card/card.component.js"
           }
         },
         {
@@ -1638,7 +1462,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesCard",
-            "module": "src/components/card/card.js"
+            "module": "dist/components/card/card.js"
           }
         },
         {
@@ -1646,14 +1470,14 @@
           "name": "grantcodes-card",
           "declaration": {
             "name": "GrantCodesCard",
-            "module": "/src/components/card/card.component.js"
+            "module": "dist/components/card/card.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/card/index.js",
+      "path": "dist/components/card/index.js",
       "declarations": [],
       "exports": [
         {
@@ -1661,14 +1485,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/card/card.js"
+            "module": "dist/components/card/card.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/code-preview/code-preview.component.js",
+      "path": "dist/components/code-preview/code-preview.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -1740,30 +1564,14 @@
           "name": "GrantCodesCodePreview",
           "declaration": {
             "name": "GrantCodesCodePreview",
-            "module": "src/components/code-preview/code-preview.component.js"
+            "module": "dist/components/code-preview/code-preview.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/code-preview/code-preview.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-code-preview",
-          "declaration": {
-            "name": "GrantCodesCodePreview",
-            "module": "src/components/code-preview/code-preview.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/code-preview/code-preview.js",
+      "path": "dist/components/code-preview/code-preview.js",
       "declarations": [],
       "exports": [
         {
@@ -1771,7 +1579,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/code-preview/code-preview.component.js"
+            "module": "dist/components/code-preview/code-preview.component.js"
           }
         },
         {
@@ -1779,7 +1587,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesCodePreview",
-            "module": "src/components/code-preview/code-preview.js"
+            "module": "dist/components/code-preview/code-preview.js"
           }
         },
         {
@@ -1787,14 +1595,14 @@
           "name": "grantcodes-code-preview",
           "declaration": {
             "name": "GrantCodesCodePreview",
-            "module": "/src/components/code-preview/code-preview.component.js"
+            "module": "dist/components/code-preview/code-preview.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/code-preview/index.js",
+      "path": "dist/components/code-preview/index.js",
       "declarations": [],
       "exports": [
         {
@@ -1802,14 +1610,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/code-preview/code-preview.js"
+            "module": "dist/components/code-preview/code-preview.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/container/container.component.js",
+      "path": "dist/components/container/container.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -1869,30 +1677,14 @@
           "name": "GrantCodesContainer",
           "declaration": {
             "name": "GrantCodesContainer",
-            "module": "src/components/container/container.component.js"
+            "module": "dist/components/container/container.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/container/container.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-container",
-          "declaration": {
-            "name": "GrantCodesContainer",
-            "module": "src/components/container/container.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/container/container.js",
+      "path": "dist/components/container/container.js",
       "declarations": [],
       "exports": [
         {
@@ -1900,7 +1692,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/container/container.component.js"
+            "module": "dist/components/container/container.component.js"
           }
         },
         {
@@ -1908,7 +1700,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesContainer",
-            "module": "src/components/container/container.js"
+            "module": "dist/components/container/container.js"
           }
         },
         {
@@ -1916,14 +1708,14 @@
           "name": "grantcodes-container",
           "declaration": {
             "name": "GrantCodesContainer",
-            "module": "/src/components/container/container.component.js"
+            "module": "dist/components/container/container.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/container/index.js",
+      "path": "dist/components/container/index.js",
       "declarations": [],
       "exports": [
         {
@@ -1931,14 +1723,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/container/container.js"
+            "module": "dist/components/container/container.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/countdown/countdown.component.js",
+      "path": "dist/components/countdown/countdown.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -2221,30 +2013,14 @@
           "name": "GrantCodesCountdown",
           "declaration": {
             "name": "GrantCodesCountdown",
-            "module": "src/components/countdown/countdown.component.js"
+            "module": "dist/components/countdown/countdown.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/countdown/countdown.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-countdown",
-          "declaration": {
-            "name": "GrantCodesCountdown",
-            "module": "src/components/countdown/countdown.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/countdown/countdown.js",
+      "path": "dist/components/countdown/countdown.js",
       "declarations": [],
       "exports": [
         {
@@ -2252,7 +2028,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/countdown/countdown.component.js"
+            "module": "dist/components/countdown/countdown.component.js"
           }
         },
         {
@@ -2260,7 +2036,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesCountdown",
-            "module": "src/components/countdown/countdown.js"
+            "module": "dist/components/countdown/countdown.js"
           }
         },
         {
@@ -2268,14 +2044,14 @@
           "name": "grantcodes-countdown",
           "declaration": {
             "name": "GrantCodesCountdown",
-            "module": "/src/components/countdown/countdown.component.js"
+            "module": "dist/components/countdown/countdown.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/countdown/index.js",
+      "path": "dist/components/countdown/index.js",
       "declarations": [],
       "exports": [
         {
@@ -2283,14 +2059,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/countdown/countdown.js"
+            "module": "dist/components/countdown/countdown.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/cta/cta.component.js",
+      "path": "dist/components/cta/cta.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -2445,30 +2221,14 @@
           "name": "GrantCodesCta",
           "declaration": {
             "name": "GrantCodesCta",
-            "module": "src/components/cta/cta.component.js"
+            "module": "dist/components/cta/cta.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/cta/cta.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-cta",
-          "declaration": {
-            "name": "GrantCodesCta",
-            "module": "src/components/cta/cta.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/cta/cta.js",
+      "path": "dist/components/cta/cta.js",
       "declarations": [],
       "exports": [
         {
@@ -2476,7 +2236,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/cta/cta.component.js"
+            "module": "dist/components/cta/cta.component.js"
           }
         },
         {
@@ -2484,7 +2244,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesCta",
-            "module": "src/components/cta/cta.js"
+            "module": "dist/components/cta/cta.js"
           }
         },
         {
@@ -2492,14 +2252,14 @@
           "name": "grantcodes-cta",
           "declaration": {
             "name": "GrantCodesCta",
-            "module": "/src/components/cta/cta.component.js"
+            "module": "dist/components/cta/cta.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/cta/index.js",
+      "path": "dist/components/cta/index.js",
       "declarations": [],
       "exports": [
         {
@@ -2507,19 +2267,33 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/cta/cta.js"
+            "module": "dist/components/cta/cta.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/dialog/dialog.component.js",
+      "path": "dist/components/dialog/dialog.component.js",
       "declarations": [
         {
           "kind": "class",
-          "description": "",
+          "description": "A modal dialog named by its aria-label or header text.",
           "name": "GrantCodesDialog",
+          "slots": [
+            {
+              "description": "Dialog content.",
+              "name": ""
+            },
+            {
+              "description": "Footer actions.",
+              "name": "footer"
+            },
+            {
+              "description": "Heading content used as the accessible name when aria-label is absent.",
+              "name": "header"
+            }
+          ],
           "members": [
             {
               "kind": "field",
@@ -2587,6 +2361,7 @@
               "type": {
                 "text": "boolean"
               },
+              "description": "Shows the close button and enables supported light-dismiss; Escape still closes the dialog.",
               "default": "true",
               "attribute": "dismissible"
             },
@@ -2601,6 +2376,7 @@
               "type": {
                 "text": "boolean"
               },
+              "description": "Opens the native dialog modally and reflects its open state.",
               "default": "false",
               "attribute": "open",
               "reflects": true
@@ -2628,6 +2404,7 @@
               "type": {
                 "text": "boolean"
               },
+              "description": "Shows the close button and enables supported light-dismiss; Escape still closes the dialog.",
               "default": "true",
               "fieldName": "dismissible"
             },
@@ -2636,6 +2413,7 @@
               "type": {
                 "text": "boolean"
               },
+              "description": "Opens the native dialog modally and reflects its open state.",
               "default": "false",
               "fieldName": "open"
             }
@@ -2654,30 +2432,14 @@
           "name": "GrantCodesDialog",
           "declaration": {
             "name": "GrantCodesDialog",
-            "module": "src/components/dialog/dialog.component.js"
+            "module": "dist/components/dialog/dialog.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/dialog/dialog.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-dialog",
-          "declaration": {
-            "name": "GrantCodesDialog",
-            "module": "src/components/dialog/dialog.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/dialog/dialog.js",
+      "path": "dist/components/dialog/dialog.js",
       "declarations": [],
       "exports": [
         {
@@ -2685,7 +2447,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/dialog/dialog.component.js"
+            "module": "dist/components/dialog/dialog.component.js"
           }
         },
         {
@@ -2693,7 +2455,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesDialog",
-            "module": "src/components/dialog/dialog.js"
+            "module": "dist/components/dialog/dialog.js"
           }
         },
         {
@@ -2701,14 +2463,14 @@
           "name": "grantcodes-dialog",
           "declaration": {
             "name": "GrantCodesDialog",
-            "module": "/src/components/dialog/dialog.component.js"
+            "module": "dist/components/dialog/dialog.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/dialog/index.js",
+      "path": "dist/components/dialog/index.js",
       "declarations": [],
       "exports": [
         {
@@ -2716,14 +2478,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/dialog/dialog.js"
+            "module": "dist/components/dialog/dialog.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/dropdown/dropdown.component.js",
+      "path": "dist/components/dropdown/dropdown.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -3039,7 +2801,7 @@
           "name": "GrantCodesDropdown",
           "declaration": {
             "name": "GrantCodesDropdown",
-            "module": "src/components/dropdown/dropdown.component.js"
+            "module": "dist/components/dropdown/dropdown.component.js"
           }
         },
         {
@@ -3047,46 +2809,14 @@
           "name": "GrantCodesDropdownItem",
           "declaration": {
             "name": "GrantCodesDropdownItem",
-            "module": "src/components/dropdown/dropdown.component.js"
+            "module": "dist/components/dropdown/dropdown.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/dropdown/dropdown.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-dropdown",
-          "declaration": {
-            "name": "GrantCodesDropdown",
-            "module": "src/components/dropdown/dropdown.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/dropdown/dropdown.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-dropdown-item",
-          "declaration": {
-            "name": "GrantCodesDropdownItem",
-            "module": "src/components/dropdown/dropdown.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/dropdown/dropdown.js",
+      "path": "dist/components/dropdown/dropdown.js",
       "declarations": [],
       "exports": [
         {
@@ -3094,7 +2824,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/dropdown/dropdown.component.js"
+            "module": "dist/components/dropdown/dropdown.component.js"
           }
         },
         {
@@ -3102,7 +2832,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesDropdown",
-            "module": "src/components/dropdown/dropdown.js"
+            "module": "dist/components/dropdown/dropdown.js"
           }
         },
         {
@@ -3110,7 +2840,7 @@
           "name": "grantcodes-dropdown",
           "declaration": {
             "name": "GrantCodesDropdown",
-            "module": "/src/components/dropdown/dropdown.component.js"
+            "module": "dist/components/dropdown/dropdown.component.js"
           }
         },
         {
@@ -3118,14 +2848,14 @@
           "name": "grantcodes-dropdown-item",
           "declaration": {
             "name": "GrantCodesDropdownItem",
-            "module": "/src/components/dropdown/dropdown.component.js"
+            "module": "dist/components/dropdown/dropdown.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/dropdown/index.js",
+      "path": "dist/components/dropdown/index.js",
       "declarations": [],
       "exports": [
         {
@@ -3133,14 +2863,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/dropdown/dropdown.js"
+            "module": "dist/components/dropdown/dropdown.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/dropzone/dropzone.component.js",
+      "path": "dist/components/dropzone/dropzone.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -3247,30 +2977,14 @@
           "name": "GrantCodesDropzone",
           "declaration": {
             "name": "GrantCodesDropzone",
-            "module": "src/components/dropzone/dropzone.component.js"
+            "module": "dist/components/dropzone/dropzone.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/dropzone/dropzone.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-dropzone",
-          "declaration": {
-            "name": "GrantCodesDropzone",
-            "module": "src/components/dropzone/dropzone.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/dropzone/dropzone.js",
+      "path": "dist/components/dropzone/dropzone.js",
       "declarations": [],
       "exports": [
         {
@@ -3278,7 +2992,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/dropzone/dropzone.component.js"
+            "module": "dist/components/dropzone/dropzone.component.js"
           }
         },
         {
@@ -3286,7 +3000,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesDropzone",
-            "module": "src/components/dropzone/dropzone.js"
+            "module": "dist/components/dropzone/dropzone.js"
           }
         },
         {
@@ -3294,14 +3008,14 @@
           "name": "grantcodes-dropzone",
           "declaration": {
             "name": "GrantCodesDropzone",
-            "module": "/src/components/dropzone/dropzone.component.js"
+            "module": "dist/components/dropzone/dropzone.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/dropzone/index.js",
+      "path": "dist/components/dropzone/index.js",
       "declarations": [],
       "exports": [
         {
@@ -3309,14 +3023,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/dropzone/dropzone.js"
+            "module": "dist/components/dropzone/dropzone.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/feature-list/feature-list.component.js",
+      "path": "dist/components/feature-list/feature-list.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -3454,30 +3168,14 @@
           "name": "GrantCodesFeatureList",
           "declaration": {
             "name": "GrantCodesFeatureList",
-            "module": "src/components/feature-list/feature-list.component.js"
+            "module": "dist/components/feature-list/feature-list.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/feature-list/feature-list.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-feature-list",
-          "declaration": {
-            "name": "GrantCodesFeatureList",
-            "module": "src/components/feature-list/feature-list.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/feature-list/feature-list.js",
+      "path": "dist/components/feature-list/feature-list.js",
       "declarations": [],
       "exports": [
         {
@@ -3485,7 +3183,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/feature-list/feature-list.component.js"
+            "module": "dist/components/feature-list/feature-list.component.js"
           }
         },
         {
@@ -3493,7 +3191,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesFeatureList",
-            "module": "src/components/feature-list/feature-list.js"
+            "module": "dist/components/feature-list/feature-list.js"
           }
         },
         {
@@ -3501,14 +3199,14 @@
           "name": "grantcodes-feature-list",
           "declaration": {
             "name": "GrantCodesFeatureList",
-            "module": "/src/components/feature-list/feature-list.component.js"
+            "module": "dist/components/feature-list/feature-list.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/feature-list/index.js",
+      "path": "dist/components/feature-list/index.js",
       "declarations": [],
       "exports": [
         {
@@ -3516,14 +3214,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/feature-list/feature-list.js"
+            "module": "dist/components/feature-list/feature-list.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/footer/footer-column.component.js",
+      "path": "dist/components/footer/footer-column.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -3544,30 +3242,14 @@
           "name": "GrantCodesFooterColumn",
           "declaration": {
             "name": "GrantCodesFooterColumn",
-            "module": "src/components/footer/footer-column.component.js"
+            "module": "dist/components/footer/footer-column.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/footer/footer-column.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-footer-column",
-          "declaration": {
-            "name": "GrantCodesFooterColumn",
-            "module": "src/components/footer/footer-column.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/footer/footer.component.js",
+      "path": "dist/components/footer/footer.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -3611,30 +3293,14 @@
           "name": "GrantCodesFooter",
           "declaration": {
             "name": "GrantCodesFooter",
-            "module": "src/components/footer/footer.component.js"
+            "module": "dist/components/footer/footer.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/footer/footer.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-footer",
-          "declaration": {
-            "name": "GrantCodesFooter",
-            "module": "src/components/footer/footer.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/footer/footer.js",
+      "path": "dist/components/footer/footer.js",
       "declarations": [],
       "exports": [
         {
@@ -3642,7 +3308,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/footer/footer.component.js"
+            "module": "dist/components/footer/footer.component.js"
           }
         },
         {
@@ -3650,7 +3316,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/footer/footer-column.component.js"
+            "module": "dist/components/footer/footer-column.component.js"
           }
         },
         {
@@ -3658,7 +3324,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesFooter",
-            "module": "src/components/footer/footer.js"
+            "module": "dist/components/footer/footer.js"
           }
         },
         {
@@ -3666,7 +3332,7 @@
           "name": "grantcodes-footer",
           "declaration": {
             "name": "GrantCodesFooter",
-            "module": "/src/components/footer/footer.component.js"
+            "module": "dist/components/footer/footer.component.js"
           }
         },
         {
@@ -3674,14 +3340,14 @@
           "name": "grantcodes-footer-column",
           "declaration": {
             "name": "GrantCodesFooterColumn",
-            "module": "/src/components/footer/footer-column.component.js"
+            "module": "dist/components/footer/footer-column.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/footer/index.js",
+      "path": "dist/components/footer/index.js",
       "declarations": [],
       "exports": [
         {
@@ -3689,7 +3355,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/footer/footer.js"
+            "module": "dist/components/footer/footer.js"
           }
         },
         {
@@ -3704,7 +3370,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/form-field/form-field.component.js",
+      "path": "dist/components/form-field/form-field.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -3928,30 +3594,14 @@
           "name": "GrantCodesFormField",
           "declaration": {
             "name": "GrantCodesFormField",
-            "module": "src/components/form-field/form-field.component.js"
+            "module": "dist/components/form-field/form-field.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/form-field/form-field.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-form-field",
-          "declaration": {
-            "name": "GrantCodesFormField",
-            "module": "src/components/form-field/form-field.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/form-field/form-field.js",
+      "path": "dist/components/form-field/form-field.js",
       "declarations": [],
       "exports": [
         {
@@ -3959,7 +3609,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/form-field/form-field.component.js"
+            "module": "dist/components/form-field/form-field.component.js"
           }
         },
         {
@@ -3967,7 +3617,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesFormField",
-            "module": "src/components/form-field/form-field.js"
+            "module": "dist/components/form-field/form-field.js"
           }
         },
         {
@@ -3975,14 +3625,14 @@
           "name": "grantcodes-form-field",
           "declaration": {
             "name": "GrantCodesFormField",
-            "module": "/src/components/form-field/form-field.component.js"
+            "module": "dist/components/form-field/form-field.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/form-field/index.js",
+      "path": "dist/components/form-field/index.js",
       "declarations": [],
       "exports": [
         {
@@ -3990,14 +3640,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/form-field/form-field.js"
+            "module": "dist/components/form-field/form-field.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/gallery/gallery-image.component.js",
+      "path": "dist/components/gallery/gallery-image.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -4133,30 +3783,14 @@
           "name": "GrantCodesGalleryImage",
           "declaration": {
             "name": "GrantCodesGalleryImage",
-            "module": "src/components/gallery/gallery-image.component.js"
+            "module": "dist/components/gallery/gallery-image.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/gallery/gallery-image.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-gallery-image",
-          "declaration": {
-            "name": "GrantCodesGalleryImage",
-            "module": "src/components/gallery/gallery-image.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/gallery/gallery-image.js",
+      "path": "dist/components/gallery/gallery-image.js",
       "declarations": [],
       "exports": [
         {
@@ -4164,7 +3798,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/gallery/gallery-image.component.js"
+            "module": "dist/components/gallery/gallery-image.component.js"
           }
         },
         {
@@ -4172,7 +3806,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesGalleryImage",
-            "module": "src/components/gallery/gallery-image.js"
+            "module": "dist/components/gallery/gallery-image.js"
           }
         },
         {
@@ -4180,14 +3814,14 @@
           "name": "grantcodes-gallery-image",
           "declaration": {
             "name": "GrantCodesGalleryImage",
-            "module": "/src/components/gallery/gallery-image.component.js"
+            "module": "dist/components/gallery/gallery-image.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/gallery/gallery.component.js",
+      "path": "dist/components/gallery/gallery.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -4238,30 +3872,14 @@
           "name": "GrantCodesGallery",
           "declaration": {
             "name": "GrantCodesGallery",
-            "module": "src/components/gallery/gallery.component.js"
+            "module": "dist/components/gallery/gallery.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/gallery/gallery.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-gallery",
-          "declaration": {
-            "name": "GrantCodesGallery",
-            "module": "src/components/gallery/gallery.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/gallery/gallery.js",
+      "path": "dist/components/gallery/gallery.js",
       "declarations": [],
       "exports": [
         {
@@ -4269,7 +3887,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/gallery/gallery.component.js"
+            "module": "dist/components/gallery/gallery.component.js"
           }
         },
         {
@@ -4277,7 +3895,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesGallery",
-            "module": "src/components/gallery/gallery.js"
+            "module": "dist/components/gallery/gallery.js"
           }
         },
         {
@@ -4285,14 +3903,14 @@
           "name": "grantcodes-gallery",
           "declaration": {
             "name": "GrantCodesGallery",
-            "module": "/src/components/gallery/gallery.component.js"
+            "module": "dist/components/gallery/gallery.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/gallery/index.js",
+      "path": "dist/components/gallery/index.js",
       "declarations": [],
       "exports": [
         {
@@ -4300,7 +3918,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/gallery/gallery.js"
+            "module": "dist/components/gallery/gallery.js"
           }
         },
         {
@@ -4308,14 +3926,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/gallery/gallery-image.js"
+            "module": "dist/components/gallery/gallery-image.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/hero/hero.component.js",
+      "path": "dist/components/hero/hero.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -4461,30 +4079,14 @@
           "name": "GrantCodesHero",
           "declaration": {
             "name": "GrantCodesHero",
-            "module": "src/components/hero/hero.component.js"
+            "module": "dist/components/hero/hero.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/hero/hero.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-hero",
-          "declaration": {
-            "name": "GrantCodesHero",
-            "module": "src/components/hero/hero.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/hero/hero.js",
+      "path": "dist/components/hero/hero.js",
       "declarations": [],
       "exports": [
         {
@@ -4492,7 +4094,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/hero/hero.component.js"
+            "module": "dist/components/hero/hero.component.js"
           }
         },
         {
@@ -4500,7 +4102,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesHero",
-            "module": "src/components/hero/hero.js"
+            "module": "dist/components/hero/hero.js"
           }
         },
         {
@@ -4508,14 +4110,14 @@
           "name": "grantcodes-hero",
           "declaration": {
             "name": "GrantCodesHero",
-            "module": "/src/components/hero/hero.component.js"
+            "module": "dist/components/hero/hero.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/hero/index.js",
+      "path": "dist/components/hero/index.js",
       "declarations": [],
       "exports": [
         {
@@ -4523,14 +4125,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/hero/hero.js"
+            "module": "dist/components/hero/hero.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/icon/icon.component.js",
+      "path": "dist/components/icon/icon.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -4551,30 +4153,14 @@
           "name": "GrantCodesIcon",
           "declaration": {
             "name": "GrantCodesIcon",
-            "module": "src/components/icon/icon.component.js"
+            "module": "dist/components/icon/icon.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/icon/icon.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-icon",
-          "declaration": {
-            "name": "GrantCodesIcon",
-            "module": "src/components/icon/icon.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/icon/icon.js",
+      "path": "dist/components/icon/icon.js",
       "declarations": [],
       "exports": [
         {
@@ -4582,7 +4168,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/icon/icon.component.js"
+            "module": "dist/components/icon/icon.component.js"
           }
         },
         {
@@ -4590,7 +4176,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesIcon",
-            "module": "src/components/icon/icon.js"
+            "module": "dist/components/icon/icon.js"
           }
         },
         {
@@ -4598,14 +4184,14 @@
           "name": "grantcodes-icon",
           "declaration": {
             "name": "GrantCodesIcon",
-            "module": "/src/components/icon/icon.component.js"
+            "module": "dist/components/icon/icon.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/icon/index.js",
+      "path": "dist/components/icon/index.js",
       "declarations": [],
       "exports": [
         {
@@ -4613,14 +4199,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/icon/icon.js"
+            "module": "dist/components/icon/icon.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/loading/index.js",
+      "path": "dist/components/loading/index.js",
       "declarations": [],
       "exports": [
         {
@@ -4628,14 +4214,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/loading/loading.js"
+            "module": "dist/components/loading/loading.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/loading/loading.component.js",
+      "path": "dist/components/loading/loading.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -4689,30 +4275,14 @@
           "name": "GrantCodesLoading",
           "declaration": {
             "name": "GrantCodesLoading",
-            "module": "src/components/loading/loading.component.js"
+            "module": "dist/components/loading/loading.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/loading/loading.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-loading",
-          "declaration": {
-            "name": "GrantCodesLoading",
-            "module": "src/components/loading/loading.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/loading/loading.js",
+      "path": "dist/components/loading/loading.js",
       "declarations": [],
       "exports": [
         {
@@ -4720,7 +4290,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/loading/loading.component.js"
+            "module": "dist/components/loading/loading.component.js"
           }
         },
         {
@@ -4728,7 +4298,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesLoading",
-            "module": "src/components/loading/loading.js"
+            "module": "dist/components/loading/loading.js"
           }
         },
         {
@@ -4736,14 +4306,14 @@
           "name": "grantcodes-loading",
           "declaration": {
             "name": "GrantCodesLoading",
-            "module": "/src/components/loading/loading.component.js"
+            "module": "dist/components/loading/loading.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/logo-cloud/index.js",
+      "path": "dist/components/logo-cloud/index.js",
       "declarations": [],
       "exports": [
         {
@@ -4751,14 +4321,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/logo-cloud/logo-cloud.js"
+            "module": "dist/components/logo-cloud/logo-cloud.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/logo-cloud/logo-cloud.component.js",
+      "path": "dist/components/logo-cloud/logo-cloud.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -4830,30 +4400,14 @@
           "name": "GrantCodesLogoCloud",
           "declaration": {
             "name": "GrantCodesLogoCloud",
-            "module": "src/components/logo-cloud/logo-cloud.component.js"
+            "module": "dist/components/logo-cloud/logo-cloud.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/logo-cloud/logo-cloud.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-logo-cloud",
-          "declaration": {
-            "name": "GrantCodesLogoCloud",
-            "module": "src/components/logo-cloud/logo-cloud.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/logo-cloud/logo-cloud.js",
+      "path": "dist/components/logo-cloud/logo-cloud.js",
       "declarations": [],
       "exports": [
         {
@@ -4861,7 +4415,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/logo-cloud/logo-cloud.component.js"
+            "module": "dist/components/logo-cloud/logo-cloud.component.js"
           }
         },
         {
@@ -4869,7 +4423,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesLogoCloud",
-            "module": "src/components/logo-cloud/logo-cloud.js"
+            "module": "dist/components/logo-cloud/logo-cloud.js"
           }
         },
         {
@@ -4877,14 +4431,14 @@
           "name": "grantcodes-logo-cloud",
           "declaration": {
             "name": "GrantCodesLogoCloud",
-            "module": "/src/components/logo-cloud/logo-cloud.component.js"
+            "module": "dist/components/logo-cloud/logo-cloud.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/map/index.js",
+      "path": "dist/components/map/index.js",
       "declarations": [],
       "exports": [
         {
@@ -4892,14 +4446,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/map/map.js"
+            "module": "dist/components/map/map.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/map/map.component.js",
+      "path": "dist/components/map/map.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -5109,30 +4663,14 @@
           "name": "GrantCodesMap",
           "declaration": {
             "name": "GrantCodesMap",
-            "module": "src/components/map/map.component.js"
+            "module": "dist/components/map/map.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/map/map.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-map",
-          "declaration": {
-            "name": "GrantCodesMap",
-            "module": "src/components/map/map.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/map/map.js",
+      "path": "dist/components/map/map.js",
       "declarations": [],
       "exports": [
         {
@@ -5140,7 +4678,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/map/map.component.js"
+            "module": "dist/components/map/map.component.js"
           }
         },
         {
@@ -5148,7 +4686,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesMap",
-            "module": "src/components/map/map.js"
+            "module": "dist/components/map/map.js"
           }
         },
         {
@@ -5156,14 +4694,14 @@
           "name": "grantcodes-map",
           "declaration": {
             "name": "GrantCodesMap",
-            "module": "/src/components/map/map.component.js"
+            "module": "dist/components/map/map.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/media-text/index.js",
+      "path": "dist/components/media-text/index.js",
       "declarations": [],
       "exports": [
         {
@@ -5171,14 +4709,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/media-text/media-text.js"
+            "module": "dist/components/media-text/media-text.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/media-text/media-text.component.js",
+      "path": "dist/components/media-text/media-text.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -5313,30 +4851,14 @@
           "name": "GrantCodesMediaText",
           "declaration": {
             "name": "GrantCodesMediaText",
-            "module": "src/components/media-text/media-text.component.js"
+            "module": "dist/components/media-text/media-text.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/media-text/media-text.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-media-text",
-          "declaration": {
-            "name": "GrantCodesMediaText",
-            "module": "src/components/media-text/media-text.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/media-text/media-text.js",
+      "path": "dist/components/media-text/media-text.js",
       "declarations": [],
       "exports": [
         {
@@ -5344,7 +4866,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/media-text/media-text.component.js"
+            "module": "dist/components/media-text/media-text.component.js"
           }
         },
         {
@@ -5352,7 +4874,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesMediaText",
-            "module": "src/components/media-text/media-text.js"
+            "module": "dist/components/media-text/media-text.js"
           }
         },
         {
@@ -5360,14 +4882,14 @@
           "name": "grantcodes-media-text",
           "declaration": {
             "name": "GrantCodesMediaText",
-            "module": "/src/components/media-text/media-text.component.js"
+            "module": "dist/components/media-text/media-text.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/newsletter/index.js",
+      "path": "dist/components/newsletter/index.js",
       "declarations": [],
       "exports": [
         {
@@ -5375,14 +4897,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/newsletter/newsletter.js"
+            "module": "dist/components/newsletter/newsletter.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/newsletter/newsletter.component.js",
+      "path": "dist/components/newsletter/newsletter.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -5546,30 +5068,14 @@
           "name": "GrantCodesNewsletter",
           "declaration": {
             "name": "GrantCodesNewsletter",
-            "module": "src/components/newsletter/newsletter.component.js"
+            "module": "dist/components/newsletter/newsletter.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/newsletter/newsletter.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-newsletter",
-          "declaration": {
-            "name": "GrantCodesNewsletter",
-            "module": "src/components/newsletter/newsletter.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/newsletter/newsletter.js",
+      "path": "dist/components/newsletter/newsletter.js",
       "declarations": [],
       "exports": [
         {
@@ -5577,7 +5083,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/newsletter/newsletter.component.js"
+            "module": "dist/components/newsletter/newsletter.component.js"
           }
         },
         {
@@ -5585,7 +5091,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesNewsletter",
-            "module": "src/components/newsletter/newsletter.js"
+            "module": "dist/components/newsletter/newsletter.js"
           }
         },
         {
@@ -5593,14 +5099,14 @@
           "name": "grantcodes-newsletter",
           "declaration": {
             "name": "GrantCodesNewsletter",
-            "module": "/src/components/newsletter/newsletter.component.js"
+            "module": "dist/components/newsletter/newsletter.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/notice/index.js",
+      "path": "dist/components/notice/index.js",
       "declarations": [],
       "exports": [
         {
@@ -5608,14 +5114,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/notice/notice.js"
+            "module": "dist/components/notice/notice.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/notice/notice.component.js",
+      "path": "dist/components/notice/notice.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -5725,30 +5231,14 @@
           "name": "GrantCodesNotice",
           "declaration": {
             "name": "GrantCodesNotice",
-            "module": "src/components/notice/notice.component.js"
+            "module": "dist/components/notice/notice.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/notice/notice.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-notice",
-          "declaration": {
-            "name": "GrantCodesNotice",
-            "module": "src/components/notice/notice.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/notice/notice.js",
+      "path": "dist/components/notice/notice.js",
       "declarations": [],
       "exports": [
         {
@@ -5756,7 +5246,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/notice/notice.component.js"
+            "module": "dist/components/notice/notice.component.js"
           }
         },
         {
@@ -5764,7 +5254,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesNotice",
-            "module": "src/components/notice/notice.js"
+            "module": "dist/components/notice/notice.js"
           }
         },
         {
@@ -5772,14 +5262,14 @@
           "name": "grantcodes-notice",
           "declaration": {
             "name": "GrantCodesNotice",
-            "module": "/src/components/notice/notice.component.js"
+            "module": "dist/components/notice/notice.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pagination/index.js",
+      "path": "dist/components/pagination/index.js",
       "declarations": [],
       "exports": [
         {
@@ -5787,14 +5277,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/pagination/pagination.js"
+            "module": "dist/components/pagination/pagination.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pagination/pagination.component.js",
+      "path": "dist/components/pagination/pagination.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -5907,30 +5397,14 @@
           "name": "GrantCodesPagination",
           "declaration": {
             "name": "GrantCodesPagination",
-            "module": "src/components/pagination/pagination.component.js"
+            "module": "dist/components/pagination/pagination.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pagination/pagination.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-pagination",
-          "declaration": {
-            "name": "GrantCodesPagination",
-            "module": "src/components/pagination/pagination.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/pagination/pagination.js",
+      "path": "dist/components/pagination/pagination.js",
       "declarations": [],
       "exports": [
         {
@@ -5938,7 +5412,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/pagination/pagination.component.js"
+            "module": "dist/components/pagination/pagination.component.js"
           }
         },
         {
@@ -5946,7 +5420,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesPagination",
-            "module": "src/components/pagination/pagination.js"
+            "module": "dist/components/pagination/pagination.js"
           }
         },
         {
@@ -5954,14 +5428,14 @@
           "name": "grantcodes-pagination",
           "declaration": {
             "name": "GrantCodesPagination",
-            "module": "/src/components/pagination/pagination.component.js"
+            "module": "dist/components/pagination/pagination.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/person/index.js",
+      "path": "dist/components/person/index.js",
       "declarations": [],
       "exports": [
         {
@@ -5969,14 +5443,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/person/person.js"
+            "module": "dist/components/person/person.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/person/person.component.js",
+      "path": "dist/components/person/person.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -6113,30 +5587,14 @@
           "name": "GrantCodesPerson",
           "declaration": {
             "name": "GrantCodesPerson",
-            "module": "src/components/person/person.component.js"
+            "module": "dist/components/person/person.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/person/person.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-person",
-          "declaration": {
-            "name": "GrantCodesPerson",
-            "module": "src/components/person/person.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/person/person.js",
+      "path": "dist/components/person/person.js",
       "declarations": [],
       "exports": [
         {
@@ -6144,7 +5602,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/person/person.component.js"
+            "module": "dist/components/person/person.component.js"
           }
         },
         {
@@ -6152,7 +5610,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesPerson",
-            "module": "src/components/person/person.js"
+            "module": "dist/components/person/person.js"
           }
         },
         {
@@ -6160,14 +5618,14 @@
           "name": "grantcodes-person",
           "declaration": {
             "name": "GrantCodesPerson",
-            "module": "/src/components/person/person.component.js"
+            "module": "dist/components/person/person.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/popover/index.js",
+      "path": "dist/components/popover/index.js",
       "declarations": [],
       "exports": [
         {
@@ -6175,14 +5633,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/popover/popover.js"
+            "module": "dist/components/popover/popover.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/popover/popover.component.js",
+      "path": "dist/components/popover/popover.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -6511,30 +5969,14 @@
           "name": "GrantCodesPopover",
           "declaration": {
             "name": "GrantCodesPopover",
-            "module": "src/components/popover/popover.component.js"
+            "module": "dist/components/popover/popover.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/popover/popover.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-popover",
-          "declaration": {
-            "name": "GrantCodesPopover",
-            "module": "src/components/popover/popover.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/popover/popover.js",
+      "path": "dist/components/popover/popover.js",
       "declarations": [],
       "exports": [
         {
@@ -6542,7 +5984,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/popover/popover.component.js"
+            "module": "dist/components/popover/popover.component.js"
           }
         },
         {
@@ -6550,7 +5992,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesPopover",
-            "module": "src/components/popover/popover.js"
+            "module": "dist/components/popover/popover.js"
           }
         },
         {
@@ -6558,14 +6000,14 @@
           "name": "grantcodes-popover",
           "declaration": {
             "name": "GrantCodesPopover",
-            "module": "/src/components/popover/popover.component.js"
+            "module": "dist/components/popover/popover.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pricing/index.js",
+      "path": "dist/components/pricing/index.js",
       "declarations": [],
       "exports": [
         {
@@ -6573,14 +6015,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/pricing/pricing.js"
+            "module": "dist/components/pricing/pricing.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pricing/pricing.component.js",
+      "path": "dist/components/pricing/pricing.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -6672,30 +6114,14 @@
           "name": "GrantCodesPricing",
           "declaration": {
             "name": "GrantCodesPricing",
-            "module": "src/components/pricing/pricing.component.js"
+            "module": "dist/components/pricing/pricing.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pricing/pricing.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-pricing",
-          "declaration": {
-            "name": "GrantCodesPricing",
-            "module": "src/components/pricing/pricing.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/pricing/pricing.js",
+      "path": "dist/components/pricing/pricing.js",
       "declarations": [],
       "exports": [
         {
@@ -6703,7 +6129,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/pricing/pricing.component.js"
+            "module": "dist/components/pricing/pricing.component.js"
           }
         },
         {
@@ -6711,7 +6137,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesPricing",
-            "module": "src/components/pricing/pricing.js"
+            "module": "dist/components/pricing/pricing.js"
           }
         },
         {
@@ -6719,14 +6145,14 @@
           "name": "grantcodes-pricing",
           "declaration": {
             "name": "GrantCodesPricing",
-            "module": "/src/components/pricing/pricing.component.js"
+            "module": "dist/components/pricing/pricing.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/sidebar/index.js",
+      "path": "dist/components/sidebar/index.js",
       "declarations": [],
       "exports": [
         {
@@ -6734,7 +6160,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/sidebar/sidebar.js"
+            "module": "dist/components/sidebar/sidebar.js"
           }
         },
         {
@@ -6742,7 +6168,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/sidebar/sidebar.react.js"
+            "module": "dist/components/sidebar/sidebar.react.js"
           }
         },
         {
@@ -6750,14 +6176,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/sidebar/sidebar-toggle.react.js"
+            "module": "dist/components/sidebar/sidebar-toggle.react.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/sidebar/sidebar-toggle.component.js",
+      "path": "dist/components/sidebar/sidebar-toggle.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -6865,30 +6291,14 @@
           "name": "GrantCodesSidebarToggle",
           "declaration": {
             "name": "GrantCodesSidebarToggle",
-            "module": "src/components/sidebar/sidebar-toggle.component.js"
+            "module": "dist/components/sidebar/sidebar-toggle.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/sidebar/sidebar-toggle.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-sidebar-toggle",
-          "declaration": {
-            "name": "GrantCodesSidebarToggle",
-            "module": "src/components/sidebar/sidebar-toggle.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/sidebar/sidebar.component.js",
+      "path": "dist/components/sidebar/sidebar.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -7184,30 +6594,14 @@
           "name": "GrantCodesSidebar",
           "declaration": {
             "name": "GrantCodesSidebar",
-            "module": "src/components/sidebar/sidebar.component.js"
+            "module": "dist/components/sidebar/sidebar.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/sidebar/sidebar.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-sidebar",
-          "declaration": {
-            "name": "GrantCodesSidebar",
-            "module": "src/components/sidebar/sidebar.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/sidebar/sidebar.js",
+      "path": "dist/components/sidebar/sidebar.js",
       "declarations": [],
       "exports": [
         {
@@ -7215,7 +6609,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/sidebar/sidebar.component.js"
+            "module": "dist/components/sidebar/sidebar.component.js"
           }
         },
         {
@@ -7223,7 +6617,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/sidebar/sidebar-toggle.component.js"
+            "module": "dist/components/sidebar/sidebar-toggle.component.js"
           }
         },
         {
@@ -7231,7 +6625,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesSidebar",
-            "module": "src/components/sidebar/sidebar.js"
+            "module": "dist/components/sidebar/sidebar.js"
           }
         },
         {
@@ -7239,7 +6633,7 @@
           "name": "grantcodes-sidebar",
           "declaration": {
             "name": "GrantCodesSidebar",
-            "module": "/src/components/sidebar/sidebar.component.js"
+            "module": "dist/components/sidebar/sidebar.component.js"
           }
         },
         {
@@ -7247,14 +6641,14 @@
           "name": "grantcodes-sidebar-toggle",
           "declaration": {
             "name": "GrantCodesSidebarToggle",
-            "module": "/src/components/sidebar/sidebar-toggle.component.js"
+            "module": "dist/components/sidebar/sidebar-toggle.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/split-bar/index.js",
+      "path": "dist/components/split-bar/index.js",
       "declarations": [],
       "exports": [
         {
@@ -7262,14 +6656,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/split-bar/split-bar.js"
+            "module": "dist/components/split-bar/split-bar.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/split-bar/split-bar.calculations.js",
+      "path": "dist/components/split-bar/split-bar.calculations.js",
       "declarations": [
         {
           "kind": "function",
@@ -7296,14 +6690,14 @@
           "name": "calculateSegments",
           "declaration": {
             "name": "calculateSegments",
-            "module": "src/components/split-bar/split-bar.calculations.js"
+            "module": "dist/components/split-bar/split-bar.calculations.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/split-bar/split-bar.component.js",
+      "path": "dist/components/split-bar/split-bar.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -7347,30 +6741,14 @@
           "name": "GrantCodesSplitBar",
           "declaration": {
             "name": "GrantCodesSplitBar",
-            "module": "src/components/split-bar/split-bar.component.js"
+            "module": "dist/components/split-bar/split-bar.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/split-bar/split-bar.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-split-bar",
-          "declaration": {
-            "name": "GrantCodesSplitBar",
-            "module": "src/components/split-bar/split-bar.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/split-bar/split-bar.js",
+      "path": "dist/components/split-bar/split-bar.js",
       "declarations": [],
       "exports": [
         {
@@ -7378,7 +6756,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/split-bar/split-bar.component.js"
+            "module": "dist/components/split-bar/split-bar.component.js"
           }
         },
         {
@@ -7386,7 +6764,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesSplitBar",
-            "module": "src/components/split-bar/split-bar.js"
+            "module": "dist/components/split-bar/split-bar.js"
           }
         },
         {
@@ -7394,14 +6772,14 @@
           "name": "grantcodes-split-bar",
           "declaration": {
             "name": "GrantCodesSplitBar",
-            "module": "/src/components/split-bar/split-bar.component.js"
+            "module": "dist/components/split-bar/split-bar.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/stats/index.js",
+      "path": "dist/components/stats/index.js",
       "declarations": [],
       "exports": [
         {
@@ -7409,14 +6787,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/stats/stats.js"
+            "module": "dist/components/stats/stats.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/stats/stats.component.js",
+      "path": "dist/components/stats/stats.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -7508,30 +6886,14 @@
           "name": "GrantCodesStats",
           "declaration": {
             "name": "GrantCodesStats",
-            "module": "src/components/stats/stats.component.js"
+            "module": "dist/components/stats/stats.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/stats/stats.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-stats",
-          "declaration": {
-            "name": "GrantCodesStats",
-            "module": "src/components/stats/stats.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/stats/stats.js",
+      "path": "dist/components/stats/stats.js",
       "declarations": [],
       "exports": [
         {
@@ -7539,7 +6901,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/stats/stats.component.js"
+            "module": "dist/components/stats/stats.component.js"
           }
         },
         {
@@ -7547,7 +6909,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesStats",
-            "module": "src/components/stats/stats.js"
+            "module": "dist/components/stats/stats.js"
           }
         },
         {
@@ -7555,14 +6917,14 @@
           "name": "grantcodes-stats",
           "declaration": {
             "name": "GrantCodesStats",
-            "module": "/src/components/stats/stats.component.js"
+            "module": "dist/components/stats/stats.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/tabs/index.js",
+      "path": "dist/components/tabs/index.js",
       "declarations": [],
       "exports": [
         {
@@ -7570,7 +6932,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/tabs/tab.js"
+            "module": "dist/components/tabs/tab.js"
           }
         },
         {
@@ -7578,14 +6940,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/tabs/tabs.js"
+            "module": "dist/components/tabs/tabs.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/tabs/internal/tabs-button.component.js",
+      "path": "dist/components/tabs/internal/tabs-button.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -7603,7 +6965,7 @@
               "attribute": "active",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
+                "module": "dist/components/tabs/internal/tabs-item.component.js"
               }
             },
             {
@@ -7618,7 +6980,7 @@
               "reflects": true,
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
+                "module": "dist/components/tabs/internal/tabs-item.component.js"
               }
             },
             {
@@ -7632,7 +6994,7 @@
               "attribute": "containerId",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
+                "module": "dist/components/tabs/internal/tabs-item.component.js"
               }
             },
             {
@@ -7646,7 +7008,7 @@
               "attribute": "content",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
+                "module": "dist/components/tabs/internal/tabs-item.component.js"
               }
             },
             {
@@ -7660,7 +7022,7 @@
               "attribute": "index",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
+                "module": "dist/components/tabs/internal/tabs-item.component.js"
               }
             },
             {
@@ -7674,7 +7036,7 @@
               "attribute": "label",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
+                "module": "dist/components/tabs/internal/tabs-item.component.js"
               }
             },
             {
@@ -7688,7 +7050,7 @@
               "attribute": "panelId",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
+                "module": "dist/components/tabs/internal/tabs-item.component.js"
               }
             },
             {
@@ -7703,7 +7065,7 @@
           ],
           "superclass": {
             "name": "GrantCodesTabsItem",
-            "module": "/src/components/tabs/internal/tabs-item.component.js"
+            "module": "dist/components/tabs/internal/tabs-item.component.js"
           },
           "tagName": "grantcodes-tabs-button",
           "customElement": true,
@@ -7717,7 +7079,7 @@
               "fieldName": "active",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
+                "module": "dist/components/tabs/internal/tabs-item.component.js"
               }
             },
             {
@@ -7729,7 +7091,7 @@
               "fieldName": "buttonId",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
+                "module": "dist/components/tabs/internal/tabs-item.component.js"
               }
             },
             {
@@ -7741,7 +7103,7 @@
               "fieldName": "containerId",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
+                "module": "dist/components/tabs/internal/tabs-item.component.js"
               }
             },
             {
@@ -7753,7 +7115,7 @@
               "fieldName": "content",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
+                "module": "dist/components/tabs/internal/tabs-item.component.js"
               }
             },
             {
@@ -7765,7 +7127,7 @@
               "fieldName": "index",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
+                "module": "dist/components/tabs/internal/tabs-item.component.js"
               }
             },
             {
@@ -7777,7 +7139,7 @@
               "fieldName": "label",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
+                "module": "dist/components/tabs/internal/tabs-item.component.js"
               }
             },
             {
@@ -7789,7 +7151,7 @@
               "fieldName": "panelId",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
+                "module": "dist/components/tabs/internal/tabs-item.component.js"
               }
             }
           ]
@@ -7801,30 +7163,14 @@
           "name": "GrantCodesTabsButton",
           "declaration": {
             "name": "GrantCodesTabsButton",
-            "module": "src/components/tabs/internal/tabs-button.component.js"
+            "module": "dist/components/tabs/internal/tabs-button.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/tabs/internal/tabs-button.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-tabs-button",
-          "declaration": {
-            "name": "GrantCodesTabsButton",
-            "module": "src/components/tabs/internal/tabs-button.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/tabs/internal/tabs-button.js",
+      "path": "dist/components/tabs/internal/tabs-button.js",
       "declarations": [],
       "exports": [
         {
@@ -7832,7 +7178,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/tabs/internal/tabs-button.component.js"
+            "module": "dist/components/tabs/internal/tabs-button.component.js"
           }
         },
         {
@@ -7840,7 +7186,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesTabsButton",
-            "module": "src/components/tabs/internal/tabs-button.js"
+            "module": "dist/components/tabs/internal/tabs-button.js"
           }
         },
         {
@@ -7848,20 +7194,20 @@
           "name": "grantcodes-tabs-button",
           "declaration": {
             "name": "GrantCodesTabsButton",
-            "module": "/src/components/tabs/internal/tabs-button.component.js"
+            "module": "dist/components/tabs/internal/tabs-button.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/tabs/internal/tabs-item.component.js",
+      "path": "dist/components/tabs/internal/tabs-item.component.js",
       "declarations": [],
       "exports": []
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/tabs/tab.component.js",
+      "path": "dist/components/tabs/tab.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -7879,7 +7225,7 @@
               "attribute": "active",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
+                "module": "dist/components/tabs/internal/tabs-item.component.js"
               }
             },
             {
@@ -7894,7 +7240,7 @@
               "reflects": true,
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
+                "module": "dist/components/tabs/internal/tabs-item.component.js"
               }
             },
             {
@@ -7908,7 +7254,7 @@
               "attribute": "containerId",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
+                "module": "dist/components/tabs/internal/tabs-item.component.js"
               }
             },
             {
@@ -7922,7 +7268,7 @@
               "attribute": "content",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
+                "module": "dist/components/tabs/internal/tabs-item.component.js"
               }
             },
             {
@@ -7936,7 +7282,7 @@
               "attribute": "index",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
+                "module": "dist/components/tabs/internal/tabs-item.component.js"
               }
             },
             {
@@ -7950,7 +7296,7 @@
               "attribute": "label",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
+                "module": "dist/components/tabs/internal/tabs-item.component.js"
               }
             },
             {
@@ -7964,13 +7310,13 @@
               "attribute": "panelId",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
+                "module": "dist/components/tabs/internal/tabs-item.component.js"
               }
             }
           ],
           "superclass": {
             "name": "GrantCodesTabsItem",
-            "module": "/src/components/tabs/internal/tabs-item.component.js"
+            "module": "dist/components/tabs/internal/tabs-item.component.js"
           },
           "tagName": "grantcodes-tab",
           "customElement": true,
@@ -7984,7 +7330,7 @@
               "fieldName": "active",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
+                "module": "dist/components/tabs/internal/tabs-item.component.js"
               }
             },
             {
@@ -7996,7 +7342,7 @@
               "fieldName": "buttonId",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
+                "module": "dist/components/tabs/internal/tabs-item.component.js"
               }
             },
             {
@@ -8008,7 +7354,7 @@
               "fieldName": "containerId",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
+                "module": "dist/components/tabs/internal/tabs-item.component.js"
               }
             },
             {
@@ -8020,7 +7366,7 @@
               "fieldName": "content",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
+                "module": "dist/components/tabs/internal/tabs-item.component.js"
               }
             },
             {
@@ -8032,7 +7378,7 @@
               "fieldName": "index",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
+                "module": "dist/components/tabs/internal/tabs-item.component.js"
               }
             },
             {
@@ -8044,7 +7390,7 @@
               "fieldName": "label",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
+                "module": "dist/components/tabs/internal/tabs-item.component.js"
               }
             },
             {
@@ -8056,7 +7402,7 @@
               "fieldName": "panelId",
               "inheritedFrom": {
                 "name": "GrantCodesTabsItem",
-                "module": "src/components/tabs/internal/tabs-item.component.js"
+                "module": "dist/components/tabs/internal/tabs-item.component.js"
               }
             }
           ]
@@ -8068,30 +7414,14 @@
           "name": "GrantCodesTab",
           "declaration": {
             "name": "GrantCodesTab",
-            "module": "src/components/tabs/tab.component.js"
+            "module": "dist/components/tabs/tab.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/tabs/tab.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-tab",
-          "declaration": {
-            "name": "GrantCodesTab",
-            "module": "src/components/tabs/tab.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/tabs/tab.js",
+      "path": "dist/components/tabs/tab.js",
       "declarations": [],
       "exports": [
         {
@@ -8099,7 +7429,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/tabs/tab.component.js"
+            "module": "dist/components/tabs/tab.component.js"
           }
         },
         {
@@ -8107,7 +7437,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesTab",
-            "module": "src/components/tabs/tab.js"
+            "module": "dist/components/tabs/tab.js"
           }
         },
         {
@@ -8115,14 +7445,14 @@
           "name": "grantcodes-tab",
           "declaration": {
             "name": "GrantCodesTab",
-            "module": "/src/components/tabs/tab.component.js"
+            "module": "dist/components/tabs/tab.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/tabs/tabs.component.js",
+      "path": "dist/components/tabs/tabs.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -8234,7 +7564,7 @@
           "name": "GrantCodesTab",
           "declaration": {
             "name": "GrantCodesTab",
-            "module": "src/components/tabs/tabs.component.js"
+            "module": "dist/components/tabs/tabs.component.js"
           }
         },
         {
@@ -8242,7 +7572,7 @@
           "name": "GrantCodesTabs",
           "declaration": {
             "name": "GrantCodesTabs",
-            "module": "src/components/tabs/tabs.component.js"
+            "module": "dist/components/tabs/tabs.component.js"
           }
         },
         {
@@ -8250,30 +7580,14 @@
           "name": "GrantCodesTabsButton",
           "declaration": {
             "name": "GrantCodesTabsButton",
-            "module": "src/components/tabs/tabs.component.js"
+            "module": "dist/components/tabs/tabs.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/tabs/tabs.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-tabs",
-          "declaration": {
-            "name": "GrantCodesTabs",
-            "module": "src/components/tabs/tabs.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/tabs/tabs.js",
+      "path": "dist/components/tabs/tabs.js",
       "declarations": [],
       "exports": [
         {
@@ -8281,7 +7595,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/tabs/tabs.component.js"
+            "module": "dist/components/tabs/tabs.component.js"
           }
         },
         {
@@ -8289,7 +7603,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesTabs",
-            "module": "src/components/tabs/tabs.js"
+            "module": "dist/components/tabs/tabs.js"
           }
         },
         {
@@ -8297,14 +7611,14 @@
           "name": "grantcodes-tabs",
           "declaration": {
             "name": "GrantCodesTabs",
-            "module": "/src/components/tabs/tabs.component.js"
+            "module": "dist/components/tabs/tabs.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/testimonials/index.js",
+      "path": "dist/components/testimonials/index.js",
       "declarations": [],
       "exports": [
         {
@@ -8312,14 +7626,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/testimonials/testimonials.js"
+            "module": "dist/components/testimonials/testimonials.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/testimonials/testimonials.component.js",
+      "path": "dist/components/testimonials/testimonials.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -8412,30 +7726,14 @@
           "name": "GrantCodesTestimonials",
           "declaration": {
             "name": "GrantCodesTestimonials",
-            "module": "src/components/testimonials/testimonials.component.js"
+            "module": "dist/components/testimonials/testimonials.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/testimonials/testimonials.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-testimonials",
-          "declaration": {
-            "name": "GrantCodesTestimonials",
-            "module": "src/components/testimonials/testimonials.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/testimonials/testimonials.js",
+      "path": "dist/components/testimonials/testimonials.js",
       "declarations": [],
       "exports": [
         {
@@ -8443,7 +7741,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/testimonials/testimonials.component.js"
+            "module": "dist/components/testimonials/testimonials.component.js"
           }
         },
         {
@@ -8451,7 +7749,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesTestimonials",
-            "module": "src/components/testimonials/testimonials.js"
+            "module": "dist/components/testimonials/testimonials.js"
           }
         },
         {
@@ -8459,14 +7757,14 @@
           "name": "grantcodes-testimonials",
           "declaration": {
             "name": "GrantCodesTestimonials",
-            "module": "/src/components/testimonials/testimonials.component.js"
+            "module": "dist/components/testimonials/testimonials.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/toast/index.js",
+      "path": "dist/components/toast/index.js",
       "declarations": [],
       "exports": [
         {
@@ -8474,14 +7772,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/toast/toast.js"
+            "module": "dist/components/toast/toast.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/toast/toast.component.js",
+      "path": "dist/components/toast/toast.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -8742,7 +8040,7 @@
           "name": "GrantCodesToast",
           "declaration": {
             "name": "GrantCodesToast",
-            "module": "src/components/toast/toast.component.js"
+            "module": "dist/components/toast/toast.component.js"
           }
         },
         {
@@ -8750,46 +8048,14 @@
           "name": "GrantCodesToastContainer",
           "declaration": {
             "name": "GrantCodesToastContainer",
-            "module": "src/components/toast/toast.component.js"
+            "module": "dist/components/toast/toast.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/toast/toast.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-toast",
-          "declaration": {
-            "name": "GrantCodesToast",
-            "module": "src/components/toast/toast.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/toast/toast.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-toast-container",
-          "declaration": {
-            "name": "GrantCodesToastContainer",
-            "module": "src/components/toast/toast.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/toast/toast.js",
+      "path": "dist/components/toast/toast.js",
       "declarations": [],
       "exports": [
         {
@@ -8797,7 +8063,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/toast/toast.component.js"
+            "module": "dist/components/toast/toast.component.js"
           }
         },
         {
@@ -8805,7 +8071,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesToast",
-            "module": "src/components/toast/toast.js"
+            "module": "dist/components/toast/toast.js"
           }
         },
         {
@@ -8813,7 +8079,7 @@
           "name": "grantcodes-toast",
           "declaration": {
             "name": "GrantCodesToast",
-            "module": "/src/components/toast/toast.component.js"
+            "module": "dist/components/toast/toast.component.js"
           }
         },
         {
@@ -8821,14 +8087,14 @@
           "name": "grantcodes-toast-container",
           "declaration": {
             "name": "GrantCodesToastContainer",
-            "module": "/src/components/toast/toast.component.js"
+            "module": "dist/components/toast/toast.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/tooltip/index.js",
+      "path": "dist/components/tooltip/index.js",
       "declarations": [],
       "exports": [
         {
@@ -8836,14 +8102,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/tooltip/tooltip.js"
+            "module": "dist/components/tooltip/tooltip.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/tooltip/tooltip.component.js",
+      "path": "dist/components/tooltip/tooltip.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -8957,30 +8223,14 @@
           "name": "GrantCodesTooltip",
           "declaration": {
             "name": "GrantCodesTooltip",
-            "module": "src/components/tooltip/tooltip.component.js"
+            "module": "dist/components/tooltip/tooltip.component.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/tooltip/tooltip.component.js",
-      "deprecated": false,
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "grantcodes-tooltip",
-          "declaration": {
-            "name": "GrantCodesTooltip",
-            "module": "src/components/tooltip/tooltip.component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/tooltip/tooltip.js",
+      "path": "dist/components/tooltip/tooltip.js",
       "declarations": [],
       "exports": [
         {
@@ -8988,7 +8238,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "module": "src/components/tooltip/tooltip.component.js"
+            "module": "dist/components/tooltip/tooltip.component.js"
           }
         },
         {
@@ -8996,7 +8246,7 @@
           "name": "default",
           "declaration": {
             "name": "GrantCodesTooltip",
-            "module": "src/components/tooltip/tooltip.js"
+            "module": "dist/components/tooltip/tooltip.js"
           }
         },
         {
@@ -9004,7 +8254,7 @@
           "name": "grantcodes-tooltip",
           "declaration": {
             "name": "GrantCodesTooltip",
-            "module": "/src/components/tooltip/tooltip.component.js"
+            "module": "dist/components/tooltip/tooltip.component.js"
           }
         }
       ]

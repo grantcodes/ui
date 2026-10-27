@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { expect, userEvent, within } from 'storybook/test';
+import { expect, userEvent, waitFor, within } from 'storybook/test';
 import './popover.js';
 import '../button/button.js';
 
@@ -28,11 +28,13 @@ export const InteractiveForm = {
     const popover = canvasElement.querySelector('grantcodes-popover') as HTMLElement & {
       open: boolean;
     };
-    await userEvent.click(canvas.getByText('Edit profile'));
-    await expect(popover).toHaveAttribute('open');
+    await userEvent.click(
+      popover.querySelector('[slot="trigger"]')?.shadowRoot?.querySelector('button') as HTMLButtonElement,
+    );
+    await waitFor(() => expect(popover).toHaveAttribute('open'));
     await userEvent.type(canvas.getByRole('textbox'), ' Richmond');
     await userEvent.keyboard('{Escape}');
-    await expect(popover).not.toHaveAttribute('open');
+    await waitFor(() => expect(popover).not.toHaveAttribute('open'));
   },
 };
 
@@ -56,7 +58,7 @@ export const ViewportEdges = {
     await expect(popovers).toHaveLength(4);
     for (const popover of popovers) {
       await userEvent.click(popover.querySelector('button') as HTMLButtonElement);
-      await expect(popover).toHaveAttribute('open');
+      await waitFor(() => expect(popover).toHaveAttribute('open'));
     }
   },
 };
@@ -72,8 +74,10 @@ export const CustomTrigger = {
     const popover = canvasElement.querySelector('grantcodes-popover') as HTMLElement & {
       open: boolean;
     };
-    await userEvent.click(within(canvasElement).getByText('Custom control'));
-    await expect(popover).toHaveAttribute('open');
+    await userEvent.click(
+      popover.querySelector('[slot="trigger"]')?.shadowRoot?.querySelector('button') as HTMLButtonElement,
+    );
+    await waitFor(() => expect(popover).toHaveAttribute('open'));
     await expect(
       popover.querySelector('grantcodes-button')?.shadowRoot?.querySelector('button'),
     ).toHaveAttribute('aria-expanded', 'true');

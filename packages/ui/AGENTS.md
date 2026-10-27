@@ -13,7 +13,8 @@ A personal web components library built with Lit, featuring a custom design syst
 
 - Sources are TypeScript (`src/**/*.ts`). Relative imports keep the `.js` extension (`./dialog.js`) because `tsc` emits specifiers unchanged into `dist/`.
 - Published output is `dist/` - compiled JS, `.d.ts` files and copied CSS (`scripts/copy-assets.mjs`). `main`/`module` point at `dist/main.js`, `types` at `dist/main.d.ts`.
-- `pnpm build:lib` runs `cem` + `tsc` + `copy:assets`; `pnpm watch` runs `tsc --watch` and the asset copy watcher together.
+- `pnpm build:lib` runs `cem` + `tsc` + `copy:assets` + `test:cem`; the last step verifies published manifest paths, declaration files, registration references, and the dialog metadata contract.
+- `pnpm dev` / `pnpm storybook` generate the CEM before starting Storybook and the CEM watcher. `pnpm watch` runs the CEM, TypeScript, and asset watchers together.
 - Unit tests run as TypeScript via Node type stripping plus the `src/test-utils/register-js-to-ts.mjs` resolver hook: `NODE_ENV=test node --import ./src/test-utils/register-js-to-ts.mjs --import @lit-labs/ssr-dom-shim/register-css-hook.js --test --test-concurrency=1 'src/**/*.test.ts'`.
 
 ## Browser Support

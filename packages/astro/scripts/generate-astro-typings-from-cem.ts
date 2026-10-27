@@ -286,13 +286,13 @@ function main(): void {
     if (mod.kind !== "javascript-module") continue;
     const p = normPath(mod.path);
 
-    // Only public entrypoints under src/components/*/index.js
-    if (!/^src\/components\/[^/]+\/index\.js$/.test(p)) continue;
+    // Only public entrypoints under dist/components/*/index.js
+    if (!/^dist\/components\/[^/]+\/index\.js$/.test(p)) continue;
 
     // Skip internal modules
     if (/\/internal\//.test(p)) continue;
 
-    const importSpec = p.replace(/^src\/components\//, "@grantcodes/ui/components/");
+    const importSpec = p.replace(/^dist\/components\//, "@grantcodes/ui/components/");
 
     // Resolve all exported names from this module
     const exportedNames = resolveExports(p);

@@ -7,13 +7,21 @@ import dialogStyles from './dialog.css' with { type: 'css' };
 const supportsClosedBy =
   typeof HTMLDialogElement !== 'undefined' && 'closedBy' in HTMLDialogElement.prototype;
 
+/**
+ * A modal dialog named by its aria-label or header text.
+ * @slot - Dialog content.
+ * @slot header - Heading content used as the accessible name when aria-label is absent.
+ * @slot footer - Footer actions.
+ */
 export class GrantCodesDialog extends LitElement {
   declare _footerPresence: SlotPresenceController;
   declare _hasFooter: boolean;
   declare _hasHeader: boolean;
   declare _headerPresence: SlotPresenceController;
   declare dialog: null | HTMLDialogElement;
+  /** Shows the close button and enables supported light-dismiss; Escape still closes the dialog. */
   declare dismissible: boolean;
+  /** Opens the native dialog modally and reflects its open state. */
   declare open: boolean;
 
   // Styles are scoped to this element: they won't conflict with styles
