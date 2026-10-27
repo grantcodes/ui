@@ -57,11 +57,11 @@
 	"homepage": "https://github.com/grantcodes/ui#readme",
 	"license": "MIT",
 	"devDependencies": {
-		"@biomejs/biome": "2.5.14",
+		"@biomejs/biome": "2.6.3",
 		"@grantcodes/commit": "^2.0.0",
 		"minimist": "^1.2.8",
-		"npm-run-all2": "^9.0.3",
-		"style-dictionary": "^5.5.5"
+		"npm-run-all2": "^9.0.4",
+		"style-dictionary": "^5.7.1"
 	},
 	"dependencies": {
 		"@fontsource-variable/albert-sans": "^5.3.0",
