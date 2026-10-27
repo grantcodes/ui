@@ -1,16 +1,18 @@
 import { strict as assert } from 'node:assert';
 import { afterEach, describe, it } from 'node:test';
 import { cleanup, click, fixture } from '../../test-utils/index.js';
-import './app-bar.js';
+import { GrantCodesAppBar } from './app-bar.js';
+import type { GrantCodesMenuToggle } from '../menu-toggle/menu-toggle.js';
 
 describe('App Bar Component', () => {
   let element: any;
 
   async function mountWithNav() {
-    const el = document.createElement('grantcodes-app-bar');
+    const el = document.createElement('grantcodes-app-bar') as GrantCodesAppBar;
     el.innerHTML = '<div slot="nav"><a href="/about">About</a></div>';
     document.body.append(el);
     await el.updateComplete;
+    await el.renderRoot.querySelector<GrantCodesMenuToggle>('grantcodes-menu-toggle')?.updateComplete;
     return el;
   }
 
@@ -183,7 +185,7 @@ describe('App Bar Component', () => {
     element = await mountWithNav();
 
     let toggledState = null;
-    element.addEventListener('menu-toggle', (e) => {
+    element.addEventListener('menu-toggle', (e: CustomEvent<{ open: boolean }>) => {
       toggledState = e.detail.open;
     });
 
@@ -197,8 +199,8 @@ describe('App Bar Component', () => {
 
   it('should close an open mobile menu with Escape', async () => {
     element = await mountWithNav();
-    const toggledStates = [];
-    element.addEventListener('menu-toggle', (event) => toggledStates.push(event.detail.open));
+    const toggledStates: boolean[] = [];
+    element.addEventListener('menu-toggle', (event: CustomEvent<{ open: boolean }>) => toggledStates.push(event.detail.open));
 
     click(element.shadowRoot.querySelector('.app-bar__menu-button'));
     await element.updateComplete;
@@ -212,19 +214,19 @@ describe('App Bar Component', () => {
 
   it('should have aria-label on menu button', async () => {
     element = await mountWithNav();
-    const menuButton = element.shadowRoot.querySelector('.app-bar__menu-button');
+    const menuButton = element.shadowRoot.querySelector('grantcodes-menu-toggle').shadowRoot.querySelector('button');
     assert.ok(menuButton.hasAttribute('aria-label'), 'Menu button should have aria-label');
   });
 
   it('should have aria-expanded on menu button', async () => {
     element = await mountWithNav();
-    const menuButton = element.shadowRoot.querySelector('.app-bar__menu-button');
+    const menuButton = element.shadowRoot.querySelector('grantcodes-menu-toggle').shadowRoot.querySelector('button');
     assert.ok(menuButton.hasAttribute('aria-expanded'), 'Menu button should have aria-expanded');
   });
 
   it('should update aria-expanded when menu is toggled', async () => {
     element = await mountWithNav();
-    const menuButton = element.shadowRoot.querySelector('.app-bar__menu-button');
+    const menuButton = element.shadowRoot.querySelector('grantcodes-menu-toggle').shadowRoot.querySelector('button');
 
     assert.strictEqual(
       menuButton.getAttribute('aria-expanded'),

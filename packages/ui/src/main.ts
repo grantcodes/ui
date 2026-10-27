@@ -18,6 +18,7 @@ export * from './components/loading/index.js';
 export * from './components/logo-cloud/index.js';
 export * from './components/map/index.js';
 export * from './components/media-text/index.js';
+export * from './components/menu-toggle/index.js';
 export * from './components/newsletter/index.js';
 export * from './components/notice/index.js';
 export * from './components/pagination/index.js';

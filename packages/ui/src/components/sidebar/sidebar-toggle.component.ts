@@ -1,5 +1,6 @@
 import { LitElement, type PropertyValues } from 'lit';
 import { html } from 'lit/static-html.js';
+import { GrantCodesMenuToggle } from '../menu-toggle/menu-toggle.component.js';
 import type { GrantCodesSidebar } from './sidebar.component.js';
 import sidebarToggleStyles from './sidebar-toggle.css' with { type: 'css' };
 
@@ -89,16 +90,22 @@ export class GrantCodesSidebarToggle extends LitElement {
   }
 
   _findControl() {
-    return this.renderRoot
-      .querySelector<HTMLSlotElement>('slot')
-      ?.assignedElements({ flatten: true })
-      .find((element): element is HTMLElement => element.matches(CONTROL_SELECTOR));
+    const slot = this.renderRoot.querySelector<HTMLSlotElement>('slot');
+    if (slot?.assignedNodes().length) {
+      return slot.assignedElements({ flatten: true })
+        .find((element): element is HTMLElement => element.matches(CONTROL_SELECTOR));
+    }
+    return this.renderRoot.querySelector<GrantCodesMenuToggle>('grantcodes-menu-toggle');
   }
 
   _restoreControl() {
     const state = this._controlState;
     if (!state) return;
     state.element.removeEventListener('click', this._handleClick);
+    if (state.element instanceof GrantCodesMenuToggle) {
+      state.element.expanded = false;
+      state.element.controlsElement = null;
+    }
     if (state.controls === null) state.element.removeAttribute('aria-controls');
     else state.element.setAttribute('aria-controls', state.controls);
     if (state.expanded === null) state.element.removeAttribute('aria-expanded');
@@ -121,8 +128,13 @@ export class GrantCodesSidebarToggle extends LitElement {
       };
     }
     control.addEventListener('click', this._handleClick);
-    control.setAttribute('aria-controls', this._sidebar.id);
-    control.setAttribute('aria-expanded', String(this._sidebar.open));
+    if (control instanceof GrantCodesMenuToggle) {
+      control.expanded = this._sidebar.open;
+      control.controlsElement = this._sidebar;
+    } else {
+      control.setAttribute('aria-controls', this._sidebar.id);
+      control.setAttribute('aria-expanded', String(this._sidebar.open));
+    }
     this.hidden = !this._sidebar.hasAttribute('data-compact');
   }
 
@@ -139,6 +151,8 @@ export class GrantCodesSidebarToggle extends LitElement {
   }
 
   render() {
-    return html`<slot @slotchange=${this._handleSlotChange}></slot>`;
+    return html`<slot @slotchange=${this._handleSlotChange}>
+      <grantcodes-menu-toggle></grantcodes-menu-toggle>
+    </slot>`;
   }
 }

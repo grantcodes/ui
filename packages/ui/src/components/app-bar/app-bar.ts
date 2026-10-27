@@ -1,3 +1,4 @@
+import '../menu-toggle/menu-toggle.js';
 import { GrantCodesAppBar } from './app-bar.component.js';
 
 export * from './app-bar.component.js';

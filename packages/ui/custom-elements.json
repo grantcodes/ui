@@ -4889,6 +4889,134 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/components/menu-toggle/index.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "dist/components/menu-toggle/menu-toggle.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/components/menu-toggle/menu-toggle.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A controlled animated menu button. Listen for click and update expanded.",
+          "name": "GrantCodesMenuToggle",
+          "cssParts": [
+            {
+              "description": "The native button.",
+              "name": "button"
+            },
+            {
+              "description": "The animated hamburger icon.",
+              "name": "icon"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "controlsElement",
+              "privacy": "public",
+              "type": {
+                "text": "Element | null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "expanded",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "expanded",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "focus",
+              "parameters": [
+                {
+                  "name": "options",
+                  "optional": true,
+                  "type": {
+                    "text": "FocusOptions"
+                  }
+                }
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "name": "expanded",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "expanded"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "grantcodes-menu-toggle",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GrantCodesMenuToggle",
+          "declaration": {
+            "name": "GrantCodesMenuToggle",
+            "module": "dist/components/menu-toggle/menu-toggle.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/components/menu-toggle/menu-toggle.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "dist/components/menu-toggle/menu-toggle.component.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "GrantCodesMenuToggle",
+            "module": "dist/components/menu-toggle/menu-toggle.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-menu-toggle",
+          "declaration": {
+            "name": "GrantCodesMenuToggle",
+            "module": "dist/components/menu-toggle/menu-toggle.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/components/newsletter/index.js",
       "declarations": [],
       "exports": [

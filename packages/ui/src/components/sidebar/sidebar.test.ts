@@ -1,7 +1,7 @@
 import { strict as assert } from 'node:assert';
 import { afterEach, describe, it } from 'node:test';
 import { cleanup, fixture } from '../../test-utils/index.js';
-import './sidebar.js';
+import { GrantCodesSidebarToggle } from './sidebar.js';
 
 describe('Sidebar Component', () => {
   let element: any;
@@ -88,10 +88,10 @@ describe('Sidebar Component', () => {
   it('shares committed state across toggles', async () => {
     element = document.createElement('grantcodes-sidebar');
     element.id = 'navigation';
-    const first = document.createElement('grantcodes-sidebar-toggle');
+    const first = document.createElement('grantcodes-sidebar-toggle') as GrantCodesSidebarToggle;
     first.setAttribute('for', 'navigation');
     first.innerHTML = '<button type="button">Open</button>';
-    const second = document.createElement('grantcodes-sidebar-toggle');
+    const second = document.createElement('grantcodes-sidebar-toggle') as GrantCodesSidebarToggle;
     second.setAttribute('for', 'navigation');
     second.innerHTML = '<button type="button">Open</button>';
     document.body.append(element, first, second);
@@ -105,6 +105,36 @@ describe('Sidebar Component', () => {
     assert.strictEqual(first.querySelector('button')?.getAttribute('aria-expanded'), 'true');
     assert.strictEqual(second.querySelector('button')?.getAttribute('aria-expanded'), 'true');
     assert.strictEqual(first.querySelector('button')?.getAttribute('aria-controls'), 'navigation');
+  });
+
+  it('uses the animated default button and follows committed sidebar state', async () => {
+    element = document.createElement('div');
+    element.innerHTML = '<grantcodes-sidebar id="animated-navigation"></grantcodes-sidebar><grantcodes-sidebar-toggle for="animated-navigation"></grantcodes-sidebar-toggle>';
+    document.body.append(element);
+    const sidebar = element.querySelector('grantcodes-sidebar');
+    const toggle = element.querySelector('grantcodes-sidebar-toggle');
+    sidebar._compact = true;
+    await Promise.all([sidebar.updateComplete, toggle.updateComplete]);
+    const menu = toggle.shadowRoot.querySelector('grantcodes-menu-toggle');
+    await menu.updateComplete;
+    const button = menu.shadowRoot.querySelector('button');
+    assert.strictEqual(toggle.hidden, false);
+    assert.strictEqual(button.getAttribute('aria-expanded'), 'false');
+    button.click();
+    await sidebar.updateComplete;
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    await menu.updateComplete;
+    assert.strictEqual(sidebar.open, true);
+    assert.strictEqual(button.getAttribute('aria-expanded'), 'true');
+    assert.strictEqual(button.getAttribute('aria-label'), 'Close menu');
+    assert.strictEqual(menu.controlsElement, sidebar);
+    sidebar._handleNativeCancel(new Event('cancel', { cancelable: true }));
+    await sidebar.updateComplete;
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    await menu.updateComplete;
+    assert.strictEqual(button.getAttribute('aria-expanded'), 'false');
+    menu.focus();
+    assert.strictEqual(menu.shadowRoot.activeElement, button);
   });
 
   it('ignores disabled controls and missing targets', async () => {

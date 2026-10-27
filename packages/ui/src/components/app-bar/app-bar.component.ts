@@ -1,7 +1,6 @@
 import { html, LitElement, nothing } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { SlotPresenceController } from '../../lib/slot-presence-controller.js';
-import focusRingStyles from '../../lib/styles/focus-ring.css' with { type: 'css' };
 import appBarStyles from './app-bar.css' with { type: 'css' };
 
 export class GrantCodesAppBar extends LitElement {
@@ -12,7 +11,7 @@ export class GrantCodesAppBar extends LitElement {
   declare sticky: boolean;
   declare transparent: boolean;
 
-  static styles = [focusRingStyles, appBarStyles];
+  static styles = [appBarStyles];
 
   static properties = {
     sticky: { type: Boolean, reflect: true },
@@ -149,15 +148,11 @@ export class GrantCodesAppBar extends LitElement {
 						this._hasNav
 							? html`
 								<!-- Mobile Menu Button -->
-								<button
-									type="button"
-									class="app-bar__menu-button focus-ring"
-									aria-label="${this._mobileMenuOpen ? 'Close menu' : 'Open menu'}"
-									aria-expanded="${this._mobileMenuOpen}"
+								<grantcodes-menu-toggle
+									class="app-bar__menu-button"
+									.expanded=${this._mobileMenuOpen}
 									@click=${this._toggleMobileMenu}
-								>
-									<span class="app-bar__menu-icon"></span>
-								</button>
+								></grantcodes-menu-toggle>
 							`
 							: nothing
 					}

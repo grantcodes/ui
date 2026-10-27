@@ -2,7 +2,7 @@
 
 Every public component and content block in this snapshot. Import the exact register file shown; extensionless component-directory imports are not supported. Load only the family guide you need. Tags marked **internal** are implementation details even where an export exists.
 
-## UI components (47 public; 48 registered including one internal)
+## UI components (48 public; 49 registered including one internal)
 
 | Element | Import | Family guide | Notes |
 | --- | --- | --- | --- |
@@ -36,6 +36,7 @@ Every public component and content block in this snapshot. Import the exact regi
 | `grantcodes-loading` | `components/loading/loading.js` | [Feedback](ui-feedback.md) | Busy indicator |
 | `grantcodes-logo-cloud` | `components/logo-cloud/logo-cloud.js` | [Content](ui-content.md) | JSON logos |
 | `grantcodes-map` | `components/map/map.js` | [Content](ui-content.md) | OSM iframe; React `MapEmbed` |
+| `grantcodes-menu-toggle` | `components/menu-toggle/menu-toggle.js` | [Navigation](ui-navigation.md) | Controlled animated menu button |
 | `grantcodes-media-text` | `components/media-text/media-text.js` | [Content](ui-content.md) | JSON media/cta |
 | `grantcodes-newsletter` | `components/newsletter/newsletter.js` | [Content](ui-content.md) | Native email form |
 | `grantcodes-notice` | `components/notice/notice.js` | [Feedback](ui-feedback.md) | Persistent message |

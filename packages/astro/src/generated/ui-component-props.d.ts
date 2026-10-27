@@ -35,6 +35,7 @@ declare namespace astroHTML.JSX {
     containerId?: string;
     content?: string;
     controlled?: boolean;
+    controlsElement?: unknown;
     cta?: string;
     current?: boolean;
     "days-label"?: string;
@@ -47,6 +48,7 @@ declare namespace astroHTML.JSX {
     dismissible?: boolean;
     duration?: number;
     error?: unknown;
+    expanded?: boolean;
     eyebrow?: string;
     for?: string;
     form?: string;
@@ -492,6 +494,18 @@ declare module "@grantcodes/ui/components/media-text/index.js" {
   export function GrantCodesMediaText(props: MediaTextProps & import("astro").AstroBuiltinAttributes): any;
 
   export { GrantCodesMediaText };
+}
+
+declare module "@grantcodes/ui/components/menu-toggle/index.js" {
+
+  export interface MenuToggleProps {
+    controlsElement?: unknown;
+    expanded?: boolean;
+  }
+
+  export function GrantCodesMenuToggle(props: MenuToggleProps & import("astro").AstroBuiltinAttributes): any;
+
+  export { GrantCodesMenuToggle };
 }
 
 declare module "@grantcodes/ui/components/newsletter/index.js" {

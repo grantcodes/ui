@@ -31,6 +31,7 @@ export { Loading } from './components/loading/loading.react.js';
 export { LogoCloud } from './components/logo-cloud/logo-cloud.react.js';
 export { MapEmbed } from './components/map/map.react.js';
 export { MediaText } from './components/media-text/media-text.react.js';
+export { MenuToggle } from './components/menu-toggle/menu-toggle.react.js';
 export { Newsletter } from './components/newsletter/newsletter.react.js';
 export { Notice } from './components/notice/notice.react.js';
 export { Pagination } from './components/pagination/pagination.react.js';
