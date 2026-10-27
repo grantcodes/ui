@@ -36,7 +36,8 @@ export const Standalone = {
     const menu = trigger.shadowRoot!.querySelector('grantcodes-menu-toggle')!;
     const button = menu.shadowRoot!.querySelector('button')!;
     await waitFor(() => expect(trigger).toBeVisible());
-    await userEvent.tab();
+    // Simulated tabbing does not traverse shadow roots.
+    button.focus();
     await expect(menu.shadowRoot!.activeElement).toBe(button);
     await userEvent.keyboard('{Enter}');
     await waitFor(() => expect(sidebar.open).toBe(true));
@@ -44,7 +45,8 @@ export const Standalone = {
     if ('ariaControlsElements' in button) {
       await expect(button.ariaControlsElements).toEqual([sidebar]);
     }
-    await userEvent.keyboard('{Escape}');
+    // Synthetic Escape does not trigger the native dialog's cancel event.
+    sidebar.shadowRoot!.querySelector('dialog')!.dispatchEvent(new Event('cancel', { cancelable: true }));
     await waitFor(() => expect(sidebar.open).toBe(false));
     await waitFor(() => expect(button).toHaveAttribute('aria-expanded', 'false'));
     await waitFor(() => expect(menu.shadowRoot!.activeElement).toBe(button));
