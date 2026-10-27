@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.1.0](https://github.com/grantcodes/ui/compare/astro-v1.0.1...astro-v1.1.0) (2026-10-27)
+
+
+### Features
+
+* **ui:** share animated menu toggle between app bar and sidebar ([#214](https://github.com/grantcodes/ui/issues/214)) ([9e900d7](https://github.com/grantcodes/ui/commit/9e900d7b964a355c5bb00282475e6e678940564b))
+
+
+### Bug Fixes
+
+* **ui:** improve CEM publishing and component tooling ([a182641](https://github.com/grantcodes/ui/commit/a1826418dd5be5e301d4bb4a8f63d16e59014d90))
+* **ui:** publish usable component manifests and verify browser interactions ([d02a2d7](https://github.com/grantcodes/ui/commit/d02a2d73b228bf26ac2dbbc4750174c6fb89653a))
+
 ## [1.0.1](https://github.com/grantcodes/ui/compare/astro-v1.0.0...astro-v1.0.1) (2026-10-25)
 
 

@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.1.0](https://github.com/grantcodes/ui/compare/ui-v3.0.2...ui-v3.1.0) (2026-10-27)
+
+
+### Features
+
+* **ui:** share animated menu toggle between app bar and sidebar ([#214](https://github.com/grantcodes/ui/issues/214)) ([9e900d7](https://github.com/grantcodes/ui/commit/9e900d7b964a355c5bb00282475e6e678940564b))
+
+
+### Bug Fixes
+
+* **ui:** improve CEM publishing and component tooling ([a182641](https://github.com/grantcodes/ui/commit/a1826418dd5be5e301d4bb4a8f63d16e59014d90))
+* **ui:** publish usable component manifests and verify browser interactions ([d02a2d7](https://github.com/grantcodes/ui/commit/d02a2d73b228bf26ac2dbbc4750174c6fb89653a))
+
 ## [3.0.2](https://github.com/grantcodes/ui/compare/ui-v3.0.1...ui-v3.0.2) (2026-10-26)
 
 
