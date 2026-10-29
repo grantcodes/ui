@@ -97,7 +97,7 @@ describe('Button Component', () => {
 
     await element.updateComplete;
 
-    const slot = element.shadowRoot.querySelector('slot');
+    const slot = element.shadowRoot.querySelector('slot:not([name])');
     assert.ok(slot, 'Slot should exist');
   });
 });
@@ -327,73 +327,41 @@ describe('FACE Infrastructure', () => {
     assert.strictEqual(button.type, 'button', "Default internal button type should be 'button'");
   });
 
-  describe('icon layout', () => {
-    const settle = () => new Promise((resolve) => setTimeout(resolve, 0));
-    const icon = () => document.createElement('grantcodes-icon');
+  describe('content slots', () => {
+    for (const href of ['', '/next']) {
+      it(`assigns arbitrary start and end content in ${href ? 'link' : 'button'} mode`, async () => {
+        element = await fixture('grantcodes-button', { href });
+        const start = document.createElement('span');
+        start.slot = 'start';
+        start.textContent = 'New';
+        const end = document.createElement('span');
+        end.slot = 'end';
+        end.textContent = '3';
+        const label = document.createTextNode('Messages');
+        element.append(end, label, start);
+        await element.updateComplete;
 
-    afterEach(() => {
-      cleanup(element);
-    });
+        const slots = element.shadowRoot.querySelectorAll('slot');
+        assert.deepEqual(
+          Array.from(slots, (slot: HTMLSlotElement) => slot.name),
+          ['start', '', 'end'],
+        );
+        assert.deepEqual(slots[0].assignedNodes(), [start]);
+        assert.deepEqual(slots[1].assignedNodes(), [label]);
+        assert.deepEqual(slots[2].assignedNodes(), [end]);
+      });
+    }
 
-    const flags = () =>
-      ['icon-only', 'icon-start', 'icon-end'].filter((name) => element.hasAttribute(name));
-
-    it('marks a button whose only content is an icon', async () => {
+    it('keeps a standalone icon in the default slot without layout attributes', async () => {
       element = await fixture('grantcodes-button');
-      element.append(icon());
-      await settle();
-
-      assert.deepEqual(flags(), ['icon-only']);
-    });
-
-    it('marks a leading icon next to text', async () => {
-      element = await fixture('grantcodes-button');
-      element.append(icon(), ' Like');
-      await settle();
-
-      assert.deepEqual(flags(), ['icon-start']);
-    });
-
-    it('marks a trailing icon next to text', async () => {
-      element = await fixture('grantcodes-button');
-      element.append('Like ', icon());
-      await settle();
-
-      assert.deepEqual(flags(), ['icon-end']);
-    });
-
-    it('marks an icon on both sides', async () => {
-      element = await fixture('grantcodes-button');
-      element.append(icon(), ' Like ', icon());
-      await settle();
-
-      assert.deepEqual(flags(), ['icon-start', 'icon-end']);
-    });
-
-    it('marks nothing for text or whitespace', async () => {
-      element = await fixture('grantcodes-button');
-      element.append(' Like ');
-      await settle();
-      assert.deepEqual(flags(), []);
-
-      element.replaceChildren('   ');
-      await settle();
-      assert.deepEqual(flags(), []);
-    });
-
-    it('re-measures when the content changes', async () => {
-      element = await fixture('grantcodes-button');
-      element.append(icon());
-      await settle();
-      assert.deepEqual(flags(), ['icon-only']);
-
-      element.append(' Like');
-      await settle();
-      assert.deepEqual(flags(), ['icon-start']);
-
-      element.replaceChildren(icon());
-      await settle();
-      assert.deepEqual(flags(), ['icon-only']);
+      const icon = document.createElement('grantcodes-icon');
+      element.append(icon);
+      await element.updateComplete;
+      const slot = element.shadowRoot.querySelector('slot:not([name])');
+      assert.deepEqual(slot.assignedElements(), [icon]);
+      for (const name of ['icon-only', 'icon-start', 'icon-end']) {
+        assert.ok(!element.hasAttribute(name));
+      }
     });
   });
 });

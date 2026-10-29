@@ -2,14 +2,13 @@ import { html, LitElement, type PropertyValues } from 'lit';
 import focusRingStyles from '../../lib/styles/focus-ring.css' with { type: 'css' };
 import buttonStyles from './button.css' with { type: 'css' };
 
-const isIcon = (node: Node): boolean =>
-  node.nodeType === 1 && (node as Element).localName === 'grantcodes-icon';
-const hasContent = (node: Node): boolean =>
-  node.nodeType === 1 || (node.nodeType === 3 && (node.textContent ?? '').trim() !== '');
-
+/**
+ * @slot - Button label, or a direct grantcodes-icon for icon-only layout.
+ * @slot start - Non-interactive content before the label.
+ * @slot end - Non-interactive content after the label.
+ */
 export class GrantCodesButton extends LitElement {
   declare _fieldsetDisabled: boolean;
-  declare _contentObserver: MutationObserver | null;
   declare color: 'primary' | 'secondary' | 'neutral' | 'danger';
   declare disabled: boolean;
   declare href: string;
@@ -54,7 +53,6 @@ export class GrantCodesButton extends LitElement {
     this.variant = 'solid';
     // Do NOT set form="" — an empty form attribute overrides ancestor form association
     this._fieldsetDisabled = false;
-    this._contentObserver = null;
 
     // Attach ElementInternals for form participation.
     // try/catch because happy-dom (DOM-shim test env) may not support attachInternals()
@@ -78,20 +76,11 @@ export class GrantCodesButton extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.addEventListener('click', this._handleFormClick);
-    this._contentObserver ??= new (globalThis.MutationObserver ?? window.MutationObserver)(() =>
-      this._syncIconLayout(),
-    );
-    this._contentObserver.observe(this, {
-      childList: true,
-      characterData: true,
-      subtree: true,
-    });
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
     this.removeEventListener('click', this._handleFormClick);
-    this._contentObserver?.disconnect();
   }
 
   _handleFormClick(_e: Event) {
@@ -114,24 +103,6 @@ export class GrantCodesButton extends LitElement {
     this.requestUpdate();
   }
 
-  firstUpdated() {
-    this._syncIconLayout();
-  }
-
-  // Shadow CSS cannot see whether slotted content is text or an icon, so the
-  // light DOM decides which edge padding rules apply.
-  _syncIconLayout = (): void => {
-    const nodes = Array.from(this.childNodes).filter(
-      (node) => !(node as Element).getAttribute?.('slot') && hasContent(node),
-    );
-    const icons = nodes.filter(isIcon).length;
-    const iconOnly = nodes.length > 0 && icons === nodes.length;
-
-    this.toggleAttribute('icon-only', iconOnly);
-    this.toggleAttribute('icon-start', !iconOnly && icons > 0 && isIcon(nodes[0]));
-    this.toggleAttribute('icon-end', !iconOnly && icons > 0 && isIcon(nodes[nodes.length - 1]));
-  };
-
   formResetCallback() {
     // Called by the browser when the associated form is reset.
     // Reset the value to an empty string (default state).
@@ -150,26 +121,30 @@ export class GrantCodesButton extends LitElement {
 
     if (isLink) {
       return html`
-				<a
-					class="button focus-ring"
-					href=${this.href}
-					?disabled=${this.disabled || this._fieldsetDisabled}
-				>
-					<span><slot></slot></span>
-				</a>
-			`;
+        <a
+          class="button focus-ring"
+          href=${this.href}
+          ?disabled=${this.disabled || this._fieldsetDisabled}
+        >
+          <slot name="start"></slot>
+          <span><slot></slot></span>
+          <slot name="end"></slot>
+        </a>
+      `;
     }
 
     return html`
-			<button
-				class="button focus-ring"
-				type="button"
-				name=${this.name ?? ''}
-				value=${this.value ?? ''}
-				?disabled=${this.disabled || this._fieldsetDisabled}
-			>
-				<span><slot></slot></span>
-			</button>
-		`;
+      <button
+        class="button focus-ring"
+        type="button"
+        name=${this.name ?? ''}
+        value=${this.value ?? ''}
+        ?disabled=${this.disabled || this._fieldsetDisabled}
+      >
+        <slot name="start"></slot>
+        <span><slot></slot></span>
+        <slot name="end"></slot>
+      </button>
+    `;
   }
 }

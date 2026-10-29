@@ -1073,15 +1073,21 @@
           "kind": "class",
           "description": "",
           "name": "GrantCodesButton",
-          "members": [
+          "slots": [
             {
-              "kind": "field",
-              "name": "_contentObserver",
-              "type": {
-                "text": "MutationObserver | null"
-              },
-              "default": "null"
+              "description": "Button label, or a direct grantcodes-icon for icon-only layout.",
+              "name": ""
             },
+            {
+              "description": "Non-interactive content after the label.",
+              "name": "end"
+            },
+            {
+              "description": "Non-interactive content before the label.",
+              "name": "start"
+            }
+          ],
+          "members": [
             {
               "kind": "field",
               "name": "_fieldsetDisabled",
@@ -1101,10 +1107,6 @@
                   }
                 }
               ]
-            },
-            {
-              "kind": "field",
-              "name": "_syncIconLayout"
             },
             {
               "kind": "field",

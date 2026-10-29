@@ -42,6 +42,28 @@ For TypeScript, opt in to the matching CSS declaration with:
 import '@grantcodes/ui/css-import-attributes';
 ```
 
+### Button content
+
+Use the default slot for the label and `slot="start"` / `slot="end"` for icons or
+other non-interactive content. Named slots get CSS spacing and edge padding without
+client-side content detection; empty slots add no gaps.
+
+```html
+<grantcodes-button>
+  <span slot="start" aria-hidden="true">★</span>
+  Save
+  <span slot="end">3</span>
+</grantcodes-button>
+```
+
+A direct `grantcodes-icon` in the default slot signals icon-only layout without an
+attribute. Icons beside a label must use `start` or `end` instead. Give a standalone
+icon an accessible name using `role="img"` and `aria-label`.
+
+Keep slot composition static: Chromium can retain stale padding and icon-only
+styling after children or their `slot` attributes change. The shadow-CSS `@scope`
+workaround has no JavaScript fallback.
+
 ### Button groups
 
 `grantcodes-button-group` defaults to joined, horizontal buttons. Use `variant="spaced"`
