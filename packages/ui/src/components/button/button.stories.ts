@@ -54,17 +54,16 @@ const meta = {
   render: ({ label, icon, iconPosition, ...buttonArgs }: StoryArgs) => {
     const svg = ICONS[icon];
     const iconTemplate = svg
-      ? html`<grantcodes-icon role="img" aria-label=${label || 'Button'}
+      ? html`<grantcodes-icon
+          slot=${label ? iconPosition : nothing}
+          role=${label ? nothing : 'img'}
+          aria-hidden=${label ? 'true' : nothing}
+          aria-label=${label ? nothing : 'Like'}
           >${unsafeHTML(svg)}</grantcodes-icon
         >`
       : nothing;
 
-    return template(
-      buttonArgs,
-      html`${iconPosition === 'start' ? iconTemplate : nothing}${label}${
-        iconPosition === 'end' ? iconTemplate : nothing
-      }`,
-    );
+    return template(buttonArgs, html`${iconTemplate}${label}`);
   },
   parameters: {
     actions: {
@@ -78,7 +77,18 @@ export default meta;
 /**
  * Default button with standard appearance.
  */
-export const Button = {};
+export const Button = {
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+    const button = getButton(canvasElement);
+    await button.updateComplete;
+    const inner = innerButton(button);
+    const width = inner.getBoundingClientRect().width;
+    const slots = button.shadowRoot!.querySelectorAll<HTMLSlotElement>('slot[name]');
+    for (const slot of slots) slot.style.display = 'none';
+    await expect(inner.getBoundingClientRect().width).toBe(width);
+    for (const slot of slots) slot.style.removeProperty('display');
+  },
+};
 
 /**
  * An icon as the only content. The button takes the block padding on both
@@ -89,7 +99,8 @@ export const IconOnly = {
   play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
     const button = getButton(canvasElement);
     await button.updateComplete;
-    await expect(button).toHaveAttribute('icon-only');
+    await expect(button).not.toHaveAttribute('icon-only');
+    await expect(innerButton(button)).toHaveAccessibleName('Like');
     const inner = innerButton(button);
     await expect(inner.offsetWidth).toBe(inner.offsetHeight);
   },
@@ -104,13 +115,16 @@ export const IconStart = {
   play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
     const button = getButton(canvasElement);
     await button.updateComplete;
-    await expect(button).toHaveAttribute('icon-start');
+    await expect(getIcon(button)).toHaveAttribute('slot', 'start');
     await expect(button).not.toHaveAttribute('icon-only');
     const style = getComputedStyle(innerButton(button));
     const start = Number.parseFloat(style.paddingInlineStart);
     await expect(start).toBeGreaterThan(Number.parseFloat(style.paddingBlockStart));
     await expect(start).toBeLessThan(Number.parseFloat(style.paddingInlineEnd));
-    await expect(getComputedStyle(getIcon(button)).marginInlineEnd).not.toBe('0px');
+    const label = innerButton(button).querySelector('span')!;
+    await expect(
+      label.getBoundingClientRect().left - getIcon(button).getBoundingClientRect().right,
+    ).toBeCloseTo(Number.parseFloat(style.columnGap), 1);
   },
 };
 
@@ -122,13 +136,43 @@ export const IconEnd = {
   play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
     const button = getButton(canvasElement);
     await button.updateComplete;
-    await expect(button).toHaveAttribute('icon-end');
+    await expect(getIcon(button)).toHaveAttribute('slot', 'end');
     await expect(button).not.toHaveAttribute('icon-only');
     const style = getComputedStyle(innerButton(button));
     const end = Number.parseFloat(style.paddingInlineEnd);
     await expect(end).toBeGreaterThan(Number.parseFloat(style.paddingBlockStart));
     await expect(end).toBeLessThan(Number.parseFloat(style.paddingInlineStart));
-    await expect(getComputedStyle(getIcon(button)).marginInlineStart).not.toBe('0px');
+    const label = innerButton(button).querySelector('span')!;
+    await expect(
+      getIcon(button).getBoundingClientRect().left - label.getBoundingClientRect().right,
+    ).toBeCloseTo(Number.parseFloat(style.columnGap), 1);
+  },
+};
+
+export const StartAndEnd = {
+  render: () => html`
+    <grantcodes-button href="/messages">
+      <span slot="start">New</span>Messages<span slot="end">3</span>
+    </grantcodes-button>
+  `,
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+    const button = getButton(canvasElement);
+    await button.updateComplete;
+    const inner = innerButton(button);
+    await expect(inner.localName).toBe('a');
+    await expect(inner).toHaveAccessibleName('New Messages 3');
+    const start = button.querySelector<HTMLElement>('[slot="start"]')!;
+    const end = button.querySelector<HTMLElement>('[slot="end"]')!;
+    const style = getComputedStyle(inner);
+    const padding = style.paddingInlineStart;
+    await expect(padding).toBe(style.paddingInlineEnd);
+    const label = inner.querySelector('span')!;
+    await expect(
+      label.getBoundingClientRect().left - start.getBoundingClientRect().right,
+    ).toBeCloseTo(Number.parseFloat(style.columnGap), 1);
+    await expect(
+      end.getBoundingClientRect().left - label.getBoundingClientRect().right,
+    ).toBeCloseTo(Number.parseFloat(style.columnGap), 1);
   },
 };
 

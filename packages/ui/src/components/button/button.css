@@ -85,7 +85,7 @@
   display: inline-flex;
   flex-direction: row;
   align-items: center;
-  gap: var(--g-spacing-sm);
+  gap: var(--_button-icon-gap);
   background: var(--_button-background);
   color: var(--_button-color);
   border-width: var(--g-border-width-md);
@@ -164,26 +164,35 @@
   font-size: var(--g-typography-font-size-md);
 }
 
-/* An icon at an edge only needs the block padding, which leaves an icon-only
-   button exactly square. */
-:host([icon-only]) .button {
-  padding-inline: var(--_button-padding-block);
-}
-
-/* Without text there is no line box to size the label, so the icon alone
-   decides the height. */
-:host([icon-only]) .button > span {
-  line-height: 0;
-}
-
-/* An icon beside a label keeps some of the inline padding so it does not crowd
-   the edge. */
-:host([icon-start]) .button {
+:host(:has(> [slot="start"])) .button {
   padding-inline-start: var(--_button-icon-padding-inline);
 }
 
-:host([icon-end]) .button {
+:host(:has(> [slot="end"])) .button {
   padding-inline-end: var(--_button-icon-padding-inline);
+}
+
+:host(:has(> grantcodes-icon:is(:not([slot]), [slot=""]))) .button {
+  --_button-label-line-height: 0;
+  --_button-label-trim: none;
+  padding-inline: var(--_button-padding-block);
+}
+
+/* Chromium needs the implicit scope root to query the host's light DOM. */
+@scope {
+  :scope:has(> [slot="start"]) .button {
+    padding-inline-start: var(--_button-icon-padding-inline);
+  }
+
+  :scope:has(> [slot="end"]) .button {
+    padding-inline-end: var(--_button-icon-padding-inline);
+  }
+
+  :scope:has(> grantcodes-icon:is(:not([slot]), [slot=""])) .button {
+    --_button-label-line-height: 0;
+    --_button-label-trim: none;
+    padding-inline: var(--_button-padding-block);
+  }
 }
 
 .button > span ::slotted(grantcodes-icon) {
@@ -192,16 +201,8 @@
   vertical-align: calc(0.5cap - 0.5em);
 }
 
-:host([icon-start]) .button > span ::slotted(grantcodes-icon:first-child) {
-  margin-inline-end: var(--_button-icon-gap);
-}
-
-:host([icon-end]) .button > span ::slotted(grantcodes-icon:last-child) {
-  margin-inline-start: var(--_button-icon-gap);
-}
-
-/* Trimming to the text metrics centres labels optically, but it would clip an
-   icon-only label, which has no text to trim to. */
-:host(:not([icon-only])) .button > span {
-  text-box: trim-both cap alphabetic;
+.button > span {
+  line-height: var(--_button-label-line-height, inherit);
+  text-box-edge: cap alphabetic;
+  text-box-trim: var(--_button-label-trim, trim-both);
 }
