@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.2.0](https://github.com/grantcodes/ui/compare/ui-v3.1.0...ui-v3.2.0) (2026-10-29)
+
+
+### Features
+
+* **ui:** add CSS-driven start and end button slots ([19cd056](https://github.com/grantcodes/ui/commit/19cd056339e4400f1c7752e4e10c4442e250bdff))
+* **ui:** add CSS-driven start and end button slots ([5a8447b](https://github.com/grantcodes/ui/commit/5a8447becd566abd3fb17d496de529b6006e415d))
+
 ## [3.1.0](https://github.com/grantcodes/ui/compare/ui-v3.0.2...ui-v3.1.0) (2026-10-27)
 
 
