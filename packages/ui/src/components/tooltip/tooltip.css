@@ -10,6 +10,10 @@
   width: fit-content;
 }
 
+:host {
+  anchor-scope: all;
+}
+
 .tooltip {
   position: relative;
 }
@@ -17,14 +21,14 @@
 .tooltip__slot {
   padding: var(--g-spacing-sm);
   margin: calc(-1 * var(--g-spacing-sm));
-  /* Anchor name will be set via JavaScript to include unique ID */
+  anchor-name: --tooltip;
 }
 
 .tooltip__content {
   display: none;
-  width: fit-content;
+  width: max-content;
   margin: 0;
-  max-width: 100%;
+  max-width: min(20rem, 100vw - 2 * var(--g-spacing-sm));
   min-width: 6rem;
   z-index: 100;
   border-radius: var(--g-border-radius-md);
@@ -45,23 +49,24 @@
     display 0.2s;
   transition-behavior: allow-discrete;
 
-  /* Modern CSS Anchor Positioning API */
-  /* This positions the tooltip relative to its anchor (the slot) */
-  position: absolute;
+  /* Fixed, so the position area is the viewport rather than the trigger-sized wrapper.
+     The slot's padding is the gap, keeping the hover area unbroken up to the tooltip. */
+  position: fixed;
+  position-anchor: --tooltip;
+  position-area: block-end span-all;
+  justify-self: anchor-center;
+  position-try-fallbacks:
+    flip-block,
+    block-end span-inline-end,
+    block-end span-inline-start,
+    block-start span-inline-end,
+    block-start span-inline-start;
 
-  /* Try anchor positioning first (modern browsers) */
-  position-anchor: var(--tooltip-anchor);
-  position-area: block-end;
-  margin-block-start: 0.5rem;
-
-  /* Fallback for browsers without anchor positioning support */
   @supports not (position-area: block-end) {
-    /* Traditional positioning as fallback */
     position: absolute;
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
-    margin-top: 0.5rem;
   }
 }
 

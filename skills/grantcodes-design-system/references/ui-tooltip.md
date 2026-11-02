@@ -11,6 +11,6 @@ import '@grantcodes/ui/components/tooltip/tooltip.js';
 </grantcodes-tooltip>
 ```
 
-Choose **one** of `label` (accessible name via aria-labelledby) or `description` (supplemental text via aria-describedby). Providing both throws. The default slot contains the trigger, normally one focusable native button or link. It also locates the actual control inside supported shadow-root triggers.
+Choose **one** of `label` (sets the control's `aria-label`) or `description` (sets its `aria-description`); the previous value is restored when the tooltip lets go of the control. Providing both throws. The default slot contains the trigger, normally one focusable native button or link. It also locates the actual control inside supported shadow-root triggers.
 
 Hover/focus reveals text; Escape suppresses it until exit. There is no public open property, trigger slot, rich-content slot, or event mapping. React exports Tooltip with the same properties. No declared parts; inherited tokens include `--g-spacing-sm`, `--g-border-radius-md`, `--g-typography-font-size-xs`, `--g-color-primary-900`, `--g-color-primary-100`.
