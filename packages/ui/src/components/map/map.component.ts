@@ -1,12 +1,7 @@
 import { html, LitElement, nothing } from 'lit';
 import mapStyles from './map.css' with { type: 'css' };
 
-const DARK_FILTER = 'invert(1) hue-rotate(180deg) brightness(0.95) contrast(0.9)';
-
 export class GrantCodesMap extends LitElement {
-  declare _darkQuery: null | MediaQueryList;
-  declare _observer: MutationObserver;
-  declare _onSchemeChange: () => void;
   declare 'directions-url': string;
   declare height: string;
   declare label: string;
@@ -57,40 +52,6 @@ export class GrantCodesMap extends LitElement {
     this.label = 'Map';
     this['directions-url'] = '';
     this.height = '';
-    this._darkQuery = null;
-    this._onSchemeChange = () => this._updateFilter();
-    if (typeof window !== 'undefined') {
-      this._darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    }
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
-    if (typeof window === 'undefined') return;
-    this._observer = new MutationObserver(() => this._updateFilter());
-    this._observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class'],
-    });
-    this._darkQuery?.addEventListener('change', this._onSchemeChange);
-    this._updateFilter();
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    this._observer?.disconnect();
-    this._darkQuery?.removeEventListener('change', this._onSchemeChange);
-  }
-
-  _isDark() {
-    if (typeof document === 'undefined') return false;
-    if (document.documentElement.classList.contains('dark')) return true;
-    if (document.documentElement.classList.contains('light')) return false;
-    return this._darkQuery?.matches ?? false;
-  }
-
-  _updateFilter() {
-    this.style.setProperty('--g-map-filter', this._isDark() ? DARK_FILTER : 'none');
   }
 
   get _embedUrl() {
