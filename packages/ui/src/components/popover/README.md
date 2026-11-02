@@ -31,4 +31,4 @@ const [open, setOpen] = useState(false);
 
 Opening moves focus to the first eligible control in panel content, or the panel. Escape and outside clicks dismiss the popover. Escape returns focus to the trigger; outside clicks preserve focus already moved elsewhere.
 
-The component uses native CSS anchor positioning with `position-try-fallbacks`. Without support, it uses an adjacent, non-collision-aware fallback. Fixed panels are not top-layer content and can be affected by transformed or overflow ancestors and stacking contexts.
+The panel is a native `popover`, so it renders in the top layer and the browser handles outside-click dismissal. It is positioned with CSS anchor positioning and `position-try-fallbacks`; without anchor positioning it keeps the browser's centred popover placement.
