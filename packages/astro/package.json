@@ -59,8 +59,8 @@
     "@lit-labs/ssr-dom-shim": "^1.6.0",
     "@resvg/resvg-js": "^2.6.2",
     "colorjs.io": "^0.7.1",
-    "marked": "^18.1.1",
-    "parse5": "^8.0.1",
+    "marked": "^18.1.2",
+    "parse5": "^8.1.0",
     "satori": "^0.63.2"
   },
   "peerDependencies": {
@@ -68,7 +68,7 @@
     "lit": "^3.2.0"
   },
   "devDependencies": {
-    "astro": "^7.4.2",
+    "astro": "^7.4.4",
     "tsx": "^4.23.15"
   }
 }

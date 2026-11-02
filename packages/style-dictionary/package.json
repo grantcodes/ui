@@ -57,7 +57,7 @@
 	"homepage": "https://github.com/grantcodes/ui#readme",
 	"license": "MIT",
 	"devDependencies": {
-		"@biomejs/biome": "2.6.3",
+		"@biomejs/biome": "2.6.4",
 		"@grantcodes/commit": "^2.0.0",
 		"minimist": "^1.2.8",
 		"npm-run-all2": "^9.0.4",
