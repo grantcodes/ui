@@ -22,7 +22,7 @@ const meta = {
     template(
       args,
       html`
-				<h2 slot="header">Dialog Header</h2>
+				<h2 slot="header" style="font: var(--g-typography-h5-font); margin: 0;">Dialog Header</h2>
 				${args.content}
 				<grantcodes-button-group slot="footer">
 					<grantcodes-button>Cancel</grantcodes-button>

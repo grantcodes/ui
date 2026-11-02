@@ -14,33 +14,23 @@
   border-color: var(--g-color-border-default);
   border-radius: var(--g-border-radius-md);
   max-block-size: calc(100dvh - var(--g-spacing-md, 1rem) - var(--g-spacing-md, 1rem));
-  overflow-y: auto;
-  overscroll-behavior: contain;
+}
+
+/* Only the content scrolls, so the header, footer and dismiss button stay in view. */
+.dialog[open] {
+  display: flex;
+  flex-direction: column;
 }
 
 .dialog::backdrop {
-  position: fixed;
-  inset: 0;
   background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(6px);
 }
 
 .dialog__dismiss {
-  display: block;
   position: absolute;
-  border: none;
-  line-height: 1;
-  font-size: var(--g-typography-h4-font-size);
-  cursor: pointer;
-  background: transparent;
-  inset-block-start: calc(var(--g-spacing-xs) + var(--g-spacing-2xs));
-  inset-inline-end: calc(var(--g-spacing-xs) + var(--g-spacing-2xs));
-  border-radius: 50%;
-  inline-size: var(--g-size-touch-target);
-  block-size: var(--g-size-touch-target);
-  padding: var(--g-spacing-xs);
-  justify-content: center;
-  align-items: center;
+  inset-block-start: var(--g-spacing-xs);
+  inset-inline-end: var(--g-spacing-xs);
 }
 
 .dialog__content {
@@ -49,6 +39,10 @@
   justify-content: flex-start;
   gap: var(--g-spacing-md);
   padding: var(--g-spacing-md);
+  flex: 1 1 auto;
+  min-block-size: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 /* Needed because the display rules below are author-origin and outrank the UA [hidden] rule. */

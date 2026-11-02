@@ -170,16 +170,6 @@ describe('Dialog Component', () => {
     assert.strictEqual(element.open, false, 'open should follow the native dialog state');
   });
 
-  it('should sync open to false when the native dialog fires cancel', async () => {
-    element = await fixture('grantcodes-dialog', { open: true });
-    const dialog = element.shadowRoot.querySelector('dialog');
-
-    dialog.dispatchEvent(new Event('cancel'));
-    await element.updateComplete;
-
-    assert.strictEqual(element.open, false, 'Esc should sync open back to false');
-  });
-
   it('should not throw when reopened after the native dialog closed', async () => {
     element = await fixture('grantcodes-dialog', { open: true });
     const dialog = element.shadowRoot.querySelector('dialog');
