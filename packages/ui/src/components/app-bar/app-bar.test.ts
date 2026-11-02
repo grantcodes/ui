@@ -1,7 +1,8 @@
 import { strict as assert } from 'node:assert';
 import { afterEach, describe, it } from 'node:test';
 import { cleanup, click, fixture } from '../../test-utils/index.js';
-import { GrantCodesAppBar } from './app-bar.js';
+import './app-bar.js';
+import type { GrantCodesAppBar } from './app-bar.js';
 import type { GrantCodesMenuToggle } from '../menu-toggle/menu-toggle.js';
 
 describe('App Bar Component', () => {

@@ -49,7 +49,7 @@ describe('Person Component', () => {
 
     const assignedNodes = slot.assignedNodes({ flatten: true });
     const hasText = assignedNodes.some(
-      (node) => node.textContent && node.textContent.includes('A short bio about Jane'),
+      (node) => node.textContent?.includes('A short bio about Jane'),
     );
     assert.ok(hasText, 'description slot should contain the projected text');
   });
