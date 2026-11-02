@@ -1,6 +1,5 @@
-import { LitElement } from 'lit';
+import { LitElement, nothing } from 'lit';
 import { html } from 'lit/static-html.js';
-import { GrantCodesButton } from '../button/button.component.js';
 import paginationStyles from './pagination.css' with { type: 'css' };
 import '../button/button.js';
 
@@ -10,12 +9,7 @@ export class GrantCodesPagination extends LitElement {
   declare pages: number;
   declare previousHref: string;
 
-  // Styles are scoped to this element: they won't conflict with styles
-  // on the main page or in other components. Styling API can be exposed
-  // via CSS custom properties.
   static styles = [paginationStyles];
-
-  static dependencies = { 'grantcodes-button': GrantCodesButton };
 
   static properties = {
     previousHref: { attribute: 'previous-href' },
@@ -33,34 +27,19 @@ export class GrantCodesPagination extends LitElement {
     this.pages = 1;
   }
 
-  nextTemplate() {
-    if (!this.nextHref) {
-      return html``;
-    }
-
-    return html`
-      <grantcodes-button class="pagination__next" href=${this.nextHref}
-        >Next</grantcodes-button
-      >
-    `;
-  }
-
-  previousTemplate() {
-    if (!this.previousHref) {
-      return html``;
-    }
-
-    return html`
-      <grantcodes-button class="pagination__previous" href=${this.previousHref}
-        >Previous</grantcodes-button
-      >
-    `;
-  }
-
   render() {
     return html`
       <nav class="pagination" aria-label="Pagination navigation">
-        ${this.previousTemplate()} ${this.nextTemplate()}
+        ${
+          this.previousHref
+            ? html`<grantcodes-button class="pagination__previous" href=${this.previousHref}>Previous</grantcodes-button>`
+            : nothing
+        }
+        ${
+          this.nextHref
+            ? html`<grantcodes-button class="pagination__next" href=${this.nextHref}>Next</grantcodes-button>`
+            : nothing
+        }
       </nav>
     `;
   }

@@ -1,4 +1,4 @@
-import { LitElement, type PropertyValues } from 'lit';
+import { LitElement, nothing, type PropertyValues } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { html } from 'lit/static-html.js';
 import { generateId } from '../../lib/generate-id.js';
@@ -37,9 +37,7 @@ export class GrantCodesFormField extends LitElement {
   declare groupInput: boolean;
   declare help: string | undefined;
   declare label: string;
-  declare nestedFields: NodeListOf<Element>;
 
-  static formAssociated = true;
   static styles = [formFieldStyles];
 
   static properties = {
@@ -71,9 +69,6 @@ export class GrantCodesFormField extends LitElement {
      * @type {'vertical' | 'horizontal'}
      */
     this.direction = 'vertical';
-
-    /** @type {NodeListOf<GrantCodesFormField>} */
-    this.nestedFields;
 
     this._revalidate = this._revalidate.bind(this);
     this._syncGroupState = this._syncGroupState.bind(this);
@@ -150,7 +145,6 @@ export class GrantCodesFormField extends LitElement {
 
   firstUpdated() {
     this._syncGroupState();
-    this.syncControlAria();
   }
 
   updated(changedProperties: PropertyValues) {
@@ -164,8 +158,7 @@ export class GrantCodesFormField extends LitElement {
   }
 
   _syncGroupState() {
-    this.nestedFields = this.querySelectorAll(':scope > grantcodes-form-field');
-    const isGroup = this.nestedFields.length > 0;
+    const isGroup = this.querySelector(':scope > grantcodes-form-field') !== null;
     if (this.groupInput !== isGroup) {
       this.groupInput = isGroup;
       this.requestUpdate();
@@ -254,23 +247,9 @@ export class GrantCodesFormField extends LitElement {
   }
 
   errorTemplate() {
-    if (!this.error) {
-      return html``;
-    }
-
-    return html`
-      <p class="form-field__error" id=${this.errorId} ?hidden=${!this.showError}>${this.error}</p>
-    `;
-  }
-
-  helpTemplate() {
-    if (!this.help) {
-      return html``;
-    }
-
-    return html`
-      <span class="form-field__help" id=${this.helpId}>${this.help}</span>
-    `;
+    return this.error
+      ? html`<p class="form-field__error" ?hidden=${!this.showError}>${this.error}</p>`
+      : nothing;
   }
 
   render() {
@@ -294,7 +273,7 @@ export class GrantCodesFormField extends LitElement {
           <span class="form-field__label" @click=${this.handleLabelClick}
             >${this.label}</span
           >
-          ${this.helpTemplate()}
+          ${this.help ? html`<span class="form-field__help">${this.help}</span>` : nothing}
           <slot @slotchange=${this._syncGroupState}></slot>
         </label>
         ${this.errorTemplate()}

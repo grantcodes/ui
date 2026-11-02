@@ -65,16 +65,6 @@ describe('Tooltip Component', () => {
     assert.strictEqual(content.getAttribute('role'), 'tooltip', 'Should have tooltip role');
   });
 
-  it('should generate unique ID', async () => {
-    const element1 = await fixture('grantcodes-tooltip', { label: 'Test 1' });
-    const element2 = await fixture('grantcodes-tooltip', { label: 'Test 2' });
-
-    assert.notStrictEqual(element1.id, element2.id, 'IDs should be unique');
-
-    cleanup(element1);
-    cleanup(element2);
-  });
-
   it('should have slot for trigger element', async () => {
     element = await fixture('grantcodes-tooltip', {
       label: 'Tooltip',
@@ -123,12 +113,7 @@ describe('Tooltip Component', () => {
 
     await element.updateComplete;
 
-    const labelId = button.getAttribute('aria-labelledby');
-    assert.ok(labelId);
-    const label = document.getElementById(labelId);
-    assert.ok(label);
-    assert.strictEqual(label.textContent, 'Button label');
-    assert.strictEqual(label.getRootNode(), button.getRootNode());
+    assert.strictEqual(button.getAttribute('aria-label'), 'Button label');
   });
 
   it('associates a custom trigger control with a resolved description', async () => {
@@ -143,19 +128,14 @@ describe('Tooltip Component', () => {
     await element.updateComplete;
 
     const control = button.shadowRoot?.querySelector('button');
-    assert.ok(control);
-    const descriptionId = control.getAttribute('aria-describedby');
-    assert.ok(descriptionId);
-    const description = button.shadowRoot?.getElementById(descriptionId);
-    assert.ok(description);
-    assert.strictEqual(description.textContent, 'Button description');
-    assert.strictEqual(description.getRootNode(), control.getRootNode());
+    assert.strictEqual(control?.getAttribute('aria-description'), 'Button description');
   });
 
   it('updates the relationship when the trigger changes', async () => {
     element = await fixture('grantcodes-tooltip', { label: 'Button label' });
     const first = document.createElement('button');
     const second = document.createElement('button');
+    first.setAttribute('aria-label', 'Original');
     element.append(first);
     element.shadowRoot.querySelector('slot')?.dispatchEvent(new Event('slotchange'));
     await element.updateComplete;
@@ -165,12 +145,8 @@ describe('Tooltip Component', () => {
     element.shadowRoot.querySelector('slot')?.dispatchEvent(new Event('slotchange'));
     await element.updateComplete;
 
-    assert.strictEqual(first.hasAttribute('aria-labelledby'), false);
-    const labelId = second.getAttribute('aria-labelledby');
-    assert.ok(labelId);
-    const label = document.getElementById(labelId);
-    assert.ok(label);
-    assert.strictEqual(label.textContent, 'Button label');
+    assert.strictEqual(first.getAttribute('aria-label'), 'Original');
+    assert.strictEqual(second.getAttribute('aria-label'), 'Button label');
   });
 
   it('suppresses the tooltip with Escape until focus leaves', async () => {

@@ -11,16 +11,14 @@
 }
 
 :host {
-  position: relative;
+  anchor-scope: all;
 }
 
 .popover__trigger {
-  anchor-name: var(--popover-anchor, none);
+  anchor-name: --popover-anchor;
 }
 
 .popover__panel {
-  position: absolute;
-  z-index: 1000;
   min-inline-size: 0;
   inline-size: var(--popover-inline-size, auto);
   max-inline-size: var(
@@ -28,7 +26,6 @@
     min(calc(100vw - var(--g-spacing-md) * 2), 30rem)
   );
   max-block-size: min(50vh, 100dvb - var(--g-spacing-md) * 2);
-  margin-block: var(--popover-offset, var(--g-spacing-xs));
   padding: var(--g-spacing-md);
   overflow: auto;
   overscroll-behavior: contain;
@@ -37,39 +34,34 @@
   border: var(--g-border-width-sm) solid var(--g-color-border-default);
   border-radius: var(--g-border-radius-md);
   box-shadow: var(--g-box-shadow-lg);
-  view-transition-name: var(--popover-vt-name, none);
+  opacity: 0;
+  transition:
+    opacity 0.15s ease,
+    display 0.15s allow-discrete,
+    overlay 0.15s allow-discrete;
 }
 
-.popover__panel[hidden] {
-  display: none;
+.popover__panel:popover-open {
+  opacity: 1;
+
+  @starting-style {
+    opacity: 0;
+  }
 }
 
-.popover__panel--bottom-start {
-  inset-block-start: 100%;
-  inset-inline-start: 0;
-}
-
-.popover__panel--bottom-end {
-  inset-block-start: 100%;
-  inset-inline-end: 0;
-}
-
-.popover__panel--top-start {
-  inset-block-end: 100%;
-  inset-inline-start: 0;
-}
-
-.popover__panel--top-end {
-  inset-block-end: 100%;
-  inset-inline-end: 0;
-}
-
-@supports (position-anchor: --popover-anchor) and (position-area: block-end span-inline-end) {
+@media (prefers-reduced-motion: reduce) {
   .popover__panel {
-    position: fixed;
-    position-anchor: var(--popover-anchor, none);
-    max-block-size: min(50vh, 100dvb - var(--g-spacing-md) * 2);
+    transition: none;
+  }
+}
+
+/* Without anchor positioning the popover keeps the UA's centred top-layer placement. */
+@supports (position-area: block-end span-inline-end) {
+  .popover__panel {
+    position-anchor: --popover-anchor;
     inset: auto;
+    margin-block: var(--popover-offset, var(--g-spacing-xs));
+    margin-inline: 0;
     position-try-fallbacks:
       flip-block,
       flip-inline,
@@ -90,11 +82,5 @@
 
   .popover__panel--top-end {
     position-area: block-start span-inline-start;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .popover__panel {
-    view-transition-name: none;
   }
 }

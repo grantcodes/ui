@@ -1,4 +1,5 @@
 import { html } from 'lit';
+import { expect, userEvent, waitFor } from 'storybook/test';
 import './dropdown.js';
 import '../button/button.js';
 
@@ -23,6 +24,18 @@ export const Dropdown = {
 			</div>
 		</grantcodes-dropdown>
 	`,
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+    const dropdown = canvasElement.querySelector('grantcodes-dropdown') as HTMLElement;
+    const trigger = dropdown.querySelector('grantcodes-button')?.shadowRoot?.querySelector('button');
+    await userEvent.click(trigger as HTMLButtonElement);
+    await waitFor(() => expect(document.activeElement?.textContent).toBe('Profile'));
+    await userEvent.keyboard('{Escape}');
+    await waitFor(() => expect(dropdown).not.toHaveAttribute('open'));
+    await userEvent.click(trigger as HTMLButtonElement);
+    await waitFor(() => expect(dropdown).toHaveAttribute('open'));
+    await userEvent.click(trigger as HTMLButtonElement);
+    await waitFor(() => expect(dropdown).not.toHaveAttribute('open'));
+  },
 };
 
 /**

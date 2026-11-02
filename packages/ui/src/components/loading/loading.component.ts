@@ -7,13 +7,8 @@ export class GrantCodesLoading extends LitElement {
   declare _hasLabel: boolean;
   declare _labelPresence: SlotPresenceController;
 
-  // Styles are scoped to this element: they won't conflict with styles
-  // on the main page or in other components. Styling API can be exposed
-  // via CSS custom properties.
   static styles = [loadingStyles];
 
-  // Define reactive properties--updating a reactive property causes
-  // the component to update.
   static properties = {
     _hasLabel: { state: true },
   };

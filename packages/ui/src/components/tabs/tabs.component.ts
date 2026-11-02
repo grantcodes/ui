@@ -11,9 +11,6 @@ export class GrantCodesTabs extends LitElement {
   declare _focusedTabIndex: number;
   declare label: string;
 
-  // Styles are scoped to this element: they won't conflict with styles
-  // on the main page or in other components. Styling API can be exposed
-  // via CSS custom properties.
   static styles = [focusRingStyles, tabsStyles];
 
   static properties = {

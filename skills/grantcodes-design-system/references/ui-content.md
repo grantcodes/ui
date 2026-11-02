@@ -102,7 +102,7 @@ Import `@grantcodes/ui/components/map/map.js`; React: **MapEmbed**.
 <grantcodes-map lat="51.5" lng="-0.12" zoom="14" label="Workshop location" directions-url="https://www.openstreetmap.org/" height="20rem"></grantcodes-map>
 ```
 
-lat/lng are strings, zoom defaults 14 (use 1–18), label defaults Map, height accepts CSS length. `directions-url` is also the literal JS property name, not directionsUrl (Astro translates its own camelCase prop). Without coordinates renders nothing. Uses a lazy OpenStreetMap iframe and external directions link; consider consent/CSP and provide a textual address/link alternative. Not a programmable map SDK. Browser APIs require client-only handling in Astro. Hooks: `--g-map-filter` is set by the component from colour scheme, plus `--g-color-border-default`, `--g-border-radius-md`.
+lat/lng are strings, zoom defaults 14 (use 1–18), label defaults Map, height accepts CSS length. `directions-url` is also the literal JS property name, not directionsUrl (Astro translates its own camelCase prop). Without coordinates renders nothing. Uses a lazy OpenStreetMap iframe and external directions link; consider consent/CSP and provide a textual address/link alternative. Not a programmable map SDK. Browser APIs require client-only handling in Astro. Hooks: `--g-map-filter` (dims the map by default under `prefers-color-scheme: dark`; reset.css sets it for `.dark`/`.light`), plus `--g-color-border-default`, `--g-border-radius-md`.
 
 ## Countdown
 

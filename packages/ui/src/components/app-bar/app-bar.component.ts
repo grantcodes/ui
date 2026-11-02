@@ -111,19 +111,13 @@ export class GrantCodesAppBar extends LitElement {
   }
 
   render() {
-    const classes = classMap({
-      'app-bar': true,
-      'app-bar--sticky': this.sticky,
-      'app-bar--transparent': this.transparent,
-    });
-
     const navClasses = classMap({
       'app-bar__nav': true,
       'app-bar__nav--open': this._mobileMenuOpen,
     });
 
     return html`
-			<header class=${classes}>
+			<header class="app-bar">
 				<div class="app-bar__bar">
 					<div class="app-bar__logo">
 						<slot name="logo"></slot>

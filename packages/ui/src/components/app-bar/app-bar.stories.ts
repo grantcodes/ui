@@ -6,6 +6,7 @@ import '../button/button.js';
 const meta = {
   title: 'Components/App Bar',
   component: 'grantcodes-app-bar',
+  parameters: { layout: 'fullscreen' },
 };
 
 export default meta;

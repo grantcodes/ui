@@ -24,7 +24,6 @@ declare namespace astroHTML.JSX {
     avatar?: string;
     button?: string;
     "button-label"?: string;
-    buttonId?: string;
     buttonLabel?: string;
     caption?: string;
     center?: boolean;
@@ -33,7 +32,6 @@ declare namespace astroHTML.JSX {
     columns?: number;
     company?: string;
     containerId?: string;
-    content?: string;
     controlled?: boolean;
     controlsElement?: unknown;
     cta?: string;
@@ -82,7 +80,6 @@ declare namespace astroHTML.JSX {
     orientation?: 'horizontal' | 'vertical';
     page?: number;
     pages?: number;
-    panelId?: string;
     "past-message"?: string;
     placeholder?: string;
     placement?: string;
@@ -575,7 +572,7 @@ declare module "@grantcodes/ui/components/popover/index.js" {
 
   export interface PopoverProps {
     open?: boolean;
-    placement?: 'bottom-start' | 'bottom-end' | 'top-start' | 'top-end';
+    placement?: unknown;
   }
 
   export function GrantCodesPopover(props: PopoverProps & import("astro").AstroBuiltinAttributes): any;
@@ -643,12 +640,9 @@ declare module "@grantcodes/ui/components/tabs/index.js" {
 
   export interface TabProps {
     active?: boolean;
-    buttonId?: string;
     containerId?: string;
-    content?: string;
     index?: number;
     label?: string;
-    panelId?: string;
   }
 
   export function GrantCodesTab(props: TabProps & import("astro").AstroBuiltinAttributes): any;
@@ -661,12 +655,9 @@ declare module "@grantcodes/ui/components/tabs/index.js" {
 
   export interface TabsButtonProps {
     active?: boolean;
-    buttonId?: string;
     containerId?: string;
-    content?: string;
     index?: number;
     label?: string;
-    panelId?: string;
   }
 
   export function GrantCodesTabsButton(props: TabsButtonProps & import("astro").AstroBuiltinAttributes): any;

@@ -1,4 +1,4 @@
-import { LitElement, type PropertyValues } from 'lit';
+import { LitElement } from 'lit';
 import { html } from 'lit/static-html.js';
 import linkStyles from '../../css/elements/a.css' with { type: 'css' };
 import focusRingStyles from '../../lib/styles/focus-ring.css' with { type: 'css' };
@@ -23,50 +23,13 @@ export class GrantCodesBreadcrumb extends LitElement {
     this.separator = '/';
   }
 
-  firstUpdated() {
-    const value = this.separator ?? '/';
-    this.style.setProperty('--component-breadcrumb-separator', `'${value}'`);
-
-    // Track slot content changes to update separators
-    const slot = this.renderRoot.querySelector('slot:not([name])');
-    if (slot) {
-      slot.addEventListener('slotchange', () => this._updateSeparators());
-      this._updateSeparators();
-    }
-  }
-
-  updated(changed: PropertyValues) {
-    if (changed.has('separator')) {
-      // Reflect separator into CSS custom property for pseudo-element content
-      const value = this.separator ?? '/';
-      this.style.setProperty('--component-breadcrumb-separator', `'${value}'`);
-    }
-
-    // Recalculate separators if light DOM may have changed
-    if (changed.size > 0) {
-      this._updateSeparators();
-    }
-  }
-
-  _updateSeparators() {
-    const slot = this.renderRoot.querySelector<HTMLSlotElement>('slot:not([name])');
-    if (!slot) return;
-    const items = slot
-      .assignedElements({ flatten: true })
-      .filter((el) => el.tagName === 'GRANTCODES-BREADCRUMB-ITEM');
-    items.forEach((el, index) => {
-      if (index < items.length - 1) {
-        el.setAttribute('data-has-separator', '');
-      } else {
-        el.removeAttribute('data-has-separator');
-      }
-    });
-  }
-
   render() {
     return html`
 			<nav aria-label="Breadcrumb" class="breadcrumb">
-				<ol class="breadcrumb__list">
+				<ol
+					class="breadcrumb__list"
+					style="--component-breadcrumb-separator: ${JSON.stringify(this.separator ?? '/')}"
+				>
 					<slot></slot>
 				</ol>
 			</nav>

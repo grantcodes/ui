@@ -1,6 +1,10 @@
 import { LitElement, nothing, type PropertyValues } from 'lit';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { html } from 'lit/static-html.js';
+import { X } from '../../icons.js';
 import { SlotPresenceController } from '../../lib/slot-presence-controller.js';
+import '../button/button.js';
+import '../icon/icon.js';
 import dialogStyles from './dialog.css' with { type: 'css' };
 
 // Safari does not implement closedby; the attribute is only added when supported.
@@ -24,9 +28,6 @@ export class GrantCodesDialog extends LitElement {
   /** Opens the native dialog modally and reflects its open state. */
   declare open: boolean;
 
-  // Styles are scoped to this element: they won't conflict with styles
-  // on the main page or in other components. Styling API can be exposed
-  // via CSS custom properties.
   static styles = [dialogStyles];
 
   static properties = {
@@ -38,8 +39,6 @@ export class GrantCodesDialog extends LitElement {
 
   constructor() {
     super();
-
-    this.dialog;
 
     this.open = false;
     this.dismissible = true;
@@ -65,20 +64,9 @@ export class GrantCodesDialog extends LitElement {
   }
 
   updated(changedProperties: PropertyValues) {
-    if (changedProperties.has('open')) {
-      this._handleOpenChange();
-    }
-  }
-
-  _handleOpenChange() {
-    if (!this.dialog) return;
-    if (this.open) {
-      if (!this.dialog.open) {
-        this.dialog.showModal();
-      }
-    } else if (this.dialog.open) {
-      this.dialog.close();
-    }
+    if (!changedProperties.has('open') || !this.dialog) return;
+    if (this.open && !this.dialog.open) this.dialog.showModal();
+    else if (!this.open && this.dialog.open) this.dialog.close();
   }
 
   // Esc and light-dismiss close the native dialog without touching `open`.
@@ -86,25 +74,20 @@ export class GrantCodesDialog extends LitElement {
     this.open = false;
   }
 
-  _handleNativeCancel() {
-    this.open = false;
-  }
-
   dismissTemplate() {
-    if (!this.dismissible) {
-      return html``;
-    }
+    if (!this.dismissible) return nothing;
 
     return html`
-      <button
+      <grantcodes-button
         class="dialog__dismiss"
+        variant="ghost"
+        color="neutral"
         @click=${() => {
           this.open = false;
         }}
-        aria-label="Dismiss dialog"
       >
-        &times;
-      </button>
+        <grantcodes-icon role="img" aria-label="Dismiss dialog">${unsafeHTML(X)}</grantcodes-icon>
+      </grantcodes-button>
     `;
   }
 
@@ -120,7 +103,6 @@ export class GrantCodesDialog extends LitElement {
         aria-label=${this.getAttribute('aria-label') || headerLabel || nothing}
         closedby=${supportsClosedBy && this.dismissible ? 'any' : nothing}
         @close=${this._handleNativeClose}
-        @cancel=${this._handleNativeCancel}
       >
         ${this.dismissTemplate()}
 

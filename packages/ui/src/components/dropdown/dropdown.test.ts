@@ -63,80 +63,24 @@ describe('Dropdown Component', () => {
     assert.ok(menu, 'Menu should have placement class');
   });
 
-  it('should generate unique IDs', async () => {
-    const element1 = await fixture('grantcodes-dropdown');
-    const element2 = await fixture('grantcodes-dropdown');
-
-    assert.notStrictEqual(element1.id, element2.id, 'IDs should be unique');
-
-    cleanup(element1);
-    cleanup(element2);
-  });
-
-  it('should expose a unique anchor name for the trigger', async () => {
-    const element1 = await fixture('grantcodes-dropdown');
-    const element2 = await fixture('grantcodes-dropdown');
-
-    const anchorName = element1.style.getPropertyValue('--dropdown-anchor');
-    assert.match(anchorName, /^--/, 'Anchor name should be a dashed ident');
-    assert.notStrictEqual(
-      anchorName,
-      element2.style.getPropertyValue('--dropdown-anchor'),
-      'Anchor name should be unique per instance',
-    );
-
-    cleanup(element1);
-    cleanup(element2);
-  });
-
-  it('should preserve two rapid trigger clicks before the transition update', async () => {
+  it('should toggle on each trigger click and report the new state', async () => {
     element = await fixture('grantcodes-dropdown');
-    const matchMedia = window.matchMedia;
-    const startViewTransition = document.startViewTransition;
-    const callbacks = [];
-    const states = [];
-    element.addEventListener('toggle', (event) => states.push(event.detail.open));
-    window.matchMedia = () => ({ matches: false });
-    document.startViewTransition = (callback) => {
-      callbacks.push(callback);
-      return { finished: Promise.resolve() };
-    };
+    const states: boolean[] = [];
+    element.addEventListener('toggle', (event: CustomEvent) => states.push(event.detail.open));
 
-    try {
-      const trigger = element.shadowRoot.querySelector('.dropdown__trigger');
-      click(trigger);
-      click(trigger);
-      for (const callback of callbacks) await callback();
-      await element.updateComplete;
-
-      assert.strictEqual(element.open, false, 'Two clicks should return to closed');
-      assert.deepStrictEqual(states, [true, false], 'Each click should report its intended state');
-    } finally {
-      window.matchMedia = matchMedia;
-      document.startViewTransition = startViewTransition;
-    }
-  });
-
-  it('should open through a view transition when motion is allowed', async () => {
-    element = await fixture('grantcodes-dropdown');
-
-    const originalMatchMedia = globalThis.window.matchMedia;
-    let transitions = 0;
-    globalThis.window.matchMedia = () => ({ matches: false });
-    globalThis.document.startViewTransition = (callback) => {
-      transitions++;
-      callback();
-      return { finished: Promise.resolve() };
-    };
-
-    element._handleTriggerClick();
+    const trigger = element.shadowRoot.querySelector('.dropdown__trigger');
+    click(trigger);
+    click(trigger);
     await element.updateComplete;
 
-    globalThis.window.matchMedia = originalMatchMedia;
-    globalThis.document.startViewTransition = undefined;
+    assert.strictEqual(element.open, false, 'Two clicks should return to closed');
+    assert.deepStrictEqual(states, [true, false], 'Each click should report its intended state');
+  });
 
-    assert.strictEqual(transitions, 1, 'Opening should animate');
-    assert.strictEqual(element.open, true, 'The dropdown should still open');
+  it('should render the menu as a popover', async () => {
+    element = await fixture('grantcodes-dropdown');
+    const menu = element.shadowRoot.querySelector('.dropdown__menu');
+    assert.ok(menu.hasAttribute('popover'), 'Menu should use the popover attribute');
   });
 
   it('should discover wrapped dynamic items and skip disabled items during keyboard navigation', async () => {
@@ -193,7 +137,7 @@ describe('Dropdown Component', () => {
     element.open = true;
     await element.updateComplete;
     item.focus();
-    document.dispatchEvent(new window.KeyboardEvent('keydown', { key: 'Escape' }));
+    item.dispatchEvent(new window.KeyboardEvent('keydown', { bubbles: true, key: 'Escape' }));
 
     assert.strictEqual(element.open, false, 'Escape should close the menu');
     assert.strictEqual(document.activeElement, trigger, 'Escape should restore trigger focus');

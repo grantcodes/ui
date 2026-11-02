@@ -81,7 +81,7 @@ describe('Button Component', () => {
     const types = ['button', 'submit', 'reset'];
 
     for (const type of types) {
-      const testElement = await fixture('grantcodes-button', { type });
+      const testElement: any = await fixture('grantcodes-button', { type });
       // Internal button is always type="button" — form behavior is handled
       // by the host element via FACE (requestSubmit/reset on ElementInternals)
       const button = testElement.shadowRoot.querySelector('button');
@@ -150,26 +150,12 @@ describe('Form Context', () => {
     assert.strictEqual(element.type, 'reset', "Host type property should be 'reset'");
   });
 
-  it('should reflect name property on internal button', async () => {
-    element = await fixture('grantcodes-button', { name: 'myButton' });
+  it('should not expose a disabled link as navigable', async () => {
+    element = await fixture('grantcodes-button', { href: 'https://example.com', disabled: true });
 
-    const button = element.shadowRoot.querySelector('button');
-    assert.strictEqual(
-      button.getAttribute('name'),
-      'myButton',
-      "Internal button name attribute should be 'myButton'",
-    );
-  });
-
-  it('should reflect value property on internal button', async () => {
-    element = await fixture('grantcodes-button', { value: 'send' });
-
-    const button = element.shadowRoot.querySelector('button');
-    assert.strictEqual(
-      button.getAttribute('value'),
-      'send',
-      "Internal button value attribute should be 'send'",
-    );
+    const link = element.shadowRoot.querySelector('a');
+    assert.strictEqual(link.hasAttribute('href'), false, 'A disabled link must not navigate');
+    assert.strictEqual(link.getAttribute('aria-disabled'), 'true');
   });
 
   it('should reflect disabled property on internal button', async () => {

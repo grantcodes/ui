@@ -1,15 +1,10 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, nothing } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { AlertCircle, CheckCircle2, Info, X, XCircle } from '../../icons.js';
 import { generateId } from '../../lib/generate-id.js';
 import focusRingStyles from '../../lib/styles/focus-ring.css' with { type: 'css' };
-import {
-  canViewTransition,
-  prefersReducedMotion,
-  startViewTransition,
-} from '../../lib/view-transition.js';
-import { GrantCodesIcon } from '../icon/icon.component.js';
+import { startViewTransition } from '../../lib/view-transition.js';
 import toastStyles from './toast.css' with { type: 'css' };
 
 const ICONS: Record<string, string> = {
@@ -21,9 +16,7 @@ const ICONS: Record<string, string> = {
 
 export class GrantCodesToast extends LitElement {
   declare _dismissTimeout: ReturnType<typeof setTimeout> | null;
-  declare _removeTimeout: ReturnType<typeof setTimeout> | null;
   declare _removing: boolean;
-  declare _useViewTransition: boolean;
   declare _viewTransitionName: string;
   declare _visible: boolean;
   declare dismissible: boolean;
@@ -31,7 +24,6 @@ export class GrantCodesToast extends LitElement {
   declare position: string;
   declare variant: string;
 
-  static dependencies = { 'grancodes-icon': GrantCodesIcon };
   static styles = [focusRingStyles, toastStyles];
 
   static properties = {
@@ -89,19 +81,11 @@ export class GrantCodesToast extends LitElement {
     this._dismissTimeout = null;
 
     /**
-     * Timeout ID for removing the toast after its exit animation
-     * @type {number | null}
-     */
-    this._removeTimeout = null;
-
-    /**
      * Guards against dismissing twice (close click plus auto-dismiss)
      * @type {boolean}
      */
     this._removing = false;
 
-    // A view transition drives the enter and exit where it is available.
-    this._useViewTransition = canViewTransition();
     // Per-instance, so two toasts cannot abort each other's view transition.
     this._viewTransitionName = generateId('toast-vt');
   }
@@ -109,26 +93,16 @@ export class GrantCodesToast extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.style.setProperty('--toast-vt-name', this._viewTransitionName);
-    this.toggleAttribute('data-view-transition', this._useViewTransition);
-
-    if (this._useViewTransition) {
-      startViewTransition(() => {
-        this._visible = true;
-        return this.updateComplete;
-      });
-    } else {
-      // Let the first paint land at opacity 0 so the CSS transition has somewhere to go.
-      requestAnimationFrame(() => {
-        this._visible = true;
-      });
-    }
-
+    // Without view transitions (or with reduced motion) the toast appears and leaves instantly.
+    startViewTransition(() => {
+      this._visible = true;
+      return this.updateComplete;
+    });
     this._startDismissTimer();
   }
 
   disconnectedCallback() {
     clearTimeout(this._dismissTimeout ?? undefined);
-    clearTimeout(this._removeTimeout ?? undefined);
     super.disconnectedCallback();
   }
 
@@ -149,31 +123,16 @@ export class GrantCodesToast extends LitElement {
     this._startDismissTimer();
   }
 
-  _handleDismiss() {
+  async _handleDismiss() {
     this._pauseDismiss();
     if (this._removing) return;
     this._removing = true;
 
-    if (this._useViewTransition) {
-      const transition = startViewTransition(() => {
-        this._visible = false;
-        return this.updateComplete;
-      });
-      if (transition) {
-        transition.finished.then(
-          () => this._remove(),
-          () => this._remove(),
-        );
-        return;
-      }
-    }
-
-    this._visible = false;
-    clearTimeout(this._removeTimeout ?? undefined);
-    this._removeTimeout = setTimeout(() => this._remove(), prefersReducedMotion() ? 0 : 300);
-  }
-
-  _remove() {
+    const transition = startViewTransition(() => {
+      this._visible = false;
+      return this.updateComplete;
+    });
+    await transition?.finished.catch(() => {});
     this.dispatchEvent(
       new CustomEvent('dismiss', {
         bubbles: true,
@@ -184,9 +143,7 @@ export class GrantCodesToast extends LitElement {
   }
 
   _renderDismissButton() {
-    if (!this.dismissible) {
-      return html``;
-    }
+    if (!this.dismissible) return nothing;
 
     return html`
 			<button
@@ -213,7 +170,6 @@ export class GrantCodesToast extends LitElement {
 			<div
 				class=${classes}
 				role=${this.variant === 'error' ? 'alert' : 'status'}
-				aria-live=${this.variant === 'error' ? 'assertive' : 'polite'}
 				@mouseenter=${this._pauseDismiss}
 				@mouseleave=${this._resumeDismiss}
 				@focusin=${this._pauseDismiss}

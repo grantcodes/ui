@@ -1,12 +1,11 @@
 import { LitElement, type PropertyValues } from 'lit';
 import { html } from 'lit/static-html.js';
-import { generateId } from '../../lib/generate-id.js';
 import tooltipStyles from './tooltip.css' with { type: 'css' };
 
 type Relationship = {
-  attribute: 'aria-describedby' | 'aria-labelledby';
-  source: HTMLSpanElement;
-  trigger: HTMLElement;
+  attribute: 'aria-label' | 'aria-description';
+  control: HTMLElement;
+  previous: string | null;
 };
 
 export class GrantCodesTooltip extends LitElement {
@@ -33,7 +32,6 @@ export class GrantCodesTooltip extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    if (!this.id) this.id = generateId('tooltip');
     this.addEventListener('keydown', this._handleKeydown);
     this.addEventListener('focusout', this._handleExit);
   }
@@ -45,15 +43,6 @@ export class GrantCodesTooltip extends LitElement {
     super.disconnectedCallback();
   }
 
-  firstUpdated() {
-    const tooltipSlot = this.renderRoot.querySelector<HTMLElement>('.tooltip__slot');
-    tooltipSlot?.style.setProperty('anchor-name', `--tooltip-${this.id}`);
-    this.renderRoot
-      .querySelector<HTMLElement>('.tooltip')
-      ?.style.setProperty('--tooltip-anchor', `--tooltip-${this.id}`);
-    this._updateRelationship();
-  }
-
   updated(changedProperties: PropertyValues) {
     if (changedProperties.has('label') || changedProperties.has('description')) {
       this._updateRelationship();
@@ -61,7 +50,6 @@ export class GrantCodesTooltip extends LitElement {
   }
 
   _handleSlotChange() {
-    this._clearRelationship();
     this._suppressed = false;
     this._updateRelationship();
   }
@@ -76,49 +64,25 @@ export class GrantCodesTooltip extends LitElement {
 
   _clearRelationship() {
     if (!this._relationship) return;
-
-    const { attribute, source, trigger } = this._relationship;
-    const ids = (trigger.getAttribute(attribute) || '')
-      .split(/\s+/)
-      .filter((id) => id && id !== source.id);
-    if (ids.length) {
-      trigger.setAttribute(attribute, ids.join(' '));
-    } else {
-      trigger.removeAttribute(attribute);
-    }
-    source.remove();
+    const { attribute, control, previous } = this._relationship;
+    if (previous === null) control.removeAttribute(attribute);
+    else control.setAttribute(attribute, previous);
     this._relationship = null;
   }
 
   _updateRelationship() {
     this._clearRelationship();
-    const slot = this.renderRoot.querySelector<HTMLSlotElement>('slot');
-    const trigger = slot?.assignedElements()[0];
+    const trigger = this.renderRoot.querySelector('slot')?.assignedElements()[0];
     const content = this.label || this.description;
-    if (!trigger || !content) return;
+    if (!(trigger instanceof HTMLElement) || !content) return;
 
     const control =
       trigger.shadowRoot?.querySelector<HTMLElement>(
         'button, a, input, select, textarea, [tabindex]',
-      ) ?? (trigger instanceof HTMLElement ? trigger : null);
-    if (!control) return;
-
-    const source = document.createElement('span');
-    const attribute = this.label ? 'aria-labelledby' : 'aria-describedby';
-    source.id = `${this.id}-text`;
-    source.hidden = true;
-    source.textContent = content;
-    const root = control.getRootNode();
-    if (root === control.ownerDocument) {
-      source.slot = 'tooltip-text';
-      this.append(source);
-    } else {
-      (root as ShadowRoot).append(source);
-    }
-
-    const ids = (control.getAttribute(attribute) || '').split(/\s+/).filter(Boolean);
-    control.setAttribute(attribute, [...ids, source.id].join(' '));
-    this._relationship = { attribute, source, trigger: control };
+      ) ?? trigger;
+    const attribute = this.label ? 'aria-label' : 'aria-description';
+    this._relationship = { attribute, control, previous: control.getAttribute(attribute) };
+    control.setAttribute(attribute, content);
   }
 
   render() {

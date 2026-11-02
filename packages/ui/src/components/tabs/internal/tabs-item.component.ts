@@ -17,9 +17,6 @@ export class GrantCodesTabsItem extends LitElement {
     label: { type: String },
     index: { type: Number },
     containerId: { type: String },
-    buttonId: { type: String, reflect: true },
-    panelId: { type: String },
-    content: { type: String },
   };
 
   constructor() {

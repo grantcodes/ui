@@ -24,6 +24,13 @@
   filter: var(--g-map-filter, none);
 }
 
+/* reset.css sets --g-map-filter for the .dark/.light overrides. */
+@media (prefers-color-scheme: dark) {
+  .map__iframe {
+    filter: var(--g-map-filter, brightness(0.8) contrast(1.1));
+  }
+}
+
 .map__directions {
   display: block;
   padding: var(--g-spacing-sm) var(--g-spacing-md);

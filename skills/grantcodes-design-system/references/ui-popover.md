@@ -16,6 +16,6 @@ Properties: `open` false; `placement` bottom-start (default), bottom-end, top-st
 
 `toggle` bubbles/composes with `detail: { open }` after committed changes, including programmatic changes. React `Popover onToggle` is typed as CustomEvent. Assign `open` to control it; no public show/hide method.
 
-Opening focuses the first focusable panel control or panel. Escape and outside click close it, returning focus when appropriate. Trigger aria-expanded is managed. Supply native controls with names; the panel is not automatically a dialog/menu and does not trap focus. Positioning is CSS-based, not native top-layer popover behaviour.
+Opening focuses the first focusable panel control or panel. Escape and outside click close it, returning focus when appropriate. Trigger aria-expanded is managed. Supply native controls with names; the panel is not automatically a dialog/menu and does not trap focus. The panel is a native `popover` in the top layer, positioned with CSS anchor positioning (centred by the browser where anchor positioning is unsupported).
 
-Part: `panel`. Tokens include `--g-color-background-default`, `--g-color-border-default`, `--g-border-radius-md`, `--g-spacing-md`, `--g-box-shadow-lg`. Do not target private anchor/view-transition properties.
+Part: `panel`. Tokens include `--g-color-background-default`, `--g-color-border-default`, `--g-border-radius-md`, `--g-spacing-md`, `--g-box-shadow-lg`. Do not target the private anchor name.

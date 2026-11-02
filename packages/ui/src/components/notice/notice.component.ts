@@ -1,11 +1,10 @@
-import { LitElement } from 'lit';
+import { LitElement, nothing } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { html } from 'lit/static-html.js';
 import { AlertCircle, CheckCircle2, Info, X, XCircle } from '../../icons.js';
 import { generateId } from '../../lib/generate-id.js';
 import { startViewTransition } from '../../lib/view-transition.js';
-import { GrantCodesIcon } from '../icon/icon.component.js';
 import noticeStyles from './notice.css' with { type: 'css' };
 
 const ICONS: Record<string, string> = {
@@ -20,15 +19,8 @@ export class GrantCodesNotice extends LitElement {
   declare dismissable: boolean;
   declare variant: string;
 
-  static dependencies = { 'grancodes-icon': GrantCodesIcon };
-  // Styles are scoped to this element: they won't conflict with styles
-  // on the main page or in other components. Styling API can be exposed
-  // via CSS custom properties.
   static styles = [noticeStyles];
 
-  // Define reactive properties--updating a reactive property causes
-  // the component to update.
-  // @property() label = 'Button Label'
   static properties = {
     variant: { type: String },
     title: { type: String },
@@ -58,19 +50,18 @@ export class GrantCodesNotice extends LitElement {
   }
 
   renderDismiss() {
-    if (this.dismissable) {
-      return html`
-				<button
-					class="notice__close"
-					type="button"
-					aria-label="Dismiss notice"
-					@click=${this.onDismiss}
-				>
-					<grantcodes-icon aria-hidden="true">${unsafeHTML(X)}</grantcodes-icon>
-				</button>
-			`;
-    }
-    return html``;
+    if (!this.dismissable) return nothing;
+
+    return html`
+			<button
+				class="notice__close"
+				type="button"
+				aria-label="Dismiss notice"
+				@click=${this.onDismiss}
+			>
+				<grantcodes-icon aria-hidden="true">${unsafeHTML(X)}</grantcodes-icon>
+			</button>
+		`;
   }
 
   render() {

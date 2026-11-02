@@ -1,4 +1,4 @@
-import { html, LitElement, type PropertyValues } from 'lit';
+import { html, LitElement, nothing, type PropertyValues } from 'lit';
 import focusRingStyles from '../../lib/styles/focus-ring.css' with { type: 'css' };
 import buttonStyles from './button.css' with { type: 'css' };
 
@@ -19,9 +19,6 @@ export class GrantCodesButton extends LitElement {
   declare value: string;
   declare variant: 'solid' | 'outline' | 'ghost';
 
-  // Styles are scoped to this element: they won't conflict with styles
-  // on the main page or in other components. Styling API can be exposed
-  // via CSS custom properties.
   static styles = [focusRingStyles, buttonStyles];
 
   static formAssociated = true;
@@ -103,47 +100,32 @@ export class GrantCodesButton extends LitElement {
     this.requestUpdate();
   }
 
-  formResetCallback() {
-    // Called by the browser when the associated form is reset.
-    // Reset the value to an empty string (default state).
-    // If a future version tracks an initial value, restore it here.
-    this.value = '';
-  }
-
-  // The render() method is called any time reactive properties change.
-  // Return HTML in a string template literal tagged with the `html`
-  // tag function to describe the component's internal DOM.
-  // Expressions can set attribute values, property values, event handlers,
-  // and child nodes/text.
-  /** @returns {import('lit').TemplateResult} */
   render() {
-    const isLink = !!this.href;
+    const disabled = this.disabled || this._fieldsetDisabled;
+    const content = html`
+      <slot name="start"></slot>
+      <span><slot></slot></span>
+      <slot name="end"></slot>
+    `;
 
-    if (isLink) {
+    if (this.href) {
+      // A link cannot be disabled natively: drop href and expose the disabled state instead.
       return html`
         <a
           class="button focus-ring"
-          href=${this.href}
-          ?disabled=${this.disabled || this._fieldsetDisabled}
+          href=${disabled ? nothing : this.href}
+          role=${disabled ? 'link' : nothing}
+          aria-disabled=${disabled ? 'true' : nothing}
+          ?disabled=${disabled}
         >
-          <slot name="start"></slot>
-          <span><slot></slot></span>
-          <slot name="end"></slot>
+          ${content}
         </a>
       `;
     }
 
     return html`
-      <button
-        class="button focus-ring"
-        type="button"
-        name=${this.name ?? ''}
-        value=${this.value ?? ''}
-        ?disabled=${this.disabled || this._fieldsetDisabled}
-      >
-        <slot name="start"></slot>
-        <span><slot></slot></span>
-        <slot name="end"></slot>
+      <button class="button focus-ring" type="button" ?disabled=${disabled}>
+        ${content}
       </button>
     `;
   }

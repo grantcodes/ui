@@ -34,10 +34,8 @@ describe('Popover Component', () => {
   it('reflects the committed open state and reports it after rendering', async () => {
     element = await fixture('grantcodes-popover');
     const states: boolean[] = [];
-    let rendered = false;
     element.addEventListener('toggle', (event) => {
-      states.push((event as CustomEvent<{ open: boolean }>).detail.open);
-      rendered = !element.shadowRoot?.querySelector('[part="panel"]')?.hasAttribute('hidden');
+      states.push((event as unknown as CustomEvent<{ open: boolean }>).detail.open);
     });
 
     element.open = true;
@@ -46,14 +44,14 @@ describe('Popover Component', () => {
 
     assert.strictEqual(element.getAttribute('open'), '');
     assert.deepStrictEqual(states, [true]);
-    assert.ok(rendered);
+    assert.ok(element.shadowRoot?.querySelector('[part="panel"]')?.hasAttribute('popover'));
   });
 
   it('coalesces rapid requests that return to the committed state', async () => {
     element = await fixture('grantcodes-popover');
     const states: boolean[] = [];
     element.addEventListener('toggle', (event) =>
-      states.push((event as CustomEvent<{ open: boolean }>).detail.open),
+      states.push((event as unknown as CustomEvent<{ open: boolean }>).detail.open),
     );
 
     element.open = true;
@@ -120,9 +118,10 @@ describe('Popover Component', () => {
     await settle();
     await element.updateComplete;
     outside.focus();
-    (element as unknown as { _handleDocumentClick(event: Event): void })._handleDocumentClick(
-      new window.MouseEvent('click', { bubbles: true, composed: true }),
-    );
+    // Light dismiss reports through the native popover's toggle event.
+    element.shadowRoot
+      ?.querySelector('[part="panel"]')
+      ?.dispatchEvent(Object.assign(new window.Event('toggle'), { newState: 'closed' }));
     await settle();
     await element.updateComplete;
 

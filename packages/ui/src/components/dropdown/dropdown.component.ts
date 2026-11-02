@@ -1,14 +1,10 @@
 import { html, LitElement, type PropertyValues } from 'lit';
-import { generateId } from '../../lib/generate-id.js';
-import { startViewTransition } from '../../lib/view-transition.js';
 import dropdownStyles from './dropdown.css' with { type: 'css' };
 
+const CONTROL_SELECTOR = 'button, a, input, select, textarea';
+
 export class GrantCodesDropdown extends LitElement {
-  declare _menuObserver: MutationObserver | null;
-  declare _openScheduled: boolean;
-  declare _pendingOpen: boolean | null;
   declare _triggerElement: HTMLElement | null;
-  declare _viewTransitionName: string;
   declare open: boolean;
   declare placement: string;
 
@@ -17,7 +13,6 @@ export class GrantCodesDropdown extends LitElement {
   static properties = {
     open: { type: Boolean, reflect: true },
     placement: { type: String },
-    _triggerElement: { type: Object, state: true },
   };
 
   constructor() {
@@ -34,49 +29,17 @@ export class GrantCodesDropdown extends LitElement {
      * @type {string}
      */
     this.placement = 'bottom-start';
-
-    /**
-     * Reference to the trigger element
-     * @type {HTMLElement | null}
-     */
     this._triggerElement = null;
-    this._viewTransitionName = generateId('dropdown-vt');
-    this._pendingOpen = null;
-    this._openScheduled = false;
-    this._menuObserver = null;
-
-    this._handleDocumentClick = this._handleDocumentClick.bind(this);
-    this._handleEscape = this._handleEscape.bind(this);
-    this._handleMenuKeydown = this._handleMenuKeydown.bind(this);
-    this._handleMenuSlotChange = this._handleMenuSlotChange.bind(this);
-  }
-
-  get menuId() {
-    return `${this.id}-menu`;
   }
 
   connectedCallback() {
     super.connectedCallback();
-    if (!this.id) this.id = generateId('dropdown');
-    if (typeof document === 'undefined') return;
-    document.addEventListener('click', this._handleDocumentClick);
-    document.addEventListener('keydown', this._handleEscape);
     this.addEventListener('keydown', this._handleMenuKeydown);
   }
 
   disconnectedCallback() {
-    document.removeEventListener('click', this._handleDocumentClick);
-    document.removeEventListener('keydown', this._handleEscape);
     this.removeEventListener('keydown', this._handleMenuKeydown);
-    this._menuObserver?.disconnect();
     super.disconnectedCallback();
-  }
-
-  firstUpdated() {
-    this._handleMenuSlotChange();
-    this._syncTrigger();
-    this.style.setProperty('--dropdown-anchor', `--dropdown-anchor-${this.id}`);
-    this.style.setProperty('--dropdown-vt-name', this._viewTransitionName);
   }
 
   _getMenuItems(): GrantCodesDropdownItem[] {
@@ -87,92 +50,41 @@ export class GrantCodesDropdown extends LitElement {
         ...(element instanceof GrantCodesDropdownItem ? [element] : []),
         ...element.querySelectorAll<GrantCodesDropdownItem>('grantcodes-dropdown-item'),
       ]);
-    return [...new Set(items ?? [])];
-  }
-
-  _getEnabledMenuItems() {
-    return this._getMenuItems().filter((item) => !item.disabled);
-  }
-
-  _handleMenuSlotChange() {
-    const menuSlot = this.renderRoot.querySelector<HTMLSlotElement>('slot[name="menu"]');
-    const assignedElements = menuSlot?.assignedElements({ flatten: true }) ?? [];
-    this._menuObserver?.disconnect();
-    const MenuMutationObserver = globalThis.MutationObserver ?? window.MutationObserver;
-    const observer = new MenuMutationObserver(() => this._syncMenuItems());
-    this._menuObserver = observer;
-    assignedElements.forEach((element) => {
-      observer.observe(element, { childList: true, subtree: true });
-    });
-    this._syncMenuItems();
-  }
-
-  _syncMenuItems() {
-    this._getMenuItems().forEach((item) => {
-      item.setAttribute('role', 'menuitem');
-      item.setAttribute('tabindex', '-1');
-      item.setAttribute('aria-disabled', String(item.disabled));
-    });
-  }
-
-  _getTriggerElement(): HTMLElement | null {
-    const triggerSlot = this.renderRoot.querySelector<HTMLSlotElement>('slot[name="trigger"]');
-    const trigger = triggerSlot?.assignedElements({ flatten: true })[0] as HTMLElement | undefined;
-    return trigger?.shadowRoot?.querySelector<HTMLElement>('button, a, input, select, textarea') ?? trigger ?? null;
+    return [...new Set(items ?? [])].filter((item) => !item.disabled);
   }
 
   _syncTrigger() {
-    const trigger = this._getTriggerElement();
+    const triggerSlot = this.renderRoot.querySelector<HTMLSlotElement>('slot[name="trigger"]');
+    const slotted = triggerSlot?.assignedElements({ flatten: true })[0] as HTMLElement | undefined;
+    const trigger = slotted?.shadowRoot?.querySelector<HTMLElement>(CONTROL_SELECTOR) ?? slotted;
     if (!trigger) return;
     this._triggerElement = trigger;
-    if (!trigger.matches('button, a, input, select, textarea')) {
+    if (!trigger.matches(CONTROL_SELECTOR)) {
       trigger.setAttribute('role', 'button');
       trigger.tabIndex = 0;
     }
-    trigger.setAttribute('aria-controls', this.menuId);
     trigger.setAttribute('aria-expanded', String(this.open));
     trigger.setAttribute('aria-haspopup', 'menu');
   }
 
   updated(changedProperties: PropertyValues) {
     this._syncTrigger();
-    if (changedProperties.has('open') && this.open) {
-      requestAnimationFrame(() => this._getEnabledMenuItems()[0]?.focus());
+    if (!changedProperties.has('open')) return;
+    const menu = this.renderRoot.querySelector<HTMLElement>('.dropdown__menu');
+    // The trigger as source keeps clicks on it from light-dismissing the menu.
+    if (this.open) {
+      menu?.showPopover?.({ source: this._triggerElement ?? undefined });
+      requestAnimationFrame(() => this._getMenuItems()[0]?.focus());
+    } else {
+      menu?.hidePopover?.();
     }
   }
 
-  _handleDocumentClick(e: Event) {
-    if (!e.composedPath().includes(this)) this._setOpen(false);
-  }
-
-  _handleEscape(e: KeyboardEvent) {
-    if (e.key === 'Escape' && (this._pendingOpen ?? this.open)) {
-      this._setOpen(false);
-      this._triggerElement?.focus();
-    }
-  }
-
-  _setOpen(open: boolean) {
-    if ((this._pendingOpen ?? this.open) === open) return;
-    this._pendingOpen = open;
-    if (this._openScheduled) return;
-
-    this._openScheduled = true;
-    startViewTransition(() => {
-      this.open = this._pendingOpen ?? false;
-      this._pendingOpen = null;
-      this._openScheduled = false;
-      return this.updateComplete;
-    });
-  }
-
-  _handleTriggerClick(_e: Event) {
-    this._syncTrigger();
-    const open = !(this._pendingOpen ?? this.open);
-    this._setOpen(open);
+  _handleTriggerClick() {
+    this.open = !this.open;
     this.dispatchEvent(
       new CustomEvent('toggle', {
-        detail: { open },
+        detail: { open: this.open },
         bubbles: true,
         composed: true,
       }),
@@ -184,22 +96,25 @@ export class GrantCodesDropdown extends LitElement {
     if (!trigger || !e.composedPath().includes(trigger)) return;
     if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
       e.preventDefault();
-      this._setOpen(true);
+      this.open = true;
       requestAnimationFrame(() => {
-        const items = this._getEnabledMenuItems();
+        const items = this._getMenuItems();
         (e.key === 'ArrowDown' ? items[0] : items.at(-1))?.focus();
       });
-    } else if (
-      !trigger.matches('button, a, input, select, textarea') &&
-      (e.key === 'Enter' || e.key === ' ')
-    ) {
+    } else if (!trigger.matches(CONTROL_SELECTOR) && (e.key === 'Enter' || e.key === ' ')) {
       e.preventDefault();
-      this._handleTriggerClick(e);
+      this._handleTriggerClick();
     }
   }
 
   _handleMenuKeydown(e: KeyboardEvent) {
-    const items = this._getEnabledMenuItems();
+    if (e.key === 'Escape' && this.open) {
+      this.open = false;
+      this._triggerElement?.focus();
+      return;
+    }
+
+    const items = this._getMenuItems();
     const currentItem = e.composedPath().find((node) => node instanceof GrantCodesDropdownItem);
     if (!(currentItem instanceof GrantCodesDropdownItem)) return;
     const currentIndex = items.indexOf(currentItem);
@@ -225,8 +140,6 @@ export class GrantCodesDropdown extends LitElement {
   }
 
   render() {
-    const placementClass = this.placement ? `dropdown__menu--${this.placement}` : '';
-    const openClass = this.open ? 'dropdown__menu--open' : '';
     return html`
       <div class="dropdown">
         <div
@@ -234,10 +147,17 @@ export class GrantCodesDropdown extends LitElement {
           @click=${this._handleTriggerClick}
           @keydown=${this._handleTriggerKeydown}
         >
-          <slot name="trigger" @slotchange=${() => this._syncTrigger()}></slot>
+          <slot name="trigger" @slotchange=${this._syncTrigger}></slot>
         </div>
-        <div id="${this.menuId}" class="dropdown__menu ${placementClass} ${openClass}" role="menu">
-          <slot name="menu" @slotchange=${this._handleMenuSlotChange}></slot>
+        <div
+          class="dropdown__menu dropdown__menu--${this.placement}"
+          role="menu"
+          popover
+          @toggle=${(e: ToggleEvent) => {
+            this.open = e.newState === 'open';
+          }}
+        >
+          <slot name="menu"></slot>
         </div>
       </div>
     `;
@@ -277,12 +197,9 @@ export class GrantCodesDropdownItem extends LitElement {
     );
 
     const dropdown = this.closest<GrantCodesDropdown>('grantcodes-dropdown');
-    dropdown?._setOpen(false);
-    dropdown?._triggerElement?.focus();
-  }
-
-  _handleClick(e: Event) {
-    this._activate(e);
+    if (!dropdown) return;
+    dropdown.open = false;
+    dropdown._triggerElement?.focus();
   }
 
   _handleKeydown(e: KeyboardEvent) {
@@ -294,6 +211,8 @@ export class GrantCodesDropdownItem extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
+    this.setAttribute('role', 'menuitem');
+    this.tabIndex = -1;
     this.addEventListener('keydown', this._handleKeydown);
   }
 
@@ -312,7 +231,7 @@ export class GrantCodesDropdownItem extends LitElement {
     return html`
       <div
         class="dropdown-item ${this.disabled ? 'dropdown-item--disabled' : ''}"
-        @click=${this._handleClick}
+        @click=${this._activate}
       >
         <slot></slot>
       </div>

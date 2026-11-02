@@ -9,34 +9,53 @@
   display: inline-block;
 }
 
+:host {
+  anchor-scope: all;
+}
+
 .dropdown__trigger {
   display: inline-block;
   cursor: pointer;
-  anchor-name: var(--dropdown-anchor, none);
+  anchor-name: --dropdown-anchor;
 }
 
 .dropdown__menu {
-  display: none;
-  position: fixed;
-  z-index: 1000;
   min-inline-size: 12rem;
-  margin-block: var(--g-spacing-xs);
+  padding-inline: 0;
   padding-block: var(--g-spacing-sm);
+  color: inherit;
   background-color: var(--g-color-background-default);
   border: 1px solid var(--g-color-border-default);
   border-radius: var(--g-border-radius-md);
-  view-transition-name: var(--dropdown-vt-name, none);
-  position-anchor: var(--dropdown-anchor, none);
+  opacity: 0;
+  transition:
+    opacity 0.15s ease,
+    display 0.15s allow-discrete,
+    overlay 0.15s allow-discrete;
 }
 
-.dropdown__menu--open {
-  display: block;
+.dropdown__menu:popover-open {
+  opacity: 1;
+
+  @starting-style {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dropdown__menu {
+    transition: none;
+  }
 }
 
 /* Placement maps to position-area; the fallbacks flip the panel when the
    preferred area does not fit. Bottom start is the default above. */
 @supports (position-anchor: --dropdown-anchor) {
-  .dropdown__menu--open {
+  .dropdown__menu {
+    inset: auto;
+    margin-block: var(--g-spacing-xs);
+    margin-inline: 0;
+    position-anchor: --dropdown-anchor;
     position-area: bottom span-right;
     /* The combined tactic is the one that actually fits a panel wider than the gap. */
     position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;

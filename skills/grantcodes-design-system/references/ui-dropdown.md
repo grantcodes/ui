@@ -17,6 +17,6 @@ The register file defines both components. Parent slots: trigger and **menu** (n
 
 Item `select` bubbles/composes without a payload. Listen on the specific item to execute its action; selection closes the parent and restores trigger focus. Parent `toggle` carries { open } but fires on trigger click, not every close or direct property change. Do not use it as a complete controlled-state feed.
 
-The parent sets menu/menuitem roles and manages ArrowUp/Down, Home/End and disabled-item skipping. Give the trigger a native button and clear name. Escape closes; test focus return.
+The parent sets menu/menuitem roles and manages ArrowUp/Down, Home/End and disabled-item skipping. Give the trigger a native button and clear name. The menu is a native `popover`: outside clicks and Escape close it, and Escape returns focus to the trigger.
 
 React exports Dropdown and DropdownItem; mappings onToggle and onSelect are Event-typed. No declared parts. Tokens include `--g-color-background-default`, `--g-color-content-default`, `--g-color-background-subtle-hover`, `--g-color-content-disabled`, and focus-ring tokens.

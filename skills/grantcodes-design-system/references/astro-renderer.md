@@ -32,6 +32,6 @@ const pages = defineCollection({
 export const collections = { pages };
 ```
 
-Schema defaults are applied by parsing, not by passing arbitrary objects to BlockRenderer. Every block schema includes optional id, but renderer currently forwards id only to Hero; do not promise anchors for all blocks. Gallery's direct marquee prop is not in its schema/renderer and not implemented by UI.
+Schema defaults are applied by parsing, not by passing arbitrary objects to BlockRenderer. The renderer spreads every block field onto its block component; only Hero consumes `id`, so do not promise anchors for all blocks. Gallery's direct marquee prop is not in its schema/renderer and not implemented by UI.
 
 Schemas validate structure, **not HTML or URL safety**. Text renders Markdown including raw HTML; Accordion renders htmlContent with set:html. Treat those as trusted/sanitized editorial fields. The renderer inherits each block's hydration decision; MapEmbed and Countdown are client-only, Accordion hydrates on visibility, other blocks are static.
