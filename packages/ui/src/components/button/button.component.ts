@@ -84,7 +84,7 @@ export class GrantCodesButton extends LitElement {
     // href mode renders a link — do not intercept form actions
     if (this.href) return;
     // Only handle form actions when we have internals and are inside a form
-    if (!this.internals || !this.internals.form || this.disabled) return;
+    if (!this.internals?.form || this.disabled) return;
 
     const t = this.type.toLowerCase();
     if (t === 'submit') {

@@ -287,7 +287,7 @@ describe('FACE Infrastructure', () => {
     let threw = false;
     try {
       button.click();
-    } catch (e) {
+    } catch {
       threw = true;
     }
     assert.strictEqual(threw, false, 'Clicking disabled button should not throw');

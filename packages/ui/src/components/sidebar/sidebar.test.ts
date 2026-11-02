@@ -1,7 +1,8 @@
 import { strict as assert } from 'node:assert';
 import { afterEach, describe, it } from 'node:test';
 import { cleanup, fixture } from '../../test-utils/index.js';
-import { GrantCodesSidebarToggle } from './sidebar.js';
+import './sidebar.js';
+import type { GrantCodesSidebarToggle } from './sidebar.js';
 
 describe('Sidebar Component', () => {
   let element: any;

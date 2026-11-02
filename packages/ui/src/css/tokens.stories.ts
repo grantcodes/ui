@@ -178,7 +178,7 @@ export default meta;
 
 // Main tokens story that responds to theme changes
 export const AllTokens = {
-  render: (args: any, context: any) => {
+  render: (_args: any, context: any) => {
     const theme = context.globals?.theme || 'grantcodes';
     return html`<token-list .theme=${theme}></token-list>`;
   },

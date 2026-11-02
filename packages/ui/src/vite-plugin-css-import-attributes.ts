@@ -42,7 +42,7 @@ export function cssImportAttributes(): Plugin {
       // Check if the import uses CSS import attributes
       const escapedSource = source.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       const regex = new RegExp(
-        escapedSource + `['"]\\s*(?:with|assert)\\s*{\\s*type:\\s*['"]css['"]`,
+        `${escapedSource}['"]\\s*(?:with|assert)\\s*{\\s*type:\\s*['"]css['"]`,
       );
       if (!regex.test(importerContent)) return;
 
@@ -77,7 +77,7 @@ export function cssImportAttributes(): Plugin {
 
       if (isSsr) {
         // SSR: return a Lit CSSResult for proper Lit SSR integration
-        return `import { css } from "lit";\n` + `export default css\`${escaped}\`;\n`;
+        return `import { css } from "lit";\nexport default css\`${escaped}\`;\n`;
       }
 
       // Client: return a native CSSStyleSheet

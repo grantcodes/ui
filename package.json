@@ -34,7 +34,7 @@
   "license": "MIT",
   "devDependencies": {
     "@grantcodes/commit": "^2.0.0",
-    "@storybook/html-vite": "^10.6.4",
+    "@storybook/html-vite": "^10.6.5",
     "turbo": "^2.11.10"
   },
   "engines": {
