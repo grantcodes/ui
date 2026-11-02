@@ -1,5 +1,22 @@
 # Changelog
 
+## [3.3.0](https://github.com/grantcodes/ui/compare/ui-v3.2.0...ui-v3.3.0) (2026-11-02)
+
+
+### Features
+
+* **ui:** keep dialog header and footer in view ([c0d0ae8](https://github.com/grantcodes/ui/commit/c0d0ae80a26934c5b3078fcb330ea7fb4ffa5a38))
+
+
+### Bug Fixes
+
+* **ui:** build dropdown and popover on the native popover API ([5566eaa](https://github.com/grantcodes/ui/commit/5566eaa3bf61c0a918eb2d99920c5ac47a1f1f18))
+* **ui:** collapse breadcrumbs on small screens ([6b6981e](https://github.com/grantcodes/ui/commit/6b6981eaa33f464fa09bfa72b35aaf0fbbde87b0))
+* **ui:** dim maps in dark mode instead of inverting them ([06a92e1](https://github.com/grantcodes/ui/commit/06a92e1a5b3d2bc07f2327842934864f26521890))
+* **ui:** keep tooltips clear of their trigger ([7976b26](https://github.com/grantcodes/ui/commit/7976b26ad4bf21a752f8a0d6464b9a03580da69d))
+* **ui:** size feature-list and stats grids to their container ([92e8abb](https://github.com/grantcodes/ui/commit/92e8abb77a35242ce67e9ba1c81e6002f1e604cb))
+* **ui:** stop disabled link buttons from navigating ([c71dbfe](https://github.com/grantcodes/ui/commit/c71dbfee09f839edc8c9a5fcaae3f2c867299db9))
+
 ## [3.2.0](https://github.com/grantcodes/ui/compare/ui-v3.1.0...ui-v3.2.0) (2026-10-29)
 
 
