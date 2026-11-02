@@ -33,15 +33,12 @@
   line-height: var(--g-typography-h1-line-height, 1.1);
   color: var(--g-color-content-default);
   font-variant-numeric: tabular-nums;
-}
-
-.countdown__value--flip {
   animation: countdown-flip 0.35s ease-out;
 }
 
 /* Only the movement is dropped; the fade stays for everyone. */
 @media (prefers-reduced-motion: reduce) {
-  .countdown__value--flip {
+  .countdown__value {
     animation-name: countdown-fade;
   }
 }

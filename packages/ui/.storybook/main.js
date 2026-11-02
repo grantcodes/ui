@@ -8,7 +8,7 @@ export default {
 
   core: {
     disableTelemetry: true,
-    allowedHosts: true,
+    allowedHosts: ['ui.munchkin-beaver.ts.net'],
   },
 
   addons: [

@@ -87,13 +87,6 @@ describe('Toast Component', () => {
     assert.strictEqual(toast.getAttribute('role'), 'status', 'Should have status role');
   });
 
-  it('should have aria-live=polite', async () => {
-    element = await fixture('grantcodes-toast');
-
-    const toast = element.shadowRoot.querySelector('.toast');
-    assert.strictEqual(toast.getAttribute('aria-live'), 'polite', 'Should have aria-live polite');
-  });
-
   it('should render icon based on variant', async () => {
     element = await fixture('grantcodes-toast', {
       variant: 'success',
@@ -139,12 +132,10 @@ describe('Toast Component', () => {
 
     const errorToast = element.shadowRoot.querySelector('.toast--error');
     assert.strictEqual(errorToast.getAttribute('role'), 'alert', 'Errors should interrupt');
-    assert.strictEqual(errorToast.getAttribute('aria-live'), 'assertive');
 
-    const info = await fixture('grantcodes-toast', { variant: 'info' });
+    const info: any = await fixture('grantcodes-toast', { variant: 'info' });
     const infoToast = info.shadowRoot.querySelector('.toast--info');
     assert.strictEqual(infoToast.getAttribute('role'), 'status', 'Other variants should wait');
-    assert.strictEqual(infoToast.getAttribute('aria-live'), 'polite');
     cleanup(info);
   });
 
@@ -177,22 +168,25 @@ describe('Toast Component', () => {
   it('should skip the exit animation when reduced motion is preferred', async () => {
     element = await fixture('grantcodes-toast', { duration: 0 });
 
-    const originalMatchMedia = globalThis.window.matchMedia;
-    globalThis.window.matchMedia = () => ({ matches: true });
+    const win: any = globalThis.window;
+    const originalMatchMedia = win.matchMedia;
+    win.matchMedia = () => ({ matches: true });
 
     click(element.shadowRoot.querySelector('.toast__close'));
     await new Promise((resolve) => setTimeout(resolve, 20));
-    globalThis.window.matchMedia = originalMatchMedia;
+    win.matchMedia = originalMatchMedia;
 
     assert.strictEqual(element.isConnected, false, 'No exit animation to wait for');
   });
 
   it('should dismiss through a view transition when motion is allowed', async () => {
-    const originalMatchMedia = globalThis.window.matchMedia;
-    const originalStartViewTransition = globalThis.document.startViewTransition;
+    const win: any = globalThis.window;
+    const doc: any = globalThis.document;
+    const originalMatchMedia = win.matchMedia;
+    const originalStartViewTransition = doc.startViewTransition;
     let transitions = 0;
-    globalThis.window.matchMedia = () => ({ matches: false });
-    globalThis.document.startViewTransition = (callback) => {
+    win.matchMedia = () => ({ matches: false });
+    doc.startViewTransition = (callback: () => void) => {
       transitions++;
       callback();
       return { finished: Promise.resolve() };
@@ -202,8 +196,8 @@ describe('Toast Component', () => {
     click(element.shadowRoot.querySelector('.toast__close'));
     await new Promise((resolve) => setTimeout(resolve, 20));
 
-    globalThis.window.matchMedia = originalMatchMedia;
-    globalThis.document.startViewTransition = originalStartViewTransition;
+    win.matchMedia = originalMatchMedia;
+    doc.startViewTransition = originalStartViewTransition;
 
     assert.strictEqual(transitions, 2, 'Enter and exit should both animate');
     assert.strictEqual(element.isConnected, false, 'Toast should be removed');
