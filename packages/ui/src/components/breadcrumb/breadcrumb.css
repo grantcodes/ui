@@ -30,8 +30,7 @@
   color: var(--g-color-primary-700);
 }
 
-/* Separator using ::after pseudo-element; driven by parent via data-has-separator */
-:host([data-has-separator]) .breadcrumb__item::after {
+:host(:not(:last-child)) .breadcrumb__item::after {
   content: var(--component-breadcrumb-separator, "/");
   display: inline-block;
   color: var(--g-color-content-subtle);
@@ -67,13 +66,13 @@
   display: inline-block;
 }
 
-/* Responsive: Show only last few items on small screens */
+/* Responsive: Show only the last two items on small screens */
 @media (max-width: 640px) {
-  .breadcrumb__item:not(:last-child):not(:nth-last-child(2)) {
+  :host(:not(:last-child, :nth-last-child(2))) {
     display: none;
   }
 
-  .breadcrumb__item:nth-last-child(2)::before {
+  :host(:nth-last-child(2):not(:first-child)) .breadcrumb__item::before {
     content: "...";
     display: inline-block;
     margin-inline-end: 0.5rem;
