@@ -29,23 +29,15 @@
 
 .feature-list__grid {
   display: grid;
-  grid-template-columns: repeat(var(--columns, 3), 1fr);
+  /* At most --columns tracks, dropping to fewer when a track would be under 16rem. */
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(max(16rem, (100% - (var(--columns, 3) - 1) * var(--g-spacing-xl)) / var(--columns, 3)), 1fr)
+  );
   gap: var(--g-spacing-xl);
   padding: 0;
   margin: 0;
   list-style: none;
-}
-
-@media (max-width: 768px) {
-  .feature-list__grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  .feature-list__grid {
-    grid-template-columns: repeat(min(var(--columns, 3), 2), 1fr);
-  }
 }
 
 .feature-list__link,
