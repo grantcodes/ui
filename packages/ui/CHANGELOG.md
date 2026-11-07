@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.3.1](https://github.com/grantcodes/ui/compare/ui-v3.3.0...ui-v3.3.1) (2026-11-07)
+
+
+### Bug Fixes
+
+* **button:** re-enable after the disabled property is cleared ([7b85657](https://github.com/grantcodes/ui/commit/7b85657976d6831c22d0def1df7626c35113f78d))
+* **button:** re-enable after the disabled property is cleared ([9b13b58](https://github.com/grantcodes/ui/commit/9b13b58d925f5727f7d4d4b9bf681485ed599802))
+
 ## [3.3.0](https://github.com/grantcodes/ui/compare/ui-v3.2.0...ui-v3.3.0) (2026-11-02)
 
 
