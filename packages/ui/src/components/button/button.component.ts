@@ -97,7 +97,9 @@ export class GrantCodesButton extends LitElement {
 
   formDisabledCallback(disabled: boolean) {
     this._fieldsetDisabled = disabled;
-    this.requestUpdate();
+    // Browsers call this while Lit reflects the host's own `disabled` attribute, after render and
+    // inside the update, where requestUpdate() is ignored; a re-enabled button would stay disabled.
+    void this.updateComplete.then(() => this.requestUpdate());
   }
 
   render() {
