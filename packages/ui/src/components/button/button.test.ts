@@ -257,6 +257,27 @@ describe('FACE Infrastructure', () => {
     assert.ok(link, 'Should render a link when href is set');
   });
 
+  it('should enable the internal button again after its own disabled attribute is removed', async () => {
+    element = await fixture('grantcodes-button');
+    // Browsers call formDisabledCallback synchronously when the host's own disabled attribute is
+    // reflected, inside Lit's update and after render; the DOM shim never calls it.
+    for (const method of ['setAttribute', 'removeAttribute'] as const) {
+      const original = element[method].bind(element);
+      element[method] = (name: string, ...rest: string[]) => {
+        original(name, ...rest);
+        if (name === 'disabled') element.formDisabledCallback(element.hasAttribute('disabled'));
+      };
+    }
+    element.disabled = true;
+    await element.updateComplete;
+    element.disabled = false;
+    await new Promise(resolve => setTimeout(resolve));
+    await element.updateComplete;
+
+    const button = element.shadowRoot.querySelector('button');
+    assert.strictEqual(button.disabled, false, 'Internal button should be enabled again');
+  });
+
   it('should have disabled attribute on internal button when disabled', async () => {
     element = await fixture('grantcodes-button', {
       disabled: true,
