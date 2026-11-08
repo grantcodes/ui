@@ -170,6 +170,32 @@ describe('Dialog Component', () => {
     assert.strictEqual(element.open, false, 'open should follow the native dialog state');
   });
 
+  it('should announce every open and close, including Escape, so controlled wrappers stay in sync', async () => {
+    element = await fixture('grantcodes-dialog');
+    const toggles: boolean[] = [];
+    element.addEventListener('toggle', (event: CustomEvent<{ open: boolean }>) =>
+      toggles.push(event.detail.open),
+    );
+    await element.updateComplete;
+    assert.deepStrictEqual(toggles, [], 'A dialog that starts closed has not toggled');
+
+    element.open = true;
+    await element.updateComplete;
+    element.shadowRoot.querySelector('dialog').dispatchEvent(new Event('close'));
+    await element.updateComplete;
+    element.open = true;
+    await element.updateComplete;
+    click(element.shadowRoot.querySelector('.dialog__dismiss'));
+    await element.updateComplete;
+
+    assert.deepStrictEqual(toggles, [true, false, true, false]);
+  });
+
+  it('should reflect fullscreen so it can fill the viewport', async () => {
+    element = await fixture('grantcodes-dialog', { fullscreen: true });
+    assert.ok(element.hasAttribute('fullscreen'));
+  });
+
   it('should not throw when reopened after the native dialog closed', async () => {
     element = await fixture('grantcodes-dialog', { open: true });
     const dialog = element.shadowRoot.querySelector('dialog');

@@ -1,6 +1,6 @@
 # Dialog
 
-Use for a modal task/confirmation; use [Popover](ui-popover.md) for a non-modal panel. Native dialog is preferable when you need native returnValue/close/cancel lifecycle directly.
+Use for a modal task/confirmation; use [Popover](ui-popover.md) for a non-modal panel. Native dialog is preferable when you need native returnValue/cancel lifecycle directly.
 
 ```js
 import '@grantcodes/ui/components/dialog/dialog.js';
@@ -20,8 +20,8 @@ import '@grantcodes/ui/components/dialog/dialog.js';
 </script>
 ```
 
-Properties: `open` false; `dismissible` true. Slots: `header` (accessible-name fallback), default (dialog content), `footer` (actions). These slots and property descriptions are documented in the published Custom Elements Manifest. The internal native dialog opens modally, names itself from host aria-label or header text, and syncs open after native close. Provide a meaningful name and verify initial focus, Escape, and focus return.
+Properties: `open` false; `dismissible` true; `fullscreen` false (reflected; fills the viewport edge to edge with no content padding, for media viewers). Slots: `header` (accessible-name fallback), default (dialog content), `footer` (actions). These slots and property descriptions are documented in the published Custom Elements Manifest. The internal native dialog opens modally, names itself from host aria-label or header text, and syncs open after native close. Provide a meaningful name and verify initial focus, Escape, and focus return.
 
 `dismissible=false` hides the close button and disables supported light-dismiss; it does **not** prevent Escape. Set it as a property (Lit `.dismissible`, React boolean), not a false-looking HTML attribute.
 
-No public show()/hide() methods or custom close event are supplied. React `Dialog` has no mapped close/dismiss callback; don't build a controlled state model assuming one. No declared parts. Inherited hooks include `--g-color-background-default`, `--g-color-border-default`, `--g-border-radius-md`, `--g-spacing-md`.
+Events: `toggle` (`detail.open`) fires on every open and close, including Escape, light-dismiss and the close button, but not on the first render of a closed dialog; React `Dialog` maps it to `onToggle`, so a controlled `open` can follow it. No public show()/hide() methods. No declared parts. `--g-dialog-inline-size` (default `1200px`) sets the largest inline size. Inherited hooks include `--g-color-background-default`, `--g-color-border-default`, `--g-border-radius-md`, `--g-spacing-md`.

@@ -16,6 +16,8 @@ const supportsClosedBy =
  * @slot - Dialog content.
  * @slot header - Heading content used as the accessible name when aria-label is absent.
  * @slot footer - Footer actions.
+ * @fires toggle - When the dialog opens or closes, including Escape, light-dismiss and the close button; `detail.open` is the new state.
+ * @cssproperty [--g-dialog-inline-size=1200px] - Largest inline size of the dialog.
  */
 export class GrantCodesDialog extends LitElement {
   declare _footerPresence: SlotPresenceController;
@@ -25,6 +27,8 @@ export class GrantCodesDialog extends LitElement {
   declare dialog: null | HTMLDialogElement;
   /** Shows the close button and enables supported light-dismiss; Escape still closes the dialog. */
   declare dismissible: boolean;
+  /** Fills the viewport edge to edge, for media viewers. */
+  declare fullscreen: boolean;
   /** Opens the native dialog modally and reflects its open state. */
   declare open: boolean;
 
@@ -33,6 +37,7 @@ export class GrantCodesDialog extends LitElement {
   static properties = {
     open: { type: Boolean, reflect: true },
     dismissible: { type: Boolean },
+    fullscreen: { type: Boolean, reflect: true },
     _hasHeader: { state: true },
     _hasFooter: { state: true },
   };
@@ -42,6 +47,7 @@ export class GrantCodesDialog extends LitElement {
 
     this.open = false;
     this.dismissible = true;
+    this.fullscreen = false;
     this._hasHeader = false;
     this._hasFooter = false;
 
@@ -67,6 +73,11 @@ export class GrantCodesDialog extends LitElement {
     if (!changedProperties.has('open') || !this.dialog) return;
     if (this.open && !this.dialog.open) this.dialog.showModal();
     else if (!this.open && this.dialog.open) this.dialog.close();
+    // The first render of a closed dialog is not a change; controlled wrappers only need real toggles.
+    if ((changedProperties.get('open') ?? false) === this.open) return;
+    this.dispatchEvent(
+      new CustomEvent('toggle', { detail: { open: this.open }, bubbles: true, composed: true })
+    );
   }
 
   // Esc and light-dismiss close the native dialog without touching `open`.

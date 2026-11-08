@@ -7,7 +7,7 @@
 .dialog {
   width: 100%;
   padding: 0;
-  max-width: 1200px;
+  max-width: var(--g-dialog-inline-size, 1200px);
   background: var(--g-color-background-default);
   border-style: solid;
   border-width: var(--g-border-width-sm);
@@ -20,6 +20,21 @@
 .dialog[open] {
   display: flex;
   flex-direction: column;
+}
+
+:host([fullscreen]) .dialog {
+  max-width: none;
+  block-size: 100dvh;
+  max-block-size: 100dvh;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+}
+
+/* Fullscreen content, such as a media viewer, lays itself out edge to edge. */
+:host([fullscreen]) .dialog__content {
+  gap: 0;
+  padding: 0;
 }
 
 .dialog::backdrop {
