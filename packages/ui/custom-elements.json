@@ -2261,6 +2261,13 @@
           "kind": "class",
           "description": "A modal dialog named by its aria-label or header text.",
           "name": "GrantCodesDialog",
+          "cssProperties": [
+            {
+              "description": "Largest inline size of the dialog.",
+              "name": "--g-dialog-inline-size",
+              "default": "1200px"
+            }
+          ],
           "slots": [
             {
               "description": "Dialog content.",
@@ -2344,6 +2351,18 @@
             },
             {
               "kind": "field",
+              "name": "fullscreen",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Fills the viewport edge to edge, for media viewers.",
+              "default": "false",
+              "attribute": "fullscreen",
+              "reflects": true
+            },
+            {
+              "kind": "field",
               "name": "open",
               "privacy": "public",
               "type": {
@@ -2353,6 +2372,15 @@
               "default": "false",
               "attribute": "open",
               "reflects": true
+            }
+          ],
+          "events": [
+            {
+              "name": "toggle",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "When the dialog opens or closes, including Escape, light-dismiss and the close button; `detail.open` is the new state."
             }
           ],
           "attributes": [
@@ -2380,6 +2408,15 @@
               "description": "Shows the close button and enables supported light-dismiss; Escape still closes the dialog.",
               "default": "true",
               "fieldName": "dismissible"
+            },
+            {
+              "name": "fullscreen",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Fills the viewport edge to edge, for media viewers.",
+              "default": "false",
+              "fieldName": "fullscreen"
             },
             {
               "name": "open",

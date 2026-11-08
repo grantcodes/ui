@@ -39,16 +39,17 @@ Accordion, AppBar, NavLink, Avatar, Badge, Breadcrumb, BreadcrumbItem, Button, B
 | Wrapper | React prop | DOM event / detail |
 | --- | --- | --- |
 | AppBar | onMenuToggle | menu-toggle / { open } |
+| Dialog | onToggle | toggle / CustomEvent<{ open: boolean }>; every open and close, including Escape and light-dismiss |
 | Dropdown | onToggle | toggle / { open }; trigger click only, not every state change |
 | DropdownItem | onSelect | select / no payload |
 | Popover | onToggle | toggle / CustomEvent<{ open: boolean }> |
 | Sidebar | onDrawerToggle | drawer-toggle / CustomEvent<{ open: boolean }>, cancelable |
 | Toast | onDismiss | dismiss / no payload; component removes itself |
 
-Only Popover and Sidebar explicitly type their custom-event details. Other mapped callbacks are Event-typed; narrow/cast a CustomEvent before reading detail. Dialog has no mapped `onOpenChange`, `onClose`, or `onDismiss`. Notice has no dismiss event. Do not invent wrapper callbacks.
+Only Dialog, Popover and Sidebar explicitly type their custom-event details. Other mapped callbacks are Event-typed; narrow/cast a CustomEvent before reading detail. Dialog has no `onOpenChange`, `onClose` or `onDismiss`; use `onToggle`. Notice has no dismiss event. Do not invent wrapper callbacks.
 
 Pass booleans as booleans: `<Dialog dismissible={false} />`. Properties such as `primaryAction`, `items`, `media`, and `tiers` on their UI wrappers are JSON strings, not Astro-style objects. SplitBar `segments` is an array. Map uses `directions-url`; Countdown uses `show-seconds`, `past-message`, and unit-label hyphenated properties.
 
-Keep React state synchronized with self-removing Toasts via `onDismiss`; do not assume controlled Dialog state is notified when Escape closes it. Prefer native dialog when that lifecycle is essential. Native slots use `slot="header"` on children.
+Keep React state synchronized with self-removing Toasts via `onDismiss`, and controlled Dialogs via `onToggle` (`event.detail.open`), which also fires on Escape, light-dismiss and the close button. Native slots use `slot="header"` on children.
 
 These are browser wrappers, not evidence of Next.js SSR/RSC support. Check the consumer's renderer and client boundary rather than claiming SSR compatibility.

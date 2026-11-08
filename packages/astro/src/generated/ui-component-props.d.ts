@@ -50,6 +50,7 @@ declare namespace astroHTML.JSX {
     eyebrow?: string;
     for?: string;
     form?: string;
+    fullscreen?: boolean;
     fullscreenOnDrag?: boolean;
     hasFooter?: boolean;
     hasHeader?: boolean;
@@ -305,6 +306,7 @@ declare module "@grantcodes/ui/components/dialog/index.js" {
 
   export interface DialogProps {
     dismissible?: boolean;
+    fullscreen?: boolean;
     open?: boolean;
   }
 
