@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.4.1](https://github.com/grantcodes/ui/compare/ui-v3.4.0...ui-v3.4.1) (2026-11-08)
+
+
+### Bug Fixes
+
+* **ui:** keep native popover toggle events out of host toggle listeners ([4f770e7](https://github.com/grantcodes/ui/commit/4f770e74de58f052948bd2c4ad6eaaad7e95ea0a))
+* **ui:** keep native popover toggle events out of host toggle listeners ([d67391e](https://github.com/grantcodes/ui/commit/d67391eadaed774dd20b1d7efedef5f377a385e5))
+
 ## [3.4.0](https://github.com/grantcodes/ui/compare/ui-v3.3.1...ui-v3.4.0) (2026-11-08)
 
 
