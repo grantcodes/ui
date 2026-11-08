@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.0](https://github.com/grantcodes/ui/compare/astro-v1.1.0...astro-v1.2.0) (2026-11-08)
+
+
+### Features
+
+* **ui:** dialog toggle event, inline size and fullscreen ([02bfff7](https://github.com/grantcodes/ui/commit/02bfff7f012cb32cf52142296db91a5370e6afd0))
+* **ui:** dialog toggle event, inline size and fullscreen ([c9f65d8](https://github.com/grantcodes/ui/commit/c9f65d8da38e2e7d759300eb232e13878703c195))
+
 ## [1.1.0](https://github.com/grantcodes/ui/compare/astro-v1.0.1...astro-v1.1.0) (2026-10-27)
 
 
