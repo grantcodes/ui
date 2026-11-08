@@ -26,6 +26,9 @@ export const Dropdown = {
 	`,
   play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
     const dropdown = canvasElement.querySelector('grantcodes-dropdown') as HTMLElement;
+    // The menu's native popover toggle must not reach host listeners as a detail-less `toggle`.
+    const toggles: unknown[] = [];
+    dropdown.addEventListener('toggle', (event) => toggles.push((event as CustomEvent).detail));
     const trigger = dropdown.querySelector('grantcodes-button')?.shadowRoot?.querySelector('button');
     await userEvent.click(trigger as HTMLButtonElement);
     await waitFor(() => expect(document.activeElement?.textContent).toBe('Profile'));
@@ -35,6 +38,7 @@ export const Dropdown = {
     await waitFor(() => expect(dropdown).toHaveAttribute('open'));
     await userEvent.click(trigger as HTMLButtonElement);
     await waitFor(() => expect(dropdown).not.toHaveAttribute('open'));
+    await expect(toggles.every((detail) => typeof (detail as { open?: unknown })?.open === 'boolean')).toBe(true);
   },
 };
 

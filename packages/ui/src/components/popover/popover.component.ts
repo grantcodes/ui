@@ -141,6 +141,8 @@ export class GrantCodesPopover extends LitElement {
           tabindex="-1"
           popover
           @toggle=${(event: ToggleEvent) => {
+            // The native event is composed, so it would reach host listeners under this component's own `toggle` name.
+            event.stopPropagation();
             this.open = event.newState === 'open';
           }}
         >

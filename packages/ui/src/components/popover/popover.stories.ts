@@ -28,6 +28,9 @@ export const InteractiveForm = {
     const popover = canvasElement.querySelector('grantcodes-popover') as HTMLElement & {
       open: boolean;
     };
+    // The panel's native popover toggle must not reach host listeners as a detail-less `toggle`.
+    const toggles: unknown[] = [];
+    popover.addEventListener('toggle', (event) => toggles.push((event as CustomEvent).detail));
     await userEvent.click(
       popover.querySelector('[slot="trigger"]')?.shadowRoot?.querySelector('button') as HTMLButtonElement,
     );
@@ -35,6 +38,7 @@ export const InteractiveForm = {
     await userEvent.type(canvas.getByRole('textbox'), ' Richmond');
     await userEvent.keyboard('{Escape}');
     await waitFor(() => expect(popover).not.toHaveAttribute('open'));
+    await waitFor(() => expect(toggles).toEqual([{ open: true }, { open: false }]));
   },
 };
 

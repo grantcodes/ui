@@ -154,6 +154,8 @@ export class GrantCodesDropdown extends LitElement {
           role="menu"
           popover
           @toggle=${(e: ToggleEvent) => {
+            // The native event is composed, so it would reach host listeners under this component's own `toggle` name.
+            e.stopPropagation();
             this.open = e.newState === 'open';
           }}
         >
