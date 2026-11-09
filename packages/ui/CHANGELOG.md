@@ -1,5 +1,16 @@
 # Changelog
 
+## [4.0.0](https://github.com/grantcodes/ui/compare/ui-v3.4.1...ui-v4.0.0) (2026-11-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* **style-dictionary:** color.border.default-hover is renamed to color.border.strong, and the :root background now uses --g-color-background-subtle in every theme.
+
+### Features
+
+* **style-dictionary:** add background-strong and rework grantcodes surfaces ([778f9ed](https://github.com/grantcodes/ui/commit/778f9eddc608685dcdb0f81f44e83f13be022236))
+
 ## [3.4.1](https://github.com/grantcodes/ui/compare/ui-v3.4.0...ui-v3.4.1) (2026-11-08)
 
 
