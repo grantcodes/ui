@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.0](https://github.com/grantcodes/ui/compare/astro-v1.2.0...astro-v1.3.0) (2026-11-09)
+
+
+### Features
+
+* **ui:** add inherit colour to button ([1133073](https://github.com/grantcodes/ui/commit/1133073cea08beb768b3dd4af99001f91f4ca2cb))
+* **ui:** animate overlay enter and exit ([f1025a4](https://github.com/grantcodes/ui/commit/f1025a4335741b09765634978499c744289d9c4b))
+
 ## [1.2.0](https://github.com/grantcodes/ui/compare/astro-v1.1.0...astro-v1.2.0) (2026-11-08)
 
 
