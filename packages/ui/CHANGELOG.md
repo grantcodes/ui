@@ -1,5 +1,14 @@
 # Changelog
 
+## [4.1.0](https://github.com/grantcodes/ui/compare/ui-v4.0.0...ui-v4.1.0) (2026-11-09)
+
+
+### Features
+
+* **ui:** add inherit colour to button ([1133073](https://github.com/grantcodes/ui/commit/1133073cea08beb768b3dd4af99001f91f4ca2cb))
+* **ui:** animate overlay enter and exit ([f1025a4](https://github.com/grantcodes/ui/commit/f1025a4335741b09765634978499c744289d9c4b))
+* **ui:** animate overlay enter and exit, restyle toast as a notice ([1c11f86](https://github.com/grantcodes/ui/commit/1c11f8632c918db29b25de40e4a09d004e6852b3))
+
 ## [4.0.0](https://github.com/grantcodes/ui/compare/ui-v3.4.1...ui-v4.0.0) (2026-11-09)
 
 
