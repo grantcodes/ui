@@ -18,4 +18,4 @@ Properties: `open` false; `placement` bottom-start (default), bottom-end, top-st
 
 Opening focuses the first focusable panel control or panel. Escape and outside click close it, returning focus when appropriate. Trigger aria-expanded is managed. Supply native controls with names; the panel is not automatically a dialog/menu and does not trap focus. The panel is a native `popover` in the top layer, positioned with CSS anchor positioning (centred by the browser where anchor positioning is unsupported).
 
-Part: `panel`. Tokens include `--g-color-background-default`, `--g-color-border-default`, `--g-border-radius-md`, `--g-spacing-md`, `--g-box-shadow-lg`. Do not target the private anchor name.
+The panel fades and scales in; closing animates out in Chromium and is instant in Safari and Firefox. Motion uses `--g-animation-move-quick` (enter), `--g-animation-fade-quick` (exit) and `--g-animation-ease`; reduced motion disables it. Part: `panel`. Tokens include `--g-color-background-default`, `--g-color-border-default`, `--g-border-radius-md`, `--g-spacing-md`, `--g-box-shadow-lg`. Do not target the private anchor name.

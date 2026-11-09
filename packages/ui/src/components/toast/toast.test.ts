@@ -165,41 +165,31 @@ describe('Toast Component', () => {
     );
   });
 
-  it('should skip the exit animation when reduced motion is preferred', async () => {
+  it('should remove the toast at once when nothing animates', async () => {
     element = await fixture('grantcodes-toast', { duration: 0 });
-
-    const win: any = globalThis.window;
-    const originalMatchMedia = win.matchMedia;
-    win.matchMedia = () => ({ matches: true });
 
     click(element.shadowRoot.querySelector('.toast__close'));
     await new Promise((resolve) => setTimeout(resolve, 20));
-    win.matchMedia = originalMatchMedia;
 
     assert.strictEqual(element.isConnected, false, 'No exit animation to wait for');
   });
 
-  it('should dismiss through a view transition when motion is allowed', async () => {
-    const win: any = globalThis.window;
-    const doc: any = globalThis.document;
-    const originalMatchMedia = win.matchMedia;
-    const originalStartViewTransition = doc.startViewTransition;
-    let transitions = 0;
-    win.matchMedia = () => ({ matches: false });
-    doc.startViewTransition = (callback: () => void) => {
-      transitions++;
-      callback();
-      return { finished: Promise.resolve() };
-    };
-
+  it('should wait for the exit transition before removing the toast', async () => {
     element = await fixture('grantcodes-toast', { dismissible: true, duration: 0 });
+    let finish!: () => void;
+    const finished = new Promise<void>((resolve) => {
+      finish = resolve;
+    });
+    const frame = element.shadowRoot.querySelector('.toast-frame');
+    frame.getAnimations = () => [{ finished }];
+
     click(element.shadowRoot.querySelector('.toast__close'));
     await new Promise((resolve) => setTimeout(resolve, 20));
+    assert.ok(frame.classList.contains('toast-frame--closing'), 'Exit state should apply');
+    assert.ok(element.isConnected, 'Toast should stay while its exit runs');
 
-    win.matchMedia = originalMatchMedia;
-    doc.startViewTransition = originalStartViewTransition;
-
-    assert.strictEqual(transitions, 2, 'Enter and exit should both animate');
+    finish();
+    await new Promise((resolve) => setTimeout(resolve, 20));
     assert.strictEqual(element.isConnected, false, 'Toast should be removed');
   });
 });

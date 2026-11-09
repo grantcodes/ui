@@ -2,10 +2,9 @@ import { html, LitElement, nothing } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { AlertCircle, CheckCircle2, Info, X, XCircle } from '../../icons.js';
-import { generateId } from '../../lib/generate-id.js';
-import focusRingStyles from '../../lib/styles/focus-ring.css' with { type: 'css' };
-import { startViewTransition } from '../../lib/view-transition.js';
+import noticeStyles from '../notice/notice.css' with { type: 'css' };
 import toastStyles from './toast.css' with { type: 'css' };
+import '../button/button.js';
 
 const ICONS: Record<string, string> = {
   info: Info,
@@ -17,14 +16,13 @@ const ICONS: Record<string, string> = {
 export class GrantCodesToast extends LitElement {
   declare _dismissTimeout: ReturnType<typeof setTimeout> | null;
   declare _removing: boolean;
-  declare _viewTransitionName: string;
-  declare _visible: boolean;
   declare dismissible: boolean;
   declare duration: number;
   declare position: string;
   declare variant: string;
 
-  static styles = [focusRingStyles, toastStyles];
+  // Toast wears Notice's variant colours; its own sheet comes last to override layout and motion.
+  static styles = [noticeStyles, toastStyles];
 
   static properties = {
     variant: { type: String },
@@ -32,7 +30,7 @@ export class GrantCodesToast extends LitElement {
     duration: { type: Number },
     position: { type: String },
     dismissible: { type: Boolean },
-    _visible: { type: Boolean, state: true },
+    _removing: { state: true },
   };
 
   constructor() {
@@ -69,12 +67,6 @@ export class GrantCodesToast extends LitElement {
     this.dismissible = true;
 
     /**
-     * Internal visibility state
-     * @type {boolean}
-     */
-    this._visible = false;
-
-    /**
      * Timeout ID for auto-dismiss
      * @type {number | null}
      */
@@ -85,19 +77,10 @@ export class GrantCodesToast extends LitElement {
      * @type {boolean}
      */
     this._removing = false;
-
-    // Per-instance, so two toasts cannot abort each other's view transition.
-    this._viewTransitionName = generateId('toast-vt');
   }
 
   connectedCallback() {
     super.connectedCallback();
-    this.style.setProperty('--toast-vt-name', this._viewTransitionName);
-    // Without view transitions (or with reduced motion) the toast appears and leaves instantly.
-    startViewTransition(() => {
-      this._visible = true;
-      return this.updateComplete;
-    });
     this._startDismissTimer();
   }
 
@@ -119,7 +102,7 @@ export class GrantCodesToast extends LitElement {
   }
 
   _resumeDismiss() {
-    if (!this._visible || this._dismissTimeout !== null) return;
+    if (this._removing || this._dismissTimeout !== null) return;
     this._startDismissTimer();
   }
 
@@ -128,11 +111,11 @@ export class GrantCodesToast extends LitElement {
     if (this._removing) return;
     this._removing = true;
 
-    const transition = startViewTransition(() => {
-      this._visible = false;
-      return this.updateComplete;
-    });
-    await transition?.finished.catch(() => {});
+    await this.updateComplete;
+    // Reduced motion sets no transitions, so there is nothing to wait for.
+    const frame = this.renderRoot.querySelector<HTMLElement>('.toast-frame');
+    const animations = frame?.getAnimations?.({ subtree: true }) ?? [];
+    await Promise.allSettled(animations.map((animation) => animation.finished));
     this.dispatchEvent(
       new CustomEvent('dismiss', {
         bubbles: true,
@@ -146,27 +129,31 @@ export class GrantCodesToast extends LitElement {
     if (!this.dismissible) return nothing;
 
     return html`
-			<button
-				type="button"
-				class="toast__close focus-ring"
+			<grantcodes-button
+				class="toast__close"
+				size="sm"
+				variant="ghost"
+				color="inherit"
 				@click=${this._handleDismiss}
-				aria-label="Dismiss notification"
 			>
-				<grantcodes-icon>${unsafeHTML(X)}</grantcodes-icon>
-			</button>
+				<grantcodes-icon role="img" aria-label="Dismiss notification">${unsafeHTML(X)}</grantcodes-icon>
+			</grantcodes-button>
 		`;
   }
 
   render() {
     const icon = ICONS[this.variant];
     const classes = classMap({
+      notice: true,
+      [`notice--${this.variant}`]: true,
       toast: true,
       [`toast--${this.variant}`]: true,
       [`toast--${this.position}`]: true,
-      'toast--visible': this._visible,
     });
 
     return html`
+			<div class="toast-frame ${this._removing ? 'toast-frame--closing' : ''}">
+			<div class="toast-frame__inner">
 			<div
 				class=${classes}
 				role=${this.variant === 'error' ? 'alert' : 'status'}
@@ -186,6 +173,8 @@ export class GrantCodesToast extends LitElement {
 
 				${this._renderDismissButton()}
 			</div>
+			</div>
+			</div>
 		`;
   }
 }
@@ -196,7 +185,7 @@ export class GrantCodesToast extends LitElement {
 export class GrantCodesToastContainer extends LitElement {
   declare position: string;
 
-  static styles = [focusRingStyles, toastStyles];
+  static styles = [toastStyles];
 
   static properties = {
     position: { type: String },

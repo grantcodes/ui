@@ -37,7 +37,7 @@ import '@grantcodes/ui/styles/themes/grantcodes.css';
 import '@grantcodes/ui/styles/base.css';
 ```
 
-The UI theme bundles that theme's token CSS, generated component theme rules, and fonts. Base CSS separately adds reset, typography, native element styles, utilities, and view-transition styles. Import one theme at the app boundary, not repeatedly in every component.
+The UI theme bundles that theme's token CSS, generated component theme rules, and fonts. Base CSS separately adds reset, typography, native element styles, utilities, and view-transition styles (used by Notice). Import one theme at the app boundary, not repeatedly in every component.
 
 A **theme** is a token set; **colour scheme** is light/dark within it. Base CSS defines `.light` and `.dark`; otherwise set `color-scheme` explicitly. In Astro, `ui({ colorScheme: 'light' })` resolves OG defaults; it does not set your document class or CSS colour scheme.
 

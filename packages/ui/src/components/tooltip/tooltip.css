@@ -43,10 +43,12 @@
   user-select: none;
   text-align: center;
   opacity: 0;
-  /* allow-discrete keeps the box rendered while it fades out. */
-  transition:
-    opacity 0.2s ease,
-    display 0.2s;
+  scale: 0.96;
+  transform-origin: top center;
+  /* allow-discrete keeps the box rendered while it fades out; the shown state overrides the exit timing. */
+  transition-property: opacity, scale, display;
+  transition-duration: var(--g-animation-fade-quick);
+  transition-timing-function: var(--g-animation-ease);
   transition-behavior: allow-discrete;
 
   /* Fixed, so the position area is the viewport rather than the trigger-sized wrapper.
@@ -74,6 +76,8 @@
 .tooltip:not(.tooltip--suppressed):focus-within .tooltip__content {
   display: block;
   opacity: 1;
+  scale: 1;
+  transition-duration: var(--g-animation-move-quick);
 }
 
 /* Entry state for the fade, only while motion is welcome. */
@@ -82,6 +86,7 @@
     .tooltip:not(.tooltip--suppressed):hover .tooltip__content,
     .tooltip:not(.tooltip--suppressed):focus-within .tooltip__content {
       opacity: 0;
+      scale: 0.96;
     }
   }
 }

@@ -14,12 +14,28 @@
   border-color: var(--g-color-border-default);
   border-radius: var(--g-border-radius-md);
   max-block-size: calc(100dvh - var(--g-spacing-md, 1rem) - var(--g-spacing-md, 1rem));
+  /* On the base rule so the column layout survives the exit, where display stays flex until the end. */
+  flex-direction: column;
+  opacity: 0;
+  scale: 0.96;
+  /* Closed-state timing is the exit; the open state overrides it for entry. */
+  transition-property: opacity, scale, display, overlay;
+  transition-duration: var(--g-animation-fade-quick);
+  transition-timing-function: var(--g-animation-ease);
+  transition-behavior: allow-discrete;
 }
 
 /* Only the content scrolls, so the header, footer and dismiss button stay in view. */
 .dialog[open] {
   display: flex;
-  flex-direction: column;
+  opacity: 1;
+  scale: 1;
+  transition-duration: var(--g-animation-move-quick);
+
+  @starting-style {
+    opacity: 0;
+    scale: 0.96;
+  }
 }
 
 :host([fullscreen]) .dialog {
@@ -29,6 +45,15 @@
   margin: 0;
   border: 0;
   border-radius: 0;
+  scale: none;
+}
+
+:host([fullscreen]) .dialog[open] {
+  scale: none;
+
+  @starting-style {
+    scale: none;
+  }
 }
 
 /* Fullscreen content, such as a media viewer, lays itself out edge to edge. */
@@ -38,8 +63,30 @@
 }
 
 .dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0);
+  transition-property: background-color, backdrop-filter, display, overlay;
+  transition-duration: var(--g-animation-fade-quick);
+  transition-timing-function: var(--g-animation-ease);
+  transition-behavior: allow-discrete;
+}
+
+.dialog[open]::backdrop {
   background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(6px);
+  transition-duration: var(--g-animation-move-quick);
+
+  @starting-style {
+    background-color: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dialog,
+  .dialog::backdrop {
+    transition: none;
+  }
 }
 
 .dialog__dismiss {

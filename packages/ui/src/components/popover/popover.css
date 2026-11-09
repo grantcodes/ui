@@ -35,18 +35,36 @@
   border-radius: var(--g-border-radius-md);
   box-shadow: var(--g-box-shadow-lg);
   opacity: 0;
-  transition:
-    opacity 0.15s ease,
-    display 0.15s allow-discrete,
-    overlay 0.15s allow-discrete;
+  scale: 0.96;
+  transform-origin: top left;
+  /* Closed-state timing is the exit; the open state overrides it for entry. */
+  transition-property: opacity, scale, display, overlay;
+  transition-duration: var(--g-animation-fade-quick);
+  transition-timing-function: var(--g-animation-ease);
+  transition-behavior: allow-discrete;
 }
 
 .popover__panel:popover-open {
   opacity: 1;
+  scale: 1;
+  transition-duration: var(--g-animation-move-quick);
 
   @starting-style {
     opacity: 0;
+    scale: 0.96;
   }
+}
+
+.popover__panel--bottom-end {
+  transform-origin: top right;
+}
+
+.popover__panel--top-start {
+  transform-origin: bottom left;
+}
+
+.popover__panel--top-end {
+  transform-origin: bottom right;
 }
 
 @media (prefers-reduced-motion: reduce) {

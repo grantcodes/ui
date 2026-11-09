@@ -26,6 +26,11 @@
   --_button-base: var(--g-button-danger-color-background);
   --_button-border: var(--g-button-danger-color-border);
 }
+/* Follows the surrounding text colour, for buttons on coloured surfaces such as toasts. */
+:host([color="inherit"]) {
+  --_button-base: currentColor;
+  --_button-border: currentColor;
+}
 
 /* Style variants */
 :host {
