@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/grantcodes/ui/compare/style-dictionary-v1.12.1...style-dictionary-v2.0.0) (2026-11-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* **style-dictionary:** color.border.default-hover is renamed to color.border.strong, and the :root background now uses --g-color-background-subtle in every theme.
+
+### Features
+
+* **style-dictionary:** add background-strong and rework grantcodes surfaces ([778f9ed](https://github.com/grantcodes/ui/commit/778f9eddc608685dcdb0f81f44e83f13be022236))
+
 ## [1.12.1](https://github.com/grantcodes/ui/compare/style-dictionary-v1.12.0...style-dictionary-v1.12.1) (2026-10-27)
 
 
