@@ -9,7 +9,7 @@
           "value": "{color.background.default}"
         },
         "hover": {
-          "value": "{color.background.subtle}"
+          "value": "{color.background.strong}"
         },
         "active": {
           "value": "{color.background.default}"

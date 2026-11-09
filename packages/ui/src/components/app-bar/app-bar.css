@@ -13,7 +13,7 @@
 
 .app-bar {
   background-color: var(--g-color-background-default);
-  border-block-end: 1px solid var(--g-color-border-default);
+  border-block-end: 1px solid var(--g-color-border-subtle);
   position: relative;
 }
 
@@ -73,7 +73,7 @@
     inset-block-start: 100%;
     z-index: 99;
     background-color: var(--g-color-background-default);
-    border-block-end: 1px solid var(--g-color-border-default);
+    border-block-end: 1px solid var(--g-color-border-subtle);
     padding-block: var(--g-spacing-md);
     padding-inline: var(--g-spacing-md);
     box-shadow: var(--g-box-shadow-lg, 0 8px 24px rgba(0, 0, 0, 0.12));

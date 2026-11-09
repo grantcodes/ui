@@ -4,6 +4,9 @@
       "default": {
         "value": "light-dark({ref.color.neutral.white}, {ref.color.neutral.900})"
       },
+      "strong": {
+        "value": "light-dark({ref.color.neutral.white}, {ref.color.neutral.900})"
+      },
       "subtle": {
         "value": "light-dark({ref.color.neutral.100}, {ref.color.neutral.800})"
       },

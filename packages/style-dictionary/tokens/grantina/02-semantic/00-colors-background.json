@@ -4,6 +4,9 @@
       "default": {
         "value": "light-dark({color.primary.100}, {ref.color.navy.700})"
       },
+      "strong": {
+        "value": "light-dark({color.primary.100}, {ref.color.navy.700})"
+      },
       "subtle": {
         "value": "light-dark({color.primary.200}, {ref.color.navy.600})"
       },

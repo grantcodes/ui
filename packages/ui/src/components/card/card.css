@@ -45,7 +45,7 @@
 .card__header {
   padding-inline: var(--g-spacing-md);
   padding-block: var(--g-spacing-sm);
-  border-block-end: 1px solid var(--g-color-border-default);
+  border-block-end: 1px solid var(--g-color-border-subtle);
 }
 
 :host(:not([hasheader])) .card__header {
@@ -83,7 +83,7 @@
   gap: var(--g-spacing-sm);
   padding-inline: var(--g-spacing-md);
   padding-block: var(--g-spacing-sm);
-  border-block-start: 1px solid var(--g-color-border-default);
+  border-block-start: 1px solid var(--g-color-border-subtle);
   background: var(--g-color-background-default);
 }
 

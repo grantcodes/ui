@@ -40,7 +40,7 @@
 .footer__bottom {
   margin-block-start: var(--g-spacing-xl);
   padding-block-start: var(--g-spacing-xl);
-  border-block-start: 1px solid var(--g-color-border-default);
+  border-block-start: 1px solid var(--g-color-border-subtle);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;

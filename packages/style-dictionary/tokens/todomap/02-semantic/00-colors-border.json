@@ -12,6 +12,9 @@
       },
       "secondary": {
         "value": "light-dark({color.secondary.700}, {color.secondary.300})"
+      },
+      "strong": {
+        "value": "light-dark({ref.color.neutral.500}, {ref.color.neutral.400})"
       }
     }
   }
