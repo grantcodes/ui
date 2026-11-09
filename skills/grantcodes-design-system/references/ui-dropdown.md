@@ -19,4 +19,4 @@ Item `select` bubbles/composes without a payload. Listen on the specific item to
 
 The parent sets menu/menuitem roles and manages ArrowUp/Down, Home/End and disabled-item skipping. Give the trigger a native button and clear name. The menu is a native `popover`: outside clicks and Escape close it, and Escape returns focus to the trigger.
 
-React exports Dropdown and DropdownItem; mappings onToggle and onSelect are Event-typed. No declared parts. Tokens include `--g-color-background-default`, `--g-color-content-default`, `--g-color-background-subtle-hover`, `--g-color-content-disabled`, and focus-ring tokens.
+The menu fades and scales in; closing animates out in Chromium and is instant in Safari and Firefox. Motion uses `--g-animation-move-quick` (enter), `--g-animation-fade-quick` (exit) and `--g-animation-ease`; reduced motion disables it. React exports Dropdown and DropdownItem; mappings onToggle and onSelect are Event-typed. No declared parts. Tokens include `--g-color-background-default`, `--g-color-content-default`, `--g-color-background-subtle-hover`, `--g-color-content-disabled`, and focus-ring tokens.

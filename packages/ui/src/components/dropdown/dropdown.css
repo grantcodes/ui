@@ -28,18 +28,36 @@
   border: 1px solid var(--g-color-border-default);
   border-radius: var(--g-border-radius-md);
   opacity: 0;
-  transition:
-    opacity 0.15s ease,
-    display 0.15s allow-discrete,
-    overlay 0.15s allow-discrete;
+  scale: 0.96;
+  transform-origin: top left;
+  /* Closed-state timing is the exit; the open state overrides it for entry. */
+  transition-property: opacity, scale, display, overlay;
+  transition-duration: var(--g-animation-fade-quick);
+  transition-timing-function: var(--g-animation-ease);
+  transition-behavior: allow-discrete;
 }
 
 .dropdown__menu:popover-open {
   opacity: 1;
+  scale: 1;
+  transition-duration: var(--g-animation-move-quick);
 
   @starting-style {
     opacity: 0;
+    scale: 0.96;
   }
+}
+
+.dropdown__menu--bottom-end {
+  transform-origin: top right;
+}
+
+.dropdown__menu--top-start {
+  transform-origin: bottom left;
+}
+
+.dropdown__menu--top-end {
+  transform-origin: bottom right;
 }
 
 @media (prefers-reduced-motion: reduce) {
