@@ -9,7 +9,7 @@ import buttonStyles from './button.css' with { type: 'css' };
  */
 export class GrantCodesButton extends LitElement {
   declare _fieldsetDisabled: boolean;
-  declare color: 'primary' | 'secondary' | 'neutral' | 'danger';
+  declare color: 'primary' | 'secondary' | 'neutral' | 'danger' | 'inherit';
   declare disabled: boolean;
   declare href: string;
   declare internals: ElementInternals | null;
@@ -42,7 +42,7 @@ export class GrantCodesButton extends LitElement {
     this.type = 'button';
     this.name = '';
     this.value = '';
-    /** @type {'primary' | 'secondary' | 'neutral' | 'danger'} */
+    /** @type {'primary' | 'secondary' | 'neutral' | 'danger' | 'inherit'} */
     this.color = 'primary';
     /** @type {'sm' | 'md' | 'lg'} */
     this.size = 'md';

@@ -1109,7 +1109,7 @@
               "name": "color",
               "privacy": "public",
               "type": {
-                "text": "'primary' | 'secondary' | 'neutral' | 'danger'"
+                "text": "'primary' | 'secondary' | 'neutral' | 'danger' | 'inherit'"
               },
               "default": "'primary'",
               "attribute": "color",
@@ -1231,7 +1231,7 @@
             {
               "name": "color",
               "type": {
-                "text": "'primary' | 'secondary' | 'neutral' | 'danger'"
+                "text": "'primary' | 'secondary' | 'neutral' | 'danger' | 'inherit'"
               },
               "default": "'primary'",
               "fieldName": "color"
@@ -7458,11 +7458,13 @@
             {
               "kind": "field",
               "name": "_removing",
+              "privacy": "public",
               "type": {
                 "text": "boolean"
               },
               "description": "Guards against dismissing twice (close click plus auto-dismiss)",
-              "default": "false"
+              "default": "false",
+              "attribute": "_removing"
             },
             {
               "kind": "method",
@@ -7475,24 +7477,6 @@
             {
               "kind": "method",
               "name": "_startDismissTimer"
-            },
-            {
-              "kind": "field",
-              "name": "_viewTransitionName",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "_visible",
-              "privacy": "public",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Internal visibility state",
-              "default": "false",
-              "attribute": "_visible"
             },
             {
               "kind": "field",
@@ -7560,13 +7544,13 @@
           ],
           "attributes": [
             {
-              "name": "_visible",
+              "name": "_removing",
               "type": {
                 "text": "boolean"
               },
-              "description": "Internal visibility state",
+              "description": "Guards against dismissing twice (close click plus auto-dismiss)",
               "default": "false",
-              "fieldName": "_visible"
+              "fieldName": "_removing"
             },
             {
               "name": "dismissible",

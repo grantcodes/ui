@@ -28,7 +28,7 @@ declare namespace astroHTML.JSX {
     caption?: string;
     center?: boolean;
     class?: string;
-    color?: 'primary' | 'secondary' | 'neutral' | 'danger';
+    color?: 'primary' | 'secondary' | 'neutral' | 'danger' | 'inherit';
     columns?: number;
     company?: string;
     containerId?: string;
@@ -215,7 +215,7 @@ declare module "@grantcodes/ui/components/button-group/index.js" {
 declare module "@grantcodes/ui/components/button/index.js" {
 
   export interface ButtonProps {
-    color?: 'primary' | 'secondary' | 'neutral' | 'danger';
+    color?: 'primary' | 'secondary' | 'neutral' | 'danger' | 'inherit';
     disabled?: boolean;
     form?: string;
     href?: string;
