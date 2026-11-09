@@ -9,7 +9,7 @@
           "value": "{color.background.default}"
         },
         "hover": {
-          "value": "{color.background.subtle}"
+          "value": "{color.background.strong}"
         },
         "active": {
           "value": "{color.background.default}"
@@ -43,7 +43,7 @@
           "value": "{color.border.primary}"
         },
         "hover": {
-          "value": "{color.border.default-hover}"
+          "value": "{color.border.strong}"
         },
         "active": {
           "value": "{color.border.primary}"

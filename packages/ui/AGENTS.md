@@ -108,12 +108,13 @@ import '@grantcodes/ui/styles/themes/grantcodes.css';
 
 ### Key Theme Variables
 
-- `--g-color-background-default` - Main background
-- `--g-color-background-subtle` - Subtle background
+- `--g-color-background-default` - Main surface (cards, app bar)
+- `--g-color-background-subtle` - Page background and quiet fills
+- `--g-color-background-strong` - Highest-contrast surface (white in light, near-black in dark)
 - `--g-color-background-brand` - Brand background
 - `--g-color-content-default` - Main text color
 - `--g-color-content-secondary` - Secondary text
-- `--g-color-border-default` - Default border
+- `--g-color-border-subtle`, `-default`, `-strong` - Border weights
 - `--g-border-radius-md` - Medium border radius
 - `--g-box-shadow-sm`, `--g-box-shadow-lg` - Shadow utilities
 

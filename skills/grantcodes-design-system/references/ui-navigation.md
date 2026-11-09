@@ -36,4 +36,4 @@ import '@grantcodes/ui/components/footer/footer.js';
 
 React exports MenuToggle (use expanded/onClick), AppBar, NavLink, Breadcrumb, BreadcrumbItem, Pagination, Footer, FooterColumn; AppBar maps onMenuToggle (Event-typed).
 
-AppBar and MenuToggle declare parts here. Tokens: AppBar uses background/content/border-default and spacing; NavLink uses content-default and focus-ring tokens; Breadcrumb uses content-subtle/default and primary-700; Footer uses background-subtle, border-subtle/default, content-subtle; Pagination has no direct token hook (its Button descendants do). Maintain heading order and distinguish multiple navigation landmarks.
+AppBar and MenuToggle declare parts here. Tokens: AppBar uses background-default, border-subtle, content-default and spacing; NavLink uses content-default and focus-ring tokens; Breadcrumb uses content-subtle/default and primary-700; Footer uses background-subtle, border-subtle/default, content-subtle; Pagination has no direct token hook (its Button descendants do). Maintain heading order and distinguish multiple navigation landmarks.

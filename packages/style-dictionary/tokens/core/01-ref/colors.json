@@ -5,6 +5,9 @@
         "white": {
           "value": "oklch(100% 0 0)"
         },
+        "50": {
+          "value": "oklch(98.5% 0 0)"
+        },
         "100": {
           "value": "oklch(95% 0 0)"
         },
@@ -37,6 +40,15 @@
         },
         "black": {
           "value": "oklch(0% 0 0)"
+        },
+        "250": {
+          "value": "oklch(85% 0 0)"
+        },
+        "950": {
+          "value": "oklch(14% 0 0)"
+        },
+        "975": {
+          "value": "oklch(9% 0 0)"
         }
       },
       "green": {

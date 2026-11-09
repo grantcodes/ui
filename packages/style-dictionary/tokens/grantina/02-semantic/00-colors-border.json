@@ -4,7 +4,7 @@
       "default": {
         "value": "light-dark({color.primary.200}, {ref.color.navy.400})"
       },
-      "default-hover": {
+      "strong": {
         "value": "light-dark({color.primary.300}, {ref.color.navy.300})"
       },
       "subtle": {
