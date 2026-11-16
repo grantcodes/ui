@@ -141,7 +141,7 @@ describe('check() consistency', () => {
     assert.strictEqual(result, false);
   });
 
-  it('returns true for valid Lit element', async () => {
+  it('claims a Lit constructor but not its lowercase tag name', async () => {
     const { LitElement, html } = await import('lit');
     const tagName = 'valid-lit-check-test';
 
@@ -152,7 +152,14 @@ describe('check() consistency', () => {
     }
     customElements.define(tagName, ValidLitCheck);
 
-    const result = await check(tagName);
-    assert.strictEqual(result, true);
+    assert.strictEqual(await check(tagName), false);
+    assert.strictEqual(await check(ValidLitCheck), true);
+  });
+
+  it('returns false for a non-Lit constructor', async () => {
+    class NonLitCtor extends HTMLElement {}
+    customElements.define('non-lit-ctor-check-test', NonLitCtor);
+
+    assert.strictEqual(await check(NonLitCtor), false);
   });
 });

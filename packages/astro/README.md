@@ -71,6 +71,8 @@ Components render on the server by default. Choose a `client:*` directive only w
 
 In most cases, start with no directive and only add a `client:*` directive when the component truly needs it.
 
+Lowercase tags such as `<grantcodes-button>` are never server-rendered by the integration, even when the element is registered on the server. They stay plain HTML and upgrade in the browser once a client `<script>` imports the register file.
+
 #### Directive decision matrix
 
 | Directive | Preserves SSR? | When to use it | Tradeoff |
