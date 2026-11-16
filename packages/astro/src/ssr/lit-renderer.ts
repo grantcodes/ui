@@ -34,11 +34,10 @@ async function isLitElement(Component: unknown): Promise<boolean> {
 }
 
 export async function check(Component: unknown): Promise<boolean> {
-	// Use the same SSR eligibility rules as the render guard.
-	// For string tag names (the common SSR path), use the diagnostic check.
-	// For constructor-based components (legacy path), check _$litElement$ directly.
+	// Lowercase tag markup stays plain HTML and is upgraded on the client: plain markup has
+	// no island to pass props or remove `defer-hydration`, so SSR output would be duplicated.
 	if (typeof Component === 'string') {
-		return getSsrConstructorDiagnostic(Component).eligible;
+		return false;
 	}
 	const Ctr = getCustomElementConstructor(Component as string | Function);
 	return !!Ctr?._$litElement$;

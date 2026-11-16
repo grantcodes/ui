@@ -43,7 +43,7 @@ import { GrantCodesButton } from '@grantcodes/ui/components/button/button.js';
 <GrantCodesButton href="/about">About</GrantCodesButton>
 ```
 
-A lowercase `<grantcodes-button>` tag is ordinary custom-element markup; importing a constructor does not turn it into an Astro renderer component. Do not attach Astro hydration directives to lowercase tags.
+A lowercase `<grantcodes-button>` tag is ordinary custom-element markup; importing a constructor or register file does not turn it into an Astro renderer component, and the renderer never server-renders it. Do not attach Astro hydration directives to lowercase tags.
 
 | Choice | When |
 | --- | --- |
