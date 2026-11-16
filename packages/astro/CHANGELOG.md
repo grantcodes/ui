@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.1](https://github.com/grantcodes/ui/compare/astro-v1.3.0...astro-v1.3.1) (2026-11-16)
+
+
+### Bug Fixes
+
+* **astro:** stop server-rendering lowercase custom-element tags ([5b581c9](https://github.com/grantcodes/ui/commit/5b581c954379ebd3b42adcc1a723e4263264774d))
+* **astro:** stop server-rendering lowercase custom-element tags ([d90f84e](https://github.com/grantcodes/ui/commit/d90f84e0751272e9f465f0243fac57d770f75eee))
+
 ## [1.3.0](https://github.com/grantcodes/ui/compare/astro-v1.2.0...astro-v1.3.0) (2026-11-09)
 
 
