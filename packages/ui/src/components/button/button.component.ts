@@ -1,4 +1,4 @@
-import { html, LitElement, nothing, type PropertyValues } from 'lit';
+import { html, LitElement, nothing } from 'lit';
 import focusRingStyles from '../../lib/styles/focus-ring.css' with { type: 'css' };
 import buttonStyles from './button.css' with { type: 'css' };
 
@@ -61,15 +61,6 @@ export class GrantCodesButton extends LitElement {
     this.disabled = false;
   }
 
-  updated(changedProperties: PropertyValues) {
-    super.updated(changedProperties);
-    if (this.internals) {
-      if (changedProperties.has('name') || changedProperties.has('value')) {
-        this.internals.setFormValue(this.name ? this.value : null);
-      }
-    }
-  }
-
   connectedCallback() {
     super.connectedCallback();
     this.addEventListener('click', this._handleFormClick);
@@ -88,7 +79,14 @@ export class GrantCodesButton extends LitElement {
 
     const t = this.type.toLowerCase();
     if (t === 'submit') {
-      this.internals.form.requestSubmit();
+      // Like a native submitter, name/value joins only the submission this button starts;
+      // requestSubmit() builds the form data synchronously.
+      this.internals.setFormValue(this.name ? this.value : null);
+      try {
+        this.internals.form.requestSubmit();
+      } finally {
+        this.internals.setFormValue(null);
+      }
     } else if (t === 'reset') {
       this.internals.form.reset();
     }

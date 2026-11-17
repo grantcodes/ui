@@ -153,6 +153,7 @@ describe('Form Field Component', () => {
 
     element.error = 'Invalid email';
     element.help = 'Use your work email';
+    input.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
     await element.updateComplete;
 
     const describedBy = input.getAttribute('aria-describedby');
@@ -171,6 +172,8 @@ describe('Form Field Component', () => {
     await element.updateComplete;
 
     const input = element.querySelector('input');
+    input.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
+    await element.updateComplete;
     const label = element.querySelector(`#${element.id}-label`);
     const descriptions = input.getAttribute('aria-describedby').split(' ');
 
@@ -225,7 +228,9 @@ describe('Form Field Component', () => {
     await element.updateComplete;
 
     const input = element.querySelector('input');
-    assert.ok(input.getAttribute('aria-describedby'), 'Error should be described initially');
+    input.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
+    await element.updateComplete;
+    assert.ok(input.getAttribute('aria-describedby'), 'Shown error should be described');
 
     element.error = undefined;
     await element.updateComplete;
@@ -248,6 +253,7 @@ describe('Form Field Component', () => {
     assert.strictEqual(input.hasAttribute('aria-invalid'), false, 'No error, no aria-invalid');
 
     element.error = 'Invalid email';
+    input.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
     await element.updateComplete;
     assert.strictEqual(input.getAttribute('aria-invalid'), 'true', 'Error sets aria-invalid');
 
@@ -268,10 +274,14 @@ describe('Form Field Component', () => {
     assert.ok(error, 'Error text should be rendered');
     assert.strictEqual(error.textContent.trim(), 'Invalid email', 'The "Error: " prefix is gone');
     assert.ok(error.hasAttribute('hidden'), 'Untouched control must not show the error yet');
+    const input = element.querySelector('input');
+    assert.strictEqual(input.hasAttribute('aria-invalid'), false, 'A hidden error is not announced');
+    assert.strictEqual(input.hasAttribute('aria-describedby'), false, 'A hidden error describes nothing');
+    assert.strictEqual(element.querySelector(`#${element.errorId}`), null);
 
     // happy-dom cannot put a control into :user-invalid, so the state is stubbed.
-    const input = element.querySelector('input');
-    input.matches = (selector) => selector === ':user-invalid';
+    const matches = input.matches.bind(input);
+    input.matches = (selector: string) => selector === ':user-invalid' || matches(selector);
     input.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
     await element.updateComplete;
 
@@ -280,6 +290,8 @@ describe('Form Field Component', () => {
       false,
       'Error should appear once the control is user-invalid',
     );
+    assert.strictEqual(input.getAttribute('aria-invalid'), 'true');
+    assert.strictEqual(input.getAttribute('aria-describedby'), element.errorId);
   });
 
   it('should show the error when there is no control to validate', async () => {

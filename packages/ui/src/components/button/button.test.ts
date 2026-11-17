@@ -314,6 +314,24 @@ describe('FACE Infrastructure', () => {
     assert.strictEqual(threw, false, 'Clicking disabled button should not throw');
   });
 
+  it('should submit its name and value only with the submission it starts', async () => {
+    element = await fixture('grantcodes-button', { type: 'submit', name: 'action', value: 'delete' });
+    // happy-dom has no ElementInternals, so the form-association surface is stubbed.
+    const values: (string | null)[] = [];
+    let valueAtSubmit: string | null | undefined;
+    element.internals = {
+      form: { requestSubmit: () => (valueAtSubmit = values.at(-1)) },
+      setFormValue: (value: string | null) => values.push(value),
+    };
+    await element.updateComplete;
+    assert.deepStrictEqual(values, [], 'Not part of the form data until it submits');
+
+    element.shadowRoot.querySelector('button').click();
+
+    assert.strictEqual(valueAtSubmit, 'delete', 'Its value is in the submission it starts');
+    assert.strictEqual(values.at(-1), null, 'Other submissions do not include it');
+  });
+
   it("should keep internal button as type='button' when host type is reset", async () => {
     element = await fixture('grantcodes-button', { type: 'reset' });
 

@@ -31,6 +31,7 @@ import formFieldStyles from './form-field.css' with { type: 'css' };
  * See README.md in this directory for every variant.
  */
 export class GrantCodesFormField extends LitElement {
+  declare _errorShown: boolean;
   declare _touched: boolean;
   declare direction: string;
   declare error: string | undefined;
@@ -73,6 +74,7 @@ export class GrantCodesFormField extends LitElement {
     this._revalidate = this._revalidate.bind(this);
     this._syncGroupState = this._syncGroupState.bind(this);
     this._touched = false;
+    this._errorShown = false;
   }
 
   connectedCallback() {
@@ -123,7 +125,7 @@ export class GrantCodesFormField extends LitElement {
 
   get ariaDescribedBy() {
     const ids = [];
-    if (this.error) {
+    if (this.showError) {
       ids.push(this.errorId);
     }
     if (this.help) {
@@ -148,11 +150,14 @@ export class GrantCodesFormField extends LitElement {
   }
 
   updated(changedProperties: PropertyValues) {
+    const errorShown = this.showError;
     if (
       changedProperties.has('label') ||
       changedProperties.has('error') ||
-      changedProperties.has('help')
+      changedProperties.has('help') ||
+      errorShown !== this._errorShown
     ) {
+      this._errorShown = errorShown;
       this.syncControlAria();
     }
   }
@@ -188,7 +193,8 @@ export class GrantCodesFormField extends LitElement {
 
     let previous: HTMLElement = label;
     const descriptions: [string, string | undefined][] = [
-      [this.errorId, this.error],
+      // A hidden error stays out of the accessibility tree too.
+      [this.errorId, this.showError ? this.error : undefined],
       [this.helpId, this.help],
     ];
     for (const [id, text] of descriptions) {
@@ -228,7 +234,7 @@ export class GrantCodesFormField extends LitElement {
       input.removeAttribute('aria-describedby');
     }
 
-    if (this.error) {
+    if (this.showError) {
       input.setAttribute('aria-invalid', 'true');
     } else {
       input.removeAttribute('aria-invalid');

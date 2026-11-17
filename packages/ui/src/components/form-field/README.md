@@ -120,12 +120,12 @@ field.error = 'Enter a valid email address.';
 The component writes the ARIA state onto its direct control and preserves consumer-supplied descriptions:
 
 - A native label in the control's DOM tree names the control.
-- `aria-describedby` keeps consumer IDs and adds `<id>-error` and/or `<id>-help` while those props are set.
-- `aria-invalid="true"` is set as soon as `error` is set, and removed when it is cleared.
+- `aria-describedby` keeps consumer IDs and adds `<id>-help` while `help` is set, and `<id>-error` while the error shows.
+- `aria-invalid="true"` is set while the error shows, and removed when it is hidden or cleared.
 
 The error message itself is not revealed immediately: it stays `hidden` until the control has been
 interacted with (an `input`, `blur` or `invalid` event) or reports `:user-invalid`, so a field does not
-shout at the user before they have typed anything. A field with no control shows the error straight
+shout at the user before they have typed anything; until then screen readers do not hear it either. A field with no control shows the error straight
 away. In a grouped field the error appears once any nested control is touched.
 
 ## Label clicks

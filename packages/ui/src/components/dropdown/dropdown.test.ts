@@ -112,6 +112,16 @@ describe('Dropdown Component', () => {
     lastItem.dispatchEvent(new window.KeyboardEvent('keydown', { bubbles: true, key: 'ArrowDown' }));
 
     assert.strictEqual(document.activeElement, firstItem, 'ArrowDown should wrap past disabled items');
+
+    const altArrow = new window.KeyboardEvent('keydown', {
+      bubbles: true,
+      cancelable: true,
+      key: 'ArrowDown',
+      altKey: true,
+    });
+    firstItem.dispatchEvent(altArrow);
+    assert.strictEqual(document.activeElement, firstItem, 'Alt+ArrowDown is left to the browser');
+    assert.strictEqual(altArrow.defaultPrevented, false);
   });
 
   it('should activate items with Enter and restore trigger focus on Escape', async () => {

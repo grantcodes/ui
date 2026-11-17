@@ -3,6 +3,9 @@ import dropdownStyles from './dropdown.css' with { type: 'css' };
 
 const CONTROL_SELECTOR = 'button, a, input, select, textarea';
 
+// Alt+Arrow and friends belong to the browser (history, text selection).
+const hasModifier = (e: KeyboardEvent) => e.altKey || e.ctrlKey || e.metaKey || e.shiftKey;
+
 export class GrantCodesDropdown extends LitElement {
   declare _triggerElement: HTMLElement | null;
   declare open: boolean;
@@ -94,7 +97,7 @@ export class GrantCodesDropdown extends LitElement {
   _handleTriggerKeydown(e: KeyboardEvent) {
     const trigger = this._triggerElement;
     if (!trigger || !e.composedPath().includes(trigger)) return;
-    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+    if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && !hasModifier(e)) {
       e.preventDefault();
       this.open = true;
       requestAnimationFrame(() => {
@@ -113,6 +116,7 @@ export class GrantCodesDropdown extends LitElement {
       this._triggerElement?.focus();
       return;
     }
+    if (hasModifier(e)) return;
 
     const items = this._getMenuItems();
     const currentItem = e.composedPath().find((node) => node instanceof GrantCodesDropdownItem);

@@ -84,6 +84,8 @@ export class GrantCodesTabs extends LitElement {
   }
 
   handleTabKeyDown(e: KeyboardEvent) {
+    // Alt+Arrow and friends belong to the browser (history, text selection).
+    if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
     if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
       e.preventDefault();
       const tabs = this.tabs;

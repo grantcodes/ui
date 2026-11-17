@@ -2,6 +2,7 @@ import { strict as assert } from 'node:assert';
 import { afterEach, describe, it } from 'node:test';
 import { cleanup, click, fixture } from '../../test-utils/index.js';
 import './toast.js';
+import type { GrantCodesToast } from './toast.js';
 
 describe('Toast Component', () => {
   let element: any;
@@ -174,6 +175,27 @@ describe('Toast Component', () => {
     assert.strictEqual(element.isConnected, false, 'No exit animation to wait for');
   });
 
+  it('should send focus back where it came from when a focused toast closes', async () => {
+    const outside = document.createElement('button');
+    document.body.appendChild(outside);
+    element = await fixture('grantcodes-toast', { duration: 0 });
+
+    const toast = element.shadowRoot.querySelector('.toast');
+    toast.dispatchEvent(
+      new window.FocusEvent('focusin', { bubbles: true, composed: true, relatedTarget: outside }),
+    );
+    const close = element.shadowRoot.querySelector('.toast__close');
+    await close.updateComplete;
+    close.shadowRoot.querySelector('button').focus();
+    assert.ok(element.contains(document.activeElement), 'Focus starts inside the toast');
+
+    click(close);
+    await new Promise((resolve) => setTimeout(resolve, 20));
+
+    assert.strictEqual(document.activeElement, outside, 'Focus must not fall to the page');
+    outside.remove();
+  });
+
   it('should wait for the exit transition before removing the toast', async () => {
     element = await fixture('grantcodes-toast', { dismissible: true, duration: 0 });
     let finish!: () => void;
@@ -219,6 +241,33 @@ describe('Toast Container Component', () => {
 
     const container = element.shadowRoot.querySelector('.toast-container--bottom-left');
     assert.ok(container, 'Container should have bottom-left position class');
+  });
+
+  it('should announce new toasts through live regions it renders up front', async () => {
+    element = await fixture('grantcodes-toast-container');
+    const status = element.shadowRoot.querySelector('.toast-announcer[role="status"]');
+    const alert = element.shadowRoot.querySelector('.toast-announcer[role="alert"]');
+    assert.ok(status && alert, 'Both regions exist before any toast');
+
+    const saved = document.createElement('grantcodes-toast') as GrantCodesToast;
+    saved.title = 'Saved';
+    saved.duration = 0;
+    saved.textContent = 'Your changes are saved.';
+    const failed = document.createElement('grantcodes-toast') as GrantCodesToast;
+    failed.variant = 'error';
+    failed.duration = 0;
+    failed.textContent = 'Upload failed.';
+    element.append(saved, failed);
+    await saved.updateComplete;
+    await new Promise((resolve) => setTimeout(resolve, 150));
+
+    assert.strictEqual(status.textContent, 'Saved Your changes are saved.');
+    assert.strictEqual(alert.textContent, 'Upload failed.');
+    assert.strictEqual(
+      saved.shadowRoot?.querySelector('.toast')?.hasAttribute('role'),
+      false,
+      'A toast in a container must not announce itself as well',
+    );
   });
 
   it('should have slot for toast items', async () => {

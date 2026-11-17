@@ -6,6 +6,9 @@ import noticeStyles from '../notice/notice.css' with { type: 'css' };
 import toastStyles from './toast.css' with { type: 'css' };
 import '../button/button.js';
 
+// A live region created together with its text is often not read, so the container's regions exist first.
+const ANNOUNCE_DELAY = 100;
+
 const ICONS: Record<string, string> = {
   info: Info,
   success: CheckCircle2,
@@ -16,6 +19,7 @@ const ICONS: Record<string, string> = {
 export class GrantCodesToast extends LitElement {
   declare _dismissTimeout: ReturnType<typeof setTimeout> | null;
   declare _removing: boolean;
+  declare _returnFocus: HTMLElement | null;
   declare dismissible: boolean;
   declare duration: number;
   declare position: string;
@@ -77,11 +81,21 @@ export class GrantCodesToast extends LitElement {
      * @type {boolean}
      */
     this._removing = false;
+
+    this._returnFocus = null;
   }
 
   connectedCallback() {
     super.connectedCallback();
     this._startDismissTimer();
+  }
+
+  _handleFocusIn(event: FocusEvent) {
+    this._pauseDismiss();
+    const from = event.relatedTarget;
+    if (from instanceof HTMLElement && !this.contains(from) && !this.renderRoot.contains(from)) {
+      this._returnFocus = from;
+    }
   }
 
   disconnectedCallback() {
@@ -116,6 +130,10 @@ export class GrantCodesToast extends LitElement {
     const frame = this.renderRoot.querySelector<HTMLElement>('.toast-frame');
     const animations = frame?.getAnimations?.({ subtree: true }) ?? [];
     await Promise.allSettled(animations.map((animation) => animation.finished));
+    // Removing the focused toast would drop focus to the page; send it back where it came from.
+    if (this.contains(document.activeElement) && this._returnFocus?.isConnected) {
+      this._returnFocus.focus();
+    }
     this.dispatchEvent(
       new CustomEvent('dismiss', {
         bubbles: true,
@@ -143,6 +161,8 @@ export class GrantCodesToast extends LitElement {
 
   render() {
     const icon = ICONS[this.variant];
+    const announcedByContainer = this.parentElement?.localName === 'grantcodes-toast-container';
+    const role = this.variant === 'error' ? 'alert' : 'status';
     const classes = classMap({
       notice: true,
       [`notice--${this.variant}`]: true,
@@ -156,10 +176,10 @@ export class GrantCodesToast extends LitElement {
 			<div class="toast-frame__inner">
 			<div
 				class=${classes}
-				role=${this.variant === 'error' ? 'alert' : 'status'}
+				role=${announcedByContainer ? nothing : role}
 				@mouseenter=${this._pauseDismiss}
 				@mouseleave=${this._resumeDismiss}
-				@focusin=${this._pauseDismiss}
+				@focusin=${this._handleFocusIn}
 				@focusout=${this._resumeDismiss}
 			>
 				<grantcodes-icon class="toast__icon">${unsafeHTML(icon)}</grantcodes-icon>
@@ -179,10 +199,16 @@ export class GrantCodesToast extends LitElement {
   }
 }
 
+type LiveRole = 'alert' | 'status';
+
 /**
- * Toast container for managing multiple toasts
+ * Toast container for managing multiple toasts. Announces each new toast through live regions it
+ * renders up front: errors assertively, other variants politely.
  */
 export class GrantCodesToastContainer extends LitElement {
+  declare _announced: WeakSet<Element>;
+  declare _announceTimeout: ReturnType<typeof setTimeout> | null;
+  declare _pending: Record<LiveRole, string[]>;
   declare position: string;
 
   static styles = [toastStyles];
@@ -199,6 +225,41 @@ export class GrantCodesToastContainer extends LitElement {
      * @type {'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right'}
      */
     this.position = 'top-right';
+
+    this._announced = new WeakSet();
+    this._announceTimeout = null;
+    this._pending = { alert: [], status: [] };
+  }
+
+  disconnectedCallback() {
+    clearTimeout(this._announceTimeout ?? undefined);
+    this._announceTimeout = null;
+    super.disconnectedCallback();
+  }
+
+  _handleSlotChange(event: Event) {
+    const slot = event.target as HTMLSlotElement;
+    for (const toast of slot.assignedElements()) {
+      if (!(toast instanceof GrantCodesToast) || this._announced.has(toast)) continue;
+      this._announced.add(toast);
+      const text = `${toast.title} ${toast.textContent ?? ''}`.replace(/\s+/g, ' ').trim();
+      if (text) this._pending[toast.variant === 'error' ? 'alert' : 'status'].push(text);
+    }
+    if (this._announceTimeout !== null) return;
+    if (!this._pending.alert.length && !this._pending.status.length) return;
+
+    // Clearing first lets a repeat of the previous message be read again.
+    for (const region of this.renderRoot.querySelectorAll('.toast-announcer')) {
+      region.textContent = '';
+    }
+    this._announceTimeout = setTimeout(() => {
+      this._announceTimeout = null;
+      for (const role of ['alert', 'status'] as const) {
+        const region = this.renderRoot.querySelector(`.toast-announcer[role="${role}"]`);
+        if (region) region.textContent = this._pending[role].join(' ');
+        this._pending[role] = [];
+      }
+    }, ANNOUNCE_DELAY);
   }
 
   render() {
@@ -209,8 +270,10 @@ export class GrantCodesToastContainer extends LitElement {
 
     return html`
 			<div class=${classes}>
-				<slot></slot>
+				<slot @slotchange=${this._handleSlotChange}></slot>
 			</div>
+			<div class="toast-announcer" role="alert"></div>
+			<div class="toast-announcer" role="status"></div>
 		`;
   }
 }

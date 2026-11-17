@@ -207,6 +207,15 @@ describe('Tabs Component', () => {
       focused = true;
     };
     firstButton.focus();
+    const altArrowRight = new window.KeyboardEvent('keydown', {
+      bubbles: true,
+      composed: true,
+      key: 'ArrowRight',
+      altKey: true,
+    });
+    firstButton.dispatchEvent(altArrowRight);
+    assert.strictEqual(focused, false, 'Alt+ArrowRight is left to the browser');
+
     const arrowRight = new Event('keydown', { bubbles: true, composed: true });
     Object.defineProperty(arrowRight, 'key', { value: 'ArrowRight' });
     firstButton.dispatchEvent(arrowRight);
