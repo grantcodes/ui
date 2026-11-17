@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.2](https://github.com/grantcodes/ui/compare/astro-v1.3.1...astro-v1.3.2) (2026-11-17)
+
+
+### Bug Fixes
+
+* **astro:** union shared prop types in global IntrinsicAttributes ([49ccc40](https://github.com/grantcodes/ui/commit/49ccc40e410793f4f72c17a2016e1c2a665d195f))
+* **astro:** union shared prop types in global IntrinsicAttributes ([469982e](https://github.com/grantcodes/ui/commit/469982e06dfb0662311922aec91591ffff89f1f5)), closes [#231](https://github.com/grantcodes/ui/issues/231)
+
 ## [1.3.1](https://github.com/grantcodes/ui/compare/astro-v1.3.0...astro-v1.3.1) (2026-11-16)
 
 
