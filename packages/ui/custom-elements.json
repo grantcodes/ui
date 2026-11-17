@@ -3284,6 +3284,14 @@
             },
             {
               "kind": "field",
+              "name": "_errorShown",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
               "name": "_labelId",
               "readonly": true
             },
@@ -7453,6 +7461,18 @@
             },
             {
               "kind": "method",
+              "name": "_handleFocusIn",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "FocusEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "_pauseDismiss"
             },
             {
@@ -7473,6 +7493,14 @@
             {
               "kind": "method",
               "name": "_resumeDismiss"
+            },
+            {
+              "kind": "field",
+              "name": "_returnFocus",
+              "type": {
+                "text": "HTMLElement | null"
+              },
+              "default": "null"
             },
             {
               "kind": "method",
@@ -7607,9 +7635,45 @@
         },
         {
           "kind": "class",
-          "description": "Toast container for managing multiple toasts",
+          "description": "Toast container for managing multiple toasts. Announces each new toast through live regions it\nrenders up front: errors assertively, other variants politely.",
           "name": "GrantCodesToastContainer",
           "members": [
+            {
+              "kind": "field",
+              "name": "_announced",
+              "type": {
+                "text": "WeakSet<Element>"
+              },
+              "default": "new WeakSet()"
+            },
+            {
+              "kind": "field",
+              "name": "_announceTimeout",
+              "type": {
+                "text": "ReturnType<typeof setTimeout> | null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "method",
+              "name": "_handleSlotChange",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "_pending",
+              "type": {
+                "text": "Record<LiveRole, string[]>"
+              },
+              "default": "{ alert: [], status: [] }"
+            },
             {
               "kind": "field",
               "name": "position",
