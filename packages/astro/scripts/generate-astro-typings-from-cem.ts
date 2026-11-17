@@ -331,13 +331,18 @@ function main(): void {
   // ---- Generate output ----
 
   // Collect ALL unique props across all components for the IntrinsicAttributes
-  // augmentation (see rationale below).
-  const allGlobalProps = new Map<string, string>();
+  // augmentation (see rationale below). A prop typed differently by several
+  // components gets the union of their types, otherwise the intersection with
+  // each component's own type rejects valid values.
+  const globalPropTypes = new Map<string, Set<string>>();
+  const addGlobalProp = (key: string, tsType: string) => {
+    const types = globalPropTypes.get(key) ?? new Set<string>();
+    for (const member of tsType.split("|")) types.add(member.trim());
+    globalPropTypes.set(key, types);
+  };
   for (const entry of entries) {
     for (const [key, tsType] of Object.entries(entry.props)) {
-      if (!allGlobalProps.has(key)) {
-        allGlobalProps.set(key, tsType);
-      }
+      addGlobalProp(key, tsType);
     }
   }
   // Add common HTML global attributes that users pass in Astro templates
@@ -354,9 +359,7 @@ function main(): void {
     tabindex: "number | string",
   };
   for (const [key, tsType] of Object.entries(htmlGlobals)) {
-    if (!allGlobalProps.has(key)) {
-      allGlobalProps.set(key, tsType);
-    }
+    addGlobalProp(key, tsType);
   }
 
   const lines: string[] = [
@@ -381,8 +384,8 @@ function main(): void {
     '  interface IntrinsicAttributes {',
   ];
   // Emit all known component props into IntrinsicAttributes
-  for (const [key, tsType] of [...allGlobalProps.entries()].sort()) {
-    lines.push(`    ${escapePropName(key)}?: ${tsType};`);
+  for (const [key, types] of [...globalPropTypes.entries()].sort()) {
+    lines.push(`    ${escapePropName(key)}?: ${[...types].join(" | ")};`);
   }
   lines.push("  }");
   lines.push("}");
