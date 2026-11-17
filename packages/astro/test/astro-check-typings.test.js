@@ -142,6 +142,8 @@ describe("@grantcodes/astro astro check typings", () => {
           "  <body>",
           // Button with valid props
           '    <GrantCodesButton disabled href="/test">Works</GrantCodesButton>',
+          // variant is typed differently per component (#231)
+          '    <GrantCodesButton variant="outline">Outline</GrantCodesButton>',
           // Pagination with camelCase property-style props (constructor DX)
           "    <GrantCodesPagination previousHref='/prev' nextHref='/next' page={1} pages={5} />",
           // AccordionItem with valid props
