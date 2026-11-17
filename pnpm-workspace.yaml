@@ -6,6 +6,10 @@ minimumReleaseAge: 1440
 blockExoticSubdeps: true
 trustPolicy: no-downgrade
 
+# GHSA-px8p-9vwx-vf98: satori@0.63.2 pins fflate@0.7.3.
+overrides:
+  "fflate@<0.7.5": ^0.7.5
+
 allowBuilds:
   esbuild: true
   rs-module-lexer: true

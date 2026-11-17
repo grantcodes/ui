@@ -9,6 +9,8 @@ import { envDefaults } from './integrations/env-defaults.ts';
 export default defineConfig({
   site: 'https://grant.codes',
   compressHTML: true,
+  // Starlight forced this before 0.43; keep it so scoped style specificity is unchanged.
+  scopedStyleStrategy: 'where',
   output: 'static',
   vite: {
     server: {
