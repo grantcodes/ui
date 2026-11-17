@@ -19,7 +19,7 @@ declare namespace astroHTML.JSX {
   interface IntrinsicAttributes {
     action?: string;
     active?: boolean;
-    align?: string;
+    align?: string | 'left' | 'center';
     alt?: string;
     avatar?: string;
     button?: string;
@@ -54,7 +54,7 @@ declare namespace astroHTML.JSX {
     fullscreenOnDrag?: boolean;
     hasFooter?: boolean;
     hasHeader?: boolean;
-    height?: number;
+    height?: number | string;
     help?: unknown;
     hidden?: boolean | string;
     "hours-label"?: string;
@@ -83,7 +83,7 @@ declare namespace astroHTML.JSX {
     pages?: number;
     "past-message"?: string;
     placeholder?: string;
-    placement?: string;
+    placement?: string | unknown;
     position?: 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
     "previous-href"?: string;
     previousHref?: string;
@@ -97,7 +97,7 @@ declare namespace astroHTML.JSX {
     segments?: unknown[];
     separator?: string;
     "show-seconds"?: boolean;
-    size?: string;
+    size?: string | 'sm' | 'md' | 'lg';
     slot?: string;
     src?: string;
     sticky?: boolean;
@@ -113,7 +113,7 @@ declare namespace astroHTML.JSX {
     transparent?: boolean;
     type?: string;
     value?: string;
-    variant?: 'primary' | 'success' | 'warning' | 'error' | 'info' | 'neutral';
+    variant?: 'primary' | 'success' | 'warning' | 'error' | 'info' | 'neutral' | 'joined' | 'spaced' | 'solid' | 'outline' | 'ghost' | string;
     width?: number;
     zoom?: number;
   }
