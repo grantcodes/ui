@@ -1,5 +1,16 @@
 # Changelog
 
+## [4.1.1](https://github.com/grantcodes/ui/compare/ui-v4.1.0...ui-v4.1.1) (2026-11-17)
+
+
+### Bug Fixes
+
+* **ui:** accessibility fixes from a ui-sdk behaviour review ([cee3d07](https://github.com/grantcodes/ui/commit/cee3d07832724f61bc1ab24fdba55d7e3abc29ad))
+* **ui:** announce toasts reliably and keep focus when one closes ([6fd3cf6](https://github.com/grantcodes/ui/commit/6fd3cf64fa72a39b19bcf77846eedc46d50ae25c))
+* **ui:** keep form-field errors silent until they show ([06b029a](https://github.com/grantcodes/ui/commit/06b029a94d280615f9d11632e7d3a95dff8c3787))
+* **ui:** leave modified arrow keys to the browser in tabs and dropdown ([8a7b875](https://github.com/grantcodes/ui/commit/8a7b875111c7522e42e1d9bb50eeace3eb931866))
+* **ui:** submit a button's name/value only when it submits the form ([2360958](https://github.com/grantcodes/ui/commit/2360958ff5352623da320d4da764f679636a6bc5))
+
 ## [4.1.0](https://github.com/grantcodes/ui/compare/ui-v4.0.0...ui-v4.1.0) (2026-11-09)
 
 
