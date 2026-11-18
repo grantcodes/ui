@@ -1,5 +1,14 @@
 # Changelog
 
+## [4.1.2](https://github.com/grantcodes/ui/compare/ui-v4.1.1...ui-v4.1.2) (2026-11-18)
+
+
+### Bug Fixes
+
+* **ui:** cap media width in the reset ([40ecd5b](https://github.com/grantcodes/ui/commit/40ecd5b95d72da0dc8e5c5a67e41983cc0a81c28))
+* **ui:** cap media width in the reset and render grantcodes-dialog under SSR ([f0392c0](https://github.com/grantcodes/ui/commit/f0392c0affb8f46c2d921dd43c1da5d3d953cbb9))
+* **ui:** render grantcodes-dialog under Lit SSR ([0f62f8e](https://github.com/grantcodes/ui/commit/0f62f8e6f0ac4d0f7e44199ea0668e427a2735b5))
+
 ## [4.1.1](https://github.com/grantcodes/ui/compare/ui-v4.1.0...ui-v4.1.1) (2026-11-17)
 
 
