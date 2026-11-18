@@ -70,6 +70,7 @@ export class GrantCodesDialog extends LitElement {
   }
 
   updated(changedProperties: PropertyValues) {
+    this._syncAccessibleName();
     if (!changedProperties.has('open') || !this.dialog) return;
     if (this.open && !this.dialog.open) this.dialog.showModal();
     else if (!this.open && this.dialog.open) this.dialog.close();
@@ -78,6 +79,18 @@ export class GrantCodesDialog extends LitElement {
     this.dispatchEvent(
       new CustomEvent('toggle', { detail: { open: this.open }, bubbles: true, composed: true })
     );
+  }
+
+  // Set after render, not bound in render(): SSR has no light DOM to read, and hydration does not
+  // commit attribute bindings, so a bound name would never reach a server-rendered dialog.
+  _syncAccessibleName() {
+    const headerLabel = [...this.querySelectorAll('[slot="header"]')]
+      .map((element) => element.textContent)
+      .join(' ')
+      .trim();
+    const label = this.getAttribute('aria-label') || headerLabel;
+    if (label) this.dialog?.setAttribute('aria-label', label);
+    else this.dialog?.removeAttribute('aria-label');
   }
 
   // Esc and light-dismiss close the native dialog without touching `open`.
@@ -103,15 +116,9 @@ export class GrantCodesDialog extends LitElement {
   }
 
   render() {
-    const headerLabel = [...this.querySelectorAll('[slot="header"]')]
-      .map((element) => element.textContent)
-      .join(' ')
-      .trim();
-
     return html`
-	      <dialog
+      <dialog
         class="dialog"
-        aria-label=${this.getAttribute('aria-label') || headerLabel || nothing}
         closedby=${supportsClosedBy && this.dismissible ? 'any' : nothing}
         @close=${this._handleNativeClose}
       >

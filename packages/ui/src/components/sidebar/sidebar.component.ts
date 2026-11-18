@@ -120,7 +120,8 @@ export class GrantCodesSidebar extends LitElement {
   }
 
   _closeDialog(restoreFocus: boolean) {
-    const dialog = this.renderRoot.querySelector<HTMLDialogElement>('dialog');
+    // Lit SSR runs willUpdate without a render root.
+    const dialog = this.renderRoot?.querySelector<HTMLDialogElement>('dialog');
     if (!dialog?.open) return;
     if (!restoreFocus) this.focus({ preventScroll: true });
     dialog.close();
