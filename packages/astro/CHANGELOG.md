@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.3](https://github.com/grantcodes/ui/compare/astro-v1.3.2...astro-v1.3.3) (2026-11-18)
+
+
+### Bug Fixes
+
+* **ui:** cap media width in the reset and render grantcodes-dialog under SSR ([f0392c0](https://github.com/grantcodes/ui/commit/f0392c0affb8f46c2d921dd43c1da5d3d953cbb9))
+
 ## [1.3.2](https://github.com/grantcodes/ui/compare/astro-v1.3.1...astro-v1.3.2) (2026-11-17)
 
 
