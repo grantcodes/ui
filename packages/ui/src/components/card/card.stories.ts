@@ -36,6 +36,15 @@ export default meta;
 
 export const Card = {};
 
+export const CardWithWideImage = {
+  render: () =>
+    html`<grantcodes-card style="max-inline-size: 320px;">
+      <h3 slot="header">Card with a wide image</h3>
+      <img src="https://placehold.co/1200x400" width="1200" height="400" alt="" />
+      <p>The reset caps the image at the card's width and keeps its aspect ratio.</p>
+    </grantcodes-card>`,
+};
+
 export const CardInLink = {
   render: () =>
     html`<a

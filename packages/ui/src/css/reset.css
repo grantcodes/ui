@@ -105,6 +105,15 @@ pre {
   vertical-align: middle;
 }
 
+:where(img, picture, video, canvas, svg) {
+  max-inline-size: 100%;
+}
+
+/* Keeps the intrinsic ratio when width/height attributes are set and the width is capped. */
+:where(img, video, canvas) {
+  block-size: auto;
+}
+
 :where(iframe) {
   border-style: none;
 }

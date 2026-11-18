@@ -2328,6 +2328,10 @@
               "default": "new SlotPresenceController(this, 'header', (present) => { this._hasHeader = present; })"
             },
             {
+              "kind": "method",
+              "name": "_syncAccessibleName"
+            },
+            {
               "kind": "field",
               "name": "dialog",
               "type": {

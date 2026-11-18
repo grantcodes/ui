@@ -136,7 +136,8 @@ export class GrantCodesFormField extends LitElement {
 
   /** Errors stay hidden until the field is interacted with or reports :user-invalid. */
   get showError() {
-    if (!this.error) return false;
+    // Lit SSR has no light DOM to inspect; an untouched field hides its error anyway.
+    if (!this.error || !this.children) return false;
     const controls = this.groupInput
       ? this.querySelectorAll('input, select, textarea')
       : this._controls;
