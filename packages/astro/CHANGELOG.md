@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.4](https://github.com/grantcodes/ui/compare/astro-v1.3.3...astro-v1.3.4) (2026-11-19)
+
+
+### Bug Fixes
+
+* **ui:** show avatar initials when the image fails to load ([9e844c0](https://github.com/grantcodes/ui/commit/9e844c04c0b2194fe09c9d98a612816ca523b848))
+* **ui:** show avatar initials when the image fails to load ([4e295c2](https://github.com/grantcodes/ui/commit/4e295c20510d115e7be0b93f22a325c329585fbc))
+
 ## [1.3.3](https://github.com/grantcodes/ui/compare/astro-v1.3.2...astro-v1.3.3) (2026-11-18)
 
 
