@@ -9,10 +9,11 @@
   display: block;
 }
 
+/* Initials and image share one cell: an unloaded or broken image leaves the initials visible. */
 .avatar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template: minmax(0, 1fr) / minmax(0, 1fr);
+  place-items: center;
   inline-size: var(--g-spacing-2xl);
   block-size: var(--g-spacing-2xl);
   border-radius: 50%;
@@ -33,11 +34,16 @@
   block-size: var(--g-spacing-3xl);
 }
 
+.avatar__initials,
+.avatar__image {
+  grid-area: 1 / 1;
+}
+
 .avatar__image {
   inline-size: 100%;
   block-size: 100%;
-  object-fit: cover;
-  object-position: center;
+  background-position: center;
+  background-size: cover;
 }
 
 .avatar__fallback {

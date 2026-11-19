@@ -15,7 +15,7 @@ import '@grantcodes/ui/components/person/person.js';
 </grantcodes-person>
 ```
 
-Avatar: src/name/alt/initials, size small/medium/large (medium default). No slots. Missing src uses initials derived from name; an image-load failure is not a documented fallback. Alt falls back to name/initials. Person: name, role (job text, not an ARIA role), company, avatar, alt, size; description slot. Supply meaningful identification and avoid confusing the job-text role property with accessibility semantics.
+Avatar: src/name/alt/initials, size small/medium/large (medium default). No slots. Initials (from `initials` or name) sit under the image as a CSS background, so a missing, loading or failed src shows them without JS; the image loads eagerly, and its inline `style` needs `style-src 'unsafe-inline'` under a strict CSP. The accessible name (alt, then name/initials) is on the wrapper (`role="img"`). Person: name, role (job text, not an ARIA role), company, avatar, alt, size; description slot. Supply meaningful identification and avoid confusing the job-text role property with accessibility semantics.
 
 No declared parts. Avatar uses primary-200/900, spacing and typography tokens; Person uses `--g-color-content-subtle`, body typography and spacing.
 
