@@ -48,6 +48,14 @@ describe('@grantcodes/ui components under Lit SSR', () => {
     assert.match(html, /<h2 slot="header">Review changes<\/h2>/);
   });
 
+  it('renders grantcodes-avatar initials under its image without JS', async () => {
+    await register('grantcodes-avatar', 'components/avatar/avatar.js');
+    const { html } = await renderToStaticMarkup('grantcodes-avatar', { src: '/gone.jpg', name: 'Ada Lovelace' });
+    assert.match(html, /role="img"[^>]*aria-label="Ada Lovelace"/);
+    assert.match(html, /avatar__initials[^>]*>(<!--[^>]*-->)*AL/);
+    assert.match(html, /background-image: url\(&quot;\/gone\.jpg&quot;\)/);
+  });
+
   it('renders grantcodes-form-field with an error', async () => {
     await register('grantcodes-form-field', 'components/form-field/form-field.js');
     const { html } = await renderToStaticMarkup('grantcodes-form-field', { label: 'Email', error: 'Required' });

@@ -5,6 +5,7 @@ import './avatar.js';
 
 describe('Avatar Component', () => {
   let element: HTMLElement;
+  const query = (selector: string) => element.shadowRoot?.querySelector(selector) as HTMLElement;
 
   afterEach(() => {
     cleanup(element);
@@ -21,7 +22,7 @@ describe('Avatar Component', () => {
       name: 'John Doe',
     });
 
-    const initialsElement = element.shadowRoot.querySelector('.avatar__initials');
+    const initialsElement = query('.avatar__initials');
     assert.ok(initialsElement, 'Initials element should exist');
     assert.strictEqual(initialsElement.textContent, 'JD', 'Should display correct initials');
   });
@@ -31,7 +32,7 @@ describe('Avatar Component', () => {
       name: 'John',
     });
 
-    const initialsElement = element.shadowRoot.querySelector('.avatar__initials');
+    const initialsElement = query('.avatar__initials');
     assert.strictEqual(initialsElement.textContent, 'J', 'Should display single initial');
   });
 
@@ -41,10 +42,38 @@ describe('Avatar Component', () => {
       alt: 'User avatar',
     });
 
-    const imgElement = element.shadowRoot.querySelector('img');
-    assert.ok(imgElement, 'Image element should exist');
-    assert.strictEqual(imgElement.src, 'https://example.com/avatar.jpg');
-    assert.strictEqual(imgElement.alt, 'User avatar');
+    const image = query('.avatar__image');
+    assert.ok(image, 'Image element should exist');
+    assert.strictEqual(
+      image.getAttribute('style'),
+      'background-image: url("https://example.com/avatar.jpg")',
+    );
+  });
+
+  it('should keep the src inside the CSS url() string', async () => {
+    element = await fixture('grantcodes-avatar', {
+      src: 'https://example.com/a"b\\c\n);color:red',
+    });
+
+    assert.strictEqual(
+      query('.avatar__image').getAttribute('style'),
+      'background-image: url("https://example.com/a\\22 b\\5c c\\a );color:red")',
+    );
+  });
+
+  it('should keep the initials under the image as the load-failure fallback', async () => {
+    element = await fixture('grantcodes-avatar', {
+      src: 'https://example.com/avatar.jpg',
+      name: 'John Doe',
+    });
+
+    const initials = query('.avatar__initials');
+    assert.strictEqual(initials.textContent, 'JD');
+    assert.strictEqual(initials.getAttribute('aria-hidden'), 'true');
+    assert.ok(
+      !query('img, svg'),
+      'A failed <img> or SVG <image> paints a broken-image icon over the initials; a failed background image paints nothing',
+    );
   });
 
   it('should apply size variant', async () => {
@@ -52,7 +81,7 @@ describe('Avatar Component', () => {
       size: 'large',
     });
 
-    const avatarElement = element.shadowRoot.querySelector('.avatar');
+    const avatarElement = query('.avatar');
     assert.ok(avatarElement.classList.contains('avatar--large'), 'Should have large size class');
   });
 
@@ -61,7 +90,7 @@ describe('Avatar Component', () => {
 
     for (const size of sizes) {
       element = await fixture('grantcodes-avatar', { size });
-      const avatarElement = element.shadowRoot.querySelector('.avatar');
+      const avatarElement = query('.avatar');
       assert.ok(
         avatarElement.classList.contains(`avatar--${size}`),
         `Should have ${size} size class`,
@@ -75,55 +104,39 @@ describe('Avatar Component', () => {
       src: 'https://example.com/avatar.jpg',
     });
 
-    const img = element.shadowRoot.querySelector('img');
     assert.ok(
-      img.classList.contains('avatar__image'),
+      query('.avatar__image'),
       'Image must carry the class that sizes it to 100% of the avatar box',
-    );
-  });
-
-  it('should defer the avatar image and reserve its square box', async () => {
-    element = await fixture('grantcodes-avatar', {
-      src: 'https://example.com/avatar.jpg',
-      name: 'John Doe',
-    });
-
-    const img = element.shadowRoot.querySelector('img');
-    assert.strictEqual(img.getAttribute('loading'), 'lazy', 'Avatars are off the critical path');
-    assert.strictEqual(img.getAttribute('decoding'), 'async');
-    assert.ok(Number(img.getAttribute('width')) > 0, 'Width should be set to avoid CLS');
-    assert.strictEqual(
-      img.getAttribute('width'),
-      img.getAttribute('height'),
-      'Avatar images are square',
     );
   });
 
   it('should not invent alt text when nothing is known about the avatar', async () => {
     element = await fixture('grantcodes-avatar', { src: 'https://example.com/avatar.jpg' });
 
-    const img = element.shadowRoot.querySelector('img');
-    assert.strictEqual(img.getAttribute('alt'), '', 'An unknown avatar is decorative');
+    const avatar = query('.avatar');
+    assert.ok(!avatar.hasAttribute('role'), 'An unknown avatar is decorative');
+    assert.ok(!avatar.hasAttribute('aria-label'));
   });
 
-  it('should use the name as alt text without an " avatar" suffix', async () => {
+  it('should use the name as the accessible name without an " avatar" suffix', async () => {
     element = await fixture('grantcodes-avatar', {
       src: 'https://example.com/avatar.jpg',
       name: 'John Doe',
     });
 
-    const img = element.shadowRoot.querySelector('img');
-    assert.strictEqual(img.getAttribute('alt'), 'John Doe');
+    const avatar = query('.avatar');
+    assert.strictEqual(avatar.getAttribute('role'), 'img');
+    assert.strictEqual(avatar.getAttribute('aria-label'), 'John Doe');
   });
 
-  it('should prefer an explicit alt over the name', async () => {
+  it('should prefer an explicit alt over the name as the accessible name', async () => {
     element = await fixture('grantcodes-avatar', {
       src: 'https://example.com/avatar.jpg',
       name: 'John Doe',
       alt: 'Custom alt',
     });
 
-    const img = element.shadowRoot.querySelector('img');
-    assert.strictEqual(img.getAttribute('alt'), 'Custom alt');
+    const avatar = query('.avatar');
+    assert.strictEqual(avatar.getAttribute('aria-label'), 'Custom alt');
   });
 });

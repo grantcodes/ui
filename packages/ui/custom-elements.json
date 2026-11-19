@@ -512,7 +512,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Optional initials, used when there is no src set",
+              "description": "Optional initials, shown when there is no src or the image has not loaded",
               "default": "''",
               "attribute": "initials"
             },
@@ -565,7 +565,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Optional initials, used when there is no src set",
+              "description": "Optional initials, shown when there is no src or the image has not loaded",
               "default": "''",
               "fieldName": "initials"
             },

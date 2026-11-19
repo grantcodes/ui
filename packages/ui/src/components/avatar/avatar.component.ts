@@ -1,9 +1,6 @@
-import { LitElement } from 'lit';
+import { LitElement, nothing } from 'lit';
 import { html } from 'lit/static-html.js';
 import avatarStyles from './avatar.css' with { type: 'css' };
-
-// Mirrors the 3rem square in avatar.css (--g-spacing-2xl); the image fills that box.
-const AVATAR_SIZE = 48;
 
 export class GrantCodesAvatar extends LitElement {
   declare alt: string;
@@ -38,7 +35,7 @@ export class GrantCodesAvatar extends LitElement {
      */
     this.alt = '';
     /**
-     * Optional initials, used when there is no src set
+     * Optional initials, shown when there is no src or the image has not loaded
      */
     this.initials = '';
     /**
@@ -71,25 +68,28 @@ export class GrantCodesAvatar extends LitElement {
   /** @returns {import('lit').TemplateResult} */
   getImg() {
     if (this.src) {
-      return html`<img
-        src=${this.src}
-        alt=${this.getAlt()}
-        class="avatar__image"
-        width=${AVATAR_SIZE}
-        height=${AVATAR_SIZE}
-        loading="lazy"
-        decoding="async"
-      />`;
+      // A background image that fails to load paints nothing in every engine (an <img> or SVG
+      // <image> paints a broken-image icon), so the initials underneath show through without JS.
+      const url = this.src.replace(
+        /["\\\n\r\f]/g,
+        (char) => `\\${char.charCodeAt(0).toString(16)} `,
+      );
+      return html`<span class="avatar__image" style=${`background-image: url("${url}")`}></span>`;
     }
     return html``;
   }
 
   /** @returns {import('lit').TemplateResult} */
   render() {
-    const content = this.src
-      ? this.getImg()
-      : html`<span class="avatar__initials">${this.getInitials()}</span>`;
+    const label = this.getAlt();
     const sizeClass = this.size ? `avatar--${this.size}` : '';
-    return html` <div class="avatar ${sizeClass}">${content}</div> `;
+    return html`<div
+      class="avatar ${sizeClass}"
+      role=${label ? 'img' : nothing}
+      aria-label=${label || nothing}
+    >
+      <span class="avatar__initials" aria-hidden="true">${this.getInitials()}</span>
+      ${this.getImg()}
+    </div>`;
   }
 }
