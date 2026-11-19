@@ -2,6 +2,8 @@ import { LitElement, nothing } from 'lit';
 import { html } from 'lit/static-html.js';
 import avatarStyles from './avatar.css' with { type: 'css' };
 
+const graphemes = new Intl.Segmenter();
+
 export class GrantCodesAvatar extends LitElement {
   declare alt: string;
   declare initials: string;
@@ -51,13 +53,13 @@ export class GrantCodesAvatar extends LitElement {
    */
   getInitials() {
     if (this.initials) return this.initials;
-    if (this.name) {
-      const [first = '', second = ''] = this.name.trim().split(' ');
-      const firstInitial = first ? first[0] : '';
-      const secondInitial = second ? second[0] : '';
-      return `${firstInitial}${secondInitial}`;
-    }
-    return '';
+    // Skip words that start with an emoji or symbol, and take whole graphemes (e.g. 'É', not half a flag).
+    return this.name
+      .split(/\s+/)
+      .filter((word) => /^\p{L}/u.test(word))
+      .slice(0, 2)
+      .map((word) => graphemes.segment(word)[Symbol.iterator]().next().value?.segment ?? '')
+      .join('');
   }
 
   getAlt() {

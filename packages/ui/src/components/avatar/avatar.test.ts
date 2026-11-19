@@ -36,6 +36,15 @@ describe('Avatar Component', () => {
     assert.strictEqual(initialsElement.textContent, 'J', 'Should display single initial');
   });
 
+  it('should skip emoji words and keep whole graphemes in initials', async () => {
+    element = await fixture('grantcodes-avatar', { name: 'Marcos 🇵🇭🇺🇸' });
+    assert.strictEqual(query('.avatar__initials').textContent, 'M');
+
+    cleanup(element);
+    element = await fixture('grantcodes-avatar', { name: ' 🙂 E\u0301mile  Zola ' });
+    assert.strictEqual(query('.avatar__initials').textContent, 'E\u0301Z');
+  });
+
   it('should display image when src is provided', async () => {
     element = await fixture('grantcodes-avatar', {
       src: 'https://example.com/avatar.jpg',
