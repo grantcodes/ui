@@ -1,5 +1,14 @@
 # Changelog
 
+## [4.1.4](https://github.com/grantcodes/ui/compare/ui-v4.1.3...ui-v4.1.4) (2026-11-20)
+
+
+### Bug Fixes
+
+* **ui:** build avatar initials from letters only ([412b117](https://github.com/grantcodes/ui/commit/412b117945fe446754f2a354b19ddd7145c6d501))
+* **ui:** build avatar initials from letters only ([986efee](https://github.com/grantcodes/ui/commit/986efee16485609bfc65d7d2ce3d10d49ded6a06))
+* **ui:** scale avatar initials with the avatar size ([0125c4f](https://github.com/grantcodes/ui/commit/0125c4f8f297401c3266c14d046ef31dc1b29675))
+
 ## [4.1.3](https://github.com/grantcodes/ui/compare/ui-v4.1.2...ui-v4.1.3) (2026-11-19)
 
 
