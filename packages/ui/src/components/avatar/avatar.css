@@ -22,6 +22,7 @@
   color: var(--g-color-primary-900);
   text-align: center;
   font: var(--g-typography-h6-font);
+  container-type: size;
 }
 
 .avatar--small {
@@ -37,6 +38,13 @@
 .avatar__initials,
 .avatar__image {
   grid-area: 1 / 1;
+}
+
+/* Scale with the avatar so two wide letters ("MW") fit the circle at every size. */
+.avatar__initials {
+  font-size: 40cqi;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .avatar__image {

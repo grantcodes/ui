@@ -1,4 +1,5 @@
 import { getStorybookHelpers } from '@wc-toolkit/storybook-helpers';
+import { html } from 'lit';
 import { expect } from 'storybook/test';
 
 const { events, args, argTypes, template } = getStorybookHelpers('grantcodes-avatar');
@@ -76,5 +77,29 @@ export const BrokenImage = {
 export const Initials = {
   args: {
     src: undefined,
+  },
+};
+
+/** Initials scale with the avatar, so two wide letters stay on one line inside the circle. */
+export const InitialsSizes = {
+  render: () => html`
+    <div style="display: flex; gap: 1rem; align-items: center;">
+      ${['small', 'medium', 'large'].map(
+        (size) => html`<grantcodes-avatar size=${size} name="Matthias Ott"></grantcodes-avatar>
+          <grantcodes-avatar size=${size} name="Max Wide"></grantcodes-avatar>`,
+      )}
+    </div>
+  `,
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+    const avatars = [...canvasElement.querySelectorAll('grantcodes-avatar')];
+    await Promise.all(avatars.map((avatar) => (avatar as HTMLElement & { updateComplete: Promise<unknown> }).updateComplete));
+    for (const avatar of avatars) {
+      const wrapper = avatar.shadowRoot?.querySelector('.avatar') as HTMLElement;
+      const initials = avatar.shadowRoot?.querySelector('.avatar__initials') as HTMLElement;
+      const box = wrapper.getBoundingClientRect();
+      const text = initials.getBoundingClientRect();
+      await expect(text.width).toBeLessThanOrEqual(box.width);
+      await expect(text.height).toBeLessThan(box.height);
+    }
   },
 };
