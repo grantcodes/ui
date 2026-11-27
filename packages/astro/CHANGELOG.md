@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.1](https://github.com/grantcodes/ui/compare/astro-v1.4.0...astro-v1.4.1) (2026-11-27)
+
+
+### Bug Fixes
+
+* **astro:** show the Post footer in server-rendered HTML and keep face u-urls ([91e0b03](https://github.com/grantcodes/ui/commit/91e0b03983ffd9033e3d940547260c491a0b78ff))
+* post renderer footer without hydration, face u-urls, post-type discovery ([33b99ed](https://github.com/grantcodes/ui/commit/33b99ed6e945a4cc6d6eca805d1e14ec423af2f9))
+
 ## [1.4.0](https://github.com/grantcodes/ui/compare/astro-v1.3.4...astro-v1.4.0) (2026-11-27)
 
 
