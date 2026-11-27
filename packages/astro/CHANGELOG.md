@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.2](https://github.com/grantcodes/ui/compare/astro-v1.4.1...astro-v1.4.2) (2026-11-27)
+
+
+### Bug Fixes
+
+* **astro:** keep the p-name of named responses and photo posts ([19bfc81](https://github.com/grantcodes/ui/commit/19bfc81f0f917dffd3ebf677f633e488a4fb5337))
+* keep p-name on named responses and photo posts ([a26a5c2](https://github.com/grantcodes/ui/commit/a26a5c2bea9f38960272ec675b59ff445bd85055))
+
 ## [1.4.1](https://github.com/grantcodes/ui/compare/astro-v1.4.0...astro-v1.4.1) (2026-11-27)
 
 
