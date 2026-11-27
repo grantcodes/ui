@@ -21,6 +21,7 @@ const pages = {
   photo: 'fixtures.photo',
   reply: 'fixtures.reply',
   like: 'fixtures.like',
+  bookmark: 'fixtures.namedBookmark',
   rsvp: 'fixtures.rsvp',
   event: 'fixtures.event',
   responses: 'fixtures.withResponses',
@@ -31,6 +32,7 @@ const pages = {
 const options = {
   plain: '{}',
   compact: '{ compact: true, sanitize }',
+  bookmark: '{ compact: true, sanitize }',
 };
 
 function buildFixture() {
@@ -147,6 +149,12 @@ describe('@grantcodes/astro Post mf2 output', () => {
     assert.equal(props.comment[0].properties.content[0], 'Lovely');
     assert.deepEqual(props.mention[0].properties.name, ['A post that mentions this']);
     assert.doesNotMatch(html('responses'), /onerror/);
+  });
+
+  it('keeps the name of a named response and its content in compact cards', () => {
+    const props = parse('bookmark').properties;
+    assert.deepEqual(props.name, ['Worth reading']);
+    assert.equal(props.content[0].value, 'Clear thinking about who programs are for.');
   });
 
   it('renders a converted jf2 item', () => {
