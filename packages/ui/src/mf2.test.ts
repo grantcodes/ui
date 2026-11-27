@@ -61,6 +61,10 @@ describe('mf2 helpers', () => {
     assert.equal(isArticle(entry({ name: ['Small tools'], content: [{ html: '<p>Body</p>', value: 'Body' }] })), true);
     assert.equal(isArticle(entry({ name: ['A short note'], content: ['A short note about the morning'] })), false);
     assert.equal(isArticle(entry({ content: ['No name'] })), false);
+    // Post-type discovery: responses and media win over a name.
+    const named = { name: ['Worth reading'], content: ['Some thoughts.'] };
+    assert.equal(isArticle(entry({ ...named, 'bookmark-of': ['https://a.example/'] })), false);
+    assert.equal(isArticle(entry({ ...named, photo: ['https://a.example/1.jpg'] })), false);
   });
 
   it('formats recent dates relatively and older ones absolutely', () => {

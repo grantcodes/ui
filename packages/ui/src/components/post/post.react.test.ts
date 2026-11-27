@@ -17,7 +17,10 @@ const parse = (html: string) => mf2(html, { baseUrl: 'https://ada.example/' }).i
 
 describe('React Post mf2 output', () => {
   it('renders a note as an h-entry with author, permalink, content, categories and syndication', () => {
-    const item = parse(render(fixtures.note));
+    const html = render(fixtures.note);
+    // The card only detects slots on the client, so the footer must be marked for server rendering.
+    assert.match(html, /<grantcodes-card hasFooter=""/i);
+    const item = parse(html);
     assert.deepEqual(item.type, ['h-entry']);
     const { author, url, published, content, category, syndication } = item.properties as any;
     assert.equal(author[0].properties.name[0], 'Ada Lovelace');
@@ -80,6 +83,7 @@ describe('React Post mf2 output', () => {
     const html = render(fixtures.withResponses);
     const props = parse(html).properties as any;
     assert.equal(props.like[0].properties.author[0].properties.name[0], 'Grace Hopper');
+    assert.deepEqual(props.like[0].properties.url, ['https://grace.example/likes/9']);
     assert.equal(props.comment[0].properties.content[0], 'Lovely');
     assert.deepEqual(props.mention[0].properties.name, ['A post that mentions this']);
     assert.doesNotMatch(html, /onerror/);
