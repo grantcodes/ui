@@ -284,10 +284,13 @@ export function EntryResponses({ entry, options = {} }: EntryProps) {
         items.map((item, index) => {
           const author = authorOf(item);
           const label = `${verb} ${author?.name ?? 'someone'}`;
+          const href = urlOf(first(item, 'url')) || author?.url;
           return h(
             'a',
-            { key: index, className: `p-${key} h-cite`, href: urlOf(first(item, 'url')) || author?.url, title: label },
+            { key: index, className: `p-${key} h-cite`, href, title: label },
             h('grantcodes-avatar', { src: author?.photo, name: author?.name, alt: label, size: 'small' }),
+            // The nested h-card blocks the implied u-url, so state it.
+            href ? h('data', { className: 'u-url', value: href }) : null,
             author
               ? h(
                   'span',
@@ -372,7 +375,8 @@ export function Post(props: PostProps): ReactNode {
     { className },
     h(
       'grantcodes-card',
-      { flat: flat || undefined },
+      // The card only detects its footer slot on the client; set it so server-rendered HTML shows it.
+      { flat: flat || undefined, hasFooter: props.footer !== null || Boolean(actions) || undefined },
       section(props.header, h(EntryHeader, entryProps)),
       section(props.contexts, h(EntryContexts, entryProps)),
       section(props.media, h(EntryMedia, entryProps)),

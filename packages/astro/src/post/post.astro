@@ -26,7 +26,8 @@ const has = (name: string) => Astro.slots.has(name)
 ---
 
 <article class={className}>
-  <GrantCodesCard flat={flat}>
+  {/* The card only detects its footer slot on the client; set it so the SSR HTML shows the footer. */}
+  <GrantCodesCard flat={flat} hasFooter>
     {has('header') ? <slot name="header" /> : <EntryHeader entry={entry} options={options} />}
     {has('contexts') ? <slot name="contexts" /> : <EntryContexts entry={entry} options={options} />}
     {has('media') ? <slot name="media" /> : <EntryMedia entry={entry} options={options} />}
