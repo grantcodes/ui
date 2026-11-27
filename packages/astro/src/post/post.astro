@@ -1,0 +1,41 @@
+---
+// A microformats2 entry as a card. Every mf2 class is in light DOM, so parsers see it in the
+// server-rendered HTML. Each section can be replaced through the named slot of the same name;
+// to leave one out, compose the Entry* sections yourself. `actions` goes in the card's footer.
+import { GrantCodesCard } from '@grantcodes/ui/components/card/index.js'
+import type { Mf2Item, PostOptions } from '@grantcodes/ui/mf2'
+import EntryContent from './entry-content.astro'
+import EntryContexts from './entry-contexts.astro'
+import EntryDetails from './entry-details.astro'
+import EntryFooter from './entry-footer.astro'
+import EntryHeader from './entry-header.astro'
+import EntryMedia from './entry-media.astro'
+import EntryResponses from './entry-responses.astro'
+
+interface Props {
+  entry: Mf2Item
+  options?: PostOptions
+  /** Root classes; `h-entry` by default, `u-like-of h-cite` and the like for an embedded citation. */
+  class?: string
+  /** Renders the card without its frame. */
+  flat?: boolean
+}
+
+const { entry, options = {}, class: className = 'h-entry', flat = false } = Astro.props
+const has = (name: string) => Astro.slots.has(name)
+---
+
+<article class={className}>
+  <GrantCodesCard flat={flat}>
+    {has('header') ? <slot name="header" /> : <EntryHeader entry={entry} options={options} />}
+    {has('contexts') ? <slot name="contexts" /> : <EntryContexts entry={entry} options={options} />}
+    {has('media') ? <slot name="media" /> : <EntryMedia entry={entry} options={options} />}
+    {has('content') ? <slot name="content" /> : <EntryContent entry={entry} options={options} />}
+    {has('details') ? <slot name="details" /> : <EntryDetails entry={entry} options={options} />}
+    {has('responses') ? <slot name="responses" /> : <EntryResponses entry={entry} options={options} />}
+    <Fragment slot="footer">
+      {has('footer') ? <slot name="footer" /> : <EntryFooter entry={entry} options={options} />}
+      {has('actions') && <div><slot name="actions" /></div>}
+    </Fragment>
+  </GrantCodesCard>
+</article>

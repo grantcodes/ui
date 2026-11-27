@@ -8,6 +8,7 @@
     "./server": "./src/server.ts",
     "./client": "./client/entry.ts",
     "./blocks": "./src/blocks.ts",
+    "./post": "./src/post.ts",
     "./hydration-support": "./shims/hydration-support.ts"
   },
   "scripts": {
@@ -16,7 +17,7 @@
     "gen:props": "tsx scripts/generate-astro-typings-from-cem.ts",
     "pretest": "tsx scripts/generate-astro-typings-from-cem.ts",
     "test:package": "tsx --test test/package.test.js",
-    "test": "tsx --import @lit-labs/ssr-dom-shim/register-css-hook.js --test test/package.test.js test/smoke.test.js test/ssr-constructor-diagnostics.test.js test/ssr-ui-components.test.js test/og-images.test.js test/astro-check-typings.test.js test/blocks.test.js"
+    "test": "tsx --import @lit-labs/ssr-dom-shim/register-css-hook.js --test test/package.test.js test/smoke.test.js test/ssr-constructor-diagnostics.test.js test/ssr-ui-components.test.js test/og-images.test.js test/astro-check-typings.test.js test/blocks.test.js test/post.test.js"
   },
   "keywords": [
     "astro",
@@ -69,6 +70,7 @@
   },
   "devDependencies": {
     "astro": "^7.4.12",
+    "microformats-parser": "^2.0.6",
     "tsx": "^4.23.15"
   }
 }

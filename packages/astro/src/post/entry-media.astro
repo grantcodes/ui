@@ -1,0 +1,41 @@
+---
+// The featured image, photos, videos and audio, each kind in its own edge-to-edge gallery.
+import { GrantCodesGallery } from '@grantcodes/ui/components/gallery/index.js'
+import { all, first, mediaColumns, photoOf, urlOf, type Mf2Item, type PostOptions } from '@grantcodes/ui/mf2'
+
+interface Props {
+  entry: Mf2Item
+  options?: PostOptions
+}
+
+const { entry } = Astro.props
+const featured = urlOf(first(entry, 'featured'))
+const photos = all(entry, 'photo').flatMap((value) => photoOf(value) ?? [])
+const video = all(entry, 'video').map(urlOf).filter(Boolean)
+const audio = all(entry, 'audio').map(urlOf).filter(Boolean)
+// The column count is set inline so the server-rendered grid is right before any JS runs.
+const columns = (count: number) => `--gallery-columns: ${count}`
+---
+
+{featured && (
+  <GrantCodesGallery style={columns(1)}>
+    <img class="u-featured" src={featured} alt="" />
+  </GrantCodesGallery>
+)}
+{photos.length > 0 && (
+  <GrantCodesGallery style={columns(mediaColumns(photos.length))}>
+    {photos.map((photo) => (
+      <img class="u-photo" src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} loading="lazy" />
+    ))}
+  </GrantCodesGallery>
+)}
+{video.map((src) => (
+  <GrantCodesGallery style={columns(1)}>
+    <video class="u-video" src={src} controls preload="metadata"></video>
+  </GrantCodesGallery>
+))}
+{audio.map((src) => (
+  <GrantCodesGallery style={columns(1)}>
+    <audio class="u-audio" src={src} controls preload="metadata"></audio>
+  </GrantCodesGallery>
+))}

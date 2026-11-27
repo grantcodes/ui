@@ -1,0 +1,93 @@
+---
+// Likes, reposts and bookmarks as faces; comments and mentions as a list. Comments show plain
+// text only: third-party HTML is never rendered.
+import { GrantCodesAvatar } from '@grantcodes/ui/components/avatar/index.js'
+import { GrantCodesPostHeader } from '@grantcodes/ui/components/post/post-header.js'
+import { GrantCodesPostResponses } from '@grantcodes/ui/components/post/post-responses.js'
+import {
+  authorOf,
+  contentOf,
+  displayUrl,
+  first,
+  formatRelativeDate,
+  responsesOf,
+  text,
+  urlOf,
+  type Mf2Item,
+  type PostOptions,
+} from '@grantcodes/ui/mf2'
+
+interface Props {
+  entry: Mf2Item
+  options?: PostOptions
+}
+
+const { entry, options = {} } = Astro.props
+const faces = [
+  { key: 'like', title: 'Likes', verb: 'Liked by' },
+  { key: 'repost', title: 'Reposts', verb: 'Reposted by' },
+  { key: 'bookmark', title: 'Bookmarks', verb: 'Bookmarked by' },
+]
+  .map((group) => ({ ...group, items: responsesOf(entry, group.key) }))
+  .filter(({ items }) => items.length)
+const comments = responsesOf(entry, 'comment')
+const mentions = [...responsesOf(entry, 'mention'), ...responsesOf(entry, 'webmention')]
+const formatDate = options.formatDate ?? formatRelativeDate
+---
+
+{!options.compact && (
+  <>
+    {faces.map(({ key, title, verb, items }) => (
+      <GrantCodesPostResponses variant="faces" heading={`${title} (${items.length})`}>
+        {items.map((item) => {
+          const author = authorOf(item)
+          const label = `${verb} ${author?.name ?? 'someone'}`
+          return (
+            <a class={`p-${key} h-cite`} href={urlOf(first(item, 'url')) || author?.url} title={label}>
+              <GrantCodesAvatar src={author?.photo} name={author?.name} alt={label} size="small" />
+              {author && (
+                <span class="p-author h-card" hidden>
+                  <span class="p-name">{author.name}</span>
+                  {author.url && <data class="u-url" value={author.url} />}
+                </span>
+              )}
+            </a>
+          )
+        })}
+      </GrantCodesPostResponses>
+    ))}
+    {comments.length > 0 && (
+      <GrantCodesPostResponses heading={`Comments (${comments.length})`}>
+        {comments.map((item) => {
+          const author = authorOf(item)
+          const url = urlOf(first(item, 'url'))
+          const published = text(first(item, 'published'))
+          const AuthorTag = author?.url ? 'a' : 'span'
+          return (
+            <div class="p-comment h-cite">
+              <GrantCodesPostHeader>
+                <GrantCodesAvatar slot="avatar" src={author?.photo} name={author?.name} alt="" size="small" />
+                <AuthorTag class="p-author h-card" href={author?.url}><span class="p-name">{author?.name ?? 'Someone'}</span></AuthorTag>
+                {url && (
+                  <a slot="meta" class="u-url" href={url}>
+                    {published ? <time class="dt-published" datetime={published}>{formatDate(published)}</time> : 'View'}
+                  </a>
+                )}
+              </GrantCodesPostHeader>
+              <p class="p-content">{contentOf(item)?.text ?? text(first(item, 'name'))}</p>
+            </div>
+          )
+        })}
+      </GrantCodesPostResponses>
+    )}
+    {mentions.length > 0 && (
+      <GrantCodesPostResponses heading={`Mentions (${mentions.length})`}>
+        {mentions.map((item) => {
+          const url = urlOf(first(item, 'url'))
+          const Tag = url ? 'a' : 'span'
+          return <Tag class="p-mention h-cite" href={url || undefined}>{text(first(item, 'name')) || authorOf(item)?.name || displayUrl(url)}</Tag>
+        })}
+      </GrantCodesPostResponses>
+    )}
+  </>
+)}
