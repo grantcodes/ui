@@ -110,6 +110,8 @@ describe('@grantcodes/astro Post mf2 output', () => {
     assert.deepEqual(syndication, ['https://social.example/@ada/1']);
     // The section components are server-rendered with declarative shadow DOM.
     assert.match(html('note'), /<grantcodes-post-footer[^>]*slot="footer"[^>]*><template shadowroot/);
+    // Without hydration the card cannot detect its footer slot, so the attribute must be in the SSR HTML.
+    assert.match(html('note'), /<grantcodes-card[^>]*hasfooter/);
   });
 
   it('renders content as plain text without sanitize', () => {
@@ -141,6 +143,7 @@ describe('@grantcodes/astro Post mf2 output', () => {
   it('renders responses as h-cites and comments as text only', () => {
     const props = parse('responses').properties;
     assert.equal(props.like[0].properties.author[0].properties.name[0], 'Grace Hopper');
+    assert.deepEqual(props.like[0].properties.url, ['https://grace.example/likes/9']);
     assert.equal(props.comment[0].properties.content[0], 'Lovely');
     assert.deepEqual(props.mention[0].properties.name, ['A post that mentions this']);
     assert.doesNotMatch(html('responses'), /onerror/);

@@ -42,9 +42,12 @@ const formatDate = options.formatDate ?? formatRelativeDate
         {items.map((item) => {
           const author = authorOf(item)
           const label = `${verb} ${author?.name ?? 'someone'}`
+          const href = urlOf(first(item, 'url')) || author?.url
           return (
-            <a class={`p-${key} h-cite`} href={urlOf(first(item, 'url')) || author?.url} title={label}>
+            <a class={`p-${key} h-cite`} href={href} title={label}>
               <GrantCodesAvatar src={author?.photo} name={author?.name} alt={label} size="small" />
+              {/* The nested h-card blocks the implied u-url, so state it. */}
+              {href && <data class="u-url" value={href} />}
               {author && (
                 <span class="p-author h-card" hidden>
                   <span class="p-name">{author.name}</span>
