@@ -6,6 +6,7 @@ import {
   contentOf,
   contextsOf,
   formatRelativeDate,
+  hasTitle,
   isArticle,
   jf2ToMf2,
   type Mf2Item,
@@ -65,6 +66,9 @@ describe('mf2 helpers', () => {
     const named = { name: ['Worth reading'], content: ['Some thoughts.'] };
     assert.equal(isArticle(entry({ ...named, 'bookmark-of': ['https://a.example/'] })), false);
     assert.equal(isArticle(entry({ ...named, photo: ['https://a.example/1.jpg'] })), false);
+    // ...but their name is still a title.
+    assert.equal(hasTitle(entry({ ...named, photo: ['https://a.example/1.jpg'] })), true);
+    assert.equal(hasTitle(entry({ name: ['A short note'], content: ['A short note about the morning'] })), false);
   });
 
   it('formats recent dates relatively and older ones absolutely', () => {

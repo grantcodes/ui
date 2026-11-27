@@ -198,18 +198,23 @@ export function actionLabel(entry: Mf2Item): string {
   return text(first(entry, 'rsvp')) ? actionLabels.rsvp : 'Posted';
 }
 
+/** Whether the entry has a real name: one that is not just the start of its content (an implied name). */
+export function hasTitle(entry: Mf2Item): boolean {
+  const name = text(first(entry, 'name')).replace(/\s+/g, ' ').trim();
+  if (!name) return false;
+  const content = (contentOf(entry)?.text ?? text(first(entry, 'summary'))).replace(/\s+/g, ' ').trim();
+  return !content.startsWith(name);
+}
+
 /**
- * Post-type discovery's article check. Responses (rsvp, reply, like, …), videos and photos are
- * never articles; otherwise it is one when its name is not just the start of the content.
+ * Post-type discovery's article check: responses (rsvp, reply, like, …), videos and photos are
+ * never articles, even when they have a title.
  */
 export function isArticle(entry: Mf2Item): boolean {
   if (contextsOf(entry).length || ['rsvp', 'video', 'photo'].some((property) => all(entry, property).length)) {
     return false;
   }
-  const name = text(first(entry, 'name')).replace(/\s+/g, ' ').trim();
-  if (!name) return false;
-  const content = (contentOf(entry)?.text ?? text(first(entry, 'summary'))).replace(/\s+/g, ' ').trim();
-  return !content.startsWith(name);
+  return hasTitle(entry);
 }
 
 /** Responses of one kind (`like`, `comment`, `mention`, …) that carry their own properties. */

@@ -50,6 +50,13 @@ describe('React Post mf2 output', () => {
     assert.match(html, /<grantcodes-button href="https:\/\/ada.example\/articles\/small-tools"/);
   });
 
+  it('keeps the name of a named response and its content in compact cards', () => {
+    const props = parse(render(fixtures.namedBookmark, { compact: true, sanitize })).properties as any;
+    assert.deepEqual(props.name, ['Worth reading']);
+    assert.deepEqual(props['bookmark-of'], ['https://grace.example/posts/compilers']);
+    assert.equal(props.content[0].value, 'Clear thinking about who programs are for.');
+  });
+
   it('renders photos with alt text', () => {
     const photos = parse(render(fixtures.photo)).properties.photo as any[];
     assert.deepEqual(photos[0], { value: 'https://picsum.photos/seed/harbour-1/1200/800', alt: 'Boats at dusk' });
