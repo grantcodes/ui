@@ -91,6 +91,19 @@ export const repost: Mf2Item = {
   },
 };
 
+/** A named response: post-type discovery makes it a bookmark, but its name is still a title. */
+export const namedBookmark: Mf2Item = {
+  type: ['h-entry'],
+  properties: {
+    author: [ada],
+    name: ['Worth reading'],
+    url: ['https://ada.example/bookmarks/1'],
+    published: ['2026-01-09T13:00:00Z'],
+    'bookmark-of': ['https://grace.example/posts/compilers'],
+    content: ['Clear thinking about who programs are for.'],
+  },
+};
+
 export const rsvp: Mf2Item = {
   type: ['h-entry'],
   properties: {

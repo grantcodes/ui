@@ -13,6 +13,7 @@ import {
   formatDateTime,
   formatRelativeDate,
   hostOf,
+  hasTitle,
   isArticle,
   isItem,
   type Mf2Item,
@@ -122,11 +123,12 @@ export function EntryMedia({ entry }: EntryProps) {
 }
 
 /**
- * An article's name, then its content: sanitised HTML when `sanitize` is given, else plain text.
- * Compact articles show their summary and a link to the full post instead.
+ * The entry's title (when it has a real name), then its content: sanitised HTML when `sanitize` is
+ * given, else plain text. Compact articles show their summary and a link to the full post instead.
  */
 export function EntryContent({ entry, options = {}, children }: EntryProps & { children?: ReactNode }) {
   const article = isArticle(entry);
+  const title = hasTitle(entry);
   const content = contentOf(entry);
   const summary = text(first(entry, 'summary'));
   const url = urlOf(first(entry, 'url'));
@@ -145,7 +147,7 @@ export function EntryContent({ entry, options = {}, children }: EntryProps & { c
   return h(
     Fragment,
     null,
-    article
+    title
       ? h(
           'grantcodes-post-title',
           { level: options.headingLevel ?? 2 },
