@@ -1,5 +1,13 @@
 # Changelog
 
+## [4.2.2](https://github.com/grantcodes/ui/compare/ui-v4.2.1...ui-v4.2.2) (2026-11-27)
+
+
+### Bug Fixes
+
+* keep p-name on named responses and photo posts ([a26a5c2](https://github.com/grantcodes/ui/commit/a26a5c2bea9f38960272ec675b59ff445bd85055))
+* **ui:** keep the p-name of named responses and photo posts ([6712e4d](https://github.com/grantcodes/ui/commit/6712e4deb4ccd49e23fece2c07b1cebafbf8b8b1))
+
 ## [4.2.1](https://github.com/grantcodes/ui/compare/ui-v4.2.0...ui-v4.2.1) (2026-11-27)
 
 
