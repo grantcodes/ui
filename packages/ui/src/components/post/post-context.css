@@ -1,0 +1,48 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Cancels the card's padding (0 outside a card) so the band runs edge to edge. */
+:host {
+  display: block;
+  margin-inline: calc(-1 * var(--g-card-padding, 0px));
+}
+
+/* First/last in the card body; slotted footer siblings don't count. */
+:host(:nth-child(1 of :not([slot]))) {
+  margin-block-start: calc(-1 * var(--g-card-padding, 0px));
+}
+
+:host(:nth-last-child(1 of :not([slot]))) {
+  margin-block-end: calc(-1 * var(--g-card-padding, 0px));
+}
+
+.post-context {
+  display: grid;
+  gap: var(--g-spacing-sm);
+  padding-block: var(--g-spacing-sm);
+  padding-inline: var(--g-card-padding, var(--g-spacing-sm));
+  background: var(--g-color-background-subtle);
+  font-size: var(--g-typography-font-size-2xs);
+}
+
+.post-context__line {
+  display: flex;
+  align-items: center;
+  gap: var(--g-spacing-sm);
+  min-inline-size: 0;
+}
+
+.post-context__icon {
+  flex-shrink: 0;
+  color: var(--g-color-content-subtle);
+}
+
+.post-context__label {
+  min-inline-size: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

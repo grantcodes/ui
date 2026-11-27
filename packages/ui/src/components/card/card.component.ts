@@ -1,11 +1,17 @@
 import { html, LitElement } from 'lit';
 import cardStyles from './card.css' with { type: 'css' };
 
+/**
+ * @cssprop --g-card-padding - Content padding; slotted full-bleed content reads it to cancel the padding.
+ */
 export class GrantCodesCard extends LitElement {
+  declare flat: boolean;
   declare hasFooter: boolean;
   declare hasHeader: boolean;
 
   static properties = {
+    /** Drops the background, border, radius and shadow so the card sits flush on a surface that already frames it. */
+    flat: { type: Boolean, reflect: true },
     hasHeader: { type: Boolean, reflect: true },
     hasFooter: { type: Boolean, reflect: true },
   };
@@ -14,6 +20,7 @@ export class GrantCodesCard extends LitElement {
 
   constructor() {
     super();
+    this.flat = false;
     this.hasHeader = false;
     this.hasFooter = false;
   }

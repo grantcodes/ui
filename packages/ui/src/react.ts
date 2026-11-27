@@ -36,6 +36,23 @@ export { Newsletter } from './components/newsletter/newsletter.react.js';
 export { Notice } from './components/notice/notice.react.js';
 export { Pagination } from './components/pagination/pagination.react.js';
 export { Popover } from './components/popover/popover.react.js';
+export {
+  EntryContent,
+  EntryContexts,
+  EntryDetails,
+  EntryFooter,
+  EntryHeader,
+  EntryMedia,
+  EntryResponses,
+  Post,
+  type PostProps,
+} from './components/post/post.react.js';
+export { PostContent } from './components/post/post-content.react.js';
+export { PostContext } from './components/post/post-context.react.js';
+export { PostFooter } from './components/post/post-footer.react.js';
+export { PostHeader } from './components/post/post-header.react.js';
+export { PostResponses } from './components/post/post-responses.react.js';
+export { PostTitle } from './components/post/post-title.react.js';
 export { Person } from './components/person/person.react.js';
 export { Pricing } from './components/pricing/pricing.react.js';
 export { Sidebar } from './components/sidebar/sidebar.react.js';

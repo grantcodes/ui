@@ -1,9 +1,10 @@
 import { LitElement, nothing } from 'lit';
 import { html } from 'lit/static-html.js';
+import galleryBleedStyles from './gallery-bleed.css' with { type: 'css' };
 import galleryStyles from './gallery.css' with { type: 'css' };
 
 export class GrantCodesGallery extends LitElement {
-  static styles = [galleryStyles];
+  static styles = [galleryStyles, galleryBleedStyles];
 
   declare variant: string;
 

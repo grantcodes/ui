@@ -2,7 +2,7 @@
 
 Every public component and content block in this snapshot. Import the exact register file shown; extensionless component-directory imports are not supported. Load only the family guide you need. Tags marked **internal** are implementation details even where an export exists.
 
-## UI components (48 public; 49 registered including one internal)
+## UI components (54 public; 55 registered including one internal)
 
 | Element | Import | Family guide | Notes |
 | --- | --- | --- | --- |
@@ -16,7 +16,7 @@ Every public component and content block in this snapshot. Import the exact regi
 | `grantcodes-breadcrumb-item` | `components/breadcrumb/breadcrumb.js` | [Navigation](ui-navigation.md) | `current` renders text |
 | `grantcodes-button` | `components/button/button.js` | [Actions](ui-actions.md) | Action or link |
 | `grantcodes-button-group` | `components/button-group/button-group.js` | [Actions](ui-actions.md) | Not a toolbar |
-| `grantcodes-card` | `components/card/card.js` | [Layout](ui-layout.md) | Header/default/footer slots |
+| `grantcodes-card` | `components/card/card.js` | [Layout](ui-layout.md) | Header/default/footer slots; `flat` |
 | `grantcodes-code-preview` | `components/code-preview/code-preview.js` | [Media](ui-media.md) | Escaped text, Shiki |
 | `grantcodes-container` | `components/container/container.js` | [Layout](ui-layout.md) | Width/padding wrapper |
 | `grantcodes-countdown` | `components/countdown/countdown.js` | [Content](ui-content.md) | Client timestamp display |
@@ -29,7 +29,7 @@ Every public component and content block in this snapshot. Import the exact regi
 | `grantcodes-footer` | `components/footer/footer.js` | [Navigation](ui-navigation.md) | Registers column too |
 | `grantcodes-footer-column` | `components/footer/footer.js` | [Navigation](ui-navigation.md) | `footer/index.js` does not register it |
 | `grantcodes-form-field` | `components/form-field/form-field.js` | [Forms](ui-forms.md) | Wraps native control |
-| `grantcodes-gallery` | `components/gallery/index.js` | [Media](ui-media.md) | Grid or filmstrip |
+| `grantcodes-gallery` | `components/gallery/index.js` | [Media](ui-media.md) | Grid or filmstrip; plain slotted media; edge to edge in a card |
 | `grantcodes-gallery-image` | `components/gallery/index.js` | [Media](ui-media.md) | Caption/alt |
 | `grantcodes-hero` | `components/hero/hero.js` | [Content](ui-content.md) | Renders h1 |
 | `grantcodes-icon` | `components/icon/icon.js` | [Media](ui-media.md) | Slotted SVG only |
@@ -43,6 +43,12 @@ Every public component and content block in this snapshot. Import the exact regi
 | `grantcodes-pagination` | `components/pagination/pagination.js` | [Navigation](ui-navigation.md) | Previous/next URLs only |
 | `grantcodes-person` | `components/person/person.js` | [Media](ui-media.md) | Name/role/avatar |
 | `grantcodes-popover` | `components/popover/popover.js` | [Popover](ui-popover.md) | Interactive panel |
+| `grantcodes-post-header` | `components/post/post-header.js` | [Posts](ui-post.md) | Author row |
+| `grantcodes-post-context` | `components/post/post-context.js` | [Posts](ui-post.md) | Reply/like/repost band |
+| `grantcodes-post-content` | `components/post/post-content.js` | [Posts](ui-post.md) | Optional "Show more" |
+| `grantcodes-post-footer` | `components/post/post-footer.js` | [Posts](ui-post.md) | Meta row |
+| `grantcodes-post-responses` | `components/post/post-responses.js` | [Posts](ui-post.md) | Likes/comments group |
+| `grantcodes-post-title` | `components/post/post-title.js` | [Posts](ui-post.md) | Card-sized heading; `level` |
 | `grantcodes-pricing` | `components/pricing/pricing.js` | [Content](ui-content.md) | JSON tiers |
 | `grantcodes-sidebar` | `components/sidebar/sidebar.js` | [Sidebar](ui-sidebar.md) | Responsive drawer |
 | `grantcodes-sidebar-toggle` | `components/sidebar/sidebar.js` | [Sidebar](ui-sidebar.md) | Links by `for` |
@@ -90,6 +96,10 @@ All are exported from `@grantcodes/astro/blocks` (source `blocks/index.ts`), alo
 `blockSchema` and the individual `*Block`/item schemas are exported from the same subpath; see the renderer guide.
 
 There is no `Cards items` prop despite stale README text; use `cards`. There is no separate `@grantcodes/astro-blocks` package in current installs.
+
+## Post renderers
+
+`Post` and the `Entry*` sections render a microformats2 entry: `@grantcodes/astro/post` for Astro, `@grantcodes/ui/react` for React, with shared helpers in `@grantcodes/ui/mf2`. See [Posts](ui-post.md).
 
 ## Choosing beyond this catalogue
 

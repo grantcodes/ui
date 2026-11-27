@@ -40,6 +40,11 @@ describe('Card Component', () => {
     assert.ok(card, 'Card wrapper should exist');
   });
 
+  it('should reflect flat so the frame styles can drop', async () => {
+    element = await fixture('grantcodes-card', { flat: true });
+    assert.ok(element.hasAttribute('flat'));
+  });
+
   it('should support slotted content', async () => {
     element = await fixture('grantcodes-card');
     const content = document.createElement('p');

@@ -1,0 +1,33 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:host {
+  display: block;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: var(--g-spacing-sm);
+  font-size: var(--g-typography-font-size-2xs);
+}
+
+.post-header__text {
+  display: grid;
+  min-inline-size: 0;
+}
+
+.post-header__name ::slotted(*) {
+  font-weight: 700;
+}
+
+.post-header__meta {
+  color: var(--g-color-content-subtle);
+}
+
+.post-header__text ::slotted(a) {
+  color: inherit;
+}

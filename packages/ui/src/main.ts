@@ -24,6 +24,7 @@ export * from './components/notice/index.js';
 export * from './components/pagination/index.js';
 export * from './components/popover/index.js';
 export * from './components/person/index.js';
+export * from './components/post/index.js';
 export * from './components/pricing/index.js';
 export * from './components/stats/index.js';
 export * from './components/sidebar/index.js';
