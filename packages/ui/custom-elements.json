@@ -1067,7 +1067,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "",
+          "description": "Host `aria-expanded`, `aria-pressed`, `aria-haspopup` and `aria-current` are forwarded to the native control; IDREFs such as `aria-controls` cannot cross the shadow boundary.",
           "name": "GrantCodesButton",
           "slots": [
             {
@@ -1084,6 +1084,42 @@
             }
           ],
           "members": [
+            {
+              "kind": "field",
+              "name": "_ariaCurrent",
+              "privacy": "public",
+              "type": {
+                "text": "string | null"
+              },
+              "attribute": "aria-current"
+            },
+            {
+              "kind": "field",
+              "name": "_ariaExpanded",
+              "privacy": "public",
+              "type": {
+                "text": "string | null"
+              },
+              "attribute": "aria-expanded"
+            },
+            {
+              "kind": "field",
+              "name": "_ariaHasPopup",
+              "privacy": "public",
+              "type": {
+                "text": "string | null"
+              },
+              "attribute": "aria-haspopup"
+            },
+            {
+              "kind": "field",
+              "name": "_ariaPressed",
+              "privacy": "public",
+              "type": {
+                "text": "string | null"
+              },
+              "attribute": "aria-pressed"
+            },
             {
               "kind": "field",
               "name": "_fieldsetDisabled",
@@ -1228,6 +1264,34 @@
             }
           ],
           "attributes": [
+            {
+              "name": "aria-current",
+              "type": {
+                "text": "string | null"
+              },
+              "fieldName": "_ariaCurrent"
+            },
+            {
+              "name": "aria-expanded",
+              "type": {
+                "text": "string | null"
+              },
+              "fieldName": "_ariaExpanded"
+            },
+            {
+              "name": "aria-haspopup",
+              "type": {
+                "text": "string | null"
+              },
+              "fieldName": "_ariaHasPopup"
+            },
+            {
+              "name": "aria-pressed",
+              "type": {
+                "text": "string | null"
+              },
+              "fieldName": "_ariaPressed"
+            },
             {
               "name": "color",
               "type": {

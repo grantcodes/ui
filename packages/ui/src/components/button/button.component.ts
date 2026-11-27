@@ -3,11 +3,17 @@ import focusRingStyles from '../../lib/styles/focus-ring.css' with { type: 'css'
 import buttonStyles from './button.css' with { type: 'css' };
 
 /**
+ * Host `aria-expanded`, `aria-pressed`, `aria-haspopup` and `aria-current` are forwarded to the native control; IDREFs such as `aria-controls` cannot cross the shadow boundary.
+ *
  * @slot - Button label, or a direct grantcodes-icon for icon-only layout.
  * @slot start - Non-interactive content before the label.
  * @slot end - Non-interactive content after the label.
  */
 export class GrantCodesButton extends LitElement {
+  declare _ariaCurrent: string | null;
+  declare _ariaExpanded: string | null;
+  declare _ariaHasPopup: string | null;
+  declare _ariaPressed: string | null;
   declare _fieldsetDisabled: boolean;
   declare color: 'primary' | 'secondary' | 'neutral' | 'danger' | 'inherit';
   declare disabled: boolean;
@@ -33,6 +39,11 @@ export class GrantCodesButton extends LitElement {
     variant: { type: String, reflect: true },
     disabled: { type: Boolean, reflect: true },
     form: { type: String, reflect: true },
+    // The host has no role, so ARIA state written on it only reaches assistive tech on the native control.
+    _ariaExpanded: { type: String, attribute: 'aria-expanded' },
+    _ariaPressed: { type: String, attribute: 'aria-pressed' },
+    _ariaHasPopup: { type: String, attribute: 'aria-haspopup' },
+    _ariaCurrent: { type: String, attribute: 'aria-current' },
   };
 
   constructor() {
@@ -102,6 +113,11 @@ export class GrantCodesButton extends LitElement {
 
   render() {
     const disabled = this.disabled || this._fieldsetDisabled;
+    // Bindings only commit on change, so state the dropdown/popover set on the control directly survives re-renders.
+    const ariaExpanded = this._ariaExpanded ?? nothing;
+    const ariaPressed = this._ariaPressed ?? nothing;
+    const ariaHasPopup = this._ariaHasPopup ?? nothing;
+    const ariaCurrent = this._ariaCurrent ?? nothing;
     const content = html`
       <slot name="start"></slot>
       <span><slot></slot></span>
@@ -116,6 +132,10 @@ export class GrantCodesButton extends LitElement {
           href=${disabled ? nothing : this.href}
           role=${disabled ? 'link' : nothing}
           aria-disabled=${disabled ? 'true' : nothing}
+          aria-expanded=${ariaExpanded}
+          aria-pressed=${ariaPressed}
+          aria-haspopup=${ariaHasPopup}
+          aria-current=${ariaCurrent}
           ?disabled=${disabled}
         >
           ${content}
@@ -124,7 +144,15 @@ export class GrantCodesButton extends LitElement {
     }
 
     return html`
-      <button class="button focus-ring" type="button" ?disabled=${disabled}>
+      <button
+        class="button focus-ring"
+        type="button"
+        aria-expanded=${ariaExpanded}
+        aria-pressed=${ariaPressed}
+        aria-haspopup=${ariaHasPopup}
+        aria-current=${ariaCurrent}
+        ?disabled=${disabled}
+      >
         ${content}
       </button>
     `;

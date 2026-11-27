@@ -100,6 +100,34 @@ describe('Button Component', () => {
     const slot = element.shadowRoot.querySelector('slot:not([name])');
     assert.ok(slot, 'Slot should exist');
   });
+
+  for (const href of ['', '/next']) {
+    it(`forwards host ARIA state to the ${href ? 'link' : 'button'}`, async () => {
+      element = await fixture('grantcodes-button', { href });
+      const control = () => element.shadowRoot.querySelector(href ? 'a' : 'button');
+
+      element.setAttribute('aria-expanded', 'true');
+      await element.updateComplete;
+      assert.strictEqual(control().getAttribute('aria-expanded'), 'true');
+
+      element.setAttribute('aria-expanded', 'false');
+      await element.updateComplete;
+      assert.strictEqual(control().getAttribute('aria-expanded'), 'false');
+
+      element.removeAttribute('aria-expanded');
+      await element.updateComplete;
+      assert.strictEqual(control().hasAttribute('aria-expanded'), false);
+    });
+  }
+
+  it('keeps ARIA state set on the control directly when the host has none', async () => {
+    element = await fixture('grantcodes-button');
+    const button = element.shadowRoot.querySelector('button');
+    button.setAttribute('aria-expanded', 'true');
+    element.size = 'lg';
+    await element.updateComplete;
+    assert.strictEqual(button.getAttribute('aria-expanded'), 'true');
+  });
 });
 
 describe('Form Context', () => {
