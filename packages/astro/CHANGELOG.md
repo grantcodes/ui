@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.4.0](https://github.com/grantcodes/ui/compare/astro-v1.3.4...astro-v1.4.0) (2026-11-27)
+
+
+### Features
+
+* **astro:** add mf2 Post renderers at @grantcodes/astro/post ([8f144bf](https://github.com/grantcodes/ui/commit/8f144bf2b525f4beb41fad68efd8f5cf26de0270))
+* mf2 post components and renderers ([1785c21](https://github.com/grantcodes/ui/commit/1785c219ba02e853e91c0831bb22161efe3060f3))
+
+
+### Bug Fixes
+
+* **ui:** forward ARIA state from grantcodes-button host to its native control ([a3a02b2](https://github.com/grantcodes/ui/commit/a3a02b25c0b55784e626d823e093ddd8315fbb17))
+* **ui:** forward ARIA state from grantcodes-button host to its native control ([73a44ce](https://github.com/grantcodes/ui/commit/73a44ceb00108ce5a4ae5778731d75016bc57b16))
+
 ## [1.3.4](https://github.com/grantcodes/ui/compare/astro-v1.3.3...astro-v1.3.4) (2026-11-19)
 
 

@@ -1,5 +1,19 @@
 # Changelog
 
+## [4.2.0](https://github.com/grantcodes/ui/compare/ui-v4.1.4...ui-v4.2.0) (2026-11-27)
+
+
+### Features
+
+* mf2 post components and renderers ([1785c21](https://github.com/grantcodes/ui/commit/1785c219ba02e853e91c0831bb22161efe3060f3))
+* **ui:** add mf2 post section components and React Post renderer ([345902b](https://github.com/grantcodes/ui/commit/345902b943cfbe38ed8dc2a2c760c3fb8e7ac11a))
+
+
+### Bug Fixes
+
+* **ui:** forward ARIA state from grantcodes-button host to its native control ([a3a02b2](https://github.com/grantcodes/ui/commit/a3a02b25c0b55784e626d823e093ddd8315fbb17))
+* **ui:** forward ARIA state from grantcodes-button host to its native control ([73a44ce](https://github.com/grantcodes/ui/commit/73a44ceb00108ce5a4ae5778731d75016bc57b16))
+
 ## [4.1.4](https://github.com/grantcodes/ui/compare/ui-v4.1.3...ui-v4.1.4) (2026-11-20)
 
 
