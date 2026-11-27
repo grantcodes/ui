@@ -1,5 +1,13 @@
 # Changelog
 
+## [4.2.1](https://github.com/grantcodes/ui/compare/ui-v4.2.0...ui-v4.2.1) (2026-11-27)
+
+
+### Bug Fixes
+
+* post renderer footer without hydration, face u-urls, post-type discovery ([33b99ed](https://github.com/grantcodes/ui/commit/33b99ed6e945a4cc6d6eca805d1e14ec423af2f9))
+* **ui:** show the React Post footer without hydration, keep face u-urls, and follow post-type discovery ([a19254c](https://github.com/grantcodes/ui/commit/a19254c01a819d43c2ee5363e7012ed92906f42f))
+
 ## [4.2.0](https://github.com/grantcodes/ui/compare/ui-v4.1.4...ui-v4.2.0) (2026-11-27)
 
 
