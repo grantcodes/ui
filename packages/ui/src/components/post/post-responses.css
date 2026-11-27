@@ -1,0 +1,44 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* A full-width section under a divider, like the card footer (no bleed outside a card). */
+:host {
+  display: block;
+  margin-inline: calc(-1 * var(--g-card-padding, 0px));
+  border-block-start: var(--g-border-width-sm) solid var(--g-color-border-subtle);
+}
+
+.post-responses {
+  display: grid;
+  gap: var(--g-spacing-sm);
+  /* The card's gap gives the space above the divider; this gives the space below it. */
+  padding-block-start: var(--g-spacing-md);
+  padding-inline: var(--g-card-padding, 0px);
+}
+
+.post-responses__heading {
+  margin: 0;
+  font-size: var(--g-typography-font-size-xs);
+}
+
+.post-responses__items {
+  display: grid;
+  gap: var(--g-spacing-md);
+}
+
+:host([variant="faces"]) .post-responses__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--g-spacing-xs);
+}
+
+:host([variant="faces"]) .post-responses__items ::slotted(a) {
+  text-decoration: none;
+}
+
+.post-responses__items ::slotted(*) {
+  margin: 0;
+}

@@ -1,0 +1,49 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:host {
+  display: block;
+}
+
+.post-content__body--clipped {
+  max-block-size: 10lh;
+  overflow: hidden;
+}
+
+.post-content__body--faded {
+  mask-image: linear-gradient(to bottom, #000 60%, transparent);
+}
+
+/* Animates between the clipped and natural height where intrinsic sizes interpolate; elsewhere it snaps. */
+@supports (block-size: calc-size(auto, size)) {
+  :host([collapsible]) .post-content__body {
+    interpolate-size: allow-keywords;
+    overflow: clip;
+    overflow-clip-margin: var(--g-focus-ring-width-default);
+    transition: block-size var(--g-animation-move-quick, 0.3s) ease-out;
+  }
+
+  .post-content__body--clipped {
+    max-block-size: none;
+    block-size: calc-size(auto, min(size, 10lh));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host([collapsible]) .post-content__body {
+    transition: none;
+  }
+}
+
+.post-content__body ::slotted(*) {
+  margin-block: 0;
+}
+
+.post-content__toggle {
+  display: flex;
+  justify-content: center;
+  margin-block-start: var(--g-spacing-sm);
+}

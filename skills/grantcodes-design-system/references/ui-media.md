@@ -32,6 +32,8 @@ import '@grantcodes/ui/components/gallery/index.js';
 
 Gallery: variant default/filmstrip, default slot for GalleryImages. Filmstrip supplies a named, focusable scroll region. GalleryImage: src/alt/caption/width/height/thumbnail. Its image uses src; thumbnail is not consumed by rendering. Supply nonzero intrinsic dimensions and useful alt (empty only for decorative images). There is no lightbox, slide-change event, or implemented marquee property. No declared parts or direct semantic-token hooks in gallery CSS.
 
+The grid also takes plain `img`/`video`/`audio` children (keep media in light DOM when it carries microformats): set columns with `--gallery-columns`; images sharing a row crop square, a lone image keeps its ratio. Inside a `grantcodes-card` the gallery runs edge to edge.
+
 ## Icon
 
 ```js

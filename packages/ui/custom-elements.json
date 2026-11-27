@@ -1437,10 +1437,28 @@
           "kind": "class",
           "description": "",
           "name": "GrantCodesCard",
+          "cssProperties": [
+            {
+              "description": "Content padding; slotted full-bleed content reads it to cancel the padding.",
+              "name": "--g-card-padding"
+            }
+          ],
           "members": [
             {
               "kind": "method",
               "name": "_checkSlots"
+            },
+            {
+              "kind": "field",
+              "name": "flat",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Drops the background, border, radius and shadow so the card sits flush on a surface that already frames it.",
+              "default": "false",
+              "attribute": "flat",
+              "reflects": true
             },
             {
               "kind": "field",
@@ -1466,6 +1484,15 @@
             }
           ],
           "attributes": [
+            {
+              "name": "flat",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Drops the background, border, radius and shadow so the card sits flush on a surface that already frames it.",
+              "default": "false",
+              "fieldName": "flat"
+            },
             {
               "name": "hasFooter",
               "type": {
@@ -5833,6 +5860,649 @@
           "declaration": {
             "name": "GrantCodesPopover",
             "module": "dist/components/popover/popover.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/components/post/index.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "dist/components/post/post-header.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "dist/components/post/post-context.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "dist/components/post/post-content.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "dist/components/post/post-footer.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "dist/components/post/post-responses.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "dist/components/post/post-title.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/components/post/post-content.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A post's body. With `collapsible`, long content is clipped to a few lines behind a\n\"Show more\" toggle; without JavaScript the content stays fully visible.",
+          "name": "GrantCodesPostContent",
+          "slots": [
+            {
+              "description": "The content (light DOM, so it can carry `e-content` or `p-summary`).",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "_expanded",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_expanded"
+            },
+            {
+              "kind": "method",
+              "name": "_measure"
+            },
+            {
+              "kind": "field",
+              "name": "_observer",
+              "type": {
+                "text": "ResizeObserver | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_overflowing",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_overflowing"
+            },
+            {
+              "kind": "field",
+              "name": "_ready",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_ready"
+            },
+            {
+              "kind": "method",
+              "name": "_toggle"
+            },
+            {
+              "kind": "field",
+              "name": "collapsible",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Clips long content behind a \"Show more\" toggle.",
+              "default": "false",
+              "attribute": "collapsible",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "_expanded",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_expanded"
+            },
+            {
+              "name": "_overflowing",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_overflowing"
+            },
+            {
+              "name": "_ready",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_ready"
+            },
+            {
+              "name": "collapsible",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Clips long content behind a \"Show more\" toggle.",
+              "default": "false",
+              "fieldName": "collapsible"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "grantcodes-post-content",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GrantCodesPostContent",
+          "declaration": {
+            "name": "GrantCodesPostContent",
+            "module": "dist/components/post/post-content.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/components/post/post-content.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "dist/components/post/post-content.component.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "GrantCodesPostContent",
+            "module": "dist/components/post/post-content.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-post-content",
+          "declaration": {
+            "name": "GrantCodesPostContent",
+            "module": "dist/components/post/post-content.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/components/post/post-context.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A band naming the page a post responds to, with an icon for the kind of response. Runs edge to\nedge inside a `grantcodes-card`.",
+          "name": "GrantCodesPostContext",
+          "slots": [
+            {
+              "description": "The label and link (light DOM, so the link can carry `u-in-reply-to`, `u-like-of`, …).",
+              "name": ""
+            },
+            {
+              "description": "An embedded copy of the page responded to, usually an `h-cite`.",
+              "name": "citation"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "type",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Kind of response; picks the icon.",
+              "default": "'reply'",
+              "attribute": "type",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "description": "Kind of response; picks the icon.",
+              "default": "'reply'",
+              "fieldName": "type"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "grantcodes-post-context",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GrantCodesPostContext",
+          "declaration": {
+            "name": "GrantCodesPostContext",
+            "module": "dist/components/post/post-context.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/components/post/post-context.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "dist/components/post/post-context.component.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "GrantCodesPostContext",
+            "module": "dist/components/post/post-context.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-post-context",
+          "declaration": {
+            "name": "GrantCodesPostContext",
+            "module": "dist/components/post/post-context.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/components/post/post-footer.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A wrapping row of a post's meta: permalink and date, categories, syndication links. Each\nslotted element after the first gets a dot separator.",
+          "name": "GrantCodesPostFooter",
+          "slots": [
+            {
+              "description": "The meta items (light DOM, so they can carry `u-url`, `dt-published`, `p-category`, …).",
+              "name": ""
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "grantcodes-post-footer",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GrantCodesPostFooter",
+          "declaration": {
+            "name": "GrantCodesPostFooter",
+            "module": "dist/components/post/post-footer.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/components/post/post-footer.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "dist/components/post/post-footer.component.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "GrantCodesPostFooter",
+            "module": "dist/components/post/post-footer.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-post-footer",
+          "declaration": {
+            "name": "GrantCodesPostFooter",
+            "module": "dist/components/post/post-footer.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/components/post/post-header.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Author row of a post or response: an avatar beside the author's name and a line of meta text.",
+          "name": "GrantCodesPostHeader",
+          "slots": [
+            {
+              "description": "The author's name (light DOM, so it can carry `p-author h-card`).",
+              "name": ""
+            },
+            {
+              "description": "The author's picture, usually a `grantcodes-avatar`.",
+              "name": "avatar"
+            },
+            {
+              "description": "Secondary text under the name, such as the date.",
+              "name": "meta"
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "grantcodes-post-header",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GrantCodesPostHeader",
+          "declaration": {
+            "name": "GrantCodesPostHeader",
+            "module": "dist/components/post/post-header.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/components/post/post-header.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "dist/components/post/post-header.component.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "GrantCodesPostHeader",
+            "module": "dist/components/post/post-header.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-post-header",
+          "declaration": {
+            "name": "GrantCodesPostHeader",
+            "module": "dist/components/post/post-header.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/components/post/post-responses.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "One group of responses to a post, e.g. its likes or its comments.",
+          "name": "GrantCodesPostResponses",
+          "slots": [
+            {
+              "description": "The responses (light DOM, so each can carry `p-like h-cite`, `p-comment h-cite`, …).",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "heading",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Heading for the group, e.g. \"Likes (3)\". Rendered in shadow DOM so page heading styles do not resize it.",
+              "default": "''",
+              "attribute": "heading",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "`faces` lays responses out as a wrapping row of avatars; `list` stacks them.",
+              "default": "'list'",
+              "attribute": "variant",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "heading",
+              "type": {
+                "text": "string"
+              },
+              "description": "Heading for the group, e.g. \"Likes (3)\". Rendered in shadow DOM so page heading styles do not resize it.",
+              "default": "''",
+              "fieldName": "heading"
+            },
+            {
+              "name": "variant",
+              "type": {
+                "text": "string"
+              },
+              "description": "`faces` lays responses out as a wrapping row of avatars; `list` stacks them.",
+              "default": "'list'",
+              "fieldName": "variant"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "grantcodes-post-responses",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GrantCodesPostResponses",
+          "declaration": {
+            "name": "GrantCodesPostResponses",
+            "module": "dist/components/post/post-responses.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/components/post/post-responses.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "dist/components/post/post-responses.component.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "GrantCodesPostResponses",
+            "module": "dist/components/post/post-responses.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-post-responses",
+          "declaration": {
+            "name": "GrantCodesPostResponses",
+            "module": "dist/components/post/post-responses.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/components/post/post-title.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A post's title. The heading element lives in shadow DOM so page heading styles do not resize\nit inside a card; the slotted text stays in light DOM and can carry `p-name`.",
+          "name": "GrantCodesPostTitle",
+          "slots": [
+            {
+              "description": "The title text.",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "level",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "Heading level, 1–6.",
+              "default": "2",
+              "attribute": "level",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "level",
+              "type": {
+                "text": "number"
+              },
+              "description": "Heading level, 1–6.",
+              "default": "2",
+              "fieldName": "level"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "grantcodes-post-title",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GrantCodesPostTitle",
+          "declaration": {
+            "name": "GrantCodesPostTitle",
+            "module": "dist/components/post/post-title.component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/components/post/post-title.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "dist/components/post/post-title.component.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "GrantCodesPostTitle",
+            "module": "dist/components/post/post-title.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "grantcodes-post-title",
+          "declaration": {
+            "name": "GrantCodesPostTitle",
+            "module": "dist/components/post/post-title.component.js"
           }
         }
       ]

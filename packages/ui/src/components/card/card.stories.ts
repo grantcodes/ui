@@ -45,6 +45,17 @@ export const CardWithWideImage = {
     </grantcodes-card>`,
 };
 
+/** `flat` drops the frame so the card sits flush on a surface that already provides one. */
+export const Flat = {
+  render: () =>
+    html`<div style="padding: 1rem; background: var(--g-color-background-subtle);">
+      <grantcodes-card flat>
+        <h3 slot="header">Flat card</h3>
+        <p>No background, border, radius or shadow; the padding stays.</p>
+      </grantcodes-card>
+    </div>`,
+};
+
 export const CardInLink = {
   render: () =>
     html`<a

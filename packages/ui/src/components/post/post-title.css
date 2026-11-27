@@ -1,0 +1,16 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:host {
+  display: block;
+}
+
+/* Repeats the global h3 rules from css/typography.css: document styles do not reach shadow DOM. */
+.post-title {
+  margin: 0;
+  font: var(--g-typography-h3-font);
+  text-wrap: balance;
+}

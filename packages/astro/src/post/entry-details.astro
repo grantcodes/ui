@@ -1,0 +1,32 @@
+---
+// Event times, location or check-in, and an RSVP that is not attached to a reply.
+import { first, formatDateTime, isItem, text, urlOf, type Mf2Item, type PostOptions } from '@grantcodes/ui/mf2'
+
+interface Props {
+  entry: Mf2Item
+  options?: PostOptions
+}
+
+const { entry } = Astro.props
+const start = text(first(entry, 'start'))
+const end = text(first(entry, 'end'))
+const rsvp = first(entry, 'in-reply-to') ? '' : text(first(entry, 'rsvp'))
+const places = (['location', 'checkin'] as const).flatMap((property) => {
+  const value = first(entry, property)
+  const name = text(value)
+  if (value === undefined || !name) return []
+  return [{ property, name, url: urlOf(value), card: isItem(value) }]
+})
+---
+
+{start && <p>Starts <time class="dt-start" datetime={start}>{formatDateTime(start)}</time></p>}
+{end && <p>Ends <time class="dt-end" datetime={end}>{formatDateTime(end)}</time></p>}
+{places.map(({ property, name, url, card }) => {
+  const Tag = url ? 'a' : 'span'
+  return (
+    <p>
+      At <Tag class={`p-${property}${card ? ' h-card' : ''}`} href={url || undefined}>{card ? <span class="p-name">{name}</span> : name}</Tag>
+    </p>
+  )
+})}
+{rsvp && <p>RSVP: <span class="p-rsvp">{rsvp}</span></p>}

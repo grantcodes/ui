@@ -32,6 +32,7 @@ declare namespace astroHTML.JSX {
     caption?: string;
     center?: boolean;
     class?: string;
+    collapsible?: boolean;
     color?: 'primary' | 'secondary' | 'neutral' | 'danger' | 'inherit';
     columns?: number;
     company?: string;
@@ -52,12 +53,14 @@ declare namespace astroHTML.JSX {
     error?: unknown;
     expanded?: boolean;
     eyebrow?: string;
+    flat?: boolean;
     for?: string;
     form?: string;
     fullscreen?: boolean;
     fullscreenOnDrag?: boolean;
     hasFooter?: boolean;
     hasHeader?: boolean;
+    heading?: string;
     height?: number | string;
     help?: unknown;
     hidden?: boolean | string;
@@ -72,6 +75,7 @@ declare namespace astroHTML.JSX {
     language?: string;
     lat?: string;
     layout?: string;
+    level?: number;
     lng?: string;
     logos?: string;
     media?: string;
@@ -242,6 +246,7 @@ declare module "@grantcodes/ui/components/button/index.js" {
 declare module "@grantcodes/ui/components/card/index.js" {
 
   export interface CardProps {
+    flat?: boolean;
     hasFooter?: boolean;
     hasHeader?: boolean;
   }
@@ -588,6 +593,53 @@ declare module "@grantcodes/ui/components/popover/index.js" {
   export function GrantCodesPopover(props: PopoverProps & import("astro").AstroBuiltinAttributes): any;
 
   export { GrantCodesPopover };
+}
+
+declare module "@grantcodes/ui/components/post/index.js" {
+
+  export interface PostHeaderProps {
+    [key: string]: unknown;
+  }
+
+  export function GrantCodesPostHeader(props: PostHeaderProps & import("astro").AstroBuiltinAttributes): any;
+
+  export interface PostContextProps {
+    type?: string;
+  }
+
+  export function GrantCodesPostContext(props: PostContextProps & import("astro").AstroBuiltinAttributes): any;
+
+  export interface PostContentProps {
+    collapsible?: boolean;
+  }
+
+  export function GrantCodesPostContent(props: PostContentProps & import("astro").AstroBuiltinAttributes): any;
+
+  export interface PostFooterProps {
+    [key: string]: unknown;
+  }
+
+  export function GrantCodesPostFooter(props: PostFooterProps & import("astro").AstroBuiltinAttributes): any;
+
+  export interface PostResponsesProps {
+    heading?: string;
+    variant?: string;
+  }
+
+  export function GrantCodesPostResponses(props: PostResponsesProps & import("astro").AstroBuiltinAttributes): any;
+
+  export interface PostTitleProps {
+    level?: number;
+  }
+
+  export function GrantCodesPostTitle(props: PostTitleProps & import("astro").AstroBuiltinAttributes): any;
+
+  export { GrantCodesPostHeader };
+  export { GrantCodesPostContext };
+  export { GrantCodesPostContent };
+  export { GrantCodesPostFooter };
+  export { GrantCodesPostResponses };
+  export { GrantCodesPostTitle };
 }
 
 declare module "@grantcodes/ui/components/pricing/index.js" {

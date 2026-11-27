@@ -28,7 +28,9 @@ The example prevents submission only to demonstrate wiring; connect the consumer
 
 Exports from `@grantcodes/ui/react`:
 
-Accordion, AppBar, NavLink, Avatar, Badge, Breadcrumb, BreadcrumbItem, Button, ButtonGroup, Card, CodePreview, Container, Countdown, Cta, Dialog, Dropdown, DropdownItem, Dropzone, FeatureList, Footer, FooterColumn, FormField, Gallery, GalleryImage, Hero, Icon, Loading, LogoCloud, MapEmbed, MediaText, MenuToggle, Newsletter, Notice, Pagination, Popover, Person, Pricing, Sidebar, SidebarToggle, SplitBar, Tab, Tabs, Testimonials, Toast, ToastContainer, Tooltip.
+Accordion, AppBar, NavLink, Avatar, Badge, Breadcrumb, BreadcrumbItem, Button, ButtonGroup, Card, CodePreview, Container, Countdown, Cta, Dialog, Dropdown, DropdownItem, Dropzone, FeatureList, Footer, FooterColumn, FormField, Gallery, GalleryImage, Hero, Icon, Loading, LogoCloud, MapEmbed, MediaText, MenuToggle, Newsletter, Notice, Pagination, Popover, Person, PostContent, PostContext, PostFooter, PostHeader, PostResponses, PostTitle, Pricing, Sidebar, SidebarToggle, SplitBar, Tab, Tabs, Testimonials, Toast, ToastContainer, Tooltip.
+
+Also exported: the mf2 post renderers `Post`, `EntryHeader`, `EntryContexts`, `EntryMedia`, `EntryContent`, `EntryDetails`, `EntryFooter`, `EntryResponses` (plain React components, not wrappers); see [Posts](ui-post.md).
 
 `TabsButton` is also exported but is an internal Tabs companion; do not compose it yourself. There is **no AccordionItem React wrapper**. For React disclosures prefer native `details/summary`, or explicitly integrate the registered custom component with appropriate JSX typing; do not invent an export.
 

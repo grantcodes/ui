@@ -15,6 +15,25 @@
   gap: var(--gallery-gap, 0);
 }
 
+/* Plain slotted media (light DOM, so it can carry mf2 classes such as u-photo). */
+.gallery__slot::slotted(:is(img, video, audio)) {
+  display: block;
+  inline-size: 100%;
+  max-inline-size: 100%;
+  block-size: auto;
+  margin: 0;
+}
+
+/* Images sharing a row are cropped square, like grantcodes-gallery-image; a lone image keeps its ratio. */
+.gallery__slot::slotted(img:not(:only-child)) {
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.gallery__slot::slotted(video) {
+  background: var(--g-color-background-strong);
+}
+
 .gallery__image {
   position: relative;
   display: block;

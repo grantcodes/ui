@@ -1,0 +1,40 @@
+---
+// An article's name, then its content: sanitised HTML when `sanitize` is given, else plain text.
+// Compact articles show their summary and a link to the full post instead. The default slot is
+// rendered after the content.
+import { GrantCodesButton } from '@grantcodes/ui/components/button/index.js'
+import { GrantCodesPostContent } from '@grantcodes/ui/components/post/post-content.js'
+import { GrantCodesPostTitle } from '@grantcodes/ui/components/post/post-title.js'
+import { contentOf, first, isArticle, text, urlOf, type Mf2Item, type PostOptions } from '@grantcodes/ui/mf2'
+
+interface Props {
+  entry: Mf2Item
+  options?: PostOptions
+}
+
+const { entry, options = {} } = Astro.props
+const article = isArticle(entry)
+const content = contentOf(entry)
+const summary = text(first(entry, 'summary'))
+const url = urlOf(first(entry, 'url'))
+const preview = Boolean(options.compact && article)
+const html = !preview && content?.html !== undefined && options.sanitize ? options.sanitize(content.html) : undefined
+const plain = preview || !content ? undefined : content.text
+const hasBody = Boolean(html !== undefined || plain || ((preview || !content) && summary) || Astro.slots.has('default'))
+---
+
+{article && <GrantCodesPostTitle level={options.headingLevel ?? 2}><span class="p-name">{text(first(entry, 'name'))}</span></GrantCodesPostTitle>}
+{hasBody && (
+  <GrantCodesPostContent collapsible={Boolean(options.collapsible && !preview)}>
+    {html !== undefined ? (
+      <div class="e-content" set:html={html} />
+    ) : plain ? (
+      <p class="e-content">{plain}</p>
+    ) : summary ? (
+      <p class="p-summary">{summary}</p>
+    ) : null}
+    <slot />
+  </GrantCodesPostContent>
+)}
+{/* Spread works around grantcodes/ui#231 (global `variant` typing). */}
+{preview && content && url && <GrantCodesButton href={url} {...({ variant: 'outline' } as object)}>Read full post</GrantCodesButton>}

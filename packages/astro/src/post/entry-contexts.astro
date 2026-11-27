@@ -1,0 +1,29 @@
+---
+// One band per page the entry responds to; embedded citations render as compact `h-cite` posts.
+import { GrantCodesPostContext } from '@grantcodes/ui/components/post/post-context.js'
+import { citationOptions, contextLabels, contextsOf, displayUrl, first, text, type Mf2Item, type PostOptions } from '@grantcodes/ui/mf2'
+import Post from './post.astro'
+
+interface Props {
+  entry: Mf2Item
+  options?: PostOptions
+}
+
+const { entry, options = {} } = Astro.props
+const contexts = contextsOf(entry)
+const rsvp = text(first(entry, 'rsvp'))
+const rsvpIndex = contexts.findIndex((context) => context.type === 'rsvp')
+---
+
+{contexts.map(({ type, property, url, citation }, index) => (
+  <GrantCodesPostContext type={type}>
+    {index === rsvpIndex ? <>RSVPed <span class="p-rsvp">{rsvp}</span> to </> : `${contextLabels[type]} `}
+    {/* An embedded citation carries the property itself, so the link must not repeat it. */}
+    <a class={citation ? undefined : `u-${property}`} href={url}>{displayUrl(url)}</a>
+    {citation && (
+      <div slot="citation">
+        <Post entry={citation} class={`u-${property} h-cite`} options={citationOptions(options)} />
+      </div>
+    )}
+  </GrantCodesPostContext>
+))}

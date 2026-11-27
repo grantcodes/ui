@@ -1,0 +1,78 @@
+---
+// Action and permalink date, fallback author, response counts (compact), categories, syndication.
+import { GrantCodesPostFooter } from '@grantcodes/ui/components/post/post-footer.js'
+import {
+  actionLabel,
+  all,
+  authorOf,
+  categoriesOf,
+  first,
+  formatRelativeDate,
+  hostOf,
+  responsesOf,
+  text,
+  urlOf,
+  type Mf2Item,
+  type PostOptions,
+} from '@grantcodes/ui/mf2'
+
+interface Props {
+  entry: Mf2Item
+  options?: PostOptions
+}
+
+const { entry, options = {} } = Astro.props
+const url = urlOf(first(entry, 'url'))
+const published = text(first(entry, 'published'))
+const fallbackAuthor = authorOf(entry) ? undefined : options.author
+const AuthorTag = fallbackAuthor?.url ? 'a' : 'span'
+const categories = categoriesOf(entry)
+const syndication = all(entry, 'syndication').map(urlOf).filter(Boolean)
+const counts = options.compact
+  ? ([
+      [['like'], 'likes'],
+      [['repost'], 'reposts'],
+      [['comment'], 'comments'],
+      [['mention', 'webmention'], 'mentions'],
+    ] as const).flatMap(([keys, label]) => {
+      const count = keys.reduce((sum, key) => sum + responsesOf(entry, key).length, 0)
+      return count ? [`${count} ${label}`] : []
+    })
+  : []
+const date = published ? (options.formatDate ?? formatRelativeDate)(published) : ''
+---
+
+<GrantCodesPostFooter>
+  <span>
+    {actionLabel(entry)}{' '}
+    {url ? (
+      <a class="u-url" href={url}>{published ? <time class="dt-published" datetime={published}>{date}</time> : 'Permalink'}</a>
+    ) : (
+      published && <time class="dt-published" datetime={published}>{date}</time>
+    )}
+  </span>
+  {fallbackAuthor && <span>by <AuthorTag class="p-author h-card" href={fallbackAuthor.url}>{fallbackAuthor.name}</AuthorTag></span>}
+  {counts.map((count) => <span>{count}</span>)}
+  {categories.length > 0 && (
+    <span>
+      {categories.map((name, index) => (
+        <>
+          {index > 0 && ' '}
+          {options.categoryHref ? (
+            <a href={options.categoryHref(name)}>#<span class="p-category">{name}</span></a>
+          ) : (
+            <>#<span class="p-category">{name}</span></>
+          )}
+        </>
+      ))}
+    </span>
+  )}
+  {syndication.length > 0 && (
+    <span>
+      Also on{' '}
+      {syndication.map((href, index) => (
+        <>{index > 0 && ', '}<a class="u-syndication" href={href}>{hostOf(href)}</a></>
+      ))}
+    </span>
+  )}
+</GrantCodesPostFooter>

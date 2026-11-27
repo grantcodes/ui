@@ -1,0 +1,14 @@
+/* Gallery host only (gallery.css is shared with grantcodes-gallery-image).
+   Cancels a surrounding card's padding so the gallery runs edge to edge; --g-card-padding is unset
+   outside a card, so this is a no-op there. Slotted footer siblings don't count as first/last. */
+:host {
+  margin-inline: calc(-1 * var(--g-card-padding, 0px));
+}
+
+:host(:nth-child(1 of :not([slot]))) {
+  margin-block-start: calc(-1 * var(--g-card-padding, 0px));
+}
+
+:host(:nth-last-child(1 of :not([slot]))) {
+  margin-block-end: calc(-1 * var(--g-card-padding, 0px));
+}

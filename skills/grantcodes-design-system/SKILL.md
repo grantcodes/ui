@@ -32,6 +32,7 @@ These references describe UI 2.18.0, style-dictionary 1.11.1, and Astro integrat
 | Persistent / transient / compact feedback | Notice / Toast / Badge | Loading for in-progress work; not interchangeable live regions | [Feedback](references/ui-feedback.md) |
 | Switch panels / disclose content | Tabs + Tab / Accordion + item | Native details for one disclosure | [Disclosure](references/ui-disclosure.md) |
 | Inputs and grouped choices | FormField around native input/select/textarea | No Input, Select, Checkbox, or Switch wrapper exports | [Forms](references/ui-forms.md) |
+| IndieWeb posts with microformats2 | `Post` renderer (Astro or React) | `grantcodes-post-*` sections with hand-written mf2 | [Posts](references/ui-post.md) |
 | Custom composition | Card, Container and individual UI components | Astro blocks for structured content; BlockRenderer for validated heterogeneous data | [Catalogue](references/catalogue.md), [schemas](references/astro-renderer.md) |
 
 ## Essential constraints

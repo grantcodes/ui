@@ -11,6 +11,7 @@
   /* Enable container queries for responsive card layouts */
   container-type: inline-size;
   container-name: card;
+  --g-card-padding: var(--g-spacing-md);
 }
 
 .card {
@@ -43,7 +44,7 @@
 }
 
 .card__header {
-  padding-inline: var(--g-spacing-md);
+  padding-inline: var(--g-card-padding);
   padding-block: var(--g-spacing-sm);
   border-block-end: 1px solid var(--g-color-border-subtle);
 }
@@ -62,8 +63,7 @@
   flex-direction: column;
   justify-content: flex-start;
   gap: var(--g-spacing-md);
-  padding-block: var(--g-spacing-md);
-  padding-inline: var(--g-spacing-md);
+  padding: var(--g-card-padding);
 }
 
 .card__content:has(::slotted(:empty)) {
@@ -81,7 +81,7 @@
   justify-content: flex-start;
   align-items: center;
   gap: var(--g-spacing-sm);
-  padding-inline: var(--g-spacing-md);
+  padding-inline: var(--g-card-padding);
   padding-block: var(--g-spacing-sm);
   border-block-start: 1px solid var(--g-color-border-subtle);
   background: var(--g-color-background-default);
@@ -132,6 +132,17 @@
 
 .card__meta__item dt::after {
   content: ":";
+}
+
+:host([flat]) .card {
+  background: transparent;
+  border-width: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+:host([flat]) .card__footer {
+  background: transparent;
 }
 
 :host(.is-clickable) .card {

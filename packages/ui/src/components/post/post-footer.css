@@ -1,0 +1,31 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:host {
+  display: block;
+  flex: 1 1 auto;
+  min-inline-size: 0;
+}
+
+.post-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  row-gap: var(--g-spacing-xs);
+  color: var(--g-color-content-subtle);
+  font-size: var(--g-typography-font-size-2xs);
+}
+
+/* `::slotted()` cannot take `::before`, so the dot separator is a background in the item's padding. */
+.post-footer ::slotted(:not(:first-child)) {
+  padding-inline-start: var(--g-spacing-md);
+  background: radial-gradient(circle, currentColor 0.15em, transparent 0.17em) no-repeat left center /
+    var(--g-spacing-md) 100%;
+}
+
+.post-footer ::slotted(*) {
+  padding-inline-end: var(--g-spacing-xs);
+}

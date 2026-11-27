@@ -1,0 +1,24 @@
+---
+// The entry's author (`p-author h-card`) beside their avatar; nothing when the entry has no author.
+import { GrantCodesAvatar } from '@grantcodes/ui/components/avatar/index.js'
+import { GrantCodesPostHeader } from '@grantcodes/ui/components/post/post-header.js'
+import { authorOf, type Mf2Item, type PostOptions } from '@grantcodes/ui/mf2'
+
+interface Props {
+  entry: Mf2Item
+  options?: PostOptions
+}
+
+const author = authorOf(Astro.props.entry)
+const Name = author?.url ? 'a' : 'span'
+---
+
+{author && (
+  <GrantCodesPostHeader>
+    <GrantCodesAvatar slot="avatar" src={author.photo} name={author.name} alt="" size="small" />
+    <Name class="p-author h-card" href={author.url}>
+      <span class="p-name">{author.name}</span>
+      {author.photo && <data class="u-photo" value={author.photo} />}
+    </Name>
+  </GrantCodesPostHeader>
+)}
