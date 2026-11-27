@@ -21,6 +21,10 @@ declare namespace astroHTML.JSX {
     active?: boolean;
     align?: string | 'left' | 'center';
     alt?: string;
+    "aria-current"?: unknown;
+    "aria-expanded"?: unknown;
+    "aria-haspopup"?: unknown;
+    "aria-pressed"?: unknown;
     avatar?: string;
     button?: string;
     "button-label"?: string;
@@ -224,6 +228,10 @@ declare module "@grantcodes/ui/components/button/index.js" {
     type?: string;
     value?: string;
     variant?: 'solid' | 'outline' | 'ghost';
+    "aria-current"?: unknown;
+    "aria-expanded"?: unknown;
+    "aria-haspopup"?: unknown;
+    "aria-pressed"?: unknown;
   }
 
   export function GrantCodesButton(props: ButtonProps & import("astro").AstroBuiltinAttributes): any;
