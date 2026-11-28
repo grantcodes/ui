@@ -1,5 +1,13 @@
 # Changelog
 
+## [4.3.0](https://github.com/grantcodes/ui/compare/ui-v4.2.2...ui-v4.3.0) (2026-11-28)
+
+
+### Features
+
+* **ui:** add hideAuthor post option ([df7a40c](https://github.com/grantcodes/ui/commit/df7a40ce3a6c76f12a2cc107207fe28ed63dfddf))
+* **ui:** add hideAuthor post option ([a4c2d4e](https://github.com/grantcodes/ui/commit/a4c2d4e677a9fd5c154193ad9b30c8840e3158b8))
+
 ## [4.2.2](https://github.com/grantcodes/ui/compare/ui-v4.2.1...ui-v4.2.2) (2026-11-27)
 
 
