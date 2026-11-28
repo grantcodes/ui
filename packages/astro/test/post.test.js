@@ -27,12 +27,19 @@ const pages = {
   responses: 'fixtures.withResponses',
   jf2: 'jf2ToMf2(fixtures.jf2Reply)',
   overrides: 'fixtures.photo',
+  hiddenAuthor: 'fixtures.note',
+  hiddenFallback: 'fixtures.repost',
+  hiddenCitation: 'fixtures.reply',
 };
 
 const options = {
   plain: '{}',
   compact: '{ compact: true, sanitize }',
   bookmark: '{ compact: true, sanitize }',
+  hiddenAuthor: '{ hideAuthor: true }',
+  hiddenFallback:
+    "{ hideAuthor: true, author: { name: 'Grant', url: 'https://grant.codes/', photo: 'https://grant.codes/me.jpg' } }",
+  hiddenCitation: '{ hideAuthor: true }',
 };
 
 function buildFixture() {
@@ -159,6 +166,21 @@ describe('@grantcodes/astro Post mf2 output', () => {
 
   it('renders a converted jf2 item', () => {
     assert.equal(parse('jf2').properties['in-reply-to'][0].properties.name[0], 'Compilers are for people');
+  });
+
+  it('keeps a hidden author h-card for parsers with hideAuthor', () => {
+    for (const [name, expected] of [
+      ['hiddenAuthor', { name: ['Ada Lovelace'], url: ['https://ada.example/'], photo: ['https://ada.example/me.jpg'] }],
+      ['hiddenFallback', { name: ['Grant'], url: ['https://grant.codes/'], photo: ['https://grant.codes/me.jpg'] }],
+    ]) {
+      assert.equal(html(name).match(/p-author h-card/g)?.length, 1);
+      assert.match(html(name), /<span class="p-author h-card" hidden(="")?>/);
+      assert.doesNotMatch(html(name), /<grantcodes-post-header|<grantcodes-avatar|>by </);
+      assert.deepEqual(parse(name).properties.author[0].properties, expected);
+    }
+    const reply = parse('hiddenCitation').properties;
+    assert.equal(reply['in-reply-to'][0].properties.author[0].properties.name[0], 'Grace Hopper');
+    assert.match(html('hiddenCitation'), /<grantcodes-post-header[\s\S]*Grace Hopper/);
   });
 
   it('replaces sections through named slots and puts actions in the card footer', () => {

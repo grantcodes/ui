@@ -15,6 +15,7 @@ import {
   type Mf2Item,
   type PostOptions,
 } from '@grantcodes/ui/mf2'
+import HiddenAuthor from './hidden-author.astro'
 
 interface Props {
   entry: Mf2Item
@@ -51,7 +52,8 @@ const date = published ? (options.formatDate ?? formatRelativeDate)(published) :
       published && <time class="dt-published" datetime={published}>{date}</time>
     )}
   </span>
-  {fallbackAuthor && <span>by <AuthorTag class="p-author h-card" href={fallbackAuthor.url}>{fallbackAuthor.name}</AuthorTag></span>}
+  {fallbackAuthor && options.hideAuthor && <HiddenAuthor author={fallbackAuthor} />}
+  {fallbackAuthor && !options.hideAuthor && <span>by <AuthorTag class="p-author h-card" href={fallbackAuthor.url}>{fallbackAuthor.name}</AuthorTag></span>}
   {counts.map((count) => <span>{count}</span>)}
   {categories.length > 0 && (
     <span>

@@ -16,6 +16,7 @@ import {
   hasTitle,
   isArticle,
   isItem,
+  type Mf2Author,
   type Mf2Item,
   mediaColumns,
   type PostOptions,
@@ -41,10 +42,24 @@ const published = (entry: Mf2Item, options: PostOptions) => {
   return h('time', { className: 'dt-published', dateTime: iso }, (options.formatDate ?? formatRelativeDate)(iso));
 };
 
-/** The entry's author (`p-author h-card`) beside their avatar; nothing when the entry has no author. */
-export function EntryHeader({ entry }: EntryProps) {
+/** A `p-author h-card` that parsers read but the page does not show. */
+const hiddenAuthor = (author: Mf2Author) =>
+  h(
+    'span',
+    { className: 'p-author h-card', hidden: true },
+    h('span', { className: 'p-name' }, author.name),
+    author.url ? h('data', { className: 'u-url', value: author.url }) : null,
+    author.photo ? h('data', { className: 'u-photo', value: author.photo }) : null,
+  );
+
+/**
+ * The entry's author (`p-author h-card`) beside their avatar; nothing when the entry has no author,
+ * and only a hidden h-card with `hideAuthor`.
+ */
+export function EntryHeader({ entry, options = {} }: EntryProps) {
   const author = authorOf(entry);
   if (!author) return null;
+  if (options.hideAuthor) return hiddenAuthor(author);
   return h(
     'grantcodes-post-header',
     null,
@@ -201,6 +216,11 @@ const RESPONSE_COUNTS: [string[], string][] = [
   [['mention', 'webmention'], 'mentions'],
 ];
 
+const footerAuthor = (author: Mf2Author, options: PostOptions) =>
+  options.hideAuthor
+    ? hiddenAuthor(author)
+    : h('span', null, 'by ', h(author.url ? 'a' : 'span', { className: 'p-author h-card', href: author.url }, author.name));
+
 /** Action and permalink date, fallback author, response counts (compact), categories, syndication. */
 export function EntryFooter({ entry, options = {} }: EntryProps) {
   const url = urlOf(first(entry, 'url'));
@@ -219,14 +239,7 @@ export function EntryFooter({ entry, options = {} }: EntryProps) {
     'grantcodes-post-footer',
     { slot: 'footer' },
     h('span', null, `${actionLabel(entry)} `, url ? h('a', { className: 'u-url', href: url }, date ?? 'Permalink') : date),
-    fallbackAuthor
-      ? h(
-          'span',
-          null,
-          'by ',
-          h(fallbackAuthor.url ? 'a' : 'span', { className: 'p-author h-card', href: fallbackAuthor.url }, fallbackAuthor.name),
-        )
-      : null,
+    fallbackAuthor ? footerAuthor(fallbackAuthor, options) : null,
     counts.map((count) => h('span', { key: count }, count)),
     categories.length
       ? h(

@@ -109,6 +109,28 @@ describe('React Post mf2 output', () => {
     assert.doesNotMatch(footer(fixtures.note), /Grant/);
   });
 
+  it('keeps a hidden author h-card for parsers with hideAuthor', () => {
+    const author = { name: 'Grant', url: 'https://grant.codes/', photo: 'https://grant.codes/me.jpg' };
+    for (const [entry, expected] of [
+      [fixtures.note, { name: ['Ada Lovelace'], url: ['https://ada.example/'], photo: ['https://ada.example/me.jpg'] }],
+      [fixtures.repost, { name: ['Grant'], url: ['https://grant.codes/'], photo: ['https://grant.codes/me.jpg'] }],
+    ] as const) {
+      const html = render(entry, { author, hideAuthor: true });
+      assert.equal(html.match(/p-author h-card/g)?.length, 1);
+      assert.match(html, /<span class="p-author h-card" hidden="">/);
+      assert.doesNotMatch(html, /<grantcodes-post-header|<grantcodes-avatar|>by </);
+      assert.deepEqual((parse(html).properties.author[0] as any).properties, expected);
+    }
+  });
+
+  it('shows a citation author with hideAuthor', () => {
+    const html = render(fixtures.reply, { hideAuthor: true });
+    const item = parse(html).properties as any;
+    assert.equal(item.author[0].properties.name[0], 'Ada Lovelace');
+    assert.equal(item['in-reply-to'][0].properties.author[0].properties.name[0], 'Grace Hopper');
+    assert.match(html, /<grantcodes-post-header>.*Grace Hopper/);
+  });
+
   it('lets a section be replaced or left out', () => {
     const html = renderToStaticMarkup(
       createElement(Post, {
