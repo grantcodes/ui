@@ -45,14 +45,20 @@ export interface PostOptions {
   categoryHref?: (name: string) => string;
   /** Shown as the footer's `p-author h-card` when the entry has no author of its own. */
   author?: Mf2Author;
+  /** Keep the author's `p-author h-card` for parsers but do not show it. */
+  hideAuthor?: boolean;
   /** Heading level of an article's name. Defaults to 2. */
   headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
 }
 
-/** Options for an embedded citation: compact, with its name one heading level below the post's. */
+/**
+ * Options for an embedded citation: compact, with its name one heading level below the post's,
+ * and its author shown.
+ */
 export const citationOptions = (options: PostOptions): PostOptions => ({
   ...options,
   compact: true,
+  hideAuthor: false,
   headingLevel: Math.min((options.headingLevel ?? 2) + 1, 6) as PostOptions['headingLevel'],
 });
 

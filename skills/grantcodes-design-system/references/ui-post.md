@@ -29,6 +29,7 @@ import { jf2ToMf2 } from '@grantcodes/ui/mf2'
   - `formatDate(iso)`: defaults to relative ("2 days ago", absolute after a week).
   - `categoryHref(name)`: without it categories render as text.
   - `author`: footer `h-card` for entries without an author.
+  - `hideAuthor`: keep the author's `p-author h-card` (with `u-url`/`u-photo`) as a `hidden` element for parsers, with no avatar row or "by …" footer item. Citations still show their author.
   - `headingLevel`: for an article's `p-name`; default 2.
 - **Sections:** `EntryHeader`, `EntryContexts`, `EntryMedia`, `EntryContent`, `EntryDetails`, `EntryFooter`, `EntryResponses` — each takes `{ entry, options }` and can be used alone.
 - **Replacing a section:** Astro uses a named slot of the same name (`header`, `contexts`, `media`, `content`, `details`, `responses`, `footer`). React uses a prop of the same name; `null` leaves the section out. To leave a section out in Astro, compose the `Entry*` sections yourself.
@@ -55,4 +56,4 @@ import { jf2ToMf2 } from '@grantcodes/ui/mf2'
 
 Media renders in `grantcodes-gallery` (`--gallery-columns` set inline; plain `<img class="u-photo">` children, never `grantcodes-gallery-image`, whose image is in shadow DOM where mf2 parsers miss it). Edge-to-edge sections and the gallery read `--g-card-padding`, which `grantcodes-card` sets on its content, so they only bleed inside a card.
 
-The header shows the author only when the entry has one; `header={null}` (React) or a `header` slot (Astro) removes or replaces it. Page styles reach light-DOM content (`e-content`, paragraphs) and beat `::slotted()`, so content typography is the consumer's.
+The header shows the author only when the entry has one (hidden with `hideAuthor`); `header={null}` (React) or a `header` slot (Astro) removes or replaces it. Page styles reach light-DOM content (`e-content`, paragraphs) and beat `::slotted()`, so content typography is the consumer's.

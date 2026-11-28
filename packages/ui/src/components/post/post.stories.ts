@@ -59,6 +59,15 @@ export const Repost = {
   render: () => renderPost(fixtures.repost, { author: { name: 'Grant Richmond', url: 'https://grant.codes/' } }),
 };
 
+/** `hideAuthor`: the author's `p-author h-card` stays in the markup for parsers but is not shown. */
+export const HiddenAuthor = {
+  render: () =>
+    renderPost(fixtures.repost, {
+      author: { name: 'Grant Richmond', url: 'https://grant.codes/' },
+      hideAuthor: true,
+    }),
+};
+
 export const Like = { render: () => renderPost(fixtures.like) };
 
 export const Rsvp = { render: () => renderPost(fixtures.rsvp) };

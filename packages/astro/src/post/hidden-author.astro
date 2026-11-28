@@ -1,0 +1,16 @@
+---
+// A `p-author h-card` that parsers read but the page does not show.
+import type { Mf2Author } from '@grantcodes/ui/mf2'
+
+interface Props {
+  author: Mf2Author
+}
+
+const { author } = Astro.props
+---
+
+<span class="p-author h-card" hidden>
+  <span class="p-name">{author.name}</span>
+  {author.url && <data class="u-url" value={author.url} />}
+  {author.photo && <data class="u-photo" value={author.photo} />}
+</span>
